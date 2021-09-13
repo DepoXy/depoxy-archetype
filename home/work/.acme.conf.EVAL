@@ -1,0 +1,43 @@
+# USAGE:
+#   m4_shim \
+#     "+8" "home/work/.acme.conf.EVAL" \
+#     "home/${DXY_VENDOR_HOME_NAME}/.${DXY_VENDOR_ACMESH_CMD}.conf"
+
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
+
+# vim:tw=0:ts=2:sw=2:et:norl:ft=bash
+# DXY_HEADER_AUTHOR
+# DXY_HEADER_PROJECT
+# DXY_HEADER_LICENSE
+
+# Example private environs, either develop-specific, or secret to the org
+# (and not something you want published to any Git server).
+
+# *** Local development creds
+
+_ENV_LOCAL_DB_PASSW="XXXX"
+
+# *** kubectl creds
+
+# YOU: Uncomment and use these if your paths differ:
+#
+#   _ENV_LOCAL_KUBECONFIG="${HOME}/.kube/config"
+#   _ENV_DEV_KUBECONFIG="${HOME}/.kube/acme-dev-${username}.yaml"
+#   _ENV_STAGE_KUBECONFIG="${HOME}/.kube/acme-stage.yaml"
+
+# *** Nexus creds
+
+# YOU: Uncomment and set this unless part of ~/.netrc (where acme.sh looks)
+#
+#   NEXUS_PASSWORD="XXXX"
+
+# *** Env creds
+
+_ENV_TOKEN_LOCAL="XXXX"
+_ENV_TOKEN_DEV="XXXX"
+_ENV_TOKEN_STAGE="XXXX"
+
+# *** Third-party API tokens
+
+MAPBOX_TOKEN="XXXX"
+
