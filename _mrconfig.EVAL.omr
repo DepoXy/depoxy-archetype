@@ -1,0 +1,933 @@
+# USAGE:
+#   m4_shim \
+#     "+13" "_mrconfig.EVAL.omr" \
+#     "_mrconfig"
+
+# KEEP FRESH:
+#   meld ~/.depoxy/ambers/archetype/_mrconfig.EVAL.omr ~/.depoxy/running/_mrconfig &
+# Or swap directions:
+#   meld ~/.depoxy/running/_mrconfig ~/.depoxy/ambers/archetype/_mrconfig.EVAL.omr &
+
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
+
+# vim:tw=0:ts=2:sw=2:et:norl:nospell:ft=bash
+# DXY_HEADER_AUTHOR
+# DXY_HEADER_PROJECT
+# DXY_HEADER_LICENSE
+
+# ****************************************************************************************
+
+# *** NOTE: THIS MRCONFIG ONLY RUNS ON THE CLIENT MACHINE / CLIENT-ONLY ***
+
+# ========================================================================
+# ------------------------------------------------------------------------
+
+[DEFAULT]
+order = 191
+
+# spells.sh runner (commit_sorted_spells_and_alert_if_conflicts) for Vim spell file maintenance.
+lib = . "${DEPOXYAMBERS_DIR:-${HOME}/.depoxy/ambers}/home/.kit/git/ohmyrepos/lib/spellfile.txt-runner.sh"
+
+# ========================================================================
+# ------------------------------------------------------------------------
+
+[${DEPOXYDIR_STINTS_FULL:-${HOME}/DXY_DEPOXYDIR_BASE_NAME/DXY_DEPOXYDIR_STINTS_NAME}/DXY_DEPOXY_CLIENT_ID]
+# NOTE: This repo has no remote (unless you consider the temporary mountpoint),
+#       so stub remote-ish commands to avoid mr fails. See instead: dxup/dxdn.
+checkout = true
+# Optional remote wiring, though the author prefers to kept their DepoXy Client truly private.
+wireupstream = [ -z "DXY_DEPOXY_CLIENT_REMOTE" ] ||
+  remote_add entrust "DXY_DEPOXY_CLIENT_REMOTE"
+#
+fetch = true
+pull = true
+push = true
+update = true
+# Should we include with "work", or separate the two?
+#   skip = mr_exclusive "client" && mr_exclusive "work"
+skip = mr_exclusive "client"
+
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
+
+autocommit =
+  # For completeness `git ls-files`, we ensure that all repo files are under
+  # autocommit (or documented why not). And for comparability for `ls-files`,
+  # we list files in the same order.
+  # - SAVVY: Don't spent time crafting more helpful commits for the DXC project.
+  #   You can craft better commits if/when you merge back to the DXA template
+  #   project, but the client itself is ephemeral (you'll abandon the project
+  #   when you move on to the next Client), so you needn't bother maintaining
+  #   a more ideal Git history (just shovel everything into the repo and move
+  #   on).
+  #
+  # ***
+  #
+  local depoxy_client_id="$(basename ${MR_REPO})"
+  #
+  # Prepare args, e.g., `autocommit -y`, or `autocommit -f`.
+  git_auto_commit_parse_args "$@"
+  #
+  local ambers_path="${DEPOXYDIR_BASE_FULL:-${HOME}/.depoxy}/ambers"
+  #
+  # ***
+  #
+  CLEARED_ACI="Entrust: autoci"
+  PRIVATE_ACI="PRIVATE: autoci*"
+  #
+  git_auto_commit_one_docs () {
+    git_auto_commit_one "$1" -m "${3:-${CLEARED_ACI}}: Docs: ${2:-$1}"
+  }
+  #
+  git_auto_commit_one_omr () {
+    git_auto_commit_one "$1" -m "${3:-${CLEARED_ACI}}: OMR: Update: ${2:-$1}"
+  }
+  #
+  git_auto_commit_one_update () {
+    git_auto_commit_one "$1" -m "${3:-${CLEARED_ACI}}: Update: ${2:-$1}"
+  }
+  #
+  # ***
+  #
+  # NOTE: Many/all of the `find` calls below fail if any paths contain spaces.
+  #
+  # ***
+  #
+  git_auto_commit_one_update ".gitignore"
+  git_auto_commit_one_update ".hostnames"
+  git_auto_commit_one_update ".ignore"
+  #
+  git_auto_commit_one_omr "_mrconfig"
+  #
+  # - Auto-commit just "_mrconfig-BUSINESS_CODE_PATH":
+  #     git_auto_commit_one_omr "_mrconfig-BUSINESS_CODE_PATH" "" "${PRIVATE_ACI}"
+  # - Auto-commit "_mrconfig-BUSINESS_CODE_PATH" and the project-specific configs:
+  git_auto_commit_many $(\
+    find * -name "_mrconfig-BUSINESS_CODE_PATH" -o -name "_mrconfig-BUSINESS_CODE_PATH--*" \
+  ) -m "${PRIVATE_ACI}: OMR: Update: _mrconfig-BUSINESS_CODE_PATH[--*]"
+  #
+  git_auto_commit_one "_mrconfig-BUSINESS_CODE_PATH.example" \
+    -m "${CLEARED_ACI}: DXA: OMR: Update: _mrconfig-BUSINESS_CODE_PATH.example"
+  #
+  git_auto_commit_one_docs "README.rst"
+  #
+  git_auto_commit_one_docs ".whilom/README.rst"
+  #
+  # Ideally, .whilom/ files would be scoped the same as they'd be at the
+  # same path under root DXC/. But this is a rarely-used, niche feature,
+  # so follow this convention: Use .whilom/home/work/ for PRIVATE files.
+  # Anything else under .whilom/ will be auto-committed unscoped.
+  git_auto_commit_many $(find .whilom/home/work/ -type f -o -type l) \
+    -m "${PRIVATE_ACI}: Update: .whilom/home/work/"
+  git_auto_commit_many $(find .whilom/ -type f -o -type l) \
+    -m "${CLEARED_ACI}: Update: .whilom/"
+  #
+  # ***
+  #
+  # Work-related reSTfold docs.
+  #
+  git_auto_commit_one_update "docs/.ignore" "" "${PRIVATE_ACI}"
+  #
+  # git_auto_commit_many \
+  #   "docs/Backlog_Client_${depoxy_client_id}.rst" \
+  #   "docs/Backlog_Client_${depoxy_client_id}.rst.example" \
+  #   "docs/Donelog_Client_${depoxy_client_id}.rst" \
+  #   "docs/Woodlot_Client_${depoxy_client_id}.rst" \
+  #   "docs/Worklog_Client_${depoxy_client_id}.rst" \
+  #   -m "PRIVATE: autoci: Docs: Work notes."
+  #  #-m "PRIVATE: autoci: Update: Docs."
+  #
+  # NOTE: This `find` won't work if there are spaces in any paths.
+  # NOTE: Enable MRT_LINK_FORCE so ' T' git-status typechanges are included.
+  MRT_LINK_FORCE=0 git_auto_commit_many $(find docs/ -type f -o -type l) \
+    -m "${PRIVATE_ACI}: Docs: Work notes."
+  #
+  # *** home/.config
+  #
+  # System settings.
+  # FIXME/2022-12-13 22:39: Retire this function... maybe...
+  # or restore on Linux, but akin to `defaults`, but capture
+  # noise (only capture changes caused by you changing defaults,
+  # and not, e.g., changes because timestamp or tmp path changed,
+  # or MRU list changed).
+  depoxy_client_id_autocommit_system_settings_DEPRECATED () {
+    # These are mosly in case you find yourself on a new system and curious if
+    # you forgot to capture any settings in an onboarding function or document,
+    # and want to compare against what you had configured on the last system.
+    #
+    # 2021-08-22: Keep down on repo noise, because (at least on macOS) the
+    #             settings database contains timestamps that always change.
+    #             So only record the settings daily, or autocommit --force.
+    has_not_been_updated_for_one_day_and_force_not_active () {
+      local check_file
+      if [ "$(uname)" = "Darwin" ]; then
+        check_file="home/.config/defaults"
+      elif [ "$(uname)" = "Linux" ]; then
+        check_file="home/.config/dconf"
+      fi
+      if [ -f "${check_file}" ] &&
+        [ -z "$(find "${check_file}" -mmin +1440 -print)" ] &&
+        [ ${MRT_LINK_FORCE:-1} -eq 1 ] \
+      ; then
+        return 1
+      fi
+    }
+    has_not_been_updated_for_one_day_and_force_not_active || return
+    #
+    if [ "$(uname)" = "Darwin" ]; then
+      defaults read > "home/.config/defaults"
+      git_auto_commit_one "home/.config/defaults" -m "${CLEARED_ACI}: Latest \`defaults\`."
+    elif [ "$(uname)" = "Linux" ]; then
+      # GSettings is the API, and DConf is the backend. Apps and End Users should
+      # generally use `gsettings`, but we'll capture both; on my system, `dconf`
+      # lists fewer than half as many keys as `gsettings`, and I seem to recall
+      # not always being able to use `gsettings` to set what I want.
+      dconf dump / > "home/.config/dconf"
+      gsettings list-recursively >  "home/.config/gsettings"
+      git_auto_commit_many "home/.config/dconf" "home/.config/gsettings" \
+        -m "${CLEARED_ACI}: Latest \`dconf\` and \`gsettings\`."
+    else
+      fatal "ERROR: Unsupported, Unknown Platform: “$(uname)”"
+    fi
+  }
+  # FIXME/2022-12-13 22:39: See previous comment: No longer capturing
+  # raw defaults on macOS.
+  #
+  #   depoxy_client_id_autocommit_system_settings_DEPRECATED
+  #
+  #
+  # MAYBE/2022-12-13 22:43: We could capture just those defaults we
+  # care about, e.g.,
+  #
+  #   local mOS_onboarder="${MOSREPOSPATH:-${DOPP_KIT:-${HOME}/.kit}/mOS}/macOS-onboarder"
+  #   local defaults_cmds="${mOS_onboarder}/lib/macOS-defaults-commands.sh"
+  #   . "${defaults_cmds}" > /dev/null
+  #   defaults-domains-dump
+  #
+  # Except that function generates a directory of plist files.
+  # - And, honestly, we don't need a copy, so long as
+  #     ~/.kit/mOS/macOS-onboarder/slather-defaults.sh
+  #   is up to date.
+  #
+  # ***
+  #
+  git_auto_commit_one_docs "home/.config/Rectangle/README.rst"
+  git_auto_commit_one_update "home/.config/Rectangle/Rectangle-config.json"
+  #
+  git_auto_commit_one_update "home/.config/depoxy/depoxyrc" "DXC depoxyrc."
+  #
+  git_auto_commit_one_update "home/.config/karabiner/README.rst"
+  git_auto_commit_one_update \
+    "home/.config/karabiner/assets/complex_modifications/3110-client-DEPOXY_CLIENT_ID-private.json.example"
+  git_auto_commit_one_update \
+    "home/.config/karabiner/assets/complex_modifications/9210-privte-docs-launchers-private.json"
+  #
+  # MAYBE/2023-01-12: Handle personal mods better:
+  # - 1.) Current sol'n: Update _mrconfig after deploy and
+  #       add personal mods (like I've done here w/ 9310).
+  # - 2.) Auto-commit complex_modifications/* (so user does
+  #       not have to do anything).
+  # - 3.) Source a personal _mrconfig... that you'd add
+  #       to each DXC after deploy, so similar amount of
+  #       work (though could automate placing separate
+  #       file easier than patching this file)...
+  #       - So either auto-commit w/ glob; or add personal hooks to DXC autocommit and infuse...
+  git_auto_commit_one_update \
+    "home/.config/karabiner/assets/complex_modifications/9310-custom-docs-launchers-private.json"
+  #
+  #
+  git_auto_commit_one_update "home/.config/karabiner/karabiner.json"
+  #
+  git_auto_commit_one_update "home/.config/tig/config"
+  #
+  git_auto_commit_one_update "home/.config/work/Makefile.python-generic"
+  #
+  # *** Other home/.*
+  #
+  if [ -d "${HOME}/.aws" ]; then
+    mkdir -p "${MR_REPO}/home/.aws"
+    /bin/cp "${HOME}/.aws/config" "${MR_REPO}/home/.aws/config"
+    /bin/cp "${HOME}/.aws/credentials" "${MR_REPO}/home/.aws/credentials"
+    # NOTE: This `find` won't work if there are spaces in any paths.
+    git_auto_commit_many $(find home/.aws/ -type f -o -type l) \
+      -m "${PRIVATE_ACI}: Update: home/.aws/ files."
+  fi
+  #
+  git_auto_commit_one_update "home/.depoxy/_gitignore"
+  git_auto_commit_one_update "home/.depoxy/stints/_ignore"
+  #
+  git_auto_commit_one_update "home/.depoxy/stints/running/BUSINESS_PROJECT_NAME_DOTFILES/README.md"
+  #
+  git_auto_commit_one_update "home/.finicky.js" "~/.finicky.js config."
+  #
+  git_auto_commit_one_update "home/.gitconfig.user"
+  git_auto_commit_one_update "home/.gitconfig.user-business" "" "${PRIVATE_ACI}"
+  git_auto_commit_one_update "home/.gitconfig.user-personal"
+  #
+  git_auto_commit_one_update "home/.kit/_git/info/exclude"
+  #
+  # We track ~/.kube/config by copying it...
+  /bin/cp "${HOME}/.kube/config" "${MR_REPO}/home/.kube/config"
+  #
+  # NOTE: This `find` won't work if there are spaces in any paths.
+  git_auto_commit_many $(find home/.kube/ -type f -o -type l) \
+    -m "${PRIVATE_ACI}: Update: home/.kube/ files."
+  #
+  git_auto_commit_one_update "home/.local/share/dob/dob.sqlite"
+  #
+  git_auto_commit_one_update "home/.netrc" "" "${PRIVATE_ACI}"
+  #
+  git_auto_commit_one_update "home/.npmrc.example"
+  #
+  # ***
+  #
+  # *** Password Store
+  #
+  # FIXME/2022-12-13: Should I wire this on current DXC, or don't bother?
+  # - I'm leaning not, to leave it on client machine, but also makes me a
+  #   titch worried, in case of catastrophic laptop failure.
+  #
+  false && (
+    # FIXME/2022-12-13 23:10: Restore this functionality later, MAYBE.
+    git_auto_commit_new "home/.password-store" \
+      -m "${CLEARED_ACI}: Password Store updates."
+  )
+  local pass_gpg_id="${HOME}/.password-store/.gpg-id"
+  if [ -f "${pass_gpg_id}" ]; then
+    local gpg_id_backup="home/.password-store/.gpg-id"
+    /bin/cp "${pass_gpg_id}" "${gpg_id_backup}"
+    git_auto_commit_one_update "${gpg_id_backup}"
+  fi
+  # MAYBE/2023-01-16: Specify @biz resources PWD with common name.
+  # - This PWD you do want to save at home: It's not a PWD to dev
+  #   resources, but your personal contractor password to get on
+  #   their network, so seems legit you have copy.
+  # FIXME/2023-01-16: Make this a depoxyrc environ:
+  local enterprise_creds="${HOME}/.password-store/BUSINESS_CODE_PATH/signon.gpg"
+  if [ -f "${enterprise_creds}" ]; then
+    local creds_backup="home/.password-store/enterprise-creds.gpg"
+    /bin/cp "${enterprise_creds}" "${creds_backup}"
+    git_auto_commit_one_update "${creds_backup}"
+    #
+    # Needs GPG too then eh
+    local gpg_backup="home/.gnupg"
+    # The `cp` will work without this remove, just FYI.
+    /bin/rm -rf "${gpg_backup}"
+    mkdir "${gpg_backup}"
+    # Copy normal, non-dot files and directories.
+    find ~/.gnupg/* -maxdepth 0 \( -type f -o -type d \) -exec /bin/cp -a {} "${gpg_backup}" \;
+    git_auto_commit_many $(find ${gpg_backup}/ -type f -o -type l) \
+      -m "${CLEARED_ACI}: Update: ${gpg_backup}/"
+  fi
+  #
+  # *** SSH
+  #
+  git_auto_commit_one_update "home/.ssh/config"
+  #
+  # *** VIM
+  #
+  # User Vim config.
+  depoxy_client_autocommit_vimprojects () {
+    local ambers_path="${DEPOXYDIR_BASE_FULL:-${HOME}/.depoxy}/ambers"
+    ${DEPOXYAMBERS_DIR:-${ambers_path}}/bin/vimprojects-create-copy-without-work-projects
+    #
+    git_auto_commit_one "home/.vim/pack/landonb/start/dubs_project_tray/.vimprojects" \
+      -m "${PRIVATE_ACI}: Vimprojects         (Client project-tray drawer)"
+    git_auto_commit_one "home/.vim/pack/landonb/start/dubs_project_tray/.vimprojects--purged" \
+      -m "${CLEARED_ACI}: Vimprojects--purged (DepoXy projects only)"
+  }
+  depoxy_client_autocommit_vimprojects
+  #
+  git_auto_commit_one_update "home/.vim/pack/landonb/start/dubs_grep_steady/dubs_projects.vim" \
+    "" "${PRIVATE_ACI}"
+  #
+  # Manage the spell file, and alert if parts differ from the whole.
+  SPF_PRINT_SPELLS=false mr -d . -n spells "$@"
+  #
+  # ***
+  #
+  # FIXME/2022-12-13 22:56: Verify these:
+  #  home/Library/Application Support/Google/Chrome/Default/Bookmarks
+  #  home/Library/Application Support/Google/Chrome/Default/bookmarks_M_D_YY.html
+  #
+  # Chrome bookmarks.
+  # MAYBE/2020-12-18: You could symlink the actual Chrome bookmarks to this
+  #                   project's copy, and then omit the `cp` and just auto-commit
+  #                   (and add infuser to replace Chrome's w/ syml).
+  depoxy_client_id_autocommit_chrome_bookmarks () {
+    local chrome_dir
+    if [ "$(uname)" = "Darwin" ]; then
+      chrome_dir="Library/Application Support/Google/Chrome/Default"
+    elif [ "$(uname)" = "Linux" ]; then
+      chrome_dir=".config/google-chrome/Default"
+    else
+      fatal "ERROR: Unsupported, Unknown Platform: “$(uname)”"
+    fi
+    #
+    local chrome_bms_json="${chrome_dir}/Bookmarks"
+    mkdir -p "home/${chrome_dir}"
+    # FIXME/2022-12-14 00:24: Scrub Chrome BMs copy, too.
+    #  /bin/cp "${HOME}/${chrome_bms_json}" "home/${chrome_bms_json}"
+    #  git_auto_commit_one "home/${chrome_bms_json}" -m "${CLEARED_ACI}: Chrome BMs (JSON copy)."
+    notice "FIXME: Scrub @biz links from and commit home/${chrome_bms_json} manually."
+    notice "- At least until you devise bookmarks scrubber."
+    echo "/bin/cp \"${HOME}/${chrome_bms_json}\" \\
+   \"${MR_REPO}/home/${chrome_bms_json}\""
+    #
+    #
+    # Bookmarks HTML is currently exported manually. (Someday may automate.)
+    local chrome_bms_html="${chrome_dir}/bookmarks.html"
+    if [ -f "home/${chrome_bms_html}" ]; then
+      git_auto_commit_one "home/${chrome_bms_html}" \
+        -m "${CLEARED_ACI}: Chrome BMs (HTML export)."
+      # I suppose we could always let the user know if it's been a while.
+      if [ "$(find "home/${chrome_bms_html}" -mtime +13 -print)" ]; then
+        notice "STALE: It's been at least two weeks since you've exported Chrome Bookmarks HTML."
+        # FIXME/2022-12-14: This note is meaningless to anyone other than me.
+        # - Is there a way you can parse HTML with script and remove client-specific links?
+        notice "- HINT: Search export for '|' and delete client-specific bookmarks before that delimiter."
+      fi
+    else
+      notice "PLEASE: Export Chrome bookmarks HTML to: ${MR_REPO}/home/${chrome_bms_html}"
+    fi
+  }
+  depoxy_client_id_autocommit_chrome_bookmarks
+  #
+  # ***
+  #
+  depoxy_client_id_autocommit_dob_assets () {
+    if ! command -v dob > /dev/null; then
+      notice "PLEASE: Install \`dob\`"
+      #
+      return 0
+    fi
+    #
+    dob --no-color export \
+      -o "home/Library/Application Support/dob/dob.sqlite.export"
+    git_auto_commit_one "home/Library/Application Support/dob/dob.sqlite.export" \
+      -m "${CLEARED_ACI}: Latest \`dob export\`."
+  }
+  depoxy_client_id_autocommit_dob_assets
+  #
+  # ***
+  #
+  git_auto_commit_one "home/_gitignore-macOS" \
+    -m "${CLEARED_ACI}: DX: Update ~/.gitignore"
+  git_auto_commit_one "home/_git/info/exclude" \
+    -m "${CLEARED_ACI}: DX: Update ~/.gitignore.local"
+  #
+  # ***
+  #
+  git_auto_commit_one_update "home/bashrx.private.DXY_USERNAME.sh" "" "${PRIVATE_ACI}"
+  git_auto_commit_one_update "home/bashrx.private.DXY_USERNAME.sh.example"
+  git_auto_commit_one_update "home/bashrx.private.DXY_HOSTNAME.sh"
+  #
+  git_auto_commit_one_update "home/crontab.DXY_USERNAME" "" "${PRIVATE_ACI}"
+  #
+  git_auto_commit_one "home/dubs_projects.vim" \
+    -m "${PRIVATE_ACI}: home/dubs_projects.vim (grep-steady mappings)."
+  #
+  # Symlink.
+  git_auto_commit_one_update "home/.vimprojects"
+  #
+  git_auto_commit_many $(find home/vim-trap/ -type f -o -type l) \
+    -m "${CLEARED_ACI}: Update: home/vim-trap/"
+  #
+  # NOTE: This `find` won't work if there are spaces in any paths.
+  git_auto_commit_many $(find home/work.example/ -type f -o -type l) \
+    -m "${CLEARED_ACI}: Update: home/work.example/"
+  #
+  # ***
+  #
+  # 2023-03-04: In anticipation of acme.sh script, exclude it now.
+  #   git_auto_commit_many $(find home/work/ -type f -o -type l) \
+  #     -m "${PRIVATE_ACI}: Update: home/work/ contents."
+  git_auto_commit_many $(find home/work/ -path home/work/acme.sh -prune -o -type f -o -type l) \
+    -m "${PRIVATE_ACI}: Update: home/work/"
+  #
+  # ***
+  #
+  # Personal reSTfold docs.
+  #
+  # NOTE: This `find` won't work if there are spaces in any paths.
+  git_auto_commit_many $(find private/docs/ -type f -o -type l) \
+    -m "${CLEARED_ACI}: Docs: Personal notes."
+  #
+  # ===
+  # ***
+  # ===
+  #
+  # *** Extras not related to `git ls-files` files.
+  #
+  # macOS Desktop file (delete).
+  # - Toss the Desktop Services Store. It's created by Finder to store icon layout,
+  #   background image, etc. But who uses Finder? Remove for less noisy `ls` output.
+  /bin/rm -f "./.DS_Store"
+  #
+  # ===
+  # ***
+  # ===
+  #
+  # *** Tree dumps. (Put this toward end, b/c some steps above create files.)
+  #
+  # 2021-08-22: I added these tree dumps 2021-01-31 but they've been of
+  #             no utility to me. So not quite sure why I'm preserving.
+  depoxy_client_id_autocommit_tree_dumps () {
+    tree -n -a -I .git/ -I home/work/ > "home/.config/${depoxy_client_id}-tree.txt"
+    tree -C -a -I .git/ -I home/work/ > "home/.config/${depoxy_client_id}-tree.col"
+    git_auto_commit_many \
+      "home/.config/${depoxy_client_id}-tree.txt" \
+      "home/.config/${depoxy_client_id}-tree.col" \
+      -m "${CLEARED_ACI}: Client ${depoxy_client_id} project \`tree\`."
+  }
+  depoxy_client_id_autocommit_tree_dumps
+  #
+  # ===
+  # ***
+  # ===
+  #
+  ! test -n "$(git status --porcelain)" && return 0
+  >&2 error "ERROR: Found stray DXC files not registered with autocommit:"
+  >&2 git status -s
+  return 1
+
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
+
+spells =
+  git_auto_commit_parse_args "$@"
+  commit_sorted_spells_and_alert_if_conflicts
+
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
+
+infuse =
+  # Get the client name, e.g., 'XXXX' from ~/.depoxy/stints/XXXX.
+  local depoxy_client_id="$(basename ${MR_REPO})"
+  #
+  # *** DepoXy config
+  #
+  # Place the ~/.config/depoxy/depoxyrc config.
+  # - Identifies the depoxy_client_id, even when the client is unmounted.
+  #   Mostly necessary so DepoXy Ambers knows which `321open` to run.
+  # - This file also sets custom paths, but I've never used that feature.
+  # - Note this is the only file *copied* somewhere, and not symlinked,
+  #   because it needs to be available when this project is not mounted.
+  # Note this is not a symlink because repo might be offline.
+  # FIXME: TRYME/2022-10-23: Could this be a hard link?
+  #        - Or would the link get broken on unmount?
+  # FIXME: You might want to diff this file and alert if user changed
+  #        ~/.config copy, before clobber-overwriting.
+  #
+  mkdir -p "${HOME}/.config/depoxy"
+  /bin/cp -f \
+    "${MR_REPO}/home/.config/depoxy/depoxyrc" \
+    "${HOME}/.config/depoxy/depoxyrc"
+  #
+  # *** DepoXy filespace
+  #
+  # Remember that Git doesn't allow symlinked .gitignore .nomore.
+  link_hard "${MR_REPO}/home/.depoxy/_gitignore" \
+    "${DEPOXYDIR_BASE_FULL:-${HOME}/DXY_DEPOXYDIR_BASE_NAME}/.gitignore"
+  #
+  # Create the ~/.depoxy/running → ~/.depoxy/stints/XXXX symlink.
+  #if [ -n "${DEPOXYDIR_RUNNING_FULL}" ] && [ "${DEPOXY_CLIENT_ID}" = "DXY_DEPOXY_CLIENT_ID" ]; then
+  if [ "${DEPOXY_CLIENT_ID}" = "DXY_DEPOXY_CLIENT_ID" ]; then
+    symlink_overlay_dir "${MR_REPO}" "${DEPOXYDIR_RUNNING_FULL}"
+  fi
+  #
+  # *** OMR
+  #
+  # .mrinfuse/ nesting
+  local dxy_home_work="${MR_REPO}/home/BUSINESS_CODE_PATH"
+  local usr_home_work="${HOME}/BUSINESS_CODE_PATH"
+  local home_work_hint=""
+  if [ ! -d "${dxy_home_work}" ]; then
+    home_work_hint="$( \
+      printf "%s" "$(font_highlight "No sources.") / Try:\n    cp -ar " \
+        "\"${dxy_home_work}.example\" " \
+        "\"${dxy_home_work}\"\n" \
+        "                               and customize work/."
+    )"
+  elif [ ! -d "${usr_home_work}" ]; then
+    home_work_hint="No $(font_highlight “${usr_home_work}”) directory or symlink."
+  fi
+  if [ -n "${home_work_hint}" ]; then
+    info "$( \
+      font_emphasize "Skipped overlay" \
+    ) ${dxy_home_work} ↯ ${usr_home_work}\n                             - ${home_work_hint}"
+  else
+    symlink_overlay_dir \
+      "${dxy_home_work}" \
+      "${DXC_WORK_ROOT:-${HOME}/BUSINESS_CODE_PATH}/.mrinfuse"
+    symlink_overlay_file \
+      "${dxy_home_work}/_ignore" \
+      "${DXC_WORK_ROOT:-${HOME}/BUSINESS_CODE_PATH}/.ignore"
+  fi
+  #
+  # `mredit` wiring
+  symlink_overlay_file \
+    "${MR_REPO}/_mrconfig" \
+    "${MREDIT_CONFIGS:-${DEPOXY_PROJLNS:-${HOME}/.projlns}/mymrconfigs}/client-${depoxy_client_id}-mrconfig"
+  #
+  # Alert if missing business client mrconfig (because impossibly unlikely user won't want).
+  # - E.g., "/home/user/.depoxy/stints"
+  local stints_dir="${DEPOXYDIR_STINTS_FULL:-${HOME}/DXY_DEPOXYDIR_BASE_NAME/DXY_DEPOXYDIR_STINTS_NAME}"
+  # - E.g., "/home/user/.depoxy/stints/XXXX/_mrconfig-acme"
+  local mr_business="${stints_dir}/DXY_DEPOXY_CLIENT_ID/_mrconfig-BUSINESS_CODE_PATH"
+  if [ ! -f "${mr_business}" ]; then
+    info "$(font_emphasize ALERT): No business mrconfig at $(repo_highlight ${mr_business})"
+  fi
+  #
+  # *** DEPOXY
+  #
+  #  "${DEPOXYAMBERS_DIR:-${ambers_path}}/home/.depoxy/stints/_ignore" \
+  symlink_overlay_file \
+    "${MR_REPO}/home/.depoxy/stints/_ignore" \
+    "${HOME}/.depoxy/stints/.ignore"
+  #
+  #
+  # *** BASH
+  #
+  # DepoXy's generated @biz-specific Bash files.
+  # - DEV: Here's where to add your custom @biz-specific Bash:
+  #     bashrx.private.DXY_USERNAME.sh.
+  #     bashrx.private.DXY_HOSTNAME.sh.
+  #   And wire more as you like.
+  #
+  symlink_overlay_file \
+    "${MR_REPO}/home/bashrx.private.DXY_HOSTNAME.sh" \
+    "${HOMEFRIES_DIR:-${HOME}/.homefries}/.bashrc-bin/bashrx.private.DXY_HOSTNAME.sh"
+  #
+  local bashrx_user="bashrx.private.$(id -un).sh"
+  #
+  if [ -f "${MR_REPO}/home/${bashrx_user}" ]; then
+    symlink_overlay_file \
+      "${MR_REPO}/home/${bashrx_user}" \
+      "${HOMEFRIES_DIR:-${HOME}/.homefries}/.bashrc-bin/${bashrx_user}"
+  fi
+  #
+  # - At an previous client, in the beginning, $(hostname) would report
+  #   "HOST.DOMAIN.com". But then (months) later, $(hostname) started to
+  #   say "HOST.DOMAIN.com.", with a trailing period. I never figured out
+  #   why (or maybe I don't remember checking $(hostname), and really it
+  #   was my code that changed?)
+  # - In any case, I doubt we need this version with two-dots:
+  #
+  #    symlink_overlay_file \
+  #      "${MR_REPO}/home/bashrx.private.DXY_HOSTNAME.sh" \
+  #      "${HOMEFRIES_DIR:-${HOME}/.homefries}/.bashrc-bin/bashrx.private.DXY_HOSTNAME..sh"
+  #
+  # *** VIM
+  #
+  # Replace Vim spell file with symlink to user's version in DXC.
+  cast_private_spell () {
+    # DepoXy Ambers maintains ~/.mrinfuse, so currently cannot simply:
+    #   symlink_mrinfuse_file "spell/en.utf-8.add"
+    # but we could probably infuse the mrinfuse'r and then we could use
+    # symlink_mrinfuse_file. But seems like unnecessary lift with no big
+    # reward.
+    symlink_overlay_file \
+      "${MR_REPO}/home/.vim/spell/en.utf-8.add" \
+      "${HOME}/.vim/spell/en.utf-8.add"
+  }
+  cast_private_spell
+  #
+  # Developer Vim tray: Custom Project Tray (Shift-Alt-3) Paths file.
+  # - Add vendor-specific project listing to this file.
+  symlink_overlay_file \
+    "${MR_REPO}/home/.vim/pack/landonb/start/dubs_project_tray/.vimprojects" \
+    "${HOME}/.vim/pack/landonb/start/dubs_project_tray/.vimprojects"
+  # For the convenience.
+  symlink_overlay_file \
+    "home/.vim/pack/landonb/start/dubs_project_tray/.vimprojects" \
+    "home/.vimprojects"
+  #
+  # Developer Vim grep: Custom Project Grep (\g) Paths list.
+  # - Add vendor-specific project paths to this file.
+  symlink_overlay_file \
+    "${MR_REPO}/home/.vim/pack/landonb/start/dubs_grep_steady/dubs_projects.vim" \
+    "${HOME}/.vim/pack/landonb/start/dubs_grep_steady/dubs_projects.vim"
+  # For the convenience.
+  symlink_overlay_file \
+    "home/.vim/pack/landonb/start/dubs_grep_steady/dubs_projects.vim" \
+    "home/dubs_projects.vim"
+  #
+  # Developer Vim plug: Custom plug at ~/.vim/pack/DepoXy/start/vim-trap
+  # - Use this plugin for vendor-specific Vim config and commands.
+  symlink_overlay_dir \
+    "${MR_REPO}/home/vim-trap" \
+    "${HOME}/.vim/pack/DepoXy/start/vim-trap"
+  #
+  # *** GIT
+  #
+  # Git user.name and user.email wirer.
+  # - Depending on project path, Git will load either your personal
+  #   user config, or it'll load your business user config.
+  if [ -f "${MR_REPO}/home/.gitconfig.user" ]; then
+    symlink_overlay_file \
+      "${MR_REPO}/home/.gitconfig.user" \
+      "${HOME}/.gitconfig.user"
+  else
+    # This is a core DepoXy file, so would be unexpected if not found.
+    warn "$(font_emphasize "Skipped .gitconfig.user") / See $(font_highlight “archetype/home/.gitconfig.user.EVAL”)"
+  fi
+  #
+  # Your Personal Git: Your personal user.name and user.email.
+  # - Used when committing work to this project (DXY_DEPOXY_CLIENT_ID)
+  #   or any of your other (open source) projects you might have.
+  if [ -f "${MR_REPO}/home/.gitconfig.user-personal" ]; then
+    symlink_overlay_file \
+      "${MR_REPO}/home/.gitconfig.user-personal" \
+      "${HOME}/.gitconfig.user-personal"
+  else
+    # 2022-12-13: DXA places real file, not an example, so this is an impossible branch.
+    info "$(font_emphasize "Skipped ${fname}") / See $(font_highlight “${MR_REPO}/home/.gitconfig.user-personal.example”)"
+  fi
+  #
+  # Enterprise Git: Your vendor-specific user.name and user.email.
+  # - Used when committing work to vendor projects.
+  if [ -f "${MR_REPO}/home/.gitconfig.user-business" ]; then
+    symlink_overlay_file \
+      "${MR_REPO}/home/.gitconfig.user-business" \
+      "${HOME}/.gitconfig.user-business"
+  else
+    # 2022-12-13: DXA places real file, not an example, so this is an impossible branch.
+    info "$(font_emphasize "Skipped .gitconfig.user-business") / See $(font_highlight “${MR_REPO}/home/.gitconfig.user-business.example”)"
+  fi
+  #
+  # `gh` and `hub` apps enterprise Git token.
+  # - FIXME/2022-10-23: I removed ~/.github-token mechanism in favor
+  #   of storing token in git remote URL, but I didn't test `hub`
+  #   command (which I haven't used much recently).
+  #   - So I may need to add `. ~/.github-token` back to private Bashrc.
+  # - YOU: Make this manually. Don't need to keep in repo.
+  #        See: DXY_DEPOXY_CLIENT_TILDE/home/bashrx.private.DXY_HOSTNAME.sh
+  #  symlink_overlay_file \
+  #    "${MR_REPO}/home/.github-token" \
+  #    "${HOME}/.github-token"
+  #
+  # ~/.gitignore.local wiring
+  symlink_overlay_dir \
+    "${MR_REPO}/home/_git" \
+    "${HOME}/.mrinfuse/_git"
+  #
+  # Note Git ≥2.32.0 disallows symlinked .gitignore, so hard link it.
+  #
+  #    FIXME/2022-10-13: Certain (unsure which) repo changes break symlinks.
+  #    - So often this link_hard will Be Like Nope.
+  #    - I'd say add a --force option, and clobber the target.
+  #      - This is a little risky...
+  #        Another option is to move it to ~/.trash,
+  #          and then just `warn` the user...
+  #
+  link_hard \
+    "${MR_REPO}/home/_gitignore-macOS" \
+    "${HOME}/.gitignore"
+  #
+  # *** tig
+  #
+  mkdir -p "${HOME}/.config/tig"
+  symlink_overlay_file \
+    "${MR_REPO}/home/.config/tig/config" \
+    "${HOME}/.config/tig/config"
+  #
+  #
+  # *** NPM
+  #
+  # Enterprise NPM: Client-specific npm registry URL.
+  if [ -f "${MR_REPO}/home/.npmrc" ]; then
+    symlink_overlay_file \
+      "${MR_REPO}/home/.npmrc" \
+      "${HOME}/.npmrc"
+  else
+    # MEH/2021-08-23: This `info` might be unnecessary, if you don't
+    # use `npm`, or if your vendor doesn't have their own registry,
+    # you might not care about this "hint".
+    info "$(font_emphasize "Skipped .npmrc") / See $(font_highlight “${MR_REPO}/home/.npmrc.example”)"
+  fi
+  #
+  # *** Karabiner-Elements
+  #
+  # CXREF: DepoXy Ambers KB infuser:
+  #   infuse_symlinks_macOS_Karabiner_Elements_complex_modifications
+  depoxy_client_id_infuse_karabiner_elements_complex_modifications () {
+    local ambers_path="${DEPOXYDIR_BASE_FULL:-${HOME}/.depoxy}/ambers"
+    local dxy_mrinfuse="${DEPOXYAMBERS_DIR:-${ambers_path}}/home"
+    local cmplxmods=".config/karabiner/assets/complex_modifications"
+    # find "${dxy_mrinfuse}/${cmplxmods}" -maxdepth 1 -type l -exec echo {} +
+    # Remove existing links, lest you add links to the linked directories.
+    find "${dxy_mrinfuse}/${cmplxmods}" -maxdepth 1 -type l -exec /bin/rm {} +
+    # Symlink private KE cfg.
+    local cbinfuser="${MR_REPO}/home"
+    cd "${dxy_mrinfuse}/${cmplxmods}"
+    local jsonpath
+    # Use -regex to exclude the 3110-client-DXY_DEPOXY_CLIENT_ID-private.json.example file.
+    for jsonpath in $(find "${cbinfuser}/${cmplxmods}" -maxdepth 1 -type f -regex ".*\.json$"); do
+      symlink_overlay_file "${jsonpath}"
+    done
+    cd -
+  }
+  depoxy_client_id_infuse_karabiner_elements_complex_modifications
+  #
+  # *** GPG ℇ PASS
+  #
+  # YOU: If you'd like to oversee pass using your DepoXy Client, create a
+  #      new Password Store and GPG key, copy both ~/.password-store and
+  #      ~/.gnupg under DXY_DEPOXY_CLIENT_TILDE/home, and uncomment following
+  #      two overlays:
+  #
+  #  symlink_overlay_dir \
+  #    "${MR_REPO}/home/.password-store" \
+  #    "${HOME}/.password-store"
+  #
+  #  symlink_overlay_dir \
+  #    "${MR_REPO}/home/.gnupg" \
+  #    "${HOME}/.gnupg"
+  #
+  # *** GNU Inetutils auto-login credentials
+  #
+  if [ -f "${HOME}/.netrc" ] && [ ! -h "${HOME}/.netrc" ]; then
+    warn "Your ~/.netrc is not overseen by your DepoXy Client repo."
+    info "Considering moving ~/.netrc inside your DepoXy Client and\n" \
+      "                            letting DepoXy Client create a symlink for it at ~/.netrc."
+    info "Try: \`mv \"${HOME}/.netrc\" \"${MR_REPO}/home/.netrc\" && infuse\`"
+  elif [ -f "${MR_REPO}/home/.netrc" ]; then
+    symlink_overlay_file \
+      "${MR_REPO}/home/.netrc" \
+      "${HOME}/.netrc"
+  fi
+  #
+  # *** ~/.finicky.js
+  #
+  symlink_overlay_file \
+    "${MR_REPO}/home/.finicky.js" \
+    "${HOME}/.finicky.js"
+  #
+  # *** ~/.kit
+  #
+  # What I call the Dopp Kit is where I clone most non-vendor projects,
+  # e.g., various Git projects, useful shell utilities, and more. Most
+  # of the projects are public/open source and installed by the public
+  # DepoXy Ambers project. But you'll probably add additional projects
+  # to pair with the vendor code you work on (you can add each project
+  # to the _mrconfig-vendor included at the end of this file). Here we
+  # install a ~/.kit/.git/info/exclude file (and I know, this function
+  # looks more complicated, but really that's all it does).
+  user_home_kit_link_private_exclude () {
+    # ~/.kit/.gitignore.local wiring.
+    #
+    # First wire the mrinfuse path.
+    symlink_overlay_dir \
+      "${MR_REPO}/home/.kit/_git" \
+      "${HOME}/.mrinfuse/.kit/_git"
+    #
+    # Next, call the internal that link_private_exclude calls, but skip
+    # link_private_exclude, because we need to kludge around ${MR_REPO}.
+    local kit_path="${DOPP_KIT:-${HOME}/.kit}"
+    local before_cd="$(pwd -L)"
+    local before_mr="${MR_REPO}"
+    # Such sneaky:
+    MR_REPO="${kit_path}"
+    cd "${MR_REPO}"
+    link_exclude_resolve_source_and_overlay
+    MR_REPO="${before_mr}"
+    cd "${before_cd}"
+  }
+  user_home_kit_link_private_exclude
+  #
+  # *** ~/.kube
+  #
+  # MAYBE/2022-12-14: Move this elsewhere, and keep core DepoXy infuse
+  # steps separate from steps associated with clients or specifically
+  # developing.
+  #
+  # OpenLens doesn't show any clusters when yaml symlinks used, so
+  # wiring yamls (and config, for parity) using hard links.
+  if [ -f "${MR_REPO}/home/.kube/config" ]; then
+    mkdir -p "${HOME}/.kube"
+    #
+    # NOPE: Docker Desktop edits main kube config, e.g., changing
+    #       `client-certificate-data` and `client-key-data`, and setting
+    #       and unsetting `namespace`.
+    #         link_hard \
+    #           "${MR_REPO}/home/.kube/config" \
+    #           "${HOME}/.kube/config"
+    # - We'll copy canon file and autocommit just to track it; see autocommit.
+  fi
+  #
+  # NOTE: If you create a new kubeconfig, copy to DXC manually, then infuse,
+  #       then aci, it'll get picked up.
+  for kubeconfig in "${MR_REPO}/home/.kube/"*.yaml; do
+    # If nothing globbed, ${kubeconfig} is the glob string.
+    if [ -f "${kubeconfig}" ]; then
+      mkdir -p "${HOME}/.kube"
+      #
+      link_hard \
+        "${kubeconfig}" \
+        "${HOME}/.kube/$(basename ${kubeconfig})"
+    fi
+  done
+  #
+  # Alert user if AWS config perhaps not configured appropriately.
+  if [ -n "$(ls ~/.kube/*.yaml 2> /dev/null)" ]; then
+    if /usr/bin/env rg "command: aws" ~/.kube/*.yaml > /dev/null 2>&1; then
+      warn
+      warn "BWARE: You probably need to use an absolute path to AWS in your kubeconfig."
+      warn
+      warn "- Instead of using a relative path:"
+      warn
+      warn "    command: aws"
+      warn
+      warn "- You probably need to use an absolute path:"
+      warn
+      warn "    command: $(command -v aws)"
+      warn
+      warn "- See the following file(s):"
+      warn
+      /usr/bin/env rg "command: aws" ~/.kube/*.yaml
+    fi
+  fi
+
+# ========================================================================
+# ------------------------------------------------------------------------
+
+# YOU: Add client-specific projects to the another config, e.g.,:
+#        DXY_DEPOXY_CLIENT_TILDE/_mrconfig-BUSINESS_CODE_PATH
+#      and reserve this mrconfig for the DepoXy Client project
+#      (so you can more easily keep it synced with the upstream).
+#
+#      You'll find an example client config at:
+#        DXY_DEPOXY_CLIENT_TILDE/_mrconfig-BUSINESS_CODE_PATH.example
+
+[DEFAULT]
+order = 220
+include =
+  # Load task helpers (that higher-level OMR config doesn't load, because
+  # neither DepoXy Ambers nor Oh My Repos! uses this functionality).
+  #
+  cat "${OHMYREPOS_LIB:-${HOME}/.ohmyrepos/lib}/git-hooks-rewire"
+  #
+  ambers_path="${DEPOXYDIR_BASE_FULL:-${HOME}/.depoxy}/ambers"
+  cat "${DEPOXYAMBERS_DIR:-${ambers_path}}/home/.kit/git/ohmyrepos/bin/js-npm-patch-opn-sensible-open"
+  #
+  # Load client-specific OMR project config.
+  # CXREF: ~/.depoxy/ambers/archetype/_mrconfig-BUSINESS_CODE_PATH.EVAL.example
+  #
+  . ${OHMYREPOS_LIB:-${GITREPOSPATH:-${HOME}/.kit/git}/ohmyrepos/lib}/skip-grouping.sh
+  # SAVVY: There's a tilde in DEPOXYDIR_STINTS_FULL, which doesn't matter
+  #        here, but matters in the `infuse` task, where it must be $HOME.
+  # - E.g., "/home/user/.depoxy/stints"
+  local stints_dir="${DEPOXYDIR_STINTS_FULL:-${HOME}/DXY_DEPOXYDIR_BASE_NAME/DXY_DEPOXYDIR_STINTS_NAME}"
+  # - E.g., "/home/user/.depoxy/stints/XXXX/_mrconfig-acme"
+  local mr_business="${stints_dir}/DXY_DEPOXY_CLIENT_ID/_mrconfig-BUSINESS_CODE_PATH"
+  if [ -f "${mr_business}" ] && ! (
+      mr_exclusive "work" &&
+      true
+    );
+  then
+    cat "${mr_business}"
+  fi
+
+# ========================================================================
+# ------------------------------------------------------------------------
+
+# **********************************************************************
+

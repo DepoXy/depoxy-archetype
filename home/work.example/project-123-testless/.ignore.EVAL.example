@@ -1,0 +1,56 @@
+# USAGE:
+#   m4_shim \
+#     "+8" "home/work.example/project-123-testless/.ignore.EVAL.example" \
+#     "home/work.example/project-123-testless/.ignore.example"
+
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
+
+# Note this file is used to describe a useful pattern,
+# but it's not something you need to worry about when
+# setting up a DepoXy Client.
+#
+# The use case is wanting to search different ways on the same project
+# using the Vim dubs_grep_steady plugin.
+#
+# - E.g., you might want your normal project to be inclusive, and to
+#   include all repo files. But you might also want to do more
+#   restrictive searches, e.g., excluding test files.
+#
+#   - You could do this from the command line, e.g.,
+#
+#       rg -g !'*.test.js' "foo"
+#
+#       # OR, more obtusely:
+#       rg --ignore-file <(echo '*.test.js') "foo"
+#
+#   - But it's not convenient to customize rg options that grep-steady
+#     uses. So if you want to configure different searches on the same
+#     projects via grep-steady, you can use a little trick:
+#
+#     - Create a shell directory that contains a custom .ignore rules
+#       file, and add a symlink to the project you want to search. Then
+#       add this shell directory path to your dubs_projects.vim file.
+
+# ***
+
+# This example .projlns/ project shows how to make a separate grep-steady
+# entry (in `home/dubs_projects.vim`) that excludes certain files when
+# searching a project's files.
+#
+# - In the same directory as this file, add a symlink to the project.
+# - In this file, add rule(s) to ignore the files you don't want to grep.
+# - In `home/dubs_projects.vim`, add an entry with this file's directory.
+#       ~/.depoxy/running/home/.vim/dubs_grep_steady/dubs_projects.vim
+#   - Restart Vim, or :GrepSteadyReload.
+# - Remove these comments and rename this file .ignore.example -> .ignore
+
+# - Update DXY_DEPOXY_CLIENT_TILDE/_mrconfig-BUSINESS_CODE_PATH to make
+#   the ~/.projlns/BUSINESS_CODE_PATH symlink on infuse -- see the example
+#   symlink_overlay_dir call to make the project-123-testless symlink
+#   in DXY_DEPOXY_CLIENT_TILDE/_mrconfig-BUSINESS_CODE_PATH.example
+# - Call `infuse` to create the ~/.projlns symlink.
+
+# E.g., you might find it easier to get to know a new JavaScript that
+# you're working on if you ignore keyword hits in test files.
+*.test.js
+

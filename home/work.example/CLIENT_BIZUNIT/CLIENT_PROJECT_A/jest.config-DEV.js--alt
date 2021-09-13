@@ -1,0 +1,49 @@
+module.exports = {
+  moduleNameMapper: {
+    '\\.(css|scss)$': 'identity-obj-proxy',
+    '\\.svg$': '<rootDir>/test-setup/mock-svg.component.js',
+    '\\.png$': '<rootDir>/test-setup/mock-png.js',
+    '^react-redux$': '<rootDir>/test-setup/mock-react-redux.js'
+  },
+  moduleDirectories: [
+    'src',
+    'node_modules'
+  ],
+  setupFiles: [
+    './test-setup/enzyme-adapter.js',
+    './test-setup/globals.js'
+  ],
+  testPathIgnorePatterns: [
+    'webpack/*'
+  ],
+  transformIgnorePatterns: [
+    'node_modules/(?!@BIZUNIT/PROJECT)'
+  ],
+  coverageThreshold: {
+    global: {
+      branches: 85,
+      functions: 85,
+      lines: 85,
+      statements: 85
+    }
+  },
+  collectCoverage: false,
+  collectCoverageFrom: [
+    'src/**/*.js',
+    'src/**/*.jsx',
+    '!src/index.js',
+    '!src/store/index.js'
+  ]
+
+  // SAVVY/2021-02-04: This is so Jest doesn't mark tests failed on timeout
+  //                   because you're sitting on a debugger prompt!
+  //                   - This is jest.timeout() option, which defaults 5000.
+  // “Async callback was not invoked within the 5000 ms timeout specified by jest.setTimeout”
+  //   jest.setTimeout.Error / DEFAULT_TIMEOUT_INTERVAL / defaultTimeoutInterval
+  //   https://jestjs.io/docs/en/troubleshooting
+  //      - Error: Timeout - Async callback was not invoked within timeout specified
+  //                  by jasmine.DEFAULT_TIMEOUT_INTERVAL.`
+  //      - Per test: jest.setTimeout(10000); // 10 second timeout
+  //
+  //  testTimeout: 600000,
+};

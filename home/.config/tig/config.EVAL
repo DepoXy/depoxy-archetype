@@ -1,0 +1,55 @@
+# USAGE:
+#   tnewtons="${GITREPOSPATH:-${DOPP_KIT:-${HOME}/.kit}/git}/tig-newtons/tig/config" &&
+#   m4_shim \
+#     "+12" "home/.config/tig/config.EVAL" \
+#     "home/.config/tig/config" \
+#     "DXY_TIG_NEWTONS_PATH" "${tnewtons}"
+
+# CRUMB: This m4_shim usage shows how to pass custom m4 macros (variables).
+
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
+
+# vim:tw=0:ts=2:sw=2:et:norl:ft=conf
+# DXY_HEADER_AUTHOR
+# DXY_HEADER_PROJECT
+# DXY_HEADER_LICENSE
+
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
+
+# USYNC: This § GENERATED: cdtn && ./customize.sh > tig/config
+# - Only change: I uncomment the --minimal-editor configs.
+
+# ***
+
+# USAGE: Comment out config or bindings you don't want.
+# - Or leave be and enjoy all the features.
+source DXY_TIG_NEWTONS_PATH/config-color
+source DXY_TIG_NEWTONS_PATH/config-dates
+source DXY_TIG_NEWTONS_PATH/config-opinionated
+source DXY_TIG_NEWTONS_PATH/bind-clip-path
+source DXY_TIG_NEWTONS_PATH/bind-clip-sha
+source DXY_TIG_NEWTONS_PATH/bind-commit
+source DXY_TIG_NEWTONS_PATH/bind-commit-wip
+source DXY_TIG_NEWTONS_PATH/bind-file-edit
+source DXY_TIG_NEWTONS_PATH/bind-rebase
+source DXY_TIG_NEWTONS_PATH/bind-rebase-range--diff
+source DXY_TIG_NEWTONS_PATH/bind-rebase-range--main
+source DXY_TIG_NEWTONS_PATH/bind-shell-out
+
+# USAGE: Uncomment if you'd like to use a miminal Vim EDITOR:
+source DXY_TIG_NEWTONS_PATH/bind-commit--minimal-editor
+source DXY_TIG_NEWTONS_PATH/bind-rebase--minimal-editor
+
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
+
+# USYNC: This § loads DXY tig config; maintained manually.
+
+source DXY_DEPOXYAMBERS_DIR_TILDE/home/.config/tig/config-depoxy
+source DXY_DEPOXYAMBERS_DIR_TILDE/home/.config/tig/config-depoxy-main
+source DXY_DEPOXYAMBERS_DIR_TILDE/home/.config/tig/config-depoxy-diff
+
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
+
+# USAGE: Below you could supply your own custom 'tig' config and commands.
+#        Or you could `source` your own config.
+

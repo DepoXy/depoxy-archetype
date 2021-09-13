@@ -1,0 +1,52 @@
+{
+  "title": "#9210 — Non-standard (Private) DepoXy Client Docs Launchers",
+  "rules": [
+
+    {
+      "description": "#9211 — MacVim — Systemwide — Open @Your Backlog (Shift-Cmd-w)",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "w",
+            "modifiers": {
+              "mandatory": [
+                "left_shift",
+                "left_command"
+              ]
+            }
+          },
+          "to": [
+            {
+              "shell_command": "${DEPOXYAMBERS_DIR:-${DEPOXYDIR_BASE_FULL:-${HOME}/.depoxy}/ambers}/bin/macOS/launchers/gvim-open-DepoXy-Client-docs.sh private/Backlog_Personal_"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+
+    {
+      "description": "#9212 — MacVim — Systemwide — Open @Your Woodlot (Ctrl-Cmd-w)",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "w",
+            "modifiers": {
+              "mandatory": [
+                "left_command",
+                "left_control"
+              ]
+            }
+          },
+          "to": [
+            {
+              "shell_command": "${DEPOXYAMBERS_DIR:-${DEPOXYDIR_BASE_FULL:-${HOME}/.depoxy}/ambers}/bin/macOS/launchers/gvim-open-DepoXy-Client-docs.sh private/Woodlot_Personal_"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    }
+
+  ]
+}

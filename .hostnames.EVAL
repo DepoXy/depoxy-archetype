@@ -1,0 +1,18 @@
+# USAGE:
+#   m4_shim \
+#     "+8" ".hostnames.EVAL" \
+#     "${DXY_DEPOXY_HOSTNAMES_NAME}";
+
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
+
+# vim:ft=dosini
+# List of client machine hostname(s).
+# - Used by DepoXy Ambers and DepoXy Client to distinguish
+#   between client machines and your personal machines.
+#
+# If the current host matches one of these hostnames,
+# DepoXy will assume that you're on a client machine.
+# - If not, DepoXy does not load the DepoXy Client.
+
+DXY_HOSTNAME
+

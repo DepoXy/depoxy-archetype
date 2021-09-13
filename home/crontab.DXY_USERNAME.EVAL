@@ -1,0 +1,12 @@
+# USAGE:
+#   m4_shim \
+#     "+8" "home/crontab.DXY_USERNAME.EVAL" \
+#     "home/crontab.${DXY_USERNAME}"
+
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
+
+# crontab DXY_DEPOXY_CLIENT_TILDE/home/crontab.landonb
+#
+#  25 13 * * Tue,Thu DXY_DEPOXYAMBERS_DIR/bin/notify "Some Calendar Event B/c Calendar App Notifs Not Working"
+#  50 11 * * Tue     DXY_DEPOXYAMBERS_DIR/bin/notify "Tues' weird noon standup"
+

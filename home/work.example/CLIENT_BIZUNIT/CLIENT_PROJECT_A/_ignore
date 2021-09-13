@@ -1,0 +1,30 @@
+/.git/
+/coverage/
+/node_modules/
+package-lock.json
+
+# Ignore `npm run build:{env}` directories
+# (except build:local, which sends to dist/).
+/dist/
+/test/
+/dev/
+/stage/
+/production/
+
+# `jsdoc` default
+/out/
+
+# Generated files' directories.
+/test/js/
+
+# 2021-01-25: For `pycobertura`:
+/cobertura-coverage.xml
+
+# 2021-02-16: For poking around under node_modules/,
+# e.g., in ./node_modules/@opentok/client/dist/js.
+*.js.map
+*.min.js
+
+# 2021-05-17: Hit on 10\.1.
+*.svg
+

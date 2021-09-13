@@ -1,0 +1,9 @@
+# USAGE:
+#   ! ${DXY_RUN_LNS_ONLY:-false} || return 0
+#   DEPOXY_TARGET_PATH="home/.config/${DXY_DEPOXY_CLIENT_ID}-tree.txt" &&
+#   DEPOXY_TARGET_FULL="${DXY_DEPOXY_CLIENT_FULL}/${DEPOXY_TARGET_PATH}" &&
+#   touch "${DEPOXY_TARGET_FULL}" &&
+#   ( ! ${DXY_RUN_MAKE_LNS} || ln -s "${DEPOXY_TARGET_FULL}" "${DXY_MAKE_LNS_FULL}/${fname}" )
+
+# vim:tw=0:ts=2:sw=2:et:norl:ft=dosini
+

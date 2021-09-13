@@ -1,0 +1,20 @@
+# USAGE:
+#   m4_shim \
+#     "+8" "home/.gitconfig.user-personal.EVAL" \
+#     "home/.gitconfig.user-personal"
+
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
+
+# vim:tw=0:ts=2:sw=2:et:norl:ft=gitconfig
+# DXY_HEADER_AUTHOR
+# DXY_HEADER_PROJECT
+# DXY_HEADER_LICENSE
+
+[user]
+  name = PERSONAL_GITCONFIG_USER_NAME
+  email = PERSONAL_GITCONFIG_USER_EMAIL
+
+# Except for:
+[includeIf "gitdir:DXY_DEPOXY_CLIENT_TILDE/home/work/acme.sh/"]
+  path = .gitconfig.user-business
+

@@ -1,0 +1,4 @@
+machine nexus.acme.com
+login acme
+password XXXX
+
