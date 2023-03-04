@@ -1,0 +1,10 @@
+/.gitignore.local
+
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
+
+# YOU: List client-specific directories and files you put under ~/.kit,
+# e.g., maybe you checked out TensorFlow lite:
+#
+#  /js/tensorflow/tfjs/
+#  /js/tensorflow/tfjs-models/
+

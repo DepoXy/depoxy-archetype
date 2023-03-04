@@ -1,0 +1,43 @@
+# USAGE:
+#   m4_shim \
+#     "+13" "home/.depoxy/_gitignore.EVAL" \
+#     "home/.depoxy/_gitignore"
+
+# KEEP FRESH:
+#   meld ~/.depoxy/ambers/archetype/home/.depoxy/_gitignore.EVAL ~/.depoxy/running/home/.depoxy/_gitignore &
+# Or swap directions:
+#   meld ~/.depoxy/running/home/.depoxy/_gitignore ~/.depoxy/ambers/archetype/home/.depoxy/_gitignore.EVAL &
+
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
+
+# Note that the ~/DXY_DEPOXYDIR_BASE_NAME path is not used by grep-steady
+# (e.g., it's not on Vim #9 search), so this .ignore file is mostly in case
+# you're rip-grepping on your own from the terminal.
+
+# *** DepoXy articles (DepoXy dev environment orchestrator).
+
+/.gitignore
+
+# Main DepoXy repo, aka DepoXy Ambers.
+# E.g., /ambers/
+/DXY_DEPOXYAMBERS_NAME/
+
+# The git-put-wise patches repo, for secure push/pull using encrypted patches.
+# E.g., /patchr/
+/DXY_PW_PATCHES_NAME/
+
+# Symlink to active DepoXy Client, e.g.,
+# E.g., running → stints/2324
+#   DXY_DEPOXYDIR_RUNNING_NAME → DXY_DEPOXYDIR_STINTS_NAME/DXY_DEPOXY_CLIENT_ID
+/DXY_DEPOXYDIR_RUNNING_NAME
+
+# The @biz-specific DepoXy Client.
+# E.g., /stints/2241/
+/DXY_DEPOXYDIR_STINTS_NAME/DXY_DEPOXY_CLIENT_ID/
+
+# DXC symlinks named like DepoXy Archetype templates, for diffing.
+# E.g., /stints/.syml--*
+/DXY_DEPOXYDIR_STINTS_NAME/.syml--*
+
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
+

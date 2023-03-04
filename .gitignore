@@ -1,0 +1,14 @@
+# random_seed helps manage the internal random pool, per `man gpg`.
+# - This rule is helpful if you've symlinked ~/.gnupg to
+#   ~/.depoxy/ambers/archetype/home/.gnupg, which allows
+#   you to track GPG resources using a private Git repo.
+/home/.gnupg/random_seed
+
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
+
+# My dotfiles.
+#  DXY_HEADER_DOTFILES
+/BUSINESS_PROJECT_NAME_DOTFILES/
+
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
+

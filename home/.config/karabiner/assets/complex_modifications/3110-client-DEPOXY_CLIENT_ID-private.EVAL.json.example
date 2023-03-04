@@ -1,0 +1,37 @@
+# USAGE:
+#   m4_shim \
+#     "+8" "home/.config/karabiner/assets/complex_modifications/3110-client-DEPOXY_CLIENT_ID-private.EVAL.json.example" \
+#     "home/.config/karabiner/assets/complex_modifications/3110-client-${DXY_DEPOXY_CLIENT_ID}-private.json.example"
+
+# ***
+
+{
+  "title": "#3110 — Work Client DXY_DEPOXY_CLIENT_ID Rules",
+  "rules": [
+
+    {
+      "description": "#3111 — Google Chrome — Foreground *CLIENT_PROJECT_A* (Shift-Ctrl-Cmd-H)",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "h",
+            "modifiers": {
+              "mandatory": [
+                "left_shift",
+                "left_control",
+                "left_command"
+              ]
+            }
+          },
+          "to": [
+            {
+              "shell_command": "osascript -e 'tell application \"Google Chrome\"' -e 'repeat with w in windows' -e 'tell w' -e 'repeat with t in tabs' -e 'if URL of t is equal to \"https://localhost:8080/driver.html\" then' -e 'set index to 1' -e 'tell application \"System Events\" to tell process \"Google Chrome\"' -e 'perform action \"AXRaise\" of window 1' -e 'set frontmost to true' -e 'end tell' -e 'return' -e 'end if' -e 'end repeat' -e 'end tell' -e 'end repeat' -e 'end tell'"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    }
+
+  ]
+}

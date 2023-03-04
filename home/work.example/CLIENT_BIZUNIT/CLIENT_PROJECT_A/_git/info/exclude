@@ -1,0 +1,30 @@
+/.gitignore.local
+/.ignore
+#  #`jsdoc` default
+#  /out/
+
+# - SYNC_ME: Matches with ./jest.config.js
+#            or what's in ./package.json.
+#
+# - One sticky change (so far):
+#
+#     collectCoverage: false
+#
+# - One sometimes change (used instead of
+#   calling jest.timeout() within a test):
+#
+#     testTimeout: 600000,
+#
+/jest.config-DEV.js
+
+# 2021-02-04: Seems to me I need a way to lint with upstream rules,
+# without requiring me to drop my charming ESLint DEV commits.
+/.eslintrc-develop
+/.eslintignore.local
+
+# pycobertura expects coverage.xml at project root, because paths.
+/cobertura-coverage.xml
+
+# 2021-03-25: For blocked attempt.
+/.tarignore
+

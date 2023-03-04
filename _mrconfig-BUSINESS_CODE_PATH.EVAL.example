@@ -1,0 +1,227 @@
+# USAGE:
+#   m4_shim \
+#     "+9" "_mrconfig-BUSINESS_CODE_PATH.EVAL.example" \
+#     "_mrconfig-${BUSINESS_CODE_PATH}.example"
+
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
+
+# vim:tw=0:ts=2:sw=2:et:norl:nospell:ft=bash
+# DXY_HEADER_DOTFILES
+
+# *** NOTE: THIS MRCONFIG ONLY RUNS ON THE CLIENT MACHINE / CLIENT-ONLY ***
+
+# ========================================================================
+# ------------------------------------------------------------------------
+
+[DEFAULT]
+order = 220
+
+# ========================================================================
+# ------------------------------------------------------------------------
+
+# Project stub, for infusing.
+[${CLIENTHOME:-${HOME}/work}]
+checkout = true
+infuse =
+  # The DXC project infuse task (~/.depoxy/running/_mrconfig) wires a lot
+  # of DXC home files (see also DepoXy's infuser that places a lot of other
+  # home files), but this conf is @biz-specific, and the DXC project config
+  # is not PRIVATE-scoped, so we're wiring from here.
+  cd && symlink_overlay_file "work/.mrinfuse/.acme.conf" && cd -
+
+# "Your ACME-specific OMR config and Homefries bashrc"
+# E.g., ~/.depoxy/stints/2324/flast.sh
+[${DEPOXYDIR_STINTS_FULL:-${HOME}/.depoxy/stints}/DEPOXY_CLIENT_ID/BUSINESS_PROJECT_NAME_DOTFILES]
+checkout = git clone -o origin 'git@BUSINESS_GITCONFIG_HUB_HOST:BUSINESS_GITSERVER_USER_REPO.git'
+autocommit =
+  # Prepare args, e.g., `autocommit -y`, or `autocommit -f`.
+  git_auto_commit_parse_args "$@"
+  #
+  # ***
+  #
+  git_insist_pristine () {
+    ! test -n "$(git status --porcelain)" \
+      && return 0
+    #
+    error "ERROR: Not tidy! You should not touch ${MR_REPO}, that's ours!"
+    #
+    exit 1
+  }
+  git_insist_pristine
+  #
+  # ***
+  #
+  local ambers_path="${DEPOXYDIR_BASE_FULL:-${HOME}/.depoxy}/ambers"
+  #
+  # Copy, e.g.,
+  #   ~/.depoxy/stints/XXXX/home/.depoxy/stints/running/flast.sh/README.md
+  #   to ~/.depoxy/stints/XXXX/flast.sh/README.md (so you keep a copy of
+  #   the README under DXC; that and other files are copied to flash.sh).
+  /bin/cp ../home/.depoxy/stints/running/BUSINESS_PROJECT_NAME_DOTFILES/README.md README.md
+  #
+  /bin/cp ../_mrconfig-BUSINESS_CODE_PATH* .
+  /bin/rm -f _mrconfig-BUSINESS_CODE_PATH.example
+  #
+  mkdir -p home
+  /bin/cp ../home/.gitconfig.user-business home/
+  /bin/cp ../home/bashrx.private.DXY_USERNAME.sh home/
+  #
+  # Here's a slick tar way to copy, because copy isn't idempotent,
+  # e.g.,
+  #   /bin/cp -a ../home/work home/
+  # will create home/work the first time it's run.
+  # But the next time you run it, it'll fail and complain about symlinks:
+  #   cp: symlink: the/symlink/target: File exists
+  # - As an added bonus, tar can exclude files we don't wanna share,
+  #   which saves us a /bin/rm later.
+  mkdir -p home/work
+  tar -C ../home/work --exclude acme.sh/ --exclude .acme.conf -cf - . \
+    | tar -C home/work -xf -
+  # So that I at least have a ref. in my IDE project listing.
+  # AUDIT/2023-02-23: This is ln -sfn @linux: Is there universal option?
+  /bin/ln -sfh ../../../home/work/.acme.conf home/work/.acme.conf
+  # Because directory, use -h option, so you don't follow target symlink
+  # and clobber the real acme.sh/acme.sh file.
+  # AUDIT/2023-02-23: This is ln -sfn @linux: Is there universal option?
+  /bin/ln -sfh ../../../home/work/acme.sh home/work/acme.sh
+  #
+  # ***
+  #
+  if [ -z "$(git status --porcelain)" ]; then
+    info "No-op: ${MR_REPO} unchanged"
+  else
+    git add .
+    git commit -m "Update: Auto-commit changes."
+    info "Updated @biz-shareable DXC shadow"
+    # LATER/2023-01-06: Also push. For now, tell user.
+    warn "- 🐻 Only YOU 👉 can 🚫 git-push 🔥 this remote 🌲"
+  fi
+
+# ========================================================================
+# ------------------------------------------------------------------------
+
+# YOU: Here's a basic OMR example project with two tasks.
+# - An obvious checkout task.
+# - An infuse task that symlinks Git and grep ignore files.
+#   - For Git ignore, the private `.git/info/exclude` file is symlinked,
+#     but it's also symlinked for more convenience at `.gitignore.local`.
+#   - For grep ignore, an `.ignore` symlink is created (which assumes
+#     the project doesn't include one already).
+
+[${CLIENTHOME:-${HOME}/BUSINESS_CODE_PATH}/division1/project-AA]
+checkout = git clone -o origin 'git@github.BUSINESS_CODE_PATH.com:division/project-AA.git'
+infuse =
+  link_private_exclude "$@"
+  link_private_ignore_ "$@"
+
+# ========================================================================
+# ------------------------------------------------------------------------
+
+# YOU: Here's a more complicated OMR example project.
+# - See comments inline for all the details.
+# - Assume this is a JavaScript project, hosted on an enterprise
+#   GitHub server, and that uses npm, ESLint, Jest, and husky.
+
+[${CLIENTHOME:-${HOME}/BUSINESS_CODE_PATH}/projectZ/superflycool]
+
+# Note that my checkouts use an uncommon remote name, 'release':
+checkout = git clone -o origin 'git@github.BUSINESS_CODE_PATH.com:projectZ/superflycool.git' 'superflycool'
+# However, the `gh` command expects 'upstream', 'github', or 'origin'.
+# - I use the unconventional remote names, 'release', 'protected', and 'private',
+#   so that I know if I'm working on a public or client project ('release'); or
+#   on a personal project that's on GitHub but not public ('protected'), or one
+#   that I don't even push to GitHub ('private'). So for `gh` to work (and for
+#   git-begin-review to work), use one of the conventional names. Or use both:
+wireupstream = remote_add github 'git@github.BUSINESS_CODE_PATH.com:projectZ/superflycool.git'
+
+# This infuse tasks includes all the tricks I've used on work projects.
+# Tailor as necessary.
+infuse =
+  #
+  # Symlink `~/BUSINESS_CODE_PATH/projectZ/superflycool/.git/info/exclude` to the source at
+  # `DXY_DEPOXY_CLIENT_TILDE/home/BUSINESS_CODE_PATH/projectZ/superflycool/_git/info/exclude`.
+  link_private_exclude "$@"
+  #
+  # Symlink `~/BUSINESS_CODE_PATH/projectZ/superflycool/.ignore` to the source at
+  # `DXY_DEPOXY_CLIENT_TILDE/home/BUSINESS_CODE_PATH/projectZ/superflycool/_ignore`.
+  link_private_ignore_ "$@"
+  #
+  # Install custom ESLint and Jest config. (For whatever reason:
+  #  - I like to loosen a few rules while developing, like not allowing
+  #    "fixme" comments. Then I run `lint!` to skip `.eslintrc-develop`
+  #    and use rules from the project's official `.eslintrc` file.
+  #  - The `.eslintignore.local` duplicates the project's `.eslintignore`
+  #    but adds `jest.config-DEV.js`.
+  #  - I've used `jest.config-DEV.js` in the past to increase `testTimeout`,
+  #    so that Jest doesn't fail on timeout because I've added a `debugger`
+  #    breakpoint and am troubleshooting tests via chrome://inspect/.
+  symlink_mrinfuse_file '.eslintignore.local'
+  symlink_mrinfuse_file '.eslintrc-develop'
+  symlink_mrinfuse_file 'jest.config-DEV.js'
+  #
+  # Enable a pre-push hook, so the linter and tests run before code will
+  # be pushed. And disable the pre-commit hook (e.g., that husky wired) so
+  # that git-rebase doesn't run checks on every commit under rebase (or at
+  # least it does when I rebase, though I've seen coworkers rebase without
+  # the same problem). (I know, I know, why not make these changes in the
+  # project itself? Because sometimes it's just easier to make changes
+  # locally before trying to sell them to the broader team.)
+  git_hooks_enable_pre_push_eslint_jest_hook
+  git_hooks_disable_pre_commit_hook
+
+# This install tasks includes all the tricks I've used on work projects.
+# Tailor as necessary.
+install =
+  #
+  # Perhaps remove package-lock.json, for the most up-to-date dependencies.
+  #  /bin/rm package-lock.json
+  #
+  # Run the standard npm-install.
+  npm install
+  # Though if you get peer/upstream dependency conflicts, perhaps force it:
+  #  npm install --force
+  #
+  # Patch `opn` to call `sensible-open` instead of macOS `open`, so that,
+  # when run, the app opens in a new browser window, and not in a new tab
+  # of an existing window. (NOTE: This might not be an issue; I saw this in
+  # older webpack-dev-server v3.x, which uses older npm `opn`, not `open`.)
+  # - DEP: https://github.com/landonb/sh-sensible-open#☔
+  hack_patch_opn_to_call_sensible_open
+  #
+  # If you have some dependencies checked out locally, and you work on
+  # them in parallel, wire them here. E.g.,
+  npm link /path/to/some/dependency
+  npm link ../another-path
+  # NOTE: You might also need to update module.exports:
+  #   resolve: { ..., alias: { react: path.resolve('./node_modules/react'), }, },
+  # to avoid `Invalid hook call` error (`You might have more than one copy of React`).
+  #
+  # If you find yourself searching dependency internals, consider setting
+  # up ignore rules. E.g.,
+  printf '%s\n%s\n%s\n' "*.min.js" "*.js.map" "*.esm.js" \
+    > "./node_modules/@some-scope/some-package/dist/.ignore"
+  #
+  # Finally, if the infuse task relies on the app being installed, or just
+  # to save a step, run it.
+  mr -d . infuse
+
+# ========================================================================
+# ------------------------------------------------------------------------
+
+# YOU: If you work on different teams with different sets of projects,
+#      you might want to break out your config into multiple files.
+
+[DEFAULT]
+include =
+  #
+  dxc_root="${DEPOXYDIR_RUNNING_FULL:-${HOME}/.depoxy/running}"
+  #
+  cat "${dxc_root}/_mrconfig-BUSINESS_CODE_PATH--project-AA"
+  #
+  cat "${dxc_root}/_mrconfig-BUSINESS_CODE_PATH--projectZ"
+
+# ========================================================================
+# ------------------------------------------------------------------------
+
+# **********************************************************************
+
