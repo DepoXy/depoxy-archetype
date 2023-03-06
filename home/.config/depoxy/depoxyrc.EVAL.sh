@@ -119,7 +119,7 @@ export DEPOXY_PROJLNS="${HOME}/DXY_DEPOXY_PROJLNS_NAME"
 #  # Path to home-fries checkout, e.g., ~/.homefries
 #  export OHMYREPOS_LIB="${GITREPOSPATH:-${HOME}/.kit/git}/ohmyrepos/lib"
 
-#  # Specify base URL for git_clone_github (defaults https://github.com/).
+#  # Specify base URL for git_clone_giturl (defaults https://github.com/).
 #  # - On @leader machine where personal Git SSH is setup, you might use:
 #  #   export OHMYREPOS_GIT_HOST_ORIGIN="git@github.com:"
 #  # - On @client, you might just use HTTPS for pull access only:
