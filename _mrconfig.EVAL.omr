@@ -25,6 +25,23 @@
 [DEFAULT]
 order = 191
 
+# ========================================================================
+# ------------------------------------------------------------------------
+
+# CXREF: remotes_add_publish_entrust:
+#
+#   ~/.depoxy/ambers/home/.config/ohmyrepos/.mrconfig-wireremotes
+
+# YOU: Uncomment this lib and define environs
+#      to use remotes_add_publish_entrust, e.g.,
+#
+#   $ MR_REPO_PUBLISH_USER_URL="git@github.com:" MR_INCLUDE=depoxy mr -d . -n run wireremotes
+#
+# lib =
+#   MR_REPO_PUBLISH_USER_URL="git@github.com:"
+#   #
+#   MR_REPO_ENTRUST_USER_URL="git@github_userX:"
+#   MR_REPO_ENTRUST_USER_NAME="userX"
 
 # ========================================================================
 # ------------------------------------------------------------------------
