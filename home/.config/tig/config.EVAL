@@ -52,4 +52,8 @@ source DXY_DEPOXYAMBERS_DIR_TILDE/home/.config/tig/config-depoxy-diff
 
 # USAGE: Below you could supply your own custom 'tig' config and commands.
 #        Or you could `source` your own config.
+#
+# E.g.,
+#
+#  bind main B +sh -c "echo \"Branch %(branch) / HEAD %(head) / SHA %(commit)\";"
 
