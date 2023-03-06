@@ -28,20 +28,45 @@ order = 191
 # ========================================================================
 # ------------------------------------------------------------------------
 
-# CXREF: remotes_add_publish_entrust:
+[DEFAULT]
+# CXREF:
+#   remotes_add_publish_entrust:
+#     DXY_DEPOXYAMBERS_DIR_TILDE/home/.config/ohmyrepos/.mrconfig-wireremotes
 #
-#   ~/.depoxy/ambers/home/.config/ohmyrepos/.mrconfig-wireremotes
+include = cat "${DEPOXYAMBERS_DIR:-${HOME}/.depoxy/ambers}/home/.config/ohmyrepos/.mrconfig-wireremotes"
 
-# YOU: Uncomment this lib and define environs
-#      to use remotes_add_publish_entrust, e.g.,
+# USAGE: Uncomment this lib and define environs
+#        to use remotes_add_publish_entrust, e.g.,
 #
-#   $ MR_REPO_PUBLISH_USER_URL="git@github.com:" MR_INCLUDE=depoxy mr -d . -n run wireremotes
+#   # For remotes_add_publish_entrust:
+#   lib =
+#     MR_REPO_PUBLISH_USER_URL="git@github.com:"
+#     #
+#     MR_REPO_ENTRUST_USER_URL="git@github_userX:"
+#     MR_REPO_ENTRUST_USER_NAME="userX"
 #
-# lib =
-#   MR_REPO_PUBLISH_USER_URL="git@github.com:"
-#   #
-#   MR_REPO_ENTRUST_USER_URL="git@github_userX:"
-#   MR_REPO_ENTRUST_USER_NAME="userX"
+#   $ MR_INCLUDE=entrusted mr -d / -n run remotes_add_publish_entrust
+#
+# - Or you could define at runtime, e.g.,
+#
+#   $ MR_REPO_PUBLISH_USER_URL="git@github.com:" \
+#     mr -d . -n run remotes_add_publish_entrust
+
+# ***
+
+# CXREF:
+#   set_signing_config:
+#     DXY_DEPOXYAMBERS_DIR_TILDE/home/.config/ohmyrepos/.mrconfig-wiresigning
+include = cat "${DEPOXYAMBERS_DIR:-${HOME}/.depoxy/ambers}/home/.config/ohmyrepos/.mrconfig-wiresigning"
+
+# USAGE: Create your own signing fcn, e.g., create a file and function:
+#   DXY_DEPOXY_CLIENT_TILDE/home/.mrconfig-wiresigning
+#     set_signing_config_userX () { ... }
+# Using the example from the `cat << EOF` in:
+#     ~/.depoxy/ambers/home/.config/ohmyrepos/.mrconfig-wiresigning
+# And then uncomment this line to include it here:
+#
+#  include = cat "DXY_DEPOXY_CLIENT_TILDE/home/.mrconfig-wiresigning"
 
 # ========================================================================
 # ------------------------------------------------------------------------
