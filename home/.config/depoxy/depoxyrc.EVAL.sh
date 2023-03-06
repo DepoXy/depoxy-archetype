@@ -121,9 +121,9 @@ export DEPOXY_PROJLNS="${HOME}/DXY_DEPOXY_PROJLNS_NAME"
 
 #  # Specify base URL for git_clone_github (defaults https://github.com/).
 #  # - On @leader machine where personal Git SSH is setup, you might use:
-#  #   export OHMYREPOS_GIT_URL_GITHUB="git@github.com:"
+#  #   export OHMYREPOS_GIT_HOST_ORIGIN="git@github.com:"
 #  # - On @client, you might just use HTTPS for pull access only:
-#  export OHMYREPOS_GIT_URL_GITHUB="https://github.com/"
+#  export OHMYREPOS_GIT_HOST_ORIGIN="https://github.com/"
 
 # *** Unless the 🧜 is the famous `mredit`
 #
