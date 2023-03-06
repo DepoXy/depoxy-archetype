@@ -184,7 +184,7 @@ autocommit =
   # *** home/.config
   #
   # System settings.
-  # FIXME/2022-12-13 22:39: Retire this function... maybe...
+  # FIXME/2022-12-13: Retire this function... maybe...
   # or restore on Linux, but akin to `defaults`, but capture
   # noise (only capture changes caused by you changing defaults,
   # and not, e.g., changes because timestamp or tmp path changed,
@@ -229,13 +229,13 @@ autocommit =
       fatal "ERROR: Unsupported, Unknown Platform: “$(uname)”"
     fi
   }
-  # FIXME/2022-12-13 22:39: See previous comment: No longer capturing
+  # FIXME/2022-12-13: See previous comment: No longer capturing
   # raw defaults on macOS.
   #
   #   depoxy_client_id_autocommit_system_settings_DEPRECATED
   #
   #
-  # MAYBE/2022-12-13 22:43: We could capture just those defaults we
+  # MAYBE/2022-12-13: We could capture just those defaults we
   # care about, e.g.,
   #
   #   local mOS_onboarder="${MOSREPOSPATH:-${DOPP_KIT:-${HOME}/.kit}/mOS}/macOS-onboarder"
@@ -329,7 +329,7 @@ autocommit =
   #   titch worried, in case of catastrophic laptop failure.
   #
   false && (
-    # FIXME/2022-12-13 23:10: Restore this functionality later, MAYBE.
+    # FIXME/2022-12-13: Restore this functionality later, MAYBE.
     git_auto_commit_new "home/.password-store" \
       -m "${CLEARED_ACI}: Password Store updates."
   )
@@ -387,7 +387,7 @@ autocommit =
   #
   # ***
   #
-  # FIXME/2022-12-13 22:56: Verify these:
+  # FIXME/2022-12-13: Verify these:
   #  home/Library/Application Support/Google/Chrome/Default/Bookmarks
   #  home/Library/Application Support/Google/Chrome/Default/bookmarks_M_D_YY.html
   #
@@ -407,7 +407,7 @@ autocommit =
     #
     local chrome_bms_json="${chrome_dir}/Bookmarks"
     mkdir -p "home/${chrome_dir}"
-    # FIXME/2022-12-14 00:24: Scrub Chrome BMs copy, too.
+    # FIXME/2022-12-14: Scrub Chrome BMs copy, too.
     #  /bin/cp "${HOME}/${chrome_bms_json}" "home/${chrome_bms_json}"
     #  git_auto_commit_one "home/${chrome_bms_json}" -m "${CLEARED_ACI}: Chrome BMs (JSON copy)."
     notice "FIXME: Scrub @biz links from and commit home/${chrome_bms_json} manually."

@@ -185,7 +185,7 @@ DEPOXY_STINTS=DXY_DEPOXYDIR_STINTS_HOME filter=".* *" exclude=".DS_Store" {
    .ssh=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/.ssh {
     config.example
    }
-   # work/ : FIXME/2022-12-13 21:08: This subdir section not being --purged.
+   # work/ : FIXME/2022-12-13: This subdir section not being --purged.
   }
   # private: private/docs
   # private: private/home
@@ -364,7 +364,7 @@ DEPOXY_AMBERS=$HOME/.depoxy/ambers filter=".* *" {
   infuse-user-home
   _ignore-macOS
   golang/fzf/_git/goinfo=$HOME/.depoxy/ambers/home/golang/fzf/_git/info {
-   # FIXME/2022-11-23 14:15: REGEN PROJ LIST.
+   # FIXME/2022-11-23: REGEN PROJ LIST.
    exclude
   }
   # Library::$HOME/.depoxy/ambers/home/Library
