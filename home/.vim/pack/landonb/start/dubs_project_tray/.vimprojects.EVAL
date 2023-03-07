@@ -297,7 +297,7 @@ PUT_WISE=$HOME/.kit/git/git-put-wise filter=".* *" {
   config-depoxy-main
   tigconfig-client
   tigconfig.EVAL
-  tiggies
+  README--Keybindings
   tig-newtons/bin=$HOME/.kit/git/tig-newtons/bin {
    # CXREF: TIG_NEWTONS
    editor-vim-0-0-insert-minimal
