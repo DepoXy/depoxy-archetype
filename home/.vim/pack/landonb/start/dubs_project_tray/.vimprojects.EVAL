@@ -513,7 +513,7 @@ DEPOXY_AMBERS=$HOME/.depoxy/ambers filter=".* *" {
    infuse-projlns-core.sh
    infuse-projlns-omr.sh
    depoxy-deeplinks=$HOME/.depoxy/ambers/home/.projlns/depoxy-deeplinks {
-    .ignore
+    _ignore
    }
   }
   .vim=$HOME/.depoxy/ambers/home/.vim {
