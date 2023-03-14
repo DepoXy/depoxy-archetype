@@ -512,7 +512,7 @@ DEPOXY_AMBERS=$HOME/.depoxy/ambers filter=".* *" {
    infuse-projlns-breadcrumb.sh
    infuse-projlns-core.sh
    infuse-projlns-omr.sh
-   dubs-fries=$HOME/.depoxy/ambers/home/.projlns/dubs-fries {
+   depoxy-deeplinks=$HOME/.depoxy/ambers/home/.projlns/depoxy-deeplinks {
     .ignore
    }
   }
