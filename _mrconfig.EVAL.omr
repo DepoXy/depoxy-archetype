@@ -35,8 +35,10 @@ order = 191
 #
 include = cat "${DEPOXYAMBERS_DIR:-${HOME}/.depoxy/ambers}/home/.config/ohmyrepos/.mrconfig-wireremotes"
 
-# USAGE: Uncomment this lib and define environs
+# USAGE: Uncomment this block and define environs
 #        to use remotes_add_publish_entrust, e.g.,
+#
+#   [DEFAULT]
 #
 #   # For remotes_add_publish_entrust:
 #   lib =
@@ -45,9 +47,11 @@ include = cat "${DEPOXYAMBERS_DIR:-${HOME}/.depoxy/ambers}/home/.config/ohmyrepo
 #     MR_REPO_ENTRUST_USER_URL="git@github_userX:"
 #     MR_REPO_ENTRUST_USER_NAME="userX"
 #
+# - Execute using `run`, e.g.,
+#
 #   $ MR_INCLUDE=entrusted mr -d / -n run remotes_add_publish_entrust
 #
-# - Or you could define at runtime, e.g.,
+# - You can also easily define the URL at runtime, e.g.,
 #
 #   $ MR_REPO_PUBLISH_USER_URL="git@github.com:" \
 #     mr -d . -n run remotes_add_publish_entrust
