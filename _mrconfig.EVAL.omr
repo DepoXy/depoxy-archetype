@@ -56,22 +56,6 @@ include = cat "${DEPOXYAMBERS_DIR:-${HOME}/.depoxy/ambers}/home/.config/ohmyrepo
 #   $ MR_REPO_PUBLISH_USER_URL="git@github.com:" \
 #     mr -d . -n run remotes_add_publish_entrust
 
-# ***
-
-# CXREF:
-#   set_signing_config:
-#     DXY_DEPOXYAMBERS_DIR_TILDE/home/.config/ohmyrepos/.mrconfig-wiresigning
-include = cat "${DEPOXYAMBERS_DIR:-${HOME}/.depoxy/ambers}/home/.config/ohmyrepos/.mrconfig-wiresigning"
-
-# USAGE: Create your own signing fcn, e.g., create a file and function:
-#   DXY_DEPOXY_CLIENT_TILDE/home/.mrconfig-wiresigning
-#     set_signing_config_userX () { ... }
-# Using the example from the `cat << EOF` in:
-#     ~/.depoxy/ambers/home/.config/ohmyrepos/.mrconfig-wiresigning
-# And then uncomment this line to include it here:
-#
-#  include = cat "DXY_DEPOXY_CLIENT_TILDE/home/.mrconfig-wiresigning"
-
 # ========================================================================
 # ------------------------------------------------------------------------
 
