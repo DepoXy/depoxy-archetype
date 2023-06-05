@@ -159,3 +159,18 @@ export TN_OPTION_EDITOR_VIM=true
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
+# Add post rebase `exec` to repair hard links broken on Git rebase.
+# - The author uses hard links to keep deps/ dependencies synced
+#   across disparate Git repos.
+#   - Look for link_hard usage in DepoXy OMR 'infuse' tasks.
+# - CXREF: Used by git-smart (git-abort and git-fup)
+#   and by tig-newtons (each of the rebase commands):
+#     ~/.kit/git/git-smart/bin/git-abort
+#     ~/.kit/git/git-smart/bin/git-fup
+#     ~/.kit/git/tig-newtons/tig/bind-rebase
+#     ~/.kit/git/tig-newtons/bin/range-command-apply-rebase
+
+export GIT_POST_REBASE_EXEC="(mr -d . -n infuse || true)"
+
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
+
