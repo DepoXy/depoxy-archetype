@@ -459,7 +459,52 @@ spells =
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
+# CXREF: See GIT_POST_REBASE_EXEC usage.
+# - Used post-rebase to remake hard links.
+# SAVYY: Call link_hard from infusePostRebase, not infuse.
+infusePostRebase =
+  #
+  # *** DepoXy filespace
+  #
+  # Remember that Git doesn't allow symlinked .gitignore .nomore.
+  link_hard "${MR_REPO}/home/.depoxy/_gitignore" \
+    "${DEPOXYDIR_BASE_FULL:-${HOME}/DXY_DEPOXYDIR_BASE_NAME}/.gitignore"
+  #
+  # *** GIT
+  #
+  # Note Git ≥2.32.0 disallows symlinked .gitignore, so hard link it.
+  #
+  #    FIXME/2022-10-13: Certain (unsure which) repo changes break symlinks.
+  #    - So often this link_hard will Be Like Nope.
+  #    - I'd say add a --force option, and clobber the target.
+  #      - This is a little risky...
+  #        Another option is to move it to ~/.trash,
+  #          and then just `warn` the user...
+  #
+  link_hard \
+    "${MR_REPO}/home/_gitignore-macOS" \
+    "${HOME}/.gitignore"
+  #
+  #
+  # *** ~/.kube
+  #
+  # NOTE: If you create a new kubeconfig, copy to DXC manually, then infuse,
+  #       then aci, it'll get picked up.
+  for kubeconfig in "${MR_REPO}/home/.kube/"*.yaml; do
+    # If nothing globbed, ${kubeconfig} is the glob string.
+    if [ -f "${kubeconfig}" ]; then
+      mkdir -p "${HOME}/.kube"
+      #
+      link_hard \
+        "${kubeconfig}" \
+        "${HOME}/.kube/$(basename ${kubeconfig})"
+    fi
+  done
+
 infuse =
+  # Hard links
+  mr -d . -n infusePostRebase
+  #
   # Get the client name, e.g., 'XXXX' from ~/.depoxy/stints/XXXX.
   local depoxy_client_id="$(basename ${MR_REPO})"
   #
@@ -484,9 +529,7 @@ infuse =
   #
   # *** DepoXy filespace
   #
-  # Remember that Git doesn't allow symlinked .gitignore .nomore.
-  link_hard "${MR_REPO}/home/.depoxy/_gitignore" \
-    "${DEPOXYDIR_BASE_FULL:-${HOME}/DXY_DEPOXYDIR_BASE_NAME}/.gitignore"
+  # See 'infusePostRebase' task for ~/DXY_DEPOXYDIR_BASE_NAME/.gitignore hard link.
   #
   # Create the ~/.depoxy/running → ~/.depoxy/stints/XXXX symlink.
   #if [ -n "${DEPOXYDIR_RUNNING_FULL}" ] && [ "${DEPOXY_CLIENT_ID}" = "DXY_DEPOXY_CLIENT_ID" ]; then
@@ -670,18 +713,7 @@ infuse =
     "${MR_REPO}/home/_git" \
     "${HOME}/.mrinfuse/_git"
   #
-  # Note Git ≥2.32.0 disallows symlinked .gitignore, so hard link it.
-  #
-  #    FIXME/2022-10-13: Certain (unsure which) repo changes break symlinks.
-  #    - So often this link_hard will Be Like Nope.
-  #    - I'd say add a --force option, and clobber the target.
-  #      - This is a little risky...
-  #        Another option is to move it to ~/.trash,
-  #          and then just `warn` the user...
-  #
-  link_hard \
-    "${MR_REPO}/home/_gitignore-macOS" \
-    "${HOME}/.gitignore"
+  # See 'infusePostRebase' task for ~/.gitignore hard link.
   #
   # *** tig
   #
@@ -814,18 +846,7 @@ infuse =
     # - We'll copy canon file and autocommit just to track it; see autocommit.
   fi
   #
-  # NOTE: If you create a new kubeconfig, copy to DXC manually, then infuse,
-  #       then aci, it'll get picked up.
-  for kubeconfig in "${MR_REPO}/home/.kube/"*.yaml; do
-    # If nothing globbed, ${kubeconfig} is the glob string.
-    if [ -f "${kubeconfig}" ]; then
-      mkdir -p "${HOME}/.kube"
-      #
-      link_hard \
-        "${kubeconfig}" \
-        "${HOME}/.kube/$(basename ${kubeconfig})"
-    fi
-  done
+  # See 'infusePostRebase' task for ~/.kube hard links.
   #
   # Alert user if AWS config perhaps not configured appropriately.
   if [ -n "$(ls ~/.kube/*.yaml 2> /dev/null)" ]; then

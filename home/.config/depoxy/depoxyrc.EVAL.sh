@@ -170,7 +170,7 @@ export TN_OPTION_EDITOR_VIM=true
 #     ~/.kit/git/tig-newtons/tig/bind-rebase
 #     ~/.kit/git/tig-newtons/bin/range-command-apply-rebase
 
-export GIT_POST_REBASE_EXEC="(mr -d . -n infuse || true)"
+export GIT_POST_REBASE_EXEC="(mr -d . -n infusePostRebase || true)"
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
