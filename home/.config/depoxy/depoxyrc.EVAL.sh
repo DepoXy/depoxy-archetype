@@ -174,3 +174,9 @@ export GIT_POST_REBASE_EXEC="(mr -q -d . -n infusePostRebase && echo 'Effectuall
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
+# Enable unnecessary git-bump dependency.
+
+export GIT_BUMP_VERSION_TAG_PEP400CMP_ENABLE=true
+
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
+
