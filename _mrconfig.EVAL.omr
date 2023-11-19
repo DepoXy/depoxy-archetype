@@ -167,7 +167,7 @@ autocommit =
   # NOTE: This `find` won't work if there are spaces in any paths.
   # NOTE: Enable MRT_LINK_FORCE so ' T' git-status typechanges are included.
   MRT_LINK_FORCE=0 git_auto_commit_many $(find docs/ -type f -o -type l) \
-    -m "${PRIVATE_ACI}: Docs: Work notes."
+    -m "${PRIVATE_ACI}: Docs: Work notes"
   #
   # ***
   #
@@ -208,7 +208,7 @@ autocommit =
     /bin/cp "${HOME}/.aws/credentials" "${MR_REPO}/home/.aws/credentials"
     # NOTE: This `find` won't work if there are spaces in any paths.
     git_auto_commit_many $(find home/.aws/ -type f -o -type l) \
-      -m "${PRIVATE_ACI}: Update: home/.aws/ files."
+      -m "${PRIVATE_ACI}: Update: home/.aws/ files"
   fi
   #
   git_auto_commit_one_update "home/.depoxy/_gitignore"
@@ -229,7 +229,7 @@ autocommit =
   #
   # NOTE: This `find` won't work if there are spaces in any paths.
   git_auto_commit_many $(find home/.kube/ -type f -o -type l) \
-    -m "${PRIVATE_ACI}: Update: home/.kube/ files."
+    -m "${PRIVATE_ACI}: Update: home/.kube/ files"
   #
   git_auto_commit_one_update "home/.local/share/dob/dob.sqlite"
   #
@@ -248,7 +248,7 @@ autocommit =
   false && (
     # FIXME/2022-12-13: Restore this functionality later, MAYBE.
     git_auto_commit_new "home/.password-store" \
-      -m "${CLEARED_ACI}: Password Store updates."
+      -m "${CLEARED_ACI}: Password Store updates"
   )
   local pass_gpg_id="${HOME}/.password-store/.gpg-id"
   if [ -f "${pass_gpg_id}" ]; then
@@ -383,7 +383,7 @@ autocommit =
   git_auto_commit_one_update "home/crontab.DXY_USERNAME" "" "${PRIVATE_ACI}"
   #
   git_auto_commit_one "home/dubs_projects.vim" \
-    -m "${PRIVATE_ACI}: home/dubs_projects.vim (grep-steady mappings)."
+    -m "${PRIVATE_ACI}: home/dubs_projects.vim (grep-steady mappings)"
   #
   # Symlink.
   git_auto_commit_one_update "home/.vimprojects"
@@ -399,7 +399,7 @@ autocommit =
   #
   # 2023-03-04: In anticipation of acme.sh script, exclude it now.
   #   git_auto_commit_many $(find home/work/ -type f -o -type l) \
-  #     -m "${PRIVATE_ACI}: Update: home/work/ contents."
+  #     -m "${PRIVATE_ACI}: Update: home/work/ contents"
   git_auto_commit_many $(find home/work/ -path home/work/acme.sh -prune -o -type f -o -type l) \
     -m "${PRIVATE_ACI}: Update: home/work/"
   #
@@ -409,7 +409,7 @@ autocommit =
   #
   # NOTE: This `find` won't work if there are spaces in any paths.
   git_auto_commit_many $(find private/docs/ -type f -o -type l) \
-    -m "${CLEARED_ACI}: Docs: Personal notes."
+    -m "${CLEARED_ACI}: Docs: Personal notes"
   #
   # ===
   # ***
@@ -436,7 +436,7 @@ autocommit =
     git_auto_commit_many \
       "home/.config/${depoxy_client_id}-tree.txt" \
       "home/.config/${depoxy_client_id}-tree.col" \
-      -m "${CLEARED_ACI}: Client ${depoxy_client_id} project \`tree\`."
+      -m "${CLEARED_ACI}: Client ${depoxy_client_id} project \`tree\`"
   }
   depoxy_client_id_autocommit_tree_dumps
   #
