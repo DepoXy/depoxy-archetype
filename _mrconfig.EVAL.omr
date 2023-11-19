@@ -200,8 +200,6 @@ autocommit =
   #
   git_auto_commit_one_update "home/.config/tig/config"
   #
-  git_auto_commit_one_update "home/.config/work/Makefile.python-generic"
-  #
   # *** Other home/.*
   #
   if [ -d "${HOME}/.aws" ]; then
