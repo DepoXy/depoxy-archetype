@@ -180,3 +180,12 @@ export GIT_BUMP_VERSION_TAG_PEP400CMP_ENABLE=true
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
+# Tell slather-defaults (macOS-onboarder) if personal or professional machine.
+# - On personal machine, reminders include all OMR install tasks.
+# - On professional machine, reminders omit projects you won't need
+#   (like GnuCash).
+
+export OMR_ECHO_INSTALL_DXY_SCOPE="dxy_pro"
+
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
+

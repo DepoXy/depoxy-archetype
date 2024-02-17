@@ -171,6 +171,7 @@ infuse =
 
 # This install tasks includes all the tricks I've used on work projects.
 # Tailor as necessary.
+echoInstallHelp = echo_install_help 'os_all' 'dxy_all'
 install =
   #
   # Perhaps remove package-lock.json, for the most up-to-date dependencies.
