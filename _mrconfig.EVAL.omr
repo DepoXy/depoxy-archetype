@@ -31,9 +31,9 @@ order = 191
 [DEFAULT]
 # CXREF:
 #   remotes_add_publish_entrust:
-#     DXY_DEPOXYAMBERS_DIR_TILDE/home/.config/ohmyrepos/.mrconfig-wireremotes
+#     DXY_DEPOXYAMBERS_DIR_TILDE/home/.kit/git/ohmyrepos/lib/.mrconfig-wireremotes
 #
-include = cat "${DEPOXYAMBERS_DIR:-${HOME}/.depoxy/ambers}/home/.config/ohmyrepos/.mrconfig-wireremotes"
+include = cat "${DEPOXYAMBERS_DIR:-${HOME}/.depoxy/ambers}/home/.kit/git/ohmyrepos/lib/.mrconfig-wireremotes"
 
 # USAGE: Uncomment this block and define environs
 #        to use remotes_add_publish_entrust, e.g.,
@@ -886,7 +886,7 @@ include =
   cat "${OHMYREPOS_LIB:-${HOME}/.ohmyrepos/lib}/git-hooks-rewire"
   #
   ambers_path="${DEPOXYDIR_BASE_FULL:-${HOME}/.depoxy}/ambers"
-  cat "${DEPOXYAMBERS_DIR:-${ambers_path}}/home/.kit/git/ohmyrepos/bin/js-npm-patch-opn-sensible-open"
+  cat "${DEPOXYAMBERS_DIR:-${ambers_path}}/home/.kit/git/ohmyrepos/lib/js-npm-patch-opn-sensible-open"
   #
   # Load client-specific OMR project config.
   # CXREF: ~/.depoxy/ambers/archetype/_mrconfig-BUSINESS_CODE_PATH.EVAL.example
