@@ -7,6 +7,9 @@
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
+# USYNC:
+#   meld ~/.depoxy/ambers/archetype/.ignore.EVAL "${DEPOXYDIR_STINTS_FULL}/${DEPOXY_CLIENT_ID}/.ignore" &
+
 /.git/
 
 # Uninteresting data captured by OMR autocommit.
