@@ -19,6 +19,12 @@
 
 # *** NOTE: THIS MRCONFIG ONLY RUNS ON THE CLIENT MACHINE / CLIENT-ONLY ***
 
+[DEFAULT]
+__USYNC__ =
+  meld \
+    ~/.depoxy/ambers/archetype/_mrconfig.EVAL.omr \
+    ~/.depoxy/running/_mrconfig &
+
 # ========================================================================
 # ------------------------------------------------------------------------
 
