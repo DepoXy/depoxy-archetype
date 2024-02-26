@@ -181,7 +181,10 @@ register_depoxydir_paths () {
 
   # E.g., ".depoxy"
   unset -v DXY_DEPOXYDIR_BASE_NAME
-  register "DXY_DEPOXYDIR_BASE_NAME" "$(echo "${DXY_DEPOXYDIR_BASE_FULL}" | sed "s#^${HOME}/##")"
+  register "DXY_DEPOXYDIR_BASE_NAME" "$( \
+    echo "${DXY_DEPOXYDIR_BASE_FULL}" \
+    | sed "s@^${HOME}/@@"
+  )"
 
   # ***
 
@@ -193,13 +196,16 @@ register_depoxydir_paths () {
 
   # E.g., "~/.depoxy/stints"
   unset -v DXY_DEPOXYDIR_STINTS_TILDE
-  register "DXY_DEPOXYDIR_STINTS_TILDE" \
-    "$(echo "${DXY_DEPOXYDIR_BASE_FULL}/${DXY_DEPOXYDIR_STINTS_NAME}" | sed -E "s#^${HOME}(/|$)#~\1#")"
+  register "DXY_DEPOXYDIR_STINTS_TILDE" "$( \
+    echo "${DXY_DEPOXYDIR_BASE_FULL}/${DXY_DEPOXYDIR_STINTS_NAME}" \
+    | sed -E "s@^${HOME}(/|$)@~\1@"
+  )"
 
   # E.g., "$HOME/.depoxy/stints"
   unset -v DXY_DEPOXYDIR_STINTS_HOME
-  register "DXY_DEPOXYDIR_STINTS_HOME" \
-    "$(echo "${DXY_DEPOXYDIR_BASE_FULL}/${DXY_DEPOXYDIR_STINTS_NAME}" | sed -E "s#^${HOME}(/|$)#\\\$HOME\1#")"
+  register "DXY_DEPOXYDIR_STINTS_HOME" "$( \
+    echo "${DXY_DEPOXYDIR_BASE_FULL}/${DXY_DEPOXYDIR_STINTS_NAME}" \
+    | sed -E "s@^${HOME}(/|$)@\\\$HOME\1@")"
 
   # E.g., "/(Users|home)/<user>/.depoxy/stints"
   unset -v DXY_DEPOXYDIR_STINTS_FULL
@@ -260,17 +266,25 @@ register_depoxy_project_paths () {
   register "DXY_DEPOXYAMBERS_DIR" "${ambers_path}"
 
   # E.g., "ambers".
-  register "DXY_DEPOXYAMBERS_NAME" "$(echo "${DXY_DEPOXYAMBERS_DIR}" | sed "s#^${DXY_DEPOXYDIR_BASE_FULL}/##")"
+  register "DXY_DEPOXYAMBERS_NAME" "$( \
+    echo "${DXY_DEPOXYAMBERS_DIR}" \
+    | sed "s@^${DXY_DEPOXYDIR_BASE_FULL}/@@"
+  )"
 
   # E.g., "~/.depoxy/ambers"
   unset -v DXY_DEPOXYAMBERS_DIR_TILDE
-  register "DXY_DEPOXYAMBERS_DIR_TILDE" "$(echo "${DXY_DEPOXYAMBERS_DIR}" | sed -E "s#^${HOME}(/|$)#~\1#")"
+  register "DXY_DEPOXYAMBERS_DIR_TILDE" "$( \
+    echo "${DXY_DEPOXYAMBERS_DIR}" \
+    | sed -E "s@^${HOME}(/|$)@~\1@"
+  )"
 
   # E.g., 
   # - CXREF: Vimprojects template:
   #   ~/.depoxy/ambers/archetype/home/.vim/pack/landonb/start/dubs_project_tray/.vimprojects.EVAL
-  register "DXY_DEPOXYAMBERS_DIR_HOME" \
-    "$(echo "${DXY_DEPOXYAMBERS_DIR}" | sed -E "s#^${HOME}(/|$)#\\\$HOME\1#")"
+  register "DXY_DEPOXYAMBERS_DIR_HOME" "$( \
+    echo "${DXY_DEPOXYAMBERS_DIR}" \
+    | sed -E "s@^${HOME}(/|$)@\\\$HOME\1@"
+  )"
 
   # ***
 
@@ -281,14 +295,18 @@ register_depoxy_project_paths () {
   # ***
 
   # E.g., ".projlns", ripgreppable symlinks collector.
-  register "DXY_DEPOXY_PROJLNS_NAME" \
-    "$(echo "${DEPOXY_PROJLNS:-${HOME}/.projlns}" | sed "s#^${HOME}/##")"
+  register "DXY_DEPOXY_PROJLNS_NAME" "$(\
+    echo "${DEPOXY_PROJLNS:-${HOME}/.projlns}" \
+    | sed "s@^${HOME}/@@"
+  )"
 
   # ***
 
   # E.g., ".homefries"
-  register "DXY_HOMEFRIES_DIR_NAME" \
-    "$(echo "${HOMEFRIES_DIR:-${HOME}/.homefries}" | sed "s#^${HOME}/##")"
+  register "DXY_HOMEFRIES_DIR_NAME" "$( \
+    echo "${HOMEFRIES_DIR:-${HOME}/.homefries}" \
+    | sed "s@^${HOME}/@@"
+  )"
 
   # ***
 
@@ -296,8 +314,10 @@ register_depoxy_project_paths () {
   #                   (it's not used everywhere it could be).
   #
   # E.g., ".kit"
-  register "DXY_DOPP_KIT_NAME" \
-    "$(echo "${DOPP_KIT:-${HOME}/.kit}" | sed "s#^${HOME}/##")"
+  register "DXY_DOPP_KIT_NAME" "$( \
+    echo "${DOPP_KIT:-${HOME}/.kit}" \
+    | sed "s@^${HOME}/@@"
+  )"
 }
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
@@ -308,8 +328,10 @@ register_git_put_wise_paths () {
 
   # E.g., "patchr"
   unset -v DXY_PW_PATCHES_NAME
-  register "DXY_PW_PATCHES_NAME" \
-    "$(echo "${DXY_PW_PATCHES_REPO}" | sed "s#^${HOME}/##")"
+  register "DXY_PW_PATCHES_NAME" "$( \
+    echo "${DXY_PW_PATCHES_REPO}" \
+    | sed "s@^${HOME}/@@"
+  )"
 
   # E.g., "depoxy/patchr"
   register "DXY_PW_OPTION_PASS_NAME" ""
