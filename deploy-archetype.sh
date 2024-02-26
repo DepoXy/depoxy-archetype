@@ -226,6 +226,7 @@ register_depoxydir_paths () {
 
   # If ${DXY_RUN_MAKE_LNS}, the directory name for the symlinks directory
   # (which will be created in the same directory as the new DXC).
+  # USYNC: DXY_MAKE_LNS_NAME and infuse_create_symlinks_docs use same '.syml--' prefix.
   # - E.g., ~/.depoxy/stints/.syml--XXXX
   register "DXY_MAKE_LNS_NAME" ".syml--${DXY_DEPOXY_CLIENT_ID}"
 }
