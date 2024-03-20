@@ -710,7 +710,7 @@ process_file_copy_copy_file () {
   echo
 
   if ${DRY_RUN}; then
-    echo "  /bin/cp -P \"${fname}\" \"${dest_path}\""
+    echo "  command cp -R -P -- \"${fname}\" \"${dest_path}\""
     echo
 
     return 0
@@ -722,7 +722,7 @@ process_file_copy_copy_file () {
   # - Also note that older `cp -P` fails on broken symlink, but `cp -P -R`
   #   works. -R is obviously the recursive option, but we're guaranteed to
   #   only be processing files, and not directories, so can safely add it.
-  /bin/cp -R -P "${fname}" "${dest_path}"
+  command cp -R -P -- "${fname}" "${dest_path}"
 
   exit_code=$?
 
@@ -856,7 +856,7 @@ init_repo () {
 
   cd "${DXY_DEPOXY_CLIENT_FULL}"
 
-  mv "README.md" "README.md-NEW"
+  command mv "README.md" "README.md-NEW"
   touch -- "README.md"
 
   # Note that Git config not guaranteed to be wired, so specify
@@ -871,7 +871,7 @@ init_repo () {
   git add "README.md"
   git ${conf_opts} commit -m "Fresh: New DepoXy Client ${DXY_DEPOXY_CLIENT_ID}"
 
-  mv -f "README.md-NEW" "README.md"
+  command mv -f "README.md-NEW" "README.md"
 
   git add .
 

@@ -210,8 +210,8 @@ autocommit =
   #
   if [ -d "${HOME}/.aws" ]; then
     mkdir -p "${MR_REPO}/home/.aws"
-    /bin/cp "${HOME}/.aws/config" "${MR_REPO}/home/.aws/config"
-    /bin/cp "${HOME}/.aws/credentials" "${MR_REPO}/home/.aws/credentials"
+    command cp "${HOME}/.aws/config" "${MR_REPO}/home/.aws/config"
+    command cp "${HOME}/.aws/credentials" "${MR_REPO}/home/.aws/credentials"
     # NOTE: This `find` won't work if there are spaces in any paths.
     git_auto_commit_many $(find home/.aws/ -type f -o -type l) \
       -m "${PRIVATE_ACI}: Update: home/.aws/ files"
@@ -231,7 +231,7 @@ autocommit =
   git_auto_commit_one_update "home/.kit/_git/info/exclude"
   #
   # We track ~/.kube/config by copying it...
-  /bin/cp "${HOME}/.kube/config" "${MR_REPO}/home/.kube/config"
+  command cp "${HOME}/.kube/config" "${MR_REPO}/home/.kube/config"
   #
   # NOTE: This `find` won't work if there are spaces in any paths.
   git_auto_commit_many $(find home/.kube/ -type f -o -type l) \
@@ -259,7 +259,7 @@ autocommit =
   local pass_gpg_id="${HOME}/.password-store/.gpg-id"
   if [ -f "${pass_gpg_id}" ]; then
     local gpg_id_backup="home/.password-store/.gpg-id"
-    /bin/cp "${pass_gpg_id}" "${gpg_id_backup}"
+    command cp "${pass_gpg_id}" "${gpg_id_backup}"
     git_auto_commit_one_update "${gpg_id_backup}"
   fi
   # MAYBE/2023-01-16: Specify @biz resources PWD with common name.
@@ -270,16 +270,16 @@ autocommit =
   local enterprise_creds="${HOME}/.password-store/BUSINESS_CODE_PATH/signon.gpg"
   if [ -f "${enterprise_creds}" ]; then
     local creds_backup="home/.password-store/enterprise-creds.gpg"
-    /bin/cp "${enterprise_creds}" "${creds_backup}"
+    command cp "${enterprise_creds}" "${creds_backup}"
     git_auto_commit_one_update "${creds_backup}"
     #
     # Needs GPG too then eh
     local gpg_backup="home/.gnupg"
     # The `cp` will work without this remove, just FYI.
-    /bin/rm -rf "${gpg_backup}"
+    command rm -rf -- "${gpg_backup}"
     mkdir "${gpg_backup}"
     # Copy normal, non-dot files and directories.
-    find ~/.gnupg/* -maxdepth 0 \( -type f -o -type d \) -exec /bin/cp -a {} "${gpg_backup}" \;
+    find ~/.gnupg/* -maxdepth 0 \( -type f -o -type d \) -exec /usr/bin/env cp -a {} "${gpg_backup}" \;
     git_auto_commit_many $(find ${gpg_backup}/ -type f -o -type l) \
       -m "${CLEARED_ACI}: Update: ${gpg_backup}/"
   fi
@@ -331,11 +331,11 @@ autocommit =
     local chrome_bms_json="${chrome_dir}/Bookmarks"
     mkdir -p "home/${chrome_dir}"
     # FIXME/2022-12-14: Scrub Chrome BMs copy, too.
-    #  /bin/cp "${HOME}/${chrome_bms_json}" "home/${chrome_bms_json}"
+    #  command cp "${HOME}/${chrome_bms_json}" "home/${chrome_bms_json}"
     #  git_auto_commit_one "home/${chrome_bms_json}" -m "${CLEARED_ACI}: Chrome BMs (JSON copy)."
     notice "FIXME: Scrub @biz links from and commit home/${chrome_bms_json} manually."
     notice "- At least until you devise bookmarks scrubber."
-    echo "/bin/cp \"${HOME}/${chrome_bms_json}\" \\
+    echo "command cp \"${HOME}/${chrome_bms_json}\" \\
    \"${MR_REPO}/home/${chrome_bms_json}\""
     #
     #
@@ -426,7 +426,7 @@ autocommit =
   # macOS Desktop file (delete).
   # - Toss the Desktop Services Store. It's created by Finder to store icon layout,
   #   background image, etc. But who uses Finder? Remove for less noisy `ls` output.
-  /bin/rm -f "./.DS_Store"
+  command rm -f "./.DS_Store"
   #
   # ===
   # ***
@@ -527,7 +527,7 @@ infuse =
   #        ~/.config copy, before clobber-overwriting.
   #
   mkdir -p "${HOME}/.config/depoxy"
-  /bin/cp -f \
+  command cp -f \
     "${MR_REPO}/home/.config/depoxy/depoxyrc" \
     "${HOME}/.config/depoxy/depoxyrc"
   #
@@ -751,7 +751,7 @@ infuse =
     local cmplxmods=".config/karabiner/assets/complex_modifications"
     # find "${dxy_mrinfuse}/${cmplxmods}" -maxdepth 1 -type l -exec echo {} +
     # Remove existing links, lest you add links to the linked directories.
-    find "${dxy_mrinfuse}/${cmplxmods}" -maxdepth 1 -type l -exec /bin/rm {} +
+    find "${dxy_mrinfuse}/${cmplxmods}" -maxdepth 1 -type l -exec /usr/bin/env rm {} +
     # Symlink private KE cfg.
     local cbinfuser="${MR_REPO}/home"
     cd "${dxy_mrinfuse}/${cmplxmods}"
@@ -854,7 +854,7 @@ infuse =
   #
   # Alert user if AWS config perhaps not configured appropriately.
   if [ -n "$(ls ~/.kube/*.yaml 2> /dev/null)" ]; then
-    if /usr/bin/env rg "command: aws" ~/.kube/*.yaml > /dev/null 2>&1; then
+    if command rg "command: aws" ~/.kube/*.yaml > /dev/null 2>&1; then
       warn
       warn "BWARE: You probably need to use an absolute path to AWS in your kubeconfig."
       warn
@@ -868,7 +868,7 @@ infuse =
       warn
       warn "- See the following file(s):"
       warn
-      /usr/bin/env rg "command: aws" ~/.kube/*.yaml
+      command rg "command: aws" ~/.kube/*.yaml
     fi
   fi
 

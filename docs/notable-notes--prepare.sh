@@ -12,7 +12,7 @@ NOT_NOT_VIB_DIR="notable-notes--vibrant"
 NOT_NOT_WOO_DIR="notable-notes--woodlot"
 
 # CPYST: To resolve Unicode escapes in normal `ls`, echo it, e.g.,
-#   /bin/ls         # shows, e.g., '05☞☞☞☞☞☞'$'\360\237\247\275''☞☞...'
+#   command ls      # shows, e.g., '05☞☞☞☞☞☞'$'\360\237\247\275''☞☞...'
 #   echo "$(ll)"    # shows, e.g., '05☞☞☞☞☞☞🧽☞☞☞☞☞☞☞☞☞☞☞☞☞☞☞☞☞☞☞☞☞...'
 
 print_placeholders__vibrant () {
@@ -108,7 +108,7 @@ revive_or_die_placeholder_assets () {
 
     # Allow easy renaming: remove any file with same prefix (we'll recreate
     # it if necessary; or leave it removed if corresponding symlink exists).
-    find . -maxdepth 1 -type f -iname "${prefix}*" -exec /bin/rm {} +
+    find . -maxdepth 1 -type f -iname "${prefix}*" -exec /usr/bin/env rm {} +
 
     if test -n "$(find . -maxdepth 1 -type l -iname "${prefix}*")"; then
       >&2 echo "${prefix}: Removed placeholder(s)"
