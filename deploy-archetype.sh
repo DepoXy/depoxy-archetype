@@ -259,7 +259,7 @@ register_depoxy_project_paths () {
   # and falls-back on the default path, ~/.depoxy/ambers.
   # - We'll mimic that here, which seems like the best approach.
   # - Alternatively, we could grab the path from `command -v mredit`, e.g.,
-  #     ambers_path="$(dirname "$(dirname "$(command -v mredit)")")"
+  #     ambers_path="$(dirname -- "$(dirname -- "$(command -v mredit)")")"
   #   but that seems fragile.
   # E.g., "/(Users|home)/<user>/.depoxy/ambers"
   local ambers_path="${DEPOXYDIR_BASE_FULL:-${HOME}/.depoxy}/ambers"
@@ -457,7 +457,7 @@ m4_shim_make_file () {
   # says m4 failed) could be misleading, so at least handle one scenario:
   # unknown directory path (because we called `mkdir` on all the target
   # directories already, the path should exist).
-  local dest_dir="$(dirname "${dest_path}")"
+  local dest_dir="$(dirname -- "${dest_path}")"
 
   if [ ! -d "${dest_dir}" ]; then
     set +x
@@ -648,7 +648,7 @@ prepare_symlinks_fs () {
   prepare_client_fs "${DXY_MAKE_LNS_FULL}"
 
   # So this path doesn't appear missing on diff/meld.
-  ln -s "$(realpath -- "$0")" "${DXY_MAKE_LNS_FULL}/$(basename "$0")"
+  ln -s "$(realpath -- "$0")" "${DXY_MAKE_LNS_FULL}/$(basename -- "$0")"
 }
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
@@ -857,7 +857,7 @@ init_repo () {
   cd "${DXY_DEPOXY_CLIENT_FULL}"
 
   mv "README.md" "README.md-NEW"
-  touch "README.md"
+  touch -- "README.md"
 
   # Note that Git config not guaranteed to be wired, so specify
   # necessary config, like the user.
@@ -969,8 +969,8 @@ main () {
   set -e
 
   # Run from the root of this file.
-  local archetype_root="$(dirname "$(realpath "$0")")"
-  local deploysh_name="$(basename "$0")"
+  local archetype_root="$(dirname -- "$(realpath -- "$0")")"
+  local deploysh_name="$(basename -- "$0")"
 
   cd "${archetype_root}"
 

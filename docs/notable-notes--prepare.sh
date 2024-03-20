@@ -113,7 +113,7 @@ revive_or_die_placeholder_assets () {
     if test -n "$(find . -maxdepth 1 -type l -iname "${prefix}*")"; then
       >&2 echo "${prefix}: Removed placeholder(s)"
     else
-      touch "${line}"
+      touch -- "${line}"
 
       >&2 echo "${prefix}: Created placeholder"
     fi

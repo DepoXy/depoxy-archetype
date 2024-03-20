@@ -96,7 +96,7 @@ autocommit =
   #
   # ***
   #
-  local depoxy_client_id="$(basename ${MR_REPO})"
+  local depoxy_client_id="$(basename -- "${MR_REPO}")"
   #
   # Prepare args, e.g., `autocommit -y`, or `autocommit -f`.
   git_auto_commit_parse_args "$@"
@@ -501,7 +501,7 @@ infusePostRebase =
       #
       link_hard \
         "${kubeconfig}" \
-        "${HOME}/.kube/$(basename ${kubeconfig})"
+        "${HOME}/.kube/$(basename -- "${kubeconfig}")"
     fi
   done
 
@@ -510,7 +510,7 @@ infuse =
   mr -d . -n infusePostRebase
   #
   # Get the client name, e.g., 'XXXX' from ~/.depoxy/stints/XXXX.
-  local depoxy_client_id="$(basename ${MR_REPO})"
+  local depoxy_client_id="$(basename -- "${MR_REPO}")"
   #
   # *** DepoXy config
   #

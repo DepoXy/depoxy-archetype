@@ -123,7 +123,7 @@ bashdx_wire_aliases_pushd_paths_cdw () {
       error 'The \`cdw\` command is not configured. Please customize it.'
       error \"- Edit the function “${FUNCNAME[0]}” from the file:\"
       error
-      error \"    \$(realpath \${BASH_SOURCE[0]})\"
+      error \"    \$(realpath -- \"\${BASH_SOURCE[0]}\")\"
     }"
   fi
 }
