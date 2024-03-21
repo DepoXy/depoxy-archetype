@@ -279,7 +279,7 @@ autocommit =
     command rm -rf -- "${gpg_backup}"
     mkdir "${gpg_backup}"
     # Copy normal, non-dot files and directories.
-    find ~/.gnupg/* -maxdepth 0 \( -type f -o -type d \) -exec /usr/bin/env cp -a {} "${gpg_backup}" \;
+    find ~/.gnupg/* -maxdepth 0 \( -type f -o -type d \) -exec cp -a -- {} "${gpg_backup}" \;
     git_auto_commit_many $(find ${gpg_backup}/ -type f -o -type l) \
       -m "${CLEARED_ACI}: Update: ${gpg_backup}/"
   fi
@@ -751,7 +751,7 @@ infuse =
     local cmplxmods=".config/karabiner/assets/complex_modifications"
     # find "${dxy_mrinfuse}/${cmplxmods}" -maxdepth 1 -type l -exec echo {} +
     # Remove existing links, lest you add links to the linked directories.
-    find "${dxy_mrinfuse}/${cmplxmods}" -maxdepth 1 -type l -exec /usr/bin/env rm {} +
+    find "${dxy_mrinfuse}/${cmplxmods}" -maxdepth 1 -type l -exec rm -- {} +
     # Symlink private KE cfg.
     local cbinfuser="${MR_REPO}/home"
     cd "${dxy_mrinfuse}/${cmplxmods}"

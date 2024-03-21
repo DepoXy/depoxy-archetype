@@ -108,7 +108,7 @@ revive_or_die_placeholder_assets () {
 
     # Allow easy renaming: remove any file with same prefix (we'll recreate
     # it if necessary; or leave it removed if corresponding symlink exists).
-    find . -maxdepth 1 -type f -iname "${prefix}*" -exec /usr/bin/env rm {} +
+    find . -maxdepth 1 -type f -iname "${prefix}*" -exec rm -- {} +
 
     if test -n "$(find . -maxdepth 1 -type l -iname "${prefix}*")"; then
       >&2 echo "${prefix}: Removed placeholder(s)"
