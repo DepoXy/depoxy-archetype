@@ -100,13 +100,16 @@ export DEPOXY_PROJLNS="${HOME}/DXY_DEPOXY_PROJLNS_NAME"
 #   CXREF: ~/.homefries
 #     https://github.com/landonb/home-fries#🍟
 
-#  # Path to home-fries checkout, e.g., ~/.homefries
-#  export HOMEFRIES_DIR="${HOME}/.homefries"
+# Path to home-fries checkout, e.g., ~/.homefries
 #
-#  # Path to home-fries bin/. e.g., ~/.homefries/bin
-#  export HOMEFRIES_BIN="${HOMEFRIES_DIR}/bin"
+#  export HOMEFRIES_DIR="${HOME}/.homefries"
 
-#  # Assortment of different shell projects' scripts
+# Path to home-fries bin/. e.g., ~/.homefries/bin
+#
+#  export HOMEFRIES_BIN="${HOMEFRIES_DIR:-${HOME}/.homefries}/bin"
+
+# Assortment of different shell projects' scripts
+#
 #  export SHOILERPLATE="${HOME}/.kit/sh"
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
@@ -116,7 +119,8 @@ export DEPOXY_PROJLNS="${HOME}/DXY_DEPOXY_PROJLNS_NAME"
 #   CXREF: ~/.kit/git/ohmyrepos
 #     https://github.com/landonb/ohmyrepos#😤
 
-#  # Path to home-fries checkout, e.g., ~/.homefries
+# Path to OMR lib/, e.g., ~/.kit/git/ohmyrepos/lib
+#
 #  export OHMYREPOS_LIB="${GITREPOSPATH:-${HOME}/.kit/git}/ohmyrepos/lib"
 
 #  # Specify base URL for git_clone_giturl (defaults https://github.com/).
