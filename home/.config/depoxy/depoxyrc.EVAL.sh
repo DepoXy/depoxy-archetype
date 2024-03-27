@@ -135,7 +135,7 @@ export DEPOXY_PROJLNS="${HOME}/DXY_DEPOXY_PROJLNS_NAME"
 #     https://github.com/DepoXy/myrepos-mredit-command#🧜
 
 # Path to generated mrconfig symlinks, used by `mredit`/`mropen`.
-export MREDIT_CONFIGS="${DEPOXY_PROJLNS}/mymrconfigs"
+export MREDIT_CONFIGS="${DEPOXY_PROJLNS:-${HOME}/.projlns}/mymrconfigs"
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
