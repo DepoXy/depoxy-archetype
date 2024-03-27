@@ -34,37 +34,6 @@ order = 191
 # ========================================================================
 # ------------------------------------------------------------------------
 
-[DEFAULT]
-# CXREF:
-#   remotes_add_publish_entrust:
-#     DXY_DEPOXYAMBERS_DIR_TILDE/home/.kit/git/ohmyrepos/lib/.mrconfig-wireremotes
-#
-include = cat "${DEPOXYAMBERS_DIR:-${HOME}/.depoxy/ambers}/home/.kit/git/ohmyrepos/lib/.mrconfig-wireremotes"
-
-# USAGE: Uncomment this block and define environs
-#        to use remotes_add_publish_entrust, e.g.,
-#
-#   [DEFAULT]
-#
-#   # For remotes_add_publish_entrust:
-#   lib =
-#     MR_REPO_PUBLISH_USER_URL="git@github.com:"
-#     #
-#     MR_REPO_ENTRUST_USER_URL="git@github_userX:"
-#     MR_REPO_ENTRUST_USER_NAME="userX"
-#
-# - Execute using `run`, e.g.,
-#
-#   $ MR_INCLUDE=entrusted mr -d / -n run remotes_add_publish_entrust
-#
-# - You can also easily define the URL at runtime, e.g.,
-#
-#   $ MR_REPO_PUBLISH_USER_URL="git@github.com:" \
-#     mr -d . -n run remotes_add_publish_entrust
-
-# ========================================================================
-# ------------------------------------------------------------------------
-
 [${DEPOXYDIR_STINTS_FULL:-${HOME}/DXY_DEPOXYDIR_BASE_NAME/DXY_DEPOXYDIR_STINTS_NAME}/DXY_DEPOXY_CLIENT_ID]
 # NOTE: This repo has no remote (unless you consider the temporary mountpoint),
 #       so stub remote-ish commands to avoid mr fails. See instead: dxup/dxdn.
