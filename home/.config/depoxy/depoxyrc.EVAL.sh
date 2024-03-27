@@ -123,11 +123,18 @@ export DEPOXY_PROJLNS="${HOME}/DXY_DEPOXY_PROJLNS_NAME"
 #
 #  export OHMYREPOS_LIB="${GITREPOSPATH:-${HOME}/.kit/git}/ohmyrepos/lib"
 
-#  # Specify base URL for git_clone_giturl (defaults https://github.com/).
-#  # - On @leader machine where personal Git SSH is setup, you might use:
-#  #   export OHMYREPOS_GIT_HOST_ORIGIN="git@github.com:"
-#  # - On @client, you might just use HTTPS for pull access only:
-#  export OHMYREPOS_GIT_HOST_ORIGIN="https://github.com/"
+# Specify base URL for `_github_url_according_to_user`.
+# - Defaults https://github.com/
+# - Used by `git_clone_giturl`:
+#   - Via `mr_repo_checkout` via 'checkout'.
+#   - Via 'wireRemotes' and 'reportRemotes'.
+# - On @leader machine where personal Git SSH is setup, you might use:
+#     export MR_GIT_HOST_ORIGIN="git@github.com:"
+# - On @client, you might just use HTTPS for pull access only:
+#     export MR_GIT_HOST_ORIGIN="https://github.com/"
+#
+#  export MR_GIT_HOST_ORIGIN="git@github.com:"
+export MR_GIT_HOST_ORIGIN="https://github.com/"
 
 # *** Unless the 🧜 is the famous `mredit`
 #
@@ -136,6 +143,11 @@ export DEPOXY_PROJLNS="${HOME}/DXY_DEPOXY_PROJLNS_NAME"
 
 # Path to generated mrconfig symlinks, used by `mredit`/`mropen`.
 export MREDIT_CONFIGS="${DEPOXY_PROJLNS:-${HOME}/.projlns}/mymrconfigs"
+
+# Specify known remotes not configured in OMR (e.g., those
+# managed by 'ffssh', and 'travel' and 'unpack').
+#
+#  export MR_KNOWN_REMOTES="host1 host2 host3"
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
