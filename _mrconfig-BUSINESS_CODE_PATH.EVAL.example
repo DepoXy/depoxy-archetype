@@ -32,7 +32,7 @@ infuse =
 # "Your ACME-specific OMR config and Homefries bashrc"
 # E.g., ~/.depoxy/stints/2324/flast.sh
 [${DEPOXYDIR_STINTS_FULL:-${HOME}/.depoxy/stints}/DEPOXY_CLIENT_ID/BUSINESS_PROJECT_NAME_DOTFILES]
-checkout = git clone -o origin 'git@BUSINESS_GITCONFIG_HUB_HOST:BUSINESS_GITSERVER_USER_REPO.git'
+lib = remote_set origin git@BUSINESS_GITCONFIG_HUB_HOST:BUSINESS_GITSERVER_USER_REPO.git
 autocommit =
   # Prepare args, e.g., `autocommit -y`, or `autocommit -f`.
   git_auto_commit_parse_args "$@"
@@ -109,7 +109,7 @@ autocommit =
 #     the project doesn't include one already).
 
 [${CLIENTHOME:-${HOME}/BUSINESS_CODE_PATH}/division1/project-AA]
-checkout = git clone -o origin 'git@github.BUSINESS_CODE_PATH.com:division/project-AA.git'
+lib = remote_set origin git@github.BUSINESS_CODE_PATH.com:division/project-AA.git
 infuse =
   link_private_exclude "$@"
   link_private_ignore_ "$@"
