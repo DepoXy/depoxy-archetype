@@ -37,10 +37,10 @@ order = 191
 [${DEPOXYDIR_STINTS_FULL:-${HOME}/DXY_DEPOXYDIR_BASE_NAME/DXY_DEPOXYDIR_STINTS_NAME}/DXY_DEPOXY_CLIENT_ID]
 # NOTE: This repo has no remote (unless you consider the temporary mountpoint),
 #       so stub remote-ish commands to avoid mr fails. See instead: dxup/dxdn.
-checkout = true
-# Optional remote wiring, though the author prefers to kept their DepoXy Client truly private.
-wireupstream = [ -z "DXY_DEPOXY_CLIENT_REMOTE" ] ||
-  remote_add entrust "DXY_DEPOXY_CLIENT_REMOTE"
+lib = [ -z "DXY_DEPOXY_CLIENT_REMOTE" ] ||
+  remote_set entrust "DXY_DEPOXY_CLIENT_REMOTE"
+checkout = [ -z "DXY_DEPOXY_CLIENT_REMOTE" ] ||
+  mr_repo_checkout
 #
 fetch = true
 pull = true

@@ -123,16 +123,15 @@ infuse =
 #   GitHub server, and that uses npm, ESLint, Jest, and husky.
 
 [${CLIENTHOME:-${HOME}/BUSINESS_CODE_PATH}/projectZ/superflycool]
-
-# Note that my checkouts use an uncommon remote name, 'release':
-checkout = git clone -o origin 'git@github.BUSINESS_CODE_PATH.com:projectZ/superflycool.git' 'superflycool'
-# However, the `gh` command expects 'upstream', 'github', or 'origin'.
-# - I use the unconventional remote names, 'release', 'protected', and 'private',
-#   so that I know if I'm working on a public or client project ('release'); or
-#   on a personal project that's on GitHub but not public ('protected'), or one
-#   that I don't even push to GitHub ('private'). So for `gh` to work (and for
-#   git-begin-review to work), use one of the conventional names. Or use both:
-wireupstream = remote_add github 'git@github.BUSINESS_CODE_PATH.com:projectZ/superflycool.git'
+# Note that the `gh` command expects 'upstream', 'github', or 'origin'.
+# - I often use unconventional remote names, e.g., I'll use 'publish'
+#   for the remote I can push to, and I'll use 'starter' for an
+#   upstream project I only pull from (e.g., the project I forked from).
+#   - But for `gh` to work (and for git-begin-review to work), we must
+#     use one of the conventional names that `gh` expects. Or use both.
+lib =
+  remote_set publish git@github.BUSINESS_CODE_PATH.com:projectZ/superflycool.git
+  remote_set github git@github.BUSINESS_CODE_PATH.com:projectZ/superflycool.git
 
 # This infuse tasks includes all the tricks I've used on work projects.
 # Tailor as necessary.
