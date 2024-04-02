@@ -194,6 +194,8 @@ export GIT_POST_REBASE_EXEC="(mr -q -d . -n infusePostRebase && echo 'Effectuall
 
 export GIT_BUMP_VERSION_TAG_PEP400CMP_ENABLE=true
 
+export GITNUBS_DEV=true
+
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
 # Tell slather-defaults (macOS-onboarder) if personal or professional machine.
