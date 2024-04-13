@@ -107,7 +107,7 @@
 # so that the ~/Desktop does not get cluttered with files.
 #
 # - This path is set by `screenshots_customize_location` called by:
-#     ~/.depoxy/ambers/bin/macOS/onboarder/slather-defaults.sh
+#     ~/.depoxy/ambers/bin/onboarder/slather-defaults.sh
 # - CXREF: DXY_SCREENCAPS_LOCATION
 /DXY_SCREENCAPS_LOCATION/
 
