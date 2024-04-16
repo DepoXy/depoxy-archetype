@@ -690,6 +690,8 @@ infuse =
   #
   # *** tig
   #
+  # Note this overwrites DepoXy's ~/.depoxy/ambers/home/.config/tig/config
+  # fallback symlink.
   mkdir -p "${HOME}/.config/tig"
   symlink_overlay_file \
     "${MR_REPO}/home/.config/tig/config" \
