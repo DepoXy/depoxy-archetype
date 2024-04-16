@@ -437,7 +437,7 @@ m4_shim () {
 m4_shim_make_file () {
   local tail_lns="$1"
   local tail_path="$2"
-  local client_file="$3"
+  local client_file="$3"  # Unused
   local dest_path="$4"
   # Additional params specify additional m4 definitions
   shift 4
