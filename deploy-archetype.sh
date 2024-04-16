@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 # vim:tw=0:ts=2:sw=2:et:norl:ft=bash
 # Author: Landon Bouma <https://tallybark.com/>
 # Project: https://github.com/DepoXy/depoxy-archetype#🏹
@@ -1008,8 +1009,12 @@ main () {
   announce_completed
 }
 
-# Run the installer iff being executed.
-if ! $(printf %s "$0" | grep -q -E '(^-?|\/)(ba|da|fi|z)?sh$' -); then
+if [ "$0" = "${BASH_SOURCE[0]}" ]; then
+  # Being executed.
   main "$@"
 fi
+
+unset -f main
+unset -f parse_args
+unset -f source_deps
 
