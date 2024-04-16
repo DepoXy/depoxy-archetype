@@ -1,5 +1,5 @@
 # USAGE:
-#   tnewtons="${GITREPOSPATH:-${DOPP_KIT:-${HOME}/.kit}/git}/tig-newtons/tig/config" &&
+#   tnewtons="${GITREPOSPATH:-${DOPP_KIT:-${HOME}/.kit}/git}/tig-newtons/tig" &&
 #   m4_shim \
 #     "+12" "home/.config/tig/config.EVAL" \
 #     "home/.config/tig/config" \
