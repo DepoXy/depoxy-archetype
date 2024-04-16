@@ -494,7 +494,7 @@ m4_shim_make_file () {
   #
   # DUNNO: I'm not sure if the hassle of using m4 makes it easier to use then
   # running a bunch of `sed` commands on each template. Probably a toss-up.
-  eval m4 --prefix-builtins "${DEPOXY_m4_DEFINES}" "${custom_m4_defines}" \
+  eval $(m4_kludge) --prefix-builtins "${DEPOXY_m4_DEFINES}" "${custom_m4_defines}" \
     <(printf "m4_changequote(\`[[[', \`]]]')"; printf "m4_changecom()"; tail -n "${tail_lns}" "${tail_path}") \
     > "${dest_path}"
 
@@ -517,6 +517,12 @@ m4_define_value_must_be_specified () {
   >&2 echo "ERROR: Key or value “${definition}” expects a value or key"
 
   exit 1
+}
+
+# KLUGE: macOS Sonoma 14.4.1 `m4` always raises install-Xcode dialog,
+# i.e., it's a buggy little scamp.
+m4_kludge () {
+  command -v gm4 || command -v m4
 }
 
 # ================================================================= #
