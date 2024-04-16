@@ -16,8 +16,11 @@
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
-# USYNC: This § GENERATED: cdtn && ./customize.sh > tig/config
-# - Only change: I uncomment the --minimal-editor configs.
+# BWARE: **This file is GENERATED**
+#
+#   cdtn && ./customize.sh > tig/config
+#
+# - Only change: I uncommented the --minimal-editor configs.
 
 # ***
 
