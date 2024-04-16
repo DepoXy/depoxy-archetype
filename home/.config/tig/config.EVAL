@@ -44,9 +44,9 @@ source DXY_TIG_NEWTONS_PATH/bind-rebase--minimal-editor
 
 # USYNC: This § loads DXY tig config; maintained manually.
 
-source DXY_DEPOXYAMBERS_DIR_TILDE/home/.config/tig/config-depoxy
-source DXY_DEPOXYAMBERS_DIR_TILDE/home/.config/tig/config-depoxy-main
-source DXY_DEPOXYAMBERS_DIR_TILDE/home/.config/tig/config-depoxy-diff
+source DXY_DEPOXYAMBERS_DIR/home/.config/tig/config-depoxy
+source DXY_DEPOXYAMBERS_DIR/home/.config/tig/config-depoxy-main
+source DXY_DEPOXYAMBERS_DIR/home/.config/tig/config-depoxy-diff
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
