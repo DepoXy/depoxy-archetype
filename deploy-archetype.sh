@@ -345,9 +345,9 @@ register_git_put_wise_paths () {
 
 source_deps () {
   # Load: DEPOXY_* path and settings environs.
-  # - Assumes Archetype installed under DepoXy Ambers, e.g.,
-  #   ~/.depoxy/ambers/archetype.
-  . "${archetype_root}/../core/depoxy_fs.sh"
+  local ambers_path="${DEPOXYDIR_BASE_FULL:-${HOME}/.depoxy}/ambers"
+  local ambers_root="${DEPOXYAMBERS_DIR:-${ambers_path}}"
+  . "${ambers_root}/core/depoxy_fs.sh"
 
   # Required by distro_util.sh: tweak_errexit
   . "${HOMEFRIES_LIB:-${HOME}/.homefries/lib}/process_util.sh"
@@ -1012,6 +1012,8 @@ main () {
 if [ "$0" = "${BASH_SOURCE[0]}" ]; then
   # Being executed.
   main "$@"
+else
+  source_deps
 fi
 
 unset -f main
