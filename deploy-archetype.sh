@@ -700,7 +700,7 @@ prepare_depoxy_fs () {
 
 # TRYME:
 #   find . -path ./.git -prune -o -type d -print
-#   #find . -path ./.git -prune -o -type d -exec echo "${DXY_DEPOXY_CLIENT_HOME}/{}" \;
+# # find . -path ./.git -prune -o -type d -exec echo "${DXY_DEPOXY_CLIENT_HOME}/{}" \;
 #   find . -path ./.git -prune -o -type d -exec echo "${DXY_DEPOXY_CLIENT_FULL}/{}" \;
 
 # SAVVY: Use `-mindepth 1` to exclude current directory (.).
