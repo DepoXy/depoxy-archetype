@@ -370,10 +370,12 @@ register () {
   local vname="$1"
   local value="$2"
 
-  if [ $# -ge 2 ] || [ -v ${vname} ]; then
+  # SAVVY: Note that [ -v FOO ] incompatible with macOS Bash v3,
+  # so using [ -n ${!FOO+x} ] test instead.
+  if [ $# -ge 2 ] || [ -n ${!vname+x} ]; then
     # SAVVY: Avoid variable expansion in ${value}, e.g., don't call this:
     #   eval "${vname}=\"\${${vname}:-${value}}\""
-    [ -v ${vname} ] || eval "${vname}='${value}'"
+    [ -n ${!vname+x} ] || eval "${vname}='${value}'"
     TEMPLATE_VARS+=("${vname}")
   else
     # Currently, all `register`'ed variables set a value (which might be
