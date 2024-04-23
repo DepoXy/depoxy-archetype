@@ -355,6 +355,7 @@ source_deps () {
   . "${HOMEFRIES_LIB:-${HOME}/.homefries/lib}/distro_util.sh"
 
   # Load user_name_full (requires os_is_macos).
+  # - CXREF: ~/.homefries/lib/user_util.sh
   . "${HOMEFRIES_LIB:-${HOME}/.homefries/lib}/user_util.sh"
 }
 
