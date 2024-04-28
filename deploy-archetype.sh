@@ -938,6 +938,21 @@ omr_dxc_autocommit () {
   echo
 
   mr -d "${DXY_DEPOXY_CLIENT_FULL}" -n autocommit -y
+
+  omr_dxc_autocommit_verify
+}
+
+omr_dxc_autocommit_verify () {
+  (
+    cd "${DXY_DEPOXY_CLIENT_FULL}"
+
+    if [ -z "$(git status --porcelain)" ]; then
+
+      return 0
+    fi
+
+    >&2 echo "BWARE: OMR autocommit did not commit all changes"
+  )
 }
 
 # ***
