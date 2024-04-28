@@ -9,60 +9,61 @@
 " DXY_HEADER_PROJECT
 " DXY_HEADER_LICENSE
 " Summary: This is a user-customizable file loaded by Dubs Grep Steady.
-" Helpful: Run :h dubs-grep-steady / See also some hints below.
-" ====================================================================
-" YOU: Modify this list to customize the grep project paths prompt.
-"      - The ~/BUSINESS_CODE_PATH paths below are examples.
-"      - The other default paths below are wired to real paths.
-" HINT: Run :GrepSteadyReload (or restart Vim) after you modify it.
+" Helpful: :GrepSteadyReload / :h dubs-grep-steady / See also hints below.
 
 let g:ds_simple_grep_locat_lookup = [
   \ "Search in:",
   \
   \ "[Enter 1 to Cancel]",
-  \ "2",
-  \ "3",
-  \ "4",
-  \ "4",
-  \ "6",
-  \ "7",
-  \ "8",
-  \ $HOME . "/DXY_DEPOXY_PROJLNS_NAME/depoxy-deeplinks ",
-  \ "10",
-  \
-  \ "11",
-  \ "12",
-  \ $HOME . "/DXY_DEPOXY_PROJLNS_NAME/docs-and-backlog ",
-  \ "14",
-  \ "15",
-  \ "16 ",
-  \ $HOME . "/DXY_DEPOXYDIR_BASE_NAME/DXY_DEPOXYAMBERS_NAME ",
-  \ $HOME . "/DXY_HOMEFRIES_DIR_NAME ",
-  \ $HOME . "/.vim/pack/PERSONAL_CVS_VIM_PLUG_PACKAGE_NAME ",
-  \ "20",
-  \
-  \ $HOME . "/BUSINESS_CODE_PATH/division1 ",
-  \ "22",
-  \ $HOME . "/BUSINESS_CODE_PATH/division1/project-AA ",
-  \ $HOME . "/BUSINESS_CODE_PATH/projectZ/superflycool ",
-  \ $HOME . "/BUSINESS_CODE_PATH/projectZ/project-123-testless ",
-  \ "26",
-  \ "27",
-  \ "28",
-  \ "29",
-  \ "30",
-  \
-  \ "31",
-  \ "32",
-  \ "33",
-  \ "34",
-  \ "----------------------------------------------------------------- ",
-  \ "36",
-  \ "37",
-  \ "38",
-  \ "39",
-  \ ""
+  \ "",
+  \ "",
+  \ "",
+  \ "",
+  \ "",
+  \ "",
+  \ "",
+  \ "~/DXY_DEPOXY_PROJLNS_NAME/depoxy-deeplinks ",
+  \ "",
+  \ "",
+  \ "",
+  \ "~/DXY_DEPOXY_PROJLNS_NAME/docs-and-backlog ",
+  \ "",
+  \ "",
+  \ " ",
+  \ "~/DXY_DEPOXYDIR_BASE_NAME/DXY_DEPOXYAMBERS_NAME ",
+  \ "~/DXY_HOMEFRIES_DIR_NAME ",
+  \ "~/.vim/pack/PERSONAL_CVS_VIM_PLUG_PACKAGE_NAME ",
+  \ "",
+  \ "~/BUSINESS_CODE_PATH/division1 ",
+  \ "",
+  \ "~/BUSINESS_CODE_PATH/division1/project-AA ",
+  \ "~/BUSINESS_CODE_PATH/projectZ/superflycool ",
+  \ "~/BUSINESS_CODE_PATH/projectZ/project-123-testless ",
+  \ "",
+  \ "",
+  \ "",
+  \ "",
+  \ "",
+  \ "",
+  \ "",
+  \ "",
+  \ "",
+  \ "",
+  \ "",
+  \ "",
+  \ "",
+  \ "",
+  \ "─────────────────────────────────────────────────────────────"
   \]
+
+" ====================================================================
+" USAGE: Modify the list above to customize the grep project paths prompt.
+"      - The ~/BUSINESS_CODE_PATH paths above are examples.
+"      - The other default paths above are wired to real paths.
+"      - The lines above are +10 offset from how they're numbered by
+"        the `inputlist` command (:h inputlist).
+" USAGE: Run :GrepSteadyReload (or restart Vim) after you modify the list.
+" ====================================================================
 
 " *********************************************************************** "
 
