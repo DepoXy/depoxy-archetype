@@ -77,9 +77,9 @@ let g:ds_simple_grep_locat_lookup = [
 "
 " Add your own paths and reorder the list however you'd like.
 "
-" Note: The numbers already in the list above are just placeholders. They
-" indicate the number(s) you'd type to choose that entry (path) when you
-" search.
+" Note: The file line numbers of the list above are 10 more than the
+" number that you'd type to choose that entry (path) when you search.
+" (E.g., the 'press 1 to cancel' hint is on line 11 of this file.)
 "
 " Note: If the list is too tall for your Vim window, you'll have to hit
 " Space to scroll it. So you'll probably want to limit the number of
