@@ -187,8 +187,8 @@ autocommit =
   #
   if [ -d "${HOME}/.aws" ]; then
     mkdir -p "${MR_REPO}/home/.aws"
-    command cp "${HOME}/.aws/config" "${MR_REPO}/home/.aws/config"
-    command cp "${HOME}/.aws/credentials" "${MR_REPO}/home/.aws/credentials"
+    command cp -- "${HOME}/.aws/config" "${MR_REPO}/home/.aws/config"
+    command cp -- "${HOME}/.aws/credentials" "${MR_REPO}/home/.aws/credentials"
     # NOTE: This `find` won't work if there are spaces in any paths.
     git_auto_commit_many $(find home/.aws/ -type f -o -type l) \
       -m "${PRIVATE_ACI}: Update: home/.aws/ files"
