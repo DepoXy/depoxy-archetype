@@ -1,7 +1,7 @@
 " USAGE:
 "   m4_shim \
-"     "+8" "home/vim-trap/plugin/pdbr-insert-set-trace.EVAL.vim" \
-"     "home/vim-trap/plugin/pdbr-insert-set-trace.vim"
+"     "+8" "home/vim-trap/after/plugin/pdbr-insert-set-trace.EVAL.vim" \
+"     "home/vim-trap/after/plugin/pdbr-insert-set-trace.vim"
 
 " +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 

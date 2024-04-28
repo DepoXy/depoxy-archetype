@@ -1,7 +1,7 @@
 " USAGE:
 "   m4_shim \
-"     "+8" "home/vim-trap/plugin/syntax-off-certain-files.EVAL.vim" \
-"     "home/vim-trap/plugin/syntax-off-certain-files.vim"
+"     "+8" "home/vim-trap/after/plugin/blocklist-nospell.EVAL.vim" \
+"     "home/vim-trap/after/plugin/blocklist-nospell.vim"
 
 " +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 

@@ -1,7 +1,7 @@
 " USAGE:
 "   m4_shim \
-"     "+8" "home/vim-trap/plugin/blocklist-syntax-off.EVAL.vim" \
-"     "home/vim-trap/plugin/blocklist-syntax-off.vim"
+"     "+8" "home/vim-trap/after/plugin/blocklist-syntax-off.EVAL.vim" \
+"     "home/vim-trap/after/plugin/blocklist-syntax-off.vim"
 
 " +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
