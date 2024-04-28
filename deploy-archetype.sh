@@ -940,6 +940,8 @@ omr_dxc_autocommit () {
   mr -d "${DXY_DEPOXY_CLIENT_FULL}" -n autocommit -y
 
   omr_dxc_autocommit_verify
+
+  omr_dxc_autocommit_demarcate
 }
 
 omr_dxc_autocommit_verify () {
@@ -952,6 +954,31 @@ omr_dxc_autocommit_verify () {
     fi
 
     >&2 echo "BWARE: OMR autocommit did not commit all changes"
+  )
+}
+
+omr_dxc_autocommit_demarcate () {
+  local empty_msg=""
+  if [ -n "${DXY_DEPOXY_INIT_AUTOCOMMIT_HRULE+x}" ]; then
+    empty_msg="${DXY_DEPOXY_INIT_AUTOCOMMIT_HRULE}"
+  else
+    # Note that tig doesn't display many of the colorful emoji,
+    # e.g., tig shows 🦆 but not 🪿. Non-colorful characters
+    # so far seem to all work. Here we just want to delineate
+    # the initial commits of the generated files before any
+    # edits the user starts making.
+    empty_msg="「 🎀 ────⋆⋅☆⋅⋆──  ﮩ٨ـﮩﮩ٨ـ♡ﮩ٨ـﮩﮩ٨ـ  𖡼𖤣𖥧𖡼𓋼𖤣𖥧𓋼𓍊  ︶꒷꒦︶  ✩ ♬ ₊.🎧⋆☾⋆⁺₊✧  ˚˖𓍢🌷✧˚⋆  ✦ 」"
+  fi
+
+  if [ -z "${empty_msg}" ]; then
+
+    return 0
+  fi
+
+  (
+    cd "${DXY_DEPOXY_CLIENT_FULL}"
+
+    git commit -q --allow-empty -m "${empty_msg}"
   )
 }
 
