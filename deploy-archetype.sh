@@ -549,8 +549,8 @@ fail_if_target_exists_and_non_empty () {
 
 prompt_continue_or_exit () {
   echo "Looks good!"
-  echo "- All required variables have values."
-  echo "- Destination path empty or uncreated."
+  echo "- All required variables have values"
+  echo "- Destination path empty or uncreated"
   echo
 
   (
