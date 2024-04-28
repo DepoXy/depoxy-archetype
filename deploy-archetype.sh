@@ -553,9 +553,20 @@ prompt_continue_or_exit () {
   echo "- Destination path empty or uncreated"
   echo
 
+  local ignored_key
+
   (
     printf " Press any key to see variable values [.] "
-    read -n 1 ignored_key
+    # SAVVY: Use -e (readline) so arrow keys, etc., are ignored.
+    # - If not using -e, if user presses arrow key, it injects more
+    #   than one char (escape code) that can be picked up by a later
+    #   `read`.
+    #   - You can avoid this with `read -t 0.1` to clear the buffer,
+    #     but Bash v3 -t doesn't support fractions (and this script
+    #     is macOS Bash v3-compatible), in which case you'd have to
+    #     `read -t 1`, which is annoying (and for some reason
+    #     `read -t 0` doesn't gobble the excess input).
+    read -e -n 1 ignored_key
 
     [ -z "${ignored_key}" ] || echo
 
@@ -567,10 +578,12 @@ prompt_continue_or_exit () {
   echo "  ${DXY_DEPOXY_CLIENT_TILDE}"
   echo
 
+  local the_choice
+
   # The directory doesn't exist or is empty, so defaulting Yes seems fine.
   #  printf " Are you ready to deploy? [y/N] "
   printf " Are you ready to deploy? [Y/n] "
-  read -n 1 the_choice
+  read -e -n 1 the_choice
 
   [ -z "${the_choice}" ] || echo
 
