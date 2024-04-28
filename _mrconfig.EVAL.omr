@@ -115,16 +115,23 @@ autocommit =
   git_auto_commit_one "_mrconfig-BUSINESS_CODE_PATH.example" \
     -m "${CLEARED_ACI}: DXA: OMR: Update: _mrconfig-BUSINESS_CODE_PATH.example"
   #
-  git_auto_commit_one_docs "README.rst"
-  #
-  git_auto_commit_one_docs ".whilom/README.rst"
+  for path in \
+    "README"* \
+    ".whilom/README"* \
+  ; do
+    if [ -f "${path}" ]; then
+      git_auto_commit_one_docs "${path}"
+    fi
+  done
   #
   # Ideally, .whilom/ files would be scoped the same as they'd be at the
   # same path under root DXC/. But this is a rarely-used, niche feature,
   # so follow this convention: Use .whilom/home/work/ for PRIVATE files.
   # Anything else under .whilom/ will be auto-committed unscoped.
-  git_auto_commit_many $(find .whilom/home/work/ -type f -o -type l) \
-    -m "${PRIVATE_ACI}: Update: .whilom/home/work/"
+  if [ -d ".whilom/home/work/" ]; then
+    git_auto_commit_many $(find .whilom/home/work/ -type f -o -type l) \
+      -m "${PRIVATE_ACI}: Update: .whilom/home/work/"
+  fi
   git_auto_commit_many $(find .whilom/ -type f -o -type l) \
     -m "${CLEARED_ACI}: Update: .whilom/"
   #
