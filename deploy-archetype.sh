@@ -872,8 +872,6 @@ extract_eval_command () {
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 # ================================================================= #
 
-DXC_EPHEMERAL_COMMIT_MESSAGE="Insert: Initial client tree."
-
 init_repo () {
   ! ${DXY_RUN_LNS_ONLY:-false} || return 0
 
@@ -900,9 +898,6 @@ init_repo () {
 
   git add .
 
-  # Don't commit. Have user run auto-commit after then `infuse`.
-  #
-  #  git ${conf_opts} commit -m "${DXC_EPHEMERAL_COMMIT_MESSAGE}" > /dev/null
 
   echo
   echo "Your new DepoXy Client repo is ready at:"
