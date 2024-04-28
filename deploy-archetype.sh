@@ -206,7 +206,8 @@ register_depoxydir_paths () {
   unset -v DXY_DEPOXYDIR_STINTS_HOME
   register "DXY_DEPOXYDIR_STINTS_HOME" "$( \
     echo "${DXY_DEPOXYDIR_BASE_FULL}/${DXY_DEPOXYDIR_STINTS_NAME}" \
-    | sed -E "s@^${HOME}(/|$)@\\\$HOME\1@")"
+    | sed -E "s@^${HOME}(/|$)@\\\$HOME\1@"
+  )"
 
   # E.g., "/(Users|home)/<user>/.depoxy/stints"
   unset -v DXY_DEPOXYDIR_STINTS_FULL
