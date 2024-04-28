@@ -214,9 +214,15 @@ register_depoxydir_paths () {
 
   # ***
 
+  # E.g., "/user/home/.depoxy/running"
+  register "DXY_DEPOXYDIR_RUNNING_FULL" \
+    "${DEPOXYDIR_RUNNING_FULL:-${HOME}/.depoxy/${DEPOXYDIR_RUNNING_NAME:-running}}"
+
   # E.g., "running"
-  # CXREF: Symlink created by DXC _mrconfig, see: DEPOXYDIR_RUNNING_FULL.
-  register "DXY_DEPOXYDIR_RUNNING_NAME" "${DEPOXYDIR_RUNNING_NAME}"
+  # CXREF: Symlink created by this script;
+  #   also reaffirmed by DXC _mrconfig, see: DEPOXYDIR_RUNNING_FULL.
+  register "DXY_DEPOXYDIR_RUNNING_NAME" \
+    "$(basename -- "${DXY_DEPOXYDIR_RUNNING_FULL}")"
 
   # ***
 
@@ -621,6 +627,12 @@ prepare_depoxy_fs () {
 
   # E.g., "/user/home/.depoxy/stints/XXXX"
   mkdir -p "${DXY_DEPOXY_CLIENT_FULL}"
+
+  # E.g., "/user/home/.depoxy/running"
+  if [ ! -e "${DXY_DEPOXYDIR_RUNNING_FULL}" ]; then
+    # Necessary for running initial DXC 'infuse' (which also makes this link).
+    command ln -s "${DXY_DEPOXY_CLIENT_FULL}" "${DXY_DEPOXYDIR_RUNNING_FULL}"
+  fi
 }
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
@@ -891,61 +903,66 @@ init_repo () {
   eval "git ${conf_opts} commit -q --allow-empty \
     -m \"Fresh: New DepoXy Client ${DXY_DEPOXY_CLIENT_ID}\""
 
-
-  echo
-  echo "Your new DepoXy Client repo is ready at:"
-  echo
-  echo "  ${DXY_DEPOXY_CLIENT_TILDE}"
-  echo
-
-  echo "Your next step is to run \`infuse\`."
-  echo
-  echo "- After that, run \`aci\` to make the first DepoXy Client commit."
-
   cd - > /dev/null
 }
 
 # ***
 
-omr_run_infuse () {
-  # Assume not client machine if caller set custom DXY_HOSTNAME.
-  [ "${DXY_HOSTNAME}" = "$(hostname)" ] || return 0
-
-  echo
-  echo "FIXME: TRYME: Let's try \`infuse\` from this script, what's the worst that can happen?"
-  echo "- Verify this works or not and cleanup this comment."
-  echo
-
-  mr -d / infuse
-}
-
-# ***
-
-omr_run_autocommit () {
-  # Assume not client machine if caller set custom DXY_HOSTNAME.
-  [ "${DXY_HOSTNAME}" = "$(hostname)" ] || return 0
-
-  echo
-  echo "FIXME: TRYME: Let's try \`aci\` from this script, what's the worst that can happen?"
-  echo "- Verify this works or not and cleanup this comment."
-  echo
-
-  mr -d / autocommit -y
-}
-
-# ***
-
-announce_completed () {
-  # init_repo already said something, unless --lns-only.
-  ${DXY_RUN_LNS_ONLY:-false} || return 0
-
+omr_dxc_infuse () {
   ! ${DRY_RUN} || return 0
+
+  # Assume not client machine if caller set custom DXY_HOSTNAME.
+  [ "${DXY_HOSTNAME}" = "$(hostname)" ] || return 0
+
+  echo
+  echo mr -d "${DXY_DEPOXY_CLIENT_FULL}" -n \
+    --config "${DXY_DEPOXY_CLIENT_FULL}/_mrconfig" \
+    infuse
+  echo
+
+  mr -d "${DXY_DEPOXY_CLIENT_FULL}" -n \
+    --config "${DXY_DEPOXY_CLIENT_FULL}/_mrconfig" \
+    infuse
+}
+
+# ***
+
+omr_dxc_autocommit () {
+  ! ${DRY_RUN} || return 0
+
+  # Assume not client machine if caller set custom DXY_HOSTNAME.
+  [ "${DXY_HOSTNAME}" = "$(hostname)" ] || return 0
+
+  echo
+  echo mr -d "${DXY_DEPOXY_CLIENT_FULL}" -n autocommit -y
+  echo
+
+  mr -d "${DXY_DEPOXY_CLIENT_FULL}" -n autocommit -y
+}
+
+# ***
+
+announce_completed_symlinks () {
+  ${DXY_RUN_MAKE_LNS:-false} || return 0
 
   echo
   echo "Your DepoXy Client symlinks are ready at:"
   echo
   echo "  ${DXY_MAKE_LNS_FULL}"
+}
+
+announce_completed_client_repo () {
   echo
+  echo "Your new DepoXy Client repo is ready at:"
+  echo
+  echo "  ${DXY_DEPOXY_CLIENT_TILDE}"
+  echo
+  echo "- You may want to restart this shell to realize changes"
+}
+
+announce_completed () {
+  announce_completed_symlinks
+  announce_completed_client_repo
 }
 
 # ================================================================= #
@@ -1016,8 +1033,8 @@ main () {
   process_files
 
   init_repo
-  omr_run_infuse
-  omr_run_autocommit
+  omr_dxc_infuse
+  omr_dxc_autocommit
   announce_completed
 }
 
