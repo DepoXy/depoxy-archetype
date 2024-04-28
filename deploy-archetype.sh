@@ -187,6 +187,13 @@ register_depoxydir_paths () {
     | sed "s@^${HOME}/@@"
   )"
 
+  # E.g., "$HOME/.depoxy"
+  unset -v DXY_DEPOXYDIR_BASE_HOME
+  register "DXY_DEPOXYDIR_BASE_HOME" "$( \
+    echo "${DXY_DEPOXYDIR_BASE_FULL}" \
+    | sed -E "s@^${HOME}(/|$)@\\\$HOME\1@"
+  )"
+
   # ***
 
   # E.g., "stints"
