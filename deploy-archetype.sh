@@ -879,9 +879,6 @@ init_repo () {
 
   cd "${DXY_DEPOXY_CLIENT_FULL}"
 
-  command mv "README.md" "README.md-NEW"
-  touch -- "README.md"
-
   # Note that Git config not guaranteed to be wired, so specify
   # necessary config, like the user.
   local conf_opts=" \
@@ -891,12 +888,8 @@ init_repo () {
 
   git init -b private .
 
-  git add "README.md"
-  git ${conf_opts} commit -m "Fresh: New DepoXy Client ${DXY_DEPOXY_CLIENT_ID}"
-
-  command mv -f "README.md-NEW" "README.md"
-
-  git add .
+  eval "git ${conf_opts} commit -q --allow-empty \
+    -m \"Fresh: New DepoXy Client ${DXY_DEPOXY_CLIENT_ID}\""
 
 
   echo
