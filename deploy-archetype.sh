@@ -286,7 +286,7 @@ register_depoxy_project_paths () {
     | sed -E "s@^${HOME}(/|$)@~\1@"
   )"
 
-  # E.g., 
+  # E.g., "$HOME/.depoxy/ambers"
   # - CXREF: Vimprojects template:
   #   ~/.depoxy/ambers/archetype/home/.vim/pack/landonb/start/dubs_project_tray/.vimprojects.EVAL
   register "DXY_DEPOXYAMBERS_DIR_HOME" "$( \
@@ -336,13 +336,14 @@ register_git_put_wise_paths () {
     "${PW_PATCHES_REPO:-${DXY_DEPOXYDIR_BASE_FULL}/${PW_PATCHES_NAME:-patchr}}"
 
   # E.g., "patchr"
+  # - Used to generate a Git exclude rule
   unset -v DXY_PW_PATCHES_NAME
   register "DXY_PW_PATCHES_NAME" "$( \
     echo "${DXY_PW_PATCHES_REPO}" \
     | sed "s@^${HOME}/@@"
   )"
 
-  # E.g., "depoxy/patchr"
+  # E.g., "path/to/password/store/key/for/GPW/patches"
   register "DXY_PW_OPTION_PASS_NAME" ""
 }
 
