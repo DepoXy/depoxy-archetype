@@ -28,45 +28,57 @@ CLIENT_PROJECT_2
 CLIENT_PROJECT_X
 CLIENT_PROJECTS
 #░░▒░░▒░░▒░░#
-DEPOXY_STINTS
-DEPOXY_AMBERS
-DEPOXY_ARCHETYPE
-DUBS_VIM
-DUBS_CUTS
-HOMEFRIES
-SHOILERPLATE
-GITSMART
-Oh_My_Repos
-MRCONFIGS
-PUT_WIS
-# end: TOC (hover and F1 to jump)
+# TOC USAGE: Posit caret/F1 jumps
+DUBS_VIM_       DUBS_CUTS_
+HOMEFRIES_      SHOILERPLATE_
+Oh_My_Repos_    GIT_SMART_
+MYREPOS_BRANCHABLE
+MRCONFIGS_      MREDIT_CONFIGS
+GIT_PUT_WISE_   TIG_NEWTONS_
+DEPOXY_AMBERS ┓ PUT_WIS AMBERS_
+DEPOXY_STINTS ┃ DEPOXY_ARCHETYPE
+       ━━━━━━━┛
+NOTABLE_NOTES
+
+# ***
 
  THIS FILE IS SOMEWHAT
  AUTO-GENERATED.
 :help project  *help*
  \c   Add new project
- BUGBUG: Add from TOP
 <F5>  Refresh project
  zA   Open/Close Fold
 zc/zo Tiny Open/Close
  zM   Close All Folds
  zR   Open All Foldzs
+zm/zr Close/Open Fold
 zk/zj <--  / --> Fold
  za   Toggle sgl fold
- \P **Reload Grep Stdy
-⇧<CR> Open in new Pane
+⇧<CR> Open in new window
+^<CR> Open as only window
+ \dp  reload dubs_projects.vim
+       (or :GrepSteadyReload)
+
+### END: VIMPROJHEADER #########
+################################
+
+# ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 
 #################################
-# BEG: DXA #####################
+# BEG: DEPOXYCLIENTS ###########
 #
 # ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
 # ┃ 🏹 🦃  DepoXy Client  🏹 🦃 ┃
 # ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 
 DEPOXY_AMBERS
-DEPOXY_STINTS=DXY_DEPOXYDIR_STINTS_HOME filter=".* *" exclude=".DS_Store" {
- .ignore
- DXY_DEPOXY_CLIENT_ID=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID filter=".* *" {
+DEPOXY_STINTS=DXY_DEPOXYDIR_BASE_HOME filter=".* *" exclude=".DS_Store" {
+ .gitignore
+ stints=DXY_DEPOXYDIR_STINTS_HOME {
+  .ignore
+ }
+ # *** Aka Client DXY_DEPOXY_CLIENT_ID
+ stints/DXY_DEPOXY_CLIENT_ID=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID {
   .gitignore
   .hostnames
   .ignore
@@ -75,11 +87,11 @@ DEPOXY_STINTS=DXY_DEPOXYDIR_STINTS_HOME filter=".* *" exclude=".DS_Store" {
   _mrconfig-BUSINESS_CODE_PATH.example
   docs=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/docs {
    .ignore
-   Backlog_Client_DXY_DEPOXY_CLIENT_ID.rst
-   Backlog_Client_DXY_DEPOXY_CLIENT_ID.rst.example
-   Donelog_Client_DXY_DEPOXY_CLIENT_ID.rst
-   Woodlot_Client_DXY_DEPOXY_CLIENT_ID.rst
-   Worklog_Client_DXY_DEPOXY_CLIENT_ID.rst
+   Backlog_Client_`DXY_DEPOXY_CLIENT_ID'.rst
+   Backlog_Client_`DXY_DEPOXY_CLIENT_ID'.rst.example
+   Donelog_Client_`DXY_DEPOXY_CLIENT_ID'.rst
+   Woodlot_Client_`DXY_DEPOXY_CLIENT_ID'.rst
+   Worklog_Client_`DXY_DEPOXY_CLIENT_ID'.rst
    _ingress.rst
   }
   PRIVY-DOX=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/private/docs {
@@ -138,10 +150,7 @@ DEPOXY_STINTS=DXY_DEPOXYDIR_STINTS_HOME filter=".* *" exclude=".DS_Store" {
    vim-trap=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/vim-trap {
     README.rst
     plugin=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/vim-trap/plugin {
-     copy-file-project-path.vim
      explore-notable-notes.vim
-     language-client.vim
-     syntax-off-certain-files.vim
     }
    }
    _git/info=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/_git/info {
@@ -159,7 +168,7 @@ DEPOXY_STINTS=DXY_DEPOXYDIR_STINTS_HOME filter=".* *" exclude=".DS_Store" {
      README.rst
      assets/complex_modifications=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/.config/karabiner/assets/complex_modifications {
       3110-client-DXY_DEPOXY_CLIENT_ID-private.json.example
-      6110-privte-docs-launchers-private.json
+      9210-privte-docs-launchers-private.json
      }
     }
     Rectangle=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/.config/Rectangle {
@@ -199,8 +208,16 @@ DEPOXY_STINTS=DXY_DEPOXYDIR_STINTS_HOME filter=".* *" exclude=".DS_Store" {
  }
 }
 
-### END: DXA ###################
+### END: DEPOXYCLIENTS #########
 ################################
+
+# ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# ▓▓🟥▓🟥▓🟥▓🟥▓🟥▓🟥▓🟥▓🟥▓🟥▓▓
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+# ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 
 #################################
 # BEG: CLIENT_WORKS ############
@@ -234,9 +251,13 @@ CLIENT_PROJECTS
 ### END: CLIENT_WORKS ##########
 ################################
 
+# ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 # ▓▓🟥▓🟥▓🟥▓🟥▓🟥▓🟥▓🟥▓🟥▓🟥▓▓
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+# ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 
 #################################
 # BEG: GITPUTWISE ##############
@@ -246,15 +267,20 @@ CLIENT_PROJECTS
 # ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 # *** Git Put Wise
 
-PUT_WISE=$HOME/.kit/git/git-put-wise filter=".* *" {
- .gitconfig.scoping
+GIT_PUT_WISE__=$HOME/.kit/git/git-put-wise filter=".* *" {
  .gitignore
- README.rst
+ .gitignore.local
+ .ignore
+ LICENSE
+ Makefile
+ README.md
  bin=$HOME/.kit/git/git-put-wise/bin {
-  dxy-putwisely.sh
+  archivencgitlsnohist--FIXME
+  git-push-or-pull-by-force--FIXME
   git-put-wise
   git-rebase-sort-by-scope-protected-private
   putwisely
+  putwisely.sh
   seq-editor-sort-by-scope-protected-private
  }
  lib=$HOME/.kit/git/git-put-wise/lib {
@@ -262,6 +288,9 @@ PUT_WISE=$HOME/.kit/git/git-put-wise filter=".* *" {
   cli_help_usage.sh
   cli_parse_params.sh
   common_put_wise.sh
+  dep_apply_confirm_patch_base.sh
+  dep_ephemeral_branch.sh
+  dep_tig_prompt.sh
   put_wise_apply_patches.sh
   put_wise_archive_patches.sh
   put_wise_pull_remotes.sh
@@ -270,12 +299,12 @@ PUT_WISE=$HOME/.kit/git/git-put-wise filter=".* *" {
    config-put-wise
   }
  }
- deps/sh-git-nubs/bin=$HOME/.kit/git/git-put-wise/deps/sh-git-nubs/bin {
-  git-nubs.sh
- }
+ # deps/git-smart/bin/git-abort
+ # deps/sh-git-nubs/lib/git-nubs.sh
  # deps/sh-logger/bin/logger.sh
- # deps/sh-colors/bin/colors.sh
- tig_config=DXY_DEPOXYAMBERS_DIR_HOME/home/.config/tig exclude="config" {
+ # deps/sh-logger/deps/sh-colors/bin/colors.sh
+ tig_config=$HOME/.depoxy/ambers/home/.config/tig exclude="config" {
+  README--Keybindings
   cfg-tgn-bind-clip-path
   cfg-tgn-bind-clip-sha
   cfg-tgn-bind-commit
@@ -297,7 +326,6 @@ PUT_WISE=$HOME/.kit/git/git-put-wise filter=".* *" {
   config-depoxy-main
   tigconfig-client
   tigconfig.EVAL
-  README--Keybindings
   tig-newtons/bin=$HOME/.kit/git/tig-newtons/bin {
    # CXREF: TIG_NEWTONS
    editor-vim-0-0-insert-minimal
@@ -309,18 +337,22 @@ PUT_WISE=$HOME/.kit/git/git-put-wise filter=".* *" {
   }
  }
 }
-PUT_WISE_DOCS=/kit/working/git/git-put-wise filter="README.* Makefile" {
+
+# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+# ░░ BEG: PUSEDO ░░░░░░░░░░░░░░░
+
+PUT_WISE_DOCS=$HOME/.kit/git/git-put-wise filter="README.* Makefile" {
  README.md
  Makefile
- lib=/kit/working/git/git-put-wise/lib filter="cli_help_*" {
+ lib=$HOME/.kit/git/git-put-wise/lib filter="cli_help_*" {
   cli_help_about.sh
   cli_help_usage.sh
  }
- man=/kit/working/git/git-put-wise/man filter="*.sh *.1 *.adoc *.html *.md" {
+ man=$HOME/.kit/git/git-put-wise/man filter="*.sh *.1 *.adoc *.html *.md" {
   git-put-wise.1
   git-put-wise.1.html
   git-put-wise.1.md
-  build=/kit/working/git/git-put-wise/man/build {
+  build=$HOME/.kit/git/git-put-wise/man/build {
    build-README.sh
    build-man.sh
    parts.01.header.md
@@ -336,35 +368,331 @@ PUT_WISE_DOCS=/kit/working/git/git-put-wise filter="README.* Makefile" {
 # ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 
 #################################
-# BEG: DEPOXY ##################
+# BEG: PAMPERMONKEY ############
+#
+# ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+# ┃  💆 DepoXy/pampermonkey 💆  ┃
+# ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
+PAMPERMONKEY=$HOME/.kit/js/pampermonkey filter=".* *" {
+ LICENSE
+ README.md
+ README.rst
+ textarea-motion.js
+ unfocus-aka-blur-on-escape.js
+}
+
+### END: PAMPERMONKEY ##########
+################################
+
+# ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+
+#################################
+# BEG: DOTINPUTRC ##############
+#
+# ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+# ┃  🎛️ DepoXy/ dot-inputrc 🎛️  ┃
+# ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
+DOT_INPUTRC=$HOME/.kit/sh/dot-inputrc filter=".* *" {
+ .inputrc
+ LICENSE
+ README.md
+}
+
+### END: DOTINPUTRC ############
+################################
+
+# ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+
+#################################
+# BEG: KARABINERELEPHANTS ######
+#
+# ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+# ┃ 🐘DXy/Karabiner-Elephants🐘 ┃
+# ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
+KARABINER_ELEPHANTS=$HOME/.kit/mOS/Karabiner-Elephants filter=".* *" {
+ .ignore
+ LICENSE
+ README.md
+ complex_modifications--KBE=$HOME/.kit/mOS/Karabiner-Elephants/complex_modifications {
+  0110-system-swap-mods-ergo.json
+  0130-system-alt-r-to-ctl-l.json
+  0150-system-cmd-2-ctl-cxva.json
+  0170-apphoc-ctl-and-alt-lr.json
+  0190-system-minimize-all.json
+  0310-applcn-chrome.json
+  0320-applcn-chrome-calendar.json
+  0330-applcn-iterm2.json
+  0340-applcn-iterm2-fronter.json
+  0350-applcn-macvim.json
+  0370-applcn-meld.json
+  0390-applcn-gimp.json
+  0410-applcn-slack.json
+  0430-applcn-outlook-or-tab.json
+  0470-applcn-openlens.json
+  0490-applcn-dbeaver.json
+  0510-vidapp-webex-teams-zoom.json
+  0530-applcn-postman.json
+  0550-applcn-libreoffice.json
+  test.osa
+ }
+ complex_modifications--DXY=$HOME/.depoxy/ambers/home/.config/karabiner/assets/complex_modifications--DXY {
+  0310-depoxy-chrome.json
+  0320-applcn-chrome-calendar.json
+  0430-depoxy-outlook-or-tab.json
+  0510-depoxy-webex-teams-zoom.json
+  0610-curapp-wilson-resizer.json
+  1210-depoxy-misc-charms.json
+  9110-devlpr-docs-launchers.json
+  README.md
+ }
+ complex_modifications--DXC=$HOME/.depoxy/ambers/home/.config/karabiner/assets/complex_modifications--DXC {
+  3110-client-DXY_DEPOXY_CLIENT_ID-private.json.example
+  9210-privte-docs-launchers-private.json
+ }
+ complex_modifications--OFF=$HOME/.depoxy/ambers/home/.config/karabiner/assets/complex_modifications--OFF {
+  0140-systemwide-alt-space-n-minimize.json
+  0190-system-alt-spce-n-min.json
+  FIXME--MAKE-PROTECTED
+  chrome-wip-button1-fail.json
+  chrome-wip-edit-commands.json
+  chrome-wip-new-window.json
+  chrome-wip-swap-cmd-ctrl.json
+  example-ke-vi-mode.json
+ }
+ COMPLEX_MODIFICATIONS--LIVE=$HOME/.depoxy/ambers/home/.config/karabiner/assets/complex_modifications {
+  0110-system-swap-mods-ergo.json
+  0130-system-alt-r-to-ctl-l.json
+  0150-system-cmd-2-ctl-cxva.json
+  0170-apphoc-ctl-and-alt-lr.json
+  0190-system-minimize-all.json
+  0310-applcn-chrome.json
+  0310-depoxy-chrome.json
+  0320-applcn-chrome-calendar.json
+  0330-applcn-iterm2.json
+  0340-applcn-iterm2-fronter.json
+  0350-applcn-macvim.json
+  0370-applcn-meld.json
+  0390-applcn-gimp.json
+  0410-applcn-slack.json
+  0430-applcn-outlook-or-tab.json
+  0430-depoxy-outlook-or-tab.json
+  0470-applcn-openlens.json
+  0490-applcn-dbeaver.json
+  0510-depoxy-webex-teams-zoom.json
+  0510-vidapp-webex-teams-zoom.json
+  0530-applcn-postman.json
+  0550-applcn-libreoffice.json
+  0610-curapp-wilson-resizer.json
+  1210-depoxy-misc-charms.json
+  9110-devlpr-docs-launchers.json
+  9210-privte-docs-launchers-private.json
+  README.md
+  test.osa
+ }
+}
+
+### END: KARABINERELEPHANTS ####
+################################
+
+# ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+
+#################################
+# BEG: MACOSONBOARDER ##########
+#
+# ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+# ┃ 🏂 DepoXy/macOS-onboarder🏂 ┃
+# ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
+# ONBOARDING
+MACOS_ONBOARDER=$HOME/.kit/mOS/macOS-onboarder filter=".* *" {
+ .gitignore.local
+ .ignore
+ FIXME.rst
+ LICENSE
+ README.md
+ bin=$HOME/.kit/mOS/macOS-onboarder/bin {
+  # circus: slather-defaults.sh
+  install-homebrew.sh
+  slather-defaults.sh
+ }
+ dxy_onboarder=$HOME/.depoxy/ambers/bin/onboarder {
+  install-ohmyrepos.sh
+  slather-defaults--PRIVATE.sh
+  slather-defaults.sh
+ }
+ lib=$HOME/.kit/mOS/macOS-onboarder/lib {
+  defaults-domains-block.list
+  macOS-defaults-commands.sh
+ }
+ deps/Homebrew/install=$HOME/.kit/mOS/macOS-onboarder/deps/Homebrew/install {
+  install.sh
+ }
+}
+
+### END: MACOSONBOARDER ########
+################################
+
+# ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+
+#################################
+# BEG: VIMSPELLFILE ############
+#
+# ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+# ┃ 🧙   vim-spellfile.txt   🧙 ┃
+# ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
+SPELLFILE_TXT=$HOME/.kit/txt/spellfile.txt filter=".* *" {
+ .gitignore
+ .gitignore.local
+ LICENSE
+ README.md
+ bin=$HOME/.kit/txt/spellfile.txt/bin {
+  spells.sh
+ }
+ .vim/spell=$HOME/.kit/txt/spellfile.txt/.vim/spell {
+  en.utf-8.add--personal
+ }
+ dxy_kit_git_omr_lib=$HOME/.depoxy/ambers/home/.kit/git/ohmyrepos/lib filter="spell*" {
+  spellfile.txt-runner.sh
+ }
+}
+
+### END: VIMSPELLFILE ##########
+################################
+
+# ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+
+#################################
+# BEG: EMOJILOOKUP #############
+#
+# ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+# ┃     🙄 emoji-lookup 🙄      ┃
+# ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
+EMOJI_LOOKUP=$HOME/.kit/txt/emoji-lookup filter=".* *" {
+ LICENSE
+ README.txt
+ emoji-lookup.rst
+}
+
+### END: EMOJILOOKUP ###########
+################################
+
+# ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+
+#################################
+# BEG: DEPOXYAMBERS ############
 #
 # ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
 # ┃ 🦆 🦆  DepoXy Ambers  🦆 🦆 ┃
 # ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 
+# SAVVY: Use \C to recreate list
+#         use filter: .* *
+#         use exclude: archetype
+DEPOXY_AMBERS=$HOME/.depoxy/ambers filter=".* *" exclude="archetype" {
+ # DEPOXY_ARCHETYPE $HOME/.depoxy/ambers/archetype
+ .gitignore
+ .ignore
+ LICENSE
+ README.md
+ bin=$HOME/.depoxy/ambers/bin {
+  fussy
+  notify
+  spells.sh
+  test-as-cron
+  vimprojects-create-copy-without-work-projects
+  weekly-omr-report
+  macOS=$HOME/.depoxy/ambers/bin/macOS {
+   launchers=$HOME/.depoxy/ambers/bin/macOS/launchers {
+    FIXME--resize-almost-fullscreen-with-a-little-off-the-top.osa
+    gvim-open--Unicode-Emojis
+    gvim-open-DepoXy-Client-docs.sh
+    gvim-open-DepoXy-Client-path.sh
+    raise--chrome--calendar.app
+    raise--chrome--devtools-or-inspect-window.app
+    raise--chrome--mail.app
+    raise--teams--webex--zoom.app
+    resize--curapp--1920x1052.app
+   }
+  }
+  onboarder=$HOME/.depoxy/ambers/bin/onboarder {
+   # ONBOARDING
+   install-ohmyrepos.sh
+   slather-defaults--PRIVATE.sh
+   slather-defaults.sh
+  }
+  pbin=$HOME/.depoxy/ambers/bin/pbin {
+   vendor-slurp-dob
+  }
+  pbin-client=$HOME/.depoxy/ambers/bin/pbin-client {
+   23skidoo
+   321open
+   README.rst
+  }
+ }
+ core=$HOME/.depoxy/ambers/core {
+  alias-vim.sh
+  aliastown.sh
+  brewskies.sh
+  cdworkenv.sh
+  cli-comma.sh
+  completes.sh
+  depoxy_fs.sh
+  dob-brief.sh
+  fzf-setup.sh
+  git-smart.sh
+  grip-pass.sh
+  js-dev-up.sh
+  kube-lens.sh
+  make-itso.sh
+  meld-wrap.sh
+  nvm-setup.sh
+  omr-alias.sh
+  omr-setup.sh
+  omr-wraps.sh
+  path_vars.sh
+  pathanova.sh
+  putwisely.sh
+  pydevelop.sh
+  startapps.sh
+  stayalive.sh
+  wire-bash.sh
+ }
+}
+
+# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+# ░░ BEG: DXY Overlays ░░░░░░░░░
+
 DEPOXY_AMBERS=$HOME/.depoxy/ambers filter=".* *" {
  .gitignore
  .ignore
+ LICENSE
  README.md
+ etc/udev/rules.d=$HOME/.depoxy/ambers/etc/udev/rules.d {
+  # FIXME/2024-04-26 12:16: Typo? viia?
+  50-zsa.rules
+  92-viia.rules
+ }
  home=$HOME/.depoxy/ambers/home {
   .ctags
   .gitconfig
   .gitconfig.local
-  .inputrc
-  .mrconfig
   .mrtrust
   .mrtrust.m4
   .multitail.conf
   .pdbrc
-  infuse
-  infuse-depoxy-ambers
+  _ignore-macOS
+  _mrconfig
+  infuse-config-omr
   infuse-dubs-vim
   infuse-home-fries
   infuse-platform-macOS
   infuse-user-home
-  _ignore-macOS
   golang/fzf/_git/goinfo=$HOME/.depoxy/ambers/home/golang/fzf/_git/info {
-   # FIXME/2022-11-23: REGEN PROJ LIST.
    exclude
   }
   # Library::$HOME/.depoxy/ambers/home/Library
@@ -376,14 +704,16 @@ DEPOXY_AMBERS=$HOME/.depoxy/ambers filter=".* *" {
   .config=$HOME/.depoxy/ambers/home/.config {
    karabiner=$HOME/.depoxy/ambers/home/.config/karabiner {
     assets=$HOME/.depoxy/ambers/home/.config/karabiner/assets {
-     README.rst
-     complex_modifications=$HOME/.depoxy/ambers/home/.config/karabiner/assets/complex_modifications {
-      0110-system-swap-modifiers.json
+     # complex_modifications/ (symlinks)
+     # circus: complex_modifications
+     complex_modifications--KBE=$HOME/.depoxy/ambers/home/.config/karabiner/assets/complex_modifications--KBE {
+      0110-system-swap-mods-ergo.json
       0130-system-alt-r-to-ctl-l.json
       0150-system-cmd-2-ctl-cxva.json
       0170-apphoc-ctl-and-alt-lr.json
-      0190-system-alt-spce-n-min.json
+      0190-system-minimize-all.json
       0310-applcn-chrome.json
+      0320-applcn-chrome-calendar.json
       0330-applcn-iterm2.json
       0340-applcn-iterm2-fronter.json
       0350-applcn-macvim.json
@@ -391,21 +721,30 @@ DEPOXY_AMBERS=$HOME/.depoxy/ambers filter=".* *" {
       0390-applcn-gimp.json
       0410-applcn-slack.json
       0430-applcn-outlook-or-tab.json
-      0450-applcn-chrome-calendar.json
       0470-applcn-openlens.json
       0490-applcn-dbeaver.json
       0510-vidapp-webex-teams-zoom.json
+      0530-applcn-postman.json
+      0550-applcn-libreoffice.json
+     }
+     complex_modifications--DXY=$HOME/.depoxy/ambers/home/.config/karabiner/assets/complex_modifications--DXY {
+      0310-depoxy-chrome.json
+      0320-applcn-chrome-calendar.json
+      0430-depoxy-outlook-or-tab.json
+      0510-depoxy-webex-teams-zoom.json
       0610-curapp-wilson-resizer.json
-      1110-devlpr-docs-launchers.json
       1210-depoxy-misc-charms.json
-      6110-privte-docs-launchers-private.json
+      9110-devlpr-docs-launchers.json
+      README.md
      }
      complex_modifications--DXC=$HOME/.depoxy/ambers/home/.config/karabiner/assets/complex_modifications--DXC {
-      3110-client-2241-private.json.example
-      6110-privte-docs-launchers-private.json
+      3110-client-DXY_DEPOXY_CLIENT_ID-private.json.example
+      9210-privte-docs-launchers-private.json
      }
      complex_modifications--OFF=$HOME/.depoxy/ambers/home/.config/karabiner/assets/complex_modifications--OFF {
       0140-systemwide-alt-space-n-minimize.json
+      0190-system-alt-spce-n-min.json
+      FIXME--MAKE-PROTECTED
       chrome-wip-button1-fail.json
       chrome-wip-edit-commands.json
       chrome-wip-new-window.json
@@ -413,6 +752,7 @@ DEPOXY_AMBERS=$HOME/.depoxy/ambers filter=".* *" {
       example-ke-vi-mode.json
      }
      launchers=$HOME/.depoxy/ambers/home/.config/karabiner/assets/launchers {
+      FIXME--resize-almost-fullscreen-with-a-little-off-the-top.osa
       gvim-open--Unicode-Emojis
       gvim-open-DepoXy-Client-docs.sh
       gvim-open-DepoXy-Client-path.sh
@@ -427,19 +767,48 @@ DEPOXY_AMBERS=$HOME/.depoxy/ambers filter=".* *" {
    less=$HOME/.depoxy/ambers/home/.config/less {
     termcap
    }
+   pdbr=$HOME/.depoxy/ambers/home/.config/pdbr {
+    setup.cfg
+   }
    tig=$HOME/.depoxy/ambers/home/.config/tig {
+    README--Keybindings
+    cfg-tgn-bind-clip-path
+    cfg-tgn-bind-clip-sha
+    cfg-tgn-bind-commit
+    cfg-tgn-bind-commit--minimal-editor
+    cfg-tgn-bind-commit-wip
+    cfg-tgn-bind-file-edit
+    cfg-tgn-bind-rebase
+    cfg-tgn-bind-rebase--minimal-editor
+    cfg-tgn-bind-rebase-range--diff
+    cfg-tgn-bind-rebase-range--main
+    cfg-tgn-bind-shell-out
+    cfg-tgn-config-color
+    cfg-tgn-config-dates
+    cfg-tgn-config-opinionated
+    cfg-tgn-config.customize
+    cfg-tgn-config.notes
     config
+    config-depoxy
+    config-depoxy-diff
+    config-depoxy-main
+    tigconfig-client
+    tigconfig.EVAL
    }
    vagrant=$HOME/.depoxy/ambers/home/.config/vagrant {
     Vagrantfile.template
    }
   }
+  .depoxy/ambers/archetype=$HOME/.depoxy/ambers/home/.depoxy/ambers/archetype {
+   _ignore
+   _git/info=$HOME/.depoxy/ambers/home/.depoxy/ambers/archetype/_git/info {
+    exclude
+   }
+  }
   .homefries=$HOME/.depoxy/ambers/home/.homefries {
    .ignore
-   _git=$HOME/.depoxy/ambers/home/.homefries/_git {
-    info=$HOME/.depoxy/ambers/home/.homefries/_git/info {
-     exclude
-    }
+   _git/info=$HOME/.depoxy/ambers/home/.homefries/_git/info {
+    exclude
    }
    .bashrc-bin=$HOME/.depoxy/ambers/home/.homefries/.bashrc-bin {
     bashrx.private.sh
@@ -452,101 +821,175 @@ DEPOXY_AMBERS=$HOME/.depoxy/ambers filter=".* *" {
    git=$HOME/.depoxy/ambers/home/.kit/git {
     _mrconfig-git-core
     _mrconfig-git-smart
+    git-interactive-rebase-tool=$HOME/.depoxy/ambers/home/.kit/git/git-interactive-rebase-tool {
+     _ignore
+     _git/info=$HOME/.depoxy/ambers/home/.kit/git/git-interactive-rebase-tool/_git/info {
+      exclude
+     }
+    }
     git-my-merge-status=$HOME/.depoxy/ambers/home/.kit/git/git-my-merge-status {
+     _git/info=$HOME/.depoxy/ambers/home/.kit/git/git-my-merge-status/_git/info {
+      exclude
+     }
      bin=$HOME/.depoxy/ambers/home/.kit/git/git-my-merge-status/bin {
       .my-merge-status-nochores
      }
-     _git=$HOME/.depoxy/ambers/home/.kit/git/git-my-merge-status/_git {
-      info=$HOME/.depoxy/ambers/home/.kit/git/git-my-merge-status/_git/info {
-       exclude
-      }
+    }
+    git-put-wise=$HOME/.depoxy/ambers/home/.kit/git/git-put-wise {
+     _git/info=$HOME/.depoxy/ambers/home/.kit/git/git-put-wise/_git/info {
+      exclude
+     }
+    }
+    git-update-faithful=$HOME/.depoxy/ambers/home/.kit/git/git-update-faithful {
+     _git/info=$HOME/.depoxy/ambers/home/.kit/git/git-update-faithful/_git/info {
+      exclude
      }
     }
     ohmyrepos=$HOME/.depoxy/ambers/home/.kit/git/ohmyrepos {
-     .ignore
-     bin=$HOME/.depoxy/ambers/home/.kit/git/ohmyrepos/bin {
-      js-npm-patch-opn-sensible-open
+     _ignore
+     _git/info=$HOME/.depoxy/ambers/home/.kit/git/ohmyrepos/_git/info {
+      exclude
      }
-     _git=$HOME/.depoxy/ambers/home/.kit/git/ohmyrepos/_git {
-      info=$HOME/.depoxy/ambers/home/.kit/git/ohmyrepos/_git/info {
-       exclude
-      }
+     bin=$HOME/.depoxy/ambers/home/.kit/git/ohmyrepos/bin {
+      # ONBOARDING
+      # JUMPR: updateDeps
+      infuse
+      updateDeps
+     }
+     lib=$HOME/.depoxy/ambers/home/.kit/git/ohmyrepos/lib {
+      # ONBOARDING
+      # JUMPR: updateDeps
+      append-bash-completion.sh
+      js-npm-patch-opn-sensible-open
+      macos-install-dmg.sh
+      my-deps-manage-easy-as-pypi
+      my-deps-manage-easy-as-pypi.sh
+      my-deps-manage-shoilerplate
+      my-deps-manage-shoilerplate.sh
+      pyenv-shell-unset.sh
+      rebase-tip.sh
+      spellfile.txt-runner.sh
+      stub-checkout.sh
+      update-faithful
      }
     }
    }
    go=$HOME/.depoxy/ambers/home/.kit/go {
     _mrconfig
     fzf=$HOME/.depoxy/ambers/home/.kit/go/fzf {
-     _git=$HOME/.depoxy/ambers/home/.kit/go/fzf/_git {
-      info=$HOME/.depoxy/ambers/home/.kit/go/fzf/_git/info {
-       exclude
-      }
+     _git/info=$HOME/.depoxy/ambers/home/.kit/go/fzf/_git/info {
+      exclude
      }
     }
    }
    js=$HOME/.depoxy/ambers/home/.kit/js {
     _mrconfig
-    tampermonkey-scripts=$HOME/.depoxy/ambers/home/.kit/js/tampermonkey-scripts {
-     README.rst
-     textarea-motion.js
-     unfocus-aka-blur-on-escape.js
-    }
    }
    mOS=$HOME/.depoxy/ambers/home/.kit/mOS {
     _mrconfig
+    macOS-onboarder=$HOME/.depoxy/ambers/home/.kit/mOS/macOS-onboarder {
+     _git/info=$HOME/.depoxy/ambers/home/.kit/mOS/macOS-onboarder/_git/info {
+      exclude
+     }
+    }
+   }
+   odd=$HOME/.depoxy/ambers/home/.kit/odd {
+    _mrconfig
+    quicktile=$HOME/.depoxy/ambers/home/.kit/odd/quicktile {
+     quicktile.service
+     quicktile.sh
+     _git/info=$HOME/.depoxy/ambers/home/.kit/odd/quicktile/_git/info {
+      exclude
+     }
+    }
    }
    py=$HOME/.depoxy/ambers/home/.kit/py {
     _mrconfig
+    virtualenvwrapper=$HOME/.depoxy/ambers/home/.kit/py/virtualenvwrapper {
+     .editorconfig
+     _git/info=$HOME/.depoxy/ambers/home/.kit/py/virtualenvwrapper/_git/info {
+      exclude
+     }
+    }
    }
    sh=$HOME/.depoxy/ambers/home/.kit/sh {
     _mrconfig-bash
     _mrconfig-shell
    }
-   _git=$HOME/.depoxy/ambers/home/.kit/_git {
-    info=$HOME/.depoxy/ambers/home/.kit/_git/info {
-     exclude
+   txt=$HOME/.depoxy/ambers/home/.kit/txt {
+    _mrconfig
+    spellfile.txt=$HOME/.depoxy/ambers/home/.kit/txt/spellfile.txt {
+     _git/info=$HOME/.depoxy/ambers/home/.kit/txt/spellfile.txt/_git/info {
+      exclude
+     }
+    }
+   }
+   _git/info=$HOME/.depoxy/ambers/home/.kit/_git/info {
+    exclude
+   }
+  }
+  .kube=$HOME/.depoxy/ambers/home/.kube {
+   README.rst
+   openlens-icon_dev.png
+   openlens-icon_disp-dev.png
+   openlens-icon_disp-prod.png
+   openlens-icon_local.png
+  }
+  .local=$HOME/.depoxy/ambers/home/.local {
+   share=$HOME/.depoxy/ambers/home/.local/share {
+    applications=$HOME/.depoxy/ambers/home/.local/share/applications {
+     fussy.desktop
     }
    }
   }
   .projlns=$HOME/.depoxy/ambers/home/.projlns {
+   # MREDIT_CONFIGS
    infuse-projlns-breadcrumb.sh
    infuse-projlns-core.sh
    infuse-projlns-omr.sh
+   infuse-projlns-work.example.sh
    depoxy-deeplinks=$HOME/.depoxy/ambers/home/.projlns/depoxy-deeplinks {
     _ignore
    }
   }
   .vim=$HOME/.depoxy/ambers/home/.vim {
-   .mrconfig
-   .mrconfig-3rdp
-   .mrconfig-dubs
-   .mrconfig-lsp
-   coc-settings.json
+   .ignore
    _ignore
-   cmdt_paths=$HOME/.depoxy/ambers/home/.vim/cmdt_paths {
-    .ignore
-    generate_links.sh
-    README.rst
+   _mrconfig
+   _mrconfig-3rdp
+   _mrconfig-dubs
+   _mrconfig-lsp
+   coc-settings.json
+   _git=$HOME/.depoxy/ambers/home/.vim/_git {
+    info=$HOME/.depoxy/ambers/home/.vim/_git/info {
+     exclude
+    }
    }
-   dubs_grep_steady=$HOME/.depoxy/ambers/home/.vim/dubs_grep_steady {
-    dubs_projects.vim
+   cmdt_paths=$HOME/.depoxy/ambers/home/.vim/cmdt_paths {
+    # symlinks/
+    .ignore
+    README--FIXME.rst
+    generate_links.sh
    }
    dubs_project_tray=$HOME/.depoxy/ambers/home/.vim/dubs_project_tray {
-    # dubs_cuts
+    # dubs_cuts/ ↔ $HOME/.depoxy/ambers/home/.vim/dubs_project_tray/dubs_cuts
+    # *** DUBS_VIM DUBS_CUTS Consolidated .vim listing
+    # - Rebuilt on `infuse`:
+    #     ~/.depoxy/ambers/home/.vim/dubs_project_tray/generate_links.sh
     generate_links.sh
-   }
-   my-vimprojects=$HOME/.depoxy/ambers/home/.vim/my-vimprojects {
-    .ignore
-    .vimprojects
    }
    pack=$HOME/.depoxy/ambers/home/.vim/pack {
     _gitignore
-    depoxy=$HOME/.depoxy/ambers/home/.vim/pack/DepoXy {
+    _ignore
+    DepoXy=$HOME/.depoxy/ambers/home/.vim/pack/DepoXy {
      _ignore
      start=$HOME/.depoxy/ambers/home/.vim/pack/DepoXy/start {
       vim-depoxy=$HOME/.depoxy/ambers/home/.vim/pack/DepoXy/start/vim-depoxy {
        LICENSE
        README.rst
+       autoload=$HOME/.depoxy/ambers/home/.vim/pack/DepoXy/start/vim-depoxy/autoload {
+        git_fugitive_window_cleanup.vim
+       }
        doc=$HOME/.depoxy/ambers/home/.vim/pack/DepoXy/start/vim-depoxy/doc {
         vim_depoxy.txt
        }
@@ -558,200 +1001,83 @@ DEPOXY_AMBERS=$HOME/.depoxy/ambers filter=".* *" {
         set-diffopt-hiddenoff.vim
         setup-nerd-commenter.vim
         vim-beautifold-config.vim
+        vim-fugitive-gb-blame-gc-cleanup.vim
         vim-sensible-open-avoid-buftyped.vim
         vim_depoxy.vim
        }
       }
      }
     }
+    landonb=$HOME/.depoxy/ambers/home/.vim/pack/landonb {
+     _ignore
+    }
     .mrinfuse=$HOME/.depoxy/ambers/home/.vim/pack/.mrinfuse {
-     chrisbra=$HOME/.depoxy/ambers/home/.vim/pack/.mrinfuse/chrisbra {
-      start=$HOME/.depoxy/ambers/home/.vim/pack/.mrinfuse/chrisbra/start {
-       improvedft=$HOME/.depoxy/ambers/home/.vim/pack/.mrinfuse/chrisbra/start/improvedft {
-        _git=$HOME/.depoxy/ambers/home/.vim/pack/.mrinfuse/chrisbra/start/improvedft/_git {
-         info=$HOME/.depoxy/ambers/home/.vim/pack/.mrinfuse/chrisbra/start/improvedft/_git/info {
-          exclude
-         }
-        }
-       }
-      }
+     chrisbra/start/improvedft/_git/info=$HOME/.depoxy/ambers/home/.vim/pack/.mrinfuse/chrisbra/start/improvedft/_git/info {
+      exclude
      }
-     jamessan=$HOME/.depoxy/ambers/home/.vim/pack/.mrinfuse/jamessan {
-      start=$HOME/.depoxy/ambers/home/.vim/pack/.mrinfuse/jamessan/start {
-       vim-gnupg=$HOME/.depoxy/ambers/home/.vim/pack/.mrinfuse/jamessan/start/vim-gnupg {
-        _git=$HOME/.depoxy/ambers/home/.vim/pack/.mrinfuse/jamessan/start/vim-gnupg/_git {
-         info=$HOME/.depoxy/ambers/home/.vim/pack/.mrinfuse/jamessan/start/vim-gnupg/_git/info {
-          exclude
-         }
-        }
-       }
-      }
+     jamessan/start/vim-gnupg/_git/info=$HOME/.depoxy/ambers/home/.vim/pack/.mrinfuse/jamessan/start/vim-gnupg/_git/info {
+      exclude
      }
-     neoclide=$HOME/.depoxy/ambers/home/.vim/pack/.mrinfuse/neoclide {
-      start=$HOME/.depoxy/ambers/home/.vim/pack/.mrinfuse/neoclide/start {
-       coc.nvim=$HOME/.depoxy/ambers/home/.vim/pack/.mrinfuse/neoclide/start/coc.nvim {
-        _git=$HOME/.depoxy/ambers/home/.vim/pack/.mrinfuse/neoclide/start/coc.nvim/_git {
-         info=$HOME/.depoxy/ambers/home/.vim/pack/.mrinfuse/neoclide/start/coc.nvim/_git/info {
-          exclude
-         }
-        }
-       }
-      }
+     neoclide/start/coc.nvim/_git/info=$HOME/.depoxy/ambers/home/.vim/pack/.mrinfuse/neoclide/start/coc.nvim/_git/info {
+      exclude
      }
-     ryanolsonx=$HOME/.depoxy/ambers/home/.vim/pack/.mrinfuse/ryanolsonx {
-      start=$HOME/.depoxy/ambers/home/.vim/pack/.mrinfuse/ryanolsonx/start {
-       vim-lsp-javascript=$HOME/.depoxy/ambers/home/.vim/pack/.mrinfuse/ryanolsonx/start/vim-lsp-javascript {
-        _git=$HOME/.depoxy/ambers/home/.vim/pack/.mrinfuse/ryanolsonx/start/vim-lsp-javascript/_git {
-         info=$HOME/.depoxy/ambers/home/.vim/pack/.mrinfuse/ryanolsonx/start/vim-lsp-javascript/_git/info {
-          exclude
-         }
-        }
-       }
-       vim-lsp-typescript=$HOME/.depoxy/ambers/home/.vim/pack/.mrinfuse/ryanolsonx/start/vim-lsp-typescript {
-        _git=$HOME/.depoxy/ambers/home/.vim/pack/.mrinfuse/ryanolsonx/start/vim-lsp-typescript/_git {
-         info=$HOME/.depoxy/ambers/home/.vim/pack/.mrinfuse/ryanolsonx/start/vim-lsp-typescript/_git/info {
-          exclude
-         }
-        }
-       }
-      }
+     ryanolsonx/start/vim-lsp-javascript/_git/info=$HOME/.depoxy/ambers/home/.vim/pack/.mrinfuse/ryanolsonx/start/vim-lsp-javascript/_git/info {
+      exclude
+     }
+     ryanolsonx/start/vim-lsp-typescript/_git/info=$HOME/.depoxy/ambers/home/.vim/pack/.mrinfuse/ryanolsonx/start/vim-lsp-typescript/_git/info {
+      exclude
      }
      vim-scripts=$HOME/.depoxy/ambers/home/.vim/pack/.mrinfuse/vim-scripts {
       start=$HOME/.depoxy/ambers/home/.vim/pack/.mrinfuse/vim-scripts/start {
-       AutoAdapt=$HOME/.depoxy/ambers/home/.vim/pack/.mrinfuse/vim-scripts/start/AutoAdapt {
-        _git=$HOME/.depoxy/ambers/home/.vim/pack/.mrinfuse/vim-scripts/start/AutoAdapt/_git {
-         info=$HOME/.depoxy/ambers/home/.vim/pack/.mrinfuse/vim-scripts/start/AutoAdapt/_git/info {
-          exclude
-         }
-        }
+       vim-scripts/start/AutoAdapt/_git/info=$HOME/.depoxy/ambers/home/.vim/pack/.mrinfuse/vim-scripts/start/AutoAdapt/_git/info {
+        exclude
        }
-       ingo-library=$HOME/.depoxy/ambers/home/.vim/pack/.mrinfuse/vim-scripts/start/ingo-library {
-        _git=$HOME/.depoxy/ambers/home/.vim/pack/.mrinfuse/vim-scripts/start/ingo-library/_git {
-         info=$HOME/.depoxy/ambers/home/.vim/pack/.mrinfuse/vim-scripts/start/ingo-library/_git/info {
-          exclude
-         }
-        }
+       vim-scripts/start/ingo-library/_git/info=$HOME/.depoxy/ambers/home/.vim/pack/.mrinfuse/vim-scripts/start/ingo-library/_git/info {
+        exclude
        }
-       ZoomWin=$HOME/.depoxy/ambers/home/.vim/pack/.mrinfuse/vim-scripts/start/ZoomWin {
-        _git=$HOME/.depoxy/ambers/home/.vim/pack/.mrinfuse/vim-scripts/start/ZoomWin/_git {
-         info=$HOME/.depoxy/ambers/home/.vim/pack/.mrinfuse/vim-scripts/start/ZoomWin/_git/info {
-          exclude
-         }
-        }
+       vim-scripts/start/ZoomWin/_git/info=$HOME/.depoxy/ambers/home/.vim/pack/.mrinfuse/vim-scripts/start/ZoomWin/_git/info {
+        exclude
        }
       }
      }
     }
    }
    spell=$HOME/.depoxy/ambers/home/.vim/spell {
-    en.utf-8.add
-   }
-   _git=$HOME/.depoxy/ambers/home/.vim/_git {
-    info=$HOME/.depoxy/ambers/home/.vim/_git/info {
-     exclude
-    }
+    en.utf-8.add--personal
    }
   }
- }
- bin=$HOME/.depoxy/ambers/bin {
-  23skidoo
-  archivencgitlsnohist
-  dndi
-  dndo
-  mredit
-  notify
-  vimprojects-create-copy-without-work-projects
-  dnd=$HOME/.depoxy/ambers/bin/dnd {
-   diff_n_dash-common
-   diff_n_dash-pull-patches
-   diff_n_dash-pull-remotes
-   diff_n_dash-push-patches
-   diff_n_dash-push-remotes
-  }
-  macOS=$HOME/.depoxy/ambers/bin/macOS {
-   launchers=$HOME/.depoxy/ambers/bin/macOS/launchers {
-    gvim-open--Unicode-Emojis
-    gvim-open-DepoXy-Client-docs.sh
-    gvim-open-DepoXy-Client-path.sh
-    raise--chrome--calendar.app
-    raise--chrome--devtools-or-inspect-window.app
-    raise--chrome--mail.app
-    raise--teams--webex--zoom.app
-    resize--curapp--1920x1052.app
-   }
-   onboarder=$HOME/.depoxy/ambers/bin/macOS/onboarder {
-    install-homebrew.sh
-    install-ohmyrepos.sh
-    slather-defaults.sh
-    lib=$HOME/.depoxy/ambers/bin/macOS/onboarder/lib {
-     defaults-domains-block.list
-     macOS-defaults-commands.sh
-    }
-    deps=$HOME/.depoxy/ambers/bin/macOS/onboarder/deps {
-     homebrew-install.sh
-    }
-   }
-  }
-  pbin=$HOME/.depoxy/ambers/bin/pbin {
-   vendor-slurp-dob
-  }
-  pbin-client=$HOME/.depoxy/ambers/bin/pbin-client {
-   23skidoo
-   321open
-   README.rst
-  }
- }
- core=$HOME/.depoxy/ambers/core {
-  aliastown.sh
-  brewskies.sh
-  cdworkenv.sh
-  cli-comma.sh
-  completes.sh
-  depoxy_fs.sh
-  dob-brief.sh
-  fzf-setup.sh
-  git-smart.sh
-  js-dev-up.sh
-  kube-lens.sh
-  meld-wrap.sh
-  nvm-setup.sh
-  omr-setup.sh
-  pathanova.sh
-  path_vars.sh
-  putwisely.sh
-  py-dev-up.sh
-  startapps.sh
-  stayalive.sh
-  wire-bash.sh
- }
- docs=$HOME/.depoxy/ambers/docs {
-  emoji-lookup-list.rst
  }
 }
 
-### END: DEPOXY ################
+### END: DEPOXYAMBERS ##########
 ################################
 
 # ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 
 #################################
-# BEG: ARCHETYPE ###############
+# BEG: DEPOXYARCHETYPE #########
 #
 # ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
 # ┃  🧴 DepoXy  Arch🏹etype  📠 ┃
 # ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 
-# DEPOXY_AMBERS
+# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+# ░░ BEG: DXA TEMPLATE ░░░░░░░░░
+
+DEPOXY_AMBERS
+DEPOXY_STINTS
 DEPOXY_ARCHETYPE=$HOME/.depoxy/ambers/archetype filter=".* *" {
  .gitignore
+ .gitignore.local
  .hostnames.EVAL
  .ignore
  .ignore.EVAL
- deploy-archetype.sh
- README.rst
- tree
+ LICENSE
+ README--FIXME.rst
+ README.md
  _mrconfig-BUSINESS_CODE_PATH.EVAL.example
  _mrconfig.EVAL.omr
+ deploy-archetype.sh
  docs=$HOME/.depoxy/ambers/archetype/docs {
   # notable-notes--vibrant
   # notable-notes--woodlot
@@ -760,7 +1086,7 @@ DEPOXY_ARCHETYPE=$HOME/.depoxy/ambers/archetype filter=".* *" {
   Donelog_Client.EVAL.rst
   Woodlot_Client.EVAL.rst
   Worklog_Client.EVAL.rst
-  _ingress.rst
+  notable-notes--prepare.sh
  }
  home=$HOME/.depoxy/ambers/archetype/home {
   .finicky.js
@@ -769,36 +1095,10 @@ DEPOXY_ARCHETYPE=$HOME/.depoxy/ambers/archetype filter=".* *" {
   .gitconfig.user.EVAL
   .netrc.example
   .npmrc.EVAL
-  .vimprojects.EVAL
+  _gitignore-macOS.EVAL
   bashrx.private.DXY_USERNAME.EVAL.sh.example
   bashrx.private.HOSTNAME.EVAL.sh
   crontab.DXY_USERNAME.EVAL
-  dubs_projects.EVAL.vim
-  _gitignore-macOS.EVAL
-  work.example=$HOME/.depoxy/ambers/archetype/home/work.example {
-   _ignore
-   CLIENT_BIZUNIT=$HOME/.depoxy/ambers/archetype/home/work.example/CLIENT_BIZUNIT {
-    .gitconfig-CLIENT_BIZUNIT.example
-    CLIENT_PROJECT_A=$HOME/.depoxy/ambers/archetype/home/work.example/CLIENT_BIZUNIT/CLIENT_PROJECT_A {
-     .eslintignore.local
-     .eslintrc-develop
-     .eslintrc-develop--alt
-     .tarignore
-     jest.config-DEV.js
-     jest.config-DEV.js--alt
-     _ignore
-     _git=$HOME/.depoxy/ambers/archetype/home/work.example/CLIENT_BIZUNIT/CLIENT_PROJECT_A/_git {
-      info=$HOME/.depoxy/ambers/archetype/home/work.example/CLIENT_BIZUNIT/CLIENT_PROJECT_A/_git/info {
-       exclude
-      }
-     }
-    }
-   }
-   project-123-testless=$HOME/.depoxy/ambers/archetype/home/work.example/project-123-testless {
-    .ignore
-    YOU--add-symlink-to-project-123
-   }
-  }
   Library=$HOME/.depoxy/ambers/archetype/home/Library {
    Application Support=$HOME/.depoxy/ambers/archetype/home/Library/Application\ Support {
     dob=$HOME/.depoxy/ambers/archetype/home/Library/Application\ Support/dob {
@@ -815,40 +1115,67 @@ DEPOXY_ARCHETYPE=$HOME/.depoxy/ambers/archetype filter=".* *" {
     }
    }
   }
-  vim-trap=$HOME/.depoxy/ambers/archetype/home/vim-trap {
-   README.rst
-   plugin=$HOME/.depoxy/ambers/archetype/home/vim-trap/plugin {
-    copy-file-project-path.vim
-    explore-notable-notes.EVAL.vim
-    language-client.EVAL.vim
-    syntax-off-certain-files.vim
-   }
-  }
   _git=$HOME/.depoxy/ambers/archetype/home/_git {
    info=$HOME/.depoxy/ambers/archetype/home/_git/info {
     exclude.EVAL
    }
   }
+  vim-trap=$HOME/.depoxy/ambers/archetype/home/vim-trap {
+   README.rst
+   after=$HOME/.depoxy/ambers/archetype/home/vim-trap/after {
+    plugin=$HOME/.depoxy/ambers/archetype/home/vim-trap/after/plugin {
+     blocklist-nospell.EVAL.vim
+     blocklist-syntax-off.EVAL.vim
+     pdbr-insert-set-trace.EVAL.vim
+    }
+   }
+   plugin=$HOME/.depoxy/ambers/archetype/home/vim-trap/plugin {
+    explore-notable-notes.EVAL.vim
+   }
+  }
+  _git/info=$HOME/.depoxy/ambers/archetype/home/_git/info {
+   exclude.EVAL
+  }
+  work.example=$HOME/.depoxy/ambers/archetype/home/work.example {
+   _ignore
+   CLIENT_BIZUNIT=$HOME/.depoxy/ambers/archetype/home/work.example/CLIENT_BIZUNIT {
+    .gitconfig-CLIENT_BIZUNIT.example
+    CLIENT_PROJECT_A=$HOME/.depoxy/ambers/archetype/home/work.example/CLIENT_BIZUNIT/CLIENT_PROJECT_A {
+     .eslintignore.local
+     .eslintrc-develop
+     .eslintrc-develop--alt
+     .tarignore
+     _ignore
+     jest.config-DEV.js
+     jest.config-DEV.js--alt
+     _git/info=$HOME/.depoxy/ambers/archetype/home/work.example/CLIENT_BIZUNIT/CLIENT_PROJECT_A/_git/info {
+      exclude
+     }
+    }
+   }
+   project-123-testless=$HOME/.depoxy/ambers/archetype/home/work.example/project-123-testless {
+    .ignore.EVAL.example
+    YOU--add-symlink-to-project-123
+   }
+  }
   .config=$HOME/.depoxy/ambers/archetype/home/.config {
-   defaults-read.dump
    DEPOXY_CLIENT_ID-tree.EVAL.col
    DEPOXY_CLIENT_ID-tree.EVAL.txt
    depoxy=$HOME/.depoxy/ambers/archetype/home/.config/depoxy {
     depoxyrc.EVAL.sh
    }
    karabiner=$HOME/.depoxy/ambers/archetype/home/.config/karabiner {
-    karabiner.json
     README.EVAL.rst
+    karabiner.json
     assets=$HOME/.depoxy/ambers/archetype/home/.config/karabiner/assets {
      complex_modifications=$HOME/.depoxy/ambers/archetype/home/.config/karabiner/assets/complex_modifications {
       3110-client-DEPOXY_CLIENT_ID-private.EVAL.json.example
-      6110-privte-docs-launchers-private.json
+      9210-privte-docs-launchers-private.json
      }
     }
    }
-   Rectangle=$HOME/.depoxy/ambers/archetype/home/.config/Rectangle {
-    README.rst
-    Rectangle-config.json
+   tig=$HOME/.depoxy/ambers/archetype/home/.config/tig {
+    config.EVAL
    }
   }
   .depoxy=$HOME/.depoxy/ambers/archetype/home/.depoxy {
@@ -864,10 +1191,16 @@ DEPOXY_ARCHETYPE=$HOME/.depoxy/ambers/archetype filter=".* *" {
     }
    }
   }
+  .kube=$HOME/.depoxy/ambers/archetype/home/.kube {
+   PRIVATE
+  }
   .local=$HOME/.depoxy/ambers/archetype/home/.local {
    share=$HOME/.depoxy/ambers/archetype/home/.local/share {
     dob=$HOME/.depoxy/ambers/archetype/home/.local/share/dob {
      dob.sqlite
+    }
+    .depoxy=$HOME/.depoxy/ambers/archetype/home/.local/share/.depoxy {
+     last-reboot.touchfile
     }
    }
   }
@@ -877,11 +1210,27 @@ DEPOXY_ARCHETYPE=$HOME/.depoxy/ambers/archetype filter=".* *" {
   .ssh=$HOME/.depoxy/ambers/archetype/home/.ssh {
    config.EVAL.example
   }
+  .vim=$HOME/.depoxy/ambers/archetype/home/.vim {
+   pack=$HOME/.depoxy/ambers/archetype/home/.vim/pack {
+    landonb=$HOME/.depoxy/ambers/archetype/home/.vim/pack/landonb {
+     start=$HOME/.depoxy/ambers/archetype/home/.vim/pack/landonb/start {
+      dubs_grep_steady=$HOME/.depoxy/ambers/archetype/home/.vim/pack/landonb/start/dubs_grep_steady {
+       dubs_projects.EVAL.vim
+      }
+      dubs_project_tray=$HOME/.depoxy/ambers/archetype/home/.vim/pack/landonb/start/dubs_project_tray {
+       .vimprojects.EVAL
+      }
+     }
+    }
+   }
+   spell=$HOME/.depoxy/ambers/archetype/home/.vim/spell {
+    en.utf-8.add--personal
+   }
+  }
  }
  private=$HOME/.depoxy/ambers/archetype/private {
   # docs [TB relocated...]
-  .ignore
-  FIXME.rst
+  private.not-private
   home=$HOME/.depoxy/ambers/archetype/private/home {
    .local=$HOME/.depoxy/ambers/archetype/private/home/.local {
     share=$HOME/.depoxy/ambers/archetype/private/home/.local/share {
@@ -891,33 +1240,31 @@ DEPOXY_ARCHETYPE=$HOME/.depoxy/ambers/archetype filter=".* *" {
    }
   }
  }
- static=$HOME/.depoxy/ambers/archetype/static {
-  README.rst
- }
  .whilom=$HOME/.depoxy/ambers/archetype/.whilom {
   README.rst
  }
 }
 
-### END: ARCHETYPE #############
+### END: DEPOXYARCHETYPE #######
 ################################
 
 # ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 
 #################################
-# BEG: ALL_THE_DUBS VIM ########
+# BEG: DUBSVIM #################
 #
 # ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
 # ┃  🦜    DUBS   𝗩 𝗜 𝗠     🦜  ┃
 # ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+#         🇻   🇮   🇲
 
 # HINT: Rather than rebuild \c
 #       the top-level ~/.vim,
-#       rebuild just my subdirs:
+#       rebuild just plugins:
 #        $HOME/.vim/pack/landonb
 #
 # *** .vim Working dir
-DUBS_VIM=$HOME/.vim filter=".* *" exclude=".trustme.log tags" {
+DUBS_VIM_=$HOME/.vim filter=".* *" exclude=".trustme.log tags" {
  .gitignore
  .gitignore.local
  .ignore
@@ -928,11 +1275,11 @@ DUBS_VIM=$HOME/.vim filter=".* *" exclude=".trustme.log tags" {
  .mrconfig-lsp
  .netrwhist
  .vimrc
- coc-settings.json
- infuse
  LICENSE
  README-USING.rst
  README.rst
+ coc-settings.json
+ infuse
  setup.sh
  autoload=$HOME/.vim/autoload {
   pathogen.vim
@@ -952,7 +1299,65 @@ DUBS_VIM=$HOME/.vim filter=".* *" exclude=".trustme.log tags" {
  spell=$HOME/.vim/spell filter="en.utf-8.add" {
   en.utf-8.add
  }
+ pack=$HOME/.vim/pack {
+  .gitignore
+  .ignore
+ }
+ # *** pack/DepoXy
+ pack/DepoXy=$HOME/.vim/pack/DepoXy {
+  .ignore
+  start/vim-clip-expand-path=$HOME/.vim/pack/DepoXy/start/vim-clip-expand-path {
+   .gitignore
+   LICENSE
+   README.md
+   doc=$HOME/.vim/pack/DepoXy/start/vim-clip-expand-path/doc {
+    vim-clip-expand-path.txt
+   }
+   plugin=$HOME/.vim/pack/DepoXy/start/vim-clip-expand-path/plugin {
+    copy-file-project-path.vim
+   }
+  }
+  start/vim-depoxy-coc-defaults=$HOME/.vim/pack/DepoXy/start/vim-depoxy-coc-defaults {
+   .gitignore
+   LICENSE
+   README.md
+   doc=$HOME/.vim/pack/DepoXy/start/vim-depoxy-coc-defaults/doc {
+    vim-depoxy-coc-defaults.txt
+   }
+   plugin=$HOME/.vim/pack/DepoXy/start/vim-depoxy-coc-defaults/plugin {
+    language-client.vim
+   }
+  }
+  depoxy/vim-depoxy=$HOME/.depoxy/ambers/home/.vim/pack/DepoXy/start/vim-depoxy {
+   LICENSE
+   README.rst
+   doc=$HOME/.depoxy/ambers/home/.vim/pack/DepoXy/start/vim-depoxy/doc {
+    vim_depoxy.txt
+   }
+   plugin=$HOME/.depoxy/ambers/home/.vim/pack/DepoXy/start/vim-depoxy/plugin {
+    add-fzf-path.vim
+    conflict-marker-removal.vim
+    fzf.vim
+    map-nop-q-r-s.vim
+    set-diffopt-hiddenoff.vim
+    setup-nerd-commenter.vim
+    vim-beautifold-config.vim
+    vim-fugitive-gb-blame-gc-cleanup.vim
+    vim-sensible-open-avoid-buftyped.vim
+    vim_depoxy.vim
+   }
+  }
+  DXY_DEPOXY_CLIENT_ID/vim-trap=$HOME/.depoxy/stints/DXY_DEPOXY_CLIENT_ID/home/vim-trap {
+   README.rst
+   plugin=$HOME/.depoxy/stints/DXY_DEPOXY_CLIENT_ID/home/vim-trap/plugin {
+    explore-notable-notes.vim
+    vimprojects-dob.vim
+   }
+  }
+ }
+ # *** pack/landonb
  pack/landonb=$HOME/.vim/pack/landonb {
+  .ignore
   dubs_after_dark=$HOME/.vim/pack/landonb/start/dubs_after_dark {
    .gitignore
    LICENSE
@@ -987,7 +1392,6 @@ DUBS_VIM=$HOME/.vim filter=".* *" exclude=".trustme.log tags" {
     guifont_configure.vim
     guioptions_galore.vim
     indent_keys_ncmds.vim
-    init_gui_win_size.vim
     line_break_smarts.vim
     line_numbers_show.vim
     mimic_menu_keymap.vim
@@ -1019,8 +1423,13 @@ DUBS_VIM=$HOME/.vim filter=".* *" exclude=".trustme.log tags" {
    }
    plugin=$HOME/.vim/pack/landonb/start/dubs_buffer_fun/plugin {
     BufOnly.vim
-    dubs_buffer_fun.vim
-    window-resize-fullscreen-toggle.vim
+    buffer-delete-but-keep-window.vim
+    create-window-navigation-mappings.vim
+    hide-show-netrw-window.vim
+    list-buffers-and-prompt-for-number.vim
+    restore-cursor-position-on-edit.vim
+    toggle-between-MRU-buffers.vim
+    vertical-split-mapping.vim
    }
   }
   dubs_edit_juice=$HOME/.vim/pack/landonb/start/dubs_edit_juice {
@@ -1028,10 +1437,11 @@ DUBS_VIM=$HOME/.vim filter=".* *" exclude=".trustme.log tags" {
    .ignore
    LICENSE
    README.rst
-   after=$HOME/.vim/pack/landonb/start/dubs_edit_juice/after {
-    plugin=$HOME/.vim/pack/landonb/start/dubs_edit_juice/after/plugin {
-     dubs_after_juice.vim
-    }
+   after/plugin=$HOME/.vim/pack/landonb/start/dubs_edit_juice/after/plugin {
+    dubs_after_juice.vim
+   }
+   autoload=$HOME/.vim/pack/landonb/start/dubs_edit_juice/autoload {
+    paste.vim
    }
    doc=$HOME/.vim/pack/landonb/start/dubs_edit_juice/doc {
     dubs_edit_juice.txt
@@ -1050,8 +1460,8 @@ DUBS_VIM=$HOME/.vim filter=".* *" exclude=".trustme.log tags" {
    LICENSE
    README.rst
    cmdt_paths.template=$HOME/.vim/pack/landonb/start/dubs_file_finder/cmdt_paths.template {
-    generate_links.sh
     README.rst
+    generate_links.sh
    }
    doc=$HOME/.vim/pack/landonb/start/dubs_file_finder/doc {
     dubs_file_finder.txt
@@ -1078,6 +1488,7 @@ DUBS_VIM=$HOME/.vim filter=".* *" exclude=".trustme.log tags" {
      mxml.vim
     }
     syntax=$HOME/.vim/pack/landonb/start/dubs_ftype_mess/after/syntax {
+     README-installing-syntax-files.rst
      actionscript.vim
      dtd.vim
      go.vim
@@ -1088,7 +1499,6 @@ DUBS_VIM=$HOME/.vim filter=".* *" exclude=".trustme.log tags" {
      mkd.vim
      mxml.vim
      python.vim
-     README-installing-syntax-files.rst
      rst.vim
      textile.vim
      wikipedia.vim
@@ -1123,17 +1533,17 @@ DUBS_VIM=$HOME/.vim filter=".* *" exclude=".trustme.log tags" {
    }
    syntax=$HOME/.vim/pack/landonb/start/dubs_ftype_mess/syntax {
     applescript.vim
-    bash.vim
     ruby.vim
     sh-Version_131.vim
     sh-Version_165.vim
     sh-Version_185.vim
     sh-Version_189-lb.vim
     sh-Version_189.vim
+    sh-Version_203-lb.vim
+    sh-Version_203.vim
     sh.vim
    }
    plugin=$HOME/.vim/pack/landonb/start/dubs_ftype_mess/plugin {
-    # dubs_ftype_mess_vim
     dubs_ftype_mess.vim
     dubs_preloads.vim
     spellcapcheck-off.vim
@@ -1141,11 +1551,11 @@ DUBS_VIM=$HOME/.vim filter=".* *" exclude=".trustme.log tags" {
   }
   dubs_grep_steady=$HOME/.vim/pack/landonb/start/dubs_grep_steady {
    .gitignore
+   LICENSE
+   README.rst
    dubs_projects.vim
    dubs_projects.vim.template
    grep-exclude
-   LICENSE
-   README.rst
    bin=$HOME/.vim/pack/landonb/start/dubs_grep_steady/bin {
     vim-grepprg-rg-sort
    }
@@ -1189,7 +1599,7 @@ DUBS_VIM=$HOME/.vim filter=".* *" exclude=".trustme.log tags" {
     dubs_project_tray.txt
     project.txt
    }
-   # dubs_cuts → $HOME/.depoxy/ambers/home/.vim/dubs_project_tray/dubs_cuts
+   # dubs_cuts: $HOME/.depoxy/ambers/home/.vim/dubs_project_tray/dubs_cuts
    plugin=$HOME/.vim/pack/landonb/start/dubs_project_tray/plugin {
     dubs_project.vim
     dubs_project_tray.vim
@@ -1288,6 +1698,21 @@ DUBS_VIM=$HOME/.vim filter=".* *" exclude=".trustme.log tags" {
     command_line_clock.vim
    }
   }
+  vim-fullscreen-toggle=$HOME/.vim/pack/landonb/start/vim-fullscreen-toggle {
+   .gitignore
+   LICENSE
+   README.rst
+   after/plugin=$HOME/.vim/pack/landonb/start/vim-fullscreen-toggle/after/plugin {
+    on-startup-init-gui-win-size.vim
+    window-resize-fullscreen-toggle.vim
+   }
+   autoload=$HOME/.vim/pack/landonb/start/vim-fullscreen-toggle/autoload {
+    resize.vim
+   }
+   doc=$HOME/.vim/pack/landonb/start/vim-fullscreen-toggle/doc {
+    vim-fullscreen-toggle.txt
+   }
+  }
   vim-lcd-project-root=$HOME/.vim/pack/landonb/start/vim-lcd-project-root filter=".* *" {
    .gitignore
    README.md
@@ -1355,15 +1780,20 @@ DUBS_VIM=$HOME/.vim filter=".* *" exclude=".trustme.log tags" {
     vim_ovm_twenty_one_sevenwich.vim
    }
   }
+  #
+  # *** BEG: reSTfold
   vim-reSTfold=$HOME/.vim/pack/landonb/start/vim-reSTfold {
    .gitignore
    LICENSE
    README.rst
-   after-ftplugin=$HOME/.vim/pack/landonb/start/vim-reSTfold/after/ftplugin {
+   after/ftplugin=$HOME/.vim/pack/landonb/start/vim-reSTfold/after/ftplugin {
     rst.vim
    }
-   after-syntax=$HOME/.vim/pack/landonb/start/vim-reSTfold/after/syntax {
+   after/syntax=$HOME/.vim/pack/landonb/start/vim-reSTfold/after/syntax {
     rst.vim
+   }
+   bin=$HOME/.vim/pack/landonb/start/vim-reSTfold/bin {
+    restfold-report.awk
    }
    doc=$HOME/.vim/pack/landonb/start/vim-reSTfold/doc {
     vim-reSTfold.txt
@@ -1392,6 +1822,7 @@ DUBS_VIM=$HOME/.vim filter=".* *" exclude=".trustme.log tags" {
   }
   vim-reST-highfive=$HOME/.vim/pack/landonb/start/vim-reST-highfive {
    .gitignore
+   FIVERs.vim
    LICENSE
    README.rst
    after/syntax=$HOME/.vim/pack/landonb/start/vim-reST-highfive/after/syntax {
@@ -1418,6 +1849,8 @@ DUBS_VIM=$HOME/.vim filter=".* *" exclude=".trustme.log tags" {
     syntax_enable_set.vim
    }
   }
+  # *** EOF: reSTfold
+  #
   vim-select-mode-stopped-down=$HOME/.vim/pack/landonb/start/vim-select-mode-stopped-down filter=".* *" {
    .gitignore
    LICENSE
@@ -1467,8 +1900,8 @@ DUBS_VIM=$HOME/.vim filter=".* *" exclude=".trustme.log tags" {
   vim-tmux-navigator=$HOME/.vim/pack/landonb/start/vim-tmux-navigator filter=".* *" {
    .gitignore
    License.md
-   pattern-check
    README.md
+   pattern-check
    vim-tmux-navigator.tmux
    doc=$HOME/.vim/pack/landonb/start/vim-tmux-navigator/doc {
     tmux-navigator.txt
@@ -1493,21 +1926,31 @@ DUBS_VIM=$HOME/.vim filter=".* *" exclude=".trustme.log tags" {
  }
 }
 
+### END: DUBSVIM ###############
+################################
+
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
-# ░░ BEG: DUBS CUTS ░░░░░░░░░░░░
+# ░░ BEG: DUBSCUTS ░░░░░░░░░░░░░
 
 # ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
 # ┃ 🥩 🥩  DUBS  CUTS   𝗩 𝗜 𝗠   ┃
 # ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 
-# DUBS_VIM
+# DUBS_VIM_
 # *** Consolidated .vim listing
-DUBS_CUTS=$HOME/.depoxy/ambers/home/.vim/dubs_project_tray/dubs_cuts filter=".* *" {
+# Rebuild:
+#   /home/landonb/.waffle/home/.vim/dubs_project_tray/generate_links.sh
+DUBS_CUTS_=$HOME/.depoxy/ambers/home/.vim/dubs_project_tray/dubs_cuts filter=".* *" {
  .ignore
  .vim-autoload-pathogen.vim
  .vim-plugin-dubs_preloads.vim
+ QFEnter-autoload-QFEnter.vim
+ QFEnter-doc-QFEnter.txt
+ QFEnter-plugin-QFEnter.vim
  after_da-colors-after-dark.vim
  after_da-doc-dubs_after_dark.txt
+ ansible--UltiSnip-generate.py
+ ansible--UltiSnip-generate.sh
  ansible--ftdetect-ansible.vim
  ansible--ftplugin-ansible.vim
  ansible--ftplugin-ansible_hosts.vim
@@ -1515,8 +1958,6 @@ DUBS_CUTS=$HOME/.depoxy/ambers/home/.vim/dubs_project_tray/dubs_cuts filter=".* 
  ansible--syntax-ansible.vim
  ansible--syntax-ansible_hosts.vim
  ansible--syntax-jinja2.vim
- ansible--UltiSnip-generate.py
- ansible--UltiSnip-generate.sh
  appearan-after-plugin-die_blinkënmatchen.vim
  appearan-after-plugin-dubs_color_scheme.vim
  appearan-colors-after-ice.vim
@@ -1526,7 +1967,6 @@ DUBS_CUTS=$HOME/.depoxy/ambers/home/.vim/dubs_project_tray/dubs_cuts filter=".* 
  appearan-plugin-guifont_configure.vim
  appearan-plugin-guioptions_galore.vim
  appearan-plugin-indent_keys_ncmds.vim
- appearan-plugin-init_gui_win_size.vim
  appearan-plugin-line_break_smarts.vim
  appearan-plugin-line_numbers_show.vim
  appearan-plugin-mimic_menu_keymap.vim
@@ -1545,15 +1985,21 @@ DUBS_CUTS=$HOME/.depoxy/ambers/home/.vim/dubs_project_tray/dubs_cuts filter=".* 
  buffer_f-after-plugin-dubs_buffer_fun.vim
  buffer_f-doc-dubs_buffer_fun.txt
  buffer_f-plugin-BufOnly.vim
- buffer_f-plugin-dubs_buffer_fun.vim
- buffer_f-plugin-window-resize-fullscreen-toggle.vim
+ buffer_f-plugin-buffer-delete-but-keep-window.vim
+ buffer_f-plugin-create-window-navigation-mappings.vim
+ buffer_f-plugin-hide-show-netrw-window.vim
+ buffer_f-plugin-list-buffers-and-prompt-for-number.vim
+ buffer_f-plugin-restore-cursor-position-on-edit.vim
+ buffer_f-plugin-toggle-between-MRU-buffers.vim
+ buffer_f-plugin-vertical-split-mapping.vim
  cmdt_path-generate_links.sh
+ dubs_vim--README-USING.rst
+ dubs_vim--README.rst
  dubs_vim--readme-using.make.sh
  dubs_vim--readme-using.pt1.rst
  dubs_vim--readme-using.pt2.rst
- dubs_vim--README-USING.rst
- dubs_vim--README.rst
  edit_jui-after-plugin-dubs_after_juice.vim
+ edit_jui-autoload-paste.vim
  edit_jui-doc-dubs_edit_juice.txt
  edit_jui-plugin-chartab.vim
  edit_jui-plugin-cr-bs-del-space-tab.vim
@@ -1561,8 +2007,8 @@ DUBS_CUTS=$HOME/.depoxy/ambers/home/.vim/dubs_project_tray/dubs_cuts filter=".* 
  edit_jui-plugin-ctrl-backspace.vim
  edit_jui-plugin-ctrl-delete.vim
  edit_jui-plugin-dubs_edit_juice.vim
- file_fin-cmdt_pat-generate_links.sh
  file_fin-cmdt_pat-README.rst
+ file_fin-cmdt_pat-generate_links.sh
  file_fin-doc-dubs_file_finder.txt
  file_fin-plugin-dubs_file_finder.vim
  ftype_me-after-ftplugin-example_debugging.vim
@@ -1572,6 +2018,7 @@ DUBS_CUTS=$HOME/.depoxy/ambers/home/.vim/dubs_project_tray/dubs_cuts filter=".* 
  ftype_me-after-ftplugin-sh_synsible.vim
  ftype_me-after-ftplugin-text_set_spell.vim
  ftype_me-after-indent-mxml.vim
+ ftype_me-after-syntax-README-installing-syntax-files.rst
  ftype_me-after-syntax-actionscript.vim
  ftype_me-after-syntax-dtd.vim
  ftype_me-after-syntax-go.vim
@@ -1582,7 +2029,6 @@ DUBS_CUTS=$HOME/.depoxy/ambers/home/.vim/dubs_project_tray/dubs_cuts filter=".* 
  ftype_me-after-syntax-mkd.vim
  ftype_me-after-syntax-mxml.vim
  ftype_me-after-syntax-python.vim
- ftype_me-after-syntax-README-installing-syntax-files.rst
  ftype_me-after-syntax-rst.vim
  ftype_me-after-syntax-textile.vim
  ftype_me-after-syntax-wikipedia.vim
@@ -1600,6 +2046,8 @@ DUBS_CUTS=$HOME/.depoxy/ambers/home/.vim/dubs_project_tray/dubs_cuts filter=".* 
  ftype_me-syntax-sh-Version_185.vim
  ftype_me-syntax-sh-Version_189-lb.vim
  ftype_me-syntax-sh-Version_189.vim
+ ftype_me-syntax-sh-Version_203-lb.vim
+ ftype_me-syntax-sh-Version_203.vim
  grep_ste-doc-dubs_grep_steady.txt
  grep_ste-plugin-dubs_grep_steady.vim
  html_ent-doc-dubs_html_entities.txt
@@ -1611,9 +2059,6 @@ DUBS_CUTS=$HOME/.depoxy/ambers/home/.vim/dubs_project_tray/dubs_cuts filter=".* 
  project_-plugin-dubs_project.vim
  project_-plugin-dubs_project_tray.vim
  project_-plugin-set_isfname.vim
- QFEnter-autoload-QFEnter.vim
- QFEnter-doc-QFEnter.txt
- QFEnter-plugin-QFEnter.vim
  quickfix-doc-dubs_quickfix_wrap.txt
  quickfix-plugin-dubs_quickfix_wrap.vim
  star------.dubs_style.vim
@@ -1632,6 +2077,10 @@ DUBS_CUTS=$HOME/.depoxy/ambers/home/.vim/dubs_project_tray/dubs_cuts filter=".* 
  vim-clas-plugin-taglist.vim
  vim-comm-doc-vim-command-line-clock.txt
  vim-comm-plugin-command_line_clock.vim
+ vim-full-after-plugin-on-startup-init-gui-win-size.vim
+ vim-full-after-plugin-window-resize-fullscreen-toggle.vim
+ vim-full-autoload-resize.vim
+ vim-full-doc-vim-fullscreen-toggle.txt
  vim-lcd--doc-lcd-project-root.txt
  vim-lcd--plugin-lcd_project_root.vim
  vim-mark-autoload-markdown.vim
@@ -1646,7 +2095,6 @@ DUBS_CUTS=$HOME/.depoxy/ambers/home/.vim/dubs_project_tray/dubs_cuts filter=".* 
  vim-mark-spec-support-vim.rb
  vim-mark-syntax-markdown.vim
  vim-mark-syntax-markdown_jekyll.vim
- vim-netr-autoload-netrw.vim
  vim-netr-doc-netrw-cfg-split-explorer.txt
  vim-netr-doc-netrw-link-resolve.txt
  vim-netr-plugin-netrw_cfg_split_explorer.vim
@@ -1687,60 +2135,53 @@ DUBS_CUTS=$HOME/.depoxy/ambers/home/.vim/dubs_project_tray/dubs_cuts filter=".* 
  your_dubs--dubs_projects.vim
 }
 
-### END: ALL_THE_DUBS VIM ######
+### END: DUBSCUTS ##############
 ################################
 
 # ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 
 #################################
-# BEG: SHOILERPLATE ############
+# BEG: SHOILERPLATEPROJ ########
 #
 # ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
 # ┃ 🚿  🛢 SHOILERPLATE  🚽  🤝 ┃
 # ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
-# *** Routin' Poutine POUTINE
+# *** Aka shell library
 
-SHOILERPLATE=$HOME/.kit/sh filter=".* *" {
- feature-coverage-report=$HOME/.kit/sh/feature-coverage-report filter=".* *" {
-  .ignore
-  LICENSE
-  Makefile
-  package.json
-  README.md
-  bin=$HOME/.kit/sh/feature-coverage-report/bin {
-   feature-coverage-report
-  }
-  # deps : $HOME/.kit/sh/feature-coverage-report/deps
-  spin=$HOME/.kit/sh/feature-coverage-report/spin {
-   cli-spinners-extract-single-char-sequence-to-bash.sh
-   cli-spinners.sh
-   spinners.json
-  }
- }
+SHOILERPLATE_=$HOME/.kit/sh filter=".* *" {
  fries-findup=$HOME/.kit/sh/fries-findup {
   .ignore
-  install.sh
   LICENSE
   Makefile
-  package.json
   README.rst
   VERSION
+  install.sh
+  package.json
   bin=$HOME/.kit/sh/fries-findup/bin {
    fries-findup
   }
   man=$HOME/.kit/sh/fries-findup/man {
-   fries-findup.1
-   fries-findup.1.ronn
    Makefile
    README.md
+   fries-findup.1
+   fries-findup.1.ronn
+  }
+ }
+ gvim-open-kindness=$HOME/.kit/sh/gvim-open-kindness {
+  # GVIM_OPEN_KINDNESS
+  .ignore
+  LICENSE
+  README.md
+  bin=$HOME/.kit/sh/gvim-open-kindness/bin {
+   gvim-open-kindness
   }
  }
  sh-ask-yesnoskip=$HOME/.kit/sh/sh-ask-yesnoskip {
   .ignore
   LICENSE
   Makefile
-  package.json
   README.md
+  package.json
   bin=$HOME/.kit/sh/sh-ask-yesnoskip/bin {
    ask-yesnoskip.sh
   }
@@ -1749,8 +2190,8 @@ SHOILERPLATE=$HOME/.kit/sh filter=".* *" {
   .ignore
   LICENSE
   Makefile
-  package.json
   README.md
+  package.json
   bin=$HOME/.kit/sh/sh-colors/bin {
    colors.sh
    strip-colors
@@ -1766,10 +2207,9 @@ SHOILERPLATE=$HOME/.kit/sh filter=".* *" {
  sh-git-nubs=$HOME/.kit/sh/sh-git-nubs {
   .ignore
   LICENSE
-  Makefile
-  package.json
   README.md
-  bin=$HOME/.kit/sh/sh-git-nubs/bin {
+  package.json
+  lib=$HOME/.kit/sh/sh-git-nubs/lib {
    git-nubs.sh
   }
  }
@@ -1777,8 +2217,8 @@ SHOILERPLATE=$HOME/.kit/sh filter=".* *" {
   .ignore
   LICENSE
   Makefile
-  package.json
   README.md
+  package.json
   bin=$HOME/.kit/sh/sh-logger/bin {
    logger.sh
   }
@@ -1787,20 +2227,20 @@ SHOILERPLATE=$HOME/.kit/sh filter=".* *" {
   .ignore
   LICENSE
   Makefile
-  package.json
   README.md
+  package.json
   bin=$HOME/.kit/sh/sh-pather/bin {
-   pather.sh
    path_prefix
    path_suffix
+   pather.sh
   }
  }
- sh-print-nanos-now=$HOME/.kit/sh/sh-print-nanos-now filter=".* *" {
+ sh-print-nanos-now=$HOME/.kit/sh/sh-print-nanos-now {
   .ignore
   LICENSE
   Makefile
-  package.json
   README.md
+  package.json
   bin=$HOME/.kit/sh/sh-print-nanos-now/bin {
    print-nanos-now.sh
   }
@@ -1809,30 +2249,148 @@ SHOILERPLATE=$HOME/.kit/sh filter=".* *" {
   .ignore
   LICENSE
   Makefile
-  package.json
   README.md
+  package.json
   bin=$HOME/.kit/sh/sh-rm_safe/bin {
+   cp_safe
+   mv_safe
    path_device
-   rmrm
    rm_rotate
    rm_safe
+   rmrm
   }
  }
  sh-sensible-open=$HOME/.kit/sh/sh-sensible-open {
   .ignore
   LICENSE
   Makefile
-  package.json
   README.md
+  package.json
   bin=$HOME/.kit/sh/sh-sensible-open/bin {
-   sensible-open
    _sensibleopen-browser-nickname
    _sensibleopen-format-open-command
+   sensible-open
   }
  }
 }
 
-### END: SHOILERPLATE ##########
+### END: SHOILERPLATEPROJ ######
+################################
+
+# ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+
+#################################
+# BEG: SHELLEXE ################
+#
+# *** Shell Executables
+
+# # *** DXC-bin/
+# Client-bin=$HOME/.depoxy/stints/DXY_DEPOXY_CLIENT_ID/bin filter=".* *" {
+# }
+
+# %%%%%%%
+
+# *** DepoXy-bin/
+DepoXy/bin=$HOME/.depoxy/ambers/bin filter=".* *" {
+ fussy
+ notify
+ spells.sh
+ test-as-cron
+ vimprojects-create-copy-without-work-projects
+ weekly-omr-report
+}
+
+# %%%%%%%
+
+# *** Hfries-bin/
+HOMEFRIES/bin=$HOME/.homefries/bin filter=".* *" {
+ .bash_history_filter.awk
+ bash_function_to_file_splitter.awk
+ ctags-groom.sh
+ echo-elapsed
+ editor-vim-0-0-insert
+ happy4j.sh
+ keybinding-focus-spotify
+ reset
+ resize-images
+ ssh-agent-kick
+ ssh-agent-kill
+ test_colors-24bit
+ ziew
+ zview
+ completions=$HOME/.homefries/bin/completions filter=".* *" {
+  docker-compose
+  git-completion.bash
+  git-extras-bash_completion.sh
+  jira-completion
+  poetry-completion.bash
+  pyenv.bash
+  tig-completion.bash
+  tmux
+ }
+}
+
+### END: SHELLEXE ##############
+################################
+
+# ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+
+#################################
+# BEG: MYREPOS #################
+#
+# MY_REPOS
+MYREPOS_BRANCHABLE=$HOME/.kit/git/myrepos filter=".* *" {
+ .gitattributes
+ .gitignore
+ .ignore
+ GPL
+ Makefile
+ README.rst
+ mr
+ mrconfig
+ mrconfig.complex
+ webcheckout
+ debian=$HOME/.kit/git/myrepos/debian {
+  .gitignore
+  NEWS
+  changelog
+  control
+  copyright
+  docs
+  rules
+  source=$HOME/.kit/git/myrepos/debian/source {
+   format
+  }
+  tests=$HOME/.kit/git/myrepos/debian/tests {
+   control
+  }
+  upstream=$HOME/.kit/git/myrepos/debian/upstream {
+   metadata
+  }
+ }
+ lib=$HOME/.kit/git/myrepos/lib {
+  dgit
+  git-annex
+  git-cvs
+  git-fake-bare
+  git-subtree
+  git-svn
+  graph
+  remote
+  repo
+  stow
+  unison
+  upgrade
+  vcsh
+  vis
+ }
+ lib.sh=$HOME/.kit/git/myrepos/lib.sh {
+  cache-mr-status.sh
+ }
+ # doc: $HOME/.kit/git/myrepos/doc
+}
+
+### END: MYREPOS ###############
 ################################
 
 # ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
@@ -1845,25 +2403,27 @@ SHOILERPLATE=$HOME/.kit/sh filter=".* *" {
 # ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 # *** .ohmyrepos Working dir
 
-Oh_My_Repos=$HOME/.kit/git/ohmyrepos filter=".* *" {
+Oh_My_Repos_=$HOME/.kit/git/ohmyrepos filter=".* *" {
  .gitignore.local
  .ignore
  .mrconfig-omr
  .mrconfig.example
  LICENSE
  README.rst
- bin=$HOME/.kit/git/ohmyrepos/bin {
-  infuse
-  infuse-depoxy-ambers
-  infuse-dubs-vim
-  infuse-home-fries
-  infuse-platform-macOS
-  infuse-user-home
-  js-npm-patch-opn-sensible-open
+ OMR_BIN=$HOME/.kit/git/ohmyrepos/bin {
+  omr-report
+  weekly-omr-report
  }
- lib=$HOME/.kit/git/ohmyrepos/lib {
+ # *** ohmyrepos/lib
+ OMR_LIB_CORE=$HOME/.kit/git/ohmyrepos/lib {
   any-action-runtime
   any-action-runtime.sh
+  checkout
+  checkout.sh
+  clone-giturl
+  clone-giturl.sh
+  echo-install-help
+  echo-install-help.sh
   fetch-selective
   fetch-selective.sh
   git-auto-commit
@@ -1873,6 +2433,9 @@ Oh_My_Repos=$HOME/.kit/git/ohmyrepos filter=".* *" {
   git-my-merge-status
   git-my-merge-status.sh
   infuse-no-op
+  install-os-specific
+  install-os-specific.sh
+  line-in-file.sh
   link-hard
   link-hard.sh
   link-private-exclude
@@ -1880,80 +2443,206 @@ Oh_My_Repos=$HOME/.kit/git/ohmyrepos filter=".* *" {
   link-private-ignore
   link-private-ignore.sh
   no-travel
+  os-is-macos
+  os-is-macos.sh
   overlay-symlink.sh
-  private-clone
-  rebase-tip
-  rebase-tip.sh
+  print-homebrew-prefix.sh
+  print-unresolved-path.sh
+  pull-latest
+  pull-latest.sh
   remote-add
   remote-add.sh
+  remote-set-private.sh
+  remote-set.sh
   skip-grouping
   skip-grouping.sh
+  skip-unless-archiving
   sorted-commit
   sorted-commit.sh
   sync-travel-remote
   sync-travel-remote.sh
+  wire-remotes
+  wire-remotes.sh
+ }
+ #
+ # *** depoxy/lib
+ DepoXy/Oh_My_Repos=$HOME/.depoxy/ambers/home/.kit/git/ohmyrepos {
+  _ignore
+  OMR_BIN_DEPOXY=$HOME/.depoxy/ambers/home/.kit/git/ohmyrepos/bin {
+   infuse
+   updateDeps
+  }
+  OMR_LIB_DEPOXY=$HOME/.depoxy/ambers/home/.kit/git/ohmyrepos/lib {
+   # JUMPR: updateDeps
+   append-bash-completion.sh
+   js-npm-patch-opn-sensible-open
+   macos-install-dmg.sh
+   my-deps-manage-easy-as-pypi
+   my-deps-manage-easy-as-pypi.sh
+   my-deps-manage-shoilerplate
+   my-deps-manage-shoilerplate.sh
+   pyenv-shell-unset.sh
+   rebase-tip.sh
+   spellfile.txt-runner.sh
+   stub-checkout.sh
+   update-faithful
+  }
+ }
+ #
+ # *** easy-as-pypi/bin
+ OMR_BIN_EAPP=$HOME/.kit/py/easy-as-pypi/bin filter="update-faithful" {
+  # JUMPR: updateDeps
+  update-faithful
+ }
+ #
+ # *** git-update-faithful/lib
+ OMR_LIB_UPDATEFAITHFUL=$HOME/.kit/git/git-update-faithful/lib {
+  update-faithful.sh
  }
 }
 
-# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
-# ░░ BEG: OMR CONF ░░░░░░░░░░░░░
+# ***
 
-# ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-# ┃ 🙀 🙀 OMR 🦆 CONF 🦆  🤳 🤳 ┃
-# ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
-# *** ohmyrepos */.mrconfig*
-
-INFUSERS=$HOME/.depoxy/ambers/home filter=".*infuse* *infuse*" {
- infuse
- infuse-depoxy-ambers
- infuse-dubs-vim
- infuse-home-fries
- infuse-platform-macOS
- infuse-user-home
-}
-MRCONFIGS=/ filter=".*mrconfig* *mrconfig*" {
- depoxy_home=$HOME/.depoxy/ambers/home {
-  .mrconfig
-  .ohmyrepos=$HOME/.kit/git/ohmyrepos {
-   .mrconfig-omr
-   .mrconfig.example
-  }
-  .vim=$HOME/.depoxy/ambers/home/.vim {
-   .mrconfig
-   .mrconfig-3rdp
-   .mrconfig-dubs
-   .mrconfig-lsp
-  }
-  kit=$HOME/.depoxy/ambers/home/.kit {
-   _mrconfig
-  }
-  kit_git=$HOME/.depoxy/ambers/home/.kit/git {
-   _mrconfig-git-core
-   _mrconfig-git-smart
-  }
-  kit_go=$HOME/.depoxy/ambers/home/.kit/go {
-   _mrconfig
-  }
-  kit_js=$HOME/.depoxy/ambers/home/.kit/js {
-   _mrconfig
-  }
-  kit_mOS=$HOME/.depoxy/ambers/home/.kit/mOS {
-   _mrconfig
-  }
-  kit_py=$HOME/.depoxy/ambers/home/.kit/py {
-   _mrconfig
-  }
-  kit_sh=$HOME/.depoxy/ambers/home/.kit/sh {
-   _mrconfig-bash
-   _mrconfig-shell
-  }
+MR_MR_CMD=$HOME/.kit/git/myrepos-mredit-command filter=".* *" {
+ LICENSE
+ Makefile
+ README.md
+ bin=$HOME/.kit/git/myrepos-mredit-command/bin {
+  # MREDIT_CONFIGS
+  infuse-configlns
+  mredit
+  mropen
  }
- BUSINESS_CODE_PATH=$HOME/BUSINESS_CODE_PATH {
-  # Aka ~/.depoxy/stints/2241/_mrconfg
+ lib=$HOME/.kit/git/myrepos-mredit-command/lib {
+  link_deep.sh
  }
 }
 
 ### END: OHMYREPOS #############
+################################
+
+# ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+
+#################################
+# BEG: OMRINFUSE ###############
+#
+# ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+# ┃ 💉 💉 💉  INFUSE*  🧃 🧃 🧃 ┃
+# ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+# *** `infuse`
+
+INFUSE=$HOME filter="~~nomatch~~" {
+ CLIENT=$HOME/.depoxy/stints/DXY_DEPOXY_CLIENT_ID filter="~~nomatch~~" {
+  infusers=$HOME/.depoxy/stints/DXY_DEPOXY_CLIENT_ID/home filter=".*infuse* *infuse*" {
+  }
+ }
+ AMBERS=$HOME/.depoxy/ambers filter="~~nomatch~~" {
+  infusers=$HOME/.depoxy/ambers/home filter=".*infuse* *infuse*" {
+   infuse-config-omr
+   infuse-dubs-vim
+   infuse-home-fries
+   infuse-platform-macOS
+   infuse-user-home
+  }
+  .projlns=$HOME/.depoxy/ambers/home/.projlns filter=".* *" {
+   # MREDIT_CONFIGS
+   infuse-projlns-breadcrumb.sh
+   infuse-projlns-core.sh
+   infuse-projlns-omr.sh
+   infuse-projlns-work.example.sh
+   depoxy-deeplinks=$HOME/.depoxy/ambers/home/.projlns/depoxy-deeplinks {
+    _ignore
+   }
+  }
+  .kit/git/ohmyrepos/bin=$HOME/.depoxy/ambers/home/.kit/git/ohmyrepos/bin filter="* .*" {
+   # Somewhat related. Sorta somewhat.
+   infuse
+   updateDeps
+  }
+ }
+ # JUMPR: See OMR_LIB for lib/:
+ OMR_LIB/=$HOME/.kit/git/ohmyrepos filter="" {
+  # OMR_LIB_CORE: $HOME/.kit/git/ohmyrepos/lib
+  # OMR_LIB_DEPOXY: $HOME/.depoxy/ambers/home/.kit/git/ohmyrepos/lib
+ }
+}
+
+### END: OMRINFUSE #############
+################################
+
+# ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+
+#################################
+# BEG: OMRCONF #################
+#
+# ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+# ┃ 🙀 🙀 OMR 🦆 CO 🦆 NF 🤳 🤳 ┃
+# ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+# *** Oh_My_Repos! */*mrconfig*
+
+MRCONFIGS_=/ filter=".*mrconfig* *mrconfig*" {
+ # *** User Project conf
+ work=$HOME/work {
+ }
+ # *** DepoXy Client(s)
+ DEPOXY_STINTS=$HOME/.depoxy/stints {
+  client/DXY_DEPOXY_CLIENT_ID=$HOME/.depoxy/stints/DXY_DEPOXY_CLIENT_ID {
+   _mrconfig
+   _mrconfig-BUSINESS_CODE_PATH.example
+  }
+ }
+ # *** OhMyRepos
+ home_ohmyrepos=$HOME/.kit/git/ohmyrepos {
+  .mrconfig-omr
+  .mrconfig.example
+ }
+ # *** DepoXy Ambers
+ DEPOXY_AMBERS=$HOME/.depoxy/ambers/home {
+  _mrconfig
+ }
+ depoxy_vim=$HOME/.depoxy/ambers/home/.vim {
+  _mrconfig
+  _mrconfig-3rdp
+  _mrconfig-dubs
+  _mrconfig-lsp
+ }
+ depoxy_kit=$HOME/.depoxy/ambers/home/.kit {
+  _mrconfig
+ }
+ kit_git=$HOME/.depoxy/ambers/home/.kit/git {
+  _mrconfig-git-core
+  _mrconfig-git-smart
+ }
+ kit_go=$HOME/.depoxy/ambers/home/.kit/go {
+  _mrconfig
+ }
+ kit_js=$HOME/.depoxy/ambers/home/.kit/js {
+  _mrconfig
+ }
+ kit_mOS=$HOME/.depoxy/ambers/home/.kit/mOS {
+  _mrconfig
+ }
+ kit_odd=$HOME/.depoxy/ambers/home/.kit/odd {
+  _mrconfig
+ }
+ kit_py=$HOME/.depoxy/ambers/home/.kit/py {
+  _mrconfig
+ }
+ kit_sh=$HOME/.depoxy/ambers/home/.kit/sh {
+  _mrconfig-bash
+  _mrconfig-shell
+ }
+ kit_txt=$HOME/.depoxy/ambers/home/.kit/txt {
+  _mrconfig
+ }
+ # *** DepoXy Archetype
+ DEPOXY_ARCHETYPE=$HOME/.depoxy/ambers/archetype {
+  _mrconfig-BUSINESS_CODE_PATH_.EVAL.example
+  _mrconfig.EVAL.omr
+ }
+}
+
+### END: OMRCONF ###############
 ################################
 
 # ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
@@ -1970,7 +2659,7 @@ MRCONFIGS=/ filter=".*mrconfig* *mrconfig*" {
  .gitconfig.local
 }
 
-git-smart=$HOME/.kit/git/git-smart filter=".* *" {
+GIT_SMART_=$HOME/.kit/git/git-smart filter=".* *" {
  .gitconfig
  .gitconfig.local.example
  .ignore
@@ -1985,14 +2674,18 @@ git-smart=$HOME/.kit/git/git-smart filter=".* *" {
  }
  bin=$HOME/.kit/git/git-smart/bin {
   diffconflicts
+  git-abort
   git-begin-review
   git-brs
   git-cleanbr
+  git-edit
   git-fup
   git-gc-all-ferocious!
   git-get
   git-gone
   git-latest-version
+  git-latest-version-normal
+  git-leave-breadcrumb
   git-lie-ci
   git-log-fzf
   git-lookup-remote
@@ -2004,21 +2697,24 @@ git-smart=$HOME/.kit/git/git-smart filter=".* *" {
   git-rebase-bubble-commit
   git-rebase-bubble-oldest
   git-report-large-blobs
+  git-reword
   git-ria!
   git-since
   git-standup
   git-tag-n-bag
   git-undo
-  git-wipit
   githexdiff
   gitmelddiff
   completions=$HOME/.kit/git/git-smart/bin/completions {
    git-completion.bash
   }
  }
+ deps/sh-git-nubs/lib/=$HOME/.kit/git/git-smart/deps/sh-git-nubs/lib {
+  git-nubs.sh
+ }
 }
 
-git-bump-version-tag=$HOME/.kit/git/git-bump-version-tag filter=".* *" {
+GIT_BUMP_VERSION_TAG=$HOME/.kit/git/git-bump-version-tag filter=".* *" {
  .gitconfig.example
  .ignore
  LICENSE
@@ -2028,7 +2724,7 @@ git-bump-version-tag=$HOME/.kit/git/git-bump-version-tag filter=".* *" {
  }
 }
 
-git-my-merge-status=$HOME/.kit/git/git-my-merge-status filter=".* *" {
+GIT_MY_MERGE_STATUS=$HOME/.kit/git/git-my-merge-status filter=".* *" {
  .gitconfig.example
  .gitignore.local
  .ignore
@@ -2040,7 +2736,39 @@ git-my-merge-status=$HOME/.kit/git/git-my-merge-status filter=".* *" {
  }
 }
 
-git-veggie-patch=$HOME/.kit/git/git-veggie-patch filter=".* *" {
+GIT_REBASE_TIP=$HOME/.kit/git/git-rebase-tip filter=".* *" {
+ .ignore
+ LICENSE
+ README.md
+ bin=$HOME/.kit/git/git-rebase-tip/bin {
+  git-rebase-tip
+  git-rebase-tip-merge
+ }
+ lib=$HOME/.kit/git/git-rebase-tip/lib {
+  git-rebase-tip-common.sh
+ }
+}
+
+GIT_UPDATE_FAITHFUL=$HOME/.kit/git/git-update-faithful filter=".* *" {
+ # JUMPR: updateDeps
+ .gitignore.local
+ .ignore
+ LICENSE
+ README.md
+ bin=$HOME/.kit/git/git-update-faithful/bin {
+  remove-faithful-file
+  render-faithful-file
+  update-faithful-begin
+  update-faithful-file
+  update-faithful-finish
+ }
+ lib=$HOME/.kit/git/git-update-faithful/lib {
+  update-faithful.sh
+ }
+ # OMITD: ./deps/sh-logger/
+}
+
+GIT_VEGGIE_PATCH=$HOME/.kit/git/git-veggie-patch filter=".* *" {
  .gitconfig.example
  .ignore
  LICENSE
@@ -2056,40 +2784,208 @@ git-veggie-patch=$HOME/.kit/git/git-veggie-patch filter=".* *" {
 # ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 
 #################################
-# BEG: HOMEFRIES ###############
+# BEG: GITEXTRAS ###############
+#
+
+GIT_EXTRAS=$HOME/.kit/git/git-extras filter=".* *" {
+ .editorconfig
+ .pytest.ini
+ AUTHORS
+ CONTRIBUTING.md
+ Commands.md
+ History.md
+ Installation.md
+ LICENSE
+ Makefile
+ Readme.md
+ brew-release.patch
+ check_dependencies.sh
+ check_integrity.sh
+ install.cmd
+ install.sh
+ need_git_commit
+ not_need_git_repo
+ bin=$HOME/.kit/git/git-extras/bin {
+  git-alias
+  git-archive-file
+  git-authors
+  git-browse
+  git-browse-ci
+  git-brv
+  git-bulk
+  git-changelog
+  git-clear
+  git-clear-soft
+  git-coauthor
+  git-commits-since
+  git-contrib
+  git-count
+  git-cp
+  git-create-branch
+  git-delete-branch
+  git-delete-merged-branches
+  git-delete-squashed-branches
+  git-delete-submodule
+  git-delete-tag
+  git-delta
+  git-effort
+  git-extras
+  git-extras-abort
+  git-extras-pr
+  git-extras-undo
+  git-feature
+  git-force-clone
+  git-fork
+  git-fresh-branch
+  git-get
+  git-gh-pages
+  git-graft
+  git-guilt
+  git-ignore
+  git-ignore-io
+  git-info
+  git-local-commits
+  git-lock
+  git-locked
+  git-magic
+  git-merge-into
+  git-merge-repo
+  git-missing
+  git-mr
+  git-obliterate
+  git-paste
+  git-psykorebase
+  git-pull-request
+  git-reauthor
+  git-rebase-patch
+  git-release
+  git-rename-branch
+  git-rename-remote
+  git-rename-tag
+  git-repl
+  git-reset-file
+  git-root
+  git-rscp
+  git-scp
+  git-sed
+  git-setup
+  git-show-merged-branches
+  git-show-tree
+  git-show-unmerged-branches
+  git-squash
+  git-stamp
+  git-standup
+  git-summary
+  git-sync
+  git-touch
+  git-unlock
+  git-utimes
+ }
+ etc=$HOME/.kit/git/git-extras/etc {
+  bash_completion.sh
+  git-extras-completion.zsh
+  git-extras.fish
+  test.fish
+ }
+ helper=$HOME/.kit/git/git-extras/helper {
+  git-extra-utility
+  has-git-commit
+  is-git-repo
+  reset-env
+ }
+ man=$HOME/.kit/git/git-extras/man filter="Readme.md" {
+  # man ⇒ $HOME/.kit/git/git-extras/man
+  Readme.md
+ }
+ .github=$HOME/.kit/git/git-extras/.github {
+  .ignore_words
+  workflows=$HOME/.kit/git/git-extras/.github/workflows {
+   ci.yml
+  }
+ }
+}
+
+### END: GITEXTRAS #############
+################################
+
+# ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+
+#################################
+# BEG: TIGNEWTONS ##############
+#
+
+TIG_NEWTONS_=$HOME/.kit/git/tig-newtons filter=".* *" {
+ .gitignore
+ .ignore
+ LICENSE
+ README.md
+ customize.sh
+ tig=$HOME/.kit/git/tig-newtons/tig {
+  bind-clip-path
+  bind-clip-sha
+  bind-commit
+  bind-commit--minimal-editor
+  bind-commit-wip
+  bind-file-edit
+  bind-rebase
+  bind-rebase--minimal-editor
+  bind-rebase-range--diff
+  bind-rebase-range--main
+  bind-shell-out
+  config-color
+  config-dates
+  config-opinionated
+  config.customize
+  config.notes
+ }
+ bin=$HOME/.kit/git/tig-newtons/bin {
+  editor-vim-0-0-insert-minimal
+  editor-vim-0-0-insert-minimal.vimrc
+  range-command-apply-rebase
+  range-command-common.sh
+  range-seditor-bubble-down
+  range-seditor-bubble-up
+ }
+}
+
+### END: TIGNEWTONS ############
+################################
+
+# ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+
+#################################
+# BEG: HOMEFRIESPROJ ###########
 #
 # ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
 # ┃ 🍟 🍟   HOME  FRIES   🍟 🍟 ┃
 # ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 
-ohmyenvironment=$HOME exclude="ansible_hosts" {
+# HOMEFRIES_
+Home=$HOME filter="README.rst" {
  README.rst
- .homefries=$HOME/.homefries filter=".* *" {
+ Home Fries=$HOME/.homefries filter=".* *" {
   .bashrc
-  .gitconfig
   .gitconfig-README
-  .gitconfig.local
   .gitignore
   .gitignore.local
   .gitmux.conf
   .ignore
   .ignore-example
-  .inputrc
   .profile
-  .tmux.conf
   .tmux.conf-README
   .tmux.conf.local
   .vimrc-README
   LICENSE
   README.rst
  }
- .bashrc-bin=$HOME/.homefries/.bashrc-bin filter=".* *" exclude="bashrx.private.sh.template bashrx.private.DEPOXY_HOSTNAME.sh" {
+ homefries/.bashrc-bin=$HOME/.homefries/.bashrc-bin filter=".* *" exclude="bashrx.private.sh.template bashrx.private.`DEPOXY_HOSTNAME'.sh" {
+  bashrx.private.DEPOXY_HOSTNAME.sh
   bashrc.base.sh
   bashrc.core.sh
   bashrx.private.sh
   prepare-tmux-or-bust
  }
- home-fries-bin=$HOME/.homefries/bin filter=".* *" {
+ homefries/bin=$HOME/.homefries/bin filter=".* *" {
   .bash_history_filter.awk
   bash_function_to_file_splitter.awk
   ctags-groom.sh
@@ -2110,11 +3006,12 @@ ohmyenvironment=$HOME exclude="ansible_hosts" {
    git-extras-bash_completion.sh
    jira-completion
    poetry-completion.bash
+   pyenv.bash
    tig-completion.bash
    tmux
   }
  }
- home-fries-lib=$HOME/.homefries/lib filter=".* *" {
+ homefries/lib=$HOME/.homefries/lib filter=".* *" {
   ask_yes_no_default.sh
   datetime_now_TTT.sh
   dir_util.sh
@@ -2125,13 +3022,12 @@ ohmyenvironment=$HOME exclude="ansible_hosts" {
   fries_util.sh
   hist_util.sh
   input_util.sh
-  interact_util.sh
   keys_util.sh
   less_termcap.sh
   manpath_util.sh
   openshift_util.sh
-  paths_util.sh
   path_util.sh
+  paths_util.sh
   perl_util.sh
   process_util.sh
   python_util.sh
@@ -2141,13 +3037,12 @@ ohmyenvironment=$HOME exclude="ansible_hosts" {
   ssh_util.sh
   time_util.sh
   user_util.sh
-  virtualenvwrapperer.sh
-  funcs=$HOME/.homefries/lib/funcs filter=".* *" {
-   aci
+  lib/funcs=$HOME/.homefries/lib/funcs filter=".* *" {
    find-duplicates
    please
   }
-  alias=$HOME/.homefries/lib/alias filter=".* *" {
+  lib/alias=$HOME/.homefries/lib/alias filter=".* *" {
+   README.rst
    alias_ag.sh
    alias_bash.sh
    alias_cd_pushd_popd.sh
@@ -2170,7 +3065,6 @@ ohmyenvironment=$HOME exclude="ansible_hosts" {
    alias_ls.sh
    alias_mv.sh
    alias_netstat.sh
-   alias_ohmyrepos.sh
    alias_pwd.sh
    alias_pwgen.sh
    alias_python.sh
@@ -2180,30 +3074,33 @@ ohmyenvironment=$HOME exclude="ansible_hosts" {
    alias_sudo.sh
    alias_vim_gvim.sh
    claim_alias_or_warn.sh
-   README.rst
    whowherewhatami.sh
   }
-  crypt=$HOME/.homefries/lib/crypt filter=".* *" {
+  lib/crypt=$HOME/.homefries/lib/crypt filter=".* *" {
    add_user_mlocate_db.sh
    daemonize_gpg_agent.sh
    is_mount_type_crypt.sh
    set_environ_gpg_tty.sh
   }
-  date=$HOME/.homefries/lib/date filter=".* *" {
+  lib/date=$HOME/.homefries/lib/date filter=".* *" {
    date-or-gdate.sh
    uptime-s.sh
   }
-  device=$HOME/.homefries/lib/device filter=".* *" {
+  lib/device=$HOME/.homefries/lib/device filter=".* *" {
    lsusb.sh
   }
-  snips=$HOME/.homefries/lib/snips filter=".* *" {
+  lib/distro=$HOME/.homefries/lib/distro filter=".* *" {
+   default-browser.sh
+  }
+  lib/snips=$HOME/.homefries/lib/snips filter=".* *" {
    # aka show-n-tell/
    array_iterations.sh
+   check_dep.sh
    default_yes_question.sh
    sudo_ensure.sh
    sudo_raised.sh
   }
-  term=$HOME/.homefries/lib/term filter=".* *" {
+  lib/term=$HOME/.homefries/lib/term filter=".* *" {
    disable-ctrl_s-stty-flow-controls.sh
    equip-colorful-and-informative-ls.sh
    macos-please-no-zsh-advertisement.sh
@@ -2216,9 +3113,30 @@ ohmyenvironment=$HOME exclude="ansible_hosts" {
    termdo-all
   }
  }
- var=$HOME/.homefries/var {
+ homefries/var=$HOME/.homefries/var filter=".* *" {
   first-names-lengthX.txt
   first-names.txt
+ }
+ .projlns/sh-lib=$HOME/.projlns/sh-lib filter=".* *" {
+  _sensibleopen-browser-nickname
+  _sensibleopen-format-open-command
+  ask-yesnoskip.sh
+  colors.sh
+  cp_safe
+  logger.sh
+  mv_safe
+  path_device
+  path_prefix
+  path_suffix
+  pather.sh
+  print-nanos-now.sh
+  rm_rotate
+  rm_safe
+  rmrm
+  sensible-open
+  strip-colors
+  test-colors
+  test-truecolor
  }
 }
 
@@ -2227,10 +3145,14 @@ ohmyenvironment=$HOME exclude="ansible_hosts" {
 
 DepoXy-Bashrc=$HOME/.depoxy/ambers/home/.homefries filter=".* *" {
  .ignore
+ .depoxy-brc-client=$HOME/.depoxy/stints/DXY_DEPOXY_CLIENT_ID/home filter="*.sh" {
+  bashrx.private.DXY_HOSTNAME.sh
+ }
  .depoxy-brc-entry=$HOME/.depoxy/ambers/home/.homefries/.bashrc-bin {
   bashrx.private.sh
  }
  .depoxy-brc-core=$HOME/.depoxy/ambers/core exclude="wire-bash.sh" {
+  alias-vim.sh
   aliastown.sh
   brewskies.sh
   cdworkenv.sh
@@ -2240,19 +3162,26 @@ DepoXy-Bashrc=$HOME/.depoxy/ambers/home/.homefries filter=".* *" {
   dob-brief.sh
   fzf-setup.sh
   git-smart.sh
+  grip-pass.sh
   js-dev-up.sh
   kube-lens.sh
+  make-itso.sh
   meld-wrap.sh
   nvm-setup.sh
+  omr-alias.sh
   omr-setup.sh
-  pathanova.sh
+  omr-wraps.sh
   path_vars.sh
+  pathanova.sh
   putwisely.sh
-  py-dev-up.sh
+  pydevelop.sh
   startapps.sh
   stayalive.sh
  }
 }
+
+### END: HOMEFRIESPROJ #########
+################################
 
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 # ░░ BEG: HOME ░░░░░░░░░░░░░░░░░
@@ -2274,4 +3203,5 @@ home=$HOME filter=".abcde.conf .bashrc .git* .inputrc .profile .tmux* LICENSE RE
  .tmux.conf.local
  .vimrc
 }
-PUT_WISE
+
+GIT_PUT_WISE__
