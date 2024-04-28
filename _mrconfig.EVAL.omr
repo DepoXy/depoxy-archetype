@@ -104,9 +104,13 @@ autocommit =
   # - Auto-commit just "_mrconfig-BUSINESS_CODE_PATH":
   #     git_auto_commit_one_omr "_mrconfig-BUSINESS_CODE_PATH" "" "${PRIVATE_ACI}"
   # - Auto-commit "_mrconfig-BUSINESS_CODE_PATH" and the project-specific configs:
-  git_auto_commit_many $(\
+  local bizconfs="$(\
     find * -name "_mrconfig-BUSINESS_CODE_PATH" -o -name "_mrconfig-BUSINESS_CODE_PATH--*" \
-  ) -m "${PRIVATE_ACI}: OMR: Update: _mrconfig-BUSINESS_CODE_PATH[--*]"
+  )"
+  if [ -n "${bizconfs}" ]; then
+    git_auto_commit_many ${bizconfs} \
+      -m "${PRIVATE_ACI}: OMR: Update: _mrconfig-BUSINESS_CODE_PATH[--*]"
+  fi
   #
   git_auto_commit_one "_mrconfig-BUSINESS_CODE_PATH.example" \
     -m "${CLEARED_ACI}: DXA: OMR: Update: _mrconfig-BUSINESS_CODE_PATH.example"
