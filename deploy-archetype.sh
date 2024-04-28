@@ -178,7 +178,7 @@ register_generated () {
 # depoxy_fs.sh variables.
 register_depoxydir_paths () {
   # E.g., "/(Users|home)/<user>/.depoxy"
-  register "DXY_DEPOXYDIR_BASE_FULL" "${DEPOXYDIR_BASE_FULL}"
+  register "DXY_DEPOXYDIR_BASE_FULL" "${DEPOXYDIR_BASE_FULL:-${HOME}/.depoxy}"
 
   # E.g., ".depoxy"
   unset -v DXY_DEPOXYDIR_BASE_NAME
@@ -190,7 +190,7 @@ register_depoxydir_paths () {
   # ***
 
   # E.g., "stints"
-  register "DXY_DEPOXYDIR_STINTS_NAME" "${DEPOXYDIR_STINTS_NAME}"
+  register "DXY_DEPOXYDIR_STINTS_NAME" "${DEPOXYDIR_STINTS_NAME:-stints}"
 
   # *DEPOXYDIR_STINTS_* DEPOXYDIR_STINTS_FULL templates,
   # both $HOME and ~ varieties.
@@ -221,7 +221,7 @@ register_depoxydir_paths () {
   # ***
 
   # E.g., ".hostnames"
-  register "DXY_DEPOXY_HOSTNAMES_NAME" "${DEPOXY_HOSTNAMES_NAME}"
+  register "DXY_DEPOXY_HOSTNAMES_NAME" "${DEPOXY_HOSTNAMES_NAME:-.hostnames}"
 
   # ***
 
@@ -325,8 +325,9 @@ register_depoxy_project_paths () {
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
 register_git_put_wise_paths () {
-  # E.g., "~/.depoxy/patchr"
-  register "DXY_PW_PATCHES_REPO" "${PW_PATCHES_REPO}"
+  # E.g., "/home/user/.depoxy/patchr"
+  register "DXY_PW_PATCHES_REPO" \
+    "${PW_PATCHES_REPO:-${DXY_DEPOXYDIR_BASE_FULL}/${PW_PATCHES_NAME:-patchr}}"
 
   # E.g., "patchr"
   unset -v DXY_PW_PATCHES_NAME
