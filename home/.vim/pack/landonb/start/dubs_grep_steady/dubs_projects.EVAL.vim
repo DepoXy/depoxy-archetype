@@ -4,12 +4,12 @@
 "     "home/.vim/pack/landonb/start/dubs_grep_steady/dubs_projects.vim"
 
 " ====================================================================
+" vim:tw=0:ts=2:sw=2:et:norl
 " DXY_HEADER_AUTHOR
 " DXY_HEADER_PROJECT
 " DXY_HEADER_LICENSE
 " Summary: This is a user-customizable file loaded by Dubs Grep Steady.
 " Helpful: Run :h dubs-grep-steady / See also some hints below.
-" vim:tw=0:ts=2:sw=2:et:norl
 " ====================================================================
 " YOU: Modify this list to customize the grep project paths prompt.
 "      - The ~/BUSINESS_CODE_PATH paths below are examples.
