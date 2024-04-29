@@ -293,7 +293,20 @@ autocommit =
     "" "${PRIVATE_ACI}"
   #
   # Manage the spell file, and alert if parts differ from the whole.
-  SPF_PRINT_SPELLS=false mr -d . -n spells "$@"
+  #   🎩🪄🔮✨  🧙📚👧🦁🏰   ⊃━☆ﾟ
+  debug "$(fg_mintgreen)$(attr_emphasis)conjure spells$(attr_reset)" \
+    "🔮 $(fg_lightblue)(∩ ͡° ͜ʖ ͡°)⊃━☆ﾟ✨$(attr_reset)"
+  # Remove header and footer, e.g.,
+  #   mr spells: /Users/user/.depoxy/stints/1234
+  #   ...
+  #  (.4 secs.) mr spells: finished (1 ok)
+  # - Also, built-in macOS `head` lacks `-n` feature.
+  SHCOLORS_OFF=false \
+  SPF_PRINT_SPELLS=false mr -d . -n spells "$@" \
+    | $(command -v gtail || command -v tail) -n +2 \
+    | $(command -v ghead || command -v head) -n -1 \
+    | sed 's/^/  /'
+  printf "\n"
   #
   # ***
   #
