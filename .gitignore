@@ -4,6 +4,9 @@
 #   you to track GPG resources using a private Git repo.
 /home/.gnupg/random_seed
 
+# Vim spell file generated on 'infuse'.
+/home/.vim/spell/en.utf-8.add--compiled
+
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
 # My dotfiles.
