@@ -889,7 +889,6 @@ process_file_eval () {
   local fname="$1"
 
   local eval_cmd
-
   eval_cmd="$(extract_eval_command "${fname}")"
   blot "EVAL: ${fname}"
   blot
