@@ -232,42 +232,40 @@ autocommit =
   #
   # *** Password Store
   #
-  # FIXME/2022-12-13: Should I wire this on current DXC, or don't bother?
-  # - I'm leaning not, to leave it on client machine, but also makes me a
-  #   titch worried, in case of catastrophic laptop failure.
-  #
-  false && (
-    # FIXME/2022-12-13: Restore this functionality later, MAYBE.
+  aci_password_store () {
     git_auto_commit_new "home/.password-store" \
-      -m "${CLEARED_ACI}: Password Store updates"
-  )
-  local pass_gpg_id="${HOME}/.password-store/.gpg-id"
-  if [ -f "${pass_gpg_id}" ]; then
-    local gpg_id_backup="home/.password-store/.gpg-id"
-    command cp "${pass_gpg_id}" "${gpg_id_backup}"
-    git_auto_commit_one_update "${gpg_id_backup}"
-  fi
-  # MAYBE/2023-01-16: Specify @biz resources PWD with common name.
-  # - This PWD you do want to save at home: It's not a PWD to dev
-  #   resources, but your personal contractor password to get on
-  #   their network, so seems legit you have copy.
-  # FIXME/2023-01-16: Make this a depoxyrc environ:
-  local enterprise_creds="${HOME}/.password-store/BUSINESS_CODE_PATH/signon.gpg"
-  if [ -f "${enterprise_creds}" ]; then
-    local creds_backup="home/.password-store/enterprise-creds.gpg"
-    command cp "${enterprise_creds}" "${creds_backup}"
-    git_auto_commit_one_update "${creds_backup}"
+      -m "${PRIVATE_ACI}: Password Store updates"
     #
-    # Needs GPG too then eh
+    local pass_gpg_id="${HOME}/.password-store/.gpg-id"
+    local gpg_id_backup="home/.password-store/.gpg-id"
+    if [ -f "${pass_gpg_id}" ] && [ ! -h "${pass_gpg_id}" ]; then
+      command cp -- "${pass_gpg_id}" "${gpg_id_backup}"
+    fi
+    git_auto_commit_one_update "${gpg_id_backup}" "" "${PRIVATE_ACI}"
+    #
+    local enterprise_creds="${HOME}/.password-store/BUSINESS_CODE_PATH/signon.gpg"
+    local creds_backup="home/.password-store/enterprise-creds.gpg"
+    if [ -f "${enterprise_creds}" ] && [ ! -h "${enterprise_creds}" ]; then
+      command cp -- "${enterprise_creds}" "${creds_backup}"
+    fi
+    git_auto_commit_one_update "${creds_backup}"
+  }
+  aci_password_store
+  #
+  # *** GPG
+  #
+  aci_backup_gnupg () {
     local gpg_backup="home/.gnupg"
     # The `cp` will work without this remove, just FYI.
     command rm -rf -- "${gpg_backup}"
     mkdir "${gpg_backup}"
     # Copy normal, non-dot files and directories.
-    find ~/.gnupg/* -maxdepth 0 \( -type f -o -type d \) -exec cp -a -- {} "${gpg_backup}" \;
+    find "${HOME}/.gnupg/"* -maxdepth 0 \( -type f -o -type d \) \
+      -exec command cp -a -- {} "${gpg_backup}" \;
     git_auto_commit_many $(find ${gpg_backup}/ -type f -o -type l) \
       -m "${CLEARED_ACI}: Update: ${gpg_backup}/"
-  fi
+  }
+  aci_backup_gnupg
   #
   # *** SSH
   #
