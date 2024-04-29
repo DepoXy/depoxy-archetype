@@ -1055,7 +1055,9 @@ omr_dxc_infuse () {
   blot mr -d "${DXY_DEPOXY_CLIENT_FULL}" -n infuse
   blot
 
-  mr -d "${DXY_DEPOXY_CLIENT_FULL}" -n infuse
+  SHCOLORS_OFF=false \
+  mr -d "${DXY_DEPOXY_CLIENT_FULL}" -n infuse \
+    | sed 's/^/  /'
 }
 
 # ***
@@ -1070,7 +1072,10 @@ omr_dxc_autocommit () {
   blot mr -d "${DXY_DEPOXY_CLIENT_FULL}" -n autocommit -y
   blot
 
-  mr -d "${DXY_DEPOXY_CLIENT_FULL}" -n autocommit -y
+  SHCOLORS_OFF=false \
+  mr -d "${DXY_DEPOXY_CLIENT_FULL}" -n autocommit -y \
+    | sed 's/^/  /'
+  blot
 
   omr_dxc_autocommit_verify
 
