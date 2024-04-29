@@ -1079,7 +1079,7 @@ parse_args () {
   while [ "$1" != '' ]; do
     case $1 in
       -h | --make-lns)
-        DXY_RUN_MAKE_LNS=true
+        export DXY_RUN_MAKE_LNS=true
 
         shift
         ;;
