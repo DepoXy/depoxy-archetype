@@ -87,16 +87,16 @@ DEPOXY_STINTS=DXY_DEPOXYDIR_BASE_HOME filter=".* *" exclude=".DS_Store" {
   _mrconfig-BUSINESS_CODE_PATH.example
   docs=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/docs {
    .ignore
-   Backlog_Client_`DXY_DEPOXY_CLIENT_ID'.rst
-   Backlog_Client_`DXY_DEPOXY_CLIENT_ID'.rst.example
-   Donelog_Client_`DXY_DEPOXY_CLIENT_ID'.rst
-   Woodlot_Client_`DXY_DEPOXY_CLIENT_ID'.rst
-   Worklog_Client_`DXY_DEPOXY_CLIENT_ID'.rst
+   Backlog_Client_[[[]]]DXY_DEPOXY_CLIENT_ID.rst
+   Backlog_Client_[[[]]]DXY_DEPOXY_CLIENT_ID.rst.example
+   Donelog_Client_[[[]]]DXY_DEPOXY_CLIENT_ID.rst
+   Woodlot_Client_[[[]]]DXY_DEPOXY_CLIENT_ID.rst
+   Worklog_Client_[[[]]]DXY_DEPOXY_CLIENT_ID.rst
    _ingress.rst
   }
   PRIVY-DOX=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/private/docs {
-   Backlog_Personal_DXY_DEPOXY_CLIENT_ID.rst
-   Woodlot_Personal_DXY_DEPOXY_CLIENT_ID.rst
+   Backlog_Personal_[[[]]]DXY_DEPOXY_CLIENT_ID.rst
+   Woodlot_Personal_[[[]]]DXY_DEPOXY_CLIENT_ID.rst
   }
   home=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home {
    .finicky.js

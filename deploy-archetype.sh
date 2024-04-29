@@ -504,6 +504,13 @@ m4_shim_make_file () {
   #        backticked text, complaining "ERROR: end of file in string".
   #        (And backticks are common in reST and shell files.)
   #
+  #        - SAVVY: If you want to expand a macro within another word,
+  #          use [[[]]] to break the word.
+  #          - E.g., let's say MY_MACRO expands to "AN_EXAMPLE", then this:
+  #              echo "${THIS_IS_[[[]]]MY_MACRO}"
+  #            will expand to this:
+  #              echo "${THIS_IS_AN_EXAMPLE}"
+  #
   #        Also inject "changecom()", otherwise m4 ignores lines with
   #        leading `#` characters.
   #
