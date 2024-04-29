@@ -818,13 +818,14 @@ infuse =
     find "${dxy_mrinfuse}/${cmplxmods}" -maxdepth 1 -type l -exec rm -- {} +
     # Symlink private KE cfg.
     local cbinfuser="${MR_REPO}/home"
-    cd "${dxy_mrinfuse}/${cmplxmods}"
-    local jsonpath
-    # Use -regex to exclude the 3110-client-DXY_DEPOXY_CLIENT_ID-private.json.example file.
-    for jsonpath in $(find "${cbinfuser}/${cmplxmods}" -maxdepth 1 -type f -regex ".*\.json$"); do
-      symlink_overlay_file "${jsonpath}"
-    done
-    cd -
+    (
+      cd "${dxy_mrinfuse}/${cmplxmods}"
+      local jsonpath
+      # Use -regex to exclude the 3110-client-DXY_DEPOXY_CLIENT_ID-private.json.example file.
+      for jsonpath in $(find "${cbinfuser}/${cmplxmods}" -maxdepth 1 -type f -regex ".*\.json$"); do
+        symlink_overlay_file "${jsonpath}"
+      done
+    )
   }
   depoxy_client_infuse_karabiner_elements_complex_modifications
   #
