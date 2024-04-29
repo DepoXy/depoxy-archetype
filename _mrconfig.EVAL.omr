@@ -482,10 +482,23 @@ autocommit =
   # ***
   # ===
   #
-  ! test -n "$(git status --porcelain)" && return 0
-  >&2 error "ERROR: Found stray DXC files not registered with autocommit:"
-  >&2 git status -s
-  return 1
+  insist_nothing_not_committed () {
+    local ignore_spell_melds="$(echo \
+      ":!home/.vim/spell/sync-spells--*-new.sh" \
+      ":!home/.vim/spell/en.utf-8.add--*" \
+    )"
+    #
+    if test -z "$(git status --porcelain -- ${ignore_spell_melds})"; then
+      #
+      return 0
+    fi
+    #
+    >&2 error "ERROR: Found stray DXC files not registered with autocommit:"
+    git status -s -- ${ignore_spell_melds} | >&2 sed 's/^.. /  /'
+    #
+    return 1
+  }
+  insist_nothing_not_committed
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
