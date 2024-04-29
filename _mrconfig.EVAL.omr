@@ -209,11 +209,13 @@ autocommit =
   git_auto_commit_one_update "home/.kit/_git/info/exclude"
   #
   # We track ~/.kube/config by copying it...
-  command cp "${HOME}/.kube/config" "${MR_REPO}/home/.kube/config"
-  #
-  # NOTE: This `find` won't work if there are spaces in any paths.
-  git_auto_commit_many $(find home/.kube/ -type f -o -type l) \
-    -m "${PRIVATE_ACI}: Update: home/.kube/ files"
+  if [ -f "${HOME}/.kube/config" ]; then
+    command cp -- "${HOME}/.kube/config" "${MR_REPO}/home/.kube/config"
+    #
+    # NOTE: This `find` won't work if there are spaces in any paths.
+    git_auto_commit_many $(find home/.kube/ -type f -o -type l) \
+      -m "${PRIVATE_ACI}: Update: home/.kube/ files"
+  fi
   #
   git_auto_commit_one_update "home/.local/share/dob/dob.sqlite"
   #
