@@ -52,6 +52,23 @@ skip = mr_exclusive "client"
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
+lib =
+  #
+  CLEARED_ACI="Entrust: autoci"
+  PRIVATE_ACI="PRIVATE: autoci*"
+  #
+  git_auto_commit_one_docs () {
+    git_auto_commit_one "$1" -m "${3:-${CLEARED_ACI}}: Docs: ${2:-$1}"
+  }
+  #
+  git_auto_commit_one_omr () {
+    git_auto_commit_one "$1" -m "${3:-${CLEARED_ACI}}: OMR: Update: ${2:-$1}"
+  }
+  #
+  git_auto_commit_one_update () {
+    git_auto_commit_one "$1" -m "${3:-${CLEARED_ACI}}: Update: ${2:-$1}"
+  }
+
 autocommit =
   # For completeness `git ls-files`, we ensure that all repo files are under
   # autocommit (or documented why not). And for comparability for `ls-files`,
@@ -71,23 +88,6 @@ autocommit =
   git_auto_commit_parse_args "$@"
   #
   local ambers_path="${DEPOXYDIR_BASE_FULL:-${HOME}/.depoxy}/ambers"
-  #
-  # ***
-  #
-  CLEARED_ACI="Entrust: autoci"
-  PRIVATE_ACI="PRIVATE: autoci*"
-  #
-  git_auto_commit_one_docs () {
-    git_auto_commit_one "$1" -m "${3:-${CLEARED_ACI}}: Docs: ${2:-$1}"
-  }
-  #
-  git_auto_commit_one_omr () {
-    git_auto_commit_one "$1" -m "${3:-${CLEARED_ACI}}: OMR: Update: ${2:-$1}"
-  }
-  #
-  git_auto_commit_one_update () {
-    git_auto_commit_one "$1" -m "${3:-${CLEARED_ACI}}: Update: ${2:-$1}"
-  }
   #
   # ***
   #
