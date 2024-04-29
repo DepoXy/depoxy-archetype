@@ -226,9 +226,9 @@ autocommit =
   #
   git_auto_commit_one_update "home/.netrc" "" "${PRIVATE_ACI}"
   #
-  git_auto_commit_one_update "home/.npmrc.example"
+  git_auto_commit_one_update "home/.netrc.example"
   #
-  # ***
+  git_auto_commit_one_update "home/.npmrc.example"
   #
   # *** Password Store
   #
