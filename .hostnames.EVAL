@@ -6,6 +6,10 @@
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
 # vim:ft=dosini
+# DXY_HEADER_AUTHOR
+# DXY_HEADER_PROJECT
+# DXY_HEADER_LICENSE
+
 # List of client machine hostname(s).
 # - Used by DepoXy Ambers and DepoXy Client to distinguish
 #   between client machines and your personal machines.

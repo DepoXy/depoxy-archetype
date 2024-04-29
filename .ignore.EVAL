@@ -7,6 +7,10 @@
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
+# DXY_HEADER_AUTHOR
+# DXY_HEADER_PROJECT
+# DXY_HEADER_LICENSE
+
 # USYNC:
 #   meld ~/.depoxy/ambers/archetype/.ignore.EVAL "${DEPOXYDIR_STINTS_FULL}/${DEPOXY_CLIENT_ID}/.ignore" &
 
