@@ -915,7 +915,7 @@ deployed_file_make_link () {
   fi
 
   if ${DRY_RUN}; then
-    blot "  ln -s \"${dest_path}\" \"${DXY_MAKE_LNS_FULL}/${fname}\""
+    blot "  command ln -s \"${dest_path}\" \"${DXY_MAKE_LNS_FULL}/${fname}\""
     blot
 
     return 0
