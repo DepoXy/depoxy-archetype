@@ -578,6 +578,7 @@ infuse =
   command cp -f -- \
     "${MR_REPO}/home/.config/depoxy/depoxyrc" \
     "${HOME}/.config/depoxy/depoxyrc"
+  info "$(font_emphasize "Copied depoxyrc") $(font_highlight ${HOME}/.config/depoxy/depoxyrc)"
   #
   # *** DepoXy filespace
   #
@@ -600,10 +601,10 @@ infuse =
       printf "%s" "$(font_highlight "No sources.") / Try:\n    cp -ar " \
         "\"${dxy_home_work}.example\" " \
         "\"${dxy_home_work}\"\n" \
-        "                               and customize work/."
+        "                               and customize work/"
     )"
   elif [ ! -d "${usr_home_work}" ]; then
-    home_work_hint="No $(font_highlight “${usr_home_work}”) directory or symlink."
+    home_work_hint="No $(font_highlight “${usr_home_work}”) directory or symlink"
   fi
   if [ -n "${home_work_hint}" ]; then
     info "$( \
@@ -629,7 +630,7 @@ infuse =
   # - E.g., "/home/user/.depoxy/stints/XXXX/_mrconfig-acme"
   local mr_business="${stints_dir}/DXY_DEPOXY_CLIENT_ID/_mrconfig-BUSINESS_CODE_PATH"
   if [ ! -f "${mr_business}" ]; then
-    info "$(font_emphasize ALERT): No business mrconfig at $(repo_highlight ${mr_business})"
+    info "$(font_emphasize ALERT): No biz config at $(repo_highlight ${mr_business})"
   fi
   #
   # *** DEPOXY
@@ -658,6 +659,9 @@ infuse =
     symlink_overlay_file \
       "${MR_REPO}/home/${bashrx_user}" \
       "${HOMEFRIES_DIR:-${HOME}/.homefries}/.bashrc-bin/${bashrx_user}"
+  else
+    info "$(font_emphasize ALERT): No DXC bashrc at" \
+      "$(repo_highlight ${bashrx_full})"
   fi
   #
   # - At an previous client, in the beginning, $(hostname) would report
@@ -788,7 +792,8 @@ infuse =
     # MEH/2021-08-23: This `info` might be unnecessary, if you don't
     # use `npm`, or if your vendor doesn't have their own registry,
     # you might not care about this "hint".
-    info "$(font_emphasize "Skipped .npmrc") / See $(font_highlight “${MR_REPO}/home/.npmrc.example”)"
+    info " $(font_emphasize "Skipped .npmrc")" \
+      "(See: $(font_highlight ${MR_REPO}/home/.npmrc.example))"
   fi
   #
   # *** Karabiner-Elements
@@ -840,6 +845,8 @@ infuse =
     symlink_overlay_file \
       "${MR_REPO}/home/.netrc" \
       "${HOME}/.netrc"
+  # else
+  #   info " $(font_emphasize "Skipped .netrc")"
   fi
   #
   # *** ~/.finicky.js
