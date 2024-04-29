@@ -495,7 +495,7 @@ m4_shim () {
 
   m4_shim_make_file "${tail_lns}" "${tail_path}" "${client_file}" "${dest_path}" "$@"
 
-  deployed_file_make_link "${tail_path}" "${dest_path}" "$@"
+  deployed_file_make_link "${tail_path}" "${dest_path}"
 }
 
 m4_shim_make_file () {
