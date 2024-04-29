@@ -397,19 +397,20 @@ autocommit =
   #
   # ***
   #
-  depoxy_client_id_autocommit_dob_assets () {
-    if ! command -v dob > /dev/null; then
-      notice "PLEASE: Install \`dob\`"
-      #
-      return 0
+  depoxy_client_autocommit_dob_assets () {
+    git_auto_commit_one_update "home/Library/Application Support/dob/dob.conf"
+    #
+    if command -v dob > /dev/null; then
+      dob --no-color export \
+        -o "home/Library/Application Support/dob/dob.sqlite.export"
+    else
+      notice "OHYOU: Install \`dob\`"
     fi
     #
-    dob --no-color export \
-      -o "home/Library/Application Support/dob/dob.sqlite.export"
     git_auto_commit_one "home/Library/Application Support/dob/dob.sqlite.export" \
-      -m "${CLEARED_ACI}: Latest \`dob export\`."
+      -m "${CLEARED_ACI}: Latest \\\`dob export\\\`."
   }
-  depoxy_client_id_autocommit_dob_assets
+  depoxy_client_autocommit_dob_assets
   #
   # ***
   #
