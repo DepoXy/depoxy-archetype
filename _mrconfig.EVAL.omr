@@ -458,7 +458,7 @@ autocommit =
   # macOS Desktop file (delete).
   # - Toss the Desktop Services Store. It's created by Finder to store icon layout,
   #   background image, etc. But who uses Finder? Remove for less noisy `ls` output.
-  command rm -f "./.DS_Store"
+  command rm -f -- "./.DS_Store"
   #
   # ===
   # ***
@@ -559,7 +559,7 @@ infuse =
   #        ~/.config copy, before clobber-overwriting.
   #
   mkdir -p "${HOME}/.config/depoxy"
-  command cp -f \
+  command cp -f -- \
     "${MR_REPO}/home/.config/depoxy/depoxyrc" \
     "${HOME}/.config/depoxy/depoxyrc"
   #
