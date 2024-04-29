@@ -216,6 +216,7 @@ autocommit =
     git_auto_commit_many $(find home/.kube/ -type f -o -type l) \
       -m "${PRIVATE_ACI}: Update: home/.kube/ files"
   fi
+  git_auto_commit_one_update "home/.kube/PRIVATE"
   #
   git_auto_commit_one_update "home/.local/share/dob/dob.sqlite"
   #
