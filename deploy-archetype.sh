@@ -605,6 +605,10 @@ m4_kludge () {
   command -v gm4 || command -v m4
 }
 
+gnu_sed () {
+  command -v gsed || command -v sed
+}
+
 # ================================================================= #
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 # ================================================================= #
@@ -622,13 +626,43 @@ fail_if_target_exists_and_non_empty () {
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
+DXY_CAPTURE_FILE_PREFIX="deploy-archetype-sh-"
+DXY_CAPTURE_FILE_PATH=""
+
+prepare_capture_file () {
+  DXY_CAPTURE_FILE_PATH="$(mktemp -t ${DXY_CAPTURE_FILE_PREFIX}XXXX)"
+
+  blot "Let's deploy!"
+  blot "- Capturing to:"
+  blot "  ${DXY_CAPTURE_FILE_PATH}"
+  blot
+}
+
+finish_capture_file () {
+  # Strip color sequences only
+  # - REFER: https://superuser.com/a/380778
+  $(gnu_sed) -e 's/\x1b\[[0-9;]*m//g' -i "${DXY_CAPTURE_FILE_PATH}"
+}
+
+# ***
+
 bg_red () { printf "\033[41m"; }
 fg_white () { printf "\033[97m"; }
 attr_reset () { printf "\033[0m"; }
 alert () { printf "%s" "$(bg_red)$(fg_white)$1$(attr_reset)"; }
 
 blot () {
-  echo "$@"
+  echo "$@" | tee_or_cat
+}
+
+tee_or_cat () {
+  if [ ! -f "${DXY_CAPTURE_FILE_PATH}" ]; then
+    cat
+
+    return 0
+  fi
+
+  tee -a "${DXY_CAPTURE_FILE_PATH}"
 }
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
@@ -799,7 +833,8 @@ prepare_client_fs () {
 
   if ${DRY_RUN}; then
     blot
-    find . -mindepth 1 -path ./.git -prune -o -type d -exec echo "mkdir: ${client_path}/{}" \;
+    find . -mindepth 1 -path ./.git -prune -o -type d -exec echo "mkdir: ${client_path}/{}" \; \
+      | tee_or_cat
 
     return 0
   fi
@@ -860,7 +895,7 @@ process_file () {
     process_file_eval "${fname}"
   elif [ "${fname}" = "${deploysh_name}" ]; then
     blot "SKIP: ${fname}"
-    blot
+    ! ${DXY_OUTPUT_VERBOSE} || blot
   else
     process_file_copy "${fname}"
   fi
@@ -890,7 +925,7 @@ process_file_copy_copy_file () {
   local exit_code
 
   blot "COPY: ${fname}"
-  blot
+  ! ${DXY_OUTPUT_VERBOSE} || blot
 
   if ${DRY_RUN}; then
     blot "  command cp -R -P -- \"${fname}\" \"${dest_path}\""
@@ -932,6 +967,8 @@ deployed_file_make_link () {
 
   # E.g., /Users/user/.depoxy/stints/.syml--XXXX/...
   ln_with_trace "${dest_path}" "${DXY_MAKE_LNS_FULL}/${fname}"
+
+  ! ${DXY_OUTPUT_VERBOSE} || blot
 }
 
 process_file_eval () {
@@ -940,7 +977,7 @@ process_file_eval () {
   local eval_cmd
   eval_cmd="$(extract_eval_command "${fname}")"
   blot "EVAL: ${fname}"
-  blot
+  ! ${DXY_OUTPUT_VERBOSE} || blot
 
   # See DEV hook atop file. If set, only test specific file.
   [ -z "${TEST_FILE}" ] || [ "${TEST_FILE}" = "${fname}" ] || return 0
@@ -955,11 +992,36 @@ process_file_eval () {
 
   local exit_code
 
-  set -x
-  eval "${eval_cmd}"
-  exit_code=$?
-  set +x
-  blot
+  process_eval () {
+    set -x
+    eval "${eval_cmd}"
+    exit_code=$?
+    set +x
+
+    return ${exit_code}
+  }
+
+  if [ ! -f "${DXY_CAPTURE_FILE_PATH}" ]; then
+    if ${DXY_OUTPUT_VERBOSE}; then
+      process_eval
+
+      blot
+    else
+      process_eval 2> /dev/null
+    fi
+  else
+    if ${DXY_OUTPUT_VERBOSE}; then
+      process_eval | tee_or_cat
+      exit_code=${PIPESTATUS[0]}
+
+      blot
+    else
+      # Note that `set -x` writes to stdout.
+      process_eval >> "${DXY_CAPTURE_FILE_PATH}" 2>&1
+
+      echo >> "${DXY_CAPTURE_FILE_PATH}"
+    fi
+  fi
 
   # See DEV hook atop file. If set, only test specific file.
   if [ -n "${TEST_FILE}" ]; then
@@ -1064,6 +1126,9 @@ omr_dxc_infuse () {
   blot mr -d "${DXY_DEPOXY_CLIENT_FULL}" -n infuse
   blot
 
+  # Meh: We could `| tee_or_cat` but then there's no realtime output,
+  # and there's no compelling reason to capture this output anyway.
+
   SHCOLORS_OFF=false \
   mr -d "${DXY_DEPOXY_CLIENT_FULL}" -n infuse \
     | sed 's/^/  /'
@@ -1164,8 +1229,13 @@ omr_dxc_cleanup_reminder () {
 
 # ***
 
+DEPOXY_DUCK_DUCK_DUCK_DUCK_DUCK_DUCK="     🦆 🦆 🪿  🦆 🦆 🪿  🦆 🦆 🪿  🐤"
+
 announce_completed_symlinks () {
   ${DXY_RUN_MAKE_LNS:-false} || return 0
+
+  # Final COPY or EVAL ended with blank line.
+  blot "${DEPOXY_DUCK_DUCK_DUCK_DUCK_DUCK_DUCK}"
 
   blot
   blot "Your DepoXy Client symlinks are ready at:"
@@ -1183,6 +1253,12 @@ announce_completed_client_repo () {
     blot
     blot "SAVVY: You may want to start a new shell to realize changes"
   fi
+
+  if [ -f "${DXY_CAPTURE_FILE_PATH}" ]; then
+    blot
+    blot "CXREF: Deploy log was captured to:"
+    blot "  ${DXY_CAPTURE_FILE_PATH}"
+  fi
 }
 
 announce_completed () {
@@ -1197,6 +1273,8 @@ announce_completed () {
 export DXY_RUN_MAKE_LNS=false
 export DXY_RUN_LNS_ONLY=false
 
+export DXY_OUTPUT_VERBOSE=false
+
 parse_args () {
   while [ "$1" != '' ]; do
     case $1 in
@@ -1208,6 +1286,11 @@ parse_args () {
       -H | --lns-only)
         export DXY_RUN_MAKE_LNS=true
         export DXY_RUN_LNS_ONLY=true
+
+        shift
+        ;;
+      -v)
+        export DXY_OUTPUT_VERBOSE=true
 
         shift
         ;;
@@ -1280,6 +1363,8 @@ main () {
 
   fail_if_target_exists_and_non_empty
 
+  prepare_capture_file
+
   prompt_continue_or_exit
 
   prepare_depoxy_fs
@@ -1291,6 +1376,7 @@ main () {
   omr_dxc_infuse
   omr_dxc_autocommit
   omr_dxc_cleanup
+  finish_capture_file
   announce_completed
   
   trap - EXIT INT
