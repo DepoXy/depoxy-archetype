@@ -180,7 +180,8 @@ bashdxy_source_experimental () {
   . "${experimental_sh}"
 }
 
-bashdxy_source_BUSINESS_CODE_PATH () {
+bashdxy_source_business_code_path () {
+  # CXREF: This path was set by deploy-archetype.sh per [[[BUSINESS_CODE_PATH]]].
   local acme_sh="${HOME}/.depoxy/running/home/bashrx.private.BUSINESS_CODE_PATH.sh"
 
   # [ ! -f "${acme_sh}" ] || . "${acme_sh}"
@@ -226,8 +227,8 @@ main () {
     bashdxy_source_experimental
     unset -f bashdxy_source_experimental
 
-    bashdxy_source_BUSINESS_CODE_PATH
-    unset -f bashdxy_source_BUSINESS_CODE_PATH
+    bashdxy_source_business_code_path
+    unset -f bashdxy_source_business_code_path
   fi
 }
 
