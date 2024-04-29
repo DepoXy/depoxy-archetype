@@ -654,10 +654,11 @@ infuse =
     "${HOMEFRIES_DIR:-${HOME}/.homefries}/.bashrc-bin/bashrx.private.DXY_HOSTNAME.sh"
   #
   local bashrx_user="bashrx.private.$(id -un).sh"
+  local bashrx_full="${MR_REPO}/home/${bashrx_user}"
   #
-  if [ -f "${MR_REPO}/home/${bashrx_user}" ]; then
+  if [ -f "${bashrx_full}" ]; then
     symlink_overlay_file \
-      "${MR_REPO}/home/${bashrx_user}" \
+      "${bashrx_full}" \
       "${HOMEFRIES_DIR:-${HOME}/.homefries}/.bashrc-bin/${bashrx_user}"
   else
     info "$(font_emphasize ALERT): No DXC bashrc at" \
