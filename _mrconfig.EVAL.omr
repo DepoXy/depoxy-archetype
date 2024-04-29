@@ -98,6 +98,7 @@ autocommit =
   git_auto_commit_one_update ".gitignore"
   git_auto_commit_one_update ".hostnames"
   git_auto_commit_one_update ".ignore"
+  git_auto_commit_one_update "LICENSE"
   #
   git_auto_commit_one_omr "_mrconfig"
   #
