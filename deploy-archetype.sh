@@ -676,7 +676,6 @@ print_template_vars () {
 prepare_depoxy_fs () {
   ! ${DRY_RUN} || return 0
 
-  # MAYBE: Do we really only need the last `mkdir -p` call?
 
   # E.g., "/user/home/.depoxy"
   mkdir -p "${DXY_DEPOXYDIR_BASE_FULL}"
