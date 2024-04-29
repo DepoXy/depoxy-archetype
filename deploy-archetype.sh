@@ -687,23 +687,36 @@ print_template_vars () {
 prepare_depoxy_fs () {
   ! ${DRY_RUN} || return 0
 
+  blot
+  blot "Preparing client tree"
+  blot
 
   # E.g., "/user/home/.depoxy"
-  mkdir -p "${DXY_DEPOXYDIR_BASE_FULL}"
+  mkdir_with_trace "${DXY_DEPOXYDIR_BASE_FULL}"
 
   # E.g., "/user/home/.depoxy/stints"
-  mkdir -p "${DXY_DEPOXYDIR_STINTS_FULL}"
+  mkdir_with_trace "${DXY_DEPOXYDIR_STINTS_FULL}"
 
   ! ${DXY_RUN_LNS_ONLY:-false} || return 0
 
   # E.g., "/user/home/.depoxy/stints/XXXX"
-  mkdir -p "${DXY_DEPOXY_CLIENT_FULL}"
+  mkdir_with_trace "${DXY_DEPOXY_CLIENT_FULL}"
 
   # E.g., "/user/home/.depoxy/running"
   if [ ! -e "${DXY_DEPOXYDIR_RUNNING_FULL}" ]; then
     # Necessary for running initial DXC 'infuse' (which also makes this link).
     command ln -s "${DXY_DEPOXY_CLIENT_FULL}" "${DXY_DEPOXYDIR_RUNNING_FULL}"
   fi
+}
+
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
+
+mkdir_with_trace () {
+  local path="$1"
+
+  blot "  mkdir -p -- \"${path}\""
+
+  mkdir -p -- "${path}"
 }
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
@@ -751,7 +764,7 @@ prepare_symlinks_fs () {
 
   ! ${DRY_RUN} || return 0
 
-  mkdir "${DXY_MAKE_LNS_FULL}"
+  mkdir_with_trace "${DXY_MAKE_LNS_FULL}"
 
   prepare_client_fs "${DXY_MAKE_LNS_FULL}"
 
