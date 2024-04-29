@@ -1067,7 +1067,7 @@ DEPOXY_AMBERS=$HOME/.depoxy/ambers filter=".* *" {
 DEPOXY_AMBERS
 DEPOXY_STINTS
 DEPOXY_ARCHETYPE=$HOME/.depoxy/ambers/archetype filter=".* *" {
- .gitignore
+ .gitignore.EVAL
  .gitignore.local
  .hostnames.EVAL
  .ignore
