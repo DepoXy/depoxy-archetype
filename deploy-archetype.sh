@@ -510,7 +510,6 @@ m4_shim_make_file () {
 
   # Because tail will fail in eval without errexit, check file path.
   if [ ! -f "${tail_path}" ]; then
-    set +x
     >&2 echo
     >&2 echo "ERROR: No such input file: “${tail_path}”"
 
