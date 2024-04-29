@@ -979,23 +979,27 @@ include =
   }
   include_js_npm_patch_opn_sensible_open
   #
+  # ***
+  #
   # Load client-specific OMR project config.
   # CXREF: ~/.depoxy/ambers/archetype/_mrconfig-BUSINESS_CODE_PATH.EVAL.example
-  #
-  . ${OHMYREPOS_LIB:-${GITREPOSPATH:-${HOME}/.kit/git}/ohmyrepos/lib}/skip-grouping.sh
-  # SAVVY: There's a tilde in DEPOXYDIR_STINTS_FULL, which doesn't matter
-  #        here, but matters in the `infuse` task, where it must be $HOME.
-  # - E.g., "/home/user/.depoxy/stints"
-  local stints_dir="${DEPOXYDIR_STINTS_FULL:-${HOME}/DXY_DEPOXYDIR_BASE_NAME/DXY_DEPOXYDIR_STINTS_NAME}"
-  # - E.g., "/home/user/.depoxy/stints/XXXX/_mrconfig-acme"
-  local mr_business="${stints_dir}/DXY_DEPOXY_CLIENT_ID/_mrconfig-BUSINESS_CODE_PATH"
-  if [ -f "${mr_business}" ] && ! (
-      mr_exclusive "work" &&
-      true
-    );
-  then
-    cat "${mr_business}"
-  fi
+  include_depoxy_client_mr_business () {
+    . ${OHMYREPOS_LIB:-${GITREPOSPATH:-${HOME}/.kit/git}/ohmyrepos/lib}/skip-grouping.sh
+    # SAVVY: There's a tilde in DEPOXYDIR_STINTS_FULL, which doesn't matter
+    #        here, but matters in the `infuse` task, where it must be $HOME.
+    # - E.g., "/home/user/.depoxy/stints"
+    local stints_dir="${DEPOXYDIR_STINTS_FULL:-${HOME}/DXY_DEPOXYDIR_BASE_NAME/DXY_DEPOXYDIR_STINTS_NAME}"
+    # - E.g., "/home/user/.depoxy/stints/XXXX/_mrconfig-acme"
+    local mr_business="${stints_dir}/DXY_DEPOXY_CLIENT_ID/_mrconfig-BUSINESS_CODE_PATH"
+    if [ -f "${mr_business}" ] && ! (
+        mr_exclusive "work" &&
+        true
+      );
+    then
+      cat "${mr_business}"
+    fi
+  }
+  include_depoxy_client_mr_business
 
 # ========================================================================
 # ------------------------------------------------------------------------
