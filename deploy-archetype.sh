@@ -1096,8 +1096,11 @@ announce_completed_client_repo () {
   blot "Your new DepoXy Client repo is ready at:"
   blot
   blot "  ${DXY_DEPOXY_CLIENT_TILDE}"
-  blot
-  blot "- You may want to restart this shell to realize changes"
+
+  if ! ${DRY_RUN}; then
+    blot
+    blot "SAVVY: You may want to start a new shell to realize changes"
+  fi
 }
 
 announce_completed () {
