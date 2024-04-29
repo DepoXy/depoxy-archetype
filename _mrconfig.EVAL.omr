@@ -312,15 +312,27 @@ autocommit =
   #
   # ***
   #
-  # FIXME/2022-12-13: Verify these:
-  #  home/Library/Application Support/Google/Chrome/Default/Bookmarks
-  #  home/Library/Application Support/Google/Chrome/Default/bookmarks_M_D_YY.html
+  # SAVVY/2024-04-28: The Chrome Bookmarks capture is not completely
+  # automated, but it's fairly close.
+  # - If the user updates the "Bookmarks" file, we'll assume it's a raw
+  #   copy of the original file. As such, it might contain private
+  #   bookmarks (work org links), and we'll commit it PRIVATEly.
+  # - If the user creates or updates any other file with a name that starts
+  #   with "bookmarks" (case-insensitive), we'll commit that file unscoped.
   #
-  # Chrome bookmarks.
-  # MAYBE/2020-12-18: You could symlink the actual Chrome bookmarks to this
-  #                   project's copy, and then omit the `cp` and just auto-commit
-  #                   (and add infuser to replace Chrome's w/ syml).
-  depoxy_client_id_autocommit_chrome_bookmarks () {
+  # - MAYBE/2020-12-18: Update "Bookmarks" automatically.
+  # - Either copy on 'autocommit'; or Symlink the actual Chrome bookmarks
+  #   file to the DepoXy Client copy (setup the symlink on 'infuse', then
+  #   whenever it changes, 'autocommit' will capture the changes).
+  #   - Because the file is committed PRIVATE, this is "safe".
+  #   - MAYBE: Don't over-commit, maybe throttle to daily commit.
+  #
+  # - MAYBE/2024-04-28: Use `jq` to "purify" a copy of the Bookmarks file.
+  #   - You would need to omit PRIVATE bookmarks somehow.
+  #     - One idea: Have user update environ or rules file to specifiy
+  #       top-level BM Folder names to include in the "purged" copy.
+  #
+  depoxy_client_autocommit_chrome_bookmarks () {
     local chrome_dir
     if [ "$(uname)" = "Darwin" ]; then
       chrome_dir="Library/Application Support/Google/Chrome/Default"
@@ -332,32 +344,56 @@ autocommit =
     #
     local chrome_bms_json="${chrome_dir}/Bookmarks"
     mkdir -p "home/${chrome_dir}"
-    # FIXME/2022-12-14: Scrub Chrome BMs copy, too.
-    #  command cp "${HOME}/${chrome_bms_json}" "home/${chrome_bms_json}"
-    #  git_auto_commit_one "home/${chrome_bms_json}" -m "${CLEARED_ACI}: Chrome BMs (JSON copy)."
-    notice "FIXME: Scrub @biz links from and commit home/${chrome_bms_json} manually."
-    notice "- At least until you devise bookmarks scrubber."
-    echo "command cp \"${HOME}/${chrome_bms_json}\" \\
-   \"${MR_REPO}/home/${chrome_bms_json}\""
     #
+    # Chrome won't create this file until the user makes their first BM.
+    # - MAYBE: As mentioned in comment above, symlink Chrome file to ours.
+    if [ -f "${HOME}/${chrome_bms_json}" ]; then
+      # Throttle commits to `-mtime +n` 24-hour periods since now.
+      if [ ! -f "home/${chrome_bms_json}" ] \
+        || [ -n "$(find "home/${chrome_bms_json}" -mtime +1 -print)" ] \
+      ; then
+        command cp -- "${HOME}/${chrome_bms_json}" "home/${chrome_bms_json}"
+      fi
+    fi
+    git_auto_commit_one "home/${chrome_bms_json}" -m "${PRIVATE_ACI}: Chrome BMs (orig JSON)"
     #
-    # Bookmarks HTML is currently exported manually. (Someday may automate.)
+    # We'll also assume any file named "bookmarks.html" is also private.
     local chrome_bms_html="${chrome_dir}/bookmarks.html"
+    local its_been_awhile=false
     if [ -f "home/${chrome_bms_html}" ]; then
       git_auto_commit_one "home/${chrome_bms_html}" \
         -m "${CLEARED_ACI}: Chrome BMs (HTML export)."
       # I suppose we could always let the user know if it's been a while.
-      if [ "$(find "home/${chrome_bms_html}" -mtime +13 -print)" ]; then
-        notice "STALE: It's been at least two weeks since you've exported Chrome Bookmarks HTML."
-        # FIXME/2022-12-14: This note is meaningless to anyone other than me.
-        # - Is there a way you can parse HTML with script and remove client-specific links?
-        notice "- HINT: Search export for '|' and delete client-specific bookmarks before that delimiter."
+      if [ -n "$(find "home/${chrome_bms_html}" -mtime +13 -print)" ]; then
+        its_been_awhile=true
       fi
-    else
-      notice "PLEASE: Export Chrome bookmarks HTML to: ${MR_REPO}/home/${chrome_bms_html}"
     fi
+    if ${DXY_ALERT_BMS_EXPORT:-false}; then
+      if [ ! -f "home/${chrome_bms_html}" ] || ${its_been_awhile}; then
+        if ${its_been_awhile}; then
+          notice "STALE: It's been a while since you've exported Chrome Bookmarks HTML"
+        fi
+        notice "SAVVY: If you want, export Chrome bookmarks HTML to"
+        notice "  $(echo "${MR_REPO}/home/${chrome_bms_html}" | sed 's/ /\\ /g')"
+        notice "and we'll capture a private copy for you"
+      fi
+    fi
+    #
+    # MAYBE: See comment above re: Generated sanctified copy using `jq`, then, e.g.,
+    #
+    #  git_auto_commit_one "home/${chrome_bms_json}--purged" -m "${CLEARED_ACI}: Chrome BMs (sanitized)."
+    #
+    # - For now, user can generate such a file manually, and we'll happily
+    #   auto-commit any other Bookmarks file here.
+    #
+    local bms_file
+    find "home/${chrome_dir}" -maxdepth 1 -name "Bookmarks" -prune -o -iname "bookmarks*" -print \
+      | while IFS= read -r bms_file \
+    ; do
+      git_auto_commit_one_update "${bms_file}"
+    done
   }
-  depoxy_client_id_autocommit_chrome_bookmarks
+  depoxy_client_autocommit_chrome_bookmarks
   #
   # ***
   #
