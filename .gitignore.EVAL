@@ -1,3 +1,16 @@
+# USAGE:
+#   m4_shim \
+#     "+10" ".gitignore.EVAL" \
+#     ".gitignore"
+
+# vim:tw=0:ts=2:sw=2:et:norl:ft=conf
+
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
+
+# DXY_HEADER_AUTHOR
+# DXY_HEADER_PROJECT
+# DXY_HEADER_LICENSE
+
 # random_seed helps manage the internal random pool, per `man gpg`.
 # - This rule is helpful if you've symlinked ~/.gnupg to
 #   ~/.depoxy/ambers/archetype/home/.gnupg, which allows
