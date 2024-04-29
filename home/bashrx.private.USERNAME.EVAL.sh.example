@@ -99,16 +99,6 @@ cdta () {
     'https://stage-portal-iii.domain.com/path/to/app.html'
   # The default stage URL:
   _work_env_define 'WORK_URL_STAGE' "${PORTAL_A}"
-
-  # IDEA: You could develop this environ concept further, e.g.,
-  # make it easy to open Jenkins from the command line:
-  #
-  # _work_env_define 'JENKINS_DEVELOP' \
-  #   'https://jenkins.domain.com/job/division1/job/total-appage/job/develop/'
-  # _work_env_define 'JENKINS_RELEASE' \
-  #   'https://jenkins.domain.com/job/division1/job/total-appage/job/release/'
-  # _work_env_define 'JENKINSFILE_URL' \
-  #   'https://github.domain.com/division1/jenkins-library/blob/release/total-appage.groovy'
 }
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
