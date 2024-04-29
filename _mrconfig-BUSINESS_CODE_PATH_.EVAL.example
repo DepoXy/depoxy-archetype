@@ -1,6 +1,6 @@
 # USAGE:
 #   m4_shim \
-#     "+9" "_mrconfig-BUSINESS_CODE_PATH.EVAL.example" \
+#     "+9" "_mrconfig-BUSINESS_CODE_PATH_.EVAL.example" \
 #     "_mrconfig-${BUSINESS_CODE_PATH}.example"
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #

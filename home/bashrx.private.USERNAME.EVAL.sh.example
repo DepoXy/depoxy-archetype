@@ -1,6 +1,6 @@
 # USAGE:
 #   m4_shim \
-#     "+11" "home/bashrx.private.DXY_USERNAME.EVAL.sh.example" \
+#     "+11" "home/bashrx.private.USERNAME.EVAL.sh.example" \
 #     "home/bashrx.private.${DXY_USERNAME}.sh.example" \
 #     "BUSINESS_PROJECT_BASE" \
 #       "https://${BUSINESS_GITCONFIG_HUB_HOST}/$(dirname -- "${BUSINESS_GITSERVER_USER_REPO}")"

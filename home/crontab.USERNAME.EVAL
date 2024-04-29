@@ -1,6 +1,6 @@
 # USAGE:
 #   m4_shim \
-#     "+8" "home/crontab.DXY_USERNAME.EVAL" \
+#     "+8" "home/crontab.USERNAME.EVAL" \
 #     "home/crontab.${DXY_USERNAME}"
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
