@@ -809,7 +809,7 @@ infuse =
   #
   # CXREF: DepoXy Ambers KB infuser:
   #   infuse_symlinks_macOS_Karabiner_Elements_complex_modifications
-  depoxy_client_id_infuse_karabiner_elements_complex_modifications () {
+  depoxy_client_infuse_karabiner_elements_complex_modifications () {
     local ambers_path="${DEPOXYDIR_BASE_FULL:-${HOME}/.depoxy}/ambers"
     local dxy_mrinfuse="${DEPOXYAMBERS_DIR:-${ambers_path}}/home"
     local cmplxmods=".config/karabiner/assets/complex_modifications"
@@ -826,7 +826,7 @@ infuse =
     done
     cd -
   }
-  depoxy_client_id_infuse_karabiner_elements_complex_modifications
+  depoxy_client_infuse_karabiner_elements_complex_modifications
   #
   # *** GPG ℇ PASS
   #
