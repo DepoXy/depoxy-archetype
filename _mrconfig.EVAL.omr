@@ -442,14 +442,6 @@ autocommit =
   #
   # ***
   #
-  # 2023-03-04: In anticipation of acme.sh script, exclude it now.
-  #   git_auto_commit_many $(find home/work/ -type f -o -type l) \
-  #     -m "${PRIVATE_ACI}: Update: home/work/ contents"
-  git_auto_commit_many $(find home/work/ -path home/work/acme.sh -prune -o -type f -o -type l) \
-    -m "${PRIVATE_ACI}: Update: home/work/"
-  #
-  # ***
-  #
   # Personal reSTfold docs.
   #
   # NOTE: This `find` won't work if there are spaces in any paths.
