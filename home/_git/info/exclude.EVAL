@@ -5,6 +5,10 @@
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
+# DXY_HEADER_AUTHOR
+# DXY_HEADER_PROJECT
+# DXY_HEADER_LICENSE
+
 # SYMLINK: ~/.git/info/exclude ↔ ~/.depoxy/ambers/home/_git/info/exclude
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #

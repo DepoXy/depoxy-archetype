@@ -1,3 +1,13 @@
+// USAGE:
+//   m4_shim \
+//     "+8" "home/.finicky.EVAL.js" \
+//     "home/.finicky.js"
+
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
+
+// DXY_HEADER_AUTHOR
+// DXY_HEADER_DOTPROJECT
+
 // CXREF:
 //   https://github.com/johnste/finicky/wiki/Configuration
 // See also:

@@ -6,7 +6,8 @@
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
 # vim:tw=0:ts=2:sw=2:et:norl:nospell:ft=bash
-# DXY_HEADER_DOTFILES
+# DXY_HEADER_AUTHOR
+# DXY_HEADER_DOTPROJECT
 
 # *** NOTE: THIS MRCONFIG ONLY RUNS ON THE CLIENT MACHINE / CLIENT-ONLY ***
 

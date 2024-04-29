@@ -1090,7 +1090,7 @@ DEPOXY_ARCHETYPE=$HOME/.depoxy/ambers/archetype filter=".* *" {
   notable-notes--prepare.sh
  }
  home=$HOME/.depoxy/ambers/archetype/home {
-  .finicky.js
+  .finicky.EVAL.js
   .gitconfig.user-business.EVAL
   .gitconfig.user-personal.EVAL
   .gitconfig.user.EVAL

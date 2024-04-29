@@ -39,10 +39,11 @@ register_customizable_headers () {
   register "DXY_HEADER_AUTHOR" "Author: ${DXY_DEPOXY_HUMAN_NAME}"
 
   # "Project: ..." defaults to the file:/// path to the new DepoXy Client.
-  register "DXY_HEADER_PROJECT" "Project: file://${DXY_DEPOXY_CLIENT_FULL}#💼"
+  #   💼 🕵 🛒 🚪 👔 🤝 👨 🕴 📞 💰 🚜 🏢 📄 🗡️ 📉 📈 🔺 ♛ 📊 😵 📦 🚗 🛎 🪵 🧳 💁 🎨
+  register "DXY_HEADER_PROJECT" "Project: file://${DXY_DEPOXY_CLIENT_FULL}#👔"
 
   # "License: ..." defaults to what you see here.
-  register "DXY_HEADER_LICENSE" "License: PROPRIETARY AND CONFIDENTIAL."
+  register "DXY_HEADER_LICENSE" "License: PROPRIETARY AND CONFIDENTIAL"
 }
 
 # You can set the client ID, and specify a remote Git URL.
@@ -109,6 +110,8 @@ register_customizable_git_config () {
   # E.g.:
   #   https://gitlab.acme.com/User.Name/uname.sh#🥗
   register "DXY_HEADER_DOTFILES" "https://${BUSINESS_GITCONFIG_HUB_HOST}/${BUSINESS_GITSERVER_USER_REPO}#🥗"
+  #
+  register "DXY_HEADER_DOTPROJECT" "Project: ${DXY_HEADER_DOTFILES}"
 }
 
 # You can set URLs for business-specific stuff.
@@ -1077,7 +1080,7 @@ extract_eval_command () {
       found_blank = 0;
     }
 
-    /^(#|\.\.|") USAGE:/ {
+    /^(#|\.\.|"|\/\/) USAGE:/ {
       next;
     }
 
@@ -1087,7 +1090,7 @@ extract_eval_command () {
     }
 
     found_blank == 0 {
-      gsub(/^(#|\.\.|") /, "");
+      gsub(/^(#|\.\.|"|\/\/) /, "");
       print;
     }
   ' "${m4_file}"

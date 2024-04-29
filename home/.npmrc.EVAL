@@ -11,4 +11,7 @@
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
+# DXY_HEADER_DOTPROJECT
+
 registry=BUSINESS_NPM_REGISTRY_URL
+

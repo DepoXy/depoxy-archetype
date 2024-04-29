@@ -6,7 +6,8 @@
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
 # vim:tw=0:ts=2:sw=2:et:norl:ft=gitconfig
-# DXY_HEADER_DOTFILES
+# DXY_HEADER_AUTHOR
+# DXY_HEADER_DOTPROJECT
 
 [user]
   # Prefer the same name you see when merging via PR/MR.

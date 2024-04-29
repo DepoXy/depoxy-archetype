@@ -5,6 +5,10 @@
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
+# DXY_HEADER_AUTHOR
+# DXY_HEADER_PROJECT
+# DXY_HEADER_LICENSE
+
 # crontab DXY_DEPOXY_CLIENT_TILDE/home/crontab.landonb
 #
 #  25 13 * * Tue,Thu DXY_DEPOXYAMBERS_DIR/bin/notify "Some Calendar Event B/c Calendar App Notifs Not Working"
