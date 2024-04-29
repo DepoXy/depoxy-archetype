@@ -719,6 +719,17 @@ mkdir_with_trace () {
   mkdir -p -- "${path}"
 }
 
+ln_with_trace () {
+  local source="$1"
+  local target="$2"
+
+  if ${DXY_OUTPUT_VERBOSE}; then
+    blot "  command ln -s \"${source}\" \"${target}\""
+  fi
+
+  command ln -s "${source}" "${target}"
+}
+
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
 # TRYME:
@@ -768,8 +779,9 @@ prepare_symlinks_fs () {
 
   prepare_client_fs "${DXY_MAKE_LNS_FULL}"
 
-  # So this path doesn't appear missing on diff/meld.
-  ln -s "$(realpath -- "$0")" "${DXY_MAKE_LNS_FULL}/$(basename -- "$0")"
+  # E.g., /Users/user/.depoxy/stints/.syml--XXXX/deploy-archetype.sh
+  # - So this path doesn't appear missing on diff/meld.
+  ln_with_trace "$(realpath -- "$0")" "${DXY_MAKE_LNS_FULL}/$(basename -- "$0")"
 }
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
@@ -869,7 +881,8 @@ deployed_file_make_link () {
     return 0
   fi
 
-  ln -s "${dest_path}" "${DXY_MAKE_LNS_FULL}/${fname}"
+  # E.g., /Users/user/.depoxy/stints/.syml--XXXX/...
+  ln_with_trace "${dest_path}" "${DXY_MAKE_LNS_FULL}/${fname}"
 }
 
 process_file_eval () {
