@@ -33,8 +33,10 @@ DRY_RUN=${DRY_RUN:-false}
 
 # Feel free to set your own headers.
 register_customizable_headers () {
+  register "DXY_DEPOXY_HUMAN_NAME" "$(user_name_full)"
+
   # "Author: ..." defaults to what your machine says is your full name.
-  register "DXY_HEADER_AUTHOR" "Author: $(user_name_full)"
+  register "DXY_HEADER_AUTHOR" "Author: ${DXY_DEPOXY_HUMAN_NAME}"
 
   # "Project: ..." defaults to the file:/// path to the new DepoXy Client.
   register "DXY_HEADER_PROJECT" "Project: file://${DXY_DEPOXY_CLIENT_FULL}#💼"
@@ -893,7 +895,10 @@ process_file () {
 
   if echo "${fname}" | grep -q -e "EVAL"; then
     process_file_eval "${fname}"
-  elif [ "${fname}" = "${deploysh_name}" ]; then
+  elif false \
+    || [ "${fname}" = "${deploysh_name}" ] \
+    || [ "${fname}" = "LICENSE" ] \
+  ; then
     blot "SKIP: ${fname}"
     ! ${DXY_OUTPUT_VERBOSE} || blot
   else
