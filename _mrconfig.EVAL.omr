@@ -551,6 +551,8 @@ infusePostRebase =
     fi
   done
 
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
+
 infuse =
   # Hard links
   mr -d . -n infusePostRebase
