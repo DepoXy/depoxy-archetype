@@ -10,9 +10,6 @@
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
-# Note that the ~/DXY_DEPOXYDIR_BASE_NAME path is not used by grep-steady
-# (e.g., it's not on Vim #9 search), so this .ignore file is mostly in case
-# you're rip-grepping on your own from the terminal.
 
 # *** DepoXy articles (DepoXy dev environment orchestrator).
 
