@@ -505,6 +505,7 @@ autocommit =
 spells =
   git_auto_commit_parse_args "$@"
   commit_sorted_spells_and_alert_if_conflicts
+  git_auto_commit_one_update "home/.vim/spell/en.utf-8.add--personal"
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
