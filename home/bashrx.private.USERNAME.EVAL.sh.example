@@ -98,7 +98,7 @@ cdta () {
   _work_env_define 'WORK_URL_STAGE_portal_iii' \
     'https://stage-portal-iii.domain.com/path/to/app.html'
   # The default stage URL:
-  _work_env_define 'WORK_URL_STAGE' "${PORTAL_A}"
+  _work_env_define 'WORK_URL_STAGE' "${WORK_URL_STAGE_PORTAL_A}"
 }
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
