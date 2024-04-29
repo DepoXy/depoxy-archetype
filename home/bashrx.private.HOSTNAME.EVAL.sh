@@ -22,7 +22,7 @@
 #        - CXREF: See the `symlink_overlay_file` infuse task
 #                 which creates the symlink:
 #
-#            DXY_DEPOXYDIR_STINTS_TILDE/DXY_DEPOXY_CLIENT_ID/_mrconfig
+#            DXY_DEPOXY_CLIENT_TILDE/_mrconfig
 #
 # SAVVY: This file must be named with $(hostname) or $LOGNAME
 #        for Homefries to automatically load it.
