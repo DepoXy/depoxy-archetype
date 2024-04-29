@@ -2,15 +2,14 @@
 #   ! ${DXY_RUN_LNS_ONLY:-false} || return 0
 #   [ -n "${BUSINESS_NPM_REGISTRY_URL}" ] &&
 #     m4_shim \
-#       "+11" "home/.npmrc.EVAL" \
+#       "+12" "home/.npmrc.EVAL" \
 #       "home/.npmrc" ||
 #     printf "registry=http://registry.npmjs.org/npm\n\n" \
 #       > "${DXY_DEPOXY_CLIENT_FULL}/home/.npmrc.example"
 
-# vim:tw=0:ts=2:sw=2:et:norl:ft=dosini
-
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
+# vim:tw=0:ts=2:sw=2:et:norl:ft=dosini
 # DXY_HEADER_DOTPROJECT
 
 registry=BUSINESS_NPM_REGISTRY_URL
