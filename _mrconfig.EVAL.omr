@@ -219,6 +219,10 @@ autocommit =
   git_auto_commit_one_update "home/.kube/PRIVATE"
   #
   git_auto_commit_one_update "home/.local/share/dob/dob.sqlite"
+  # E.g., home/.local/share/dob/dob.sqlite-user-template
+  # - BWARE: This call breaks if any found path contains spaces.
+  git_auto_commit_many $(find home/.local/share/dob/ \( -type f -o -type l \) -a -name dob.sqlite-*) \
+    -m "${CLEARED_ACI}: Update: home/.local/share/dob/dob.sqlite-* files"
   #
   git_auto_commit_one_update "home/.netrc" "" "${PRIVATE_ACI}"
   #
