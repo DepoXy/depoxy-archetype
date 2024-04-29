@@ -962,7 +962,7 @@ init_repo () {
   git init -q -b private .
 
   eval "git ${conf_opts} commit -q --allow-empty \
-    -m \"Fresh: New DepoXy Client ${DXY_DEPOXY_CLIENT_ID}\""
+    -m \"Flaming: hotnew: DepoXy Client ${DXY_DEPOXY_CLIENT_ID}\""
 
   cd - > /dev/null
 }
