@@ -965,8 +965,13 @@ include =
   #
   # ***
   #
-  ambers_path="${DEPOXYDIR_BASE_FULL:-${HOME}/.depoxy}/ambers"
-  cat "${DEPOXYAMBERS_DIR:-${ambers_path}}/home/.kit/git/ohmyrepos/lib/js-npm-patch-opn-sensible-open"
+  include_js_npm_patch_opn_sensible_open () {
+    local ambers_path="${DEPOXYDIR_BASE_FULL:-${HOME}/.depoxy}/ambers"
+    # CXREF: ~/.depoxy/ambers/home/.kit/git/ohmyrepos/lib/js-npm-patch-opn-sensible-open
+    # - Load `hack_patch_opn_to_call_sensible_open`
+    cat "${DEPOXYAMBERS_DIR:-${ambers_path}}/home/.kit/git/ohmyrepos/lib/js-npm-patch-opn-sensible-open"
+  }
+  include_js_npm_patch_opn_sensible_open
   #
   # Load client-specific OMR project config.
   # CXREF: ~/.depoxy/ambers/archetype/_mrconfig-BUSINESS_CODE_PATH.EVAL.example
