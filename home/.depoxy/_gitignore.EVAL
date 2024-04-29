@@ -10,10 +10,15 @@
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
+# vim:tw=0:ts=2:sw=2:et:norl:ft=bash
+# DXY_HEADER_AUTHOR
+# DXY_HEADER_PROJECT
+# DXY_HEADER_LICENSE
 
 # *** DepoXy articles (DepoXy dev environment orchestrator).
 
 /.gitignore
+/.ignore
 
 # Main DepoXy repo, aka DepoXy Ambers.
 # E.g., /ambers/
