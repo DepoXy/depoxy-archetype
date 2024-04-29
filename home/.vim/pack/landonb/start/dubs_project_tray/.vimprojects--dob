@@ -1,0 +1,2812 @@
+DOB__EAPP_APPDIRS  EAPP_CORE
+DOB__EAPP_CONFIG
+DOB__EAPP_GETVER
+DOB__EAPP_TERMIO
+NARK___________━━━━━━        ━┓
+DOB__DOB_______               ┃
+DOB__DOB_BRIGHT               ┃
+DOB__DOB_PROMPT               ┃
+DOB__DOB_VIEWER               ┃
+ANSI_ESCAPE_ROOM____PYLB      ┃
+CONFIG_DECORATOR____PYLB      ┃
+PEDANTIC_TIMEDELTA__PYLB      ┃
+PEP440CMP___________PYLB      ┃
+CLICK__HOTH ⊞ CLICK_ALIAS     ┃
+PYTHON_PROMPT_TOOLKIT         ┃
+SQLALCHEMY_MIGRATE            ┃
+DOB_PLUGINS                   ┃
+DOB_PLUGIN_GIT_HIP            ┃
+DOB_PLUGIN_HAMSTER_DANCE      ┃
+DOB_PLUGIN_MY_POST_PROCESSOR  ┃
+DOB_PLUGIN_STALE_FACT_GOADER ━┛
+##<>======?????!!!!!!!!!<>)()()
+
+# ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+
+#################################
+# BEG: DOBPROJS ################
+#
+# ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+# ┃ 🦣 🫎  dob                  ┃
+# ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
+# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+# ░░ BEG: DOBDOB ░░░░░░░░░░░░░░░
+
+DOB_DOB=$HOME/.kit/py filter=".* *" exclude="tags" {
+ dob=$HOME/.kit/py/dob exclude=".coverage coverage.xml poetry.lock" {
+  .editorconfig
+  .gitignore
+  .gitignore.local
+  .ignore
+  .ignore.example
+  .pyproject-cache.data
+  .pyproject.project.tmpl
+  .readthedocs.yml
+  .yamllint
+  AUTHORS.rst
+  CODE-OF-CONDUCT.rst
+  CONTRIBUTING.rst
+  HISTORY.rst
+  LICENSE
+  Makefile
+  Makefile.local
+  Makefile.project
+  Maketasks.sh
+  README.rst
+  codecov.yml
+  pyproject.toml
+  tox.ini
+  src/dob=$HOME/.kit/py/dob/src/dob {
+   # PROHAM: DOB__DOB_______
+   __init__.py
+   complete.py
+   controller.py
+   copyright.py
+   demo.py
+   details.py
+   dob.py
+   migrate.py
+   plugins.py
+   run_cli.py
+   config=$HOME/.kit/py/dob/src/dob/config {
+    __init__.py
+    cmds_config.py
+    conf_filename.py
+    envvar_prefix.py
+    init_app_dirs.py
+   }
+   facts=$HOME/.kit/py/dob/src/dob/facts {
+    __init__.py
+    add_fact.py
+    cancel_fact.py
+    echo_fact.py
+    edit_fact.py
+    import_facts.py
+    save_backedup.py
+    save_confirmed.py
+    save_confirmer.py
+    simple_prompts.py
+   }
+   cmds_list=$HOME/.kit/py/dob/src/dob/cmds_list {
+    __init__.py
+    activity.py
+    category.py
+    fact.py
+    tag.py
+   }
+   cmds_usage=$HOME/.kit/py/dob/src/dob/cmds_usage {
+    __init__.py
+    activity.py
+    category.py
+    tag.py
+   }
+   clickux=$HOME/.kit/py/dob/src/dob/clickux {
+    __init__.py
+    _ansitextwrap.py
+    add_fact_help_group.py
+    aliasable_bunchy_plugin.py
+    better_format_usage.py
+    better_help_headers.py
+    bunchy_group.py
+    bunchy_help.py
+    cmd_options.py
+    cmd_options_search.py
+    help_command.py
+    help_detect.py
+    help_header.py
+    help_string_add_fact.py
+    help_strings.py
+    induct_newbies.py
+    plugin_group.py
+    post_processor.py
+    query_assist.py
+   }
+   helpers=$HOME/.kit/py/dob/src/dob/helpers {
+    __init__.py
+    path.py
+   }
+  }
+  tests=$HOME/.kit/py/dob/tests {
+   __init__.py
+   cli_runner.py
+   conftest.py
+   dob_runner.py
+   test_copyright.py
+   test_details.py
+   test_dob.py
+   test_integration_tests.py
+   clickux=$HOME/.kit/py/dob/tests/clickux {
+    __init__.py
+   }
+   cmds_list=$HOME/.kit/py/dob/tests/cmds_list {
+    __init__.py
+    test_activity.py
+    test_category.py
+    test_fact.py
+   }
+   cmds_usage=$HOME/.kit/py/dob/tests/cmds_usage {
+    __init__.py
+   }
+   facts=$HOME/.kit/py/dob/tests/facts {
+    __init__.py
+    test_add_fact.py
+    test_cancel_fact.py
+    test_echo_fact.py
+    test_save_backedup.py
+   }
+   # DUNNO/2023-11-02 16:23: No such dir 'facts_format'
+   #  facts_format⇔$HOME/.kit/py/dob/tests/facts_format
+   fixtures=$HOME/.kit/py/dob/tests/fixtures {
+    README.rst
+    test-import-fixture.rst
+   }
+   helpers=$HOME/.kit/py/dob/tests/helpers {
+    __init__.py
+   }
+  }
+  docs=$HOME/.kit/py/dob/docs {
+   .ignore
+   Makefile
+   authors.rst
+   code-of-conduct.rst
+   concepts.rst
+   conf.py
+   contributing.rst
+   dob.clickux.rst
+   dob.cmds_list.rst
+   dob.cmds_usage.rst
+   dob.facts.rst
+   dob.helpers.rst
+   dob.rst
+   guide-combinations.rst
+   guide-config.rst
+   guide-copy-paste.rst
+   guide-editing-facts.rst
+   guide-editor-env.rst
+   guide-exit-save-undoredo.rst
+   guide-intro-cli-and-editor.rst
+   guide-jumping-around.rst
+   guide-nudging-time.rst
+   history-ci.md
+   history-hamster-cli.rst
+   history.rst
+   index.rst
+   installation.rst
+   license.rst
+   make.bat
+   modules.rst
+   readme.rst
+   usage.rst
+  }
+ }
+}
+
+# *******************************
+# *** $$$ ((( HAMSTER ))) $$$ ***
+# *******************************
+
+# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+# ░░ BEG: DOBDOBVIEWER ░░░░░░░░░
+
+# PROHAM: DOB__DOB_VIEWER
+DOB_DOB_VIEWER=$HOME/.kit/py filter=".* *" exclude="tags" {
+ dob-viewer=$HOME/.kit/py/dob-viewer filter=".* *" exclude=".coverage coverage.xml poetry.lock" {
+  .editorconfig
+  .gitignore
+  .gitignore.local
+  .ignore
+  .ignore.example
+  .pyproject-cache.data
+  .pyproject.project.tmpl
+  .readthedocs.yml
+  .yamllint
+  AUTHORS.rst
+  CODE-OF-CONDUCT.rst
+  CONTRIBUTING.rst
+  HISTORY.rst
+  LICENSE
+  Makefile
+  Makefile.local
+  Makefile.project
+  Maketasks.sh
+  README.rst
+  codecov.yml
+  pyproject.toml
+  tox.ini
+  styling-conf=$HOME/.kit/py/dob-viewer/styling-conf {
+   ignore.list
+   rules.conf
+   styles.conf
+  }
+  src/dob_viewer=$HOME/.kit/py/dob-viewer/src/dob_viewer {
+   __init__.py
+   config=$HOME/.kit/py/dob-viewer/src/dob_viewer/config {
+    __init__.py
+    custom_paste.py
+    editor_keys.py
+    json_sublist.py
+   }
+   ptkui=$HOME/.kit/py/dob-viewer/src/dob_viewer/ptkui {
+    __init__.py
+    dialog_overlay.py
+    re_confirm.py
+    various_lexers.py
+   }
+   traverser=$HOME/.kit/py/dob-viewer/src/dob_viewer/traverser {
+    __init__.py
+    action_manager.py
+    carousel.py
+    clipboard_edit.py
+    content_lexer.py
+    edits_manager.py
+    exceptions.py
+    facts_manager.py
+    facts_mgr_fact_dec.py
+    facts_mgr_fact_inc.py
+    facts_mgr_gap.py
+    facts_mgr_jump.py
+    facts_mgr_jump_time.py
+    facts_mgr_rift.py
+    facts_mgr_rift_dec.py
+    facts_mgr_rift_inc.py
+    group_chained.py
+    interface_keys.py
+    key_action_map.py
+    redo_undo_edit.py
+    save_confirmer.py
+    start_end_edit.py
+    update_handler.py
+    zone_content.py
+    zone_details.py
+    zone_details_time_end.py
+    zone_details_time_start.py
+    zone_helpful.py
+    zone_lowdown.py
+    zone_manager.py
+    zone_streamer.py
+   }
+  }
+  tests=$HOME/.kit/py/dob-viewer/tests {
+   __init__.py
+   conftest.py
+   test_carousel.py
+   test_dob_viewer.py
+   config=$HOME/.kit/py/dob-viewer/tests/config {
+    __init__.py
+    envvar_prefix.py
+    init_app_dirs.py
+   }
+   fixtures=$HOME/.kit/py/dob-viewer/tests/fixtures {
+    README.rst
+    test-import-fixture.rst
+   }
+  }
+  docs=$HOME/.kit/py/dob-viewer/docs {
+   .ignore
+   Makefile
+   authors.rst
+   code-of-conduct.rst
+   conf.py
+   contributing.rst
+   dob_viewer.config.rst
+   dob_viewer.ptkui.rst
+   dob_viewer.rst
+   dob_viewer.traverser.rst
+   history-ci.md
+   history.rst
+   index.rst
+   installation.rst
+   license.rst
+   make.bat
+   modules.rst
+   readme.rst
+  }
+ }
+}
+
+# *******************************
+# *** $$$ ((( HAMSTER ))) $$$ ***
+# *******************************
+
+# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+# ░░ BEG: DOBDOBPROMPT ░░░░░░░░░
+
+# PROHAM: DOB__DOB_PROMPT
+DOB_DOB_PROMPT=$HOME/.kit/py filter=".* *" exclude="tags" {
+ dob-prompt=$HOME/.kit/py/dob-prompt filter=".* *" exclude=".coverage coverage.xml poetry.lock" {
+  .editorconfig
+  .gitignore
+  .gitignore.local
+  .ignore
+  .ignore.example
+  .pyproject-cache.data
+  .pyproject.project.tmpl
+  .readthedocs.yml
+  .yamllint
+  AUTHORS.rst
+  CODE-OF-CONDUCT.rst
+  CONTRIBUTING.rst
+  HISTORY.rst
+  LICENSE
+  Makefile
+  Makefile.local
+  Makefile.project
+  Maketasks.sh
+  README.rst
+  codecov.yml
+  pyproject.toml
+  tox.ini
+  src/dob_prompt=$HOME/.kit/py/dob-prompt/src/dob_prompt {
+   __init__.py
+   prompters=$HOME/.kit/py/dob-prompt/src/dob_prompt/prompters {
+    __init__.py
+    colors_terrific.py
+    hacky_processor.py
+    interface_bases.py
+    interface_bonds.py
+    interface_crown.py
+    interface_fanny.py
+    parts_suggester.py
+    prompt__awesome.py
+    prompt_actegory.py
+    prompt_tagcloud.py
+    prompter_common.py
+    sophisti_prompt.py
+    the_banner_area.py
+    the_bottom_area.py
+    triple_prompter.py
+   }
+  }
+  tests=$HOME/.kit/py/dob-prompt/tests {
+   __init__.py
+   conftest.py
+   test_awesome_prompt.py
+   test_dob_prompt.py
+   config=$HOME/.kit/py/dob-prompt/tests/config {
+    __init__.py
+    envvar_prefix.py
+    init_app_dirs.py
+   }
+  }
+  docs=$HOME/.kit/py/dob-prompt/docs {
+   .ignore
+   Makefile
+   authors.rst
+   code-of-conduct.rst
+   conf.py
+   contributing.rst
+   dob_prompt.prompters.rst
+   dob_prompt.rst
+   history-ci.md
+   history.rst
+   index.rst
+   installation.rst
+   license.rst
+   make.bat
+   modules.rst
+   readme.rst
+  }
+ }
+}
+
+# *******************************
+# *** $$$ ((( HAMSTER ))) $$$ ***
+# *******************************
+
+# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+# ░░ BEG: DOBDOBBRIGHT ░░░░░░░░░
+
+# PROHAM: DOB__DOB_BRIGHT
+DOB_DOB_BRIGHT=$HOME/.kit/py filter=".* *" exclude="tags" {
+ dob-bright=$HOME/.kit/py/dob-bright filter=".* *" exclude=".coverage coverage.xml poetry.lock" {
+  .coveragerc
+  .editorconfig
+  .flake8
+  .gitignore
+  .gitignore.local
+  .ignore
+  .ignore.example
+  .readthedocs.yml
+  .travis.yml
+  .trustme.plugin
+  .trustme.sh
+  .trustme.vim
+  AUTHORS.rst
+  CODE-OF-CONDUCT.rst
+  CONTRIBUTING.rst
+  HISTORY.rst
+  LICENSE
+  MANIFEST.in
+  Makefile
+  Makefile.local
+  Makefile.local.example
+  README.rst
+  codecov.yml
+  pyproject.toml
+  release
+  setup.cfg
+  setup.py
+  tox.ini
+  requirements=$HOME/.kit/py/dob-bright/requirements {
+   dev.pip
+   docs.pip
+   release.pip
+   test.pip
+  }
+  .github/workflows=$HOME/.kit/py/dob-bright/.github/workflows {
+   # FIXME/2023-11-02 16:14: TODO
+  }
+  dob_bright=$HOME/.kit/py/dob-bright/dob_bright {
+   __init__.py
+   help_newbs.py
+   config=$HOME/.kit/py/dob-bright/dob_bright/config {
+    __init__.py
+    config_table.py
+   }
+   controllers=$HOME/.kit/py/dob-bright/dob_bright/controllers {
+    __init__.py
+    app_controller.py
+    config_manager.py
+    database_store.py
+    logging_output.py
+    pdb_subprocess.py
+    post_processor.py
+    setup_coloring.py
+   }
+   crud=$HOME/.kit/py/dob-bright/dob_bright/crud {
+    __init__.py
+    enc_actegory_re.py
+    fact_dressed.py
+    fact_from_factoid.py
+    facts_diff.py
+    fix_times.py
+    interrogate.py
+    parse_input.py
+    parse_mistakes.py
+   }
+   helpers=$HOME/.kit/py/dob-bright/dob_bright/helpers {
+    __init__.py
+    path.py
+   }
+   reports=$HOME/.kit/py/dob-bright/dob_bright/reports {
+    __init__.py
+    factoid_writer.py
+    journal_writer.py
+    line_writer.py
+    render_results.py
+    table_writer.py
+    tabulate_results.py
+   }
+   styling=$HOME/.kit/py/dob-bright/dob_bright/styling {
+    __init__.py
+    apply_styles.py
+    class_namilize.py
+    create_conf.py
+    ignore_cmds.py
+    load_ignore.py
+    load_styling.py
+    rules_cmds.py
+    rules_conf.py
+    style_conf.py
+    style_engine.py
+    styles_cmds.py
+    styles_dump.py
+   }
+   tests=$HOME/.kit/py/dob-bright/dob_bright/tests {
+    __init__.py
+    conftest.py
+   }
+  }
+  tests=$HOME/.kit/py/dob-bright/tests {
+   __init__.py
+   conftest.py
+   test_dob_bright.py
+   config=$HOME/.kit/py/dob-bright/tests/config {
+    __init__.py
+    envvar_prefix.py
+    init_app_dirs.py
+   }
+   reports=$HOME/.kit/py/dob-bright/tests/reports {
+    __init__.py
+    conftest.py
+    test_tabulate_results.py
+   }
+  }
+  docs=$HOME/.kit/py/dob-bright/docs {
+   Makefile
+   authors.rst
+   code-of-conduct.rst
+   conf.py
+   contributing.rst
+   dob_bright.config.rst
+   dob_bright.crud.rst
+   dob_bright.helpers.rst
+   dob_bright.reports.rst
+   dob_bright.rst
+   dob_bright.styling.rst
+   dob_bright.termio.rst
+   dob_bright.tests.rst
+   history-ci.md
+   history.rst
+   index.rst
+   installation.rst
+   license.rst
+   make.bat
+   modules.rst
+  }
+ }
+}
+
+# PROHAM: All the Hams
+# *******************************
+# *** $$$ ((( HAMSTER ))) $$$ ***
+# *******************************
+
+# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+# ░░ BEG: DOBNARK ░░░░░░░░░░░░░░
+
+# PROHAM: NARK___________
+DOB_NARK=$HOME/.kit/py filter=".* *" exclude="tags" {
+ nark=$HOME/.kit/py/nark exclude=".coverage coverage.xml poetry.lock" {
+  .coveragerc
+  .editorconfig
+  .flake8
+  .gitignore
+  .gitignore.local
+  .ignore
+  .ignore.example
+  .pyproject-cache.data
+  .pyproject.project.tmpl
+  .readthedocs.yml
+  .travis.yml
+  AUTHORS.rst
+  CODE-OF-CONDUCT.rst
+  CONTRIBUTING.rst
+  HISTORY.rst
+  LICENSE
+  MANIFEST.in
+  Makefile
+  Makefile.local
+  Makefile.local.example
+  README.rst
+  codecov.yml
+  pyproject.toml
+  setup.cfg
+  setup.py
+  tox.ini
+  .trustme=$HOME/.kit/py/nark/.trustme {
+   .trustme.log
+  }
+  requirements=$HOME/.kit/py/nark/requirements {
+   dev.pip
+   docs.pip
+   release.pip
+   test.pip
+  }
+  .github/workflows=$HOME/.kit/py/nark/.github/workflows {
+   # FIXME/2023-11-02 16:14: TODO
+  }
+  src/nark=$HOME/.kit/py/nark/src/nark {
+   __init__.py
+   control.py
+   manager.py
+   config=$HOME/.kit/py/nark/src/nark/config {
+    __init__.py
+    log_levels.py
+   }
+   items=$HOME/.kit/py/nark/src/nark/items {
+    __init__.py
+    activity.py
+    category.py
+    fact.py
+    item_base.py
+    tag.py
+   }
+   managers=$HOME/.kit/py/nark/src/nark/managers {
+    __init__.py
+    activity.py
+    category.py
+    fact.py
+    migrate.py
+    query_terms.py
+    tag.py
+   }
+   backends=$HOME/.kit/py/nark/src/nark/backends {
+    __init__.py
+    sqlalchemy=$HOME/.kit/py/nark/src/nark/backends/sqlalchemy {
+     __init__.py
+     objects.py
+     storage.py
+     managers=$HOME/.kit/py/nark/src/nark/backends/sqlalchemy/managers {
+      __init__.py
+      activity.py
+      category.py
+      fact.py
+      gather_base.py
+      gather_fact.py
+      manager_base.py
+      migrate.py
+      tag.py
+     }
+    }
+   }
+   helpers=$HOME/.kit/py/nark/src/nark/helpers {
+    __init__.py
+    fact_time.py
+    facts_fit.py
+    format_text.py
+    format_time.py
+    legacy_db.py
+    logging.py
+    objects.py
+    parse_errors.py
+    parse_time.py
+    parsing.py
+    singleton.py
+    dev=$HOME/.kit/py/nark/src/nark/helpers/dev {
+     __init__.py
+     profiling.py
+    }
+   }
+   migrations=$HOME/.kit/py/nark/src/nark/migrations filter=".* *" {
+    README
+    __init__.py
+    manage.py
+    migrate.cfg.example
+    versions=$HOME/.kit/py/nark/src/nark/migrations/versions {
+     001_Add_deleted_columns.py
+     __init__.py
+    }
+   }
+   reports=$HOME/.kit/py/nark/src/nark/reports filter=".* *" {
+    __init__.py
+    csv_writer.py
+    ical_writer.py
+    json_writer.py
+    plaintext_writer.py
+    report_writer.py
+    tsv_writer.py
+    xml_writer.py
+   }
+   tests=$HOME/.kit/py/nark/src/nark/tests filter=".* *" {
+    __init__.py
+    conftest.py
+    factories.py
+    item_factories.py
+    backends=$HOME/.kit/py/nark/src/nark/tests/backends {
+     __init__.py
+     sqlalchemy=$HOME/.kit/py/nark/src/nark/tests/backends/sqlalchemy {
+      __init__.py
+      common.py
+      conftest.py
+      factories.py
+     }
+    }
+    helpers=$HOME/.kit/py/nark/src/nark/tests/helpers {
+     __init__.py
+     conftest.py
+    }
+   }
+  }
+  tests=$HOME/.kit/py/nark/tests {
+   __init__.py
+   conftest.py
+   nark=$HOME/.kit/py/nark/tests/nark {
+    __init__.py
+    conftest.py
+    test_control.py
+    test_get_version.py
+    test_manager.py
+   }
+   config=$HOME/.kit/py/nark/tests/config {
+    __init__.py
+    conftest.py
+    envvar_prefix.py
+    init_app_dirs.py
+    test_config.py
+    test_config_log_levels.py
+   }
+   items=$HOME/.kit/py/nark/tests/items {
+    __init__.py
+    conftest.py
+    test_activity.py
+    test_category.py
+    test_fact.py
+    test_tag.py
+   }
+   managers=$HOME/.kit/py/nark/tests/managers {
+    __init__.py
+    conftest.py
+    test_activity.py
+    test_category.py
+    test_fact.py
+    test_tag.py
+   }
+   backends=$HOME/.kit/py/nark/tests/backends {
+    __init__.py
+    sqlalchemy=$HOME/.kit/py/nark/tests/backends/sqlalchemy {
+     __init__.py
+     common.py
+     conftest.py
+     factories.py
+     test_objects.py
+     test_storage.py
+     managers=$HOME/.kit/py/nark/tests/backends/sqlalchemy/managers {
+      test_activity.py
+      test_category.py
+      test_fact.py
+      test_gather_base.py
+      test_gather_fact.py
+      test_manager_base.py
+      test_migrate.py
+      test_tag.py
+     }
+    }
+   }
+   reports=$HOME/.kit/py/nark/tests/reports {
+    __init__.py
+    conftest.py
+    test_csv_writer.py
+    test_ical_writer.py
+    test_json_writer.py
+    test_plaintext_writer.py
+    test_report_writer.py
+    test_tsv_writer.py
+    test_xml_writer.py
+   }
+   helpers=$HOME/.kit/py/nark/tests/helpers {
+    __init__.py
+    test_fact_time.py
+    test_format_text.py
+    test_logging.py
+    test_parse_time.py
+    test_parsing.py
+   }
+  }
+  docs=$HOME/.kit/py/nark/docs {
+   .ignore
+   Makefile
+   authors-legacy-hamster.rst
+   authors.rst
+   code-of-conduct.rst
+   concepts.rst
+   conf.py
+   contributing.rst
+   history-ci.md
+   history-hamster-lib.rst
+   history.rst
+   index.rst
+   installation.rst
+   license.rst
+   make.bat
+   modules.rst
+   nark.backends.rst
+   nark.backends.sqlalchemy.managers.rst
+   nark.backends.sqlalchemy.rst
+   nark.config.rst
+   nark.helpers.dev.rst
+   nark.helpers.rst
+   nark.items.rst
+   nark.managers.rst
+   nark.migrations.rst
+   nark.migrations.versions.rst
+   nark.reports.rst
+   nark.rst
+   nark.tests.backends.rst
+   nark.tests.backends.sqlalchemy.rst
+   nark.tests.helpers.rst
+   nark.tests.rst
+   usage.rst
+   _static=$HOME/.kit/py/nark/docs/_static {
+    images=$HOME/.kit/py/nark/docs/_static/images {
+     information-cat.png
+    }
+   }
+  }
+ }
+}
+
+### END: DOBPROJS ##############
+################################
+
+# ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+
+#################################
+# BEG: DOBPLUGINS ##############
+#
+# ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+# ┃ 🔌 🔌   DOB PLUGINS   🔌 🔌 ┃
+# ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
+# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+# ░░ BEG: DOBPROJPLUGJUMPS ░░░░░
+
+# PROHAM: DOB_PLUGINS
+DOB_PLUGINS=$HOME/.config/dob/plugins filter=".* *" {
+ .editorconfig
+ add_branchname_tag.py
+ dance_commander.py
+ my_post_processor.py
+ stale_fact_goader.py
+}
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+# ░░ BEG: DOBPLUGGITHIPDIPS ░░░░
+
+# PROHAM: DOB_PLUGIN_GIT_HIP
+DOB_PLUGIN_GIT_HIP=$HOME/.kit/working/py/dob-plugin-git-hip filter=".* *" {
+ .editorconfig
+ .gitignore
+ .ignore
+ .travis.yml
+ LICENSE
+ README.rst
+ setup.py
+ tox.ini
+ bin=$HOME/.kit/working/py/dob-plugin-git-hip/bin {
+  what-changed
+ }
+ dob_plugin_git_hip=$HOME/.kit/working/py/dob-plugin-git-hip/dob_plugin_git_hip {
+  __init__.py
+ }
+ plugins=$HOME/.kit/working/py/dob-plugin-git-hip/plugins {
+  add_branchname_tag.py
+ }
+}
+
+# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+# ░░ BEG: DOBPLUGPOSTPROSSR ░░░░
+
+# PROHAM: DOB_PLUGIN_MY_POST_PROCESSOR
+DOB_PLUGIN_MY_POST_PROCESSOR=$HOME/.kit/working/py/dob-plugin-my-post-processor filter=".* *" {
+ .editorconfig
+ .gitignore
+ .ignore
+ .travis.yml
+ LICENSE
+ README.md
+ setup.py
+ tox.ini
+ dob_plugin_my_post_processor=$HOME/.kit/working/py/dob-plugin-my-post-processor/dob_plugin_my_post_processor {
+  __init__.py
+  __init__.pyc
+ }
+ plugins=$HOME/.kit/working/py/dob-plugin-my-post-processor/plugins {
+  my_post_processor.py
+ }
+}
+
+# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+# ░░ BEG: DOBPLUGFACTGOADER ░░░░
+
+# PROHAM: DOB_PLUGIN_STALE_FACT_GOADER
+DOB_PLUGIN_STALE_FACT_GOADER=$HOME/.kit/working/py/dob-plugin-stale-fact-goader filter=".* *" {
+ .editorconfig
+ .gitignore
+ .ignore
+ .travis.yml
+ LICENSE
+ README.rst
+ setup.py
+ tox.ini
+ dob_plugin_stale_fact_goader=$HOME/.kit/working/py/dob-plugin-stale-fact-goader/dob_plugin_stale_fact_goader {
+  __init__.py
+ }
+ plugins=$HOME/.kit/working/py/dob-plugin-stale-fact-goader/plugins {
+  stale_fact_goader.py
+ }
+}
+
+# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+# ░░ BEG: DOBPLUGHAMMYDANCE ░░░░
+
+# PROHAM: DOB_PLUGIN_HAMSTER_DANCE
+DOB_PLUGIN_HAMSTER_DANCE=$HOME/.kit/working/py/dob-plugin-hamster-dance filter=".* *" {
+ .editorconfig
+ .gitignore
+ .ignore
+ .travis.yml
+ LICENSE
+ README.rst
+ setup.py
+ tox.ini
+ dob_plugin_hamster_dance=$HOME/.kit/working/py/dob-plugin-hamster-dance/dob_plugin_hamster_dance {
+  __init__.py
+ }
+ plugins=$HOME/.kit/working/py/dob-plugin-hamster-dance/plugins {
+  banished_fingies.py
+  dance_commander.py
+ }
+}
+
+### END: DOBPLUGINS ############
+################################
+
+# ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+
+#################################
+# BEG: EASYASPYPIPROJ ##########
+#
+
+# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+# ░░ BEG: EAPPEASYASPYPI ░░░░░░░
+
+# PROHAM: EASY_AS_PYPI__PYOILERPLATE
+EAPP_CORE=/kit/pyoilerplate filter=".* *" {
+# 2020-03-15: <release-ghub-pypi
+ .ignore
+ FIXME--Makefile--EAPP-v1--Use-to-audit
+ _mrconfig
+ diff-my-easy-as-pypi-projects.sh
+ release
+ easy-as-pypi=$HOME/.kit/py/.mrinfuse/easy-as-pypi {
+  .gitignore.local
+  .ignore
+  .ignore-for-the-masses
+  Makefile.local
+  USYNC.sh
+  release
+ }
+ # EAPP_CORE
+ easy-as-pypi=$HOME/.kit/py/easy-as-pypi exclude=".coverage coverage.xml" {
+  # FIXME: Add .github subdir to Other 14, and remove requirements, etc.
+  .editorconfig
+  .gitignore
+  .gitignore.local
+  .ignore
+  .ignore-for-the-masses
+  .ignore.example
+  .pyproject-cache.data
+  .pyproject.project.tmpl
+  .pyproject.tmpl
+  .readthedocs.yml
+  .yamllint
+  AUTHORS.rst
+  CODE-OF-CONDUCT.rst
+  CODE-OF-CONDUCT.tmpl
+  CONTRIBUTING.rst
+  CONTRIBUTING.tmpl
+  HISTORY.rst
+  LICENSE
+  Makefile
+  Makefile.local
+  Makefile.local.example
+  Maketasks.sh
+  README.rst
+  codecov.yml
+  foo
+  poetry.lock
+  pyproject.toml
+  tox.ini
+  .github=$HOME/.kit/py/easy-as-pypi/.github {
+   README--GitHub-Setup-for-EAPP.md
+   README--Private-GitHub-Setup.rst
+   README--github-object-dump--example.rst
+   README-workflows.md
+   dependabot.yml
+   doblabs-dependencies.yml
+   bin=$HOME/.kit/py/easy-as-pypi/.github/bin {
+    gh-aliases-setup
+    update-poetry
+    wrangle-tags
+   }
+   actions/install-python-and-poetry=$HOME/.kit/py/easy-as-pypi/.github/actions/install-python-and-poetry {
+    action.yml
+   }
+   actions/load-venv-actions-cache-cache=$HOME/.kit/py/easy-as-pypi/.github/actions/load-venv-actions-cache-cache {
+    action.yml
+   }
+   actions/load-venv-setup-python-cache=$HOME/.kit/py/easy-as-pypi/.github/actions/load-venv-setup-python-cache {
+    action.yml
+   }
+   actions/setup-poetry-assets=$HOME/.kit/py/easy-as-pypi/.github/actions/setup-poetry-assets {
+    action.yml
+   }
+   workflows=$HOME/.kit/py/easy-as-pypi/.github/workflows {
+    appx--blather-env.rst
+    appx--blather-pull_request.json
+    appx--blather.yml
+    appx--checks-notes.rst
+    appx--release-github-notes.rst
+    appx--update-deps.rst
+    checks-unspecial.yml
+    checks-versioned.yml
+    checks.yml
+    ci-tags-wrangle.yml
+    codeql-analysis.yml
+    coverage-comment-external.yml
+    coverage-comment.yml
+    readthedocs-preview.yml
+    release-pypi.yml
+    release-github.yml
+    release-smoke-test.yml
+    spread-updates.yml
+    sprout-updates.yml
+    update-deps.yml
+    update-merged.yml
+   }
+   disabled=$HOME/.kit/py/easy-as-pypi/.github/disabled {
+    coverity.yml
+   }
+  }
+  .pyproject-doc8=$HOME/.kit/py/easy-as-pypi/.pyproject-doc8 exclude="poetry.lock" {
+   README.md
+   pyproject.toml
+  }
+  bin=$HOME/.kit/py/easy-as-pypi/bin {
+   # JUMPR: updateDeps
+   # MAYBE/2023-11-10 01:35:
+   # - Relocate update-faithful
+   #   to .github/bin/
+   git-bump-version-tag
+   git-cascade
+   report-cascade
+   slather-new-headers.sh
+   update-faithful
+   ../.github/bin=$HOME/.kit/py/easy-as-pypi/.github/bin {
+    gh-aliases-setup
+    update-poetry
+    wrangle-tags
+   }
+   .whilom-circa2020=$HOME/.kit/py/easy-as-pypi/bin/.whilom-circa2020/ {
+    README.md
+    USYNC--print-canon-follower-meld-copy-pasta.sh
+    clone-and-rebrand-easy-as-pypi.sh
+    copy-header-from-setup.cfg-to-all-files.sh
+    make-your-own-branded-pypi-project--example.sh
+   }
+   START-HERE-SCRIPTS=/kit/pyoilerplate/.mrinfuse/START-HERE--make-a-pypi {
+    2020-12-15-easy-as-pypi-appdirs--xdg-base-dir-spec-aka-appdirs--rebrander.sh
+    README.rst
+   }
+  }
+  src/easy_as_pypi=$HOME/.kit/py/easy-as-pypi/src/easy_as_pypi {
+   __init__.py
+   commands=$HOME/.kit/py/easy-as-pypi/src/easy_as_pypi/commands {
+    __init__.py
+    easy_as_pypi.py
+   }
+  }
+  tests=$HOME/.kit/py/easy-as-pypi/tests {
+   __init__.py
+   conftest.py
+   easy_as_pypi=$HOME/.kit/py/easy-as-pypi/tests/easy_as_pypi {
+    __init__.py
+    test_easy_as_pypi.py
+   }
+  }
+  docs=$HOME/.kit/py/easy-as-pypi/docs {
+   .ignore
+   Makefile
+   authors.rst
+   code-of-conduct.rst
+   conf.py
+   contributing.rst
+   easy_as_pypi.commands.rst
+   easy_as_pypi.rst
+   history-ci.md
+   history.rst
+   index.rst
+   index.tmpl
+   installation.rst
+   installation.tmpl
+   license.rst
+   make.bat
+   make.tmpl
+   modules.rst
+   modules.tmpl
+   readme.rst
+  }
+ }
+}
+
+# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+# ░░ BEG: EAPPCONFIG ░░░░░░░░░░░
+
+# PROHAM: DOB__EAPP_CONFIG
+EAPP_CONFIG=$HOME/.kit/py/easy-as-pypi-config filter=".* *" exclude=".coverage coverage.xml poetry.lock" {
+ .editorconfig
+ .gitignore
+ .gitignore.local
+ .ignore
+ .ignore.example
+ .pyproject.project.tmpl
+ .readthedocs.yml
+ .yamllint
+ AUTHORS.rst
+ CODE-OF-CONDUCT.rst
+ CONTRIBUTING.rst
+ HISTORY.rst
+ LICENSE
+ Makefile
+ Makefile.local
+ Makefile.project
+ Maketasks.sh
+ README.rst
+ codecov.yml
+ pyproject.toml
+ tox.ini
+ .pyproject-editable=$HOME/.kit/py/easy-as-pypi-config/.pyproject-editable {
+  pyproject.toml
+ }
+ src/easy_as_pypi_config=$HOME/.kit/py/easy-as-pypi-config/src/easy_as_pypi_config {
+  __init__.py
+  dec_wrap.py
+  defaults.py
+  echo_cfg.py
+  fileboss.py
+  urable.py
+  tests=$HOME/.kit/py/easy-as-pypi-config/src/easy_as_pypi_config/tests {
+   file_fakes.py
+  }
+ }
+ tests=$HOME/.kit/py/easy-as-pypi-config/tests {
+  __init__.py
+  conftest.py
+  test_dec_wrap.py
+  test_defaults.py
+  test_echo_cfg.py
+  test_fileboss.py
+  test_urable.py
+  fixtures=$HOME/.kit/py/easy-as-pypi-config/tests/fixtures {
+   __init__.py
+   config_instance.py
+   config_root.py
+  }
+ }
+ docs=$HOME/.kit/py/easy-as-pypi-config/docs {
+  .ignore
+  Makefile
+  authors.rst
+  code-of-conduct.rst
+  conf.py
+  contributing.rst
+  easy-as-pypi-config.rst
+  easy_as_pypi_config.rst
+  history-ci.md
+  history.rst
+  index.rst
+  installation.rst
+  license.rst
+  make.bat
+  modules.rst
+  readme.rst
+ }
+}
+
+# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+# ░░ BEG: EAPPTERMIO ░░░░░░░░░░░
+
+# PROHAM: DOB__EAPP_TERMIO
+EAPP_TERMIO=$HOME/.kit/py/easy-as-pypi-termio filter=".* *" exclude=".coverage coverage.xml poetry.lock" {
+ .editorconfig
+ .gitignore
+ .gitignore.local
+ .ignore
+ .ignore.example
+ .pyproject-cache.data
+ .pyproject.project.tmpl
+ .readthedocs.yml
+ .yamllint
+ AUTHORS.rst
+ CODE-OF-CONDUCT.rst
+ CONTRIBUTING.rst
+ HISTORY.rst
+ LICENSE
+ Makefile
+ Makefile.local
+ Makefile.project
+ Maketasks.sh
+ README.rst
+ codecov.yml
+ pyproject.toml
+ tox.ini
+ src/easy_as_pypi_termio=$HOME/.kit/py/easy-as-pypi-termio/src/easy_as_pypi_termio {
+  __init__.py
+  ascii_art.py
+  ascii_table.py
+  crude_progress.py
+  echoes.py
+  errors.py
+  paging.py
+  style.py
+ }
+ tests=$HOME/.kit/py/easy-as-pypi-termio/tests {
+  __init__.py
+  conftest.py
+  test_ascii_art.py
+  test_ascii_table.py
+  test_crude_progress.py
+  test_echoes.py
+  test_errors.py
+  test_paging.py
+  test_style.py
+ }
+ docs=$HOME/.kit/py/easy-as-pypi-termio/docs {
+  .ignore
+  Makefile
+  authors.rst
+  code-of-conduct.rst
+  conf.py
+  contributing.rst
+  easy-as-pypi-termio.rst
+  easy_as_pypi_termio.rst
+  history-ci.md
+  history.rst
+  index.rst
+  installation.rst
+  license.rst
+  make.bat
+  modules.rst
+  readme.rst
+ }
+}
+
+# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+# ░░ BEG: EAPPAPPDIRS ░░░░░░░░░░
+
+# PROHAM: DOB__EAPP_APPDIRS
+EAPP_APPDIRS=$HOME/.kit/py/easy-as-pypi-appdirs filter=".* *" exclude=".coverage coverage.xml poetry.lock" {
+ .editorconfig
+ .gitignore
+ .gitignore.local
+ .ignore
+ .ignore.example
+ .pyproject.project.tmpl
+ .readthedocs.yml
+ .yamllint
+ AUTHORS.rst
+ CODE-OF-CONDUCT.rst
+ CONTRIBUTING.rst
+ HISTORY.rst
+ LICENSE
+ Makefile
+ Makefile.local
+ Maketasks.sh
+ README.rst
+ codecov.yml
+ pyproject.toml
+ tox.ini
+ .pyproject-editable=$HOME/.kit/py/easy-as-pypi-appdirs/.pyproject-editable {
+  # FIXME/2023-11-02 16:18: Incl. full EAPP faithful dirs?
+  # - Or just CXREF them, perhaps.
+  pyproject.toml
+ }
+ src/easy_as_pypi_appdirs=$HOME/.kit/py/easy-as-pypi-appdirs/src/easy_as_pypi_appdirs {
+  __init__.py
+  app_dirs.py
+  app_dirs_with_mkdir.py
+  exists_or_mkdirs.py
+  expand_and_mkdirs.py
+  singleton.py
+ }
+ tests=$HOME/.kit/py/easy-as-pypi-appdirs/tests {
+  __init__.py
+  conftest.py
+  test_app_dirs_with_mkdir.py
+  test_app_dirs_with_mkdir_singleton.py
+  test_exists_or_mkdirs.py
+  test_expand_and_mkdirs.py
+  test_singleton.py
+  test_tests_appdirs_mock.py
+ }
+ docs=$HOME/.kit/py/easy-as-pypi-appdirs/docs {
+  .ignore
+  Makefile
+  authors.rst
+  code-of-conduct.rst
+  conf.py
+  contributing.rst
+  easy_as_pypi_appdirs.rst
+  history-ci.md
+  history.rst
+  index.rst
+  installation.rst
+  license.rst
+  make.bat
+  modules.rst
+  readme.rst
+ }
+}
+
+# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+# ░░ BEG: EAPPGETVER ░░░░░░░░░░░
+
+# PROHAM: DOB__EAPP_GETVER
+EAPP_GETVER=$HOME/.kit/py/easy-as-pypi-getver filter=".* *" exclude=".coverage coverage.xml poetry.lock" {
+ .editorconfig
+ .gitignore
+ .gitignore.local
+ .ignore
+ .ignore.example
+ .pyproject-cache.data
+ .pyproject.project.tmpl
+ .readthedocs.yml
+ .yamllint
+ AUTHORS.rst
+ CODE-OF-CONDUCT.rst
+ CONTRIBUTING.rst
+ HISTORY.rst
+ LICENSE
+ Makefile
+ Makefile.local
+ Maketasks.sh
+ README.rst
+ codecov.yml
+ pyproject.toml
+ tox.ini
+ src/easy_as_pypi_getver=$HOME/.kit/py/easy-as-pypi-getver/src/easy_as_pypi_getver {
+  __init__.py
+ }
+ tests=$HOME/.kit/py/easy-as-pypi-getver/tests {
+  __init__.py
+  conftest.py
+  test_get_version.py
+ }
+ docs=$HOME/.kit/py/easy-as-pypi-getver/docs {
+  .ignore
+  Makefile
+  authors.rst
+  code-of-conduct.rst
+  conf.py
+  contributing.rst
+  easy-as-pypi-getver.rst
+  easy_as_pypi_getver.rst
+  history-ci.md
+  history.rst
+  index.rst
+  installation.rst
+  license.rst
+  make.bat
+  modules.rst
+  readme.rst
+ }
+}
+
+# *******************************
+# *** $$$ ((( HAMSTER ))) $$$ ***
+# *******************************
+
+# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+# ░░ BEG: EAPPCONFIGDECORTOR ░░░
+
+# PROHAM: CONFIG_DECORATOR____PYLB
+EAPP_CONFIGDEC=/kit/pyoilerplate filter=".* *" exclude="tags" {
+ .ignore
+ _mrconfig
+ diff-my-easy-as-pypi-projects.sh
+ release
+ config-decorator=$HOME/.kit/py/config-decorator filter=".* *" exclude=".coverage coverage.xml poetry.lock" {
+  .editorconfig
+  .gitignore
+  .gitignore.local
+  .ignore
+  .ignore.example
+  .pyproject.project.tmpl
+  .readthedocs.yml
+  .yamllint
+  AUTHORS.rst
+  CODE-OF-CONDUCT.rst
+  CONTRIBUTING.rst
+  HISTORY.rst
+  LICENSE
+  Makefile
+  Makefile.local
+  Makefile.project
+  Maketasks.sh
+  README.rst
+  codecov.yml
+  pyproject.toml
+  tox.ini
+  src/config_decorator=$HOME/.kit/py/config-decorator/src/config_decorator {
+   __init__.py
+   config_decorator.py
+   key_chained_val.py
+   slug_name_util.py
+  }
+  tests=$HOME/.kit/py/config-decorator/tests {
+   __init__.py
+   config_decorator=$HOME/.kit/py/config-decorator/tests/config_decorator {
+    __init__.py
+    test_basic.py
+    test_full.py
+   }
+  }
+  docs=$HOME/.kit/py/config-decorator/docs {
+   .ignore
+   Makefile
+   authors.rst
+   code-of-conduct.rst
+   conf.py
+   config_decorator.rst
+   contributing.rst
+   history-ci.md
+   history.rst
+   index.rst
+   installation.rst
+   license.rst
+   make.bat
+   modules.rst
+   readme.rst
+  }
+ }
+}
+
+# *******************************
+# *** $$$ ((( HAMSTER ))) $$$ ***
+# *******************************
+
+# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+# ░░ BEG: EAPPTIMEDELTA ░░░░░░░░
+
+# PROHAM: PEDANTIC_TIMEDELTA__PYLB
+# PROHAM: H---UMAN_FRIENDLY_PEDANTIC_TIMEDELTA
+EAPP_TIMEDELTA=/kit/pyoilerplate filter=".* *" {
+ .ignore
+ _mrconfig
+ diff-my-easy-as-pypi-projects.sh
+ release
+ human-friendly_pedantic-timedelta=$HOME/.kit/py/human-friendly_pedantic-timedelta filter=".* *" exclude=".coverage coverage.xml poetry.lock" {
+  .editorconfig
+  .gitignore
+  .gitignore.local
+  .ignore
+  .ignore.example
+  .pyproject-cache.data
+  .pyproject.project.tmpl
+  .readthedocs.yml
+  .yamllint
+  AUTHORS.rst
+  CODE-OF-CONDUCT.rst
+  CONTRIBUTING.rst
+  HISTORY.rst
+  LICENSE
+  Makefile
+  Makefile.local
+  Maketasks.sh
+  README.rst
+  codecov.yml
+  pyproject.toml
+  tox.ini
+  src/pedantic_timedelta=$HOME/.kit/py/human-friendly_pedantic-timedelta/src/pedantic_timedelta {
+   __init__.py
+  }
+  tests=$HOME/.kit/py/human-friendly_pedantic-timedelta/tests {
+   __init__.py
+   test_pedantic_timedelta.py
+  }
+  docs=$HOME/.kit/py/human-friendly_pedantic-timedelta/docs {
+   .ignore
+   Makefile
+   authors.rst
+   code-of-conduct.rst
+   conf.py
+   contributing.rst
+   history-ci.md
+   history.rst
+   index.rst
+   installation.rst
+   license.rst
+   make.bat
+   modules.rst
+   pedantic-timedelta.rst
+   readme.rst
+  }
+ }
+}
+
+# *******************************
+# *** $$$ ((( HAMSTER ))) $$$ ***
+# *******************************
+
+# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+# ░░ BEG: EAPPPEP440 ░░░░░░░░░░░
+
+# PROHAM: PEP440CMP___________PYLB
+EAPP_PEP440=/kit/pyoilerplate filter=".* *" {
+ .ignore
+ _mrconfig
+ diff-my-easy-as-pypi-projects.sh
+ release
+ pep440-version-compare-cli=$HOME/.kit/py/pep440-version-compare-cli filter=".* *" exclude=".coverage coverage.xml poetry.lock" {
+  .coveragerc
+  .editorconfig
+  .flake8
+  .gitignore
+  .gitignore.local
+  .ignore
+  .ignore.example
+  .readthedocs.yml
+  .travis.yml
+  .trustme.plugin
+  .trustme.sh
+  .trustme.vim
+  AUTHORS.rst
+  CODE-OF-CONDUCT.rst
+  CONTRIBUTING.rst
+  HISTORY.rst
+  LICENSE
+  MANIFEST.in
+  Makefile
+  Makefile.local.example
+  README.rst
+  codecov.yml
+  pyproject.toml
+  release
+  setup.cfg
+  setup.py
+  tox.ini
+  requirements=$HOME/.kit/py/pep440-version-compare-cli/requirements {
+   dev.pip
+   docs.pip
+   release.pip
+   test.pip
+  }
+  .github/workflows=$HOME/.kit/py/pep440-version-compare-cli/.github/workflows {
+   # FIXME/2023-11-02 16:14: TODO
+  }
+  pep440cmp=$HOME/.kit/py/pep440-version-compare-cli/pep440cmp {
+   __init__.py
+   commands=$HOME/.kit/py/pep440-version-compare-cli/pep440cmp/commands {
+    __init__.py
+    is_prerelease.py
+    pep440cmp.py
+   }
+  }
+  tests=$HOME/.kit/py/pep440-version-compare-cli/tests {
+   __init__.py
+   conftest.py
+   pep440cmp=$HOME/.kit/py/pep440-version-compare-cli/tests/pep440cmp {
+    __init__.py
+    test_pep440cmp.py
+   }
+  }
+  docs=$HOME/.kit/py/pep440-version-compare-cli/docs {
+   Makefile
+   authors.rst
+   code-of-conduct.rst
+   conf.py
+   contributing.rst
+   history-ci.md
+   history.rst
+   index.rst
+   installation.rst
+   license.rst
+   make.bat
+   modules.rst
+   pep440cmp.commands.rst
+   pep440cmp.rst
+  }
+ }
+}
+
+### END: EASYASPYPIPROJ ########
+################################
+
+# ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+
+#################################
+# BEG: HOTHFORKSPROJS ##########
+#
+# ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+# ┃ 🍴 🍴   HOTH  FORKS   🍴 🍴 ┃
+# ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
+# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+# ░░ BEG: HOTHFORKCLICK ░░░░░░░░
+
+# PROHAM: CLICK__HOTH
+CLICK__HOTH=$HOME/.kit/working/py/click-hotoffthehamster filter=".* *" {
+ .editorconfig
+ .flake8
+ .gitignore
+ .gitignore.local
+ .ignore
+ .ignore.example
+ .pre-commit-config.yaml
+ .pyproject-cache.data
+ .pyproject.project.tmpl
+ .readthedocs-click.yaml
+ .readthedocs.yml
+ .rgignore
+ .yamllint
+ CHANGES.rst
+ CODE-OF-CONDUCT.rst
+ CODE_OF_CONDUCT.md
+ CONTRIBUTING-click.rst
+ CONTRIBUTING.rst
+ LICENSE.rst
+ Makefile
+ Makefile.local
+ Makefile.project
+ Maketasks.sh
+ README.rst
+ codecov.yml
+ poetry.lock
+ pyproject.toml
+ tox-click.ini
+ tox.ini
+ requirements=$HOME/.kit/working/py/click-hotoffthehamster/requirements {
+  build.in
+  build.txt
+  dev.in
+  dev.txt
+  docs.in
+  docs.txt
+  tests.in
+  tests.txt
+  typing.in
+  typing.txt
+ }
+ .github=$HOME/.kit/working/py/click-hotoffthehamster/.github {
+  dependabot-click.yml
+  dependabot.yml
+  doblabs-dependencies.yml
+  pull_request_template.md
+  ISSUE_TEMPLATE=$HOME/.kit/working/py/click-hotoffthehamster/.github/ISSUE_TEMPLATE {
+   bug-report.md
+   config.yml
+   feature-request.md
+  }
+ }
+ src=$HOME/.kit/working/py/click-hotoffthehamster/src {
+  click_hotoffthehamster=$HOME/.kit/working/py/click-hotoffthehamster/src/click_hotoffthehamster {
+   __init__.py
+   _compat.py
+   _termui_impl.py
+   _textwrap.py
+   _winconsole.py
+   core.py
+   decorators.py
+   exceptions.py
+   formatting.py
+   globals.py
+   parser.py
+   py.typed
+   shell_completion.py
+   termui.py
+   testing.py
+   types.py
+   utils.py
+  }
+ }
+ tests=$HOME/.kit/working/py/click-hotoffthehamster/tests {
+  conftest.py
+  test_arguments.py
+  test_basic.py
+  test_chain.py
+  test_command_decorators.py
+  test_commands.py
+  test_compat.py
+  test_context.py
+  test_custom_classes.py
+  test_defaults.py
+  test_formatting.py
+  test_imports.py
+  test_info_dict.py
+  test_normalization.py
+  test_options.py
+  test_parser.py
+  test_shell_completion.py
+  test_termui.py
+  test_testing.py
+  test_types.py
+  test_utils.py
+  typing=$HOME/.kit/working/py/click-hotoffthehamster/tests/typing {
+   typing_aliased_group.py
+   typing_confirmation_option.py
+   typing_group_kw_options.py
+   typing_help_option.py
+   typing_options.py
+   typing_password_option.py
+   typing_simple_example.py
+   typing_version_option.py
+  }
+ }
+ artwork=$HOME/.kit/working/py/click-hotoffthehamster/artwork {
+  logo.svg
+ }
+ docs=$HOME/.kit/working/py/click-hotoffthehamster/docs {
+  .gitignore
+  Makefile
+  advanced.rst
+  api.rst
+  arguments.rst
+  changes.rst
+  click_hotoffthehamster.rst
+  commands.rst
+  complex.rst
+  conf.py
+  contrib.rst
+  documentation.rst
+  entry-points.rst
+  exceptions.rst
+  index.rst
+  license.rst
+  make.bat
+  modules.rst
+  options.rst
+  parameters.rst
+  prompts.rst
+  quickstart.rst
+  setuptools.rst
+  shell-completion.rst
+  testing.rst
+  unicode-support.rst
+  utils.rst
+  why.rst
+  wincmd.rst
+  _static=$HOME/.kit/working/py/click-hotoffthehamster/docs/_static {
+   click-icon.png
+   click-logo-sidebar.png
+   click-logo.png
+  }
+ }
+ examples=$HOME/.kit/working/py/click-hotoffthehamster/examples {
+  README
+  aliases=$HOME/.kit/working/py/click-hotoffthehamster/examples/aliases {
+   README
+   aliases.ini
+   aliases.py
+   pyproject.toml
+  }
+  colors=$HOME/.kit/working/py/click-hotoffthehamster/examples/colors {
+   README
+   colors.py
+   pyproject.toml
+  }
+  completion=$HOME/.kit/working/py/click-hotoffthehamster/examples/completion {
+   README
+   completion.py
+   pyproject.toml
+  }
+  complex=$HOME/.kit/working/py/click-hotoffthehamster/examples/complex {
+   README
+   pyproject.toml
+   complex=$HOME/.kit/working/py/click-hotoffthehamster/examples/complex/complex {
+    __init__.py
+    cli.py
+    commands=$HOME/.kit/working/py/click-hotoffthehamster/examples/complex/complex/commands {
+     __init__.py
+     cmd_init.py
+     cmd_status.py
+    }
+   }
+  }
+  imagepipe=$HOME/.kit/working/py/click-hotoffthehamster/examples/imagepipe {
+   .gitignore
+   README
+   example01.jpg
+   example02.jpg
+   imagepipe.py
+   pyproject.toml
+  }
+  inout=$HOME/.kit/working/py/click-hotoffthehamster/examples/inout {
+   README
+   inout.py
+   pyproject.toml
+  }
+  naval=$HOME/.kit/working/py/click-hotoffthehamster/examples/naval {
+   README
+   naval.py
+   pyproject.toml
+  }
+  repo=$HOME/.kit/working/py/click-hotoffthehamster/examples/repo {
+   README
+   pyproject.toml
+   repo.py
+  }
+  termui=$HOME/.kit/working/py/click-hotoffthehamster/examples/termui {
+   README
+   pyproject.toml
+   termui.py
+  }
+  validation=$HOME/.kit/working/py/click-hotoffthehamster/examples/validation {
+   README
+   pyproject.toml
+   validation.py
+  }
+ }
+}
+
+# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+# ░░ BEG: HOTHFORKCLICKALIAS ░░░
+
+# PROHAM: CLICK_ALIAS, for Click-HOTH!
+CLICK_HOTOFFTHEHAMSTER_ALIAS=$HOME/.kit/working/py/click-hotoffthehamster-alias filter=".* *" exclude=".coverage coverage.xml poetry.lock" {
+ .gitignore
+ .gitignore.local
+ .ignore
+ .travis.yml
+ LICENSE
+ README.md
+ release
+ setup.cfg
+ setup.py
+ tox.ini
+ click_hotoffthehamster_alias=$HOME/.kit/working/py/click-hotoffthehamster-alias/click_hotoffthehamster_alias {
+  __init__.py
+ }
+ examples=$HOME/.kit/working/py/click-hotoffthehamster-alias/examples {
+  foobar.py
+  naval.py
+ }
+ tests=$HOME/.kit/working/py/click-hotoffthehamster-alias/tests {
+  test_basic.py
+  test_foobar.py
+  test_naval.py
+ }
+}
+
+# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+# ░░ BEG: HOTHFORKPPTK ░░░░░░░░░
+
+# PROHAM: PROMPT_TOOLKIT_DOB
+# PROHAM: PPT: PYTHON_PROMPT_TOOLKIT
+# PROHAM: P---YTHON_PROMPT_TOOLKIT
+PYTHON_PROMPT_TOOLKIT=$HOME/.kit/working/py/python-prompt-toolkit filter=".* *" exclude=".coverage coverage.xml poetry.lock" {
+ .codecov.yml
+ .gitignore
+ .gitignore.local
+ .ignore
+ .travis.yml
+ AUTHORS.rst
+ CHANGELOG
+ LICENSE
+ MANIFEST.in
+ PROJECTS.rst
+ README.rst
+ appveyor.yml
+ mypy.ini
+ pyproject.toml
+ setup.cfg
+ setup.py
+ tox.ini
+ build=$HOME/.kit/working/py/python-prompt-toolkit/build {
+  lib=$HOME/.kit/working/py/python-prompt-toolkit/build/lib {
+   prompt_toolkit=$HOME/.kit/working/py/python-prompt-toolkit/build/lib/prompt_toolkit {
+    __init__.py
+    auto_suggest.py
+    buffer.py
+    cache.py
+    document.py
+    enums.py
+    history.py
+    keys.py
+    log.py
+    mouse_events.py
+    patch_stdout.py
+    renderer.py
+    search.py
+    selection.py
+    token.py
+    utils.py
+    validation.py
+    win32_types.py
+    application=$HOME/.kit/working/py/python-prompt-toolkit/build/lib/prompt_toolkit/application {
+     __init__.py
+     application.py
+     current.py
+     dummy.py
+     run_in_terminal.py
+    }
+    clipboard=$HOME/.kit/working/py/python-prompt-toolkit/build/lib/prompt_toolkit/clipboard {
+     __init__.py
+     base.py
+     in_memory.py
+     pyperclip.py
+    }
+    completion=$HOME/.kit/working/py/python-prompt-toolkit/build/lib/prompt_toolkit/completion {
+     __init__.py
+     base.py
+     filesystem.py
+     fuzzy_completer.py
+     word_completer.py
+    }
+    contrib=$HOME/.kit/working/py/python-prompt-toolkit/build/lib/prompt_toolkit/contrib {
+     __init__.py
+     completers=$HOME/.kit/working/py/python-prompt-toolkit/build/lib/prompt_toolkit/contrib/completers {
+      __init__.py
+      system.py
+     }
+     regular_languages=$HOME/.kit/working/py/python-prompt-toolkit/build/lib/prompt_toolkit/contrib/regular_languages {
+      __init__.py
+      compiler.py
+      completion.py
+      lexer.py
+      regex_parser.py
+      validation.py
+     }
+     telnet=$HOME/.kit/working/py/python-prompt-toolkit/build/lib/prompt_toolkit/contrib/telnet {
+      __init__.py
+      log.py
+      protocol.py
+      server.py
+     }
+    }
+    eventloop=$HOME/.kit/working/py/python-prompt-toolkit/build/lib/prompt_toolkit/eventloop {
+     __init__.py
+     async_generator.py
+     asyncio_posix.py
+     asyncio_win32.py
+     base.py
+     context.py
+     coroutine.py
+     defaults.py
+     event.py
+     future.py
+     inputhook.py
+     posix.py
+     select.py
+     utils.py
+     win32.py
+    }
+    filters=$HOME/.kit/working/py/python-prompt-toolkit/build/lib/prompt_toolkit/filters {
+     __init__.py
+     app.py
+     base.py
+     cli.py
+     utils.py
+    }
+    formatted_text=$HOME/.kit/working/py/python-prompt-toolkit/build/lib/prompt_toolkit/formatted_text {
+     __init__.py
+     ansi.py
+     base.py
+     html.py
+     pygments.py
+     utils.py
+    }
+    input=$HOME/.kit/working/py/python-prompt-toolkit/build/lib/prompt_toolkit/input {
+     __init__.py
+     ansi_escape_sequences.py
+     base.py
+     defaults.py
+     posix_pipe.py
+     posix_utils.py
+     typeahead.py
+     vt100.py
+     vt100_parser.py
+     win32.py
+     win32_pipe.py
+    }
+    key_binding=$HOME/.kit/working/py/python-prompt-toolkit/build/lib/prompt_toolkit/key_binding {
+     __init__.py
+     defaults.py
+     digraphs.py
+     emacs_state.py
+     key_bindings.py
+     key_processor.py
+     vi_state.py
+     bindings=$HOME/.kit/working/py/python-prompt-toolkit/build/lib/prompt_toolkit/key_binding/bindings {
+      __init__.py
+      auto_suggest.py
+      basic.py
+      completion.py
+      cpr.py
+      emacs.py
+      focus.py
+      mouse.py
+      named_commands.py
+      open_in_editor.py
+      page_navigation.py
+      scroll.py
+      search.py
+      vi.py
+     }
+    }
+    layout=$HOME/.kit/working/py/python-prompt-toolkit/build/lib/prompt_toolkit/layout {
+     __init__.py
+     containers.py
+     controls.py
+     dimension.py
+     dummy.py
+     layout.py
+     margins.py
+     menus.py
+     mouse_handlers.py
+     processors.py
+     screen.py
+     utils.py
+    }
+    lexers=$HOME/.kit/working/py/python-prompt-toolkit/build/lib/prompt_toolkit/lexers {
+     __init__.py
+     base.py
+     pygments.py
+    }
+    output=$HOME/.kit/working/py/python-prompt-toolkit/build/lib/prompt_toolkit/output {
+     __init__.py
+     base.py
+     color_depth.py
+     conemu.py
+     defaults.py
+     vt100.py
+     win32.py
+     windows10.py
+    }
+    shortcuts=$HOME/.kit/working/py/python-prompt-toolkit/build/lib/prompt_toolkit/shortcuts {
+     __init__.py
+     dialogs.py
+     prompt.py
+     utils.py
+     progress_bar=$HOME/.kit/working/py/python-prompt-toolkit/build/lib/prompt_toolkit/shortcuts/progress_bar {
+      __init__.py
+      base.py
+      formatters.py
+     }
+    }
+    styles=$HOME/.kit/working/py/python-prompt-toolkit/build/lib/prompt_toolkit/styles {
+     __init__.py
+     base.py
+     defaults.py
+     named_colors.py
+     pygments.py
+     style.py
+     style_transformation.py
+    }
+    widgets=$HOME/.kit/working/py/python-prompt-toolkit/build/lib/prompt_toolkit/widgets {
+     __init__.py
+     base.py
+     dialogs.py
+     menus.py
+     toolbars.py
+    }
+   }
+  }
+ }
+ docs=$HOME/.kit/working/py/python-prompt-toolkit/docs {
+  Makefile
+  conf.py
+  index.rst
+  make.bat
+  images=$HOME/.kit/working/py/python-prompt-toolkit/docs/images {
+   auto-suggestion.png
+   bottom-toolbar.png
+   colored-prompt.png
+   colorful-completions.png
+   hello-world-prompt.png
+   html-completion.png
+   html-input.png
+   logo_400px.png
+   multiline-input.png
+   number-validator.png
+   ptpython-2.png
+   ptpython-history-help.png
+   ptpython-menu.png
+   ptpython.png
+   pymux.png
+   pyvim.png
+   rprompt.png
+   dialogs=$HOME/.kit/working/py/python-prompt-toolkit/docs/images/dialogs {
+    button.png
+    confirm.png
+    inputbox.png
+    messagebox.png
+    styled.png
+   }
+   progress-bars=$HOME/.kit/working/py/python-prompt-toolkit/docs/images/progress-bars {
+    apt-get.png
+    colored-title-and-label.png
+    custom-key-bindings.png
+    simple-progress-bar.png
+    two-tasks.png
+   }
+   repl=$HOME/.kit/working/py/python-prompt-toolkit/docs/images/repl {
+    sqlite-1.png
+    sqlite-2.png
+    sqlite-3.png
+    sqlite-4.png
+    sqlite-5.png
+    sqlite-6.png
+   }
+  }
+  pages=$HOME/.kit/working/py/python-prompt-toolkit/docs/pages {
+   asking_for_input.rst
+   dialogs.rst
+   full_screen_apps.rst
+   gallery.rst
+   getting_started.rst
+   printing_text.rst
+   progress_bars.rst
+   reference.rst
+   advanced_topics=$HOME/.kit/working/py/python-prompt-toolkit/docs/pages/advanced_topics {
+    architecture.rst
+    asyncio.rst
+    filters.rst
+    index.rst
+    input_hooks.rst
+    key_bindings.rst
+    rendering_flow.rst
+    rendering_pipeline.rst
+    styling.rst
+   }
+   tutorials=$HOME/.kit/working/py/python-prompt-toolkit/docs/pages/tutorials {
+    index.rst
+    repl.rst
+   }
+   upgrading=$HOME/.kit/working/py/python-prompt-toolkit/docs/pages/upgrading {
+    2.0.rst
+    3.0.rst
+    index.rst
+   }
+  }
+ }
+ examples=$HOME/.kit/working/py/python-prompt-toolkit/examples {
+  gevent-get-input.py
+  dialogs=$HOME/.kit/working/py/python-prompt-toolkit/examples/dialogs {
+   button_dialog.py
+   checkbox_dialog.py
+   input_dialog.py
+   messagebox.py
+   password_dialog.py
+   progress_dialog.py
+   radio_dialog.py
+   styled_messagebox.py
+   yes_no_dialog.py
+  }
+  full-screen=$HOME/.kit/working/py/python-prompt-toolkit/examples/full-screen {
+   buttons.py
+   calculator.py
+   dummy-app.py
+   full-screen-demo.py
+   hello-world.py
+   no-layout.py
+   pager.py
+   split-screen.py
+   text-editor.py
+   simple-demos=$HOME/.kit/working/py/python-prompt-toolkit/examples/full-screen/simple-demos {
+    alignment.py
+    autocompletion.py
+    colorcolumn.py
+    cursorcolumn-cursorline.py
+    float-transparency.py
+    floats.py
+    focus.py
+    horizontal-align.py
+    horizontal-split.py
+    line-prefixes.py
+    margins.py
+    vertical-align.py
+    vertical-split.py
+   }
+  }
+  print-text=$HOME/.kit/working/py/python-prompt-toolkit/examples/print-text {
+   ansi-colors.py
+   ansi.py
+   html.py
+   named-colors.py
+   print-formatted-text.py
+   print-frame.py
+   pygments-tokens.py
+   true-color-demo.py
+  }
+  progress-bar=$HOME/.kit/working/py/python-prompt-toolkit/examples/progress-bar {
+   a-lot-of-parallel-tasks.py
+   colored-title-and-label.py
+   custom-key-bindings.py
+   many-parallel-tasks.py
+   nested-progress-bars.py
+   scrolling-task-name.py
+   simple-progress-bar.py
+   styled-1.py
+   styled-2.py
+   styled-apt-get-install.py
+   styled-rainbow.py
+   styled-tqdm-1.py
+   styled-tqdm-2.py
+   two-tasks.py
+   unknown-length.py
+  }
+  prompts=$HOME/.kit/working/py/python-prompt-toolkit/examples/prompts {
+   accept-default.py
+   asyncio-prompt.py
+   auto-suggestion.py
+   autocorrection.py
+   bottom-toolbar.py
+   clock-input.py
+   colored-prompt.py
+   confirmation-prompt.py
+   custom-key-binding.py
+   custom-lexer.py
+   custom-vi-operator-and-text-object.py
+   finalterm-shell-integration.py
+   get-input-vi-mode.py
+   get-input-with-default.py
+   get-input.py
+   get-multiline-input.py
+   get-password-with-toggle-display-shortcut.py
+   get-password.py
+   html-input.py
+   input-validation.py
+   inputhook.py
+   mouse-support.py
+   multiline-prompt.py
+   no-wrapping.py
+   operate-and-get-next.py
+   patch-stdout.py
+   regular-language.py
+   rprompt.py
+   swap-light-and-dark-colors.py
+   switch-between-vi-emacs.py
+   system-clipboard-integration.py
+   system-prompt.py
+   terminal-title.py
+   up-arrow-partial-string-matching.py
+   auto-completion=$HOME/.kit/working/py/python-prompt-toolkit/examples/prompts/auto-completion {
+    autocomplete-with-control-space.py
+    autocompletion-like-readline.py
+    autocompletion.py
+    colored-completions-with-formatted-text.py
+    colored-completions.py
+    combine-multiple-completers.py
+    fuzzy-custom-completer.py
+    fuzzy-word-completer.py
+    multi-column-autocompletion-with-meta.py
+    multi-column-autocompletion.py
+    nested-autocompletion.py
+    slow-completions.py
+   }
+   history=$HOME/.kit/working/py/python-prompt-toolkit/examples/prompts/history {
+    persistent-history.py
+    slow-history.py
+   }
+  }
+  ssh=$HOME/.kit/working/py/python-prompt-toolkit/examples/ssh {
+   asyncssh-server.py
+  }
+  telnet=$HOME/.kit/working/py/python-prompt-toolkit/examples/telnet {
+   chat-app.py
+   dialog.py
+   hello-world.py
+   toolbar.py
+  }
+  tutorial=$HOME/.kit/working/py/python-prompt-toolkit/examples/tutorial {
+   README.md
+   sqlite-cli.py
+  }
+ }
+ prompt_toolkit=$HOME/.kit/working/py/python-prompt-toolkit/prompt_toolkit {
+  __init__.py
+  auto_suggest.py
+  buffer.py
+  cache.py
+  data_structures.py
+  document.py
+  enums.py
+  history.py
+  keys.py
+  log.py
+  mouse_events.py
+  patch_stdout.py
+  renderer.py
+  search.py
+  selection.py
+  token.py
+  utils.py
+  validation.py
+  win32_types.py
+  application=$HOME/.kit/working/py/python-prompt-toolkit/prompt_toolkit/application {
+   __init__.py
+   application.py
+   current.py
+   dummy.py
+   run_in_terminal.py
+  }
+  clipboard=$HOME/.kit/working/py/python-prompt-toolkit/prompt_toolkit/clipboard {
+   __init__.py
+   base.py
+   in_memory.py
+   pyperclip.py
+  }
+  completion=$HOME/.kit/working/py/python-prompt-toolkit/prompt_toolkit/completion {
+   __init__.py
+   base.py
+   filesystem.py
+   fuzzy_completer.py
+   nested.py
+   word_completer.py
+  }
+  contrib=$HOME/.kit/working/py/python-prompt-toolkit/prompt_toolkit/contrib {
+   __init__.py
+   completers=$HOME/.kit/working/py/python-prompt-toolkit/prompt_toolkit/contrib/completers {
+    __init__.py
+    system.py
+   }
+   regular_languages=$HOME/.kit/working/py/python-prompt-toolkit/prompt_toolkit/contrib/regular_languages {
+    __init__.py
+    compiler.py
+    completion.py
+    lexer.py
+    regex_parser.py
+    validation.py
+   }
+   ssh=$HOME/.kit/working/py/python-prompt-toolkit/prompt_toolkit/contrib/ssh {
+    __init__.py
+    server.py
+   }
+   telnet=$HOME/.kit/working/py/python-prompt-toolkit/prompt_toolkit/contrib/telnet {
+    __init__.py
+    log.py
+    protocol.py
+    server.py
+   }
+  }
+  eventloop=$HOME/.kit/working/py/python-prompt-toolkit/prompt_toolkit/eventloop {
+   __init__.py
+   async_context_manager.py
+   async_generator.py
+   dummy_contextvars.py
+   inputhook.py
+   utils.py
+   win32.py
+  }
+  filters=$HOME/.kit/working/py/python-prompt-toolkit/prompt_toolkit/filters {
+   __init__.py
+   app.py
+   base.py
+   cli.py
+   utils.py
+  }
+  formatted_text=$HOME/.kit/working/py/python-prompt-toolkit/prompt_toolkit/formatted_text {
+   __init__.py
+   ansi.py
+   base.py
+   html.py
+   pygments.py
+   utils.py
+  }
+  input=$HOME/.kit/working/py/python-prompt-toolkit/prompt_toolkit/input {
+   __init__.py
+   ansi_escape_sequences.py
+   base.py
+   defaults.py
+   posix_pipe.py
+   posix_utils.py
+   typeahead.py
+   vt100.py
+   vt100_parser.py
+   win32.py
+   win32_pipe.py
+  }
+  key_binding=$HOME/.kit/working/py/python-prompt-toolkit/prompt_toolkit/key_binding {
+   __init__.py
+   defaults.py
+   digraphs.py
+   emacs_state.py
+   key_bindings.py
+   key_processor.py
+   vi_state.py
+   bindings=$HOME/.kit/working/py/python-prompt-toolkit/prompt_toolkit/key_binding/bindings {
+    __init__.py
+    auto_suggest.py
+    basic.py
+    completion.py
+    cpr.py
+    emacs.py
+    focus.py
+    mouse.py
+    named_commands.py
+    open_in_editor.py
+    page_navigation.py
+    scroll.py
+    search.py
+    vi.py
+   }
+  }
+  layout=$HOME/.kit/working/py/python-prompt-toolkit/prompt_toolkit/layout {
+   __init__.py
+   containers.py
+   controls.py
+   dimension.py
+   dummy.py
+   layout.py
+   margins.py
+   menus.py
+   mouse_handlers.py
+   processors.py
+   screen.py
+   utils.py
+  }
+  lexers=$HOME/.kit/working/py/python-prompt-toolkit/prompt_toolkit/lexers {
+   __init__.py
+   base.py
+   pygments.py
+  }
+  output=$HOME/.kit/working/py/python-prompt-toolkit/prompt_toolkit/output {
+   __init__.py
+   base.py
+   color_depth.py
+   conemu.py
+   defaults.py
+   vt100.py
+   win32.py
+   windows10.py
+  }
+  shortcuts=$HOME/.kit/working/py/python-prompt-toolkit/prompt_toolkit/shortcuts {
+   __init__.py
+   dialogs.py
+   prompt.py
+   utils.py
+   progress_bar=$HOME/.kit/working/py/python-prompt-toolkit/prompt_toolkit/shortcuts/progress_bar {
+    __init__.py
+    base.py
+    formatters.py
+   }
+  }
+  styles=$HOME/.kit/working/py/python-prompt-toolkit/prompt_toolkit/styles {
+   __init__.py
+   base.py
+   defaults.py
+   named_colors.py
+   pygments.py
+   style.py
+   style_transformation.py
+  }
+  widgets=$HOME/.kit/working/py/python-prompt-toolkit/prompt_toolkit/widgets {
+   __init__.py
+   base.py
+   dialogs.py
+   menus.py
+   toolbars.py
+  }
+ }
+ prompt_toolkit.egg-info=$HOME/.kit/working/py/python-prompt-toolkit/prompt_toolkit.egg-info {
+  PKG-INFO
+  SOURCES.txt
+  dependency_links.txt
+  requires.txt
+  top_level.txt
+ }
+ tests=$HOME/.kit/working/py/python-prompt-toolkit/tests {
+  test_async_generator.py
+  test_buffer.py
+  test_cli.py
+  test_completion.py
+  test_document.py
+  test_filter.py
+  test_formatted_text.py
+  test_inputstream.py
+  test_key_binding.py
+  test_layout.py
+  test_print_formatted_text.py
+  test_regular_languages.py
+  test_shortcuts.py
+  test_style.py
+  test_style_transformation.py
+  test_utils.py
+  test_vt100_output.py
+  test_yank_nth_arg.py
+ }
+ tools=$HOME/.kit/working/py/python-prompt-toolkit/tools {
+  debug_vt100_input.py
+  debug_win_input.py
+ }
+}
+
+# PROHAM: DOB_AND_ANSI_LOVE_KILLS
+# PROHAM: ANSI_ESCAPE_ROOM____PYLB
+ANSI_ESCAPE_ROOM=$HOME/.kit/working/py/ansi-escape-room filter=".* *" exclude=".coverage coverage.xml poetry.lock" {
+ .editorconfig
+ .gitignore
+ .gitignore.local
+ .ignore
+ .ignore.example
+ .pyproject-cache.data
+ .pyproject.project.tmpl
+ .readthedocs.yml
+ .yamllint
+ CHANGES.md
+ CODE-OF-CONDUCT.rst
+ CONTRIBUTING.rst
+ LICENSE.txt
+ Makefile
+ Makefile.local
+ Makefile.project
+ Maketasks.sh
+ README.rst
+ codecov.yml
+ pyproject.toml
+ tox.ini
+ src/ansi_escape_room=$HOME/.kit/working/py/ansi-escape-room/src/ansi_escape_room {
+  __init__.py
+  back.py
+  colored.py
+  colors.py
+  fore.py
+  hex.py
+  style.py
+ }
+ tests=$HOME/.kit/working/py/ansi-escape-room/tests {
+  test_1.py
+  test_2.py
+  test_3.py
+  test_4.py
+  test_5.py
+  test_hex_1.py
+  test_hex_2.py
+ }
+ docs=$HOME/.kit/working/py/ansi-escape-room/docs {
+  ansi-escape-room--logo.png
+  ansi-escape-room--logo.xcf
+  back.COLOR.txt
+  colors_list.txt
+  fore.COLOR.txt
+  hex_list.txt
+  style.COLOR.txt
+ }
+}
+
+# PROHAM: DOB_PYPI_PLACEHOLDER
+DOB_PLACEHOLDER=$HOME/.kit/working/py/.archived/dob-placeholder filter=".* *" {
+ .gitignore
+ .ignore
+ .travis.yml
+ LICENSE
+ README.rst
+ setup.cfg
+ setup.py
+ tox.ini
+ dob=$HOME/.kit/working/py/.archived/dob-placeholder/dob {
+  __init__.py
+ }
+}
+
+# CHJSON: From old jerb
+CHJSON=$HOME/.kit/working/py/chjson filter=".* *" {
+ .gitignore
+ .gitignore.local
+ ChangeLog
+ LICENSE
+ MANIFEST.in
+ PKG-INFO
+ README.rst
+ build_inplace
+ chjson.c
+ chjson.cpython-38-x86_64-linux-gnu.so
+ setup.py
+ setup.sh
+ setup.sh-TBD
+ test_chjson.py
+}
+
+# *** benj9son [from Excensus]
+cjsonish=/srv/excensus/gk12_2/cjsonish filter=".* *" {
+ ChangeLog
+ LICENSE
+ MANIFEST.in
+ PKG-INFO
+ README.rst
+ build_inplace
+ cjsonish.c
+ jsonishtest.py
+ setup.py
+ setup.sh
+}
+
+# PROHAME: SQLALCHEMY_MIGRATE
+# sqlalchemy-migrate
+SQLALCHEMY_MIGRATE_HOTOFFTHEHAMSTER=$HOME/.kit/working/py/sqlalchemy-migrate-hotoffthehamster filter=".* *" {
+ .editorconfig
+ .gitignore
+ .gitignore-ORIG
+ .gitignore.local
+ .gitreview
+ .ignore
+ .ignore.example
+ .pyproject-cache.data
+ .pyproject.project.tmpl
+ .readthedocs.yml
+ .yamllint
+ AUTHORS
+ CODE-OF-CONDUCT.rst
+ CONTRIBUTING.rst
+ COPYING
+ ChangeLog
+ Makefile
+ Makefile.local
+ Makefile.project
+ Maketasks.sh
+ README.rst
+ TODO
+ bindep.txt
+ codecov.yml
+ poetry.lock
+ pyproject.toml
+ test_db.cfg
+ test_db_py3.cfg
+ tox.ini
+ tox.ini--ORIG
+ src/sqlalchemy_migrate_hotoffthehamster=$HOME/.kit/working/py/sqlalchemy-migrate-hotoffthehamster/src/sqlalchemy_migrate_hotoffthehamster {
+  __init__.py
+  exceptions.py
+  versioning=$HOME/.kit/working/py/sqlalchemy-migrate-hotoffthehamster/src/sqlalchemy_migrate_hotoffthehamster/versioning {
+   __init__.py
+   api.py
+   cfgparse.py
+   config.py
+   genmodel.py
+   migrate_repository.py
+   pathed.py
+   repository.py
+   schema.py
+   schemadiff.py
+   shell.py
+   template.py
+   version.py
+   script=$HOME/.kit/working/py/sqlalchemy-migrate-hotoffthehamster/src/sqlalchemy_migrate_hotoffthehamster/versioning/script {
+    __init__.py
+    base.py
+    py.py
+    sql.py
+   }
+   templates=$HOME/.kit/working/py/sqlalchemy-migrate-hotoffthehamster/src/sqlalchemy_migrate_hotoffthehamster/versioning/templates {
+    __init__.py
+    manage=$HOME/.kit/working/py/sqlalchemy-migrate-hotoffthehamster/src/sqlalchemy_migrate_hotoffthehamster/versioning/templates/manage {
+     default.py_tmpl
+     pylons.py_tmpl
+    }
+    repository=$HOME/.kit/working/py/sqlalchemy-migrate-hotoffthehamster/src/sqlalchemy_migrate_hotoffthehamster/versioning/templates/repository {
+     __init__.py
+     default=$HOME/.kit/working/py/sqlalchemy-migrate-hotoffthehamster/src/sqlalchemy_migrate_hotoffthehamster/versioning/templates/repository/default {
+      README
+      __init__.py
+      migrate.cfg
+      versions=$HOME/.kit/working/py/sqlalchemy-migrate-hotoffthehamster/src/sqlalchemy_migrate_hotoffthehamster/versioning/templates/repository/default/versions {
+       __init__.py
+      }
+     }
+     pylons=$HOME/.kit/working/py/sqlalchemy-migrate-hotoffthehamster/src/sqlalchemy_migrate_hotoffthehamster/versioning/templates/repository/pylons {
+      README
+      __init__.py
+      migrate.cfg
+      versions=$HOME/.kit/working/py/sqlalchemy-migrate-hotoffthehamster/src/sqlalchemy_migrate_hotoffthehamster/versioning/templates/repository/pylons/versions {
+       __init__.py
+      }
+     }
+    }
+    script=$HOME/.kit/working/py/sqlalchemy-migrate-hotoffthehamster/src/sqlalchemy_migrate_hotoffthehamster/versioning/templates/script {
+     __init__.py
+     default.py_tmpl
+     pylons.py_tmpl
+    }
+    sql_script=$HOME/.kit/working/py/sqlalchemy-migrate-hotoffthehamster/src/sqlalchemy_migrate_hotoffthehamster/versioning/templates/sql_script {
+     default.py_tmpl
+     pylons.py_tmpl
+    }
+   }
+   util=$HOME/.kit/working/py/sqlalchemy-migrate-hotoffthehamster/src/sqlalchemy_migrate_hotoffthehamster/versioning/util {
+    __init__.py
+    importpath.py
+    keyedinstance.py
+   }
+  }
+  changeset=$HOME/.kit/working/py/sqlalchemy-migrate-hotoffthehamster/src/sqlalchemy_migrate_hotoffthehamster/changeset {
+   __init__.py
+   ansisql.py
+   constraint.py
+   schema.py
+   util.py
+   databases=$HOME/.kit/working/py/sqlalchemy-migrate-hotoffthehamster/src/sqlalchemy_migrate_hotoffthehamster/changeset/databases {
+    __init__.py
+    firebird.py
+    ibmdb2.py
+    mysql.py
+    oracle.py
+    postgres.py
+    sqlite.py
+    visitor.py
+   }
+  }
+  tests=$HOME/.kit/working/py/sqlalchemy-migrate-hotoffthehamster/src/sqlalchemy_migrate_hotoffthehamster/tests {
+   __init__.py
+   fixture=$HOME/.kit/working/py/sqlalchemy-migrate-hotoffthehamster/src/sqlalchemy_migrate_hotoffthehamster/tests/fixture {
+    __init__.py
+    base.py
+    database.py
+    models.py
+    pathed.py
+    shell.py
+    warnings.py
+   }
+  }
+ }
+ tests=$HOME/.kit/working/py/sqlalchemy-migrate-hotoffthehamster/tests {
+  __init__.py
+  changeset=$HOME/.kit/working/py/sqlalchemy-migrate-hotoffthehamster/tests/changeset {
+   __init__.py
+   test_changeset.py
+   test_constraint.py
+   databases=$HOME/.kit/working/py/sqlalchemy-migrate-hotoffthehamster/tests/changeset/databases {
+    __init__.py
+    test_ibmdb2.py
+   }
+  }
+  integrated=$HOME/.kit/working/py/sqlalchemy-migrate-hotoffthehamster/tests/integrated {
+   __init__.py
+   test_docs.py
+  }
+  versioning=$HOME/.kit/working/py/sqlalchemy-migrate-hotoffthehamster/tests/versioning {
+   __init__.py
+   test_api.py
+   test_cfgparse.py
+   test_database.py
+   test_genmodel.py
+   test_keyedinstance.py
+   test_pathed.py
+   test_repository.py
+   test_runchangeset.py
+   test_schema.py
+   test_schemadiff.py
+   test_script.py
+   test_shell.py
+   test_template.py
+   test_util.py
+   test_version.py
+  }
+ }
+ tools=$HOME/.kit/working/py/sqlalchemy-migrate-hotoffthehamster/tools {
+  pretty_tox.sh
+  test-setup.sh
+ }
+ doc=$HOME/.kit/working/py/sqlalchemy-migrate-hotoffthehamster/doc {
+  requirements.txt
+  source=$HOME/.kit/working/py/sqlalchemy-migrate-hotoffthehamster/doc/source {
+   Makefile
+   api.rst
+   changelog.rst
+   changeset.rst
+   conf.py
+   credits.rst
+   download.rst
+   faq.rst
+   glossary.rst
+   index.rst
+   tools.rst
+   versioning.rst
+   historical=$HOME/.kit/working/py/sqlalchemy-migrate-hotoffthehamster/doc/source/historical {
+    ProjectDesignDecisionsAutomation.trac
+    ProjectDesignDecisionsScriptFormat.trac
+    ProjectDesignDecisionsVersioning.trac
+    ProjectDetailedDesign.trac
+    ProjectGoals.trac
+    ProjectProposal.txt
+    RepositoryFormat.trac
+    RepositoryFormat2.trac
+   }
+   theme=$HOME/.kit/working/py/sqlalchemy-migrate-hotoffthehamster/doc/source/theme {
+    almodovar.css
+    layout.css
+    layout.html
+   }
+  }
+ }
+}
+
+### END: HOTHFORKSPROJS ########
+################################
+
+# ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+#  vim: ft=conf
+

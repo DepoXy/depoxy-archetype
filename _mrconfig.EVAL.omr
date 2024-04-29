@@ -282,6 +282,10 @@ autocommit =
       -m "${PRIVATE_ACI}: Vimprojects         (Client project-tray drawer)"
     git_auto_commit_one "home/.vim/pack/landonb/start/dubs_project_tray/.vimprojects--purged" \
       -m "${CLEARED_ACI}: Vimprojects--purged (DepoXy projects only)"
+    #
+    # Dob, easy-as-pypi, and related Python projects.
+    git_auto_commit_one "home/.vim/pack/landonb/start/dubs_project_tray/.vimprojects--dob" \
+      -m "${CLEARED_ACI}: Vimprojects--dob"
   }
   depoxy_client_autocommit_vimprojects
   #
