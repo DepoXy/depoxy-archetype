@@ -59,7 +59,6 @@ DEPOXY_STINTS ┃ NOTABLE_NOTES
 # ┃ 🏹 🦃  DepoXy Client  🏹 🦃 ┃
 # ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 
-DEPOXY_AMBERS
 DEPOXY_STINTS=DXY_DEPOXYDIR_BASE_HOME filter=".* *" exclude=".DS_Store" {
  .gitignore
  stints=DXY_DEPOXYDIR_STINTS_HOME {
@@ -70,37 +69,72 @@ DEPOXY_STINTS=DXY_DEPOXYDIR_BASE_HOME filter=".* *" exclude=".DS_Store" {
   .gitignore
   .hostnames
   .ignore
-  README.rst
+  LICENSE
+  README.md
   _mrconfig
   _mrconfig-BUSINESS_CODE_PATH.example
   docs=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/docs {
    .ignore
    Backlog_Client_[[[]]]DXY_DEPOXY_CLIENT_ID.rst
-   Backlog_Client_[[[]]]DXY_DEPOXY_CLIENT_ID.rst.example
    Donelog_Client_[[[]]]DXY_DEPOXY_CLIENT_ID.rst
    Woodlot_Client_[[[]]]DXY_DEPOXY_CLIENT_ID.rst
    Worklog_Client_[[[]]]DXY_DEPOXY_CLIENT_ID.rst
-   _ingress.rst
+   notable-notes--prepare.sh
   }
-  PRIVY-DOX=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/private/docs {
+  PRIVATE/docs=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/private/docs {
    Backlog_Personal_[[[]]]DXY_DEPOXY_CLIENT_ID.rst
    Woodlot_Personal_[[[]]]DXY_DEPOXY_CLIENT_ID.rst
+  }
+  docs/notable-notes--vibrant=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/docs/notable-notes--vibrant {
+   00-DXY_DEPOXY_CLIENT_ID-🥾-Backlog-Client-DXY_DEPOXY_CLIENT_ID👈☞☞☞☞☞☞.rst
+   01
+   02-DXY_DEPOXY_CLIENT_ID-🔔-Donelog-Client-DXY_DEPOXY_CLIENT_ID☞☞☞☞👈☞☞.rst
+   03-DXY_DEPOXY_CLIENT_ID-🎷-Worklog-Client-DXY_DEPOXY_CLIENT_ID☞☞☞☞☞☞👈.rst
+  }
+  docs/notable-notes--woodlot=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/docs/notable-notes--woodlot {
+   00-DXY_DEPOXY_CLIENT_ID-🔥-Woodlot-Unfiled-Notes.rst☞☞☞☞☞☞☞.rst
+   01
   }
   home=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home {
    .finicky.js
    .gitconfig.user
    .gitconfig.user-business
    .gitconfig.user-personal
-   .netrc
+   .netrc.example
    .npmrc.example
    .vimprojects
-   .vimprojects--purged
+   _gitignore-macOS
+   bashrx.private.DXY_HOSTNAME.sh
    bashrx.private.DXY_USERNAME.sh
    bashrx.private.DXY_USERNAME.sh.example
-   bashrx.private.DXY_HOSTNAME.sh
    crontab.DXY_USERNAME
    dubs_projects.vim
-   _gitignore-macOS
+   Library=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/Library {
+    Application Support=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/Library/Application\ Support {
+     Google/Chrome/Default=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/Library/Application\ Support/Google/Chrome/Default {
+      Bookmarks
+      bookmarks_M_D_YY.html
+     }
+     dob=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/Library/Application\ Support/dob {
+      dob.conf
+      dob.sqlite.export
+     }
+    }
+   }
+   _git/info=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/_git/info {
+    exclude
+   }
+   vim-trap=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/vim-trap {
+    README.rst
+    after/plugin=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/vim-trap/after/plugin {
+     blocklist-nospell.vim
+     blocklist-syntax-off.vim
+     pdbr-insert-set-trace.vim
+    }
+    plugin=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/vim-trap/plugin {
+     explore-notable-notes.vim
+    }
+   }
    work.example=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/work.example {
     _ignore
     CLIENT_BIZUNIT=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/work.example/CLIENT_BIZUNIT {
@@ -110,58 +144,35 @@ DEPOXY_STINTS=DXY_DEPOXYDIR_BASE_HOME filter=".* *" exclude=".DS_Store" {
       .eslintrc-develop
       .eslintrc-develop--alt
       .tarignore
+      _ignore
       jest.config-DEV.js
       jest.config-DEV.js--alt
-      _ignore
       _git/info=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/work.example/CLIENT_BIZUNIT/CLIENT_PROJECT_A/_git/info {
        exclude
       }
      }
      project-123-testless=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/work.example/project-123-testless {
-      .ignore
+      .ignore.example
       YOU--add-symlink-to-project-123
      }
     }
    }
-   Library=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/Library {
-    Application Support=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/Library/Application\ Support {
-     dob=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/Library/Application\ Support/dob {
-      dob.conf
-      dob.sqlite.export
-     }
-     Google/Chrome/Default=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/Library/Application\ Support/Google/Chrome/Default {
-      Bookmarks
-      bookmarks_M_D_YY.html
-     }
-    }
-   }
-   vim-trap=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/vim-trap {
-    README.rst
-    plugin=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/vim-trap/plugin {
-     explore-notable-notes.vim
-    }
-   }
-   _git/info=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/_git/info {
-    exclude
-   }
    .config=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/.config {
     DXY_DEPOXY_CLIENT_ID-tree.col
     DXY_DEPOXY_CLIENT_ID-tree.txt
-    defaults-read.dump
     depoxy=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/.config/depoxy {
      depoxyrc
     }
     karabiner=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/.config/karabiner {
-     karabiner.json
      README.rst
+     karabiner.json
      assets/complex_modifications=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/.config/karabiner/assets/complex_modifications {
       3110-client-DXY_DEPOXY_CLIENT_ID-private.json.example
       9210-privte-docs-launchers-private.json
      }
     }
-    Rectangle=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/.config/Rectangle {
-     README.rst
-     Rectangle-config.json
+    tig=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/.config/tig {
+     config
     }
    }
    .depoxy=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/.depoxy {
@@ -170,11 +181,20 @@ DEPOXY_STINTS=DXY_DEPOXYDIR_BASE_HOME filter=".* *" exclude=".DS_Store" {
      _ignore
     }
    }
+   # .gnupg/: DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/.gnupg
+   #  .gnupg/pubring.kbx
+   #  .gnupg/private-keys-v1.d/: DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/.gnupg/private-keys-v1.d
    .kit/_git/info=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/.kit/_git/info {
     exclude
    }
+   .kube=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/.kube {
+    PRIVATE
+   }
    .local/share/dob=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/.local/share/dob {
     dob.sqlite
+   }
+   .local/share/.depoxy=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/.local/share/.depoxy {
+    last-reboot.touchfile
    }
    .password-store=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/.password-store {
     .gpg-id
@@ -182,13 +202,30 @@ DEPOXY_STINTS=DXY_DEPOXYDIR_BASE_HOME filter=".* *" exclude=".DS_Store" {
    .ssh=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/.ssh {
     config.example
    }
-   # work/ : FIXME/2022-12-13: This subdir section not being --purged.
+   .vim=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/.vim {
+    pack=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/.vim/pack {
+     landonb=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/.vim/pack/landonb {
+      start=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/.vim/pack/landonb/start {
+       dubs_grep_steady=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/.vim/pack/landonb/start/dubs_grep_steady {
+        dubs_projects.vim
+       }
+       dubs_project_tray=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/.vim/pack/landonb/start/dubs_project_tray {
+        .vimprojects
+       }
+      }
+     }
+    }
+    spell=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/.vim/spell {
+     en.utf-8.add
+     en.utf-8.add--compiled
+     en.utf-8.add--personal
+    }
+   }
   }
-  # private: private/docs
-  # private: private/home
-  static=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/static {
-   # FIXME/2022-12-06: RETIRE↓↓↓↓
-   README.rst
+  private=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/private {
+   # private/docs/: DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/private/docs
+   # private/home/: DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/private/home
+   private.not-private
   }
   .whilom=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/.whilom {
    README.rst
@@ -424,7 +461,6 @@ KARABINER_ELEPHANTS=$HOME/.kit/mOS/Karabiner-Elephants filter=".* *" {
   0510-vidapp-webex-teams-zoom.json
   0530-applcn-postman.json
   0550-applcn-libreoffice.json
-  test.osa
  }
  complex_modifications--DXY=$HOME/.depoxy/ambers/home/.config/karabiner/assets/complex_modifications--DXY {
   0310-depoxy-chrome.json
@@ -478,7 +514,6 @@ KARABINER_ELEPHANTS=$HOME/.kit/mOS/Karabiner-Elephants filter=".* *" {
   9110-devlpr-docs-launchers.json
   9210-privte-docs-launchers-private.json
   README.md
-  test.osa
  }
 }
 
@@ -535,6 +570,7 @@ MACOS_ONBOARDER=$HOME/.kit/mOS/macOS-onboarder filter=".* *" {
 SPELLFILE_TXT=$HOME/.kit/txt/spellfile.txt filter=".* *" {
  .gitignore
  .gitignore.local
+ .ignore
  LICENSE
  README.md
  bin=$HOME/.kit/txt/spellfile.txt/bin {
@@ -1061,6 +1097,7 @@ DEPOXY_ARCHETYPE=$HOME/.depoxy/ambers/archetype filter=".* *" {
  .ignore
  .ignore.EVAL
  LICENSE
+ LICENSE.EVAL
  README--FIXME.rst
  README.md
  _mrconfig-BUSINESS_CODE_PATH_.EVAL.example
@@ -1084,8 +1121,9 @@ DEPOXY_ARCHETYPE=$HOME/.depoxy/ambers/archetype filter=".* *" {
   .netrc.example
   .npmrc.EVAL
   _gitignore-macOS.EVAL
-  bashrx.private.USERNAME.EVAL.sh.example
   bashrx.private.HOSTNAME.EVAL.sh
+  bashrx.private.USERNAME.EVAL.sh
+  bashrx.private.USERNAME.EVAL.sh.example
   crontab.USERNAME.EVAL
   Library=$HOME/.depoxy/ambers/archetype/home/Library {
    Application Support=$HOME/.depoxy/ambers/archetype/home/Library/Application\ Support {
@@ -1186,9 +1224,6 @@ DEPOXY_ARCHETYPE=$HOME/.depoxy/ambers/archetype filter=".* *" {
    share=$HOME/.depoxy/ambers/archetype/home/.local/share {
     dob=$HOME/.depoxy/ambers/archetype/home/.local/share/dob {
      dob.sqlite
-    }
-    .depoxy=$HOME/.depoxy/ambers/archetype/home/.local/share/.depoxy {
-     last-reboot.touchfile
     }
    }
   }
@@ -2399,6 +2434,7 @@ Oh_My_Repos_=$HOME/.kit/git/ohmyrepos filter=".* *" {
  LICENSE
  README.rst
  OMR_BIN=$HOME/.kit/git/ohmyrepos/bin {
+  omr-is-registered
   omr-report
   weekly-omr-report
  }
@@ -2966,11 +3002,10 @@ Home=$HOME filter="README.rst" {
   LICENSE
   README.rst
  }
- homefries/.bashrc-bin=$HOME/.homefries/.bashrc-bin filter=".* *" exclude="bashrx.private.sh.template bashrx.private.`DEPOXY_HOSTNAME'.sh" {
-  bashrx.private.DEPOXY_HOSTNAME.sh
+ homefries/.bashrc-bin=$HOME/.homefries/.bashrc-bin filter=".* *" exclude="bashrx.private.DXY_HOSTNAME.sh bashrx.private.sh" {
   bashrc.base.sh
   bashrc.core.sh
-  bashrx.private.sh
+  bashrx.private.sh.template
   prepare-tmux-or-bust
  }
  homefries/bin=$HOME/.homefries/bin filter=".* *" {
