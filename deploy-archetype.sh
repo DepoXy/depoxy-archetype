@@ -611,11 +611,17 @@ fail_if_target_exists_and_non_empty () {
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
+blot () {
+  echo "$@"
+}
+
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
+
 prompt_continue_or_exit () {
-  echo "Looks good!"
-  echo "- All required variables have values"
-  echo "- Destination path empty or uncreated"
-  echo
+  blot "Looks good!"
+  blot "- All required variables have values"
+  blot "- Destination path empty or uncreated"
+  blot
 
   local ignored_key
 
@@ -638,12 +644,12 @@ prompt_continue_or_exit () {
     [ -z "${ignored_key}" ] || echo
 
     print_template_vars
-    echo
+    blot
   )
 
-  echo "This script will create a new DepoXy Client at:"
-  echo "  ${DXY_DEPOXY_CLIENT_TILDE}"
-  echo
+  blot "This script will create a new DepoXy Client at:"
+  blot "  ${DXY_DEPOXY_CLIENT_TILDE}"
+  blot
 
   local the_choice
 
@@ -662,10 +668,10 @@ prompt_continue_or_exit () {
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
 print_template_vars () {
-  echo
+  blot
 
   for template_var in "${TEMPLATE_VARS[@]}"; do
-    echo "${template_var}=\"${!template_var}\""
+    blot "${template_var}=\"${!template_var}\""
   done
 }
 
@@ -723,7 +729,7 @@ prepare_client_fs () {
   [ -n "${client_path}" ] || client_path=${DXY_DEPOXY_CLIENT_FULL}
 
   if ${DRY_RUN}; then
-    echo
+    blot
     find . -mindepth 1 -path ./.git -prune -o -type d -exec echo "mkdir: ${client_path}/{}" \;
 
     return 0
@@ -753,13 +759,13 @@ prepare_symlinks_fs () {
 process_files () {
   local fname
 
-  echo
+  blot
 
   while IFS= read -r -d $'\0' fname; do
     if ! process_file "${fname}"; then
-      >&2 echo
-      >&2 echo "ERROR: Failed to process “${fname}”."
-      >&2 echo "- You'll have to try again!"
+      >&2 blot
+      >&2 blot "ERROR: Failed to process “${fname}”."
+      >&2 blot "- You'll have to try again!"
 
       exit_1
     fi
@@ -774,8 +780,8 @@ process_file () {
   if echo "${fname}" | grep -q -e "EVAL"; then
     process_file_eval "${fname}"
   elif [ "${fname}" = "${deploysh_name}" ]; then
-    echo "SKIP: ${fname}"
-    echo
+    blot "SKIP: ${fname}"
+    blot
   else
     process_file_copy "${fname}"
   fi
@@ -804,12 +810,12 @@ process_file_copy_copy_file () {
 
   local exit_code
 
-  echo "COPY: ${fname}"
-  echo
+  blot "COPY: ${fname}"
+  blot
 
   if ${DRY_RUN}; then
-    echo "  command cp -R -P -- \"${fname}\" \"${dest_path}\""
-    echo
+    blot "  command cp -R -P -- \"${fname}\" \"${dest_path}\""
+    blot
 
     return 0
   fi
@@ -834,13 +840,13 @@ deployed_file_make_link () {
   ${DXY_RUN_MAKE_LNS:-false} || return 0
 
   if ${DXY_RUN_LNS_ONLY:-false}; then
-    echo "LINK: ${fname}"
-    echo
+    blot "LINK: ${fname}"
+    blot
   fi
 
   if ${DRY_RUN}; then
-    echo "  ln -s \"${dest_path}\" \"${DXY_MAKE_LNS_FULL}/${fname}\""
-    echo
+    blot "  ln -s \"${dest_path}\" \"${DXY_MAKE_LNS_FULL}/${fname}\""
+    blot
 
     return 0
   fi
@@ -854,16 +860,16 @@ process_file_eval () {
   local eval_cmd
 
   eval_cmd="$(extract_eval_command "${fname}")"
-  echo "EVAL: ${fname}:"
-  echo
+  blot "EVAL: ${fname}"
+  blot
 
   # See DEV hook atop file. If set, only test specific file.
   [ -z "${TEST_FILE}" ] || [ "${TEST_FILE}" = "${fname}" ] || return 0
 
   if ${DRY_RUN}; then
     # The `set -x` before `eval` prints eval_cmd, so only print on DRY_RUN.
-    echo "  ${eval_cmd}"
-    echo
+    blot "  ${eval_cmd}"
+    blot
 
     return 0
   fi
@@ -874,12 +880,12 @@ process_file_eval () {
   eval "${eval_cmd}"
   exit_code=$?
   set +x
-  echo
+  blot
 
   # See DEV hook atop file. If set, only test specific file.
   if [ -n "${TEST_FILE}" ]; then
-    echo "DEV: Stopping early so you can check result from:"
-    echo "  ${TEST_FILE}"
+    blot "DEV: Stopping early so you can check result from:"
+    blot "  ${TEST_FILE}"
 
     exit_1
   fi
@@ -975,11 +981,11 @@ omr_dxc_infuse () {
   # Assume not client machine if caller set custom DXY_HOSTNAME.
   [ "${DXY_HOSTNAME}" = "$(hostname)" ] || return 0
 
-  echo
-  echo mr -d "${DXY_DEPOXY_CLIENT_FULL}" -n \
+  blot
+  blot mr -d "${DXY_DEPOXY_CLIENT_FULL}" -n \
     --config "${DXY_DEPOXY_CLIENT_FULL}/_mrconfig" \
     infuse
-  echo
+  blot
 
   mr -d "${DXY_DEPOXY_CLIENT_FULL}" -n \
     --config "${DXY_DEPOXY_CLIENT_FULL}/_mrconfig" \
@@ -994,9 +1000,9 @@ omr_dxc_autocommit () {
   # Assume not client machine if caller set custom DXY_HOSTNAME.
   [ "${DXY_HOSTNAME}" = "$(hostname)" ] || return 0
 
-  echo
-  echo mr -d "${DXY_DEPOXY_CLIENT_FULL}" -n autocommit -y
-  echo
+  blot
+  blot mr -d "${DXY_DEPOXY_CLIENT_FULL}" -n autocommit -y
+  blot
 
   mr -d "${DXY_DEPOXY_CLIENT_FULL}" -n autocommit -y
 
@@ -1014,7 +1020,7 @@ omr_dxc_autocommit_verify () {
       return 0
     fi
 
-    >&2 echo "BWARE: OMR autocommit did not commit all changes"
+    >&2 blot "BWARE: OMR autocommit did not commit all changes"
   )
 }
 
@@ -1048,19 +1054,19 @@ omr_dxc_autocommit_demarcate () {
 announce_completed_symlinks () {
   ${DXY_RUN_MAKE_LNS:-false} || return 0
 
-  echo
-  echo "Your DepoXy Client symlinks are ready at:"
-  echo
-  echo "  ${DXY_MAKE_LNS_FULL}"
+  blot
+  blot "Your DepoXy Client symlinks are ready at:"
+  blot
+  blot "  ${DXY_MAKE_LNS_FULL}"
 }
 
 announce_completed_client_repo () {
-  echo
-  echo "Your new DepoXy Client repo is ready at:"
-  echo
-  echo "  ${DXY_DEPOXY_CLIENT_TILDE}"
-  echo
-  echo "- You may want to restart this shell to realize changes"
+  blot
+  blot "Your new DepoXy Client repo is ready at:"
+  blot
+  blot "  ${DXY_DEPOXY_CLIENT_TILDE}"
+  blot
+  blot "- You may want to restart this shell to realize changes"
 }
 
 announce_completed () {
