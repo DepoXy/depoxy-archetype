@@ -448,6 +448,7 @@ autocommit =
   git_auto_commit_many $(find private/docs/ -type f -o -type l) \
     -m "${CLEARED_ACI}: Docs: Personal notes"
   #
+  git_auto_commit_one_update "private/private.not-private" "" "${PRIVATE_ACI}"
   # ===
   # ***
   # ===
