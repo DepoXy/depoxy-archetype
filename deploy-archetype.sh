@@ -456,7 +456,7 @@ fail_if_missing_vars () {
     >&2 echo "- ${missing_var}"
   done
 
-  exit 1
+  exit_1
 }
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
@@ -514,7 +514,7 @@ m4_shim_make_file () {
     >&2 echo
     >&2 echo "ERROR: No such input file: “${tail_path}”"
 
-    exit 1
+    exit_1
   fi
 
   # Although the output redirect trips errexit, the error message (that
@@ -528,7 +528,7 @@ m4_shim_make_file () {
     >&2 echo
     >&2 echo "ERROR: No such destination directory: “${dest_dir}”"
 
-    exit 1
+    exit_1
   fi
 
   local custom_m4_defines=""
@@ -575,7 +575,7 @@ m4_shim_make_file () {
     >&2 echo
     >&2 echo "ERROR: m4 failed."
 
-    exit 1
+    exit_1
   fi
 }
 
@@ -586,7 +586,7 @@ m4_define_value_must_be_specified () {
 
   >&2 echo "ERROR: Key or value “${definition}” expects a value or key"
 
-  exit 1
+  exit_1
 }
 
 # KLUGE: macOS Sonoma 14.4.1 `m4` always raises install-Xcode dialog,
@@ -607,7 +607,7 @@ fail_if_target_exists_and_non_empty () {
   >&2 echo "ERROR: The target directory is not empty!"
   >&2 echo "- Please check: “${DXY_DEPOXY_CLIENT_FULL}”"
 
-  exit 1
+  exit_1
 }
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
@@ -759,7 +759,8 @@ process_files () {
       >&2 echo
       >&2 echo "ERROR: Failed to process “${fname}”."
       >&2 echo "- You'll have to try again!"
-      exit 1
+
+      exit_1
     fi
   done < <(git ls-files -z)
 }
@@ -879,7 +880,7 @@ process_file_eval () {
     echo "DEV: Stopping early so you can check result from:"
     echo "  ${TEST_FILE}"
 
-    exit 1
+    exit_1
   fi
 
   return ${exit_code}
@@ -1090,14 +1091,44 @@ parse_args () {
       *)
         >&2 echo "ERROR: Unrecognized argument: “$1”"
 
-        exit 1
+        exit_1
         ;;
     esac
   done
 }
 
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+_NORMAL_EXIT=false
+
+exit_1 () { _NORMAL_EXIT=true; exit 1; }
+exit_0 () { _NORMAL_EXIT=true; exit 0; }
+
+exit_cleanup () {
+  if ! ${_NORMAL_EXIT}; then
+    # USAGE: Alert on unexpected error path, so you can add happy path.
+    >&2 echo "ALERT: "$(basename -- "$0")" exited abnormally!"
+    >&2 echo "- Hint: Enable \`set -x\` and run again..."
+  fi
+
+  trap - EXIT INT
+
+  ${_NORMAL_EXIT} && exit 0 || exit 1
+}
+
+int_cleanup () {
+  _NORMAL_EXIT=true
+
+  exit_cleanup
+}
+
+# ***
+
 main () {
   set -e
+
+  trap -- exit_cleanup EXIT
+  trap -- int_cleanup INT
 
   # Run from the root of this file.
   local archetype_root="$(dirname -- "$(realpath -- "$0")")"
@@ -1137,6 +1168,8 @@ main () {
   omr_dxc_infuse
   omr_dxc_autocommit
   announce_completed
+  
+  trap - EXIT INT
 }
 
 if [ "$0" = "${BASH_SOURCE[0]}" ]; then
