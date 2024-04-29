@@ -9,6 +9,10 @@
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
+# DXY_HEADER_AUTHOR
+# DXY_HEADER_PROJECT
+# DXY_HEADER_LICENSE
+
 # *** Init state.
 #
 # From Catalina circa Sep, 2020; and Monterey/Ventura circa Oct, 2022.
@@ -118,6 +122,9 @@
 # If you play vim-scripts/TeTrIs.vim using \te command.
 /.tetris
 /.tetris_stat
+
+# CXREF: ~/.kit/py/virtualenvwrapper/virtualenvwrapper.sh
+/.virtualenvs/
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
