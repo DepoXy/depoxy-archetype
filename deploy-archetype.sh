@@ -187,11 +187,25 @@ register_depoxydir_paths () {
     | sed "s@^${HOME}/@@"
   )"
 
+  # E.g., "~/.depoxy"
+  unset -v DXY_DEPOXYDIR_BASE_TILDE
+  register "DXY_DEPOXYDIR_BASE_TILDE" "$( \
+    echo "${DXY_DEPOXYDIR_BASE_FULL}" \
+    | sed -E "s@^${HOME}(/|$)@~\1@"
+  )"
+
   # E.g., "$HOME/.depoxy"
   unset -v DXY_DEPOXYDIR_BASE_HOME
   register "DXY_DEPOXYDIR_BASE_HOME" "$( \
     echo "${DXY_DEPOXYDIR_BASE_FULL}" \
-    | sed -E "s@^${HOME}(/|$)@\\\$HOME\1@"
+    | sed -E "s@^${HOME}(/|$)@\\\\\$HOME\1@"
+  )"
+
+  # E.g., "${HOME}/.depoxy"
+  unset -v DXY_DEPOXYDIR_BASE__HOME_
+  register "DXY_DEPOXYDIR_BASE__HOME_" "$( \
+    echo "${DXY_DEPOXYDIR_BASE_FULL}" \
+    | sed -E "s@^${HOME}(/|$)@\\\\\${HOME}\1@"
   )"
 
   # ***
@@ -199,26 +213,31 @@ register_depoxydir_paths () {
   # E.g., "stints"
   register "DXY_DEPOXYDIR_STINTS_NAME" "${DEPOXYDIR_STINTS_NAME:-stints}"
 
-  # *DEPOXYDIR_STINTS_* DEPOXYDIR_STINTS_FULL templates,
-  # both $HOME and ~ varieties.
+  # E.g., "/(Users|home)/<user>/.depoxy/stints"
+  unset -v DXY_DEPOXYDIR_STINTS_FULL
+  register "DXY_DEPOXYDIR_STINTS_FULL" \
+    "$(eval "echo ${DXY_DEPOXYDIR_BASE_FULL}/${DXY_DEPOXYDIR_STINTS_NAME}")"
 
   # E.g., "~/.depoxy/stints"
   unset -v DXY_DEPOXYDIR_STINTS_TILDE
   register "DXY_DEPOXYDIR_STINTS_TILDE" "$( \
-    echo "${DXY_DEPOXYDIR_BASE_FULL}/${DXY_DEPOXYDIR_STINTS_NAME}" \
+    echo "${DXY_DEPOXYDIR_STINTS_FULL}" \
     | sed -E "s@^${HOME}(/|$)@~\1@"
   )"
 
   # E.g., "$HOME/.depoxy/stints"
   unset -v DXY_DEPOXYDIR_STINTS_HOME
   register "DXY_DEPOXYDIR_STINTS_HOME" "$( \
-    echo "${DXY_DEPOXYDIR_BASE_FULL}/${DXY_DEPOXYDIR_STINTS_NAME}" \
-    | sed -E "s@^${HOME}(/|$)@\\\$HOME\1@"
+    echo "${DXY_DEPOXYDIR_STINTS_FULL}" \
+    | sed -E "s@^${HOME}(/|$)@\\\\\$HOME\1@"
   )"
 
-  # E.g., "/(Users|home)/<user>/.depoxy/stints"
-  unset -v DXY_DEPOXYDIR_STINTS_FULL
-  register "DXY_DEPOXYDIR_STINTS_FULL" "$(eval "echo ${DXY_DEPOXYDIR_STINTS_HOME}")"
+  # E.g., "${HOME}/.depoxy/stints"
+  unset -v DXY_DEPOXYDIR_STINTS__HOME_
+  register "DXY_DEPOXYDIR_STINTS__HOME_" "$( \
+    echo "${DXY_DEPOXYDIR_STINTS_FULL}" \
+    | sed -E "s@^${HOME}(/|$)@\\\\\${HOME}\1@"
+  )"
 
   # ***
 
@@ -231,6 +250,13 @@ register_depoxydir_paths () {
   #   also reaffirmed by DXC _mrconfig, see: DEPOXYDIR_RUNNING_FULL.
   register "DXY_DEPOXYDIR_RUNNING_NAME" \
     "$(basename -- "${DXY_DEPOXYDIR_RUNNING_FULL}")"
+
+  # E.g., "~/.depoxy/running"
+  unset -v DXY_DEPOXYDIR_RUNNING_TILDE
+  register "DXY_DEPOXYDIR_RUNNING_TILDE" "$( \
+    echo "${DXY_DEPOXYDIR_RUNNING_FULL}" \
+    | sed -E "s@^${HOME}(/|$)@~\1@"
+  )"
 
   # ***
 
@@ -282,6 +308,7 @@ register_depoxy_project_paths () {
   register "DXY_DEPOXYAMBERS_DIR" "${ambers_path}"
 
   # E.g., "ambers".
+  unset -v DXY_DEPOXYAMBERS_NAME
   register "DXY_DEPOXYAMBERS_NAME" "$( \
     echo "${DXY_DEPOXYAMBERS_DIR}" \
     | sed "s@^${DXY_DEPOXYDIR_BASE_FULL}/@@"
@@ -297,9 +324,18 @@ register_depoxy_project_paths () {
   # E.g., "$HOME/.depoxy/ambers"
   # - CXREF: Vimprojects template:
   #   ~/.depoxy/ambers/archetype/home/.vim/pack/landonb/start/dubs_project_tray/.vimprojects.EVAL
+  unset -v DXY_DEPOXYAMBERS_DIR_HOME
   register "DXY_DEPOXYAMBERS_DIR_HOME" "$( \
     echo "${DXY_DEPOXYAMBERS_DIR}" \
-    | sed -E "s@^${HOME}(/|$)@\\\$HOME\1@"
+    | sed -E "s@^${HOME}(/|$)@\\\\\$HOME\1@"
+  )"
+
+  # E.g., "${HOME}/.depoxy/ambers"
+  # - Note the extra \\$ delimiter, because m4 command is eval'ed.
+  unset -v DXY_DEPOXYAMBERS_DIR__HOME_
+  register "DXY_DEPOXYAMBERS_DIR__HOME_" "$( \
+    echo "${DXY_DEPOXYAMBERS_DIR}" \
+    | sed -E "s@^${HOME}(/|$)@\\\\\${HOME}\1@"
   )"
 
   # ***
@@ -307,6 +343,13 @@ register_depoxy_project_paths () {
   # At least this script knows where it's at.
   # E.g., "/(Users|home)/<user>/.depoxy/ambers/archetype"
   register "DXY_DEPOXYARCHETYPE_DIR" "${archetype_root}"
+
+  # E.g., "~/.depoxy/ambers/archetype"
+  unset -v DXY_DEPOXYARCHETYPE_DIR_TILDE
+  register "DXY_DEPOXYARCHETYPE_DIR_TILDE" "$( \
+    echo "${DXY_DEPOXYARCHETYPE_DIR}" \
+    | sed -E "s@^${HOME}(/|$)@~\1@"
+  )"
 
   # ***
 

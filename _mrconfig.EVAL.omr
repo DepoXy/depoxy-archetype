@@ -22,7 +22,7 @@
 [DEFAULT]
 __USYNC__ =
   meld \
-    ~/.depoxy/ambers/archetype/_mrconfig.EVAL.omr \
+    DXY_DEPOXYARCHETYPE_DIR_TILDE/_mrconfig.EVAL.omr \
     ~/.depoxy/running/_mrconfig &
 
 # ========================================================================
@@ -34,7 +34,7 @@ order = 191
 # ========================================================================
 # ------------------------------------------------------------------------
 
-[${DEPOXYDIR_STINTS_FULL:-${HOME}/DXY_DEPOXYDIR_BASE_NAME/DXY_DEPOXYDIR_STINTS_NAME}/DXY_DEPOXY_CLIENT_ID]
+[${DEPOXYDIR_STINTS_FULL:-DXY_DEPOXYDIR_STINTS__HOME_}/DXY_DEPOXY_CLIENT_ID]
 # NOTE: This repo has no remote (unless you consider the temporary mountpoint),
 #       so stub remote-ish commands to avoid mr fails. See instead: dxup/dxdn.
 lib = [ -z "DXY_DEPOXY_CLIENT_REMOTE" ] ||
@@ -87,7 +87,7 @@ autocommit =
   # Prepare args, e.g., `autocommit -y`, or `autocommit -f`.
   git_auto_commit_parse_args "$@"
   #
-  local ambers_path="${DEPOXYDIR_BASE_FULL:-${HOME}/.depoxy}/ambers"
+  local ambers_path="${DEPOXYAMBERS_DIR:-DXY_DEPOXYAMBERS_DIR__HOME_}"
   #
   # ***
   #
@@ -275,8 +275,7 @@ autocommit =
   #
   # User Vim config.
   depoxy_client_autocommit_vimprojects () {
-    local ambers_path="${DEPOXYDIR_BASE_FULL:-${HOME}/.depoxy}/ambers"
-    ${DEPOXYAMBERS_DIR:-${ambers_path}}/bin/vimprojects-create-copy-without-work-projects
+    ${ambers_path}/bin/vimprojects-create-copy-without-work-projects
     #
     git_auto_commit_one "home/.vim/pack/landonb/start/dubs_project_tray/.vimprojects" \
       -m "${PRIVATE_ACI}: Vimprojects         (Client project-tray drawer)"
@@ -469,8 +468,8 @@ autocommit =
   # 2021-08-22: I added these tree dumps 2021-01-31 but they've been of
   #             no utility to me. So not quite sure why I'm preserving.
   depoxy_client_autocommit_tree_dumps () {
-    tree -n -a -I .git/ -I home/work/ > "home/.config/${depoxy_client_id}-tree.txt"
-    tree -C -a -I .git/ -I home/work/ > "home/.config/${depoxy_client_id}-tree.col"
+    tree -n -a -I .git/ -I home/BUSINESS_CODE_PATH/ > "home/.config/${depoxy_client_id}-tree.txt"
+    tree -C -a -I .git/ -I home/BUSINESS_CODE_PATH/ > "home/.config/${depoxy_client_id}-tree.col"
     git_auto_commit_many \
       "home/.config/${depoxy_client_id}-tree.txt" \
       "home/.config/${depoxy_client_id}-tree.col" \
@@ -518,7 +517,7 @@ infusePostRebase =
   #
   # Remember that Git doesn't allow symlinked .gitignore .nomore.
   link_hard "${MR_REPO}/home/.depoxy/_gitignore" \
-    "${DEPOXYDIR_BASE_FULL:-${HOME}/DXY_DEPOXYDIR_BASE_NAME}/.gitignore"
+    "${DEPOXYDIR_BASE_FULL:-DXY_DEPOXYDIR_BASE__HOME_}/.gitignore"
   #
   # *** GIT
   #
@@ -557,8 +556,10 @@ infuse =
   # Hard links
   mr -d . -n infusePostRebase
   #
-  # Get the client name, e.g., 'XXXX' from ~/.depoxy/stints/XXXX.
+  # Get the client name, e.g., 'XXXX' from DXY_DEPOXYDIR_STINTS_TILDE/XXXX.
   local depoxy_client_id="$(basename -- "${MR_REPO}")"
+  #
+  local ambers_path="${DEPOXYAMBERS_DIR:-DXY_DEPOXYAMBERS_DIR__HOME_}"
   #
   # *** DepoXy config
   #
@@ -582,7 +583,7 @@ infuse =
   #
   # *** DepoXy filespace
   #
-  # See 'infusePostRebase' task for ~/DXY_DEPOXYDIR_BASE_NAME/.gitignore hard link.
+  # See 'infusePostRebase' task for DXY_DEPOXYDIR_BASE_TILDE/.gitignore hard link.
   #
   # Create the DXY_DEPOXYDIR_RUNNING_TILDE → DXY_DEPOXYDIR_STINTS_TILDE/XXXX symlink.
   # - Note that ${DEPOXY_CLIENT_ID} is from user's environ, which depends on
@@ -605,7 +606,7 @@ infuse =
       printf "%s" "$(font_highlight "No sources.") / Try:\n    cp -ar " \
         "\"${dxy_home_work}.example\" " \
         "\"${dxy_home_work}\"\n" \
-        "                               and customize work/"
+        "                               and customize BUSINESS_CODE_PATH/"
     )"
   elif [ ! -d "${usr_home_work}" ]; then
     home_work_hint="No $(font_highlight “${usr_home_work}”) directory or symlink"
@@ -630,7 +631,7 @@ infuse =
   #
   # Alert if missing business client mrconfig (because impossibly unlikely user won't want).
   # - E.g., "/home/user/.depoxy/stints"
-  local stints_dir="${DEPOXYDIR_STINTS_FULL:-${HOME}/DXY_DEPOXYDIR_BASE_NAME/DXY_DEPOXYDIR_STINTS_NAME}"
+  local stints_dir="${DEPOXYDIR_STINTS_FULL:-DXY_DEPOXYDIR_STINTS__HOME_}"
   # - E.g., "/home/user/.depoxy/stints/XXXX/_mrconfig-acme"
   local mr_business="${stints_dir}/DXY_DEPOXY_CLIENT_ID/_mrconfig-BUSINESS_CODE_PATH"
   if [ ! -f "${mr_business}" ]; then
@@ -641,8 +642,7 @@ infuse =
   #
   symlink_overlay_file \
     "${MR_REPO}/home/.depoxy/stints/_ignore" \
-    "${HOME}/.depoxy/stints/.ignore"
-  #
+    "DXY_DEPOXYDIR_STINTS__HOME_/.ignore"
   #
   # *** BASH
   #
@@ -816,8 +816,7 @@ infuse =
   # CXREF: DepoXy Ambers KB infuser:
   #   infuse_symlinks_macOS_Karabiner_Elements_complex_modifications
   depoxy_client_infuse_karabiner_elements_complex_modifications () {
-    local ambers_path="${DEPOXYDIR_BASE_FULL:-${HOME}/.depoxy}/ambers"
-    local dxy_mrinfuse="${DEPOXYAMBERS_DIR:-${ambers_path}}/home"
+    local dxy_mrinfuse="${ambers_path}/home"
     local cmplxmods=".config/karabiner/assets/complex_modifications"
     # find "${dxy_mrinfuse}/${cmplxmods}" -maxdepth 1 -type l -exec echo {} +
     # Remove existing links, lest you add links to the linked directories.
@@ -971,25 +970,24 @@ include =
   #
   # ***
   #
+  # Load lib fcn `hack_patch_opn_to_call_sensible_open`.
   include_js_npm_patch_opn_sensible_open () {
-    local ambers_path="${DEPOXYDIR_BASE_FULL:-${HOME}/.depoxy}/ambers"
-    # CXREF: ~/.depoxy/ambers/home/.kit/git/ohmyrepos/lib/js-npm-patch-opn-sensible-open
-    # - Load `hack_patch_opn_to_call_sensible_open`
-    cat "${DEPOXYAMBERS_DIR:-${ambers_path}}/home/.kit/git/ohmyrepos/lib/js-npm-patch-opn-sensible-open"
+    local ambers_path="${DEPOXYAMBERS_DIR:-DXY_DEPOXYAMBERS_DIR__HOME_}"
+    # CXREF: DXY_DEPOXYAMBERS_DIR_TILDE/home/.kit/git/ohmyrepos/lib/js-npm-patch-opn-sensible-open
+    cat "${ambers_path}/home/.kit/git/ohmyrepos/lib/js-npm-patch-opn-sensible-open"
   }
   include_js_npm_patch_opn_sensible_open
   #
   # ***
   #
   # Load client-specific OMR project config.
-  # CXREF: ~/.depoxy/ambers/archetype/_mrconfig-BUSINESS_CODE_PATH.EVAL.example
   include_depoxy_client_mr_business () {
     . ${OHMYREPOS_LIB:-${GITREPOSPATH:-${HOME}/.kit/git}/ohmyrepos/lib}/skip-grouping.sh
-    # SAVVY: There's a tilde in DEPOXYDIR_STINTS_FULL, which doesn't matter
-    #        here, but matters in the `infuse` task, where it must be $HOME.
-    # - E.g., "/home/user/.depoxy/stints"
-    local stints_dir="${DEPOXYDIR_STINTS_FULL:-${HOME}/DXY_DEPOXYDIR_BASE_NAME/DXY_DEPOXYDIR_STINTS_NAME}"
-    # - E.g., "/home/user/.depoxy/stints/XXXX/_mrconfig-acme"
+    #
+    local stints_dir="${DEPOXYDIR_STINTS_FULL:-DXY_DEPOXYDIR_STINTS__HOME_}"
+    # CXREF: DXY_DEPOXYDIR_STINTS_TILDE/DXY_DEPOXY_CLIENT_ID/_mrconfig-BUSINESS_CODE_PATH
+    #        DXY_DEPOXYDIR_STINTS_TILDE/DXY_DEPOXY_CLIENT_ID/_mrconfig-BUSINESS_CODE_PATH.example
+    #        DXY_DEPOXYARCHETYPE_DIR_TILDE/_mrconfig-[[[BUSINESS_CODE_PATH]]].EVAL.example
     local mr_business="${stints_dir}/DXY_DEPOXY_CLIENT_ID/_mrconfig-BUSINESS_CODE_PATH"
     if [ -f "${mr_business}" ] && ! (
         mr_exclusive "work" &&
