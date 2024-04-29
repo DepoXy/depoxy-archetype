@@ -474,7 +474,7 @@ autocommit =
     git_auto_commit_many \
       "home/.config/${depoxy_client_id}-tree.txt" \
       "home/.config/${depoxy_client_id}-tree.col" \
-      -m "${CLEARED_ACI}: Client ${depoxy_client_id} project \`tree\`"
+      -m "${CLEARED_ACI}: Client ${depoxy_client_id} project \\\`tree\\\`"
   }
   depoxy_client_autocommit_tree_dumps
   #
