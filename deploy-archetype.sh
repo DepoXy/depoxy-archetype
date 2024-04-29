@@ -959,7 +959,7 @@ init_repo () {
     -c user.email=\"${PERSONAL_GITCONFIG_USER_EMAIL}\" \
   "
 
-  git init -b private .
+  git init -q -b private .
 
   eval "git ${conf_opts} commit -q --allow-empty \
     -m \"Fresh: New DepoXy Client ${DXY_DEPOXY_CLIENT_ID}\""
