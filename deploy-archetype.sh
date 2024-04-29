@@ -260,6 +260,17 @@ register_depoxydir_paths () {
 
   # ***
 
+  # Path known to ~/.mrtrust for temporary usage to standup unwired DepoXy Client.
+  # - E.g., "/user/home/.depoxy/.adscititious"
+  register "DXY_DEPOXYDIR_RESERVABLE_FULL" \
+    "${DEPOXYDIR_RESERVABLE_FULL:-${HOME}/.depoxy/${DEPOXYDIR_RESERVABLE_NAME:-.adscititious}}"
+
+  # # E.g., ".adscititious"
+  # register "DXY_DEPOXYDIR_RESERVABLE_NAME" \
+  #   "$(basename -- "${DXY_DEPOXYDIR_RESERVABLE_FULL}")"
+
+  # ***
+
   # E.g., ".hostnames"
   register "DXY_DEPOXY_HOSTNAMES_NAME" "${DEPOXY_HOSTNAMES_NAME:-.hostnames}"
 
@@ -702,10 +713,39 @@ prepare_depoxy_fs () {
   # E.g., "/user/home/.depoxy/stints/XXXX"
   mkdir_with_trace "${DXY_DEPOXY_CLIENT_FULL}"
 
+  prepare_depoxy_running_symlink
+}
+
+prepare_depoxy_running_symlink () {
   # E.g., "/user/home/.depoxy/running"
-  if [ ! -e "${DXY_DEPOXYDIR_RUNNING_FULL}" ]; then
-    # Necessary for running initial DXC 'infuse' (which also makes this link).
-    command ln -s "${DXY_DEPOXY_CLIENT_FULL}" "${DXY_DEPOXYDIR_RUNNING_FULL}"
+  # - This is necessary for infuse and aci.
+  if [ -h "${DXY_DEPOXYDIR_RUNNING_FULL}" ]; then
+    local running_now
+    running_now="$(realpath -- "${DXY_DEPOXYDIR_RUNNING_FULL}")"
+
+    if [ "${DXY_DEPOXY_CLIENT_FULL}" = "${running_now}" ]; then
+      blot "Client already wired at “${DXY_DEPOXYDIR_RUNNING_FULL}”"
+    else
+      >&2 blot
+      >&2 blot "$(alert "BWARE: A different client is currently “running”:")"
+      >&2 blot "$(alert "  ${running_now}")"
+      # Use alternative path in ~/.mrtrust plumbed for this script.
+      # - Necessary for running new DXC's 'infuse' and 'autocommit'.
+      # - See also: `mr -t/--trust-all`, but ~/.mrconfig still needs
+      #   to deliberately load the config, so we need this path anyway.
+      >&2 blot "- Using temporarily “reservable” project slot:"
+      >&2 blot "  ${DXY_DEPOXYDIR_RESERVABLE_FULL}"
+      if [ -h "${DXY_DEPOXYDIR_RESERVABLE_FULL}" ]; then
+        command rm -- "${DXY_DEPOXYDIR_RESERVABLE_FULL}"
+      fi
+      ln_with_trace "${DXY_DEPOXY_CLIENT_FULL}" "${DXY_DEPOXYDIR_RESERVABLE_FULL}"
+    fi
+  elif [ ! -e "${DXY_DEPOXYDIR_RUNNING_FULL}" ]; then
+    ln_with_trace "${DXY_DEPOXY_CLIENT_FULL}" "${DXY_DEPOXYDIR_RUNNING_FULL}"
+  else
+    >&2 blot "$(alert "ERROR: Not a symlink: ${DXY_DEPOXYDIR_RUNNING_FULL}")"
+
+    exit_1
   fi
 }
 
@@ -1012,14 +1052,10 @@ omr_dxc_infuse () {
   [ "${DXY_HOSTNAME}" = "$(hostname)" ] || return 0
 
   blot
-  blot mr -d "${DXY_DEPOXY_CLIENT_FULL}" -n \
-    --config "${DXY_DEPOXY_CLIENT_FULL}/_mrconfig" \
-    infuse
+  blot mr -d "${DXY_DEPOXY_CLIENT_FULL}" -n infuse
   blot
 
-  mr -d "${DXY_DEPOXY_CLIENT_FULL}" -n \
-    --config "${DXY_DEPOXY_CLIENT_FULL}/_mrconfig" \
-    infuse
+  mr -d "${DXY_DEPOXY_CLIENT_FULL}" -n infuse
 }
 
 # ***
@@ -1078,6 +1114,38 @@ omr_dxc_autocommit_demarcate () {
 
     git commit -q --allow-empty -m "${empty_msg}"
   )
+}
+
+omr_dxc_cleanup () {
+  if [ ! -h "${DXY_DEPOXYDIR_RESERVABLE_FULL}" ]; then
+    return 0
+  fi
+
+  # Meh: We could cleanup, but what if user wants to run OMR again?
+  local cleanup_now=false
+
+  if ${cleanup_now}; then
+    omr_dxc_cleanup_now
+  else
+    omr_dxc_cleanup_reminder
+  fi
+}
+
+omr_dxc_cleanup_now () {
+  >&2 blot "- Removing temporarily “reservable” project slot:"
+  >&2 blot "  ${DXY_DEPOXYDIR_RESERVABLE_FULL}"
+  >&2 blot
+
+  command rm -- "${DXY_DEPOXYDIR_RESERVABLE_FULL}"
+}
+
+omr_dxc_cleanup_reminder () {
+  >&2 blot "$(alert "CHORE"): Remove the temporary wiring when you’re done:"
+  >&2 blot
+  >&2 blot "         command rm -- \"${DXY_DEPOXYDIR_RESERVABLE_FULL}\""
+  >&2 blot "         # Just in case"
+  >&2 blot "         mr -d ${DXY_DEPOXYDIR_RUNNING_FULL} -n infuse"
+  >&2 blot
 }
 
 # ***
@@ -1208,6 +1276,7 @@ main () {
   init_repo
   omr_dxc_infuse
   omr_dxc_autocommit
+  omr_dxc_cleanup
   announce_completed
   
   trap - EXIT INT
