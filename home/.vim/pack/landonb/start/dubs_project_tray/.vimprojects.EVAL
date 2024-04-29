@@ -22,51 +22,38 @@
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
-CLIENT_PROJECT_A
-#░▒░░▒░░▒░░▒#
-CLIENT_PROJECT_2
-#▒░░▒░░▒░░▒░#
-CLIENT_PROJECT_X
-CLIENT_PROJECTS
-#░░▒░░▒░░▒░░#
-# TOC USAGE: Posit caret/F1 jumps
+CLIENT_PROJECT_A # ...for example
+#░▒░░▒░░▒░░▒#    # TOC USAGE:
+CLIENT_PROJECTS  # - Caret over
+#░░▒░░▒░░▒░░#    # - <F1> to go
 DUBS_VIM_       DUBS_CUTS_
 HOMEFRIES_      SHOILERPLATE_
 Oh_My_Repos_    GIT_SMART_
-MYREPOS_BRANCHABLE
+        MYREPOS_BRANCHABLE
 MRCONFIGS_      MREDIT_CONFIGS
 GIT_PUT_WISE_   TIG_NEWTONS_
-DEPOXY_AMBERS ┓ PUT_WIS AMBERS_
-DEPOXY_STINTS ┃ DEPOXY_ARCHETYPE
-       ━━━━━━━┛
-NOTABLE_NOTES
+DEPOXY_AMBERS ┓ DEPOXY_ARCHETYPE
+DEPOXY_STINTS ┃ NOTABLE_NOTES
+      ┗━━━━━━━┛ 
 
-# ***
-
- THIS FILE IS SOMEWHAT
- AUTO-GENERATED.
-:help project  *help*
- \c   Add new project
-<F5>  Refresh project
- zA   Open/Close Fold
-zc/zo Tiny Open/Close
- zM   Close All Folds
- zR   Open All Foldzs
-zm/zr Close/Open Fold
-zk/zj <--  / --> Fold
- za   Toggle sgl fold
-⇧<CR> Open in new window
-^<CR> Open as only window
- \dp  reload dubs_projects.vim
-       (or :GrepSteadyReload)
-
-### END: VIMPROJHEADER #########
-################################
-
-# ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+┏━┫ k͟e͟y͟b͟o͟a͟r͟d͟ ͟b͟i͟n͟d͟i͟n͟g͟s͟ ┣━━━━━━━━┓
+┃    :help project             ┃
+┃  \c   Add New Project        ┃
+┃ <F5>  Re-list Project        ┃
+┃  zM   Close All Folds        ┃
+┃  zR   Open All Folds         ┃
+┃  zA   Fold/Unfold Project    ┃
+┃  za   Toggle One Fold        ┃
+┃ zc/zo Close/Open One Fold    ┃
+┃ zm/zr More/Reduce All Folds  ┃
+┃ zk/zj ↑ Prev/↓ Next Fold     ┃
+┃ [z/]z ⤴Start/⤵End Fold     ┃
+┃ ⇧<CR> Open in New Window     ┃
+┃ ^<CR> Open in Only Window    ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 
 #################################
-# BEG: DEPOXYCLIENTS ###########
+# #### DEPOXYCLIENTS ###########
 #
 # ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
 # ┃ 🏹 🦃  DepoXy Client  🏹 🦃 ┃
