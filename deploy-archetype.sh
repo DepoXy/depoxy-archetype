@@ -815,6 +815,15 @@ prepare_symlinks_fs () {
 
   ! ${DRY_RUN} || return 0
 
+  if [ -h "${DXY_MAKE_LNS_FULL}/deploy-archetype.sh" ]; then
+    blot
+    blot "Cleaning up previous symlinks tree"
+    blot
+    blot "  command rm -rf -- \"${DXY_MAKE_LNS_FULL}\""
+
+    command rm -rf -- "${DXY_MAKE_LNS_FULL}"
+  fi
+
   mkdir_with_trace "${DXY_MAKE_LNS_FULL}"
 
   prepare_client_fs "${DXY_MAKE_LNS_FULL}"
