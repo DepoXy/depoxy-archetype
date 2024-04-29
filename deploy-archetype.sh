@@ -611,6 +611,11 @@ fail_if_target_exists_and_non_empty () {
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
+bg_red () { printf "\033[41m"; }
+fg_white () { printf "\033[97m"; }
+attr_reset () { printf "\033[0m"; }
+alert () { printf "%s" "$(bg_red)$(fg_white)$1$(attr_reset)"; }
+
 blot () {
   echo "$@"
 }
@@ -1020,7 +1025,8 @@ omr_dxc_autocommit_verify () {
       return 0
     fi
 
-    >&2 blot "BWARE: OMR autocommit did not commit all changes"
+    >&2 blot "$(alert "BWARE"): OMR autocommit did not commit all changes"
+    blot
   )
 }
 
