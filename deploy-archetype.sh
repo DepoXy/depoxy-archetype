@@ -619,8 +619,11 @@ prompt_continue_or_exit () {
 
   local ignored_key
 
+  # REFER: <ESC+7> Save cursor posit (DEC) / <ESC+8> Restore posit (DEC)
+  #   https://gist.github.com/ConnerWill/d4b6c776b509add763e17f9f113fd25b
+
   (
-    printf " Press any key to see variable values [.] "
+    printf " 🍍 Press any key to see variable values [.] \0337  🍍\0338"
     # SAVVY: Use -e (readline) so arrow keys, etc., are ignored.
     # - If not using -e, if user presses arrow key, it injects more
     #   than one char (escape code) that can be picked up by a later
@@ -646,7 +649,7 @@ prompt_continue_or_exit () {
 
   # The directory doesn't exist or is empty, so defaulting Yes seems fine.
   #  printf " Are you ready to deploy? [y/N] "
-  printf " Are you ready to deploy? [Y/n] "
+  printf " 🍍 Are you ready to deploy? [Y/n] \0337  🍍\0338"
   read -e -n 1 the_choice
 
   [ -z "${the_choice}" ] || echo
