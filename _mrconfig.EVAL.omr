@@ -956,7 +956,14 @@ include =
   # Load task helpers (that higher-level OMR config doesn't load, because
   # neither DepoXy Ambers nor Oh My Repos! uses this functionality).
   #
-  cat "${OHMYREPOS_LIB:-${HOME}/.ohmyrepos/lib}/git-hooks-rewire"
+  # ***
+  #
+  include_git_hooks_rewire () {
+    cat "${OHMYREPOS_LIB:-${HOME}/.ohmyrepos/lib}/git-hooks-rewire"
+  }
+  include_git_hooks_rewire
+  #
+  # ***
   #
   ambers_path="${DEPOXYDIR_BASE_FULL:-${HOME}/.depoxy}/ambers"
   cat "${DEPOXYAMBERS_DIR:-${ambers_path}}/home/.kit/git/ohmyrepos/lib/js-npm-patch-opn-sensible-open"
