@@ -553,13 +553,57 @@ infusePostRebase =
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
 infuse =
-  # Hard links
-  mr -d . -n infusePostRebase
-  #
   # Get the client name, e.g., 'XXXX' from DXY_DEPOXYDIR_STINTS_TILDE/XXXX.
   local depoxy_client_id="$(basename -- "${MR_REPO}")"
   #
   local ambers_path="${DEPOXYAMBERS_DIR:-DXY_DEPOXYAMBERS_DIR__HOME_}"
+  #
+  # *** `mredit` wiring
+  #
+  # CXREF: ~/DXY_DEPOXY_PROJLNS_NAME/mymrconfigs/
+  symlink_overlay_file \
+    "${MR_REPO}/_mrconfig" \
+    "${MREDIT_CONFIGS:-${DEPOXY_PROJLNS:-${HOME}/.projlns}/mymrconfigs}/client-${depoxy_client_id}-mrconfig"
+  #
+  # *** Guard clause
+  #
+  # Stop now if *not* the active DepoXy Client
+  #
+  #   (the tasks below will overwrite the active client's
+  #    symlinks and make this project the active client)
+  #
+  # Check if this is the active client, and stop now if not.
+  # - Normally, the active client is specified by DEPOXY_CLIENT_ID
+  #     hard-coded from ~/.config/depoxy/depoxyrc
+  #   Or it's the largest-numbered client under stints/
+  #     per default used by ~/.depoxy/ambers/core/depoxy_fs.sh
+  # - But in the context of OMR config, the active client is
+  #   the one specified by ~/.depoxy/running, because it's this
+  #   infuse action (see below) that wires ~/.config/depoxy/depoxyrc
+  #   - So deploy-archetype.sh (or the user) can point
+  #     ~/.depoxy/running at the client they want to activate,
+  #     and then run `mr -d ~/.depoxy/running infuse` to wire it.
+  #
+  local depoxydir_running_full="${DEPOXYDIR_RUNNING_FULL:-DXY_DEPOXYDIR_RUNNING__HOME_}"
+  local running_now="$(realpath -- "${depoxydir_running_full}")"
+  local project_abs="$(realpath -- "${MR_REPO}")"
+  if [ "${project_abs}" != "${running_now}" ]; then
+    warn "BWARE: This is not the active client"
+    warn "- That honor goes to"
+    warn "    ${running_now}"
+    warn "- To make this project the active client, try"
+    warn "    command rm \"${depoxydir_running_full}\""
+    warn "    command ln -s \\"
+    warn "      \"${MR_REPO}\" \\"
+    warn "      \"${depoxydir_running_full}\""
+    warn "    mr -d \"${MR_REPO}\" -n infuse"
+    #
+    return 1
+  fi
+  #
+  # *** Hard links
+  #
+  mr -d . -n infusePostRebase
   #
   # *** DepoXy config
   #
@@ -591,9 +635,10 @@ infuse =
   #   - So generally the symlink probably already exists, but if it was
   #     clobbered or changed you can repair it if you have a shell still
   #     using the proper client ID.
-  if [ "${DEPOXY_CLIENT_ID}" = "DXY_DEPOXY_CLIENT_ID" ]; then
-    symlink_overlay_dir "${MR_REPO}" "${DEPOXYDIR_RUNNING_FULL}"
-  fi
+  #
+  # See guard clause above: This call is a no-op:
+  # - The symlink already exists and is correct.
+  symlink_overlay_dir "${MR_REPO}" "${depoxydir_running_full}"
   #
   # *** OMR
   #
@@ -623,11 +668,6 @@ infuse =
       "${dxy_home_work}/_ignore" \
       "${DXC_WORK_ROOT:-${HOME}/BUSINESS_CODE_PATH}/.ignore"
   fi
-  #
-  # `mredit` wiring
-  symlink_overlay_file \
-    "${MR_REPO}/_mrconfig" \
-    "${MREDIT_CONFIGS:-${DEPOXY_PROJLNS:-${HOME}/.projlns}/mymrconfigs}/client-${depoxy_client_id}-mrconfig"
   #
   # Alert if missing business client mrconfig (because impossibly unlikely user won't want).
   # - E.g., "/home/user/.depoxy/stints"

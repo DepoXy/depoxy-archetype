@@ -263,6 +263,20 @@ register_depoxydir_paths () {
     | sed -E "s@^${HOME}(/|$)@~\1@"
   )"
 
+  # E.g., "$HOME/.depoxy/running"
+  unset -v DXY_DEPOXYDIR_RUNNING_HOME
+  register "DXY_DEPOXYDIR_RUNNING_HOME" "$( \
+    echo "${DXY_DEPOXYDIR_RUNNING_FULL}" \
+    | sed -E "s@^${HOME}(/|$)@\\\\\$HOME\1@"
+  )"
+
+  # E.g., "${HOME}/.depoxy/running"
+  unset -v DXY_DEPOXYDIR_RUNNING__HOME_
+  register "DXY_DEPOXYDIR_RUNNING__HOME_" "$( \
+    echo "${DXY_DEPOXYDIR_RUNNING_FULL}" \
+    | sed -E "s@^${HOME}(/|$)@\\\\\${HOME}\1@"
+  )"
+
   # ***
 
   # Path known to ~/.mrtrust for temporary usage to standup unwired DepoXy Client.
