@@ -1,15 +1,16 @@
 # USAGE:
 #   m4_shim \
-#     "+23" "home/.vim/pack/landonb/start/dubs_project_tray/.vimprojects.EVAL" \
+#     "+25" "home/.vim/pack/landonb/start/dubs_project_tray/.vimprojects.EVAL" \
 #     "home/.vim/pack/landonb/start/dubs_project_tray/.vimprojects"
 #   # Note that we symlink the --purged Vimprojects file to
 #   # avoid client project noise (though maybe you want to
 #   # `diff DXC/home/.vimprojects DXC/.home/.vimprojects--purged`
 #   # to ensure the script that creates --purged copy is working).
+#   PROJECT_PLUG_PATH="home/.vim/pack/landonb/start/dubs_project_tray" &&
 #   ! ${DXY_RUN_MAKE_LNS:-false} || \
 #     ln -sf \
-#       "${DXY_MAKE_LNS_FULL}/home/.vim/pack/landonb/start/dubs_project_tray/.vimprojects--purged" \
-#       "${DXY_MAKE_LNS_FULL}/home/.vim/pack/landonb/start/dubs_project_tray/.vimprojects.EVAL"
+#       "${DXY_DEPOXY_CLIENT_FULL}/${PROJECT_PLUG_PATH}/.vimprojects--purged" \
+#       "${DXY_MAKE_LNS_FULL}/${PROJECT_PLUG_PATH}/.vimprojects.EVAL"
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
