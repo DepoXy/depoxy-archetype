@@ -584,7 +584,12 @@ infuse =
   #
   # See 'infusePostRebase' task for ~/DXY_DEPOXYDIR_BASE_NAME/.gitignore hard link.
   #
-  # Create the ~/.depoxy/running → ~/.depoxy/stints/XXXX symlink.
+  # Create the DXY_DEPOXYDIR_RUNNING_TILDE → DXY_DEPOXYDIR_STINTS_TILDE/XXXX symlink.
+  # - Note that ${DEPOXY_CLIENT_ID} is from user's environ, which depends on
+  #   this symlink probably having existed when ${DEPOXY_CLIENT_ID} was set.
+  #   - So generally the symlink probably already exists, but if it was
+  #     clobbered or changed you can repair it if you have a shell still
+  #     using the proper client ID.
   if [ "${DEPOXY_CLIENT_ID}" = "DXY_DEPOXY_CLIENT_ID" ]; then
     symlink_overlay_dir "${MR_REPO}" "${DEPOXYDIR_RUNNING_FULL}"
   fi
