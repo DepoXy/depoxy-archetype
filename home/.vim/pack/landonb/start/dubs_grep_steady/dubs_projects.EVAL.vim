@@ -8,8 +8,8 @@
 " DXY_HEADER_AUTHOR
 " DXY_HEADER_PROJECT
 " DXY_HEADER_LICENSE
-" Summary: This is a user-customizable file loaded by Dubs Grep Steady.
-" Helpful: :GrepSteadyReload / :h dubs-grep-steady / See also hints below.
+" Summary: This is a user-customizable file loaded by Dubs Grep Steady
+" Helpful: :GrepSteadyReload / \dp / :h dubs-grep-steady / More hints below
 
 let g:ds_simple_grep_locat_lookup = [
   \ "Search in:",
@@ -62,7 +62,7 @@ let g:ds_simple_grep_locat_lookup = [
 "      - The other default paths above are wired to real paths.
 "      - The lines above are +10 offset from how they're numbered by
 "        the `inputlist` command (:h inputlist).
-" USAGE: Run :GrepSteadyReload (or restart Vim) after you modify the list.
+" USAGE: Run :GrepSteadyReload (or \dp, or restart Vim) after editing above.
 " ====================================================================
 
 " *********************************************************************** "
