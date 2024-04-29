@@ -680,6 +680,8 @@ infuse =
   #
   # Replace Vim spell file with symlink to user's version in DXC.
   cast_private_spell () {
+    touch "${MR_REPO}/home/.vim/spell/en.utf-8.add"
+    mkdir -p "${HOME}/.vim/spell"
     # DepoXy Ambers maintains ~/.mrinfuse, so currently cannot simply:
     #   symlink_mrinfuse_file "spell/en.utf-8.add"
     # but we could probably infuse the mrinfuse'r and then we could use
