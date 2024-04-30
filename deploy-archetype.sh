@@ -1179,16 +1179,27 @@ omr_dxc_autocommit () {
 }
 
 omr_dxc_autocommit_verify () {
+  git_status_without_spell_melds () {
+    local ignore_spell_melds="$(echo \
+      ":!home/.vim/spell/sync-spells--*-new.sh" \
+    )"
+
+    git status --porcelain -- ${ignore_spell_melds}
+  }
+
   (
     cd "${DXY_DEPOXY_CLIENT_FULL}"
 
-    if [ -z "$(git status --porcelain)" ]; then
+    if test -z "$(git_status_without_spell_melds)"; then
 
       return 0
     fi
 
     >&2 blot "$(alert "BWARE"): OMR autocommit did not commit all changes"
     blot
+    # DXC _mrconfig prints similar:
+    #   git_status_without_spell_melds | sed 's/^/  /'
+    #   blot
   )
 }
 
