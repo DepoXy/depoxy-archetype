@@ -506,7 +506,8 @@ spells =
   # CXREF: ~/.depoxy/ambers/home/.kit/git/ohmyrepos/lib/spellfile.txt-runner.sh
   #   ~/.kit/txt/spellfile.txt/bin/spells.sh
   commit_sorted_spells_and_alert_if_conflicts
-  git_auto_commit_one_update "home/.vim/spell/en.utf-8.add--personal"
+  git_auto_commit_one_update "home/.vim/spell/en.utf-8.add--personal" \
+     "" "${PRIVATE_ACI}"
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
