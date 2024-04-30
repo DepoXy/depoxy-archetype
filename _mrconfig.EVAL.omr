@@ -305,7 +305,7 @@ autocommit =
   #         | $(command -v ghead || command -v head) -n -1 ...
   #   - Noting that built-in macOS `head` lacks `-n` feature.
   SHCOLORS_OFF=false \
-  SPF_PRINT_SPELLS=false mr -d . -n -mM spells "$@" \
+  SPF_PRINT_SPELLS=false mr -d . -n -mM spells "$@" 2>&1 \
     | sed 's/^/  /'
   printf "\n"
   #
