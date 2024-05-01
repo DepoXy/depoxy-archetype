@@ -861,9 +861,6 @@ infuse =
   depoxy_client_infuse_karabiner_elements_complex_modifications () {
     local dxy_mrinfuse="${ambers_path}/home"
     local cmplxmods=".config/karabiner/assets/complex_modifications"
-    # find "${dxy_mrinfuse}/${cmplxmods}" -maxdepth 1 -type l -exec echo {} +
-    # Remove existing links, lest you add links to the linked directories.
-    find "${dxy_mrinfuse}/${cmplxmods}" -maxdepth 1 -type l -exec rm -- {} +
     # Symlink private KE cfg.
     local cbinfuser="${MR_REPO}/home"
     (
