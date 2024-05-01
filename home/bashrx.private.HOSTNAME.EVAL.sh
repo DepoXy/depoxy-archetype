@@ -176,16 +176,18 @@ bashdx_alias_bye () {
 bashdxy_source_experimental () {
   local experimental_sh="${HOME}/.depoxy/running/home/bashrx.private.experimental.sh"
 
-  # [ ! -f "${experimental_sh}" ] || . "${experimental_sh}"
-  . "${experimental_sh}"
+  if [ -f "${experimental_sh}" ]; then
+    . "${experimental_sh}"
+  fi
 }
 
 bashdxy_source_business_code_path () {
   # CXREF: This path was set by deploy-archetype.sh per [[[BUSINESS_CODE_PATH]]].
   local acme_sh="${HOME}/.depoxy/running/home/bashrx.private.BUSINESS_CODE_PATH.sh"
 
-  # [ ! -f "${acme_sh}" ] || . "${acme_sh}"
-  . "${acme_sh}"
+  if [ -f "${acme_sh}" ]; then
+    . "${acme_sh}"
+  fi
 }
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
