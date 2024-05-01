@@ -253,6 +253,7 @@ register_depoxydir_paths () {
   # E.g., "running"
   # CXREF: Symlink created by this script;
   #   also reaffirmed by DXC _mrconfig, see: DEPOXYDIR_RUNNING_FULL.
+  unset -v DXY_DEPOXYDIR_RUNNING_NAME
   register "DXY_DEPOXYDIR_RUNNING_NAME" \
     "$(basename -- "${DXY_DEPOXYDIR_RUNNING_FULL}")"
 
