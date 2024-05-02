@@ -709,6 +709,14 @@ prompt_continue_or_exit () {
     #     is macOS Bash v3-compatible), in which case you'd have to
     #     `read -t 1`, which is annoying (and for some reason
     #     `read -t 0` doesn't gobble the excess input).
+    # - Caveat: readline <Up> is usually bound to previous-history
+    #   and/or history-search-backward, so if user presses <Up>, it
+    #   uses the previous command line as `read` input. This can be
+    #   very confusing to the user! So it's a trade-off, really,
+    #   and maybe it makes more sense *not* to use `read -e`...
+    #   - CXREF: See Homefries for a more complete sol'n that
+    #     temporarily unbinds <Up> during the `read` prompt:
+    #       ~/.homefries/lib/ask_yes_no_default.sh
     read -e -n 1 ignored_key
 
     [ -z "${ignored_key}" ] || echo
