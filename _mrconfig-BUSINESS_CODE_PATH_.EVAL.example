@@ -57,7 +57,7 @@ autocommit =
   # Copy, e.g.,
   #   ~/.depoxy/stints/XXXX/home/.depoxy/stints/running/flast.sh/README.md
   #   to ~/.depoxy/stints/XXXX/flast.sh/README.md (so you keep a copy of
-  #   the README under DXC; that and other files are copied to flash.sh).
+  #   the README under DXC; that and other files are copied to flast.sh).
   command cp -- ../home/.depoxy/stints/running/BUSINESS_PROJECT_NAME_DOTFILES/README.md README.md
   #
   command cp -- ../_mrconfig-BUSINESS_CODE_PATH* .
