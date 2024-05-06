@@ -3,7 +3,7 @@
 #     "+10" "home/bashrx.private.USERNAME.EVAL.sh" \
 #     "home/bashrx.private.${DXY_USERNAME}.sh" \
 #     "BUSINESS_PROJECT_BASE" \
-#       "https://${BUSINESS_GITCONFIG_HUB_HOST}/$(dirname -- "${DXY_VENDOR_GITSERVER_USER_REPO}")"
+#       "https://${DXY_VENDOR_GITCONFIG_HUB_HOST}/$(dirname -- "${DXY_VENDOR_GITSERVER_USER_REPO}")"
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 

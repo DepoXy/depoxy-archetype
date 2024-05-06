@@ -17,7 +17,7 @@
 
 [hub]
   # See also `GITHUB_HOST=my.git.org hub ...` for overriding this.
-  host = BUSINESS_GITCONFIG_HUB_HOST
+  host = DXY_VENDOR_GITCONFIG_HUB_HOST
 
 # ***
 

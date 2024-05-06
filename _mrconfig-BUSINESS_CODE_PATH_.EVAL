@@ -33,7 +33,7 @@ infuse =
 # "Your ACME-specific OMR config and Homefries bashrc"
 # E.g., ~/.depoxy/stints/2324/flast.sh
 [${DEPOXYDIR_STINTS_FULL:-${HOME}/.depoxy/stints}/DEPOXY_CLIENT_ID/DXY_VENDOR_PROJECT_NAME_DOTFILES]
-lib = remote_set origin git@BUSINESS_GITCONFIG_HUB_HOST:DXY_VENDOR_GITSERVER_USER_REPO.git
+lib = remote_set origin git@DXY_VENDOR_GITCONFIG_HUB_HOST:DXY_VENDOR_GITSERVER_USER_REPO.git
 autocommit =
   # Prepare args, e.g., `autocommit -y`, or `autocommit -f`.
   git_auto_commit_parse_args "$@"

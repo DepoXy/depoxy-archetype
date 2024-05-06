@@ -81,7 +81,7 @@ register_customizable_git_config () {
 
   # The @biz Git server host (i.e., GitHub or GitLab URL),
   # e.g., "gitlab.acme.com".
-  register "BUSINESS_GITCONFIG_HUB_HOST" "PLEASE_SET_ME"
+  register "DXY_VENDOR_GITCONFIG_HUB_HOST" "PLEASE_SET_ME"
   # The @biz Git server user name and email it'll use (you can user whatever
   # you want, but I like to use the same values I see when I approve a PR/MR,
   # or that I see other devs use).
@@ -113,7 +113,7 @@ register_customizable_git_config () {
   # a one-line URL-only header (i.e., not Author/Project/License lines).
   # E.g.:
   #   https://gitlab.acme.com/User.Name/uname.sh#🥗
-  register "DXY_HEADER_DOTFILES" "https://${BUSINESS_GITCONFIG_HUB_HOST}/${DXY_VENDOR_GITSERVER_USER_REPO}#🥗"
+  register "DXY_HEADER_DOTFILES" "https://${DXY_VENDOR_GITCONFIG_HUB_HOST}/${DXY_VENDOR_GITSERVER_USER_REPO}#🥗"
   #
   register "DXY_HEADER_DOTPROJECT" "Project: ${DXY_HEADER_DOTFILES}"
 }
