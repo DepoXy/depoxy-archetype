@@ -13,7 +13,7 @@
   # Prefer the same name you see when merging via PR/MR.
   # Also verify against format co-workers seem to use.
   name = DXY_VENDOR_GITCONFIG_USER_NAME
-  email = BUSINESS_GITCONFIG_USER_EMAIL
+  email = DXY_VENDOR_GITCONFIG_USER_EMAIL
 
 [hub]
   # See also `GITHUB_HOST=my.git.org hub ...` for overriding this.
