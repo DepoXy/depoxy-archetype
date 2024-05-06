@@ -41,9 +41,9 @@ DEPOXY_STINTS ┃ NOTABLE_NOTES
 ┃  \c   Add New Project        ┃
 ┃ <F5>  Re-list Project        ┃
 ┃  zM   Close All Folds        ┃
-┃  zR   Open All Folds         ┃
-┃  zA   Fold/Unfold Project    ┃
-┃  za   Toggle One Fold        ┃
+┃  zR   Open (Reduce) All      ┃
+┃  zA   Fold/Unfold (A)ll      ┃
+┃  za   Toggle One (a) Fold    ┃
 ┃ zc/zo Close/Open One Fold    ┃
 ┃ zm/zr More/Reduce All Folds  ┃
 ┃ zk/zj ↑ Prev/↓ Next Fold     ┃
