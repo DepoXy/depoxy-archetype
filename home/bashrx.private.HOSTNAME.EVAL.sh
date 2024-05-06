@@ -106,14 +106,14 @@ bashdx_configure_gvim_open_kindness () {
 #
 # - Obviously, this location is highly subjective.
 #   - You can set this when generating a DepoXy Client
-#     using the [[[BUSINESS_CODE_PATH]]] environ.
+#     using the [[[DXY_VENDOR_CODE_PATH]]] environ.
 #   - It defaults to '~/work', but author sometimes
 #     customizes it to be @biz-specific, e.g.,
 #     '~/acme', or '~/fbi/.
 
 bashdx_wire_aliases_pushd_paths_cdw () {
-  # CXREF: This path was set by deploy-archetype.sh per [[[BUSINESS_CODE_PATH]]].
-  local client_dir="${HOME}/BUSINESS_CODE_PATH"
+  # CXREF: This path was set by deploy-archetype.sh per [[[DXY_VENDOR_CODE_PATH]]].
+  local client_dir="${HOME}/DXY_VENDOR_CODE_PATH"
 
   if [ -d "${client_dir}" ]; then
     pushd_alias_or_warn "cdw" "${client_dir}"
@@ -185,8 +185,8 @@ bashdxy_source_experimental () {
 }
 
 bashdxy_source_business_code_path () {
-  # CXREF: This path was set by deploy-archetype.sh per [[[BUSINESS_CODE_PATH]]].
-  local acme_sh="${HOME}/.depoxy/running/home/bashrx.private.BUSINESS_CODE_PATH.sh"
+  # CXREF: This path was set by deploy-archetype.sh per [[[DXY_VENDOR_CODE_PATH]]].
+  local acme_sh="${HOME}/.depoxy/running/home/bashrx.private.DXY_VENDOR_CODE_PATH.sh"
 
   if [ -f "${acme_sh}" ]; then
     . "${acme_sh}"

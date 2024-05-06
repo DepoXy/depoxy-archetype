@@ -72,7 +72,7 @@ DEPOXY_STINTS=DXY_DEPOXYDIR_BASE_HOME filter=".* *" exclude=".DS_Store" {
   LICENSE
   README.md
   _mrconfig
-  _mrconfig-BUSINESS_CODE_PATH.example
+  _mrconfig-DXY_VENDOR_CODE_PATH.example
   docs=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/docs {
    .ignore
    Backlog_Client_[[[]]]DXY_DEPOXY_CLIENT_ID.rst
@@ -259,7 +259,7 @@ DEPOXY_STINTS=DXY_DEPOXYDIR_BASE_HOME filter=".* *" exclude=".DS_Store" {
 CLIENT_PROJECTS
 # <INSERT FIRST PROJECT HERE>
 
-client_project=$HOME/BUSINESS_CODE_PATH/<org>/<repo> filter=".* *" {
+client_project=$HOME/DXY_VENDOR_CODE_PATH/<org>/<repo> filter=".* *" {
  # ...
 }
 
@@ -1100,7 +1100,7 @@ DEPOXY_ARCHETYPE=$HOME/.depoxy/ambers/archetype filter=".* *" {
  LICENSE.EVAL
  README--FIXME.rst
  README.md
- _mrconfig-BUSINESS_CODE_PATH_.EVAL.example
+ _mrconfig-VENDOR_CODE_PATH_.EVAL.example
  _mrconfig.EVAL.omr
  deploy-archetype.sh
  docs=$HOME/.depoxy/ambers/archetype/docs {
@@ -2612,7 +2612,7 @@ MRCONFIGS_=/ filter=".*mrconfig* *mrconfig*" {
  DEPOXY_STINTS=$HOME/.depoxy/stints {
   client/DXY_DEPOXY_CLIENT_ID=$HOME/.depoxy/stints/DXY_DEPOXY_CLIENT_ID {
    _mrconfig
-   _mrconfig-BUSINESS_CODE_PATH.example
+   _mrconfig-DXY_VENDOR_CODE_PATH.example
   }
  }
  # *** OhMyRepos
@@ -2661,7 +2661,7 @@ MRCONFIGS_=/ filter=".*mrconfig* *mrconfig*" {
  }
  # *** DepoXy Archetype
  DEPOXY_ARCHETYPE=$HOME/.depoxy/ambers/archetype {
-  _mrconfig-BUSINESS_CODE_PATH_.EVAL.example
+  _mrconfig-VENDOR_CODE_PATH_.EVAL.example
   _mrconfig.EVAL.omr
  }
 }

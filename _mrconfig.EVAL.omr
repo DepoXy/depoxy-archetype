@@ -102,19 +102,19 @@ autocommit =
   #
   git_auto_commit_one_omr "_mrconfig"
   #
-  # - Auto-commit just "_mrconfig-BUSINESS_CODE_PATH":
-  #     git_auto_commit_one_omr "_mrconfig-BUSINESS_CODE_PATH" "" "${PRIVATE_ACI}"
-  # - Auto-commit "_mrconfig-BUSINESS_CODE_PATH" and the project-specific configs:
+  # - Auto-commit just "_mrconfig-DXY_VENDOR_CODE_PATH":
+  #     git_auto_commit_one_omr "_mrconfig-DXY_VENDOR_CODE_PATH" "" "${PRIVATE_ACI}"
+  # - Auto-commit "_mrconfig-DXY_VENDOR_CODE_PATH" and the project-specific configs:
   local bizconfs="$(\
-    find * -name "_mrconfig-BUSINESS_CODE_PATH" -o -name "_mrconfig-BUSINESS_CODE_PATH--*" \
+    find * -name "_mrconfig-DXY_VENDOR_CODE_PATH" -o -name "_mrconfig-DXY_VENDOR_CODE_PATH--*" \
   )"
   if [ -n "${bizconfs}" ]; then
     git_auto_commit_many ${bizconfs} \
-      -m "${PRIVATE_ACI}: OMR: Update: _mrconfig-BUSINESS_CODE_PATH[--*]"
+      -m "${PRIVATE_ACI}: OMR: Update: _mrconfig-DXY_VENDOR_CODE_PATH[--*]"
   fi
   #
-  git_auto_commit_one "_mrconfig-BUSINESS_CODE_PATH.example" \
-    -m "${CLEARED_ACI}: DXA: OMR: Update: _mrconfig-BUSINESS_CODE_PATH.example"
+  git_auto_commit_one "_mrconfig-DXY_VENDOR_CODE_PATH.example" \
+    -m "${CLEARED_ACI}: DXA: OMR: Update: _mrconfig-DXY_VENDOR_CODE_PATH.example"
   #
   for path in \
     "README"* \
@@ -243,7 +243,7 @@ autocommit =
     fi
     git_auto_commit_one_update "${gpg_id_backup}" "" "${PRIVATE_ACI}"
     #
-    local enterprise_creds="${HOME}/.password-store/BUSINESS_CODE_PATH/signon.gpg"
+    local enterprise_creds="${HOME}/.password-store/DXY_VENDOR_CODE_PATH/signon.gpg"
     local creds_backup="home/.password-store/enterprise-creds.gpg"
     if [ -f "${enterprise_creds}" ] && [ ! -h "${enterprise_creds}" ]; then
       command cp -- "${enterprise_creds}" "${creds_backup}"
@@ -468,8 +468,8 @@ autocommit =
   # 2021-08-22: I added these tree dumps 2021-01-31 but they've been of
   #             no utility to me. So not quite sure why I'm preserving.
   depoxy_client_autocommit_tree_dumps () {
-    tree -n -a -I .git/ -I home/BUSINESS_CODE_PATH/ > "home/.config/${depoxy_client_id}-tree.txt"
-    tree -C -a -I .git/ -I home/BUSINESS_CODE_PATH/ > "home/.config/${depoxy_client_id}-tree.col"
+    tree -n -a -I .git/ -I home/DXY_VENDOR_CODE_PATH/ > "home/.config/${depoxy_client_id}-tree.txt"
+    tree -C -a -I .git/ -I home/DXY_VENDOR_CODE_PATH/ > "home/.config/${depoxy_client_id}-tree.col"
     git_auto_commit_many \
       "home/.config/${depoxy_client_id}-tree.txt" \
       "home/.config/${depoxy_client_id}-tree.col" \
@@ -646,15 +646,15 @@ infuse =
   # *** OMR
   #
   # .mrinfuse/ nesting
-  local dxy_home_work="${MR_REPO}/home/BUSINESS_CODE_PATH"
-  local usr_home_work="${HOME}/BUSINESS_CODE_PATH"
+  local dxy_home_work="${MR_REPO}/home/DXY_VENDOR_CODE_PATH"
+  local usr_home_work="${HOME}/DXY_VENDOR_CODE_PATH"
   local home_work_hint=""
   if [ ! -d "${dxy_home_work}" ]; then
     home_work_hint="$( \
       printf "%s" "$(font_highlight "No sources.") / Try:\n    cp -ar " \
         "\"${dxy_home_work}.example\" " \
         "\"${dxy_home_work}\"\n" \
-        "                               and customize BUSINESS_CODE_PATH/"
+        "                               and customize DXY_VENDOR_CODE_PATH/"
     )"
   elif [ ! -d "${usr_home_work}" ]; then
     home_work_hint="No $(font_highlight “${usr_home_work}”) directory or symlink"
@@ -666,17 +666,17 @@ infuse =
   else
     symlink_overlay_dir \
       "${dxy_home_work}" \
-      "${DXC_WORK_ROOT:-${HOME}/BUSINESS_CODE_PATH}/.mrinfuse"
+      "${DXC_WORK_ROOT:-${HOME}/DXY_VENDOR_CODE_PATH}/.mrinfuse"
     symlink_overlay_file \
       "${dxy_home_work}/_ignore" \
-      "${DXC_WORK_ROOT:-${HOME}/BUSINESS_CODE_PATH}/.ignore"
+      "${DXC_WORK_ROOT:-${HOME}/DXY_VENDOR_CODE_PATH}/.ignore"
   fi
   #
   # Alert if missing business client mrconfig (because impossibly unlikely user won't want).
   # - E.g., "/home/user/.depoxy/stints"
   local stints_dir="${DEPOXYDIR_STINTS_FULL:-DXY_DEPOXYDIR_STINTS__HOME_}"
   # - E.g., "/home/user/.depoxy/stints/XXXX/_mrconfig-acme"
-  local mr_business="${stints_dir}/DXY_DEPOXY_CLIENT_ID/_mrconfig-BUSINESS_CODE_PATH"
+  local mr_business="${stints_dir}/DXY_DEPOXY_CLIENT_ID/_mrconfig-DXY_VENDOR_CODE_PATH"
   if [ ! -f "${mr_business}" ]; then
     info "$(font_emphasize ALERT): No biz config at $(repo_highlight ${mr_business})"
   fi
@@ -988,12 +988,12 @@ infuse =
 # ------------------------------------------------------------------------
 
 # YOU: Add client-specific projects to the another config, e.g.,:
-#        DXY_DEPOXY_CLIENT_TILDE/_mrconfig-BUSINESS_CODE_PATH
+#        DXY_DEPOXY_CLIENT_TILDE/_mrconfig-DXY_VENDOR_CODE_PATH
 #      and reserve this mrconfig for the DepoXy Client project
 #      (so you can more easily keep it synced with the upstream).
 #
 #      You'll find an example client config at:
-#        DXY_DEPOXY_CLIENT_TILDE/_mrconfig-BUSINESS_CODE_PATH.example
+#        DXY_DEPOXY_CLIENT_TILDE/_mrconfig-DXY_VENDOR_CODE_PATH.example
 
 [DEFAULT]
 order = 220
@@ -1025,10 +1025,10 @@ include =
     . ${OHMYREPOS_LIB:-${GITREPOSPATH:-${HOME}/.kit/git}/ohmyrepos/lib}/skip-grouping.sh
     #
     local stints_dir="${DEPOXYDIR_STINTS_FULL:-DXY_DEPOXYDIR_STINTS__HOME_}"
-    # CXREF: DXY_DEPOXYDIR_STINTS_TILDE/DXY_DEPOXY_CLIENT_ID/_mrconfig-BUSINESS_CODE_PATH
-    #        DXY_DEPOXYDIR_STINTS_TILDE/DXY_DEPOXY_CLIENT_ID/_mrconfig-BUSINESS_CODE_PATH.example
-    #        DXY_DEPOXYARCHETYPE_DIR_TILDE/_mrconfig-[[[BUSINESS_CODE_PATH]]].EVAL.example
-    local mr_business="${stints_dir}/DXY_DEPOXY_CLIENT_ID/_mrconfig-BUSINESS_CODE_PATH"
+    # CXREF: DXY_DEPOXYDIR_STINTS_TILDE/DXY_DEPOXY_CLIENT_ID/_mrconfig-DXY_VENDOR_CODE_PATH
+    #        DXY_DEPOXYDIR_STINTS_TILDE/DXY_DEPOXY_CLIENT_ID/_mrconfig-DXY_VENDOR_CODE_PATH.example
+    #        DXY_DEPOXYARCHETYPE_DIR_TILDE/_mrconfig-[[[DXY_VENDOR_CODE_PATH]]].EVAL.example
+    local mr_business="${stints_dir}/DXY_DEPOXY_CLIENT_ID/_mrconfig-DXY_VENDOR_CODE_PATH"
     if [ -f "${mr_business}" ] && ! (
         mr_exclusive "work" &&
         true

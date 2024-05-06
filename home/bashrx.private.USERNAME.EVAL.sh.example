@@ -48,18 +48,18 @@ bashdx_wire_aliases_pushd_paths_client () {
   # - It's easier to type, and `dd<Tab>` shows only these aliases
   #   (where 'cd'-prefix used by a lot of other commands already).
 
-  pushd_alias_or_warn "cdaa" "${HOME}/BUSINESS_CODE_PATH/division1/project-AA"
+  pushd_alias_or_warn "cdaa" "${HOME}/DXY_VENDOR_CODE_PATH/division1/project-AA"
   # I'll sometimes create a sibling directory with the 'develop' branch
   # checked out so that `feature-coverage-report` runs coverage in parallel.
-  pushd_alias_or_warn "cdaad" "${HOME}/BUSINESS_CODE_PATH/division1/project-AA--develop"
+  pushd_alias_or_warn "cdaad" "${HOME}/DXY_VENDOR_CODE_PATH/division1/project-AA--develop"
   
-  pushd_alias_or_warn "cdsf" "${HOME}/BUSINESS_CODE_PATH/projectZ/superflycool"
-  pushd_alias_or_warn "cdsfd" "${HOME}/BUSINESS_CODE_PATH/projectZ/superflycool--develop"
+  pushd_alias_or_warn "cdsf" "${HOME}/DXY_VENDOR_CODE_PATH/projectZ/superflycool"
+  pushd_alias_or_warn "cdsfd" "${HOME}/DXY_VENDOR_CODE_PATH/projectZ/superflycool--develop"
 
   # YOU: If you have more complicated setup, you could shove that in an
   # alias, or better yet, kick it out to its own function. For example,
   function cdbb {
-    pushd "${HOME}/BUSINESS_CODE_PATH/division1/project-BB" &> /dev/null;
+    pushd "${HOME}/DXY_VENDOR_CODE_PATH/division1/project-BB" &> /dev/null;
     [ "$(node -v)" = "v10.23.0" ] || nvm use 10
   }
   # You might also want to look into using dotenv or direnv.
@@ -79,7 +79,7 @@ bashdx_wire_aliases_pushd_paths_client () {
 # See the _work_env_* defs in ~/.depoxy/ambers/core/cdworkenv.sh
 
 cdta () {
-  pushd "${HOME}/BUSINESS_CODE_PATH/division1/total-appage" &> /dev/null
+  pushd "${HOME}/DXY_VENDOR_CODE_PATH/division1/total-appage" &> /dev/null
 
   [ "$(node -v)" = "v14.16.0" ] || nvm use 14
 

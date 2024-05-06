@@ -35,11 +35,11 @@ let g:ds_simple_grep_locat_lookup = [
   \ "~/DXY_HOMEFRIES_DIR_NAME ",
   \ "~/.vim/pack/PERSONAL_CVS_VIM_PLUG_PACKAGE_NAME ",
   \ "",
-  \ "~/BUSINESS_CODE_PATH/division1 ",
+  \ "~/DXY_VENDOR_CODE_PATH/division1 ",
   \ "",
-  \ "~/BUSINESS_CODE_PATH/division1/project-AA ",
-  \ "~/BUSINESS_CODE_PATH/projectZ/superflycool ",
-  \ "~/BUSINESS_CODE_PATH/projectZ/project-123-testless ",
+  \ "~/DXY_VENDOR_CODE_PATH/division1/project-AA ",
+  \ "~/DXY_VENDOR_CODE_PATH/projectZ/superflycool ",
+  \ "~/DXY_VENDOR_CODE_PATH/projectZ/project-123-testless ",
   \ "",
   \ "",
   \ "",
@@ -59,7 +59,7 @@ let g:ds_simple_grep_locat_lookup = [
 
 " ====================================================================
 " USAGE: Modify the list above to customize the grep project paths prompt.
-"      - The ~/BUSINESS_CODE_PATH paths above are examples.
+"      - The ~/DXY_VENDOR_CODE_PATH paths above are examples.
 "      - The other default paths above are wired to real paths.
 "      - The lines above are +10 offset from how they're numbered by
 "        the `inputlist` command (:h inputlist).

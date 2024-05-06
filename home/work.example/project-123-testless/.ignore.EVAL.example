@@ -44,10 +44,10 @@
 #   - Restart Vim, or :GrepSteadyReload.
 # - Remove these comments and rename this file .ignore.example -> .ignore
 
-# - Update DXY_DEPOXY_CLIENT_TILDE/_mrconfig-BUSINESS_CODE_PATH to make
-#   the ~/.projlns/BUSINESS_CODE_PATH symlink on infuse -- see the example
+# - Update DXY_DEPOXY_CLIENT_TILDE/_mrconfig-DXY_VENDOR_CODE_PATH to make
+#   the ~/.projlns/DXY_VENDOR_CODE_PATH symlink on infuse -- see the example
 #   symlink_overlay_dir call to make the project-123-testless symlink
-#   in DXY_DEPOXY_CLIENT_TILDE/_mrconfig-BUSINESS_CODE_PATH.example
+#   in DXY_DEPOXY_CLIENT_TILDE/_mrconfig-DXY_VENDOR_CODE_PATH.example
 # - Call `infuse` to create the ~/.projlns symlink.
 
 # E.g., you might find it easier to get to know a new JavaScript that

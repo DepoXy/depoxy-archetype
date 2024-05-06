@@ -19,24 +19,24 @@
 
 # *** @biz-specific
 
-# DepoXy Client: Work/business/client/@biz projects are under ~/BUSINESS_CODE_PATH.
+# DepoXy Client: Work/business/client/@biz projects are under ~/DXY_VENDOR_CODE_PATH.
 
-/BUSINESS_CODE_PATH/.ignore
-/BUSINESS_CODE_PATH/.mrinfuse
+/DXY_VENDOR_CODE_PATH/.ignore
+/DXY_VENDOR_CODE_PATH/.mrinfuse
 
 # YOU: Decide if you want to ignore everything under ~/work or not.
 # - If this rule is disabled, you'll be reminded if your ~/work
 #   house is not tidy, and you'll be compelled to add a Git ignore
 #   rule herein.
 #   - The real advantage is that you might also be reminded to add
-#     a new project to the ~/DXY_DEPOXY_CLIENT_TILDE/_mrconfig-BUSINESS_CODE_PATH
+#     a new project to the ~/DXY_DEPOXY_CLIENT_TILDE/_mrconfig-DXY_VENDOR_CODE_PATH
 #     mrconfig, if you happened to clone a work project directly,
 #     without using myrepos.
 # We'll start with this rule enabled, because it might annoy new
 # users if their ~/work directory keeps showing up as untidy from
 # ${HOME}/.
 
-/BUSINESS_CODE_PATH/
+/DXY_VENDOR_CODE_PATH/
 
 # If you symlinked ~/work, also this path
 # (Aka suggested directory name for @biz code):
@@ -45,11 +45,11 @@
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
-# *** Example /BUSINESS_CODE_PATH rules.
+# *** Example /DXY_VENDOR_CODE_PATH rules.
 
-# /BUSINESS_CODE_PATH/division1/project-AA
-# /BUSINESS_CODE_PATH/projectZ/superflycool
-# /BUSINESS_CODE_PATH/project-123-testless
+# /DXY_VENDOR_CODE_PATH/division1/project-AA
+# /DXY_VENDOR_CODE_PATH/projectZ/superflycool
+# /DXY_VENDOR_CODE_PATH/project-123-testless
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 

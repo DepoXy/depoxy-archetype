@@ -132,7 +132,7 @@ register_customizable_business_values () {
   #   - For Git projects elsewhere on your device (e.g., for the DepoXy
   #     projects installed, the other paths include ~/.homefries, ~/.kit,
   #     and ~/.depoxy itself).
-  register "BUSINESS_CODE_PATH" "work"
+  register "DXY_VENDOR_CODE_PATH" "work"
 
   # If your client uses an npm registry, you can specify its URL to generate
   # an ~/.npmrc file. E.g., ~/.npmrc might look like this:
