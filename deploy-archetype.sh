@@ -309,8 +309,7 @@ register_depoxydir_paths () {
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
-# Alternative representations of previous values.
-register_depoxy_client_path_options () {
+register_depoxy_client_paths () {
   # Setup template variables with the new client path, represented all the ways.
 
   # - Client tilde path, e.g., "~/.depoxy/stints/XXXX"
@@ -1395,7 +1394,7 @@ main () {
   register_customizable_client_ids
   register_generated
   register_depoxydir_paths
-  register_depoxy_client_path_options
+  register_depoxy_client_paths
   register_depoxy_project_paths
   register_git_put_wise_paths
   register_customizable_headers
