@@ -85,7 +85,7 @@ register_customizable_git_config () {
   # The @biz Git server user name and email it'll use (you can user whatever
   # you want, but I like to use the same values I see when I approve a PR/MR,
   # or that I see other devs use).
-  register "BUSINESS_GITCONFIG_USER_NAME" "PLEASE_SET_ME"
+  register "DXY_VENDOR_GITCONFIG_USER_NAME" "PLEASE_SET_ME"
   register "BUSINESS_GITCONFIG_USER_EMAIL" "PLEASE_SET_ME"
   # The Git commit username might differ from your user home on server,
   # e.g., at one job, my commit user was "Last, First", but my server
