@@ -563,7 +563,7 @@ infuse =
   #
   # *** `mredit` wiring
   #
-  # CXREF: ~/DXY_DEPOXY_PROJLNS_NAME/mymrconfigs/
+  # CXREF: DXY_DEPOXY_PROJLNS_DIR_TILDE/mymrconfigs/
   symlink_overlay_file \
     "${MR_REPO}/_mrconfig" \
     "${MREDIT_CONFIGS:-${DEPOXY_PROJLNS:-${HOME}/.projlns}/mymrconfigs}/client-${depoxy_client_id}-mrconfig"

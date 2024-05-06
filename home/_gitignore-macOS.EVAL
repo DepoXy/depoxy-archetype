@@ -105,7 +105,7 @@
 # RipGrep search groups. Assemble directories
 # of symlinks to deliberately search across
 # projects spread throughout the filesystem.
-/DXY_DEPOXY_PROJLNS_NAME/
+DXY_DEPOXY_PROJLNS_EXCLUDE_RULE
 
 # DepoXy sends screen captures to their own special folder,
 # so that the ~/Desktop does not get cluttered with files.

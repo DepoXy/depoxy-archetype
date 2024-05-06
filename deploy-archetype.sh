@@ -387,10 +387,29 @@ register_depoxy_project_paths () {
 
   # ***
 
-  # E.g., ".projlns", ripgreppable symlinks collector.
-  register "DXY_DEPOXY_PROJLNS_NAME" "$(\
-    echo "${DEPOXY_PROJLNS:-${HOME}/.projlns}" \
-    | sed "s@^${HOME}/@@"
+  # E.g., "/Users/user/.projlns", ripgreppable symlinks collector.
+  register "DXY_DEPOXY_PROJLNS" "${DEPOXY_PROJLNS:-${HOME}/.projlns}"
+
+  # E.g., "/.projlns/"
+  # - Used to generate ~/.gitignore.
+  local projlns_home_path="$( \
+    format_exclude_rule_home_gitignore "${DXY_DEPOXY_PROJLNS}"
+  )"
+  unset -v DXY_DEPOXY_PROJLNS_EXCLUDE_RULE
+  register "DXY_DEPOXY_PROJLNS_EXCLUDE_RULE" "${projlns_home_path}"
+
+  # E.g., "~/.projlns"
+  unset -v DXY_DEPOXY_PROJLNS_DIR_TILDE
+  register "DXY_DEPOXY_PROJLNS_DIR_TILDE" "$( \
+    echo "${DXY_DEPOXY_PROJLNS}" \
+    | sed -E "s@^${HOME}(/|$)@~\1@"
+  )"
+
+  # E.g., "${HOME}/.projlns"
+  unset -v DXY_DEPOXY_PROJLNS_DIR__HOME_
+  register "DXY_DEPOXY_PROJLNS_DIR__HOME_" "$( \
+    echo "${DXY_DEPOXY_PROJLNS}" \
+    | sed -E "s@^${HOME}(/|$)@\\\\\${HOME}\1@"
   )"
 
   # ***
