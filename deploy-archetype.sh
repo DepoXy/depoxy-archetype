@@ -102,7 +102,7 @@ register_customizable_git_config () {
   # Personal user:
   # - Anything not under ~/work will use your personal user.
   # - You can update/change the Personal user later: .gitconfig.user-personal
-  register "PERSONAL_GITCONFIG_USER_NAME" "PLEASE_SET_ME"
+  register "DXY_PERSON_GITCONFIG_USER_NAME" "PLEASE_SET_ME"
   register "PERSONAL_GITCONFIG_USER_EMAIL" "PLEASE_SET_ME@${DXY_HOSTNAME}"
 
   # A subset of DXC files are backed up to @biz GitHuLaB and are given
@@ -1133,7 +1133,7 @@ init_repo () {
   # Note that Git config not guaranteed to be wired, so specify
   # necessary config, like the user.
   local conf_opts=" \
-    -c user.name=\"${PERSONAL_GITCONFIG_USER_NAME}\" \
+    -c user.name=\"${DXY_PERSON_GITCONFIG_USER_NAME}\" \
     -c user.email=\"${PERSONAL_GITCONFIG_USER_EMAIL}\" \
   "
 
