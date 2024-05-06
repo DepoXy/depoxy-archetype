@@ -93,6 +93,9 @@ export DEPOXY_HOSTNAMES_NAME="DXY_DEPOXY_HOSTNAMES_NAME"
 # E.g., "${HOME}/.projlns"
 export DEPOXY_PROJLNS="${HOME}/DXY_DEPOXY_PROJLNS_NAME"
 
+# E.g., "${HOME}/Documents/screencaps"
+export DEPOXY_SCREENCAPS_DIR="DXY_DEPOXY_SCREENCAPS_DIR__HOME_"
+
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
 # *** Homefries project config

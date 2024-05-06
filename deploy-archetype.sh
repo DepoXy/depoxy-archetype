@@ -400,6 +400,13 @@ register_depoxy_project_paths () {
   register "DXY_DEPOXY_SCREENCAPS_DIR" \
     "${DEPOXY_SCREENCAPS_DIR:-${HOME}/Documents/screencaps}"
 
+  # E.g., "${HOME}/Documents/screencaps"
+  unset -v DXY_DEPOXY_SCREENCAPS_DIR__HOME_
+  register "DXY_DEPOXY_SCREENCAPS_DIR__HOME_" "$( \
+    echo "${DXY_DEPOXY_SCREENCAPS_DIR}" \
+    | sed -E "s@^${HOME}(/|$)@\\\\\${HOME}\1@"
+  )"
+
   # E.g., "/Documents/screencaps/"
   # - Used to generate ~/.gitignore (though when under Documents/,
   #   that directory already excluded, so this rule unnecessary;
