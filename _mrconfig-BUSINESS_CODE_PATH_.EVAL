@@ -32,7 +32,7 @@ infuse =
 
 # "Your ACME-specific OMR config and Homefries bashrc"
 # E.g., ~/.depoxy/stints/2324/flast.sh
-[${DEPOXYDIR_STINTS_FULL:-${HOME}/.depoxy/stints}/DEPOXY_CLIENT_ID/BUSINESS_PROJECT_NAME_DOTFILES]
+[${DEPOXYDIR_STINTS_FULL:-${HOME}/.depoxy/stints}/DEPOXY_CLIENT_ID/DXY_VENDOR_PROJECT_NAME_DOTFILES]
 lib = remote_set origin git@BUSINESS_GITCONFIG_HUB_HOST:BUSINESS_GITSERVER_USER_REPO.git
 autocommit =
   # Prepare args, e.g., `autocommit -y`, or `autocommit -f`.
@@ -58,7 +58,7 @@ autocommit =
   #   ~/.depoxy/stints/XXXX/home/.depoxy/stints/running/flast.sh/README.md
   #   to ~/.depoxy/stints/XXXX/flast.sh/README.md (so you keep a copy of
   #   the README under DXC; that and other files are copied to flast.sh).
-  command cp -- ../home/.depoxy/stints/running/BUSINESS_PROJECT_NAME_DOTFILES/README.md README.md
+  command cp -- ../home/.depoxy/stints/running/DXY_VENDOR_PROJECT_NAME_DOTFILES/README.md README.md
   #
   command cp -- ../_mrconfig-BUSINESS_CODE_PATH* .
   command rm -f -- _mrconfig-BUSINESS_CODE_PATH.example

@@ -198,7 +198,7 @@ autocommit =
   git_auto_commit_one_update "home/.depoxy/_gitignore"
   git_auto_commit_one_update "home/.depoxy/stints/_ignore"
   #
-  git_auto_commit_one_update "home/.depoxy/stints/running/BUSINESS_PROJECT_NAME_DOTFILES/README.md"
+  git_auto_commit_one_update "home/.depoxy/stints/running/DXY_VENDOR_PROJECT_NAME_DOTFILES/README.md"
   #
   git_auto_commit_one_update "home/.finicky.js" "~/.finicky.js config."
   #

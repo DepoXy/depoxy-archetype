@@ -96,8 +96,8 @@ register_customizable_git_config () {
   register "BUSINESS_GITSERVER_USER_REPO" "PLEASE_SET_ME"
   #
   # E.g., "flast.sh".
-  unset -v BUSINESS_PROJECT_NAME_DOTFILES
-  register "BUSINESS_PROJECT_NAME_DOTFILES" "$(basename -- "${BUSINESS_GITSERVER_USER_REPO}")"
+  unset -v DXY_VENDOR_PROJECT_NAME_DOTFILES
+  register "DXY_VENDOR_PROJECT_NAME_DOTFILES" "$(basename -- "${BUSINESS_GITSERVER_USER_REPO}")"
 
   # Personal user:
   # - Anything not under ~/work will use your personal user.
