@@ -110,10 +110,11 @@
 # DepoXy sends screen captures to their own special folder,
 # so that the ~/Desktop does not get cluttered with files.
 #
-# - This path is set by `screenshots_customize_location` called by:
+# - CXREF: This path is created by `screenshots_customize_location`
+#   and wired via `defaults` by:
 #     ~/.depoxy/ambers/bin/onboarder/slather-defaults.sh
-# - CXREF: DXY_SCREENCAPS_LOCATION
-/DXY_SCREENCAPS_LOCATION/
+#   - CALSO: DEPOXY_SCREENCAPS_DIR
+DXY_DEPOXY_SCREENCAPS_EXCLUDE_RULE
 
 # Created by `mr -d ~/.kit/sh/complete-alias/ install`.
 /.bash_completion

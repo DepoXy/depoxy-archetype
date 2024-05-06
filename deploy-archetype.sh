@@ -395,6 +395,23 @@ register_depoxy_project_paths () {
 
   # ***
 
+  # Not quite a "project" path, but a customizable path nonetheless.
+  # - E.g., "/Users/user/Documents/screencaps"
+  register "DXY_DEPOXY_SCREENCAPS_DIR" \
+    "${DEPOXY_SCREENCAPS_DIR:-${HOME}/Documents/screencaps}"
+
+  # E.g., "/Documents/screencaps/"
+  # - Used to generate ~/.gitignore (though when under Documents/,
+  #   that directory already excluded, so this rule unnecessary;
+  #   but included to support alternative screecaps/ paths).
+  local screencaps_home_path="$( \
+    format_exclude_rule_home_gitignore "${DXY_DEPOXY_SCREENCAPS_DIR}"
+  )"
+  unset -v DXY_DEPOXY_SCREENCAPS_EXCLUDE_RULE
+  register "DXY_DEPOXY_SCREENCAPS_EXCLUDE_RULE" "${screencaps_home_path}"
+
+  # ***
+
   # E.g., ".homefries"
   register "DXY_HOMEFRIES_DIR_NAME" "$( \
     echo "${HOMEFRIES_DIR:-${HOME}/.homefries}" \
@@ -411,6 +428,24 @@ register_depoxy_project_paths () {
     echo "${DOPP_KIT:-${HOME}/.kit}" \
     | sed "s@^${HOME}/@@"
   )"
+}
+
+# ***
+
+format_exclude_rule_home_gitignore () {
+  local full_path="$1"
+
+  local home_path
+  home_path="$(echo "${full_path}" | sed "s@^${HOME}/@@")"
+
+  if [ "${home_path}" != "${full_path}" ]; then
+    home_path="/${home_path}/"
+  else
+    # Not under home.
+    home_path=""
+  fi
+
+  printf "%s" "${home_path}"
 }
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
