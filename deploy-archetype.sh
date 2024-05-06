@@ -98,6 +98,10 @@ register_customizable_git_config () {
   # E.g., "flast.sh".
   unset -v DXY_VENDOR_PROJECT_NAME_DOTFILES
   register "DXY_VENDOR_PROJECT_NAME_DOTFILES" "$(basename -- "${BUSINESS_GITSERVER_USER_REPO}")"
+  #
+  # E.g., "acme.sh".
+  unset -v DXY_VENDOR_PROJECT_NAME_ACME_SH
+  register "DXY_VENDOR_PROJECT_NAME_ACME_SH" "acme.sh"
 
   # Personal user:
   # - Anything not under ~/work will use your personal user.

@@ -40,7 +40,7 @@
 bashdx_wire_aliases_pushd_paths_client () {
   # My BUSINESS_PROJECT_BASE projects
   pushd_alias_or_warn "ddun" "${HOME}/.depoxy/running/DXY_VENDOR_PROJECT_NAME_DOTFILES"
-  pushd_alias_or_warn "ddac" "${HOME}/.depoxy/running/home/work/acme.sh"
+  pushd_alias_or_warn "ddac" "${HOME}/.depoxy/running/DXY_VENDOR_PROJECT_NAME_ACME_SH"
 
   # You: Remove these aliases and add your own.
 
