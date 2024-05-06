@@ -140,7 +140,7 @@ register_customizable_business_values () {
   # Note, too, that some organizations restrict access to the main npm registry,
   #   http://registry.npmjs.org/npm
   # in which case you'll need to use the corporate npm URL.
-  register "BUSINESS_NPM_REGISTRY_URL" ""
+  register "DXY_VENDOR_NPM_REGISTRY_URL" ""
 
   # For the `bugs` alias defined on Bash startup by the template at
   #   ~/.depoxy/ambers/archetype/home/bashrx.private.HOSTNAME.EVAL.sh
