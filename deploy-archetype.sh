@@ -91,13 +91,13 @@ register_customizable_git_config () {
   # e.g., at one job, my commit user was "Last, First", but my server
   # name was "First.Last". This environ is your user name and personal
   # repo name you'll use to backup a few files on your @biz Git server.
-  # E.g., BUSINESS_GITSERVER_USER_REPO="First.Last/flast.sh" would
+  # E.g., DXY_VENDOR_GITSERVER_USER_REPO="First.Last/flast.sh" would
   # make @biz personal URL: https://gitlab.acme.com/First.Last/flast.sh
-  register "BUSINESS_GITSERVER_USER_REPO" "PLEASE_SET_ME"
+  register "DXY_VENDOR_GITSERVER_USER_REPO" "PLEASE_SET_ME"
   #
   # E.g., "flast.sh".
   unset -v DXY_VENDOR_PROJECT_NAME_DOTFILES
-  register "DXY_VENDOR_PROJECT_NAME_DOTFILES" "$(basename -- "${BUSINESS_GITSERVER_USER_REPO}")"
+  register "DXY_VENDOR_PROJECT_NAME_DOTFILES" "$(basename -- "${DXY_VENDOR_GITSERVER_USER_REPO}")"
   #
   # E.g., "acme.sh".
   unset -v DXY_VENDOR_PROJECT_NAME_ACME_SH
@@ -113,7 +113,7 @@ register_customizable_git_config () {
   # a one-line URL-only header (i.e., not Author/Project/License lines).
   # E.g.:
   #   https://gitlab.acme.com/User.Name/uname.sh#🥗
-  register "DXY_HEADER_DOTFILES" "https://${BUSINESS_GITCONFIG_HUB_HOST}/${BUSINESS_GITSERVER_USER_REPO}#🥗"
+  register "DXY_HEADER_DOTFILES" "https://${BUSINESS_GITCONFIG_HUB_HOST}/${DXY_VENDOR_GITSERVER_USER_REPO}#🥗"
   #
   register "DXY_HEADER_DOTPROJECT" "Project: ${DXY_HEADER_DOTFILES}"
 }
