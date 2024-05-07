@@ -156,7 +156,12 @@ register_customizable_personal_values () {
 
   # Optional: Specify a GVim --servername so that gvim shortcuts always
   #           send files to the same instance.
-  register "PERSONAL_GVIM_OPEN_SERVERNAME" ""
+  # - CXREF: GVIM_OPEN_SERVERNAME
+  # - CALSO: DEPOXY_GVIM_ALTERNATE (`fa` command)
+  # - Maybe use the client ID instead of default ('SAMPI'):
+  #     register "DXY_DEPOXY_GVIM_SERVERNAME" "${DXY_DEPOXY_CLIENT_ID}"
+  #   Or for now we'll demo using an emoji.
+  register "DXY_DEPOXY_GVIM_SERVERNAME" "🦢"
 }
 
 # ================================================================= #

@@ -65,25 +65,6 @@ bashdx_configure_keep_alives () {
   export DEPOXY_ENABLE_KEEP_ALIVE_PMSET=false
 }
 
-# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
-# ----------------------------------------------------------------- #
-# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
-
-# *** GVim opener project config
-#
-#   https://github.com/landonb/gvim-open-kindness#🐬
-
-bashdx_configure_gvim_open_kindness () {
-  # The Vim server name to connect to. Use the same servername to open files
-  # in the same gVim/MacVim instance. - E.g.,
-  #   gvim --servername SAMPI --remote-silent <file file...>
-  export GVIM_OPEN_SERVERNAME="${GVIM_OPEN_SERVERNAME:-SAMPI}"
-
-  # Set this to override gVim/MacVim initial geometry
-  # if gvim-open-kindness opens new instance, e.g.,
-  #
-  #   export GVIM_OPEN_GEOMETRY="1,414,66,1859,1220"
-}
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 # ----------------------------------------------------------------- #
@@ -193,9 +174,6 @@ main () {
 
     bashdx_configure_keep_alives
     unset -f bashdx_configure_keep_alives
-
-    bashdx_configure_gvim_open_kindness
-    unset -f bashdx_configure_gvim_open_kindness
   else
     # Set aliases on the second pass.
     # - By setting our aliases later, we'll alert if our aliases conflict

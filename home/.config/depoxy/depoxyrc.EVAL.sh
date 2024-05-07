@@ -225,5 +225,24 @@ export DEPOXY_PYENV_PYVERS="3.12.1"
 #   pushd_alias_or_warn "cvs" "${HOME}/.vim/pack/<username>/start"
 export DEPOXY_CVS_ALIAS_VIM_PLUG_ORG='DXY_DEPOXY_CVS_ALIAS_VIM_PLUG_ORG'
 
+# *** GVim opener project config
+#
+#   https://github.com/landonb/gvim-open-kindness#🐬
+
+# The Vim server name used to open files in the same instance. E.g.,
+#   gvim --servername SAMPI --remote-silent <file file...>
+# - Used by `fs` command, among other mechanisms.
+export GVIM_OPEN_SERVERNAME="DXY_DEPOXY_GVIM_SERVERNAME"
+
+# The complementary `fa` command (for running 2 gvim, e.g.,) uses
+# a separate servername you could customize here.
+#
+# export DEPOXY_GVIM_ALTERNATE=ALPHA
+
+# Set this to override gVim/MacVim initial geometry
+# if gvim-open-kindness opens new instance, e.g.,
+#
+#   export GVIM_OPEN_GEOMETRY="1,414,66,1859,1220"
+
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 

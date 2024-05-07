@@ -757,7 +757,7 @@ infuse =
   # Reload <\g> search list.
   # - If no such instance:
   #     E247: No registered server named "SAMPI": Send failed.
-  gvim --servername "${GVIM_OPEN_SERVERNAME:-SAMPI}" \
+  gvim --servername "${GVIM_OPEN_SERVERNAME:-DXY_DEPOXY_GVIM_SERVERNAME}" \
     --remote-send "<ESC>:GrepSteadyReload<CR>" \
     2> /dev/null || true
   # For the convenience.
