@@ -69,56 +69,7 @@ register_customizable_client_ids () {
   register "DXY_DEPOXY_CLIENT_REMOTE" ""
 }
 
-# You can set Git user names and emails for business and personal projects.
-register_customizable_git_config () {
-  # DepoXy wires two sets of Git user.name and user.email:
-  # your business user, and your personal user.
-
-  # Business user:
-  # - Anything under ~/work will use your business user.
-  #   - A few sub-repos of DXC that are uploaded to @biz server also biz user.
-  # - You can update/change the Business user later: .gitconfig.user-business
-
-  # The @biz Git server host (i.e., GitHub or GitLab URL),
-  # e.g., "gitlab.acme.com".
-  register "DXY_VENDOR_GITCONFIG_HUB_HOST" "PLEASE_SET_ME"
-  # The @biz Git server user name and email it'll use (you can user whatever
-  # you want, but I like to use the same values I see when I approve a PR/MR,
-  # or that I see other devs use).
-  register "DXY_VENDOR_GITCONFIG_USER_NAME" "PLEASE_SET_ME"
-  register "DXY_VENDOR_GITCONFIG_USER_EMAIL" "PLEASE_SET_ME"
-  # The Git commit username might differ from your user home on server,
-  # e.g., at one job, my commit user was "Last, First", but my server
-  # name was "First.Last". This environ is your user name and personal
-  # repo name you'll use to backup a few files on your @biz Git server.
-  # E.g., DXY_VENDOR_GITSERVER_USER_REPO="First.Last/flast.sh" would
-  # make @biz personal URL: https://gitlab.acme.com/First.Last/flast.sh
-  register "DXY_VENDOR_GITSERVER_USER_REPO" "PLEASE_SET_ME"
-  #
-  # E.g., "flast.sh".
-  unset -v DXY_VENDOR_PROJECT_NAME_DOTFILES
-  register "DXY_VENDOR_PROJECT_NAME_DOTFILES" "$(basename -- "${DXY_VENDOR_GITSERVER_USER_REPO}")"
-  #
-  # E.g., "acme.sh".
-  unset -v DXY_VENDOR_PROJECT_NAME_ACME_SH
-  register "DXY_VENDOR_PROJECT_NAME_ACME_SH" "acme.sh"
-
-  # Personal user:
-  # - Anything not under ~/work will use your personal user.
-  # - You can update/change the Personal user later: .gitconfig.user-personal
-  register "DXY_PERSON_GITCONFIG_USER_NAME" "PLEASE_SET_ME"
-  register "DXY_PERSON_GITCONFIG_USER_EMAIL" "PLEASE_SET_ME@${DXY_HOSTNAME}"
-
-  # A subset of DXC files are backed up to @biz GitHuLaB and are given
-  # a one-line URL-only header (i.e., not Author/Project/License lines).
-  # E.g.:
-  #   https://gitlab.acme.com/User.Name/uname.sh#🥗
-  register "DXY_HEADER_DOTFILES" "https://${DXY_VENDOR_GITCONFIG_HUB_HOST}/${DXY_VENDOR_GITSERVER_USER_REPO}#🥗"
-  #
-  register "DXY_HEADER_DOTPROJECT" "Project: ${DXY_HEADER_DOTFILES}"
-}
-
-# You can set URLs for business-specific stuff.
+# You can set names, paths, and URLS for business-specific stuff.
 register_customizable_business_values () {
   # What to name some client-specific files.
   register "DXY_VENDOR_NAME" "${VENDOR_NAME:-acme}"
@@ -186,6 +137,55 @@ register_customizable_business_values () {
   #   ~/.depoxy/ambers/archetype/home/bashrx.private.HOSTNAME.EVAL.sh
   # you can make it easy to open your client's ticketing system.
   register "DXY_VENDOR_ISSUE_TRACKER_URL" "https://en.wikipedia.org/wiki/Bug_tracking_system"
+}
+
+# You can set Git user names and emails for business and personal projects.
+register_customizable_git_config () {
+  # DepoXy wires two sets of Git user.name and user.email:
+  # your business user, and your personal user.
+
+  # Business user:
+  # - Anything under ~/work will use your business user.
+  #   - A few sub-repos of DXC that are uploaded to @biz server also biz user.
+  # - You can update/change the Business user later: .gitconfig.user-business
+
+  # The @biz Git server host (i.e., GitHub or GitLab URL),
+  # e.g., "gitlab.acme.com".
+  register "DXY_VENDOR_GITCONFIG_HUB_HOST" "PLEASE_SET_ME"
+  # The @biz Git server user name and email it'll use (you can user whatever
+  # you want, but I like to use the same values I see when I approve a PR/MR,
+  # or that I see other devs use).
+  register "DXY_VENDOR_GITCONFIG_USER_NAME" "PLEASE_SET_ME"
+  register "DXY_VENDOR_GITCONFIG_USER_EMAIL" "PLEASE_SET_ME"
+  # The Git commit username might differ from your user home on server,
+  # e.g., at one job, my commit user was "Last, First", but my server
+  # name was "First.Last". This environ is your user name and personal
+  # repo name you'll use to backup a few files on your @biz Git server.
+  # E.g., DXY_VENDOR_GITSERVER_USER_REPO="First.Last/flast.sh" would
+  # make @biz personal URL: https://gitlab.acme.com/First.Last/flast.sh
+  register "DXY_VENDOR_GITSERVER_USER_REPO" "PLEASE_SET_ME"
+  #
+  # E.g., "flast.sh".
+  unset -v DXY_VENDOR_PROJECT_NAME_DOTFILES
+  register "DXY_VENDOR_PROJECT_NAME_DOTFILES" "$(basename -- "${DXY_VENDOR_GITSERVER_USER_REPO}")"
+  #
+  # E.g., "acme.sh".
+  unset -v DXY_VENDOR_PROJECT_NAME_ACME_SH
+  register "DXY_VENDOR_PROJECT_NAME_ACME_SH" "acme.sh"
+
+  # Personal user:
+  # - Anything not under ~/work will use your personal user.
+  # - You can update/change the Personal user later: .gitconfig.user-personal
+  register "DXY_PERSON_GITCONFIG_USER_NAME" "PLEASE_SET_ME"
+  register "DXY_PERSON_GITCONFIG_USER_EMAIL" "PLEASE_SET_ME@${DXY_HOSTNAME}"
+
+  # A subset of DXC files are backed up to @biz GitHuLaB and are given
+  # a one-line URL-only header (i.e., not Author/Project/License lines).
+  # E.g.:
+  #   https://gitlab.acme.com/User.Name/uname.sh#🥗
+  register "DXY_HEADER_DOTFILES" "https://${DXY_VENDOR_GITCONFIG_HUB_HOST}/${DXY_VENDOR_GITSERVER_USER_REPO}#🥗"
+  #
+  register "DXY_HEADER_DOTPROJECT" "Project: ${DXY_HEADER_DOTFILES}"
 }
 
 # You can set values for non-business things.
