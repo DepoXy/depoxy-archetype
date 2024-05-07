@@ -69,16 +69,6 @@ bashdx_configure_keep_alives () {
 # ----------------------------------------------------------------- #
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
-# 2021-08-22: Tell DepoXy Ambers how to define `cvs`. E.g.,
-#   pushd_alias_or_warn "cvs" "${HOME}/.vim/pack/<username>/start"
-bashdx_configure_cvs_alias_target () {
-  export DEPOXY_CVS_VIM_PLUG_PACKAGE_NAME='DXY_PERSON_CVS_VIM_PLUG_PACKAGE_NAME'
-}
-
-# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
-# ----------------------------------------------------------------- #
-# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
-
 # *** GVim opener project config
 #
 #   https://github.com/landonb/gvim-open-kindness#🐬
@@ -203,9 +193,6 @@ main () {
 
     bashdx_configure_keep_alives
     unset -f bashdx_configure_keep_alives
-
-    bashdx_configure_cvs_alias_target
-    unset -f bashdx_configure_cvs_alias_target
 
     bashdx_configure_gvim_open_kindness
     unset -f bashdx_configure_gvim_open_kindness

@@ -33,7 +33,7 @@ let g:ds_simple_grep_locat_lookup = [
   \ " ",
   \ "~/DXY_DEPOXYDIR_BASE_NAME/DXY_DEPOXYAMBERS_NAME ",
   \ "~/DXY_HOMEFRIES_DIR_NAME ",
-  \ "~/.vim/pack/DXY_PERSON_CVS_VIM_PLUG_PACKAGE_NAME ",
+  \ "~/.vim/pack/DXY_DEPOXY_CVS_ALIAS_VIM_PLUG_ORG ",
   \ "",
   \ "~/DXY_VENDOR_CODE_PATH/division1 ",
   \ "",
@@ -94,7 +94,7 @@ let g:ds_simple_grep_locat_lookup = [
 "   \ ""
 "   \   . $HOME . "/DXY_DEPOXYDIR_BASE_NAME "
 "   \   . $HOME . "/DXY_HOMEFRIES_DIR_NAME "
-"   \   . $HOME . "/.vim/pack/DXY_PERSON_CVS_VIM_PLUG_PACKAGE_NAME ",
+"   \   . $HOME . "/.vim/pack/DXY_DEPOXY_CVS_ALIAS_VIM_PLUG_ORG ",
 "
 " Hint: You can run embedded commands to help build the list, e.g.,
 "

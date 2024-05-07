@@ -221,3 +221,9 @@ export DEPOXY_PYENV_PYVERS="3.12.1"
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
+# 2021-08-22: Tell DepoXy Ambers how to define `cvs`. E.g.,
+#   pushd_alias_or_warn "cvs" "${HOME}/.vim/pack/<username>/start"
+export DEPOXY_CVS_ALIAS_VIM_PLUG_ORG='DXY_DEPOXY_CVS_ALIAS_VIM_PLUG_ORG'
+
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
+

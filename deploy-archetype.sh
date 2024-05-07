@@ -151,8 +151,8 @@ register_customizable_business_values () {
 # You can set values for non-business things.
 register_customizable_personal_values () {
   # Optional: Set the Vim package name the `cvs` alias uses to
-  #           `pushd ~/.vim/pack/<PACKAGE_NAME>/start`.
-  register "DXY_PERSON_CVS_VIM_PLUG_PACKAGE_NAME" ""
+  #           `pushd ~/.vim/pack/<PUBLISHER>/start`.
+  register "DXY_DEPOXY_CVS_ALIAS_VIM_PLUG_ORG" ""
 
   # Optional: Specify a GVim --servername so that gvim shortcuts always
   #           send files to the same instance.
