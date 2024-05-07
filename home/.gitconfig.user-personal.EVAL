@@ -12,7 +12,7 @@
 
 [user]
   name = DXY_PERSON_GITCONFIG_USER_NAME
-  email = PERSONAL_GITCONFIG_USER_EMAIL
+  email = DXY_PERSON_GITCONFIG_USER_EMAIL
 
 # Except for:
 [includeIf "gitdir:DXY_DEPOXY_CLIENT_TILDE/home/work/acme.sh/"]

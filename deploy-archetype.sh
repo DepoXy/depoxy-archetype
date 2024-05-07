@@ -107,7 +107,7 @@ register_customizable_git_config () {
   # - Anything not under ~/work will use your personal user.
   # - You can update/change the Personal user later: .gitconfig.user-personal
   register "DXY_PERSON_GITCONFIG_USER_NAME" "PLEASE_SET_ME"
-  register "PERSONAL_GITCONFIG_USER_EMAIL" "PLEASE_SET_ME@${DXY_HOSTNAME}"
+  register "DXY_PERSON_GITCONFIG_USER_EMAIL" "PLEASE_SET_ME@${DXY_HOSTNAME}"
 
   # A subset of DXC files are backed up to @biz GitHuLaB and are given
   # a one-line URL-only header (i.e., not Author/Project/License lines).
@@ -1198,7 +1198,7 @@ init_repo () {
   # necessary config, like the user.
   local conf_opts=" \
     -c user.name=\"${DXY_PERSON_GITCONFIG_USER_NAME}\" \
-    -c user.email=\"${PERSONAL_GITCONFIG_USER_EMAIL}\" \
+    -c user.email=\"${DXY_PERSON_GITCONFIG_USER_EMAIL}\" \
   "
 
   git init -q -b private .
