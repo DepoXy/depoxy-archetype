@@ -29,7 +29,7 @@
 #   house is not tidy, and you'll be compelled to add a Git ignore
 #   rule herein.
 #   - The real advantage is that you might also be reminded to add
-#     a new project to the ~/DXY_DEPOXY_CLIENT_TILDE/_mrconfig-DXY_VENDOR_CODE_PATH
+#     a new project to the ~/DXY_DEPOXY_CLIENT_TILDE/_mrconfig-DXY_VENDOR_NAME
 #     mrconfig, if you happened to clone a work project directly,
 #     without using myrepos.
 # We'll start with this rule enabled, because it might annoy new

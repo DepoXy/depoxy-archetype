@@ -72,7 +72,7 @@ DEPOXY_STINTS=DXY_DEPOXYDIR_BASE_HOME filter=".* *" exclude=".DS_Store" {
   LICENSE
   README.md
   _mrconfig
-  _mrconfig-DXY_VENDOR_CODE_PATH.example
+  _mrconfig-DXY_VENDOR_NAME
   docs=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/docs {
    .ignore
    Backlog_Client_[[[]]]DXY_DEPOXY_CLIENT_ID.rst
@@ -259,7 +259,7 @@ DEPOXY_STINTS=DXY_DEPOXYDIR_BASE_HOME filter=".* *" exclude=".DS_Store" {
 CLIENT_PROJECTS
 # <INSERT FIRST PROJECT HERE>
 
-client_project=$HOME/DXY_VENDOR_CODE_PATH/<org>/<repo> filter=".* *" {
+client_project=DXY_VENDOR_HOME_HOME/<org>/<repo> filter=".* *" {
  # ...
 }
 
@@ -2612,7 +2612,7 @@ MRCONFIGS_=/ filter=".*mrconfig* *mrconfig*" {
  DEPOXY_STINTS=$HOME/.depoxy/stints {
   client/DXY_DEPOXY_CLIENT_ID=$HOME/.depoxy/stints/DXY_DEPOXY_CLIENT_ID {
    _mrconfig
-   _mrconfig-DXY_VENDOR_CODE_PATH.example
+   _mrconfig-DXY_VENDOR_NAME
   }
  }
  # *** OhMyRepos

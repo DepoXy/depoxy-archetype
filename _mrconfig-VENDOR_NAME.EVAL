@@ -1,7 +1,7 @@
 # USAGE:
 #   m4_shim \
-#     "+8" "_mrconfig-VENDOR_CODE_PATH.EVAL" \
-#     "_mrconfig-${VENDOR_CODE_PATH}"
+#     "+8" "_mrconfig-VENDOR_NAME.EVAL" \
+#     "_mrconfig-${DXY_VENDOR_NAME}"
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
@@ -60,8 +60,8 @@ autocommit =
   #   the README under DXC; that and other files are copied to flast.sh).
   command cp -- ../home/.depoxy/stints/running/DXY_VENDOR_PROJECT_NAME_DOTFILES/README.md README.md
   #
-  command cp -- ../_mrconfig-DXY_VENDOR_CODE_PATH* .
-  command rm -f -- _mrconfig-DXY_VENDOR_CODE_PATH.example
+  # Incl. vendor project configs.
+  command cp -- ../_mrconfig-DXY_VENDOR_NAME* .
   #
   mkdir -p home
   command cp -- ../home/.gitconfig.user-business home/
@@ -110,7 +110,7 @@ autocommit =
 #     the project doesn't include one already).
 
 [${CLIENTHOME:-${HOME}/DXY_VENDOR_CODE_PATH}/division1/project-AA]
-lib = remote_set origin git@github.DXY_VENDOR_CODE_PATH.com:division/project-AA.git
+lib = remote_set origin git@github.DXY_VENDOR_NAME.com:division/project-AA.git
 infuse =
   link_private_exclude "$@"
   link_private_ignore_ "$@"
@@ -131,8 +131,8 @@ infuse =
 #   - But for `gh` to work (and for git-begin-review to work), we must
 #     use one of the conventional names that `gh` expects. Or use both.
 lib =
-  remote_set publish git@github.DXY_VENDOR_CODE_PATH.com:projectZ/superflycool.git
-  remote_set github git@github.DXY_VENDOR_CODE_PATH.com:projectZ/superflycool.git
+  remote_set publish git@github.DXY_VENDOR_NAME.com:projectZ/superflycool.git
+  remote_set github git@github.DXY_VENDOR_NAME.com:projectZ/superflycool.git
 
 # This infuse tasks includes all the tricks I've used on work projects.
 # Tailor as necessary.
@@ -217,9 +217,9 @@ include =
   #
   dxc_root="${DEPOXYDIR_RUNNING_FULL:-${HOME}/.depoxy/running}"
   #
-  cat "${dxc_root}/_mrconfig-DXY_VENDOR_CODE_PATH--project-AA"
+  cat "${dxc_root}/_mrconfig-DXY_VENDOR_NAME--globex"
   #
-  cat "${dxc_root}/_mrconfig-DXY_VENDOR_CODE_PATH--projectZ"
+  cat "${dxc_root}/_mrconfig-DXY_VENDOR_NAME--soylent"
 
 # ========================================================================
 # ------------------------------------------------------------------------

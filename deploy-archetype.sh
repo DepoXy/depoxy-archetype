@@ -120,6 +120,9 @@ register_customizable_git_config () {
 
 # You can set URLs for business-specific stuff.
 register_customizable_business_values () {
+  # What to name some client-specific files.
+  register "DXY_VENDOR_NAME" "${VENDOR_NAME:-acme}"
+
   # Customize where you'd like to keep business code, e.g., ~/acme.
   # - The author generally picks a name or abbreviation for their current
   #   business client, to give their code some honor over a generic default
