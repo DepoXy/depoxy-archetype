@@ -250,7 +250,8 @@ export DEPOXY_CVS_ALIAS_VIM_PLUG_ORG='DXY_DEPOXY_CVS_ALIAS_VIM_PLUG_ORG'
 
 # *** GVim opener project config
 #
-#   https://github.com/landonb/gvim-open-kindness#🐬
+#   CXREF: ~/.kit/sh/gvim-open-kindness/bin/gvim-open-kindness
+#     https://github.com/landonb/gvim-open-kindness#🐬
 
 # The Vim server name used to open files in the same instance. E.g.,
 #   gvim --servername SAMPI --remote-silent <file file...>
