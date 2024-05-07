@@ -501,6 +501,13 @@ register_depoxy_project_paths () {
     | sed "s@^${HOME}/@@"
   )"
 
+  # E.g., "~/.homefries"
+  unset -v DXY_HOMEFRIES_DIR_TILDE
+  register "DXY_HOMEFRIES_DIR_TILDE" "$( \
+    echo "${DXY_HOMEFRIES_DIR}" \
+    | sed -E "s@^${HOME}(/|$)@~\1@"
+  )"
+
   # E.g., "/.homefries/"
   # - Used to generate ~/.gitignore.
   local homefries_home_path="$( \
