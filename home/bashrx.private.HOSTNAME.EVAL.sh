@@ -72,7 +72,7 @@ bashdx_configure_keep_alives () {
 # 2021-08-22: Tell DepoXy Ambers how to define `cvs`. E.g.,
 #   pushd_alias_or_warn "cvs" "${HOME}/.vim/pack/<username>/start"
 bashdx_configure_cvs_alias_target () {
-  export DEPOXY_CVS_VIM_PLUG_PACKAGE_NAME='PERSONAL_CVS_VIM_PLUG_PACKAGE_NAME'
+  export DEPOXY_CVS_VIM_PLUG_PACKAGE_NAME='DXY_PERSON_CVS_VIM_PLUG_PACKAGE_NAME'
 }
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
