@@ -204,6 +204,16 @@ register_customizable_personal_values () {
   register "DXY_DEPOXY_GVIM_SERVERNAME" "🦢"
 }
 
+register_placeholder_project_config_values () {
+  register "DXY_VENDOR_ORG01_NAME" "soylent"
+
+  register "DXY_VENDOR_ORG01_PROJ01_NAME" "soylent-red"
+
+  register "DXY_VENDOR_ORG02_NAME" "globex"
+
+  register "DXY_VENDOR_ORG02_PROJ01_NAME" "hammock-district"
+}
+
 # ================================================================= #
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 # ================================================================= #
@@ -529,6 +539,13 @@ register_depoxy_project_paths () {
   register "DXY_DOPP_KIT_NAME" "$( \
     echo "${DXY_DOPP_KIT}" \
     | sed "s@^${HOME}/@@"
+  )"
+
+  # E.g., "~/.kit"
+  unset -v DXY_DOPP_KIT_TILDE
+  register "DXY_DOPP_KIT_TILDE" "$( \
+    echo "${DXY_DOPP_KIT}" \
+    | sed -E "s@^${HOME}(/|$)@~\1@"
   )"
 
   # E.g., "/.kit/"
@@ -1546,6 +1563,7 @@ main () {
   register_customizable_business_values
   register_customizable_personal_values
   register_customizable_git_config
+  register_placeholder_project_config_values
 
   fail_if_missing_vars
 
