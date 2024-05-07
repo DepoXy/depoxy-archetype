@@ -171,7 +171,7 @@ register_customizable_git_config () {
   #
   # E.g., "acme.sh".
   unset -v DXY_VENDOR_PROJECT_NAME_ACME_SH
-  register "DXY_VENDOR_PROJECT_NAME_ACME_SH" "acme.sh"
+  register "DXY_VENDOR_PROJECT_NAME_ACME_SH" "${DXY_VENDOR_NAME:-acme}.sh"
 
   # Personal user:
   # - Anything not under ~/work will use your personal user.
@@ -1543,9 +1543,9 @@ main () {
   register_depoxy_project_paths
   register_git_put_wise_paths
   register_customizable_headers
-  register_customizable_git_config
   register_customizable_business_values
   register_customizable_personal_values
+  register_customizable_git_config
 
   fail_if_missing_vars
 
