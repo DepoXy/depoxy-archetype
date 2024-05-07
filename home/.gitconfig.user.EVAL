@@ -22,7 +22,7 @@
 # - Use `.gitconfig.user-business` for your corporate Git user and email.
 #   This will be the default Git committer for git operations done to
 #   repos under a specific directory:
-#     ~/DXY_VENDOR_CODE_PATH
+#     DXY_VENDOR_HOME_TILDE
 #
 # - If you need to add more users or tweak these rules, you can set the
 #   user and email specially for specific projects running `git config`
@@ -34,7 +34,7 @@
 
   path = .gitconfig.user-personal
 
-[includeIf "gitdir:~/DXY_VENDOR_CODE_PATH/"]
+[includeIf "gitdir:DXY_VENDOR_HOME_TILDE/"]
 
   path = .gitconfig.user-business
 

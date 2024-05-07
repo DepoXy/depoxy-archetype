@@ -43,11 +43,9 @@
 #       ~/.depoxy/running/home/.vim/dubs_grep_steady/dubs_projects.vim
 #   - Restart Vim, or :GrepSteadyReload.
 # - Remove these comments and rename this file .ignore.example -> .ignore
-
-# - Update DXY_DEPOXY_CLIENT_TILDE/_mrconfig-DXY_VENDOR_CODE_PATH to make
-#   the ~/.projlns/DXY_VENDOR_CODE_PATH symlink on infuse -- see the example
-#   symlink_overlay_dir call to make the project-123-testless symlink
-#   in DXY_DEPOXY_CLIENT_TILDE/_mrconfig-DXY_VENDOR_CODE_PATH.example
+#
+# - Update DXY_DEPOXY_CLIENT_TILDE/_mrconfig-DXY_VENDOR_NAME to make
+#   the ~/.projlns/DXY_VENDOR_HOME_NAME symlink on infuse.
 # - Call `infuse` to create the ~/.projlns symlink.
 
 # E.g., you might find it easier to get to know a new JavaScript that

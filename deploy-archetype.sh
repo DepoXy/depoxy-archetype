@@ -123,19 +123,56 @@ register_customizable_business_values () {
   # What to name some client-specific files.
   register "DXY_VENDOR_NAME" "${VENDOR_NAME:-acme}"
 
-  # Customize where you'd like to keep business code, e.g., ~/acme.
-  # - The author generally picks a name or abbreviation for their current
-  #   business client, to give their code some honor over a generic default
-  #   like ~/work. E.g., Big Business Place might be ~/bbp.
-  # - You can obviously keep their code wherever you want, but this location
-  #   used for a few conveniences:
+  # Customize where you'd like to keep business code, e.g., ~/work
+  # - You might want to use a name or abbreviation for your current
+  #   business client, to give their code some honor over a generic
+  #   default like ~/work. E.g., Acme Industries might be ~/acme
+  # - This location is used for a few conveniences:
   #   - For Git projects under this path, the Git user.name and user.email
   #     are fetched according to the Git config template at:
   #       ~/.depoxy/ambers/archetype/home/.gitconfig.user-business.EVAL
-  #   - For Git projects elsewhere on your device (e.g., for the DepoXy
-  #     projects installed, the other paths include ~/.homefries, ~/.kit,
-  #     and ~/.depoxy itself).
-  register "DXY_VENDOR_CODE_PATH" "work"
+  #   - The ~/.depoxy/running/_mrconfig-DXY_VENDOR_HOME* config come
+  #     pre-wired.
+  #
+  # E.g., "/home/user/work"
+  register "DXY_VENDOR_HOME" "${VENDOR_HOME:-${HOME}/work}"
+
+  unset -v DXY_VENDOR_HOME_NAME
+  register "DXY_VENDOR_HOME_NAME" "$( \
+    echo "${DXY_VENDOR_HOME}" \
+    | sed -E "s@^${HOME}/@@"
+  )"
+
+  # E.g., "/work/"
+  # - Used to generate ~/.git/info/exclude
+  local vendor_home_home_path="$( \
+    format_exclude_rule_home_gitignore "${DXY_VENDOR_HOME}"
+  )"
+  unset -v DXY_VENDOR_HOME_EXCLUDE_RULE
+  register "DXY_VENDOR_HOME_EXCLUDE_RULE" "${vendor_home_home_path}"
+
+  # E.g., "~/work"
+  unset -v DXY_VENDOR_HOME_TILDE
+  register "DXY_VENDOR_HOME_TILDE" "$( \
+    echo "${DXY_VENDOR_HOME}" \
+    | sed -E "s@^${HOME}(/|$)@~\1@"
+  )"
+
+  # E.g., "$HOME/work"
+  # - CXREF: Vimprojects template:
+  #   ~/.depoxy/ambers/archetype/home/.vim/pack/landonb/start/dubs_project_tray/.vimprojects.EVAL
+  unset -v DXY_VENDOR_HOME_HOME
+  register "DXY_VENDOR_HOME_HOME" "$( \
+    echo "${DXY_VENDOR_HOME}" \
+    | sed -E "s@^${HOME}(/|$)@\\\\\$HOME\1@"
+  )"
+
+  # E.g., "${HOME}/work"
+  unset -v DXY_VENDOR_HOME__HOME_
+  register "DXY_VENDOR_HOME__HOME_" "$( \
+    echo "${DXY_VENDOR_HOME}" \
+    | sed -E "s@^${HOME}(/|$)@\\\\\${HOME}\1@"
+  )"
 
   # If your client uses an npm registry, you can specify its URL to generate
   # an ~/.npmrc file. E.g., ~/.npmrc might look like this:

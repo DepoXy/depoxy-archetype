@@ -468,8 +468,8 @@ autocommit =
   # 2021-08-22: I added these tree dumps 2021-01-31 but they've been of
   #             no utility to me. So not quite sure why I'm preserving.
   depoxy_client_autocommit_tree_dumps () {
-    tree -n -a -I .git/ -I home/DXY_VENDOR_CODE_PATH/ > "home/.config/${depoxy_client_id}-tree.txt"
-    tree -C -a -I .git/ -I home/DXY_VENDOR_CODE_PATH/ > "home/.config/${depoxy_client_id}-tree.col"
+    tree -n -a -I .git/ -I "DXY_VENDOR_HOME__HOME_" > "home/.config/${depoxy_client_id}-tree.txt"
+    tree -C -a -I .git/ -I "DXY_VENDOR_HOME__HOME_" > "home/.config/${depoxy_client_id}-tree.col"
     git_auto_commit_many \
       "home/.config/${depoxy_client_id}-tree.txt" \
       "home/.config/${depoxy_client_id}-tree.col" \
@@ -646,16 +646,13 @@ infuse =
   # *** OMR
   #
   # .mrinfuse/ nesting
-  local dxy_home_work="${MR_REPO}/home/DXY_VENDOR_CODE_PATH"
-  local usr_home_work="${HOME}/DXY_VENDOR_CODE_PATH"
+  local dxy_home_work="${MR_REPO}/home/DXY_VENDOR_HOME_NAME"
+  local usr_home_work="DXY_VENDOR_HOME__HOME_"
   local home_work_hint=""
+  # These paths are part the Archetype boilerplate so exist initially,
+  # but user may have moved or removed them.
   if [ ! -d "${dxy_home_work}" ]; then
-    home_work_hint="$( \
-      printf "%s" "$(font_highlight "No sources.") / Try:\n    cp -ar " \
-        "\"${dxy_home_work}.example\" " \
-        "\"${dxy_home_work}\"\n" \
-        "                               and customize DXY_VENDOR_CODE_PATH/"
-    )"
+    home_work_hint="No $(font_highlight “${dxy_home_work}”) directory or symlink"
   elif [ ! -d "${usr_home_work}" ]; then
     home_work_hint="No $(font_highlight “${usr_home_work}”) directory or symlink"
   fi
@@ -666,10 +663,10 @@ infuse =
   else
     symlink_overlay_dir \
       "${dxy_home_work}" \
-      "${DXC_WORK_ROOT:-${HOME}/DXY_VENDOR_CODE_PATH}/.mrinfuse"
+      "${VENDOR_HOME:-DXY_VENDOR_HOME__HOME_}/.mrinfuse"
     symlink_overlay_file \
       "${dxy_home_work}/_ignore" \
-      "${DXC_WORK_ROOT:-${HOME}/DXY_VENDOR_CODE_PATH}/.ignore"
+      "${VENDOR_HOME:-DXY_VENDOR_HOME__HOME_}/.ignore"
   fi
   #
   # Alert if missing business client mrconfig (because impossibly unlikely user won't want).

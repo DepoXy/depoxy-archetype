@@ -21,7 +21,7 @@ order = 220
 # ------------------------------------------------------------------------
 
 # Project stub, for infusing.
-[${CLIENTHOME:-${HOME}/work}]
+[${VENDOR_HOME:-DXY_VENDOR_HOME__HOME_}]
 checkout = true
 infuse =
   # The DXC project infuse task (~/.depoxy/running/_mrconfig) wires a lot
@@ -109,7 +109,7 @@ autocommit =
 #   - For grep ignore, an `.ignore` symlink is created (which assumes
 #     the project doesn't include one already).
 
-[${CLIENTHOME:-${HOME}/DXY_VENDOR_CODE_PATH}/division1/project-AA]
+[${VENDOR_HOME:-DXY_VENDOR_HOME__HOME_}/division1/project-AA]
 lib = remote_set origin git@github.DXY_VENDOR_NAME.com:division/project-AA.git
 infuse =
   link_private_exclude "$@"
@@ -123,7 +123,7 @@ infuse =
 # - Assume this is a JavaScript project, hosted on an enterprise
 #   GitHub server, and that uses npm, ESLint, Jest, and husky.
 
-[${CLIENTHOME:-${HOME}/DXY_VENDOR_CODE_PATH}/projectZ/superflycool]
+[${VENDOR_HOME:-DXY_VENDOR_HOME__HOME_}/projectZ/superflycool]
 # Note that the `gh` command expects 'upstream', 'github', or 'origin'.
 # - I often use unconventional remote names, e.g., I'll use 'publish'
 #   for the remote I can push to, and I'll use 'starter' for an
@@ -138,12 +138,12 @@ lib =
 # Tailor as necessary.
 infuse =
   #
-  # Symlink `~/DXY_VENDOR_CODE_PATH/projectZ/superflycool/.git/info/exclude` to the source at
-  # `DXY_DEPOXY_CLIENT_TILDE/home/DXY_VENDOR_CODE_PATH/projectZ/superflycool/_git/info/exclude`.
+  # Symlink `DXY_VENDOR_HOME_TILDE/projectZ/superflycool/.git/info/exclude` to the source at
+  # `DXY_DEPOXY_CLIENT_TILDE/home/DXY_VENDOR_HOME_NAME/projectZ/superflycool/_git/info/exclude`.
   link_private_exclude "$@"
   #
-  # Symlink `~/DXY_VENDOR_CODE_PATH/projectZ/superflycool/.ignore` to the source at
-  # `DXY_DEPOXY_CLIENT_TILDE/home/DXY_VENDOR_CODE_PATH/projectZ/superflycool/_ignore`.
+  # Symlink `DXY_VENDOR_HOME_TILDE/projectZ/superflycool/.ignore` to the source at
+  # `DXY_DEPOXY_CLIENT_TILDE/home/DXY_VENDOR_HOME_NAME/projectZ/superflycool/_ignore`.
   link_private_ignore_ "$@"
   #
   # Install custom ESLint and Jest config. (For whatever reason:

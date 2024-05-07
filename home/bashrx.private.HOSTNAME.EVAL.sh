@@ -49,14 +49,14 @@
 #
 # - Obviously, this location is highly subjective.
 #   - You can set this when generating a DepoXy Client
-#     using the [[[DXY_VENDOR_CODE_PATH]]] environ.
+#     using the [[[DXY_VENDOR_HOME]]] environ.
 #   - It defaults to '~/work', but author sometimes
 #     customizes it to be @biz-specific, e.g.,
 #     '~/acme', or '~/fbi/.
 
 bashdx_wire_aliases_pushd_paths_cdw () {
-  # CXREF: This path was set by deploy-archetype.sh per [[[DXY_VENDOR_CODE_PATH]]].
-  local client_dir="${HOME}/DXY_VENDOR_CODE_PATH"
+  # CXREF: This path is set by deploy-archetype.sh per [[[DXY_VENDOR_HOME]]]
+  local client_dir="${VENDOR_HOME:-DXY_VENDOR_HOME__HOME_}"
 
   if [ -d "${client_dir}" ]; then
     pushd_alias_or_warn "cdw" "${client_dir}"

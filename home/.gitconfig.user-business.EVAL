@@ -24,13 +24,13 @@
 # Some examples to show how to include additional project-specific Git config:
 
 # # Apply config to all repos under a broader business organization.
-# [includeIf "gitdir:~/DXY_VENDOR_CODE_PATH/<org>/"]
+# [includeIf "gitdir:DXY_VENDOR_HOME_TILDE/<org>/"]
 #   # USAGE: Store the config in the DepoXy Client.
 #   # - See the example (use `gF` to jump Vim):
 #   path = DXY_DEPOXY_CLIENT_TILDE/home/client/CLIENT_BIZUNIT/.gitconfig-CLIENT_BIZUNIT.example
 
 # # SAVVY: Gitconfig honors ~ tilde expansion, but not variable expansion.
-# [includeIf "gitdir:~/DXY_VENDOR_CODE_PATH/<org>/<repo>/"]
+# [includeIf "gitdir:DXY_VENDOR_HOME_TILDE/<org>/<repo>/"]
 #   # Skip the pre-commit hook (which runs tests, and is slow).
 #   path = ~/.kit/git/git-smart/gitconfigs/commit-no-verify.gitconfig
 

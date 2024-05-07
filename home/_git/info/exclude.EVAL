@@ -19,10 +19,10 @@
 
 # *** @biz-specific
 
-# DepoXy Client: Work/business/client/@biz projects are under ~/DXY_VENDOR_CODE_PATH.
+# DepoXy Client: Work/business/client/@biz projects are under DXY_VENDOR_HOME_TILDE.
 
-/DXY_VENDOR_CODE_PATH/.ignore
-/DXY_VENDOR_CODE_PATH/.mrinfuse
+/DXY_VENDOR_HOME_EXCLUDE_RULE/.ignore
+/DXY_VENDOR_HOME_EXCLUDE_RULE/.mrinfuse
 
 # YOU: Decide if you want to ignore everything under ~/work or not.
 # - If this rule is disabled, you'll be reminded if your ~/work
@@ -36,7 +36,7 @@
 # users if their ~/work directory keeps showing up as untidy from
 # ${HOME}/.
 
-/DXY_VENDOR_CODE_PATH/
+/DXY_VENDOR_HOME_EXCLUDE_RULE/
 
 # If you symlinked ~/work, also this path
 # (Aka suggested directory name for @biz code):
@@ -45,11 +45,11 @@
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
-# *** Example /DXY_VENDOR_CODE_PATH rules.
+# *** Example /DXY_VENDOR_HOME_EXCLUDE_RULE rules.
 
-# /DXY_VENDOR_CODE_PATH/division1/project-AA
-# /DXY_VENDOR_CODE_PATH/projectZ/superflycool
-# /DXY_VENDOR_CODE_PATH/project-123-testless
+# /DXY_VENDOR_HOME_EXCLUDE_RULE/division1/project-AA
+# /DXY_VENDOR_HOME_EXCLUDE_RULE/projectZ/superflycool
+# /DXY_VENDOR_HOME_EXCLUDE_RULE/project-123-testless
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
