@@ -17,39 +17,46 @@
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
-# *** @biz-specific
+# *** Ignore all vendor projects
 
-# DepoXy Client: Work/business/client/@biz projects are under DXY_VENDOR_HOME_TILDE.
-
-/DXY_VENDOR_HOME_EXCLUDE_RULE/.ignore
-/DXY_VENDOR_HOME_EXCLUDE_RULE/.mrinfuse
-
-# YOU: Decide if you want to ignore everything under ~/work or not.
-# - If this rule is disabled, you'll be reminded if your ~/work
-#   house is not tidy, and you'll be compelled to add a Git ignore
-#   rule herein.
-#   - The real advantage is that you might also be reminded to add
-#     a new project to the ~/DXY_DEPOXY_CLIENT_TILDE/_mrconfig-DXY_VENDOR_NAME
-#     mrconfig, if you happened to clone a work project directly,
-#     without using myrepos.
-# We'll start with this rule enabled, because it might annoy new
-# users if their ~/work directory keeps showing up as untidy from
-# ${HOME}/.
-
-/DXY_VENDOR_HOME_EXCLUDE_RULE/
-
-# If you symlinked ~/work, also this path
-# (Aka suggested directory name for @biz code):
+# YOU: Decide if you want to ignore everything else under
+#      DXY_VENDOR_HOME_TILDE or not.
 #
-#  /work
+# - If the following rule is disabled, you'll be reminded if your
+#   DXY_VENDOR_HOME_TILDE house is not tidy.
+#
+#   - If an untracked change is a new project repo that you
+#     cloned, you could add a new Git ignore rule herein, e.g.,
+#
+#       DXY_VENDOR_HOME_EXCLUDE_RULE[[[]]]DXY_VENDOR_ORG02_NAME/DXY_VENDOR_ORG02_PROJ01_NAME/
+#
+#     But it might also be a reminder to add a new project to the
+#       DXY_DEPOXY_CLIENT_TILDE/_mrconfig-DXY_VENDOR_NAME
+#     config (or one of the configs that it loads), if you happened
+#     to clone a work project directly and forgot to add it to your
+#     myrepos config.
+#
+#   - Otherwise, if an untracked change is something else, maybe
+#     this reminds you to commit that change to the necessary repo.
+#
+# We'll start with this rule enabled, because it might annoy new
+# users if their DXY_VENDOR_HOME_TILDE directory keeps showing up
+# as untidy from ${HOME}/.
 
-# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
+DXY_VENDOR_HOME_EXCLUDE_RULE
 
-# *** Example /DXY_VENDOR_HOME_EXCLUDE_RULE rules.
+# *** ALTLY: Ignore specific vendor projects
 
-# /DXY_VENDOR_HOME_EXCLUDE_RULE/division1/project-AA
-# /DXY_VENDOR_HOME_EXCLUDE_RULE/projectZ/superflycool
-# /DXY_VENDOR_HOME_EXCLUDE_RULE/project-123-testless
+# DepoXy Client: Vendor projects are under DXY_VENDOR_HOME_TILDE
+
+# These are symlinks to DepoXy Client files (created by `infuse`).
+DXY_VENDOR_HOME_EXCLUDE_RULE[[[]]].ignore
+DXY_VENDOR_HOME_EXCLUDE_RULE[[[]]].mrinfuse
+
+# YOU: If not ignoring all vendor projects, sound off here, e.g.,
+#
+#  DXY_VENDOR_HOME_EXCLUDE_RULE[[[]]]DXY_VENDOR_ORG01_NAME/DXY_VENDOR_ORG01_PROJ01_NAME/
+#  DXY_VENDOR_HOME_EXCLUDE_RULE[[[]]]DXY_VENDOR_ORG02_NAME/DXY_VENDOR_ORG02_PROJ01_NAME/
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 

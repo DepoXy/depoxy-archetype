@@ -10,7 +10,7 @@
   "rules": [
 
     {
-      "description": "#3111 — Google Chrome — Foreground *CLIENT_PROJECT_A* (Shift-Ctrl-Cmd-H)",
+      "description": "#3111 — Google Chrome — Foreground *driver.html* (Shift-Ctrl-Cmd-H)",
       "manipulators": [
         {
           "from": {

@@ -22,7 +22,6 @@
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
-CLIENT_PROJECT_A # ...for example
 #░▒░░▒░░▒░░▒#    # TOC USAGE:
 CLIENT_PROJECTS  # - Caret over
 #░░▒░░▒░░▒░░#    # - <F1> to go
@@ -125,11 +124,13 @@ DEPOXY_STINTS=DXY_DEPOXYDIR_BASE_HOME filter=".* *" exclude=".DS_Store" {
      explore-notable-notes.vim
     }
    }
-   work.example=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/work.example {
+   work=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/work {
     _ignore
-    CLIENT_BIZUNIT=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/work.example/CLIENT_BIZUNIT {
-     .gitconfig-CLIENT_BIZUNIT.example
-     CLIENT_PROJECT_A=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/work.example/CLIENT_BIZUNIT/CLIENT_PROJECT_A {
+    DXY_VENDOR_ORG01_NAME=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/work/DXY_VENDOR_ORG01_NAME {
+     # VENDOR_ORG01_NAME
+     .gitconfig-DXY_VENDOR_ORG01_NAME
+     DXY_VENDOR_ORG01_PROJ01_NAME=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/work/DXY_VENDOR_ORG01_NAME/DXY_VENDOR_ORG01_PROJ01_NAME {
+      # VENDOR_ORG01_PROJ01_NAME
       .eslintignore.local
       .eslintrc-develop
       .eslintrc-develop--alt
@@ -137,14 +138,14 @@ DEPOXY_STINTS=DXY_DEPOXYDIR_BASE_HOME filter=".* *" exclude=".DS_Store" {
       _ignore
       jest.config-DEV.js
       jest.config-DEV.js--alt
-      _git/info=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/work.example/CLIENT_BIZUNIT/CLIENT_PROJECT_A/_git/info {
+      _git/info=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/work/DXY_VENDOR_ORG01_NAME/DXY_VENDOR_ORG01_PROJ01_NAME/_git/info {
        exclude
       }
      }
-     project-123-testless=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/work.example/project-123-testless {
-      .ignore.example
-      YOU--add-symlink-to-project-123
-     }
+    }
+    DXY_VENDOR_ORG02_NAME=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/work/DXY_VENDOR_ORG02_NAME {
+     # VENDOR_ORG02_NAME
+     _ignore
     }
    }
    .config=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/.config {
@@ -1162,11 +1163,11 @@ DEPOXY_ARCHETYPE=$HOME/.depoxy/ambers/archetype filter=".* *" {
   _git/info=$HOME/.depoxy/ambers/archetype/home/_git/info {
    exclude.EVAL
   }
-  work.example=$HOME/.depoxy/ambers/archetype/home/work.example {
+  work=$HOME/.depoxy/ambers/archetype/home/work {
    _ignore
-   CLIENT_BIZUNIT=$HOME/.depoxy/ambers/archetype/home/work.example/CLIENT_BIZUNIT {
-    .gitconfig-CLIENT_BIZUNIT.example
-    CLIENT_PROJECT_A=$HOME/.depoxy/ambers/archetype/home/work.example/CLIENT_BIZUNIT/CLIENT_PROJECT_A {
+   VENDOR_ORG01_NAME=$HOME/.depoxy/ambers/archetype/home/work/VENDOR_ORG01_NAME {
+    .gitconfig-VENDOR_ORG01_NAME.EVAL
+    VENDOR_ORG01_PROJ01_NAME=$HOME/.depoxy/ambers/archetype/home/work/VENDOR_ORG01_NAME/VENDOR_ORG01_PROJ01_NAME {
      .eslintignore.local
      .eslintrc-develop
      .eslintrc-develop--alt
@@ -1174,14 +1175,13 @@ DEPOXY_ARCHETYPE=$HOME/.depoxy/ambers/archetype filter=".* *" {
      _ignore
      jest.config-DEV.js
      jest.config-DEV.js--alt
-     _git/info=$HOME/.depoxy/ambers/archetype/home/work.example/CLIENT_BIZUNIT/CLIENT_PROJECT_A/_git/info {
+     _git/info=$HOME/.depoxy/ambers/archetype/home/work/VENDOR_ORG01_NAME/VENDOR_ORG01_PROJ01_NAME/_git/info {
       exclude
      }
     }
    }
-   project-123-testless=$HOME/.depoxy/ambers/archetype/home/work.example/project-123-testless {
-    .ignore.EVAL.example
-    YOU--add-symlink-to-project-123
+   VENDOR_ORG02_NAME=$HOME/.depoxy/ambers/archetype/home/work/VENDOR_ORG02_NAME {
+    _ignore.EVAL
    }
   }
   .config=$HOME/.depoxy/ambers/archetype/home/.config {
