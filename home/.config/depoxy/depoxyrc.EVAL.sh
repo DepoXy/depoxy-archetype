@@ -221,6 +221,29 @@ export DEPOXY_PYENV_PYVERS="3.12.1"
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
+# Opt-in Darwin Keep Alive.
+#
+# - Runs `caffeinate` and/or `pmset` to keep your machine from sleeping
+#   (and, if you can't change the pertinent system settings, from you
+#    then needing to enter your password to log back on; useful if you
+#    work from home and your bio breaks take longer than 5 minutes, or
+#    if you switch to your personal machine for a moment. Or slip away
+#    to the kitchen for tea).
+#
+# - We only enable `caffeinate` by default. For truly nastily-locked
+#   machines, you might need to use `pmset`, as well.
+
+# Set this to enable both caffeinate and pmset.
+export DEPOXY_ENABLE_KEEP_ALIVE=false
+
+# Set this to enable only caffeinate.
+export DEPOXY_ENABLE_KEEP_ALIVE_CAFFEINATE=true
+
+# Set this to enable only pmset.
+export DEPOXY_ENABLE_KEEP_ALIVE_PMSET=false
+
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
+
 # 2021-08-22: Tell DepoXy Ambers how to define `cvs`. E.g.,
 #   pushd_alias_or_warn "cvs" "${HOME}/.vim/pack/<username>/start"
 export DEPOXY_CVS_ALIAS_VIM_PLUG_ORG='DXY_DEPOXY_CVS_ALIAS_VIM_PLUG_ORG'

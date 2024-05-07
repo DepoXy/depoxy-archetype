@@ -42,34 +42,6 @@
 # ----------------------------------------------------------------- #
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
-# Opt-in Darwin Keep Alive.
-#
-# - Runs `caffeinate` and/or `pmset` to keep your machine from sleeping
-#   (and, if you can't change the pertinent system settings, from you
-#    then needing to enter your password to log back on; useful if you
-#    work from home and your bio breaks take longer than 5 minutes, or
-#    if you switch to your personal machine for a moment. Or slip away
-#    to the kitchen for tea).
-#
-# - We only enable `caffeinate` by default. For truly nastily-locked
-#   machines, you might need to use `pmset`, as well.
-
-bashdx_configure_keep_alives () {
-  # Set this to enable both caffeinate and pmset.
-  export DEPOXY_ENABLE_KEEP_ALIVE=false
-
-  # Set this to enable only caffeinate.
-  export DEPOXY_ENABLE_KEEP_ALIVE_CAFFEINATE=true
-
-  # Set this to enable only pmset.
-  export DEPOXY_ENABLE_KEEP_ALIVE_PMSET=false
-}
-
-
-# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
-# ----------------------------------------------------------------- #
-# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
-
 # Changes Directories to your Work directory [cdw].
 # ↑       ↑                   ↑
 #
@@ -170,36 +142,34 @@ bashdxy_source_business_code_path () {
 
 main () {
   if ${HOME_FRIES_PRELOAD}; then
-    # Set environs on the first pass.
 
-    bashdx_configure_keep_alives
-    unset -f bashdx_configure_keep_alives
-  else
-    # Set aliases on the second pass.
-    # - By setting our aliases later, we'll alert if our aliases conflict
-    #   with any that DepoXy sets up, as opposed to that happening in the
-    #   reverse (i.e., us setting aliases first, and then DepoXy griping
-    #   if we blocked any of theirs).
-
-    bashdx_wire_aliases_pushd_paths_cdw
-    unset -f bashdx_wire_aliases_pushd_paths_cdw
-
-    bashdx_wire_aliases_open_tracker
-    unset -f bashdx_wire_aliases_open_tracker
-
-    # ***
-
-    bashdx_customize_depoxy_client_PS1
-    unset -f bashdx_customize_depoxy_client_PS1
-
-    # ***
-
-    bashdxy_source_experimental
-    unset -f bashdxy_source_experimental
-
-    bashdxy_source_business_code_path
-    unset -f bashdxy_source_business_code_path
+    return 0
   fi
+
+  # Set aliases on the second pass.
+  # - By setting our aliases later, we'll alert if our aliases conflict
+  #   with any that DepoXy sets up, as opposed to that happening in the
+  #   reverse (i.e., us setting aliases first, and then DepoXy griping
+  #   if we blocked any of theirs).
+
+  bashdx_wire_aliases_pushd_paths_cdw
+  unset -f bashdx_wire_aliases_pushd_paths_cdw
+
+  bashdx_wire_aliases_open_tracker
+  unset -f bashdx_wire_aliases_open_tracker
+
+  # ***
+
+  bashdx_customize_depoxy_client_PS1
+  unset -f bashdx_customize_depoxy_client_PS1
+
+  # ***
+
+  bashdxy_source_experimental
+  unset -f bashdxy_source_experimental
+
+  bashdxy_source_business_code_path
+  unset -f bashdxy_source_business_code_path
 }
 
 main "$@"

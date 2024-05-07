@@ -98,8 +98,8 @@
 # (like grep -> ggrep), and user-installed
 # applications that want to be found on PATH.
 /.local/
-# DEPOXY_ENABLE_KEEP_ALIVE: Opt-in keep-
-# alive mechanism `nohup` side-effect files.
+# Opt-in keep-alive mechanism `nohup` side-effect files.
+# - CXREF: DEPOXY_ENABLE_KEEP_ALIVE.
 /.noise/caffeinate_history
 /.noise/pmset_history
 # RipGrep search groups. Assemble directories
