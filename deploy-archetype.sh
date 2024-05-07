@@ -262,6 +262,14 @@ register_depoxydir_paths () {
     | sed -E "s@^${HOME}(/|$)@\\\\\${HOME}\1@"
   )"
 
+  # E.g., "/.depoxy/"
+  # - Used to generate ~/.gitignore.
+  local depoxy_home_path="$( \
+    format_exclude_rule_home_gitignore "${DXY_DEPOXYDIR_BASE_FULL}"
+  )"
+  unset -v DXY_DEPOXYDIR_BASE_EXCLUDE_RULE
+  register "DXY_DEPOXYDIR_BASE_EXCLUDE_RULE" "${depoxy_home_path}"
+
   # ***
 
   # E.g., "stints"
@@ -483,22 +491,46 @@ register_depoxy_project_paths () {
 
   # ***
 
+  # E.g., "/Users/user/.homefries"
+  register "DXY_HOMEFRIES_DIR" "${HOMEFRIES_DIR:-${HOME}/.homefries}"
+
   # E.g., ".homefries"
+  unset -v DXY_HOMEFRIES_DIR_NAME
   register "DXY_HOMEFRIES_DIR_NAME" "$( \
-    echo "${HOMEFRIES_DIR:-${HOME}/.homefries}" \
+    echo "${DXY_HOMEFRIES_DIR}" \
     | sed "s@^${HOME}/@@"
   )"
+
+  # E.g., "/.homefries/"
+  # - Used to generate ~/.gitignore.
+  local homefries_home_path="$( \
+    format_exclude_rule_home_gitignore "${DXY_HOMEFRIES_DIR}"
+  )"
+  unset -v DXY_HOMEFRIES_DIR_EXCLUDE_RULE
+  register "DXY_HOMEFRIES_DIR_EXCLUDE_RULE" "${homefries_home_path}"
 
   # ***
 
   # FIXME/2022-12-13: Propagate DOPP_KIT/DXY_DOPP_KIT_NAME usage
   #                   (it's not used everywhere it could be).
-  #
+
+  # E.g., "/Users/user/.kit"
+  register "DXY_DOPP_KIT" "${DOPP_KIT:-${HOME}/.kit}"
+
   # E.g., ".kit"
+  unset -v DXY_DOPP_KIT_NAME
   register "DXY_DOPP_KIT_NAME" "$( \
-    echo "${DOPP_KIT:-${HOME}/.kit}" \
+    echo "${DXY_DOPP_KIT}" \
     | sed "s@^${HOME}/@@"
   )"
+
+  # E.g., "/.kit/"
+  # - Used to generate ~/.gitignore.
+  local dopp_kit_home_path="$( \
+    format_exclude_rule_home_gitignore "${DXY_DOPP_KIT}"
+  )"
+  unset -v DXY_DOPP_KIT_EXCLUDE_RULE
+  register "DXY_DOPP_KIT_EXCLUDE_RULE" "${dopp_kit_home_path}"
 }
 
 # ***

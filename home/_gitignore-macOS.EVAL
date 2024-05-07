@@ -55,10 +55,10 @@
 # *** DepoXy & Homefries.
 
 # DepoXy: DepoXy (DXY), DepoXy Archetype (DXA), and DepoXy Client (DXC).
-/DXY_DEPOXYDIR_BASE_NAME/
+DXY_DEPOXYDIR_BASE_EXCLUDE_RULE
 
 # Homefries: Bashrc experience.
-/DXY_HOMEFRIES_DIR_NAME/
+DXY_HOMEFRIES_DIR_EXCLUDE_RULE
 
 # DepoXy- and Homefries-infused files.
 /.bashrc
@@ -89,7 +89,7 @@
 
 # Dev Kit: Curation of OMR-fetched software repos
 #   (of useful Git, Bash, macOS, and Vim variety).
-/DXY_DOPP_KIT_NAME/
+DXY_DOPP_KIT_EXCLUDE_RULE
 
 # For wget files, like .dmg, .tar.gz, .zip.
 /.downloads/
