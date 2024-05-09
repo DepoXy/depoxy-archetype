@@ -379,11 +379,6 @@ register_depoxy_client_paths () {
   unset -v DXY_DEPOXY_CLIENT_TILDE
   register "DXY_DEPOXY_CLIENT_TILDE" "${DXY_DEPOXYDIR_STINTS_TILDE}/${DXY_DEPOXY_CLIENT_ID}"
 
-  # - Client $HOME path, e.g., "$HOME/.depoxy/stints/XXXX"
-  # FIXME/2023-03-03: Currently unused. (Was this for .vimprojects?)
-  unset -v DXY_DEPOXY_CLIENT_HOME
-  register "DXY_DEPOXY_CLIENT_HOME" "${DXY_DEPOXYDIR_STINTS_HOME}/${DXY_DEPOXY_CLIENT_ID}"
-
   # - Client full path, e.g., "/(Users|home)/<user>/.depoxy/stints/XXXX"
   unset -v DXY_DEPOXY_CLIENT_FULL
   register "DXY_DEPOXY_CLIENT_FULL" "${DXY_DEPOXYDIR_STINTS_FULL}/${DXY_DEPOXY_CLIENT_ID}"
@@ -1001,7 +996,6 @@ ln_with_trace () {
 
 # TRYME:
 #   find . -path ./.git -prune -o -type d -print
-# # find . -path ./.git -prune -o -type d -exec echo "${DXY_DEPOXY_CLIENT_HOME}/{}" \;
 #   find . -path ./.git -prune -o -type d -exec echo "${DXY_DEPOXY_CLIENT_FULL}/{}" \;
 
 # SAVVY: Use `-mindepth 1` to exclude current directory (.).
