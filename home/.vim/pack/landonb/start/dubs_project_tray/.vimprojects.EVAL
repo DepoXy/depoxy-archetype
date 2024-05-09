@@ -72,6 +72,7 @@ DEPOXY_STINTS=DXY_DEPOXYDIR_BASE_HOME filter=".* *" exclude=".DS_Store" {
   README.md
   _mrconfig
   _mrconfig-DXY_VENDOR_NAME
+  _mrconfig-DXY_VENDOR_NAME--DXY_VENDOR_ORG01_NAME
   _mrconfig-DXY_VENDOR_NAME--DXY_VENDOR_ORG02_NAME
   docs=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/docs {
    .ignore
@@ -2614,6 +2615,7 @@ MRCONFIGS_=/ filter=".*mrconfig* *mrconfig*" {
   client/DXY_DEPOXY_CLIENT_ID=$HOME/.depoxy/stints/DXY_DEPOXY_CLIENT_ID {
    _mrconfig
    _mrconfig-DXY_VENDOR_NAME
+   _mrconfig-DXY_VENDOR_NAME--DXY_VENDOR_ORG01_NAME
    _mrconfig-DXY_VENDOR_NAME--DXY_VENDOR_ORG02_NAME
   }
  }

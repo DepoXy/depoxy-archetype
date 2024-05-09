@@ -103,29 +103,6 @@ autocommit =
 # ========================================================================
 # ------------------------------------------------------------------------
 
-# YOU: Here's a basic OMR example project with two tasks.
-# - An obvious checkout task.
-# - An infuse task that symlinks Git and grep ignore files.
-#   - For Git ignore, the private `.git/info/exclude` file is symlinked,
-#     but it's also symlinked for more convenience at `.gitignore.local`.
-#   - For grep ignore, an `.ignore` symlink is created (which assumes
-#     the project doesn't include one already).
-
-[${VENDOR_HOME:-DXY_VENDOR_HOME__HOME_}/DXY_VENDOR_ORG02_NAME/DXY_VENDOR_ORG02_PROJ01_NAME]
-# USAGE: Remove 'checkout' line and customize
-checkout = stub_checkout_directory  # Because not a real URL
-
-lib = remote_set origin git@github.DXY_VENDOR_NAME.com:DXY_VENDOR_ORG02_NAME/DXY_VENDOR_ORG02_PROJ01_NAME.git
-
-infuse =
-  link_private_exclude "$@"
-  link_private_ignore_ "$@"
-  #
-  symlink_mrinfuse_file ".editorconfig"
-
-# ========================================================================
-# ------------------------------------------------------------------------
-
 # YOU: If you work on different teams with different sets of projects,
 #      you might want to break out your config into multiple files, as
 #      shown here.
@@ -135,9 +112,13 @@ include =
   #
   dxc_root="${DEPOXYDIR_RUNNING_FULL:-${HOME}/.depoxy/running}"
   #
+  # CXREF:
+  #   DXY_VENDOR_HOME_TILDE/_mrconfig-DXY_VENDOR_NAME--DXY_VENDOR_ORG01_NAME
   cat "${dxc_root}/_mrconfig-DXY_VENDOR_NAME--DXY_VENDOR_ORG01_NAME"
   #
-  cat "${dxc_root}/_mrconfig-DXY_VENDOR_NAME--soylent"
+  # CXREF:
+  #   DXY_VENDOR_HOME_TILDE/_mrconfig-DXY_VENDOR_NAME--DXY_VENDOR_ORG02_NAME
+  cat "${dxc_root}/_mrconfig-DXY_VENDOR_NAME--DXY_VENDOR_ORG02_NAME"
 
 # ========================================================================
 # ------------------------------------------------------------------------
