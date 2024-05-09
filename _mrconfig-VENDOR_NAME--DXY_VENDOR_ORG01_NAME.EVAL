@@ -1,0 +1,143 @@
+# USAGE:
+#   m4_shim \
+#     "+8" "_mrconfig-VENDOR_NAME--DXY_VENDOR_ORG01_NAME.EVAL" \
+#     "_mrconfig-${DXY_VENDOR_NAME}--${DXY_VENDOR_ORG01_NAME}"
+
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
+
+# vim:tw=0:ts=2:sw=2:et:norl:nospell:ft=bash
+# DXY_HEADER_AUTHOR
+# DXY_HEADER_DOTPROJECT
+
+# ========================================================================
+# ------------------------------------------------------------------------
+
+[DEFAULT]
+order = 221
+
+# ========================================================================
+# ------------------------------------------------------------------------
+
+# Stubbish, for infusing.
+[${VENDOR_HOME:-DXY_VENDOR_HOME__HOME_}/DXY_VENDOR_ORG01_NAME]
+checkout = true
+infuse =
+  link_private_ignore_ "$@"
+
+# ========================================================================
+# ------------------------------------------------------------------------
+
+# YOU: Here's a more complicated OMR example project.
+# - See comments inline for all the details.
+# - Assume this is a JavaScript project, hosted on an enterprise
+#   GitHub server, and that uses npm, ESLint, Jest, and husky.
+
+[${VENDOR_HOME:-DXY_VENDOR_HOME__HOME_}/DXY_VENDOR_ORG01_NAME/DXY_VENDOR_ORG01_PROJ01_NAME]
+# USAGE: Remove 'checkout' line and customize
+checkout = stub_checkout_directory  # Because not a real URL
+
+# Note that the `gh` command expects 'upstream', 'github', or 'origin'.
+# - I often use unconventional remote names, e.g., I'll use 'publish'
+#   for the remote I can push to, and I'll use 'starter' for an
+#   upstream project I only pull from (e.g., the project I forked from).
+#   - But for `gh` to work (and for git-begin-review to work), we must
+#     use one of the conventional names that `gh` expects. Or use both.
+lib =
+  remote_set publish git@github.DXY_VENDOR_NAME.com:DXY_VENDOR_ORG01_NAME/DXY_VENDOR_ORG01_PROJ01_NAME.git
+  remote_set github git@github.DXY_VENDOR_NAME.com:DXY_VENDOR_ORG01_NAME/DXY_VENDOR_ORG01_PROJ01_NAME.git
+
+# This infuse task demonstrates many tricks I've used on work projects.
+# - Tailor as necessary.
+infuse =
+  #
+  # Symlink `DXY_VENDOR_HOME_TILDE/DXY_VENDOR_ORG01_NAME/DXY_VENDOR_ORG01_PROJ01_NAME/.git/info/exclude` to the source at
+  # `DXY_DEPOXY_CLIENT_TILDE/home/DXY_VENDOR_HOME_NAME/DXY_VENDOR_ORG01_NAME/DXY_VENDOR_ORG01_PROJ01_NAME/_git/info/exclude`.
+  link_private_exclude "$@"
+  #
+  # Symlink `DXY_VENDOR_HOME_TILDE/DXY_VENDOR_ORG01_NAME/DXY_VENDOR_ORG01_PROJ01_NAME/.ignore` to the source at
+  # `DXY_DEPOXY_CLIENT_TILDE/home/DXY_VENDOR_HOME_NAME/DXY_VENDOR_ORG01_NAME/DXY_VENDOR_ORG01_PROJ01_NAME/_ignore`.
+  link_private_ignore_ "$@"
+  #
+  # Install custom ESLint and Jest config. (For whatever reason:
+  #  - I like to loosen a few rules while developing, like not allowing
+  #    "fixme" comments. Then I run `lint!` to skip `.eslintrc-develop`
+  #    and use rules from the project's official `.eslintrc` file.
+  #  - The `.eslintignore.local` duplicates the project's `.eslintignore`
+  #    but adds `jest.config-DEV.js`.
+  #  - I've used `jest.config-DEV.js` in the past to increase `testTimeout`,
+  #    so that Jest doesn't fail on timeout because I've added a `debugger`
+  #    breakpoint and am troubleshooting tests via chrome://inspect/.
+  symlink_mrinfuse_file '.eslintignore.local'
+  symlink_mrinfuse_file '.eslintrc-develop'
+  symlink_mrinfuse_file 'jest.config-DEV.js'
+  #
+  # Enable a pre-push hook, so the linter and tests run before code will
+  # be pushed. And disable the pre-commit hook (e.g., that husky wired) so
+  # that git-rebase doesn't run checks on every commit under rebase (or at
+  # least it does when I rebase, though I've seen coworkers rebase without
+  # the same problem). (I know, I know, why not make these changes in the
+  # project itself? Because sometimes it's just easier to make changes
+  # locally before trying to sell them to the broader team.)
+  git_hooks_enable_pre_push_eslint_jest_hook
+  git_hooks_disable_pre_commit_hook
+
+# This install tasks includes all the tricks I've used on work projects.
+# Tailor as necessary.
+echoInstallHelp = echo_install_help 'os_all' 'dxy_all'
+install =
+  #
+  # Perhaps remove package-lock.json, for the most up-to-date dependencies.
+  #  command rm -- package-lock.json
+  #
+  # Run the standard npm-install.
+  npm install
+  # Though if you get peer/upstream dependency conflicts, perhaps force it:
+  #  npm install --force
+  #
+  # Patch `opn` to call `sensible-open` instead of macOS `open`, so that,
+  # when run, the app opens in a new browser window, and not in a new tab
+  # of an existing window. (NOTE: This might not be an issue; I saw this in
+  # older webpack-dev-server v3.x, which uses older npm `opn`, not `open`.)
+  # - DEP: https://github.com/landonb/sh-sensible-open#☔
+  hack_patch_opn_to_call_sensible_open
+  #
+  # If you have some dependencies checked out locally, and you work on
+  # them in parallel, wire them here. E.g.,
+  npm link /path/to/some/dependency
+  npm link ../another-path
+  # NOTE: You might also need to update module.exports:
+  #   resolve: { ..., alias: { react: path.resolve('./node_modules/react'), }, },
+  # to avoid `Invalid hook call` error (`You might have more than one copy of React`).
+  #
+  # If you find yourself searching dependency internals, consider setting
+  # up ignore rules. E.g.,
+  printf '%s\n%s\n%s\n' "*.min.js" "*.js.map" "*.esm.js" \
+    > "./node_modules/@some-scope/some-package/dist/.ignore"
+  #
+  # Finally, if the infuse task relies on the app being installed, or just
+  # to save a step, run it.
+  mr -d . infuse
+
+# ========================================================================
+# ------------------------------------------------------------------------
+
+# Prepare a greppable version of the project that ignores test files.
+# - CXREF: Learn more in the _ignore file:
+#     DXY_DEPOXY_CLIENT_TILDE/home/DXY_VENDOR_HOME_NAME/DXY_VENDOR_ORG01_NAME/ignore-tests--[[[]]]DXY_VENDOR_ORG01_PROJ01_NAME/_ignore
+
+[${VENDOR_HOME:-DXY_VENDOR_HOME__HOME_}/DXY_VENDOR_ORG01_NAME/ignore-tests--[[[]]]DXY_VENDOR_ORG01_PROJ01_NAME]
+checkout = stub_checkout_directory
+
+infuse =
+  link_private_ignore_ "$@"
+  #
+  wire_testless_greppable () {
+    symlink_overlay_dir \
+      "${VENDOR_HOME:-DXY_VENDOR_HOME__HOME_}/DXY_VENDOR_ORG01_NAME/DXY_VENDOR_ORG01_PROJ01_NAME" \
+      "DXY_VENDOR_ORG01_PROJ01_NAME"
+  }
+  wire_testless_greppable
+
+# ========================================================================
+# ------------------------------------------------------------------------
+
