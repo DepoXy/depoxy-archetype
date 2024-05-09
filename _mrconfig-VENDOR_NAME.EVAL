@@ -79,12 +79,11 @@ autocommit =
   tar -C ../home/work --exclude acme.sh/ --exclude .acme.conf -cf - . \
     | tar -C home/work -xf -
   # So that I at least have a ref. in my IDE project listing.
-  # AUDIT/2023-02-23: This is ln -sfn @linux: Is there universal option?
-  ln -sfh -- ../../../home/work/.acme.conf home/work/.acme.conf
+  ln -sfn -- ../../../home/work/.acme.conf home/work/.acme.conf
   # Because directory, use -h option, so you don't follow target symlink
   # and clobber the real acme.sh/acme.sh file.
   # AUDIT/2023-02-23: This is ln -sfn @linux: Is there universal option?
-  ln -sfh -- ../../../home/work/acme.sh home/work/acme.sh
+  ln -sfn -- ../../../home/work/acme.sh home/work/acme.sh
   #
   # ***
   #
