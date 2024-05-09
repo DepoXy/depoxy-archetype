@@ -1,7 +1,7 @@
 # USAGE:
 #   m4_shim \
-#     "+8" "home/work/VENDOR_ORG02_NAME/_ignore.EVAL" \
-#     "home/${DXY_VENDOR_HOME_NAME}/${DXY_VENDOR_ORG02_NAME}/_ignore"
+#     "+8" "home/work/VENDOR_ORG01_NAME/ignore-tests--VENDOR_ORG01_PROJ01_NAME/_ignore.EVAL" \
+#     "home/${DXY_VENDOR_HOME_NAME}/${DXY_VENDOR_ORG01_NAME}/ignore-tests--${DXY_VENDOR_ORG01_PROJ01_NAME}/_ignore"
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
@@ -50,6 +50,8 @@
 #
 # - Update DXY_DEPOXY_CLIENT_TILDE/_mrconfig-DXY_VENDOR_NAME to make
 #   the ~/.projlns/DXY_VENDOR_HOME_NAME symlink on infuse.
+#   CXREF: wire_testless_greppable in
+#     DXY_DEPOXY_CLIENT_TILDE/_mrconfig-DXY_VENDOR_NAME
 # - Call `infuse` to create the ~/.projlns symlink.
 
 # E.g., you might find it easier to get to know a new JavaScript that

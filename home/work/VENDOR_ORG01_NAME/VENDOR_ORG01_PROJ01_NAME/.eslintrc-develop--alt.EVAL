@@ -1,10 +1,19 @@
+# USAGE:
+#   m4_shim \
+#     "+10" "home/work/VENDOR_ORG01_NAME/VENDOR_ORG01_PROJ01_NAME/.eslintrc-develop--alt.EVAL" \
+#     "home/${DXY_VENDOR_HOME_NAME}/${DXY_VENDOR_ORG01_NAME}/${DXY_VENDOR_ORG01_PROJ01_NAME}/.eslintrc-develop--alt"
+
+# vim:tw=0:ts=2:sw=2:et:norl:ft=conf
+
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
+
 {
   "extends": [
     "eslint:recommended",
     "plugin:react/recommended"
   ],
-  "plugins": ["react", "jsx-a11y", "babel"],
-  "parser": "@babel/eslint-parser",
+  "plugins": ["react", "jsx-a11y"],
+  "parser": "babel-eslint",
   "env": {
     "browser": true,
     "node": true,
@@ -50,17 +59,15 @@
       "SwitchCase": 1
     }],
     "jsx-quotes": ["warn", "prefer-double"],
-    "keyword-spacing": "warn",
     "newline-before-return": "warn",
-    "newline-after-var": "off",
+    "newline-after-var": "warn",
     "no-console": "warn",
     "no-multiple-empty-lines": ["warn", {
       "max": 1,
-      "maxEOF": 1
+      "maxEOF": 0
     }],
     "no-trailing-spaces": "warn",
-    "no-unused-expressions": "off",
-    "babel/no-unused-expressions": "error",
+    "no-unused-expressions": "error",
     "no-unused-vars": "warn",
     "no-warning-comments": "warn",
     "object-curly-newline": ["warn", {
@@ -72,7 +79,7 @@
         "multiline": true
       },
       "ImportDeclaration": {
-        "consistent": true,
+        "multiline": true,
         "minProperties": 5
       },
       "ExportDeclaration": {
@@ -83,6 +90,7 @@
       "arraysInObjects": true,
       "objectsInObjects": true
     }],
+    "object-property-newline": "warn",
     "quotes": ["warn", "single"],
     "quote-props": ["warn", "as-needed"],
     "react/jsx-closing-bracket-location": "warn",
@@ -105,7 +113,6 @@
     "react/prop-types": "error",
     "semi-style": ["warn", "last"],
     "semi": "warn",
-    "space-infix-ops": "warn",
     "key-spacing": ["warn", { 
       "beforeColon": false, 
       "afterColon": true 

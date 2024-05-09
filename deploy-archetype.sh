@@ -206,12 +206,18 @@ register_customizable_personal_values () {
 
 register_placeholder_project_config_values () {
   register "DXY_VENDOR_ORG01_NAME" "soylent"
-
+  #
   register "DXY_VENDOR_ORG01_PROJ01_NAME" "soylent-red"
+  register "DXY_VENDOR_ORG01_PROJ01_ABBREV" "sr"
 
   register "DXY_VENDOR_ORG02_NAME" "globex"
-
+  #
   register "DXY_VENDOR_ORG02_PROJ01_NAME" "hammock-district"
+  register "DXY_VENDOR_ORG02_PROJ01_ABBREV" "hd"
+  #
+  register "DXY_VENDOR_ORG02_PROJ02_NAME" "cypress-creek-running"
+  register "DXY_VENDOR_ORG02_PROJ02_ABBREV" "cc"
+  register "DXY_VENDOR_ORG02_PROJ02_ABBREV3" "ccr"
 }
 
 # ================================================================= #
@@ -382,6 +388,13 @@ register_depoxy_client_paths () {
   # - Client full path, e.g., "/(Users|home)/<user>/.depoxy/stints/XXXX"
   unset -v DXY_DEPOXY_CLIENT_FULL
   register "DXY_DEPOXY_CLIENT_FULL" "${DXY_DEPOXYDIR_STINTS_FULL}/${DXY_DEPOXY_CLIENT_ID}"
+
+  # - Client ${HOME} path, e.g., "${HOME}/.depoxy/stints/XXXX"
+  unset -v DXY_DEPOXY_CLIENT__HOME_
+  register "DXY_DEPOXY_CLIENT__HOME_" "$( \
+    echo "${DXY_DEPOXY_CLIENT_FULL}" \
+    | sed -E "s@^${HOME}(/|$)@\\\\\${HOME}\1@"
+  )"
 }
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #

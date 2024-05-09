@@ -1,2 +1,12 @@
+# USAGE:
+#   m4_shim \
+#     "+8" "home/work/VENDOR_ORG01_NAME/.gitconfig-VENDOR_ORG01_NAME.EVAL" \
+#     "home/${DXY_VENDOR_HOME_NAME}/${DXY_VENDOR_ORG01_NAME}/.gitconfig-${DXY_VENDOR_ORG01_NAME}"
+
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
+
 # vim:tw=0:ts=2:sw=2:et:norl:ft=gitconfig
+# DXY_HEADER_AUTHOR
+# DXY_HEADER_PROJECT
+# DXY_HEADER_LICENSE
 

@@ -30,9 +30,12 @@ infuse =
   # is not PRIVATE-scoped, so we're wiring from here.
   cd && symlink_overlay_file "work/.mrinfuse/.acme.conf" && cd -
 
+# ========================================================================
+# ------------------------------------------------------------------------
+
 # "Your ACME-specific OMR config and Homefries bashrc"
 # E.g., ~/.depoxy/stints/2324/flast.sh
-[${DEPOXYDIR_STINTS_FULL:-${HOME}/.depoxy/stints}/DEPOXY_CLIENT_ID/DXY_VENDOR_PROJECT_NAME_DOTFILES]
+[${DEPOXYDIR_STINTS_FULL:-DXY_DEPOXYDIR_STINTS__HOME_}/DEPOXY_CLIENT_ID/DXY_VENDOR_PROJECT_NAME_DOTFILES]
 lib = remote_set origin git@DXY_VENDOR_GITCONFIG_HUB_HOST:DXY_VENDOR_GITSERVER_USER_REPO.git
 autocommit =
   # Prepare args, e.g., `autocommit -y`, or `autocommit -f`.
@@ -108,11 +111,17 @@ autocommit =
 #   - For grep ignore, an `.ignore` symlink is created (which assumes
 #     the project doesn't include one already).
 
-[${VENDOR_HOME:-DXY_VENDOR_HOME__HOME_}/division1/project-AA]
-lib = remote_set origin git@github.DXY_VENDOR_NAME.com:division/project-AA.git
+[${VENDOR_HOME:-DXY_VENDOR_HOME__HOME_}/DXY_VENDOR_ORG02_NAME/DXY_VENDOR_ORG02_PROJ01_NAME]
+# USAGE: Remove 'checkout' line and customize
+checkout = stub_checkout_directory  # Because not a real URL
+
+lib = remote_set origin git@github.DXY_VENDOR_NAME.com:DXY_VENDOR_ORG02_NAME/DXY_VENDOR_ORG02_PROJ01_NAME.git
+
 infuse =
   link_private_exclude "$@"
   link_private_ignore_ "$@"
+  #
+  symlink_mrinfuse_file ".editorconfig"
 
 # ========================================================================
 # ------------------------------------------------------------------------
@@ -122,7 +131,10 @@ infuse =
 # - Assume this is a JavaScript project, hosted on an enterprise
 #   GitHub server, and that uses npm, ESLint, Jest, and husky.
 
-[${VENDOR_HOME:-DXY_VENDOR_HOME__HOME_}/projectZ/superflycool]
+[${VENDOR_HOME:-DXY_VENDOR_HOME__HOME_}/DXY_VENDOR_ORG01_NAME/DXY_VENDOR_ORG01_PROJ01_NAME]
+# USAGE: Remove 'checkout' line and customize
+checkout = stub_checkout_directory  # Because not a real URL
+
 # Note that the `gh` command expects 'upstream', 'github', or 'origin'.
 # - I often use unconventional remote names, e.g., I'll use 'publish'
 #   for the remote I can push to, and I'll use 'starter' for an
@@ -130,19 +142,19 @@ infuse =
 #   - But for `gh` to work (and for git-begin-review to work), we must
 #     use one of the conventional names that `gh` expects. Or use both.
 lib =
-  remote_set publish git@github.DXY_VENDOR_NAME.com:projectZ/superflycool.git
-  remote_set github git@github.DXY_VENDOR_NAME.com:projectZ/superflycool.git
+  remote_set publish git@github.DXY_VENDOR_NAME.com:DXY_VENDOR_ORG01_NAME/DXY_VENDOR_ORG01_PROJ01_NAME.git
+  remote_set github git@github.DXY_VENDOR_NAME.com:DXY_VENDOR_ORG01_NAME/DXY_VENDOR_ORG01_PROJ01_NAME.git
 
-# This infuse tasks includes all the tricks I've used on work projects.
-# Tailor as necessary.
+# This infuse task demonstrates many tricks I've used on work projects.
+# - Tailor as necessary.
 infuse =
   #
-  # Symlink `DXY_VENDOR_HOME_TILDE/projectZ/superflycool/.git/info/exclude` to the source at
-  # `DXY_DEPOXY_CLIENT_TILDE/home/DXY_VENDOR_HOME_NAME/projectZ/superflycool/_git/info/exclude`.
+  # Symlink `DXY_VENDOR_HOME_TILDE/DXY_VENDOR_ORG01_NAME/DXY_VENDOR_ORG01_PROJ01_NAME/.git/info/exclude` to the source at
+  # `DXY_DEPOXY_CLIENT_TILDE/home/DXY_VENDOR_HOME_NAME/DXY_VENDOR_ORG01_NAME/DXY_VENDOR_ORG01_PROJ01_NAME/_git/info/exclude`.
   link_private_exclude "$@"
   #
-  # Symlink `DXY_VENDOR_HOME_TILDE/projectZ/superflycool/.ignore` to the source at
-  # `DXY_DEPOXY_CLIENT_TILDE/home/DXY_VENDOR_HOME_NAME/projectZ/superflycool/_ignore`.
+  # Symlink `DXY_VENDOR_HOME_TILDE/DXY_VENDOR_ORG01_NAME/DXY_VENDOR_ORG01_PROJ01_NAME/.ignore` to the source at
+  # `DXY_DEPOXY_CLIENT_TILDE/home/DXY_VENDOR_HOME_NAME/DXY_VENDOR_ORG01_NAME/DXY_VENDOR_ORG01_PROJ01_NAME/_ignore`.
   link_private_ignore_ "$@"
   #
   # Install custom ESLint and Jest config. (For whatever reason:
@@ -208,8 +220,29 @@ install =
 # ========================================================================
 # ------------------------------------------------------------------------
 
+# Prepare a greppable version of the project that ignores test files.
+# - CXREF: Learn more in the _ignore file:
+#     DXY_DEPOXY_CLIENT_TILDE/home/DXY_VENDOR_HOME_NAME/DXY_VENDOR_ORG01_NAME/ignore-tests--[[[]]]DXY_VENDOR_ORG01_PROJ01_NAME/_ignore
+
+[${VENDOR_HOME:-DXY_VENDOR_HOME__HOME_}/DXY_VENDOR_ORG01_NAME/ignore-tests--[[[]]]DXY_VENDOR_ORG01_PROJ01_NAME]
+checkout = stub_checkout_directory
+
+infuse =
+  link_private_ignore_ "$@"
+  #
+  wire_testless_greppable () {
+    symlink_overlay_dir \
+      "${VENDOR_HOME:-DXY_VENDOR_HOME__HOME_}/DXY_VENDOR_ORG01_NAME/DXY_VENDOR_ORG01_PROJ01_NAME" \
+      "DXY_VENDOR_ORG01_PROJ01_NAME"
+  }
+  wire_testless_greppable
+
+# ========================================================================
+# ------------------------------------------------------------------------
+
 # YOU: If you work on different teams with different sets of projects,
-#      you might want to break out your config into multiple files.
+#      you might want to break out your config into multiple files, as
+#      shown here.
 
 [DEFAULT]
 include =

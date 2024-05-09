@@ -1,0 +1,34 @@
+# USAGE:
+#   m4_shim \
+#     "+10" "home/work/VENDOR_ORG01_NAME/VENDOR_ORG01_PROJ01_NAME/.eslintignore.local.EVAL" \
+#     "home/${DXY_VENDOR_HOME_NAME}/${DXY_VENDOR_ORG01_NAME}/${DXY_VENDOR_ORG01_PROJ01_NAME}/.eslintignore.local"
+
+# vim:tw=0:ts=2:sw=2:et:norl:ft=conf
+
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
+
+# DXY_HEADER_AUTHOR
+# DXY_HEADER_PROJECT
+# DXY_HEADER_LICENSE
+
+# *** SYNC_ME: From `.eslintignore`:
+
+/node_modules/
+/coverage/
+
+# Ignore `npm run build:{env}` directories
+# (except build:local, which sends to dist/).
+/dist/
+/test/
+/dev/
+/stage/
+/production/
+
+# Ignore `npx jsdoc src/ [--destination ./out/]` output.
+/out/
+
+# *** Custom
+
+/jest.config-DEV.js
+/webpack/webpack.config.mobile.js
+
