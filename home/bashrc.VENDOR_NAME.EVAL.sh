@@ -1,7 +1,7 @@
 # USAGE:
 #   m4_shim \
-#     "+14" "home/bashrx.private.USERNAME.EVAL.sh" \
-#     "home/bashrx.private.${DXY_USERNAME}.sh" \
+#     "+14" "home/bashrc.VENDOR_NAME.EVAL.sh" \
+#     "home/bashrc.${DXY_VENDOR_NAME}.sh" \
 #     "DXY_VENDOR_GITSERVER_USER_URL" \
 #       "https://${DXY_VENDOR_GITCONFIG_HUB_HOST}/${DXY_VENDOR_GITSERVER_USER_NAME}" \
 #     "DXY_VENDOR_ORG01_PROJ01_CD_ALIAS" \
@@ -116,9 +116,6 @@ bashhf_set_start_command () {
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
 main () {
-  # Wait for the second pass to run.
-  ${HOME_FRIES_PRELOAD} && return
-
   bashdx_wire_aliases_pushd_paths_vendor_projects
   unset -f bashdx_wire_aliases_pushd_paths_vendor_projects
 

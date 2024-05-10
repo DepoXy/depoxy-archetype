@@ -1,7 +1,14 @@
 # USAGE:
 #   m4_shim \
-#     "+8" "home/bashrx.private.HOSTNAME.EVAL.sh" \
+#     "+15" "home/bashrx.private.HOSTNAME.EVAL.sh" \
 #     "home/bashrx.private.${DXY_HOSTNAME}.sh"
+
+# ALTLY: Homefries would autoload file w/ username instead.
+# - E.g., this would also wire into Homefries:
+#
+#   m4_shim \
+#     "+15" "home/bashrx.private.USERNAME.EVAL.sh" \
+#     "home/bashrx.private.${DXY_USERNAME}.sh"
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
@@ -119,20 +126,32 @@ bashdx_alias_bye () {
 # ----------------------------------------------------------------- #
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
-bashdxy_source_experimental () {
-  local experimental_sh="${HOME}/.depoxy/running/home/bashrx.private.experimental.sh"
+# Vendor-specific shell setup (part of corp user's dotfiles project).
+bashdxy_source_vendor_dotfiles () {
+  local vendor_wiring="DXY_DEPOXYDIR_RUNNING__HOME_/home/bashrc.DXY_VENDOR_NAME.sh"
 
-  if [ -f "${experimental_sh}" ]; then
-    . "${experimental_sh}"
+  if [ -f "${vendor_wiring}" ]; then
+    . "${vendor_wiring}"
   fi
 }
 
-bashdxy_source_business_code_path () {
-  # CXREF: This path was set by deploy-archetype.sh per [[[DXY_VENDOR_CODE_PATH]]].
-  local acme_sh="${HOME}/.depoxy/running/home/bashrx.private.DXY_VENDOR_CODE_PATH.sh"
+# Vendor-specific power(ful) shell (the more robust acmesh project).
+bashdxy_source_vendor_acmesh () {
+  # CXREF: This path is set by deploy-archetype.sh per [[[DXY_VENDOR_NAME]]]
+  #  local acme_sh="DXY_DEPOXYDIR_RUNNING__HOME_/home/bashrc.private.DXY_VENDOR_NAME.sh"
+  local acme_sh="DXY_DEPOXY_CLIENT__HOME_/DXY_VENDOR_ACMESH_NAME/DXY_VENDOR_ACMESH_NAME"
 
   if [ -f "${acme_sh}" ]; then
     . "${acme_sh}"
+  fi
+}
+
+# Non-vendor-related shell setup (i.e., that you could promote to a public project).
+bashdxy_source_experimental () {
+  local experimental_sh="DXY_DEPOXYDIR_RUNNING__HOME_/home/bashrc.DXY_USERNAME.sh"
+
+  if [ -f "${experimental_sh}" ]; then
+    . "${experimental_sh}"
   fi
 }
 
@@ -165,11 +184,14 @@ main () {
 
   # ***
 
+  bashdxy_source_vendor_dotfiles
+  unset -f bashdxy_source_vendor_dotfiles
+
+  bashdxy_source_vendor_acmesh
+  unset -f bashdxy_source_vendor_acmesh
+
   bashdxy_source_experimental
   unset -f bashdxy_source_experimental
-
-  bashdxy_source_business_code_path
-  unset -f bashdxy_source_business_code_path
 }
 
 main "$@"

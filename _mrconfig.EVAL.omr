@@ -692,32 +692,38 @@ infuse =
   #     bashrx.private.DXY_HOSTNAME.sh.
   #   And wire more as you like.
   #
-  symlink_overlay_file \
-    "${MR_REPO}/home/bashrx.private.DXY_HOSTNAME.sh" \
-    "${HOMEFRIES_DIR:-${HOME}/.homefries}/.bashrc-bin/bashrx.private.DXY_HOSTNAME.sh"
+  local bashrx_host="${MR_REPO}/home/bashrx.private.DXY_HOSTNAME.sh"
   #
-  local bashrx_user="bashrx.private.$(id -un).sh"
-  local bashrx_full="${MR_REPO}/home/${bashrx_user}"
-  #
-  if [ -f "${bashrx_full}" ]; then
+  if [ -f "${bashrx_host}" ]; then
     symlink_overlay_file \
-      "${bashrx_full}" \
-      "${HOMEFRIES_DIR:-${HOME}/.homefries}/.bashrc-bin/${bashrx_user}"
+      "${bashrx_host}" \
+      "${HOMEFRIES_DIR:-${HOME}/.homefries}/.bashrc-bin/bashrx.private.DXY_HOSTNAME.sh"
   else
     info "$(font_emphasize ALERT): No DXC bashrc at" \
-      "$(repo_highlight ${bashrx_full})"
+      "$(repo_highlight ${bashrx_host})"
   fi
+  # - ISOFF/2024-05-10: A filed named thusly would also be autoloaded by Homefries.
+  #   - But we only need one autoload, then it can load (source) our other files.
+  #
+  #     local bashrx_user="bashrx.private.$(id -un).sh"
+  #     local bashrx_full="${MR_REPO}/home/${bashrx_user}"
+  #     #
+  #     if [ -f "${bashrx_full}" ]; then
+  #       symlink_overlay_file \
+  #         "${bashrx_full}" \
+  #         "${HOMEFRIES_DIR:-${HOME}/.homefries}/.bashrc-bin/${bashrx_user}"
+  #     fi
   #
   # - At an previous client, in the beginning, $(hostname) would report
   #   "HOST.DOMAIN.com". But then (months) later, $(hostname) started to
   #   say "HOST.DOMAIN.com.", with a trailing period. I never figured out
   #   why (or maybe I don't remember checking $(hostname), and really it
   #   was my code that changed?)
-  # - In any case, I doubt we need this version with two-dots:
+  #   - In any case, I doubt we need this version with two-dots:
   #
-  #    symlink_overlay_file \
-  #      "${MR_REPO}/home/bashrx.private.DXY_HOSTNAME.sh" \
-  #      "${HOMEFRIES_DIR:-${HOME}/.homefries}/.bashrc-bin/bashrx.private.DXY_HOSTNAME..sh"
+  #     symlink_overlay_file \
+  #       "${MR_REPO}/home/bashrx.private.DXY_HOSTNAME.sh" \
+  #       "${HOMEFRIES_DIR:-${HOME}/.homefries}/.bashrc-bin/bashrx.private.DXY_HOSTNAME..sh"
   #
   # *** VIM
   #
