@@ -37,7 +37,7 @@
 # - The `dd`-prefix is also nice to use. Except for the system `dd`
 #   command, `dd<Tab>` usually only shows your aliases or commands.
 
-bashdx_wire_aliases_pushd_paths_client () {
+bashdx_wire_aliases_pushd_paths_vendor_projects () {
   # *** User's dot projects
   #
   # - CXREF:
@@ -122,8 +122,8 @@ main () {
   # Wait for the second pass to run.
   ${HOME_FRIES_PRELOAD} && return
 
-  bashdx_wire_aliases_pushd_paths_client
-  unset -f bashdx_wire_aliases_pushd_paths_client
+  bashdx_wire_aliases_pushd_paths_vendor_projects
+  unset -f bashdx_wire_aliases_pushd_paths_vendor_projects
 
   bashhf_set_start_command
   unset -f bashhf_set_start_command
