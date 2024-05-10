@@ -6,7 +6,7 @@
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
 // DXY_HEADER_AUTHOR
-// DXY_HEADER_DOTPROJECT
+// DXY_HEADER_DOTFILES
 
 // CXREF:
 //   https://github.com/johnste/finicky/wiki/Configuration

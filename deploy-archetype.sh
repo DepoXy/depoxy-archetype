@@ -144,52 +144,81 @@ register_customizable_git_config () {
   # DepoXy wires two sets of Git user.name and user.email:
   # your business user, and your personal user.
 
+  # The @biz Git server host (i.e., a GitHub or GitLab URL),
+  # e.g., "gitlab.acme.com".
+  register "DXY_VENDOR_GITCONFIG_HUB_HOST" "PLEASE_SET_ME"
+
   # Business user:
   # - Anything under ~/work will use your business user.
   #   - A few sub-repos of DXC that are uploaded to @biz server also biz user.
-  # - You can update/change the Business user later: .gitconfig.user-business
-
-  # The @biz Git server host (i.e., GitHub or GitLab URL),
-  # e.g., "gitlab.acme.com".
-  register "DXY_VENDOR_GITCONFIG_HUB_HOST" "PLEASE_SET_ME"
-  # The @biz Git server user name and email it'll use (you can user whatever
-  # you want, but I like to use the same values I see when I approve a PR/MR,
-  # or that I see other devs use).
+  # - User can change this user later via .gitconfig.user-business:
+  #     ~/.depoxy/ambers/archetype/home/.gitconfig.user-business.EVAL
+  # - You can technically use whatever values you want, but I like to use the
+  #   same value I see when I approve a PR/MR, or that I see other devs use.
   register "DXY_VENDOR_GITCONFIG_USER_NAME" "PLEASE_SET_ME"
   register "DXY_VENDOR_GITCONFIG_USER_EMAIL" "PLEASE_SET_ME"
-  # The Git commit username might differ from your user home on server,
-  # e.g., at one job, my commit user was "Last, First", but my server
-  # name was "First.Last". This environ is your user name and personal
-  # repo name you'll use to backup a few files on your @biz Git server.
-  # E.g., DXY_VENDOR_GITSERVER_USER_REPO="First.Last/flast.sh" would
-  # make @biz personal URL: https://gitlab.acme.com/First.Last/flast.sh
-  register "DXY_VENDOR_GITSERVER_USER_REPO" "PLEASE_SET_ME"
-  #
-  # E.g., "flast.sh".
-  unset -v DXY_VENDOR_PROJECT_NAME_DOTFILES
-  register "DXY_VENDOR_PROJECT_NAME_DOTFILES" "$(basename -- "${DXY_VENDOR_GITSERVER_USER_REPO}")"
-  #
-  # E.g., "acme.sh".
-  unset -v DXY_VENDOR_PROJECT_NAME_ACME_SH
-  register "DXY_VENDOR_PROJECT_NAME_ACME_SH" "${DXY_VENDOR_NAME:-acme}.sh"
 
-  # Personal user:
-  # - Anything not under ~/work will use your personal user.
-  # - You can update/change the Personal user later: .gitconfig.user-personal
-  register "DXY_PERSON_GITCONFIG_USER_NAME" "PLEASE_SET_ME"
-  register "DXY_PERSON_GITCONFIG_USER_EMAIL" "PLEASE_SET_ME@${DXY_HOSTNAME}"
+  # Git URL user name:
+  # - The Git commit username might differ from your user home on
+  #   the server, e.g., at one job, the author's commit user was
+  #   "Last, First", but the Git URL name was "First.Last".
+  # E.g., "First.Last"
+  register "DXY_VENDOR_GITSERVER_USER_NAME" "PLEASE_SET_ME"
+
+  # *** user.sh
+
+  # User dotfiles project name:
+  # - This is the project name of your corp user's dotfiles project, which
+  #   you could push to the vendor's Git server (to share with other devs,
+  #   or so it's backed up).
+  # E.g., "flast.sh"
+  register "DXY_VENDOR_DOTFILES_NAME" "PLEASE_SET_ME"
+
+  # - And then, if, e.g.,
+  #     DXY_VENDOR_GITCONFIG_HUB_HOST="gitlab.acme.com"
+  #     DXY_VENDOR_GITSERVER_USER_NAME="First.Last"
+  #     DXY_VENDOR_DOTFILES_NAME="flast.sh"
+  #   the complete dotfiles URL is:
+  #     https://gitlab.acme.com/First.Last/flast.sh
 
   # A subset of DXC files are backed up to @biz GitHuLaB and are given
   # a one-line URL-only header (i.e., not Author/Project/License lines).
-  # E.g.:
-  #   https://gitlab.acme.com/User.Name/uname.sh#🥗
-  register "DXY_HEADER_DOTFILES" "https://${DXY_VENDOR_GITCONFIG_HUB_HOST}/${DXY_VENDOR_GITSERVER_USER_REPO}#🥗"
+  # E.g., "https://gitlab.acme.com/User.Name/uname.sh#🥗"
+  #  unset -v DXY_VENDOR_DOTFILES_URL
+  register "DXY_VENDOR_DOTFILES_URL" \
+    "https://${DXY_VENDOR_GITCONFIG_HUB_HOST}/${DXY_VENDOR_GITSERVER_USER_NAME}/${DXY_VENDOR_DOTFILES_NAME}#🥗"
   #
-  register "DXY_HEADER_DOTPROJECT" "Project: ${DXY_HEADER_DOTFILES}"
+  # E.g., "Project: https://gitlab.acme.com/User.Name/uname.sh#🥗"
+  unset -v DXY_HEADER_DOTFILES
+  register "DXY_HEADER_DOTFILES" "Project: ${DXY_VENDOR_DOTFILES_URL}"
+
+  # *** acme.sh
+
+  # E.g., "acme.sh".
+  register "DXY_VENDOR_ACMESH_NAME" "${DXY_VENDOR_NAME:-acme}.sh"
+  #
+  # E.g., "https://gitlab.acme.com/User.Name/acme.sh#🧨"
+  #  unset -v DXY_VENDOR_ACMESH_URL
+  register "DXY_VENDOR_ACMESH_URL" \
+    "https://${DXY_VENDOR_GITCONFIG_HUB_HOST}/${DXY_VENDOR_GITSERVER_USER_NAME}/${DXY_VENDOR_ACMESH_NAME}#🧨"
+  #
+  # E.g., "Project: https://gitlab.acme.com/User.Name/acme.sh#🧨"
+  unset -v DXY_HEADER_ACMESH
+  register "DXY_HEADER_ACMESH" "Project: ${DXY_VENDOR_ACMESH_URL}"
+
+  # E.g., "acme".
+  register "DXY_VENDOR_ACMESH_CMD" "${DXY_VENDOR_ACMESH_NAME%.sh}"
 }
 
 # You can set values for non-business things.
 register_customizable_personal_values () {
+  # Personal user:
+  # - Anything not under ~/work will use your personal user.
+  # - User can change this user later via .gitconfig.user-personal:
+  #     ~/.depoxy/ambers/archetype/home/.gitconfig.user-personal.EVAL
+  register "DXY_PERSON_GITCONFIG_USER_NAME" "PLEASE_SET_ME"
+  register "DXY_PERSON_GITCONFIG_USER_EMAIL" "PLEASE_SET_ME@${DXY_HOSTNAME}"
+
   # Optional: Set the Vim package name the `cvs` alias uses to
   #           `pushd ~/.vim/pack/<PUBLISHER>/start`.
   register "DXY_DEPOXY_CVS_ALIAS_VIM_PLUG_ORG" ""

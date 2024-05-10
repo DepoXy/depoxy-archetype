@@ -48,8 +48,8 @@
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
 # My dotfiles.
-#  DXY_HEADER_DOTFILES
-/DXY_VENDOR_GITSERVER_USER_REPO/
+#  DXY_VENDOR_DOTFILES_URL
+/DXY_VENDOR_DOTFILES_NAME/
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 

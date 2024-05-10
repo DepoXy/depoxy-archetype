@@ -3,7 +3,7 @@
 #     "+14" "home/bashrx.private.USERNAME.EVAL.sh" \
 #     "home/bashrx.private.${DXY_USERNAME}.sh" \
 #     "DXY_VENDOR_GITSERVER_USER_URL" \
-#       "https://${DXY_VENDOR_GITCONFIG_HUB_HOST}/$(dirname -- "${DXY_VENDOR_GITSERVER_USER_REPO}")" \
+#       "https://${DXY_VENDOR_GITCONFIG_HUB_HOST}/${DXY_VENDOR_GITSERVER_USER_NAME}" \
 #     "DXY_VENDOR_ORG01_PROJ01_CD_ALIAS" \
 #       "cd${DXY_VENDOR_ORG01_PROJ01_ABBREV}" \
 #     "DXY_VENDOR_ORG02_PROJ02_CD_ALIAS" \
@@ -13,7 +13,7 @@
 
 # vim:tw=0:ts=2:sw=2:et:norl:ft=bash
 # DXY_HEADER_AUTHOR
-# DXY_HEADER_DOTPROJECT
+# DXY_HEADER_DOTFILES
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
@@ -43,8 +43,8 @@ bashdx_wire_aliases_pushd_paths_client () {
   # - CXREF:
   #   DXY_VENDOR_GITSERVER_USER_URL
 
-  pushd_alias_or_warn "ddun" "${DEPOXYDIR_STINTS_FULL:-DXY_DEPOXYDIR_STINTS__HOME_}/DEPOXY_CLIENT_ID/DXY_VENDOR_PROJECT_NAME_DOTFILES"
-  pushd_alias_or_warn "ddac" "${DEPOXYDIR_STINTS_FULL:-DXY_DEPOXYDIR_STINTS__HOME_}/DEPOXY_CLIENT_ID/DXY_VENDOR_PROJECT_NAME_ACME_SH"
+  pushd_alias_or_warn "ddun" "${DEPOXYDIR_STINTS_FULL:-DXY_DEPOXYDIR_STINTS__HOME_}/DEPOXY_CLIENT_ID/DXY_VENDOR_DOTFILES_NAME"
+  pushd_alias_or_warn "ddac" "${DEPOXYDIR_STINTS_FULL:-DXY_DEPOXYDIR_STINTS__HOME_}/DEPOXY_CLIENT_ID/DXY_VENDOR_ACMESH_NAME"
 
   # *** Vendor's (example) projects
 

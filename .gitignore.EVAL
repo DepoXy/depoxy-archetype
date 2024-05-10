@@ -23,8 +23,8 @@
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
 # My dotfiles.
-#  DXY_HEADER_DOTFILES
-/DXY_VENDOR_PROJECT_NAME_DOTFILES/
+#  DXY_VENDOR_DOTFILES_URL
+/DXY_VENDOR_DOTFILES_NAME/
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 

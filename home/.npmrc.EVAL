@@ -10,7 +10,8 @@
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
 # vim:tw=0:ts=2:sw=2:et:norl:ft=dosini
-# DXY_HEADER_DOTPROJECT
+# DXY_HEADER_AUTHOR
+# DXY_HEADER_DOTFILES
 
 registry=DXY_VENDOR_NPM_REGISTRY_URL
 
