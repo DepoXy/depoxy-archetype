@@ -66,6 +66,7 @@ bashdx_wire_aliases_pushd_paths_cdw () {
   local client_dir="${VENDOR_HOME:-DXY_VENDOR_HOME__HOME_}"
 
   if [ -d "${client_dir}" ]; then
+    # CXREF: ~/.homefries/lib/path_util.sh
     pushd_alias_or_warn "cdw" "${client_dir}"
   elif ! type "cdw" > /dev/null 2>&1; then
     # YOU: Feel free to remove this else block. Or not.
