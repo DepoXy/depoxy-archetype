@@ -161,10 +161,8 @@ bashdxy_source_experimental () {
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
 main () {
-  if ${HOME_FRIES_PRELOAD}; then
-
-    return 0
-  fi
+  # Wait for the second pass to run.
+  ${HOME_FRIES_PRELOAD:-false} && return
 
   # Set aliases on the second pass.
   # - By setting our aliases later, we'll alert if our aliases conflict
