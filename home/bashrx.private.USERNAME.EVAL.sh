@@ -115,9 +115,6 @@ bashhf_set_start_command () {
 # ----------------------------------------------------------------- #
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
-# YOU: Don't forget to update main with what commands you copy to your
-#      private Bashrc, e.g.:
-
 main () {
   # Wait for the second pass to run.
   ${HOME_FRIES_PRELOAD} && return
