@@ -71,8 +71,11 @@ register_customizable_client_ids () {
 
 # You can set names, paths, and URLS for business-specific stuff.
 register_customizable_business_values () {
-  # What to name some client-specific files.
-  register "DXY_VENDOR_NAME" "${VENDOR_NAME:-acme}"
+  # What to name some client-specific files, functions, projects,
+  # directories, etc.
+  register "DXY_VENDOR_NAME_PROPER" "${VENDOR_NAME_PROPER:-ACME}"
+  register "DXY_VENDOR_DOMAIN" "${VENDOR_DOMAIN:-acme.tld}"
+  register "DXY_VENDOR_NAME" "${VENDOR_NAME:-${VENDOR_DOMAIN%.tld}}"
 
   # Customize where you'd like to keep business code, e.g., ~/work
   # - You might want to use a name or abbreviation for your current
