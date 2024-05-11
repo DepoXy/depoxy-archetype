@@ -38,7 +38,7 @@ project *READMEs*, comments, the Corporate wiki, etc.
     ac
     ac-
     ac-acme-financials-workon
-    ac-cluster-reset-empty-db  
+    ac-cluster-reset-empty-db
   ...
 
   $ ac-<TAB>

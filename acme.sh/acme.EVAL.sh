@@ -538,7 +538,7 @@ _acmeco_cluster_database_psql_session_port_forwarding__example () {
 
   # Forward postgresql to localhost:5432
   kubectl port-forward -n DXY_VENDOR_ACMESH_NAMESPACE statefulset/acme-db-timescaledb 5432:postgresql
-   
+
   # Get cluster postgres admin password
   local db_password=$( \
     kubectl get secret -n DXY_VENDOR_ACMESH_NAMESPACE acme-credentials-psql \
@@ -1117,7 +1117,7 @@ _acmeco_wire_aliases_dispatcher_application () {
   unset -f _acmeco_wire_aliases_dispatcher_application_runners
 }
 
-# *** 
+# ***
 
 # *** Meta commands (this script)
 _acmeco_wire_aliases_meta_commands () {
@@ -1160,7 +1160,7 @@ _acmeco_wire_aliases_virtualenv () {
   _claim_alias_or_warn "ac-cdproject" "_acmeco_cdproject"
 }
 
-# *** 
+# ***
 
 _acmeco_wire_aliases_dispatcher_application_envs () {
   # These were `ac-seed-environment-(local|dev|stage)` but trying ac-env- prefix.
@@ -1188,7 +1188,7 @@ _acmeco_wire_aliases_dispatcher_application_runners () {
   _claim_alias_or_warn "ac-run-application-using-local-auth" "_acmeco_application_run_server_local"
   _claim_alias_or_warn "ac-run-application-using-dev-auth" "_acmeco_application_run_server__dev"
   _claim_alias_or_warn "ac-run-application-using-stage-auth" "_acmeco_application_run_server__stage"
-}  
+}
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 

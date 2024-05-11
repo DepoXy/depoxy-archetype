@@ -113,9 +113,9 @@
     "react/prop-types": "error",
     "semi-style": ["warn", "last"],
     "semi": "warn",
-    "key-spacing": ["warn", { 
-      "beforeColon": false, 
-      "afterColon": true 
+    "key-spacing": ["warn", {
+      "beforeColon": false,
+      "afterColon": true
     }]
   }
 }

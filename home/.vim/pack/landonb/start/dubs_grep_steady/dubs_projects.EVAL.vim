@@ -4,7 +4,7 @@
 "     "home/.vim/pack/landonb/start/dubs_grep_steady/dubs_projects.vim"
 
 # (Filler so line numbers align with lookup indices.)
-# 
+#
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 

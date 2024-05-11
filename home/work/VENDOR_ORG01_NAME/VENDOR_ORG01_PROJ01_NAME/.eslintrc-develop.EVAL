@@ -115,9 +115,9 @@
     "semi-style": ["warn", "last"],
     "semi": "warn",
     "space-infix-ops": "warn",
-    "key-spacing": ["warn", { 
-      "beforeColon": false, 
-      "afterColon": true 
+    "key-spacing": ["warn", {
+      "beforeColon": false,
+      "afterColon": true
     }]
   }
 }

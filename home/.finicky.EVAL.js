@@ -15,7 +15,7 @@
 //   https://github.com/johnste/finicky/wiki/Configuration-ideas
 //   https://github.com/johnste/finicky
 module.exports = {
-  defaultBrowser: "Google Chrome",      
+  defaultBrowser: "Google Chrome",
   handlers: [
     // E.g.,
     //

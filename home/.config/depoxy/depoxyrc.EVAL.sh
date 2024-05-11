@@ -215,7 +215,7 @@ export DEPOXY_PYENV_PYVERS="3.12.1"
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
 # For `grip-pass`
-# 
+#
 # export GRIP_PASS_ADDY="localhost:6419"
 # export GRIP_PASS_PATH="pass/path/to/github/token"
 
