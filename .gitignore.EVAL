@@ -26,5 +26,8 @@
 #  DXY_VENDOR_DOTFILES_URL
 /DXY_VENDOR_DOTFILES_NAME/
 
+# Vendor's shell juice.
+/DXY_VENDOR_ACMESH_NAME/
+
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
