@@ -1,11 +1,8 @@
 # USAGE:
-#   ! ${DXY_RUN_LNS_ONLY:-false} || return 0
-#   [ -n "${DXY_VENDOR_NPM_REGISTRY_URL}" ] &&
+#   [ -z "${DXY_VENDOR_NPM_REGISTRY_URL}" ] ||
 #     m4_shim \
-#       "+12" "home/.npmrc.EVAL" \
-#       "home/.npmrc" ||
-#     printf "registry=http://registry.npmjs.org/npm\n\n" \
-#       > "${DXY_DEPOXY_CLIENT_FULL}/home/.npmrc.example"
+#       "+9" "home/.npmrc.EVAL" \
+#       "home/.npmrc"
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
