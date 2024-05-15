@@ -1410,6 +1410,39 @@ init_repo () {
 
 # ***
 
+init_repo_acmesh () {
+  ! ${DXY_RUN_LNS_ONLY:-false} || return 0
+
+  ! ${DRY_RUN} || return 0
+
+  local empty_msg=""
+  if [ -n "${DXY_DEPOXY_INIT_ACMESH_COMMIT+x}" ]; then
+    empty_msg="${DXY_DEPOXY_INIT_ACMESH_COMMIT}"
+  else
+    empty_msg="${DXY_VENDOR_ACMESH_NAME}: ${DXY_VENDOR_NAME_PROPER} shell juice"
+  fi
+
+  if [ -z "${empty_msg}" ]; then
+
+    return 0
+  fi
+
+  (
+    cd "${DXY_DEPOXY_CLIENT_FULL}/${DXY_VENDOR_ACMESH_NAME}"
+
+    local conf_opts=" \
+      -c user.name=\"${DXY_VENDOR_GITCONFIG_USER_NAME}\" \
+      -c user.email=\"${DXY_VENDOR_GITCONFIG_USER_EMAIL}\" \
+    "
+
+    git init -q -b release .
+
+    eval "git ${conf_opts} commit -q --allow-empty -m \"${empty_msg}\""
+  )
+}
+
+# ***
+
 omr_dxc_infuse () {
   ! ${DRY_RUN} || return 0
 
@@ -1688,6 +1721,7 @@ main () {
   process_files
 
   init_repo
+  init_repo_acmesh
   omr_dxc_infuse
   omr_dxc_autocommit
   omr_dxc_cleanup
