@@ -746,8 +746,8 @@ m4_shim_make_file () {
 
   # Because tail will fail in eval without errexit, check file path.
   if [ ! -f "${tail_path}" ]; then
-    >&2 echo
-    >&2 echo "ERROR: No such input file: “${tail_path}”"
+    >&2 blot
+    >&2 blot "ERROR: No such input file: “${tail_path}”"
 
     exit_1
   fi
@@ -807,8 +807,8 @@ m4_shim_make_file () {
   # `eval` (from process_file), and does not trip `set -e`, so up to us.
   if [ $? -ne 0 ]; then
     set +x
-    >&2 echo
-    >&2 echo "ERROR: m4 failed."
+    >&2 blot
+    >&2 blot "ERROR: m4 failed."
 
     exit_1
   fi
@@ -819,7 +819,7 @@ m4_define_value_must_be_specified () {
 
   [ ${#@} -lt 2 ] || return 0
 
-  >&2 echo "ERROR: Key or value “${definition}” expects a value or key"
+  >&2 blot "ERROR: Key or value “${definition}” expects a value or key"
 
   exit_1
 }
@@ -843,8 +843,8 @@ fail_if_target_exists_and_non_empty () {
 
   [ -n "$(ls -A ${DXY_DEPOXY_CLIENT_FULL})" ] || return 0
 
-  >&2 echo "ERROR: The target directory is not empty!"
-  >&2 echo "- Please check: “${DXY_DEPOXY_CLIENT_FULL}”"
+  >&2 blot "ERROR: The target directory is not empty!"
+  >&2 blot "- Please check: “${DXY_DEPOXY_CLIENT_FULL}”"
 
   exit_1
 }
