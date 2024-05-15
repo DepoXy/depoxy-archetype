@@ -136,6 +136,14 @@ register_customizable_business_values () {
   # in which case you'll need to use the corporate npm URL.
   register "DXY_VENDOR_NPM_REGISTRY_URL" ""
 
+  # 1 configurable ~/.netrc machine.
+  # - E.g., "nexus.acme.com"
+  register "DXY_VENDOR_NETRC_TOKENS01_MACHINE" ""
+  # - E.g., "acme"
+  register "DXY_VENDOR_NETRC_TOKENS01_LOGIN" ""
+  # - E.g., "pass"
+  register "DXY_VENDOR_NETRC_TOKENS01_PASS" ""
+
   # For the `bugs` alias defined on Bash startup by the template at
   #   ~/.depoxy/ambers/archetype/home/bashrx.private.HOSTNAME.EVAL.sh
   # you can make it easy to open your client's ticketing system.

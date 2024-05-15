@@ -223,9 +223,9 @@ autocommit =
   git_auto_commit_many $(find home/.local/share/dob/ \( -type f -o -type l \) -a -name dob.sqlite-*) \
     -m "${CLEARED_ACI}: Update: home/.local/share/dob/dob.sqlite-* files"
   #
-  git_auto_commit_one_update "home/.netrc" "" "${PRIVATE_ACI}"
-  #
-  git_auto_commit_one_update "home/.netrc.example"
+  if [ -f "home/.netrc" ]; then
+    git_auto_commit_one_update "home/.netrc" "" "${PRIVATE_ACI}"
+  fi
   #
   git_auto_commit_one_update "home/.npmrc" "" "${PRIVATE_ACI}"
   #

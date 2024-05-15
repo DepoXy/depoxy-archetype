@@ -1,0 +1,20 @@
+# USAGE:
+#   [ -z "${DXY_VENDOR_NETRC_TOKENS01_MACHINE}" ] ||
+#     m4_shim \
+#       "+12" "home/.netrc.EVAL" \
+#       "home/.netrc"
+
+# REFER: Re: .netrc: login and initialization information used by the auto-login process
+#   https://www.gnu.org/software/inetutils/manual/html_node/The-_002enetrc-file.html
+
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
+
+# vim:tw=0:ts=2:sw=2:et:norl:ft=config
+# DXY_HEADER_AUTHOR
+# DXY_HEADER_PROJECT
+# DXY_HEADER_LICENSE
+
+machine DXY_VENDOR_NETRC_TOKENS01_MACHINE
+login DXY_VENDOR_NETRC_TOKENS01_LOGIN
+password DXY_VENDOR_NETRC_TOKENS01_PASS
+
