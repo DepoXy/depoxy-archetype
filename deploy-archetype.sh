@@ -919,6 +919,7 @@ prompt_continue_or_exit () {
 
     [ -z "${ignored_key}" ] || echo
 
+    blot
     print_template_vars
     blot
   )
@@ -1142,6 +1143,10 @@ process_file () {
   ; then
     blot "SKIP: ${fname}"
     ! ${DXY_OUTPUT_VERBOSE} || blot
+
+    if ${DRY_RUN}; then
+      blot
+    fi
   else
     process_file_copy "${fname}"
   fi
@@ -1170,11 +1175,18 @@ process_file_copy_copy_file () {
 
   local exit_code
 
-  blot "COPY: ${fname}"
+  local blot_fname=""
+  ${DRY_RUN} || blot_fname=" ${fname}"
+  blot "COPY:${blot_fname}"
   ! ${DXY_OUTPUT_VERBOSE} || blot
 
   if ${DRY_RUN}; then
-    blot "  command cp -R -P -- \"${fname}\" \"${dest_path}\""
+    blot "$(\
+      printf "%s\n%s\n%s" \
+        "  command cp -R -P -- \\" \
+        "    \"${fname}\" \\" \
+        "    \"${dest_path}\""
+      )"
     blot
 
     return 0
@@ -1202,13 +1214,21 @@ deployed_file_make_link () {
 
   ${DXY_RUN_MAKE_LNS:-false} || return 0
 
+  local blot_fname=""
+  ${DRY_RUN} || blot_fname=" ${fname}"
   if ${DXY_RUN_LNS_ONLY:-false}; then
-    blot "LINK: ${fname}"
+    blot "LINK:${blot_fname}"
     blot
   fi
 
   if ${DRY_RUN}; then
-    blot "  command ln -s \"${dest_path}\" \"${DXY_MAKE_LNS_FULL}/${fname}\""
+    blot "LINK:"
+    blot "$(\
+      printf "%s\n%s\n%s" \
+        "  command ln -s \\" \
+        "    \"${dest_path}\" \\" \
+        "    \"${DXY_MAKE_LNS_FULL}/${fname}\""
+      )"
     blot
 
     return 0
@@ -1225,16 +1245,23 @@ process_file_eval () {
 
   local eval_cmd
   eval_cmd="$(extract_eval_command "${fname}")"
-  blot "EVAL: ${fname}"
+
+  local blot_fname=""
+  ${DRY_RUN} || blot_fname=" ${fname}"
+  blot "EVAL:${blot_fname}"
   ! ${DXY_OUTPUT_VERBOSE} || blot
 
   # See DEV hook atop file. If set, only test specific file.
   [ -z "${TEST_FILE}" ] || [ "${TEST_FILE}" = "${fname}" ] || return 0
 
-  if ${DRY_RUN}; then
+  if ${DXY_OUTPUT_VERBOSE} || ${DRY_RUN}; then
     # The `set -x` before `eval` prints eval_cmd, so only print on DRY_RUN.
-    blot "  ${eval_cmd}"
+    blot "${eval_cmd}"
     blot
+  fi
+
+  if ${DRY_RUN}; then
+    # Note on DRY_RUN, won't process_eval, so EVAL `LINK:` won't be traced.
 
     return 0
   fi
