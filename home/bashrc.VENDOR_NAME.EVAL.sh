@@ -113,12 +113,21 @@ bashhf_set_start_command () {
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
+bashdxy_set_tracker_url () {
+  VENDOR_ISSUE_TRACKER_URL="DXY_VENDOR_ISSUE_TRACKER_URL"
+}
+
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
+
 main () {
   bashdx_wire_aliases_pushd_paths_vendor_projects
   unset -f bashdx_wire_aliases_pushd_paths_vendor_projects
 
   bashhf_set_start_command
   unset -f bashhf_set_start_command
+
+  bashdxy_set_tracker_url
+  unset -f bashdxy_set_tracker_url
 }
 
 main "$@"

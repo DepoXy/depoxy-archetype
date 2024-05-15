@@ -95,7 +95,7 @@ bashdx_wire_aliases_open_tracker () {
 
   if ! type "${bugs_alias}" > /dev/null 2>&1; then
     eval "alias ${bugs_alias}='sensible-open \
-      \"DXY_VENDOR_ISSUE_TRACKER_URL\"'"
+      \"\${VENDOR_ISSUE_TRACKER_URL}\"'"
   else
     >&2 echo "WARNING: Cannot alias: “${bugs_alias}” already assigned"
   fi
