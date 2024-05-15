@@ -2,6 +2,7 @@
 #   ! ${DXY_RUN_LNS_ONLY:-false} || return 0
 #   DEPOXY_TARGET_PATH="home/.config/${DXY_DEPOXY_CLIENT_ID}-tree.col" &&
 #   DEPOXY_TARGET_FULL="${DXY_DEPOXY_CLIENT_FULL}/${DEPOXY_TARGET_PATH}" &&
+#   mkdir -p -- "$(dirname -- "${DEPOXY_TARGET_FULL}")" &&
 #   touch -- "${DEPOXY_TARGET_FULL}" &&
 #   ( ! ${DXY_RUN_MAKE_LNS} || ln -s "${DEPOXY_TARGET_FULL}" "${DXY_MAKE_LNS_FULL}/${fname}" )
 

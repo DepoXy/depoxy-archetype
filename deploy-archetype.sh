@@ -752,19 +752,8 @@ m4_shim_make_file () {
     exit_1
   fi
 
-  # Although the output redirect trips errexit, the error message (that
-  # says m4 failed) could be misleading, so at least handle one scenario:
-  # unknown directory path (because we called `mkdir` on all the target
-  # directories already, the path should exist).
-  local dest_dir="$(dirname -- "${dest_path}")"
-
-  if [ ! -d "${dest_dir}" ]; then
-    set +x
-    >&2 echo
-    >&2 echo "ERROR: No such destination directory: “${dest_dir}”"
-
-    exit_1
-  fi
+  prepare_client_fs_dest "${dest_path}" \
+    || return 1
 
   local custom_m4_defines=""
   while [ "$1" != '' ]; do
@@ -828,6 +817,10 @@ m4_define_value_must_be_specified () {
 # i.e., it's a buggy little scamp.
 m4_kludge () {
   command -v gm4 || command -v m4
+}
+
+gnu_readlink () {
+  command -v greadlink || command -v readlink
 }
 
 gnu_sed () {
@@ -1026,6 +1019,29 @@ mkdir_with_trace () {
   mkdir -p -- "${path}"
 }
 
+# Insists target directory is subdirectory.
+prepare_client_fs_dest () {
+  local dest_path="$1"
+
+  local dest_dir
+  dest_dir="$(dirname -- "${dest_path}")"
+
+  local dest_dir_abs
+  dest_dir_abs="$($(gnu_readlink) -m -- "${dest_dir}")"
+
+  local client_dir_abs
+  client_dir_abs="$($(gnu_readlink) -m -- "${DXY_DEPOXY_CLIENT_FULL}")" 
+
+  if [ "${dest_dir_abs#${client_dir_abs}}" = "${dest_dir_abs}" ]; then
+    # Prefix not stripped, i.e., not a subdir.
+    >&2 blot "$(alert "ERROR: Not a symlink: ${DXY_DEPOXYDIR_RUNNING_FULL}")"
+
+    return 1
+  fi
+
+  mkdir -p -- "${dest_dir}"
+}
+
 ln_with_trace () {
   local source="$1"
   local target="$2"
@@ -1045,23 +1061,18 @@ ln_with_trace () {
 
 # SAVVY: Use `-mindepth 1` to exclude current directory (.).
 
-# INERT: Add mechanism to use ./.EVAL files to override this `mkdir` behavior.
-# - The template currently populates same-named directories in the new client
-#   repo, and it places at least one file in each of those directories.
-# - But if we ever found that we wanted to do something different, like
-#   rename the target directory based on a template variable, we could
-#   use an `.EVAL` file in the directory to run `eval` code, like we do
-#   for the other template files that include "EVAL" in their name.
-# - Fortunately, we don't currently need this complexity.
-#   But if we did, here's one idea on how we might do it.
+# This fcn. prepares an empty directory hierarchy matching DXA's hierarchy.
+# - This is used to prepared the symlinks tree before populating symlinks.
+# - Note that is not used to seed the new DepoXy Client directory, because
+#   some directory names are based on template values, and we don't want to
+#   end up with empty directories.
+#   - Note this means m4_shim will call `mkdir -p` as necessary, and that
+#     EVAL files are aware they must create destination paths as appropriate.
 
 prepare_client_fs () {
   local client_path="$1"
 
-  # client_set set if called by prepare_symlinks_fs, b/c DXY_RUN_MAKE_LNS.
-  [ -n "${client_path}" ] || ! ${DXY_RUN_LNS_ONLY:-false} || return 0
-
-  [ -n "${client_path}" ] || client_path=${DXY_DEPOXY_CLIENT_FULL}
+  ${DXY_RUN_MAKE_LNS:-false} || return 0
 
   if ${DRY_RUN}; then
     blot
@@ -1168,6 +1179,9 @@ process_file_copy_copy_file () {
 
     return 0
   fi
+
+  prepare_client_fs_dest "${dest_path}" \
+    || return 1
 
   # Note that older `cp` (ahem macos) honor -P but not --no-dereference.
   # - Point being, copy symlinks themselves and not what they reference,
@@ -1615,7 +1629,6 @@ main () {
   prompt_continue_or_exit
 
   prepare_depoxy_fs
-  prepare_client_fs
   prepare_symlinks_fs
   process_files
 
