@@ -237,7 +237,13 @@ export DEPOXY_PYENV_PYVERS="3.12.1"
 export DEPOXY_ENABLE_KEEP_ALIVE=false
 
 # Set this to enable only caffeinate.
-export DEPOXY_ENABLE_KEEP_ALIVE_CAFFEINATE=true
+# - BWARE: Inhibits macOS "Screen Saver" (that you might set via macOS's
+#   14.4.1's Prefs. > Lock Screen > *Start Screen Saver when inactive*).
+#   - UCASE: Your org locks system prefs (you cannot change timeout) and
+#     screen saver requires pwd logon.
+#     - I.e., you cannot tea or bio break, or check your phone without
+#       having to log back on again.
+export DEPOXY_ENABLE_KEEP_ALIVE_CAFFEINATE=false
 
 # Set this to enable only pmset.
 export DEPOXY_ENABLE_KEEP_ALIVE_PMSET=false
