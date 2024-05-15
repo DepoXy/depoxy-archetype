@@ -638,6 +638,11 @@ register_git_put_wise_paths () {
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 # ================================================================= #
 
+# A typical `source_deps` would plumb error checking and would
+# localize third-party files under 'deps/'. But the Archetype
+# is so tightly coupled to other components of the DepoXy stack
+# that we can skip the overhead of a more robust deps setup.
+
 source_deps () {
   # Load: DEPOXY_* path and settings environs.
   local ambers_path="${DEPOXYDIR_BASE_FULL:-${HOME}/.depoxy}/ambers"
@@ -1605,6 +1610,16 @@ parse_args () {
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
+_promote_homebrew_bash () {
+  # CUPLD/2024-05-15: As mentioned atop source_deps, don't worry about
+  # dependency error checking, or localizing 'deps/'.
+  . "${MOSREPOSPATH:-${DOPP_KIT:-${HOME}/.kit}/mOS}/macOS-onboarder/lib/promote-homebrew-bash.sh"
+
+  promote_homebrew_bash "$@"
+}
+
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 _NORMAL_EXIT=false
 
 exit_1 () { _NORMAL_EXIT=true; exit 1; }
@@ -1684,7 +1699,10 @@ main () {
 
 if [ "$0" = "${BASH_SOURCE[0]}" ]; then
   # Being executed.
-  main "$@"
+  # - Promote to Bash v5 (avoid Bash v3) so EVAL scripts can use ${foo^^}, etc.
+  if ! _promote_homebrew_bash "$@"; then
+    main "$@"
+  fi
 else
   source_deps
 fi
