@@ -144,7 +144,6 @@ autocommit =
   #
   # git_auto_commit_many \
   #   "docs/Backlog_Client_${depoxy_client_id}.rst" \
-  #   "docs/Backlog_Client_${depoxy_client_id}.rst.example" \
   #   "docs/Donelog_Client_${depoxy_client_id}.rst" \
   #   "docs/Woodlot_Client_${depoxy_client_id}.rst" \
   #   "docs/Worklog_Client_${depoxy_client_id}.rst" \
@@ -228,7 +227,7 @@ autocommit =
   #
   git_auto_commit_one_update "home/.netrc.example"
   #
-  git_auto_commit_one_update "home/.npmrc.example"
+  git_auto_commit_one_update "home/.npmrc" "" "${PRIVATE_ACI}"
   #
   # *** Password Store
   #
@@ -420,8 +419,8 @@ autocommit =
   #
   # ***
   #
-  git_auto_commit_one_update "home/bashrx.private.DXY_USERNAME.sh" "" "${PRIVATE_ACI}"
-  git_auto_commit_one_update "home/bashrx.private.DXY_USERNAME.sh.example"
+  git_auto_commit_one_update "home/bashrc.DXY_USERNAME.sh"
+  git_auto_commit_one_update "home/bashrc.DXY_VENDOR_NAME.sh" "" "${PRIVATE_ACI}"
   git_auto_commit_one_update "home/bashrx.private.DXY_HOSTNAME.sh"
   #
   git_auto_commit_one_update "home/crontab.DXY_USERNAME" "" "${PRIVATE_ACI}"
@@ -436,8 +435,8 @@ autocommit =
     -m "${CLEARED_ACI}: Update: home/vim-trap/"
   #
   # NOTE: This `find` won't work if there are spaces in any paths.
-  git_auto_commit_many $(find home/work.example/ -type f -o -type l) \
-    -m "${CLEARED_ACI}: Update: home/work.example/"
+  git_auto_commit_many $(find home/DXY_VENDOR_HOME_NAME/ -type f -o -type l) \
+    -m "${PRIVATE_ACI}: Update: home/DXY_VENDOR_HOME_NAME/"
   #
   # ***
   #
