@@ -729,7 +729,8 @@ m4_shim () {
 
   local dest_path="${DXY_DEPOXY_CLIENT_FULL}/${client_file}"
 
-  m4_shim_make_file "${tail_lns}" "${tail_path}" "${client_file}" "${dest_path}" "$@"
+  m4_shim_make_file "${tail_lns}" "${tail_path}" "${client_file}" "${dest_path}" "$@" \
+    || return 1
 
   deployed_file_make_link "${tail_path}" "${dest_path}"
 }
@@ -749,7 +750,7 @@ m4_shim_make_file () {
     >&2 blot
     >&2 blot "ERROR: No such input file: “${tail_path}”"
 
-    exit_1
+    return 1
   fi
 
   prepare_client_fs_dest "${dest_path}" \
@@ -757,7 +758,8 @@ m4_shim_make_file () {
 
   local custom_m4_defines=""
   while [ "$1" != '' ]; do
-    m4_define_value_must_be_specified "$@"
+    m4_define_value_must_be_specified "$@" \
+      || return 1
 
     custom_m4_defines="${custom_m4_defines} --define=$1=\"$2\""
 
@@ -799,7 +801,7 @@ m4_shim_make_file () {
     >&2 blot
     >&2 blot "ERROR: m4 failed."
 
-    exit_1
+    return 1
   fi
 }
 
@@ -810,7 +812,7 @@ m4_define_value_must_be_specified () {
 
   >&2 blot "ERROR: Key or value “${definition}” expects a value or key"
 
-  exit_1
+  return 1
 }
 
 # KLUGE: macOS Sonoma 14.4.1 `m4` always raises install-Xcode dialog,
@@ -1292,8 +1294,19 @@ process_file_eval () {
 
       blot
     else
+      echo "${eval_cmd}" >> "${DXY_CAPTURE_FILE_PATH}"
+      echo >> "${DXY_CAPTURE_FILE_PATH}"
+
       # Note that `set -x` writes to stdout.
-      process_eval >> "${DXY_CAPTURE_FILE_PATH}" 2>&1
+      if ! process_eval >> "${DXY_CAPTURE_FILE_PATH}" 2>&1; then
+        blot
+        blot "ERROR: EVAL failed:"
+
+        # This will errexit.
+        process_eval
+        # Unreachable, but what effectively happens.
+        exit_1
+      fi
 
       echo >> "${DXY_CAPTURE_FILE_PATH}"
     fi
