@@ -26,14 +26,13 @@ infuse =
   # of DXC home files (see also DepoXy's infuser that places a lot of other
   # home files), but this conf is @biz-specific, and the DXC project config
   # is not PRIVATE-scoped, so we're wiring from here.
-  cd && symlink_overlay_file "work/.mrinfuse/.acme.conf" && cd -
+  cd && symlink_overlay_file "DXY_VENDOR_HOME_NAME/.mrinfuse/DXY_VENDOR_ACMESH_CONF" && cd -
 
 # ========================================================================
 # ------------------------------------------------------------------------
 
-# "Your ACME-specific OMR config and Homefries bashrc"
-# E.g., ~/.depoxy/stints/2324/flast.sh
-[${DEPOXYDIR_STINTS_FULL:-DXY_DEPOXYDIR_STINTS__HOME_}/DEPOXY_CLIENT_ID/DXY_VENDOR_DOTFILES_NAME]
+# "Your DXY_VENDOR_NAME_PROPER-specific OMR config and Homefries bashrc"
+[${DEPOXYDIR_STINTS_FULL:-DXY_DEPOXYDIR_STINTS__HOME_}/DXY_DEPOXY_CLIENT_ID/DXY_VENDOR_DOTFILES_NAME]
 lib = remote_set origin git@DXY_VENDOR_GITCONFIG_HUB_HOST:DXY_VENDOR_GITSERVER_USER_NAME/DXY_VENDOR_DOTFILES_NAME.git
 autocommit =
   # Prepare args, e.g., `autocommit -y`, or `autocommit -f`.
@@ -67,25 +66,32 @@ autocommit =
   command cp -- "../_mrconfig-DXY_VENDOR_NAME"* "."
   #
   mkdir -p -- "home"
+  command cp -- "../home/bashrc.DXY_VENDOR_NAME.sh" "home/"
+  # MAYBE/2024-05-20 01:39:
+  #  command cp -- "../home/bashrx.private.DXY_HOSTNAME.sh" "home/"
   command cp -- "../home/.gitconfig.user-business" "home/"
-  command cp -- "../home/bashrx.private.DXY_USERNAME.sh" "home/"
   #
   # Here's a slick tar way to copy, because copy isn't idempotent,
   # e.g.,
-  #   command cp -a -- ../home/work home/
-  # will create home/work the first time it's run.
+  #   command cp -a -- ../home/DXY_VENDOR_HOME_NAME home/
+  # will create home/DXY_VENDOR_HOME_NAME the first time it's run.
   # But the next time you run it, it'll fail and complain about symlinks:
   #   cp: symlink: the/symlink/target: File exists
   # - As an added bonus, tar can exclude files we don't wanna share,
   #   which saves us a `command rm` later.
-  mkdir -p -- "home/work"
-  tar -C "../home/work" --exclude "acme.sh/" --exclude ".acme.conf" -cf - . \
-    | tar -C "home/work" -xf -
+  mkdir -p -- "home/DXY_VENDOR_HOME_NAME"
+  tar -C "../home/DXY_VENDOR_HOME_NAME" \
+    --exclude "DXY_VENDOR_ACMESH_NAME/" \
+    --exclude "DXY_VENDOR_ACMESH_CONF" \
+    -cf - . \
+    | tar -C "home/DXY_VENDOR_HOME_NAME" -xf -
   # So that I at least have a ref. in my IDE project listing.
-  ln -sfn -- "../../../home/work/.acme.conf" "home/work/.acme.conf"
+  ln -sfn -- \
+    "../../../home/DXY_VENDOR_HOME_NAME/DXY_VENDOR_ACMESH_CONF" \
+    "home/DXY_VENDOR_HOME_NAME/DXY_VENDOR_ACMESH_CONF"
   # Because directory, use -h option, so you don't follow target symlink
-  # and clobber the real acme.sh/acme.sh file.
-  ln -sfn -- "../../../home/work/acme.sh" "home/work/acme.sh"
+  # and clobber the real DXY_VENDOR_ACMESH_NAME/DXY_VENDOR_ACMESH_NAME file.
+  ln -sfn -- "../DXY_VENDOR_ACMESH_NAME" "DXY_VENDOR_ACMESH_NAME"
   #
   # ***
   #
