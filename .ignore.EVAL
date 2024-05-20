@@ -25,9 +25,6 @@
 /home/Library/Application Support/Google/Chrome/Default/Bookmarks
 /home/Library/Application Support/Google/Chrome/Default/bookmarks.html
 
-# home/bashrx.private.acme.sh -> home/work/acme.sh/acme.sh
-/home/bashrx.private.acme.sh
-
 # Convenience symlinks used for better visibility in Vim project tray.
 #
 # home/dubs_projects.vim -> home/.vim/pack/landonb/start/dubs_grep_steady/dubs_projects.vim
