@@ -219,6 +219,9 @@ register_customizable_git_config () {
 
   # E.g., "acme".
   register "DXY_VENDOR_ACMESH_CMD" "${DXY_VENDOR_ACMESH_NAME%.sh}"
+
+  # E.g., ".acme.conf".
+  register "DXY_VENDOR_ACMESH_CONF" ".${DXY_VENDOR_ACMESH_CMD}.conf"
 }
 
 # You can set values for non-business things.

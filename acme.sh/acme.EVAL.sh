@@ -4,8 +4,6 @@
 #   m4_shim \
 #     "+24" "acme.sh/acme.EVAL.sh" \
 #     "${DXY_VENDOR_ACMESH_NAME}/${DXY_VENDOR_ACMESH_NAME}" \
-#     "DXY_VENDOR_ACMESH_CONF" \
-#       ".${DXY_VENDOR_ACMESH_CMD}.conf" \
 #     "DXY_VENDOR_ACMESH_ORG01_VAR" \
 #       "ACMESH_ROOT_${DXY_VENDOR_ORG01_NAME^^}" \
 #     "DXY_VENDOR_ACMESH_ORG02_VAR" \
@@ -38,7 +36,9 @@
 # - CXREF:
 #   DXY_DEPOXY_CLIENT_TILDE/home/DXY_VENDOR_HOME_NAME/DXY_VENDOR_ACMESH_CONF
 #   DXY_DEPOXYARCHETYPE_DIR_TILDE/home/work/.acme.conf.EVAL
+# E.g., ".acme.conf"
 _ACMECO_CONF_BASE="${ACMESH_CONF_BASE:-DXY_VENDOR_ACMESH_CONF}"
+# E.g., "/Users/user/.acme.conf"
 _ACMECO_CONF_USER="${ACMESH_CONF_USER:-${HOME}/${_ACMECO_CONF_BASE}}"
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
