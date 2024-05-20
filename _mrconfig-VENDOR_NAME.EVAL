@@ -61,14 +61,14 @@ autocommit =
   #   ~/.depoxy/stints/XXXX/home/.depoxy/stints/running/flast.sh/README.md
   #   to ~/.depoxy/stints/XXXX/flast.sh/README.md (so you keep a copy of
   #   the README under DXC; that and other files are copied to flast.sh).
-  command cp -- ../home/.depoxy/stints/running/DXY_VENDOR_DOTFILES_NAME/README.md README.md
+  command cp -- "../home/.depoxy/stints/running/DXY_VENDOR_DOTFILES_NAME/README.md" "README.md"
   #
   # Incl. vendor project configs.
-  command cp -- ../_mrconfig-DXY_VENDOR_NAME* .
+  command cp -- "../_mrconfig-DXY_VENDOR_NAME"* "."
   #
-  mkdir -p home
-  command cp -- ../home/.gitconfig.user-business home/
-  command cp -- ../home/bashrx.private.DXY_USERNAME.sh home/
+  mkdir -p -- "home"
+  command cp -- "../home/.gitconfig.user-business" "home/"
+  command cp -- "../home/bashrx.private.DXY_USERNAME.sh" "home/"
   #
   # Here's a slick tar way to copy, because copy isn't idempotent,
   # e.g.,
@@ -78,15 +78,15 @@ autocommit =
   #   cp: symlink: the/symlink/target: File exists
   # - As an added bonus, tar can exclude files we don't wanna share,
   #   which saves us a `command rm` later.
-  mkdir -p home/work
-  tar -C ../home/work --exclude acme.sh/ --exclude .acme.conf -cf - . \
-    | tar -C home/work -xf -
+  mkdir -p -- "home/work"
+  tar -C "../home/work" --exclude "acme.sh/" --exclude ".acme.conf" -cf - . \
+    | tar -C "home/work" -xf -
   # So that I at least have a ref. in my IDE project listing.
-  ln -sfn -- ../../../home/work/.acme.conf home/work/.acme.conf
+  ln -sfn -- "../../../home/work/.acme.conf" "home/work/.acme.conf"
   # Because directory, use -h option, so you don't follow target symlink
   # and clobber the real acme.sh/acme.sh file.
   # AUDIT/2023-02-23: This is ln -sfn @linux: Is there universal option?
-  ln -sfn -- ../../../home/work/acme.sh home/work/acme.sh
+  ln -sfn -- "../../../home/work/acme.sh" "home/work/acme.sh"
   #
   # ***
   #
