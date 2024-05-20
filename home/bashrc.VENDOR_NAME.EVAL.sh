@@ -1,6 +1,8 @@
+# vim:tw=0:ts=2:sw=2:et:norl:ft=bash
+#
 # USAGE:
 #   m4_shim \
-#     "+14" "home/bashrc.VENDOR_NAME.EVAL.sh" \
+#     "+16" "home/bashrc.VENDOR_NAME.EVAL.sh" \
 #     "home/bashrc.${DXY_VENDOR_NAME}.sh" \
 #     "DXY_VENDOR_GITSERVER_USER_URL" \
 #       "https://${DXY_VENDOR_GITCONFIG_HUB_HOST}/${DXY_VENDOR_GITSERVER_USER_NAME}" \
