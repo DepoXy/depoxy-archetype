@@ -182,8 +182,8 @@ register_customizable_git_config () {
   # - This is the project name of your corp user's dotfiles project, which
   #   you could push to the vendor's Git server (to share with other devs,
   #   or so it's backed up).
-  # E.g., "flast.sh"
-  register "DXY_VENDOR_DOTFILES_NAME" "PLEASE_SET_ME"
+  # E.g., "flast.sh", "firstl.sh", "username.sh"
+  register "DXY_VENDOR_DOTFILES_NAME" "${DXY_USERNAME}.sh"
 
   # - And then, if, e.g.,
   #     DXY_VENDOR_GITCONFIG_HUB_HOST="gitlab.acme.com"
