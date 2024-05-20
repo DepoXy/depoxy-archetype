@@ -110,7 +110,10 @@ DXY_VENDOR_ORG02_PROJ02_CD_ALIAS () {
 # - E.g., if you wanted to change to the DXY_VENDOR_ORG02_PROJ01_NAME
 #   directory using the alias you set above, you could do this:
 bashhf_set_start_command () {
-  HOMEFRIES_EVAL='cd[[[]]]DXY_VENDOR_ORG02_PROJ01_ABBREV'
+  # E.g., if you wanted to start in a specific vendor project directory:
+  #   HOMEFRIES_EVAL='cd[[[]]]DXY_VENDOR_ORG02_PROJ01_ABBREV'
+  # Or perhaps the DXY_VENDOR_ACMESH_NAME project directory
+  HOMEFRIES_EVAL='ddac'
 }
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
