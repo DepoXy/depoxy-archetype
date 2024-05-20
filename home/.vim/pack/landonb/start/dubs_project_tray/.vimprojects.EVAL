@@ -1117,8 +1117,8 @@ _DEPOXY_ARCHETYPE=$HOME/.depoxy/ambers/archetype filter=".* *" {
  README--FIXME.rst
  README.md
  _mrconfig-USERNAME.EVAL
- _mrconfig-VENDOR_NAME--DXY_VENDOR_ORG01_NAME.EVAL
- _mrconfig-VENDOR_NAME--DXY_VENDOR_ORG02_NAME.EVAL
+ _mrconfig-VENDOR_NAME--VENDOR_ORG01_NAME.EVAL
+ _mrconfig-VENDOR_NAME--VENDOR_ORG02_NAME.EVAL
  _mrconfig-VENDOR_NAME.EVAL
  _mrconfig.EVAL.omr
  deploy-archetype.sh
