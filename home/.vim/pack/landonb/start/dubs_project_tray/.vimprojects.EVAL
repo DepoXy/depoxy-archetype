@@ -99,7 +99,7 @@ DEPOXY_STINTS=DXY_DEPOXYDIR_BASE_HOME filter=".* *" exclude=".DS_Store" {
    .vimprojects
    _gitignore-macOS
    bashrc.DXY_USERNAME.sh
-   bashrc.DXY_VENDOR_NAME..sh
+   bashrc.DXY_VENDOR_NAME.sh
    bashrx.private.DXY_HOSTNAME.sh
    crontab.DXY_USERNAME
    dubs_projects.vim
@@ -1236,7 +1236,7 @@ _DEPOXY_ARCHETYPE=$HOME/.depoxy/ambers/archetype filter=".* *" {
    _gitignore.EVAL
    stints=$HOME/.depoxy/ambers/archetype/home/.depoxy/stints {
     _ignore
-    running/DXY_VENDOR_DOTFILES_NAME=$HOME/.depoxy/ambers/archetype/home/.depoxy/stints/running/VENDOR_DOTFILES_NAME {
+    running/VENDOR_DOTFILES_NAME=$HOME/.depoxy/ambers/archetype/home/.depoxy/stints/running/VENDOR_DOTFILES_NAME {
      README.EVAL.md
     }
    }
@@ -3196,6 +3196,8 @@ Home=$HOME filter="README.rst" {
 DepoXy-Bashrc=$HOME/.depoxy/ambers/home/.homefries filter=".* *" {
  .ignore
  .depoxy-brc-client=$HOME/.depoxy/stints/DXY_DEPOXY_CLIENT_ID/home filter="*.sh" {
+  bashrc.DXY_USERNAME.sh
+  bashrc.DXY_VENDOR_NAME.sh
   bashrx.private.DXY_HOSTNAME.sh
  }
  .depoxy-brc-entry=$HOME/.depoxy/ambers/home/.homefries/.bashrc-bin {
