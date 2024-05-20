@@ -276,6 +276,7 @@ autocommit =
   #
   # User Vim config.
   depoxy_client_autocommit_vimprojects () {
+    # CXREF: ~/.depoxy/ambers/bin/vimprojects-create-copy-without-work-projects
     ${ambers_path}/bin/vimprojects-create-copy-without-work-projects
     #
     git_auto_commit_one "home/.vim/pack/landonb/start/dubs_project_tray/.vimprojects" \

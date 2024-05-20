@@ -105,12 +105,19 @@ bashdx_wire_aliases_open_tracker () {
 # ----------------------------------------------------------------- #
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
+# USAGE: Customize this to (help) configure PS1.
+# - Defaults to showing the DepoXy Client ID e.g.,
+#     DXY_USERNAME@DXC[[[]]]DXY_DEPOXY_CLIENT_ID[[[]]]:~ 🍄 $
+# - Disable this to show the machine name in the prompt, e.g.,
+#     DXY_USERNAME@DXY_HOSTNAME:~ 🍄 $
+# - Or set HOMEFRIES_TERM_UTIL_PS1 to your own PS1 prompt (which
+#   you'd want to do when ${HOME_FRIES_PRELOAD} is true so that
+#   Homefries uses it; or just set your own PS1 here).
+
 bashdx_customize_depoxy_client_PS1 () {
+  # CXREF: ~/.homefries/lib/term/set-shell-prompt-and-window-title.sh
   . "${HOMEFRIES_LIB:-${HOME}/.homefries/lib}/term/set-shell-prompt-and-window-title.sh"
 
-  # USAGE: Disable this if you want to see the machine name in the prompt
-  # instead of the DXC Client ID.
-  # - ALTLY: Customize this name part or all of PS1 to your liking.
   HOMEFRIES_TERM_UTIL_PS1_HOST="DXC${DEPOXY_CLIENT_ID}" \
     dubs_set_terminal_prompt
 }
