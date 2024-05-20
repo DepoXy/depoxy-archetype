@@ -101,6 +101,7 @@ autocommit =
   git_auto_commit_one_update "LICENSE"
   #
   git_auto_commit_one_omr "_mrconfig"
+  git_auto_commit_one_omr "_mrconfig-DXY_USERNAME"
   #
   # - Auto-commit just "_mrconfig-DXY_VENDOR_NAME":
   #     git_auto_commit_one_omr "_mrconfig-DXY_VENDOR_NAME" "" "${PRIVATE_ACI}"
@@ -1025,6 +1026,26 @@ include =
     fi
   }
   include_depoxy_client_mr_business
+  #
+  # ***
+  #
+  # Load user-specific OMR project config.
+  include_depoxy_client_mr_personal () {
+    . ${OHMYREPOS_LIB:-${GITREPOSPATH:-${HOME}/.kit/git}/ohmyrepos/lib}/skip-grouping.sh
+    #
+    local stints_dir="${DEPOXYDIR_STINTS_FULL:-DXY_DEPOXYDIR_STINTS__HOME_}"
+    # CXREF: DXY_DEPOXYDIR_STINTS_TILDE/DXY_DEPOXY_CLIENT_ID/_mrconfig-DXY_USERNAME
+    #        DXY_DEPOXYARCHETYPE_DIR_TILDE/_mrconfig-[[[DXY_USERNAME]]].EVAL
+    local mr_personal="${stints_dir}/DXY_DEPOXY_CLIENT_ID/_mrconfig-DXY_USERNAME"
+    if [ -f "${mr_personal}" ] && ! (
+        mr_exclusive "personal" "user" "DXY_USERNAME" &&
+        true
+      );
+    then
+      cat "${mr_personal}"
+    fi
+  }
+  include_depoxy_client_mr_personal
 
 # ========================================================================
 # ------------------------------------------------------------------------

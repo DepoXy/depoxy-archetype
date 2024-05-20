@@ -74,6 +74,7 @@ DEPOXY_STINTS=DXY_DEPOXYDIR_BASE_HOME filter=".* *" exclude=".DS_Store" {
   _mrconfig-DXY_VENDOR_NAME
   _mrconfig-DXY_VENDOR_NAME--DXY_VENDOR_ORG01_NAME
   _mrconfig-DXY_VENDOR_NAME--DXY_VENDOR_ORG02_NAME
+  _mrconfig-DXY_USERNAME
   docs=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/docs {
    .ignore
    Backlog_Client_[[[]]]DXY_DEPOXY_CLIENT_ID.rst
@@ -2640,6 +2641,7 @@ MRCONFIGS_=/ filter=".*mrconfig* *mrconfig*" {
    _mrconfig-DXY_VENDOR_NAME
    _mrconfig-DXY_VENDOR_NAME--DXY_VENDOR_ORG01_NAME
    _mrconfig-DXY_VENDOR_NAME--DXY_VENDOR_ORG02_NAME
+   _mrconfig-DXY_USERNAME
   }
  }
  # *** OhMyRepos
