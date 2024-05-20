@@ -1,3 +1,12 @@
+.. USAGE:
+..   m4_shim \
+..     "+10" ".whilom/README.EVAL.rst" \
+..     ".whilom/README.rst"
+..   mkdir -p -- "${DXY_DEPOXY_CLIENT_FULL}/.whilom/home/${DXY_VENDOR_HOME_NAME}"
+..   touch -- "${DXY_DEPOXY_CLIENT_FULL}/.whilom/home/${DXY_VENDOR_HOME_NAME}/.empty"
+
+.. +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
+
 @@@@@@@@@@@@
 WHILOM FILES
 @@@@@@@@@@@@

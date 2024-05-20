@@ -46,8 +46,8 @@ fetch = true
 pull = true
 push = true
 update = true
-# Should we include with "work", or separate the two?
-#   skip = mr_exclusive "client" && mr_exclusive "work"
+# Should we include with "vendor", or separate the two?
+#   skip = mr_exclusive "client" && mr_exclusive "vendor"
 skip = mr_exclusive "client"
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
@@ -127,18 +127,18 @@ autocommit =
   #
   # Ideally, .whilom/ files would be scoped the same as they'd be at the
   # same path under root DXC/. But this is a rarely-used, niche feature,
-  # so follow this convention: Use .whilom/home/work/ for PRIVATE files.
+  # so follow this convention: Use .whilom/home/DXY_VENDOR_HOME_NAME/ for PRIVATE files.
   # Anything else under .whilom/ will be auto-committed unscoped.
-  if [ -d ".whilom/home/work/" ]; then
-    git_auto_commit_many $(find .whilom/home/work/ -type f -o -type l) \
-      -m "${PRIVATE_ACI}: Update: .whilom/home/work/"
+  if [ -d ".whilom/home/DXY_VENDOR_HOME_NAME/" ]; then
+    git_auto_commit_many $(find .whilom/home/DXY_VENDOR_HOME_NAME/ -type f -o -type l) \
+      -m "${PRIVATE_ACI}: Update: .whilom/home/DXY_VENDOR_HOME_NAME/"
   fi
   git_auto_commit_many $(find .whilom/ -type f -o -type l) \
     -m "${CLEARED_ACI}: Update: .whilom/"
   #
   # ***
   #
-  # Work-related reSTfold docs.
+  # Vendor-related reSTfold docs.
   #
   git_auto_commit_one_update "docs/.ignore" "" "${PRIVATE_ACI}"
   #
@@ -276,8 +276,8 @@ autocommit =
   #
   # User Vim config.
   depoxy_client_autocommit_vimprojects () {
-    # CXREF: ~/.depoxy/ambers/bin/vimprojects-create-copy-without-work-projects
-    ${ambers_path}/bin/vimprojects-create-copy-without-work-projects
+    # CXREF: ~/.depoxy/ambers/bin/vimprojects-create-copy-without-vendor-projects
+    ${ambers_path}/bin/vimprojects-create-copy-without-vendor-projects
     #
     git_auto_commit_one "home/.vim/pack/landonb/start/dubs_project_tray/.vimprojects" \
       -m "${PRIVATE_ACI}: Vimprojects         (Client project-tray drawer)"
@@ -1008,7 +1008,7 @@ include =
   #
   # ***
   #
-  # Load client-specific OMR project config.
+  # Load vendor-specific OMR project config.
   include_depoxy_client_mr_business () {
     . ${OHMYREPOS_LIB:-${GITREPOSPATH:-${HOME}/.kit/git}/ohmyrepos/lib}/skip-grouping.sh
     #
@@ -1017,7 +1017,7 @@ include =
     #        DXY_DEPOXYARCHETYPE_DIR_TILDE/_mrconfig-[[[DXY_VENDOR_NAME]]].EVAL
     local mr_business="${stints_dir}/DXY_DEPOXY_CLIENT_ID/_mrconfig-DXY_VENDOR_NAME"
     if [ -f "${mr_business}" ] && ! (
-        mr_exclusive "work" &&
+        mr_exclusive "business" "vendor" "DXY_VENDOR_HOME_NAME" &&
         true
       );
     then

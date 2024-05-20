@@ -646,7 +646,7 @@ DEPOXY_AMBERS=$HOME/.depoxy/ambers filter=".* *" exclude="archetype" {
   notify
   spells.sh
   test-as-cron
-  vimprojects-create-copy-without-work-projects
+  vimprojects-create-copy-without-vendor-projects
   weekly-omr-report
   macOS=$HOME/.depoxy/ambers/bin/macOS {
    launchers=$HOME/.depoxy/ambers/bin/macOS/launchers {
@@ -1283,7 +1283,7 @@ _DEPOXY_ARCHETYPE=$HOME/.depoxy/ambers/archetype filter=".* *" {
   }
  }
  .whilom=$HOME/.depoxy/ambers/archetype/.whilom {
-  README.rst
+  README.EVAL.rst
  }
  private=$HOME/.depoxy/ambers/archetype/private {
   private.not-private
@@ -2344,7 +2344,7 @@ DepoXy/bin=$HOME/.depoxy/ambers/bin filter=".* *" {
  notify
  spells.sh
  test-as-cron
- vimprojects-create-copy-without-work-projects
+ vimprojects-create-copy-without-vendor-projects
  weekly-omr-report
 }
 
