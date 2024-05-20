@@ -91,6 +91,7 @@ register_customizable_business_values () {
   # E.g., "/home/user/work"
   register "DXY_VENDOR_HOME" "${VENDOR_HOME:-${HOME}/work}"
 
+  # E.g., "work"
   unset -v DXY_VENDOR_HOME_NAME
   register "DXY_VENDOR_HOME_NAME" "$( \
     echo "${DXY_VENDOR_HOME}" \
