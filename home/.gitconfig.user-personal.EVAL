@@ -15,6 +15,6 @@
   email = DXY_PERSON_GITCONFIG_USER_EMAIL
 
 # Except for:
-[includeIf "gitdir:DXY_DEPOXY_CLIENT_TILDE/home/work/acme.sh/"]
+[includeIf "gitdir:DXY_DEPOXY_CLIENT_TILDE/DXY_VENDOR_ACMESH_NAME/"]
   path = .gitconfig.user-business
 

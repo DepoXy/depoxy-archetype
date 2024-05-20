@@ -276,7 +276,7 @@ export GVIM_OPEN_SERVERNAME="DXY_DEPOXY_GVIM_SERVERNAME"
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
-export ACMESH_CONF_USER="DXY_DEPOXY_CLIENT__HOME_/home/DXY_VENDOR_HOME_NAME/DXY_VENDOR_ACMESH_NAME"
+export ACMESH_CONF_USER="DXY_DEPOXY_CLIENT__HOME_/home/DXY_VENDOR_HOME_NAME/DXY_VENDOR_ACMESH_CONF"
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 

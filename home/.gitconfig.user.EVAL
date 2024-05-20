@@ -44,7 +44,7 @@
 
   path = .gitconfig.user-business
 
-[includeIf "gitdir:DXY_DEPOXY_CLIENT_TILDE/home/work/DXY_VENDOR_NAME.sh"]
+[includeIf "gitdir:DXY_DEPOXY_CLIENT_TILDE/DXY_VENDOR_ACMESH_NAME"]
 
   path = .gitconfig.user-business
 
