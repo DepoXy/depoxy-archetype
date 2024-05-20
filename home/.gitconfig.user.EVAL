@@ -40,12 +40,10 @@
 
 # ***
 
-# E.g., gitdir:~/.depoxy/stints/XXXX/flast.sh
 [includeIf "gitdir:DXY_DEPOXY_CLIENT_TILDE/DXY_VENDOR_DOTFILES_NAME"]
 
   path = .gitconfig.user-business
 
-# E.g., gitdir:~/.depoxy/stints/XXXX/home/work/acme.sh
 [includeIf "gitdir:DXY_DEPOXY_CLIENT_TILDE/home/work/DXY_VENDOR_NAME.sh"]
 
   path = .gitconfig.user-business
