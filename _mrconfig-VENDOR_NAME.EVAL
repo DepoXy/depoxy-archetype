@@ -59,7 +59,9 @@ autocommit =
   #   ~/.depoxy/stints/XXXX/home/.depoxy/stints/running/flast.sh/README.md
   #   to ~/.depoxy/stints/XXXX/flast.sh/README.md (so you keep a copy of
   #   the README under DXC; that and other files are copied to flast.sh).
-  command cp -- "../home/.depoxy/stints/running/DXY_VENDOR_DOTFILES_NAME/README.md" "README.md"
+  command cp -- \
+    "../home/.depoxy/stints/running/DXY_VENDOR_DOTFILES_NAME/README.md" \
+    "README.md"
   #
   # Incl. vendor project configs.
   command cp -- "../_mrconfig-DXY_VENDOR_NAME"* "."
