@@ -1083,6 +1083,9 @@ _acmeco_wire_aliases () {
 
   # *** Meta tasks (re: this script; not DXY_VENDOR_NAME_PROPER-related)
 
+  _acmeco_wire_aliases_meta_commands_main
+  unset -f _acmeco_wire_aliases_meta_commands_main
+
   _acmeco_wire_aliases_meta_commands
   unset -f _acmeco_wire_aliases_meta_commands
 
@@ -1123,9 +1126,24 @@ _acmeco_wire_aliases_dispatcher_application () {
 # ***
 
 # *** Meta commands (this script)
-_acmeco_wire_aliases_meta_commands () {
-  _claim_alias_or_warn "ac" "DXY_VENDOR_ACMESH_CMD"
+_acmeco_wire_aliases_meta_commands_main () {
+  local force_alias=false
 
+  # USAGE: If your abbreviation conflicts with an existing command,
+  #        normally claim-alias will warning without wiring. But if
+  #        it's a specific command we don't care about, force it.
+  # - E.g., `/usr/sbin/ac` on @macOS is "connect time accounting",
+  #   something you'll probably never use.
+  if command -v "ac" > /dev/null \
+    && [ "$(command -v "ac")" = "/usr/sbin/ac" ] \
+  ; then
+    force_alias=true
+  fi
+
+  _claim_alias_or_warn "ac" "DXY_VENDOR_ACMESH_CMD" ${force_alias}
+}
+
+_acmeco_wire_aliases_meta_commands () {
   _claim_alias_or_warn "ac-" "_acmeco_print_aliases"
 
   _claim_alias_or_warn "ac-help" "DXY_VENDOR_ACMESH_CMD --help"
