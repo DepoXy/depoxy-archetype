@@ -185,6 +185,9 @@ DEPOXY_STINTS=DXY_DEPOXYDIR_BASE_HOME filter=".* *" exclude=".DS_Store" {
     _gitignore
     stints=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/.depoxy/stints {
      _ignore
+     running/DXY_VENDOR_DOTFILES_NAME=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/.depoxy/stints/running/DXY_VENDOR_DOTFILES_NAME {
+      README.md
+     }
     }
    }
    # .gnupg≔DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/.gnupg [
@@ -1233,6 +1236,9 @@ _DEPOXY_ARCHETYPE=$HOME/.depoxy/ambers/archetype filter=".* *" {
    _gitignore.EVAL
    stints=$HOME/.depoxy/ambers/archetype/home/.depoxy/stints {
     _ignore
+    running/DXY_VENDOR_DOTFILES_NAME=$HOME/.depoxy/ambers/archetype/home/.depoxy/stints/running/VENDOR_DOTFILES_NAME {
+     README.EVAL.md
+    }
    }
   }
   .kit=$HOME/.depoxy/ambers/archetype/home/.kit {
