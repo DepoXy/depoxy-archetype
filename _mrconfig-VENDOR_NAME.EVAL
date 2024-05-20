@@ -9,8 +9,6 @@
 # DXY_HEADER_AUTHOR
 # DXY_HEADER_DOTFILES
 
-# *** NOTE: THIS MRCONFIG ONLY RUNS ON THE CLIENT MACHINE / CLIENT-ONLY ***
-
 # ========================================================================
 # ------------------------------------------------------------------------
 
@@ -85,7 +83,6 @@ autocommit =
   ln -sfn -- "../../../home/work/.acme.conf" "home/work/.acme.conf"
   # Because directory, use -h option, so you don't follow target symlink
   # and clobber the real acme.sh/acme.sh file.
-  # AUDIT/2023-02-23: This is ln -sfn @linux: Is there universal option?
   ln -sfn -- "../../../home/work/acme.sh" "home/work/acme.sh"
   #
   # ***
