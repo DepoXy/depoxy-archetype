@@ -5,12 +5,90 @@
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
+# vim:tw=0:ts=2:sw=2:et:norl:ft=crontab
 # DXY_HEADER_AUTHOR
 # DXY_HEADER_PROJECT
 # DXY_HEADER_LICENSE
 
-# crontab DXY_DEPOXY_CLIENT_TILDE/home/crontab.landonb
+# USAGE: Your typical crontab.
 #
-#  25 13 * * Tue,Thu DXY_DEPOXYAMBERS_DIR/bin/notify "Some Calendar Event B/c Calendar App Notifs Not Working"
-#  50 11 * * Tue     DXY_DEPOXYAMBERS_DIR/bin/notify "Tues' weird noon standup"
+# - Show user's crontab:
+#
+#     crontab -l
+#
+# - Install this crontab:
+#
+#     crontab DXY_DEPOXY_CLIENT_TILDE/home/crontab.puck
+#
+# - Clear user's crontab:
+#
+#     crontab -r
+
+# Some ideas:
+#
+# - You might add a daily backup job herein, or a monthly omr-report
+#   audit email, or a daily GnuCash report script.
+#
+# - But on vendor machines the mostly likely use case for the author
+#   is meetings notifications, especially when working from home and
+#   either the corporate email doesn't have a good calendar app, or
+#   maybe you need additional heads-up before a meeting, or perhaps
+#   like me sometimes you're on a bio break or grabbing tea, and you
+#   need an audio alert to ensure you receive it.
+#
+# The following examples are notification reminders, and there are
+# more than just one or two so that you can demo the various voices,
+# at least on @macOS.
+#
+# - CXREF: See list of macOS voices: `random_voice_macos`:
+#     DXY_DEPOXYAMBERS_DIR_TILDE/bin/notify
+#   - The examples below uses voices picked for how well they deliver
+#     the accompanying text, at least in the author's opinion.
+#     - I liked a few other voices that are not used below, e.g.:
+#         NOTIFY_VOICES="Moira Reed Rishi Rocko Sandy"
+#       and obviously tastes change over time (as do the voice names).
+
+# Here's a silent, toast-only notifcation example
+# for 5 mintes before a 130p Tue/Thurs meeting:
+55 14 * * Tue,Thu NOTIFY_SILENT=true DXY_DEPOXYAMBERS_DIR/bin/notify "Some Calendar Event B/c Calendar App Notifs Not Working"
+
+# Here's a toast notification with a simple random alert sound
+# for a noon meeting on Tuesdays:
+50 11 * * Tue NOTIFY_NO_SAY=true DXY_DEPOXYAMBERS_DIR/bin/notify "Tues' weird noon standup"
+
+# This example speaks the notification, using a random voice,
+# and the name of the voice is announced after say'ing it,
+# for a meeting @ 1100a M/W/F:
+25 13 * * Mon,Wed,Fri ANNOUNCE_VOICE=true DXY_DEPOXYAMBERS_DIR/bin/notify "One thirty grooming meeting starts in 5 minutes"
+# And perhaps you need an earlier reminder to focus on
+# getting ready for the meeting, e.g.:
+45 12 * * Mon,Wed,Fri DXY_DEPOXYAMBERS_DIR/bin/notify "Grooming Reminder 1 of 2"
+
+# The remaining examples are just for the fun of it,
+# mostly to capture examples of the different voices.
+
+# Standup @ 1015a M-F
+07 10 * * Mon-Fri NOTIFY_VOICES="Sandy" DXY_DEPOXYAMBERS_DIR/bin/notify "stand. up. 'cause i've moved your chair"
+
+# Timesheet by 5p Fridays
+20 16 * * Fri DXY_DEPOXYAMBERS_DIR/bin/notify "Beep beep. 40 minute timesheet warning"
+
+# Thursday night karaoke
+45 20 * * Thu NOTIFY_VOICES="Sandy" DXY_DEPOXYAMBERS_DIR/bin/notify "And you can stand on the arms of the Williamsburg Bridge crying Hey man well this is Babylon"
+
+# Rishi
+05 17 * * Mon NOTIFY_VOICES="Rishi" DXY_DEPOXYAMBERS_DIR/bin/notify "I get all tripped up, my eyes turn to water; Rug burns from a shag rug, struck dumb in the presence; Polyester burns from a jacket, rub the skin thin; Break down in a diner, then I paid the bill"
+
+# Sounds same as Matilda, but shows how to use NOTIFY_VOICE
+# for voice with spaces in the name.
+06 17 * * Mon ANNOUNCE_VOICE=true NOTIFY_VOICE="Matilda (Enhanced)" DXY_DEPOXYAMBERS_DIR/bin/notify "I miss the taste of a sweeter life; I miss the conversation; I'm searching for a song tonight; I'm changing all of the stations"
+
+# Fiona hits it best. Daniel pretty good, too. Matilda alright. Karen meh.
+07 17 * * Mon NOTIFY_VOICES="Fiona Daniel" DXY_DEPOXYAMBERS_DIR/bin/notify "i used to hang around in fancy bars, n party down; once i even thought i was in love, ah, uh, ove; but now it's too late for me; there'll be no sweet dumb date for me; cause now i just follow the clown"
+
+# Fred nails this, sounds like Radiohead, but it's Tulip Sweet &etc.
+08 17 * * Mon NOTIFY_VOICES="Fred" DXY_DEPOXYAMBERS_DIR/bin/notify "but i wish i could tell them; that life is like morrissey: desperate... unkind... lonely... dreary"
+
+# Cellos is sing-songy.
+09 17 * * Mon DXY_DEPOXYAMBERS_DIR/bin/notify "Deuce of deux doose the goose moose this is eigh nine minute warning wrap it up time to get ready go go go scoot scoot scoot" "" "" "" "" "Cellos" "-ven+f3 -s 140 -g 5"
 
