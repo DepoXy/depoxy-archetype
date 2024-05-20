@@ -173,8 +173,6 @@ DXY_VENDOR_NAME () {
 # ================================================================= #
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
-# XXX
-
 DXY_ACMECO_FCN_POP_ENVIRONS_EDITABLE_VENDOR_ORG01_NAME () {
   # E.g., ${HOME}/work/soylent
   local base_path="${DXY_VENDOR_ACMESH_ORG01_VAR}"
@@ -356,6 +354,11 @@ _acmeco_populate_environs_verify () {
 }
 
 warn_if_incorrect_environ_paths () {
+  # In case this script sourced on shell startup, don't complain
+  # about absent paths unless being reloaded (i.e., only warn if
+  # user explicitly loading this script).
+  ${audit_environs:-false} || return 0
+
   for path_env in "${_ACMECO_ENVIRONS_PATHS[@]}"; do
     if [ ! -d "${!path_env}" ] && [ ! -f "${!path_env}" ]; then
       >&2 echo "Warning: Value for environment not file or directory: ${path_env}: ${!path_env}"
@@ -954,6 +957,9 @@ _acmeco_cdproject () {
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
+_ACMECO_OPTION_RESET_VARS="--reset"
+_ACMECO_OPTION_AUDIT_VARS="--audit"
+
 # Makes this script reentrant.
 _acmeco_reset_environment () {
   _acmeco_reset_unalias_all
@@ -962,14 +968,14 @@ _acmeco_reset_environment () {
 
   if [ "$1" == "--all" ]; then
     _acmeco_reset_environment_unset_vars
-    reset="--reset"
+    reset="${_ACMECO_OPTION_RESET_VARS}"
   fi
 
   # This feels weird: Source ourselves.
 
-  echo ". \"${BASH_SOURCE[0]}\" ${reset}"
+  echo ". \"${BASH_SOURCE[0]}\" \"${reset}\" \"${_ACMECO_OPTION_AUDIT_VARS}\""
 
-  . "${BASH_SOURCE[0]}" "${reset}"
+  eval . "${BASH_SOURCE[0]}" "${reset}" "${_ACMECO_OPTION_AUDIT_VARS}"
 }
 
 # MAYBE/2022-12-14: Note that these variables are only set if not set,
@@ -1020,7 +1026,7 @@ _claim_alias_or_warn () {
   local the_command="$2"
   local force=${3:-false}
 
-  ! ${force_alias} || force=true
+  ! ${force_aliases:-false} || force=true
 
   if ${force} || ! type "${the_alias}" > /dev/null 2>&1; then
     eval "alias ${the_alias}=\"${the_command}\""
@@ -1212,8 +1218,10 @@ _acmeco_wire_aliases_dispatcher_application_runners () {
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
 inject_environs () {
-  local force_alias=false
-  [ "$1" != "--reset" ] || force_alias=true
+  local force_aliases=false
+  local audit_environs=false
+
+  parse_args "$@"
 
   DXY_ACMECO_FCN_POP_ENVIRONS_EDITABLE_VENDOR_ORG01_NAME
   unset -f DXY_ACMECO_FCN_POP_ENVIRONS_EDITABLE_VENDOR_ORG01_NAME
@@ -1229,6 +1237,33 @@ inject_environs () {
 
   _acmeco_wire_aliases
   unset -f _acmeco_wire_aliases
+}
+
+parse_args () {
+  while [ $# -gt 0 ]; do
+    case $1 in
+      ${_ACMECO_OPTION_RESET_VARS})
+        force_aliases=true
+
+        shift
+        ;;
+      ${_ACMECO_OPTION_AUDIT_VARS})
+        audit_environs=true
+
+        shift
+        ;;
+      "")
+        # Empty argument
+
+        shift
+        ;;
+      *)
+        >&2 echo "Warning: Unrecognized DXY_VENDOR_ACMESH_NAME arg: “$1”"
+
+        shift
+        ;;
+    esac
+  done
 }
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
