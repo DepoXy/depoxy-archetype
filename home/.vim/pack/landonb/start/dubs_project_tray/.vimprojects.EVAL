@@ -31,7 +31,7 @@ Oh_My_Repos_    GIT_SMART_
         MYREPOS_BRANCHABLE
 MRCONFIGS_      MREDIT_CONFIGS
 GIT_PUT_WISE_   TIG_NEWTONS_
-DEPOXY_AMBERS ┓ DEPOXY_ARCHETYPE
+DEPOXY_AMBERS ┓_DEPOXY_ARCHETYPE
 DEPOXY_STINTS ┃ NOTABLE_NOTES
       ┗━━━━━━━┛
 
@@ -86,20 +86,68 @@ DEPOXY_STINTS=DXY_DEPOXYDIR_BASE_HOME filter=".* *" exclude=".DS_Store" {
    Backlog_Personal_[[[]]]DXY_DEPOXY_CLIENT_ID.rst
    Woodlot_Personal_[[[]]]DXY_DEPOXY_CLIENT_ID.rst
   }
+  DXY_VENDOR_ACMESH_NAME=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/DXY_VENDOR_ACMESH_NAME {
+   .ignore
+   README.md
+   DXY_VENDOR_ACMESH_NAME
+  }
   home=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home {
    .finicky.js
    .gitconfig.user
    .gitconfig.user-business
    .gitconfig.user-personal
-   .netrc.example
-   .npmrc.example
    .vimprojects
    _gitignore-macOS
+   bashrc.DXY_USERNAME.sh
+   bashrc.DXY_VENDOR_NAME..sh
    bashrx.private.DXY_HOSTNAME.sh
-   bashrx.private.DXY_USERNAME.sh
-   bashrx.private.DXY_USERNAME.sh.example
    crontab.DXY_USERNAME
    dubs_projects.vim
+   vim-trap=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/vim-trap {
+    README.rst
+    after/plugin=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/vim-trap/after/plugin {
+     blocklist-nospell.vim
+     blocklist-syntax-off.vim
+     pdbr-insert-set-trace.vim
+    }
+    plugin=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/vim-trap/plugin {
+     explore-notable-notes.vim
+    }
+   }
+   DXY_VENDOR_HOME_NAME=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/DXY_VENDOR_HOME_NAME {
+    .DXY_VENDOR_ACMESH_CMD.conf
+    _ignore
+    DXY_VENDOR_ORG01_NAME=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/DXY_VENDOR_HOME_NAME/DXY_VENDOR_ORG01_NAME {
+     # VENDOR_ORG01_NAME
+     .gitconfig-DXY_VENDOR_ORG01_NAME
+     DXY_VENDOR_ORG01_PROJ01_NAME=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/DXY_VENDOR_HOME_NAME/DXY_VENDOR_ORG01_NAME/DXY_VENDOR_ORG01_PROJ01_NAME {
+      # VENDOR_ORG01_PROJ01_NAME
+      .eslintignore.local
+      .eslintrc-develop
+      .eslintrc-develop--alt
+      .tarignore
+      _ignore
+      jest.config-DEV.js
+      jest.config-DEV.js--alt
+      _git/info=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/DXY_VENDOR_HOME_NAME/DXY_VENDOR_ORG01_NAME/DXY_VENDOR_ORG01_PROJ01_NAME/_git/info {
+       exclude
+      }
+     }
+     ignore-tests--DXY_VENDOR_ORG01_PROJ01_NAME=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/DXY_VENDOR_HOME_NAME/DXY_VENDOR_ORG01_NAME/ignore-tests--DXY_VENDOR_ORG01_PROJ01_NAME {
+      _ignore
+     }
+    }
+    DXY_VENDOR_ORG02_NAME=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/DXY_VENDOR_HOME_NAME/DXY_VENDOR_ORG02_NAME {
+     # VENDOR_ORG02_NAME
+     DXY_VENDOR_ORG02_PROJ01_NAME=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/DXY_VENDOR_HOME_NAME/DXY_VENDOR_ORG02_NAME/DXY_VENDOR_ORG02_PROJ01_NAME {
+      .editorconfig
+      _ignore
+      _git/info=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/DXY_VENDOR_HOME_NAME/DXY_VENDOR_ORG02_NAME/DXY_VENDOR_ORG02_PROJ01_NAME/_git/info {
+       exclude
+      }
+     }
+    }
+   }
    Library=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/Library {
     Application Support=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/Library/Application\ Support {
      Google/Chrome/Default=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/Library/Application\ Support/Google/Chrome/Default {
@@ -114,41 +162,6 @@ DEPOXY_STINTS=DXY_DEPOXYDIR_BASE_HOME filter=".* *" exclude=".DS_Store" {
    }
    _git/info=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/_git/info {
     exclude
-   }
-   vim-trap=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/vim-trap {
-    README.rst
-    after/plugin=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/vim-trap/after/plugin {
-     blocklist-nospell.vim
-     blocklist-syntax-off.vim
-     pdbr-insert-set-trace.vim
-    }
-    plugin=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/vim-trap/plugin {
-     explore-notable-notes.vim
-    }
-   }
-   work=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/work {
-    _ignore
-    DXY_VENDOR_ORG01_NAME=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/work/DXY_VENDOR_ORG01_NAME {
-     # VENDOR_ORG01_NAME
-     .gitconfig-DXY_VENDOR_ORG01_NAME
-     DXY_VENDOR_ORG01_PROJ01_NAME=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/work/DXY_VENDOR_ORG01_NAME/DXY_VENDOR_ORG01_PROJ01_NAME {
-      # VENDOR_ORG01_PROJ01_NAME
-      .eslintignore.local
-      .eslintrc-develop
-      .eslintrc-develop--alt
-      .tarignore
-      _ignore
-      jest.config-DEV.js
-      jest.config-DEV.js--alt
-      _git/info=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/work/DXY_VENDOR_ORG01_NAME/DXY_VENDOR_ORG01_PROJ01_NAME/_git/info {
-       exclude
-      }
-     }
-    }
-    DXY_VENDOR_ORG02_NAME=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/work/DXY_VENDOR_ORG02_NAME {
-     # VENDOR_ORG02_NAME
-     _ignore
-    }
    }
    .config=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/.config {
     DXY_DEPOXY_CLIENT_ID-tree.col
@@ -174,9 +187,11 @@ DEPOXY_STINTS=DXY_DEPOXYDIR_BASE_HOME filter=".* *" exclude=".DS_Store" {
      _ignore
     }
    }
-   # .gnupg/: DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/.gnupg
-   #  .gnupg/pubring.kbx
-   #  .gnupg/private-keys-v1.d/: DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/.gnupg/private-keys-v1.d
+   # .gnupg≔DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/.gnupg [
+   #  pubring.kbx
+   #  trustdb.gpg
+   #  private-keys-v1.d≔DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/.gnupg/private-keys-v1.d [
+   # ]]
    .kit/_git/info=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/.kit/_git/info {
     exclude
    }
@@ -186,14 +201,11 @@ DEPOXY_STINTS=DXY_DEPOXYDIR_BASE_HOME filter=".* *" exclude=".DS_Store" {
    .local/share/dob=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/.local/share/dob {
     dob.sqlite
    }
-   .local/share/.depoxy=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/.local/share/.depoxy {
-    last-reboot.touchfile
-   }
    .password-store=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/.password-store {
     .gpg-id
    }
    .ssh=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/.ssh {
-    config.example
+    config
    }
    .vim=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/.vim {
     pack=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/.vim/pack {
@@ -215,11 +227,6 @@ DEPOXY_STINTS=DXY_DEPOXYDIR_BASE_HOME filter=".* *" exclude=".DS_Store" {
     }
    }
   }
-  private=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/private {
-   # private/docs/: DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/private/docs
-   # private/home/: DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/private/home
-   private.not-private
-  }
   .whilom=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/.whilom {
    README.rst
   }
@@ -232,6 +239,11 @@ DEPOXY_STINTS=DXY_DEPOXYDIR_BASE_HOME filter=".* *" exclude=".DS_Store" {
   docs/notable-notes--woodlot=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/docs/notable-notes--woodlot {
    00-DXY_DEPOXY_CLIENT_ID-🔥-Woodlot-Unfiled-Notes.rst☞☞☞☞☞☞☞.rst
    01
+  }
+  private=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/private {
+   # private/docs/: DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/private/docs
+   # private/home/: DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/private/home
+   private.not-private
   }
  }
 }
@@ -723,10 +735,8 @@ DEPOXY_AMBERS=$HOME/.depoxy/ambers filter=".* *" {
    exclude
   }
   # Library::$HOME/.depoxy/ambers/home/Library
-  _git=$HOME/.depoxy/ambers/home/_git {
-   info=$HOME/.depoxy/ambers/home/_git/info {
-    exclude
-   }
+  _git/info=$HOME/.depoxy/ambers/home/_git/info {
+   exclude
   }
   .config=$HOME/.depoxy/ambers/home/.config {
    karabiner=$HOME/.depoxy/ambers/home/.config/karabiner {
@@ -765,7 +775,7 @@ DEPOXY_AMBERS=$HOME/.depoxy/ambers filter=".* *" {
       README.md
      }
      complex_modifications--DXC=$HOME/.depoxy/ambers/home/.config/karabiner/assets/complex_modifications--DXC {
-      3110-client-DXY_DEPOXY_CLIENT_ID-private.json.example
+      3110-client-DXY_DEPOXY_CLIENT_ID-private.json
       9210-privte-docs-launchers-private.json
      }
      complex_modifications--OFF=$HOME/.depoxy/ambers/home/.config/karabiner/assets/complex_modifications--OFF {
@@ -1093,7 +1103,7 @@ DEPOXY_AMBERS=$HOME/.depoxy/ambers filter=".* *" {
 
 DEPOXY_AMBERS
 DEPOXY_STINTS
-DEPOXY_ARCHETYPE=$HOME/.depoxy/ambers/archetype filter=".* *" {
+_DEPOXY_ARCHETYPE=$HOME/.depoxy/ambers/archetype filter=".* *" {
  .gitignore.EVAL
  .gitignore.local
  .hostnames.EVAL
@@ -1103,7 +1113,10 @@ DEPOXY_ARCHETYPE=$HOME/.depoxy/ambers/archetype filter=".* *" {
  LICENSE.EVAL
  README--FIXME.rst
  README.md
- _mrconfig-VENDOR_CODE_PATH_.EVAL.example
+ _mrconfig-USERNAME.EVAL
+ _mrconfig-VENDOR_NAME--DXY_VENDOR_ORG01_NAME.EVAL
+ _mrconfig-VENDOR_NAME--DXY_VENDOR_ORG02_NAME.EVAL
+ _mrconfig-VENDOR_NAME.EVAL
  _mrconfig.EVAL.omr
  deploy-archetype.sh
  docs=$HOME/.depoxy/ambers/archetype/docs {
@@ -1116,18 +1129,67 @@ DEPOXY_ARCHETYPE=$HOME/.depoxy/ambers/archetype filter=".* *" {
   Worklog_Client.EVAL.rst
   notable-notes--prepare.sh
  }
+ acme.sh=$HOME/.depoxy/ambers/archetype/acme.sh {
+  .ignore.EVAL
+  README.EVAL.md
+  acme.EVAL.sh
+ }
  home=$HOME/.depoxy/ambers/archetype/home {
   .finicky.EVAL.js
   .gitconfig.user-business.EVAL
   .gitconfig.user-personal.EVAL
   .gitconfig.user.EVAL
-  .netrc.example
+  .netrc.EVAL
   .npmrc.EVAL
   _gitignore-macOS.EVAL
+  bashrc.USERNAME.EVAL.sh
+  bashrc.VENDOR_NAME.EVAL.sh
   bashrx.private.HOSTNAME.EVAL.sh
-  bashrx.private.USERNAME.EVAL.sh
-  bashrx.private.USERNAME.EVAL.sh.example
   crontab.USERNAME.EVAL
+  vim-trap=$HOME/.depoxy/ambers/archetype/home/vim-trap {
+   README.rst
+   after=$HOME/.depoxy/ambers/archetype/home/vim-trap/after {
+    plugin=$HOME/.depoxy/ambers/archetype/home/vim-trap/after/plugin {
+     blocklist-nospell.EVAL.vim
+     blocklist-syntax-off.EVAL.vim
+     pdbr-insert-set-trace.EVAL.vim
+    }
+   }
+   plugin=$HOME/.depoxy/ambers/archetype/home/vim-trap/plugin {
+    explore-notable-notes.EVAL.vim
+   }
+  }
+  work=$HOME/.depoxy/ambers/archetype/home/work {
+   .acme.conf.EVAL
+   _ignore.EVAL
+   VENDOR_ORG01_NAME=$HOME/.depoxy/ambers/archetype/home/work/VENDOR_ORG01_NAME {
+    .gitconfig-VENDOR_ORG01_NAME.EVAL
+    VENDOR_ORG01_PROJ01_NAME=$HOME/.depoxy/ambers/archetype/home/work/VENDOR_ORG01_NAME/VENDOR_ORG01_PROJ01_NAME {
+     .eslintignore.local.EVAL
+     .eslintrc-develop--alt.EVAL
+     .eslintrc-develop.EVAL
+     .tarignore.EVAL
+     _ignore.EVAL
+     jest.config-DEV.EVAL.js
+     jest.config-DEV.EVAL.js--alt
+     _git/info=$HOME/.depoxy/ambers/archetype/home/work/VENDOR_ORG01_NAME/VENDOR_ORG01_PROJ01_NAME/_git/info {
+      exclude.EVAL
+     }
+    }
+    ignore-tests--VENDOR_ORG01_PROJ01_NAME=$HOME/.depoxy/ambers/archetype/home/work/VENDOR_ORG01_NAME/ignore-tests--VENDOR_ORG01_PROJ01_NAME {
+     _ignore.EVAL
+    }
+   }
+   VENDOR_ORG02_NAME=$HOME/.depoxy/ambers/archetype/home/work/VENDOR_ORG02_NAME {
+    VENDOR_ORG02_PROJ01_NAME=$HOME/.depoxy/ambers/archetype/home/work/VENDOR_ORG02_NAME/VENDOR_ORG02_PROJ01_NAME {
+     .editorconfig.EVAL
+     _ignore.EVAL
+     _git/info=$HOME/.depoxy/ambers/archetype/home/work/VENDOR_ORG02_NAME/VENDOR_ORG02_PROJ01_NAME/_git/info {
+      exclude.EVAL
+     }
+    }
+   }
+  }
   Library=$HOME/.depoxy/ambers/archetype/home/Library {
    Application Support=$HOME/.depoxy/ambers/archetype/home/Library/Application\ Support {
     dob=$HOME/.depoxy/ambers/archetype/home/Library/Application\ Support/dob {
@@ -1144,47 +1206,8 @@ DEPOXY_ARCHETYPE=$HOME/.depoxy/ambers/archetype filter=".* *" {
     }
    }
   }
-  _git=$HOME/.depoxy/ambers/archetype/home/_git {
-   info=$HOME/.depoxy/ambers/archetype/home/_git/info {
-    exclude.EVAL
-   }
-  }
-  vim-trap=$HOME/.depoxy/ambers/archetype/home/vim-trap {
-   README.rst
-   after=$HOME/.depoxy/ambers/archetype/home/vim-trap/after {
-    plugin=$HOME/.depoxy/ambers/archetype/home/vim-trap/after/plugin {
-     blocklist-nospell.EVAL.vim
-     blocklist-syntax-off.EVAL.vim
-     pdbr-insert-set-trace.EVAL.vim
-    }
-   }
-   plugin=$HOME/.depoxy/ambers/archetype/home/vim-trap/plugin {
-    explore-notable-notes.EVAL.vim
-   }
-  }
   _git/info=$HOME/.depoxy/ambers/archetype/home/_git/info {
    exclude.EVAL
-  }
-  work=$HOME/.depoxy/ambers/archetype/home/work {
-   _ignore
-   VENDOR_ORG01_NAME=$HOME/.depoxy/ambers/archetype/home/work/VENDOR_ORG01_NAME {
-    .gitconfig-VENDOR_ORG01_NAME.EVAL
-    VENDOR_ORG01_PROJ01_NAME=$HOME/.depoxy/ambers/archetype/home/work/VENDOR_ORG01_NAME/VENDOR_ORG01_PROJ01_NAME {
-     .eslintignore.local
-     .eslintrc-develop
-     .eslintrc-develop--alt
-     .tarignore
-     _ignore
-     jest.config-DEV.js
-     jest.config-DEV.js--alt
-     _git/info=$HOME/.depoxy/ambers/archetype/home/work/VENDOR_ORG01_NAME/VENDOR_ORG01_PROJ01_NAME/_git/info {
-      exclude
-     }
-    }
-   }
-   VENDOR_ORG02_NAME=$HOME/.depoxy/ambers/archetype/home/work/VENDOR_ORG02_NAME {
-    _ignore.EVAL
-   }
   }
   .config=$HOME/.depoxy/ambers/archetype/home/.config {
    DEPOXY_CLIENT_ID-tree.EVAL.col
@@ -1233,7 +1256,7 @@ DEPOXY_ARCHETYPE=$HOME/.depoxy/ambers/archetype filter=".* *" {
    .gpg-id
   }
   .ssh=$HOME/.depoxy/ambers/archetype/home/.ssh {
-   config.EVAL.example
+   config.EVAL
   }
   .vim=$HOME/.depoxy/ambers/archetype/home/.vim {
    pack=$HOME/.depoxy/ambers/archetype/home/.vim/pack {
@@ -1253,20 +1276,11 @@ DEPOXY_ARCHETYPE=$HOME/.depoxy/ambers/archetype filter=".* *" {
    }
   }
  }
- private=$HOME/.depoxy/ambers/archetype/private {
-  # docs [TB relocated...]
-  private.not-private
-  home=$HOME/.depoxy/ambers/archetype/private/home {
-   .local=$HOME/.depoxy/ambers/archetype/private/home/.local {
-    share=$HOME/.depoxy/ambers/archetype/private/home/.local/share {
-     dob=$HOME/.depoxy/ambers/archetype/private/home/.local/share/dob {
-     }
-    }
-   }
-  }
- }
  .whilom=$HOME/.depoxy/ambers/archetype/.whilom {
   README.rst
+ }
+ private=$HOME/.depoxy/ambers/archetype/private {
+  private.not-private
  }
 }
 
@@ -1424,6 +1438,7 @@ DUBS_VIM_=$HOME/.vim filter=".* *" exclude=".trustme.log tags" {
     mousehide_not_set.vim
     no_bell_nor_flash.vim
     no_wait_on_escape.vim
+    noticeable_cursor.vim
     old_mswin_options.vim
     scroll_window_fix.vim
     search_smartening.vim
@@ -1481,6 +1496,8 @@ DUBS_VIM_=$HOME/.vim filter=".* *" exclude=".trustme.log tags" {
    }
   }
   dubs_file_finder=$HOME/.vim/pack/landonb/start/dubs_file_finder {
+   # Aka Command-T / CtrlP
+   # USAGE: <Leader>t
    .gitignore
    LICENSE
    README.rst
@@ -2665,7 +2682,7 @@ MRCONFIGS_=/ filter=".*mrconfig* *mrconfig*" {
  }
  # *** DepoXy Archetype
  DEPOXY_ARCHETYPE=$HOME/.depoxy/ambers/archetype {
-  _mrconfig-VENDOR_CODE_PATH_.EVAL.example
+  _mrconfig-VENDOR_CODE_PATH_.EVAL
   _mrconfig.EVAL.omr
  }
 }
