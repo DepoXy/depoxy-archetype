@@ -226,6 +226,9 @@ _acmeco_conf_find () {
 
 # CAVEAT: User cannot use comments on VAR=VAL lines (from = to $ is considered VAL).
 _acmeco_conf_get () {
+  test $# -ge 1 \
+    || return
+
   local ename="$1"
 
   # Note that if quotes are used in conf file, they'll be gobbled when the
