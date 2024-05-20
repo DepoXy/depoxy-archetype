@@ -70,11 +70,9 @@ NEXUS_USERNAME="${NEXUS_USERNAME:-PLEASE_SET_ME}"
 _ACMECO_SOURCE_PATH="${BASH_SOURCE[0]}"
 
 _acmeco_print_manual () {
-  # (lb): Using non-interpolating (the quoted 'EOF') heredoc.
-  # - Also using comments, `and` cut to remove comment delimeters, because
-  #   author's (Vim) editor doesn't properly highlight the heredoc otherwise.
-  # SIMLY: cat << 'EOF' | tail +2 | sed 's/^# \?//'
-  cat << 'EOF' | tail +2 | cut -c3-
+  # Because (author's) Vim heredoc highlight issue, use and `cut` comment leaders.
+  # SIMLY: cat << EOF | tail +2 | sed 's/^# \?//'
+  cat << EOF | tail +2 | cut -c3-
 
 # USAGE
 # =====
@@ -105,11 +103,11 @@ _acmeco_print_manual () {
 #
 # - Source this script to use it:
 #
-#     $ . path/to/DXY_VENDOR_ACMESH_NAME
+#     \$ . path/to/DXY_VENDOR_ACMESH_NAME
 #
 #   E.g.,
 #
-#     $ . _ACMECO_SOURCE_PATH
+#     \$ . ${_ACMECO_SOURCE_PATH}
 #
 #   - Note that, while this is a Bash script, it's meant to be
 #     POSIX-compliant.
@@ -119,11 +117,11 @@ _acmeco_print_manual () {
 #
 # - If you make changes to the DXY_VENDOR_ACMESH_NAME script, reload it:
 #
-#     $ ac-reset
+#     \$ ac-reset
 #
 #   - You can also source the script a second time, but you'd
 #     see warnings that the aliases are already in use. So it
-#     is preferred that you use the `ac-reset` mechanism.
+#     is preferred that you use the \`ac-reset\` mechanism.
 #
 # - This script names aliases using the same "ac-" prefix, so
 #   you can type "ac-<TAB>" to see all the useful commands.
@@ -132,9 +130,9 @@ _acmeco_print_manual () {
 #     are rarely run (e.g., perhaps they're used once during
 #     new-developer onboarding).
 #
-# - This script echoes most of the commands it runs (including
-#   all `docker`, `helm`, and `kubectl` commands) so that you
-#   have a more intimate grasp of what's happening.
+# - This script echoes most of the commands it runs (e.g., see
+#   the \`kubectl\` commands) so that you have a more intimate
+#   grasp of what's happening.
 #
 # SETUP
 # =====
