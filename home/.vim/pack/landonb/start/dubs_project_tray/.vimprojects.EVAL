@@ -23,7 +23,7 @@
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
 #░▒░░▒░░▒░░▒#    # TOC USAGE:
-CLIENT_PROJECTS  # - Caret over
+VENDOR_PROJECTS  # - Caret over
 #░░▒░░▒░░▒░░#    # - <F1> to go
 DUBS_VIM_       DUBS_CUTS_
 HOMEFRIES_      SHOILERPLATE_
@@ -264,21 +264,21 @@ DEPOXY_STINTS=DXY_DEPOXYDIR_BASE_HOME filter=".* *" exclude=".DS_Store" {
 # ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 
 #################################
-# BEG: CLIENT_WORKS ############
+# BEG: VENDOR_PROJS ############
 #
 # 🟥🟧🟨🟩🟦🟪🟫⬛🟫🟪🟦🟩🟨🟧🟥
 # ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-# ┃ ▓▓▓▓▓  WORK PROJECTS  ▓▓▓▓▓ ┃
+# ┃ ▓▓▓▓  VENDOR PROJECTS  ▓▓▓▓ ┃
 # ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 # ⬛🟫🟪🟦🟩🟨🟧🟥🟧🟨🟩🟦🟪🟫⬛
 
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 # ░░ BEG: <COMING SOON> ░░░░░░░░
 
-CLIENT_PROJECTS
+VENDOR_PROJECTS
 # <INSERT FIRST PROJECT HERE>
 
-client_project=DXY_VENDOR_HOME_HOME/<org>/<repo> filter=".* *" {
+vendor_project=DXY_VENDOR_HOME_HOME/<org>/<repo> filter=".* *" {
  # ...
 }
 
@@ -289,10 +289,10 @@ client_project=DXY_VENDOR_HOME_HOME/<org>/<repo> filter=".* *" {
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 # ░░ BEG: <COMING SOON> ░░░░░░░░
 
-CLIENT_PROJECTS
+VENDOR_PROJECTS
 # <INSERT NEXT PROJECT HERE>
 
-### END: CLIENT_WORKS ##########
+### END: VENDOR_PROJS ##########
 ################################
 
 # ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
