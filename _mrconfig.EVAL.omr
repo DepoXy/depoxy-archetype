@@ -100,6 +100,8 @@ autocommit =
   git_auto_commit_one_update ".ignore"
   git_auto_commit_one_update "LICENSE"
   #
+  # ***
+  #
   git_auto_commit_one_omr "_mrconfig"
   git_auto_commit_one_omr "_mrconfig-DXY_USERNAME"
   #
@@ -117,6 +119,8 @@ autocommit =
   git_auto_commit_one "_mrconfig-DXY_VENDOR_NAME" \
     -m "${CLEARED_ACI}: DXA: OMR: Update: _mrconfig-DXY_VENDOR_NAME"
   #
+  # ***
+  #
   for path in \
     "README"* \
     ".whilom/README"* \
@@ -125,6 +129,8 @@ autocommit =
       git_auto_commit_one_docs "${path}"
     fi
   done
+  #
+  # ***
   #
   # Ideally, .whilom/ files would be scoped the same as they'd be at the
   # same path under root DXC/. But this is a rarely-used, niche feature,
@@ -451,6 +457,7 @@ autocommit =
     -m "${CLEARED_ACI}: Docs: Personal notes"
   #
   git_auto_commit_one_update "private/private.not-private" "" "${PRIVATE_ACI}"
+  #
   # ===
   # ***
   # ===
