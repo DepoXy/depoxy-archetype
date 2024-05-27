@@ -127,6 +127,9 @@ DXY_DEPOXY_SCREENCAPS_EXCLUDE_RULE
 # CXREF: ~/.kit/py/virtualenvwrapper/virtualenvwrapper.sh
 /.virtualenvs/
 
+# CXREF: ~/.kit/sh/sh-rm_safe/bin/rm_rotate
+/.Trash-TBD/
+
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
 # *** Gitconfig, 'splained.
