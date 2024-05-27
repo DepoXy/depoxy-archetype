@@ -643,11 +643,17 @@ DEPOXY_AMBERS=$HOME/.depoxy/ambers filter=".* *" exclude="archetype" {
  LICENSE
  README.md
  bin=$HOME/.depoxy/ambers/bin {
+  23skidoo
+  321open
+  biblio-gpg
+  biblio-ssh
+  biblio.321
+  errtraps
   fussy
   notify
   spells.sh
   test-as-cron
-  vimprojects-create-copy-without-vendor-projects
+  vimprojects-filter
   weekly-omr-report
   macOS=$HOME/.depoxy/ambers/bin/macOS {
    apfs-mount
@@ -672,11 +678,6 @@ DEPOXY_AMBERS=$HOME/.depoxy/ambers filter=".* *" exclude="archetype" {
   }
   pbin=$HOME/.depoxy/ambers/bin/pbin {
    vendor-slurp-dob
-  }
-  pbin-client=$HOME/.depoxy/ambers/bin/pbin-client {
-   23skidoo
-   321open
-   README.rst
   }
  }
  core=$HOME/.depoxy/ambers/core {
@@ -717,6 +718,13 @@ DEPOXY_AMBERS=$HOME/.depoxy/ambers filter=".* *" {
  .ignore
  LICENSE
  README.md
+ etc/motd=$HOME/.depoxy/ambers/etc/motd {
+  motd-bbr
+  motd-jfz
+  motd-pjf
+  motd-tl
+  motd-tt
+ }
  etc/udev/rules.d=$HOME/.depoxy/ambers/etc/udev/rules.d {
   # FIXME/2024-04-26 12:16: Typo? viia?
   50-zsa.rules
@@ -2343,11 +2351,17 @@ SHOILERPLATE_=$HOME/.kit/sh filter=".* *" {
 
 # *** DepoXy-bin/
 DepoXy/bin=$HOME/.depoxy/ambers/bin filter=".* *" {
+ 23skidoo
+ 321open
+ biblio-gpg
+ biblio-ssh
+ biblio.321
+ errtraps
  fussy
  notify
  spells.sh
  test-as-cron
- vimprojects-create-copy-without-vendor-projects
+ vimprojects-filter
  weekly-omr-report
 }
 
