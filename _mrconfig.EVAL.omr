@@ -289,8 +289,8 @@ autocommit =
   #
   # User Vim config.
   depoxy_client_autocommit_vimprojects () {
-    # CXREF: ~/.depoxy/ambers/bin/vimprojects-create-copy-without-vendor-projects
-    ${ambers_path}/bin/vimprojects-create-copy-without-vendor-projects
+    # CXREF: ~/.depoxy/ambers/bin/vimprojects-filter
+    ${ambers_path}/bin/vimprojects-filter
     #
     git_auto_commit_one "home/.vim/pack/landonb/start/dubs_project_tray/.vimprojects" \
       -m "${PRIVATE_ACI}: Vimprojects         (Client project-tray drawer)"
