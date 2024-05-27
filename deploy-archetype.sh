@@ -1475,6 +1475,43 @@ omr_dxc_infuse () {
 
 # ***
 
+# Avoid spells.sh creating <DXC>/home/.vim/spell/en.utf-8.add--compiled
+# and telling you to merge into <DXC>/home/.vim/spell/en.utf-8.add (which
+# is symlinked from ~/.vim/spell/en.utf-8.add), because when --compiled
+# differs from canon, it sometimes indicates non-obvious issue occurred.
+# - But in this case, indicates that canon not synced with spells yet,
+#   which we'll automate here.
+
+omr_dxc_compile_spells () {
+  ! ${DRY_RUN} || return 0
+
+  (
+    local homeish_path="${DXY_DEPOXY_CLIENT_FULL}/home"
+
+    local compiled_spells
+    compiled_spells="$(spells.sh compile-spells "${homeish_path}" 2> /dev/null)"
+
+    # Loads: SPF_SPELLS
+    # CXREF: ~/.depoxy/ambers/bin/spells.sh
+    . "spells.sh"
+    init_spellssh
+    # Loads: SPELLS_COMPILED_SUFFIX
+    # CXREF: ~/.kit/txt/spellfile.txt/bin/spells.sh
+    # - ALTLY:
+    #   . "${SPELLFILE_DIR:-${DOPP_KIT:-${HOME}/.kit}/txt/spellfile.txt}/bin/spells.sh"
+    . "${SPF_SPELLS}"
+    init_spellssh
+
+    blot
+    blot command mv -- "${compiled_spells}" "${compiled_spells%${SPELLS_COMPILED_SUFFIX}}"
+    blot
+
+    command mv -- "${compiled_spells}" "${compiled_spells%${SPELLS_COMPILED_SUFFIX}}"
+  )
+}
+
+# ***
+
 omr_dxc_autocommit () {
   ! ${DRY_RUN} || return 0
 
@@ -1748,6 +1785,7 @@ main () {
   init_repo
   init_repo_acmesh
   omr_dxc_infuse
+  omr_dxc_compile_spells
   omr_dxc_autocommit
   omr_dxc_cleanup
   finish_capture_file
