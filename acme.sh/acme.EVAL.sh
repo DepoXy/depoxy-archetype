@@ -1268,23 +1268,28 @@ parse_args () {
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
-PROG_NAME="DXY_VENDOR_ACMESH_NAME"
+insist_sourced_in_bash () {
+  local prog_name="$(basename -- "$0")"
+
+  # Alert if not being sourced in Bash, or if being executed.
+  if [ -z "${BASH_SOURCE}" ] || [ "$0" = "${BASH_SOURCE[0]}" ]; then
+    >&2 echo "ERROR: Source this script with Bash [${prog_name}]"
+
+    return 1
+  fi
+}
+
+# ***
 
 main () {
   inject_environs "$@"
 }
 
-# Alert if not being sourced in Bash, or if being executed.
-if [ -z "${BASH_SOURCE}" ]; then
-  >&2 echo "ERROR: Source this script with Bash [${PROG_NAME}]"
+if insist_sourced_in_bash; then
+  main "$@"
 
-  false
-elif [ "$0" = "${BASH_SOURCE[0]}" ]; then
-  >&2 echo "ALERT: You’re better off sourcing this file [${PROG_NAME}]"
-
+  unset -f main
+else
   false
 fi
-
-main "$@"
-unset -f main
 
