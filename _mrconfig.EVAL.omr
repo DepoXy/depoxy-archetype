@@ -68,6 +68,15 @@ lib =
   git_auto_commit_one_update () {
     git_auto_commit_one "$1" -m "${3:-${CLEARED_ACI}}: Update: ${2:-$1}"
   }
+  #
+  # SAVVY: The `git_auto_commit_many` calls below assume no spaces in paths.
+  # - Specifically, the `find` usage breaks on spaces, e.g.,
+  #     git_auto_commit_many $(find private/docs/ -type f -o -type l) \
+  #       -m "${CLEARED_ACI}: Docs: Personal notes"
+  # - If we cared, an eval wrapper with quoted `find` output could work, e.g.,
+  #     eval git_auto_commit_many \
+  #       "$(find private/docs/ \( -type f -o -type l \) -a -printf '"%f" ')" \
+  #       -m "${CLEARED_ACI}: Docs: Personal notes"
 
 autocommit =
   # For completeness `git ls-files`, we ensure that all repo files are under
@@ -157,7 +166,6 @@ autocommit =
   #   -m "PRIVATE: autoci: Docs: Work notes."
   #  #-m "PRIVATE: autoci: Update: Docs."
   #
-  # NOTE: This `find` won't work if there are spaces in any paths.
   # NOTE: Enable MRT_LINK_FORCE so ' T' git-status typechanges are included.
   MRT_LINK_FORCE=0 git_auto_commit_many $(find docs/ -type f -o -type l) \
     -m "${PRIVATE_ACI}: Docs: Work notes"
@@ -196,7 +204,6 @@ autocommit =
     mkdir -p "${MR_REPO}/home/.aws"
     command cp -- "${HOME}/.aws/config" "${MR_REPO}/home/.aws/config"
     command cp -- "${HOME}/.aws/credentials" "${MR_REPO}/home/.aws/credentials"
-    # NOTE: This `find` won't work if there are spaces in any paths.
     git_auto_commit_many $(find home/.aws/ -type f -o -type l) \
       -m "${PRIVATE_ACI}: Update: home/.aws/ files"
   fi
@@ -218,7 +225,6 @@ autocommit =
   if [ -f "${HOME}/.kube/config" ]; then
     command cp -- "${HOME}/.kube/config" "${MR_REPO}/home/.kube/config"
     #
-    # NOTE: This `find` won't work if there are spaces in any paths.
     git_auto_commit_many $(find home/.kube/ -type f -o -type l) \
       -m "${PRIVATE_ACI}: Update: home/.kube/ files"
   fi
@@ -444,7 +450,6 @@ autocommit =
   git_auto_commit_many $(find home/vim-trap/ -type f -o -type l) \
     -m "${CLEARED_ACI}: Update: home/vim-trap/"
   #
-  # NOTE: This `find` won't work if there are spaces in any paths.
   git_auto_commit_many $(find home/DXY_VENDOR_HOME_NAME/ -type f -o -type l) \
     -m "${PRIVATE_ACI}: Update: home/DXY_VENDOR_HOME_NAME/"
   #
@@ -452,7 +457,6 @@ autocommit =
   #
   # Personal reSTfold docs.
   #
-  # NOTE: This `find` won't work if there are spaces in any paths.
   git_auto_commit_many $(find private/docs/ -type f -o -type l) \
     -m "${CLEARED_ACI}: Docs: Personal notes"
   #
