@@ -1219,7 +1219,7 @@ _DEPOXY_ARCHETYPE=$HOME/.depoxy/ambers/archetype filter=".* *" {
    DEPOXY_CLIENT_ID-tree.EVAL.col
    DEPOXY_CLIENT_ID-tree.EVAL.txt
    depoxy=$HOME/.depoxy/ambers/archetype/home/.config/depoxy {
-    depoxyrc.EVAL.sh
+    depoxyrc.EVAL
    }
    karabiner=$HOME/.depoxy/ambers/archetype/home/.config/karabiner {
     README.EVAL.rst

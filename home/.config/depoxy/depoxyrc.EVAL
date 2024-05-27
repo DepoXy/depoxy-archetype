@@ -1,6 +1,6 @@
 # USAGE:
 #   m4_shim \
-#     "+8" "home/.config/depoxy/depoxyrc.EVAL.sh" \
+#     "+8" "home/.config/depoxy/depoxyrc.EVAL" \
 #     "home/.config/depoxy/depoxyrc"
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
