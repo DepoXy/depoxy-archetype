@@ -650,6 +650,8 @@ DEPOXY_AMBERS=$HOME/.depoxy/ambers filter=".* *" exclude="archetype" {
   vimprojects-create-copy-without-vendor-projects
   weekly-omr-report
   macOS=$HOME/.depoxy/ambers/bin/macOS {
+   apfs-mount
+   dmg-mount
    launchers=$HOME/.depoxy/ambers/bin/macOS/launchers {
     FIXME--resize-almost-fullscreen-with-a-little-off-the-top.osa
     gvim-open--Unicode-Emojis
