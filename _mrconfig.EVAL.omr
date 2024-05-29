@@ -172,7 +172,7 @@ autocommit =
   #
   # ***
   #
-  git_auto_commit_one_update "home/.config/depoxy/depoxyrc" "DXC depoxyrc."
+  git_auto_commit_one_update "home/.config/depoxy/depoxyrc" "depoxyrc"
   #
   git_auto_commit_one_update "home/.config/karabiner/README.rst"
   git_auto_commit_one_update \
