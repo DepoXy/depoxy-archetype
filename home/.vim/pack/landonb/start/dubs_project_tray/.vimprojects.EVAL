@@ -169,6 +169,7 @@ DEPOXY_STINTS=DXY_DEPOXYDIR_BASE_HOME filter=".* *" exclude=".DS_Store" {
     DXY_DEPOXY_CLIENT_ID-tree.txt
     depoxy=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/.config/depoxy {
      depoxyrc
+     depoxyrc.321
     }
     karabiner=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/.config/karabiner {
      README.rst
@@ -1228,6 +1229,7 @@ _DEPOXY_ARCHETYPE=$HOME/.depoxy/ambers/archetype filter=".* *" {
    DEPOXY_CLIENT_ID-tree.EVAL.txt
    depoxy=$HOME/.depoxy/ambers/archetype/home/.config/depoxy {
     depoxyrc.EVAL
+    depoxyrc.321.EVAL
    }
    karabiner=$HOME/.depoxy/ambers/archetype/home/.config/karabiner {
     README.EVAL.rst

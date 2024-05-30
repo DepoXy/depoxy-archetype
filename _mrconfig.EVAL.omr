@@ -173,6 +173,7 @@ autocommit =
   # ***
   #
   git_auto_commit_one_update "home/.config/depoxy/depoxyrc" "depoxyrc"
+  git_auto_commit_one_update "home/.config/depoxy/321open.cfg" "321open.cfg"
   #
   git_auto_commit_one_update "home/.config/karabiner/README.rst"
   git_auto_commit_one_update \
@@ -635,12 +636,28 @@ infuse =
   #        - Or would the link get broken on unmount?
   # FIXME: You might want to diff this file and alert if user changed
   #        ~/.config copy, before clobber-overwriting.
-  #
-  mkdir -p "${HOME}/.config/depoxy"
-  command cp -f -- \
-    "${MR_REPO}/home/.config/depoxy/depoxyrc" \
-    "${HOME}/.config/depoxy/depoxyrc"
-  info "$(font_emphasize "Copied depoxyrc") $(font_highlight ${HOME}/.config/depoxy/depoxyrc)"
+  update_depoxy_configs () {
+    # E.g., /Users/user/.config/depoxy
+    local dxy_conf="${XDG_CONFIG_HOME:-${HOME}/.config}/depoxy"
+    # E.g., .config/depoxy
+    local conf_base="$(echo "${dxy_conf}" | sed -E "s@^${HOME}/@@")"
+    #
+    mkdir -p "${dxy_conf}"
+    #
+    copy_depoxy_config () {
+      local file="$1"
+      #
+      command cp -f -- \
+        "${MR_REPO}/home/${conf_base}/${file}" \
+        "${dxy_conf}/${file}"
+      #
+      info "$(font_emphasize "Copied ${file}") $(font_highlight ${dxy_conf}/${file})"
+    }
+    #
+    copy_depoxy_config "depoxyrc"
+    copy_depoxy_config "321open.cfg"
+  }
+  update_depoxy_configs
   #
   # *** DepoXy filespace
   #
