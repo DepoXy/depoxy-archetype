@@ -1275,7 +1275,7 @@ _DEPOXY_ARCHETYPE=$HOME/.depoxy/ambers/archetype filter=".* *" {
    .gpg-id
   }
   .ssh=$HOME/.depoxy/ambers/archetype/home/.ssh {
-   config.EVAL
+   config.EVAL.sample
   }
   .vim=$HOME/.depoxy/ambers/archetype/home/.vim {
    pack=$HOME/.depoxy/ambers/archetype/home/.vim/pack {
