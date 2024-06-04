@@ -1130,7 +1130,7 @@ include =
     #
     local stints_dir="${DEPOXYDIR_STINTS_FULL:-DXY_DEPOXYDIR_STINTS__HOME_}"
     # CXREF: DXY_DEPOXYDIR_STINTS_TILDE/DXY_DEPOXY_CLIENT_ID/_mrconfig-DXY_VENDOR_NAME
-    #        DXY_DEPOXYARCHETYPE_DIR_TILDE/_mrconfig-[[[DXY_VENDOR_NAME]]].EVAL
+    #        DXY_DEPOXYARCHETYPE_DIR_TILDE/_mrconfig-VENDOR_NAME.EVAL
     local mr_business="${stints_dir}/DXY_DEPOXY_CLIENT_ID/_mrconfig-DXY_VENDOR_NAME"
     if [ -f "${mr_business}" ] && ! (
         mr_exclusive "business" "vendor" "DXY_VENDOR_HOME_NAME" &&
@@ -1150,7 +1150,7 @@ include =
     #
     local stints_dir="${DEPOXYDIR_STINTS_FULL:-DXY_DEPOXYDIR_STINTS__HOME_}"
     # CXREF: DXY_DEPOXYDIR_STINTS_TILDE/DXY_DEPOXY_CLIENT_ID/_mrconfig-DXY_USERNAME
-    #        DXY_DEPOXYARCHETYPE_DIR_TILDE/_mrconfig-[[[DXY_USERNAME]]].EVAL
+    #        DXY_DEPOXYARCHETYPE_DIR_TILDE/_mrconfig-USERNAME.EVAL
     local mr_personal="${stints_dir}/DXY_DEPOXY_CLIENT_ID/_mrconfig-DXY_USERNAME"
     if [ -f "${mr_personal}" ] && ! (
         mr_exclusive "personal" "user" "DXY_USERNAME" &&
