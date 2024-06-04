@@ -807,8 +807,15 @@ m4_shim_make_file () {
   #
   # DUNNO: I'm not sure if the hassle of using m4 makes it easier to use then
   # running a bunch of `sed` commands on each template. Probably a toss-up.
-  eval $(m4_kludge) --prefix-builtins "${DEPOXY_m4_DEFINES}" "${custom_m4_defines}" \
-    <(printf "m4_changequote(\`[[[', \`]]]')"; printf "m4_changecom()"; tail -n "${tail_lns}" "${tail_path}") \
+  eval $(m4_kludge) \
+    --prefix-builtins \
+    "${DEPOXY_m4_DEFINES}" \
+    "${custom_m4_defines}" \
+    <( \
+        printf "m4_changequote(\`[[[', \`]]]')"; \
+        printf "m4_changecom()"; \
+        tail -n "${tail_lns}" "${tail_path}"; \
+    ) \
     > "${dest_path}"
 
   # The previous `eval` is called from an EVAL header within an outer
