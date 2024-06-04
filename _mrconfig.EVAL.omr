@@ -245,46 +245,148 @@ autocommit =
     git_auto_commit_one_update "home/.npmrc" "" "${PRIVATE_ACI}"
   fi
   #
-  # *** Password Store
+  # *** Key Paddock backups
   #
-  aci_password_store () {
-    git_auto_commit_new "home/.password-store" \
-      -m "${PRIVATE_ACI}: Password Store updates"
+  # SAVVY: The "Key Paddock" is a directory on an encrypted file system,
+  # manually mounted by the user, used to persist security-related files.
+  # - The key paddock hosts ~/.gnupg/, ~/.ssh/, and ~/.password-store/.
+  #   - Under $HOME, those three paths each symlink a paddock subpath.
+  # - CXREF: ~/.kit/odd/321open/lib/biblio.321
+  #     # E.g., /Volumes/vestige/.clench
+  #     ${ONEOPEN_KEYS_PADDOCK:-${ONEOPEN_MOUNTPOINT:-/Volumes}/${DMG_ENCFS_IMAGE_NAME:-vestige}/.clench}
+  # - For a personal DepoXy Client, you should just sync (git-fetch/git-pull)
+  #   the paddock repo (and the separate ~/.password-store repo) between your
+  #   own hosts.
+  # - But on a Vendor machine (the common DepoXy Client use case), many GPG,
+  #   SSH, and PWDs are for Vendor resources. And you shouldn't want (nor
+  #   might legally have a reason) to have a copy of these resources on
+  #   a personal device.
+  # - But if you have any personal keys on the Vendor machine, e.g., a personal
+  #   GitHub SSH key, or, e.g., the Password Store GPG key, that you want to
+  #   backup personally, you can use the following sections to copy whatever
+  #   GPG, SSH, and Password Store entries you want to the DepoXy Client.
+  #   And then you can sync the Client between the Vendor machine and your
+  #   personal host like you normally would, and your personal keys will be
+  #   captured.
+  #
+  # *** GPG Keys
+  #
+  aci_gnupg () {
+    . "${DOPP_KIT:-${HOME}/.kit}/odd/321open/lib/biblio.321"
     #
-    local pass_gpg_id="${HOME}/.password-store/.gpg-id"
-    local gpg_id_backup="home/.password-store/.gpg-id"
-    if [ -f "${pass_gpg_id}" ] && [ ! -h "${pass_gpg_id}" ]; then
-      command cp -- "${pass_gpg_id}" "${gpg_id_backup}"
-    fi
-    git_auto_commit_one_update "${gpg_id_backup}" "" "${PRIVATE_ACI}"
+    local dxy_target="home/.gnupg"
     #
-    local enterprise_creds="${HOME}/.password-store/DXY_VENDOR_NAME/signon.gpg"
-    local creds_backup="home/.password-store/enterprise-creds.gpg"
-    if [ -f "${enterprise_creds}" ] && [ ! -h "${enterprise_creds}" ]; then
-      command cp -- "${enterprise_creds}" "${creds_backup}"
+    mkdir -p -- "${dxy_target}"
+    #
+    # USAGE: List GPG key emails you want backed up, e.g.,
+    #   key_emails="foo@bar baz@bat etc@and.so.forth"
+    local key_emails="${ONEOPEN_PASSWORD_STORE_EMAIL}"
+    #
+    if [ -z "${key_emails}" ]; then
+      debug "SKIPD: Configure \`aci_gnupg\` to back up ~/.gnupg"
+    else
+      if [ -f "${dxy_target}/private.gpg" ]; then
+        debug "SKIPD: Already backed up: ${dxy_target}/private.gpg"
+      else
+        # Avoid prompting for passphrase during auto-commit.
+        if ! probe_if_gpg_passphrase_cached; then
+          # All the ways to cache a GPG key (for whatever the timeout is):
+          #   pass ${ONEOPEN_PASSWORD_STORE_ADMIN}
+          #   gpg -d ~/.password-store/${ONEOPEN_PASSWORD_STORE_ADMIN}.gpg
+          # - Note that `gpg --export-secret-keys <email>` does *not* cache
+          #   the key, and will always prompt for the passphrase.
+          info "ALERT: Seed the key cache to backup GPG keys"
+          if [ -n "${ONEOPEN_PASSWORD_STORE_EMAIL}" ]; then
+            info "- E.g.,\n    echo foo | gpg -e -r ${ONEOPEN_PASSWORD_STORE_EMAIL} | gpg -d"
+          fi
+        else
+          # REFER: Nice, consise backup-restore overview:
+          #   https://www.howtogeek.com/816878/how-to-back-up-and-restore-gpg-keys-on-linux/
+          gpg --export --export-options backup --output "${dxy_target}/public.gpg" \
+            ${key_emails}
+          # Tho secret key export requires passphrase, passphrase also required to restore this file.
+          gpg --export-secret-keys --export-options backup --output "${dxy_target}/private.gpg" \
+            ${key_emails}
+          gpg --export-ownertrust > "${dxy_target}/trust.gpg"
+          # How to restore:
+          #   gpg --import public.gpg
+          #   gpg --import private.gpg
+          #   gpg --import-ownertrust trust.gpg
+        fi
+      fi
     fi
-    git_auto_commit_one_update "${creds_backup}"
   }
-  aci_password_store
-  #
-  # *** GPG
-  #
-  aci_backup_gnupg () {
-    local gpg_backup="home/.gnupg"
-    # The `cp` will work without this remove, just FYI.
-    command rm -rf -- "${gpg_backup}"
-    mkdir "${gpg_backup}"
-    # Copy normal, non-dot files and directories.
-    find "${HOME}/.gnupg/"* -maxdepth 0 \( -type f -o -type d \) \
-      -exec command cp -a -- {} "${gpg_backup}" \;
-    git_auto_commit_many $(find ${gpg_backup}/ -type f -o -type l) \
-      -m "${CLEARED_ACI}: Update: ${gpg_backup}/"
-  }
-  aci_backup_gnupg
+  aci_gnupg
   #
   # *** SSH
   #
-  git_auto_commit_one_update "home/.ssh/config"
+  aci_ssh () {
+    local dxy_target="home/.gnupg"
+    #
+    mkdir -p -- "${dxy_target}"
+    #
+    for ssh_path in \
+      "config" \
+      "id_ed25519" \
+      "id_ed25519.pub" \
+    ; do
+      local source="${HOME}/.ssh/${pass_path}"
+      local target="${dxy_target}/${pass_path}"
+      #
+      if [ -f "${source}" ] && [ ! -h "${source}" ]; then
+        command cp -- "${source}" "${target}"
+      fi
+    done
+    #
+    git_auto_commit_many $(find "${dxy_target}/" -type f) \
+      -m "${CLEARED_ACI}: SSH updates"
+  }
+  # ISOFF: The `aci_ssh` SSH backup function is an example.
+  # - Enable and tailor as needed.
+  #
+  #  aci_ssh
+  #
+  # *** Password Store
+  #
+  aci_password_store () {
+    # USAGE: Customize this function if you want to backup
+    #        part of ~/.password-store to the DepoXy Client.
+    #
+    # Use case: `pass` maintains ~/.password-store as its own Git repo.
+    # - This lets you easily sync it with other machines, and to back it up,
+    #   at least on personal machines, where all the passwords are personal.
+    # - But on a Vendor machine (the whole point of a DepoXy Client), some
+    #   passwords are for Vendor resources, and you shouldn't want (nor
+    #   might legit have a reason) to have a copy of these passwords on
+    #   a personal device.
+    # - So list the passwords here you want copied to the DepoXy Client, and
+    #   then sync the Client between the Vendor machine and personal hosts,
+    #   but not the ~/.password-store itself.
+    #
+    # As an example, the following for-loop supposes you have a password,
+    # `DXY_VENDOR_NAME/teams`, which you might need on, e.g., your smartphone,
+    # if the Vendor expects you to have access to chat from a personal
+    # device.
+    local dxy_target="home/.password-store"
+    #
+    mkdir -p -- "${dxy_target}"
+    #
+    for pass_path in \
+      ".gpg-id" \
+      "DXY_VENDOR_NAME/teams.gpg" \
+    ; do
+      local source="${HOME}/.password-store/${pass_path}"
+      local target="${dxy_target}/${pass_path}"
+      #
+      if [ -f "${source}" ] && [ ! -h "${source}" ]; then
+        command cp -- "${source}" "${target}"
+      fi
+    done
+    #
+    git_auto_commit_many $(find "${dxy_target}/" -type f) \
+      -m "${CLEARED_ACI}: Password Store updates"
+  }
+  aci_password_store
   #
   # *** VIM
   #
@@ -893,21 +995,6 @@ infuse =
     )
   }
   depoxy_client_infuse_karabiner_elements_complex_modifications
-  #
-  # *** GPG ℇ PASS
-  #
-  # YOU: If you'd like to oversee pass using your DepoXy Client, create a
-  #      new Password Store and GPG key, copy both ~/.password-store and
-  #      ~/.gnupg under DXY_DEPOXY_CLIENT_TILDE/home, and uncomment following
-  #      two overlays:
-  #
-  #  symlink_overlay_dir \
-  #    "${MR_REPO}/home/.password-store" \
-  #    "${HOME}/.password-store"
-  #
-  #  symlink_overlay_dir \
-  #    "${MR_REPO}/home/.gnupg" \
-  #    "${HOME}/.gnupg"
   #
   # *** GNU Inetutils auto-login credentials
   #
