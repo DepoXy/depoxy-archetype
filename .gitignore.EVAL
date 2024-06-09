@@ -20,6 +20,9 @@
 #   you to track GPG resources using a private Git repo.
 /home/.gnupg/random_seed
 
+# Used to backup private ~/.git with other hosts via OMR 'ffssh'.
+/home/.home/
+
 # Vim spell file generated on 'infuse'.
 /home/.vim/spell/en.utf-8.add--compiled
 

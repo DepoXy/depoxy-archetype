@@ -23,6 +23,9 @@
 /Library/Application Support/Google/Chrome/Default/Bookmarks
 /Library/Application Support/Google/Chrome/Default/bookmarks.html
 
+# Used to backup private ~/.git with other hosts via OMR 'ffssh'.
+/.home/
+
 # Convenience symlinks used for better visibility in Vim project tray.
 #
 # home/dubs_projects.vim -> home/.vim/pack/landonb/start/dubs_grep_steady/dubs_projects.vim
