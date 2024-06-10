@@ -1,12 +1,12 @@
 # USAGE:
 #   m4_shim \
-#     "+13" "_mrconfig.EVAL.omr" \
-#     "_mrconfig"
+#     "+13" ".mrconfigs/_mrconfig.EVAL.omr" \
+#     ".mrconfigs/_mrconfig"
 
 # KEEP FRESH:
-#   meld ~/.depoxy/ambers/archetype/_mrconfig.EVAL.omr ~/.depoxy/running/_mrconfig &
+#   meld ~/.depoxy/ambers/archetype/.mrconfigs/_mrconfig.EVAL.omr ~/.depoxy/running/.mrconfigs/_mrconfig &
 # Or swap directions:
-#   meld ~/.depoxy/running/_mrconfig ~/.depoxy/ambers/archetype/_mrconfig.EVAL.omr &
+#   meld ~/.depoxy/running/.mrconfigs/_mrconfig ~/.depoxy/ambers/archetype/.mrconfigs/_mrconfig.EVAL.omr &
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
@@ -22,8 +22,8 @@
 [DEFAULT]
 __USYNC__ =
   meld \
-    DXY_DEPOXYARCHETYPE_DIR_TILDE/_mrconfig.EVAL.omr \
-    ~/.depoxy/running/_mrconfig &
+    DXY_DEPOXYARCHETYPE_DIR_TILDE/.mrconfigs/_mrconfig.EVAL.omr \
+    ~/.depoxy/running/.mrconfigs/_mrconfig &
 
 # ========================================================================
 # ------------------------------------------------------------------------
@@ -111,22 +111,24 @@ autocommit =
   #
   # ***
   #
-  git_auto_commit_one_omr "_mrconfig"
-  git_auto_commit_one_omr "_mrconfig-DXY_USERNAME"
+  git_auto_commit_one_omr ".mrconfigs/_mrconfig"
+  git_auto_commit_one_omr ".mrconfigs/_mrconfig-DXY_USERNAME"
   #
-  # - Auto-commit just "_mrconfig-DXY_VENDOR_NAME":
-  #     git_auto_commit_one_omr "_mrconfig-DXY_VENDOR_NAME" "" "${PRIVATE_ACI}"
-  # - Auto-commit "_mrconfig-DXY_VENDOR_NAME" and the project-specific configs:
+  # - Auto-commit just ".mrconfigs/_mrconfig-DXY_VENDOR_NAME":
+  #     git_auto_commit_one_omr ".mrconfigs/_mrconfig-DXY_VENDOR_NAME" "" "${PRIVATE_ACI}"
+  # - Auto-commit ".mrconfigs/_mrconfig-DXY_VENDOR_NAME" and the project-specific configs:
   local bizconfs="$(\
-    find * -name "_mrconfig-DXY_VENDOR_NAME" -o -name "_mrconfig-DXY_VENDOR_NAME--*" \
+    find ".mrconfigs/" \
+      -name "_mrconfig-DXY_VENDOR_NAME" \
+      -o -name "_mrconfig-DXY_VENDOR_NAME--*" \
   )"
   if [ -n "${bizconfs}" ]; then
     git_auto_commit_many ${bizconfs} \
-      -m "${PRIVATE_ACI}: OMR: Update: _mrconfig-DXY_VENDOR_NAME[--*]"
+      -m "${PRIVATE_ACI}: OMR: Update: .mrconfigs/_mrconfig-DXY_VENDOR_NAME[--*]"
   fi
   #
-  git_auto_commit_one "_mrconfig-DXY_VENDOR_NAME" \
-    -m "${CLEARED_ACI}: DXA: OMR: Update: _mrconfig-DXY_VENDOR_NAME"
+  git_auto_commit_one ".mrconfigs/_mrconfig-DXY_VENDOR_NAME" \
+    -m "${CLEARED_ACI}: DXA: OMR: Update: .mrconfigs/_mrconfig-DXY_VENDOR_NAME"
   #
   # ***
   #
@@ -182,12 +184,12 @@ autocommit =
     "home/.config/karabiner/assets/complex_modifications/9210-privte-docs-launchers-private.json"
   #
   # MAYBE/2023-01-12: Handle personal mods better:
-  # - 1.) Current sol'n: Update _mrconfig after deploy and
-  #       add personal mods (like I've done here w/ 9310).
+  # - 1.) Current sol'n: Update .mrconfigs/_mrconfig after deploy
+  #       and add personal mods (like I've done here w/ 9310).
   # - 2.) Auto-commit complex_modifications/* (so user does
   #       not have to do anything).
-  # - 3.) Source a personal _mrconfig... that you'd add
-  #       to each DXC after deploy, so similar amount of
+  # - 3.) Source a personal .mrconfigs/_mrconfig... that you'd
+  #       add to each DXC after deploy, so similar amount of
   #       work (though could automate placing separate
   #       file easier than patching this file)...
   #       - So either auto-commit w/ glob; or add personal hooks to DXC autocommit and infuse...
@@ -682,7 +684,7 @@ infuse =
   #
   # CXREF: DXY_DEPOXY_PROJLNS_DIR_TILDE/mymrconfigs/
   symlink_overlay_file \
-    "${MR_REPO}/_mrconfig" \
+    "${MR_REPO}/.mrconfigs/_mrconfig" \
     "${MREDIT_CONFIGS:-${DEPOXY_PROJLNS:-${HOME}/.projlns}/mymrconfigs}/client-${depoxy_client_id}-mrconfig"
   #
   # *** Guard clause
@@ -805,8 +807,8 @@ infuse =
   # Alert if missing business client mrconfig (because impossibly unlikely user won't want).
   # - E.g., "/home/user/.depoxy/stints"
   local stints_dir="${DEPOXYDIR_STINTS_FULL:-DXY_DEPOXYDIR_STINTS__HOME_}"
-  # - E.g., "/home/user/.depoxy/stints/XXXX/_mrconfig-acme"
-  local mr_business="${stints_dir}/DXY_DEPOXY_CLIENT_ID/_mrconfig-DXY_VENDOR_NAME"
+  # - E.g., "/home/user/.depoxy/stints/XXXX/.mrconfigs/_mrconfig-acme"
+  local mr_business="${stints_dir}/DXY_DEPOXY_CLIENT_ID/.mrconfigs/_mrconfig-DXY_VENDOR_NAME"
   if [ ! -f "${mr_business}" ]; then
     info "$(font_emphasize ALERT): No biz config at $(repo_highlight ${mr_business})"
   fi
@@ -1095,7 +1097,7 @@ infuse =
 # ------------------------------------------------------------------------
 
 # YOU: Add client-specific projects to the another config, e.g.,:
-#        DXY_DEPOXY_CLIENT_TILDE/_mrconfig-DXY_VENDOR_NAME
+#        DXY_DEPOXY_CLIENT_TILDE/.mrconfigs/_mrconfig-DXY_VENDOR_NAME
 #      and reserve this mrconfig for the DepoXy Client project
 #      (so you can more easily keep it synced with the upstream).
 
@@ -1129,9 +1131,9 @@ include =
     . ${OHMYREPOS_LIB:-${GITREPOSPATH:-${HOME}/.kit/git}/ohmyrepos/lib}/skip-grouping.sh
     #
     local stints_dir="${DEPOXYDIR_STINTS_FULL:-DXY_DEPOXYDIR_STINTS__HOME_}"
-    # CXREF: DXY_DEPOXYDIR_STINTS_TILDE/DXY_DEPOXY_CLIENT_ID/_mrconfig-DXY_VENDOR_NAME
-    #        DXY_DEPOXYARCHETYPE_DIR_TILDE/_mrconfig-VENDOR_NAME.EVAL
-    local mr_business="${stints_dir}/DXY_DEPOXY_CLIENT_ID/_mrconfig-DXY_VENDOR_NAME"
+    # CXREF: DXY_DEPOXYDIR_STINTS_TILDE/DXY_DEPOXY_CLIENT_ID/.mrconfigs/_mrconfig-DXY_VENDOR_NAME
+    #        DXY_DEPOXYARCHETYPE_DIR_TILDE/.mrconfigs/_mrconfig-VENDOR_NAME.EVAL
+    local mr_business="${stints_dir}/DXY_DEPOXY_CLIENT_ID/.mrconfigs/_mrconfig-DXY_VENDOR_NAME"
     if [ -f "${mr_business}" ] && ! (
         mr_exclusive "business" "vendor" "DXY_VENDOR_HOME_NAME" &&
         true
@@ -1149,9 +1151,9 @@ include =
     . ${OHMYREPOS_LIB:-${GITREPOSPATH:-${HOME}/.kit/git}/ohmyrepos/lib}/skip-grouping.sh
     #
     local stints_dir="${DEPOXYDIR_STINTS_FULL:-DXY_DEPOXYDIR_STINTS__HOME_}"
-    # CXREF: DXY_DEPOXYDIR_STINTS_TILDE/DXY_DEPOXY_CLIENT_ID/_mrconfig-DXY_USERNAME
-    #        DXY_DEPOXYARCHETYPE_DIR_TILDE/_mrconfig-USERNAME.EVAL
-    local mr_personal="${stints_dir}/DXY_DEPOXY_CLIENT_ID/_mrconfig-DXY_USERNAME"
+    # CXREF: DXY_DEPOXYDIR_STINTS_TILDE/DXY_DEPOXY_CLIENT_ID/.mrconfigs/_mrconfig-DXY_USERNAME
+    #        DXY_DEPOXYARCHETYPE_DIR_TILDE/.mrconfigs/_mrconfig-USERNAME.EVAL
+    local mr_personal="${stints_dir}/DXY_DEPOXY_CLIENT_ID/.mrconfigs/_mrconfig-DXY_USERNAME"
     if [ -f "${mr_personal}" ] && ! (
         mr_exclusive "personal" "user" "DXY_USERNAME" &&
         true

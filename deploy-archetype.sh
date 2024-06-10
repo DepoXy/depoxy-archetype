@@ -85,8 +85,8 @@ register_customizable_business_values () {
   #   - For Git projects under this path, the Git user.name and user.email
   #     are fetched according to the Git config template at:
   #       ~/.depoxy/ambers/archetype/home/.gitconfig.user-business.EVAL
-  #   - The ~/.depoxy/running/_mrconfig-DXY_VENDOR_HOME* config come
-  #     pre-wired.
+  #   - The ~/.depoxy/running/.mrconfigs/_mrconfig-DXY_VENDOR_HOME* config
+  #     come pre-wired.
   #
   # E.g., "/home/user/work"
   register "DXY_VENDOR_HOME" "${VENDOR_HOME:-${HOME}/work}"

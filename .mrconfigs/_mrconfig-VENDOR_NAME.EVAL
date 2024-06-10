@@ -1,7 +1,7 @@
 # USAGE:
 #   m4_shim \
-#     "+8" "_mrconfig-VENDOR_NAME.EVAL" \
-#     "_mrconfig-${DXY_VENDOR_NAME}"
+#     "+8" ".mrconfigs/_mrconfig-VENDOR_NAME.EVAL" \
+#     ".mrconfigs/_mrconfig-${DXY_VENDOR_NAME}"
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
@@ -22,10 +22,10 @@ order = 220
 [${VENDOR_HOME:-DXY_VENDOR_HOME__HOME_}]
 checkout = true
 infuse =
-  # The DXC project infuse task (~/.depoxy/running/_mrconfig) wires a lot
-  # of DXC home files (see also DepoXy's infuser that places a lot of other
-  # home files), but this conf is @biz-specific, and the DXC project config
-  # is not PRIVATE-scoped, so we're wiring from here.
+  # The DXC project infuse task (~/.depoxy/running/.mrconfigs/_mrconfig)
+  # wires a lot of DXC home files (see also DepoXy's infuser that places
+  # a lot of other home files), but this conf is @biz-specific, and the
+  # DXC project config is not PRIVATE-scoped, so we're wiring from here.
   cd && symlink_overlay_file "DXY_VENDOR_HOME_NAME/.mrinfuse/DXY_VENDOR_ACMESH_CONF" && cd -
 
 # ========================================================================
@@ -63,7 +63,7 @@ autocommit =
     "README.md"
   #
   # Incl. vendor project configs.
-  command cp -- "../_mrconfig-DXY_VENDOR_NAME"* "."
+  command cp -- "../.mrconfigs/_mrconfig-DXY_VENDOR_NAME"* "."
   #
   mkdir -p -- "home"
   command cp -- "../home/bashrc.DXY_VENDOR_NAME.sh" "home/"
@@ -118,12 +118,12 @@ include =
   dxc_root="${DEPOXYDIR_RUNNING_FULL:-${HOME}/.depoxy/running}"
   #
   # CXREF:
-  #   DXY_VENDOR_HOME_TILDE/_mrconfig-DXY_VENDOR_NAME--DXY_VENDOR_ORG01_NAME
-  cat "${dxc_root}/_mrconfig-DXY_VENDOR_NAME--DXY_VENDOR_ORG01_NAME"
+  #   DXY_DEPOXYDIR_STINTS_TILDE/DXY_DEPOXY_CLIENT_ID/.mrconfigs/_mrconfig-DXY_VENDOR_NAME--DXY_VENDOR_ORG01_NAME
+  cat "${dxc_root}/.mrconfigs/_mrconfig-DXY_VENDOR_NAME--DXY_VENDOR_ORG01_NAME"
   #
   # CXREF:
-  #   DXY_VENDOR_HOME_TILDE/_mrconfig-DXY_VENDOR_NAME--DXY_VENDOR_ORG02_NAME
-  cat "${dxc_root}/_mrconfig-DXY_VENDOR_NAME--DXY_VENDOR_ORG02_NAME"
+  #   DXY_DEPOXYDIR_STINTS_TILDE/DXY_DEPOXY_CLIENT_ID/.mrconfigs/_mrconfig-DXY_VENDOR_NAME--DXY_VENDOR_ORG02_NAME
+  cat "${dxc_root}/.mrconfigs/_mrconfig-DXY_VENDOR_NAME--DXY_VENDOR_ORG02_NAME"
 
 # ========================================================================
 # ------------------------------------------------------------------------

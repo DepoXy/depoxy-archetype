@@ -1,7 +1,7 @@
 # USAGE:
 #   m4_shim \
-#     "+8" "_mrconfig-VENDOR_NAME--VENDOR_ORG01_NAME.EVAL" \
-#     "_mrconfig-${DXY_VENDOR_NAME}--${DXY_VENDOR_ORG01_NAME}"
+#     "+8" ".mrconfigs/_mrconfig-VENDOR_NAME--VENDOR_ORG01_NAME.EVAL" \
+#     ".mrconfigs/_mrconfig-${DXY_VENDOR_NAME}--${DXY_VENDOR_ORG01_NAME}"
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
