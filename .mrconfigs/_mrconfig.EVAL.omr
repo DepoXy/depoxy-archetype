@@ -34,6 +34,22 @@ order = 133
 # ========================================================================
 # ------------------------------------------------------------------------
 
+# *** DepoXy patch transfer repo, used by git-put-wise.
+
+[${DEPOXYDIR_BASE_FULL:-${MR_HOME:-${HOME}}/.depoxy}/patchr]
+# USAGE: Setup `Host github_user_key` section in ~/.ssh/config and
+# make a private GH repository for transferring files, then configure
+# the remote here, e.g.,
+#
+#  lib = remote_set entrust "git@github_user_key:user/patchr.git"
+
+# This repo is managed by git-put-wise, not by OMR, but we'll include
+# it for completeness, and so `omr-report` doesn't complain.
+skip = true
+
+# ========================================================================
+# ------------------------------------------------------------------------
+
 [${DEPOXYDIR_STINTS_FULL:-DXY_DEPOXYDIR_STINTS__HOME_}/DXY_DEPOXY_CLIENT_ID]
 # NOTE: This repo has no remote (unless you consider the temporary mountpoint),
 #       so stub remote-ish commands to avoid mr fails. See instead: dxup/dxdn.
