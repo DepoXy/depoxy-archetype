@@ -812,8 +812,8 @@ m4_shim_make_file () {
     "${DEPOXY_m4_DEFINES}" \
     "${custom_m4_defines}" \
     <( \
-        printf "m4_changequote(\`[[[', \`]]]')"; \
         printf "m4_changecom()"; \
+        printf "m4_changequote(\`[[[', \`]]]')"; \
         tail -n "${tail_lns}" "${tail_path}"; \
     ) \
     > "${dest_path}"
