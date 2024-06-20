@@ -554,7 +554,7 @@ register_depoxy_project_paths () {
   # ***
 
   # E.g., "/Users/user/.homefries"
-  register "DXY_HOMEFRIES_DIR" "${HOMEFRIES_DIR:-${HOME}/.homefries}"
+  register "DXY_HOMEFRIES_DIR" "${HOMEFRIES_DIR:-${DOPP_KIT:-${HOME}/.kit}/sh/home-fries}"
 
   # E.g., ".homefries"
   unset -v DXY_HOMEFRIES_DIR_NAME
@@ -662,13 +662,13 @@ source_deps () {
   . "${ambers_root}/core/depoxy_fs.sh"
 
   # Required by distro_util.sh: tweak_errexit
-  . "${HOMEFRIES_LIB:-${HOME}/.homefries/lib}/process_util.sh"
+  . "${HOMEFRIES_LIB:-${HOME}/.kit/sh/home-fries/lib}/process_util.sh"
   # Load os_is_macos.
-  . "${HOMEFRIES_LIB:-${HOME}/.homefries/lib}/distro_util.sh"
+  . "${HOMEFRIES_LIB:-${HOME}/.kit/sh/home-fries/lib}/distro_util.sh"
 
   # Load user_name_full (requires os_is_macos).
   # - CXREF: ~/.homefries/lib/user_util.sh
-  . "${HOMEFRIES_LIB:-${HOME}/.homefries/lib}/user_util.sh"
+  . "${HOMEFRIES_LIB:-${HOME}/.kit/sh/home-fries/lib}/user_util.sh"
 }
 
 # ================================================================= #

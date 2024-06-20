@@ -103,15 +103,15 @@ export DEPOXY_SCREENCAPS_DIR="DXY_DEPOXY_SCREENCAPS_DIR__HOME_"
 #   CXREF: ~/.homefries
 #     https://github.com/landonb/home-fries#🍟
 
-# Path to home-fries checkout, e.g., ~/.homefries
+# Path to home-fries checkout, e.g., ~/.kit/sh/home-fries
 #
-#  export HOMEFRIES_DIR="${HOME}/.homefries"
+#  export HOMEFRIES_DIR="${HOME}/.kit/sh/home-fries"
 
-# Path to home-fries bin/. e.g., ~/.homefries/bin
+# Path to home-fries bin/. e.g., ~/.kit/sh/home-fries/bin
 #
-#  export HOMEFRIES_BIN="${HOMEFRIES_DIR:-${HOME}/.homefries}/bin"
+#  export HOMEFRIES_BIN="${HOMEFRIES_DIR:-${HOME}/.kit/sh/home-fries}/bin"
 
-# Assortment of different shell projects' scripts
+# Assortment of different shell projects
 #
 #  export SHOILERPLATE="${HOME}/.kit/sh"
 
