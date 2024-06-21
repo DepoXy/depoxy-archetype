@@ -363,7 +363,7 @@ register_depoxydir_paths () {
 
   # ***
 
-  # E.g., "/user/home/.depoxy/running"
+  # E.g., "/home/user/.depoxy/running"
   register "DXY_DEPOXYDIR_RUNNING_FULL" \
     "${DEPOXYDIR_RUNNING_FULL:-${HOME}/.depoxy/${DEPOXYDIR_RUNNING_NAME:-running}}"
 
@@ -398,7 +398,7 @@ register_depoxydir_paths () {
   # ***
 
   # Path known to ~/.mrtrust for temporary usage to standup unwired DepoXy Client.
-  # - E.g., "/user/home/.depoxy/.adscititious"
+  # - E.g., "/home/user/.depoxy/.adscititious"
   register "DXY_DEPOXYDIR_RESERVABLE_FULL" \
     "${DEPOXYDIR_RESERVABLE_FULL:-${HOME}/.depoxy/${DEPOXYDIR_RESERVABLE_NAME:-.adscititious}}"
 
@@ -989,22 +989,22 @@ prepare_depoxy_fs () {
   blot "Preparing client tree"
   blot
 
-  # E.g., "/user/home/.depoxy"
+  # E.g., "/home/user/.depoxy"
   mkdir_with_trace "${DXY_DEPOXYDIR_BASE_FULL}"
 
-  # E.g., "/user/home/.depoxy/stints"
+  # E.g., "/home/user/.depoxy/stints"
   mkdir_with_trace "${DXY_DEPOXYDIR_STINTS_FULL}"
 
   ! ${DXY_RUN_LNS_ONLY:-false} || return 0
 
-  # E.g., "/user/home/.depoxy/stints/XXXX"
+  # E.g., "/home/user/.depoxy/stints/XXXX"
   mkdir_with_trace "${DXY_DEPOXY_CLIENT_FULL}"
 
   prepare_depoxy_running_symlink
 }
 
 prepare_depoxy_running_symlink () {
-  # E.g., "/user/home/.depoxy/running"
+  # E.g., "/home/user/.depoxy/running"
   # - This is necessary for infuse and aci.
   if [ -h "${DXY_DEPOXYDIR_RUNNING_FULL}" ]; then
     local running_now
@@ -1113,7 +1113,7 @@ prepare_client_fs () {
 }
 
 prepare_symlinks_fs () {
-  # E.g., /user/home/.depoxy/stints/.syml--XXXX
+  # E.g., /home/user/.depoxy/stints/.syml--XXXX
   register "DXY_MAKE_LNS_FULL" "${DXY_DEPOXYDIR_STINTS_FULL}/${DXY_MAKE_LNS_NAME}"
 
   ${DXY_RUN_MAKE_LNS:-false} || return 0
