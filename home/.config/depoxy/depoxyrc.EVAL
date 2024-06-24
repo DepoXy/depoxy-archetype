@@ -100,7 +100,7 @@ export DEPOXY_SCREENCAPS_DIR="DXY_DEPOXY_SCREENCAPS_DIR__HOME_"
 
 # *** Homefries project config
 #
-#   CXREF: ~/.homefries
+#   CXREF: ~/.kit/sh/home-fries
 #     https://github.com/landonb/home-fries#🍟
 
 # Path to home-fries checkout, e.g., ~/.kit/sh/home-fries

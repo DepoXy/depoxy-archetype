@@ -857,12 +857,12 @@ DEPOXY_AMBERS=$HOME/.depoxy/ambers filter=".* *" {
     exclude
    }
   }
-  .homefries=$HOME/.depoxy/ambers/home/.homefries {
+  .homefries=$HOME/.depoxy/ambers/home/.kit/sh/home-fries {
    .ignore
-   _git/info=$HOME/.depoxy/ambers/home/.homefries/_git/info {
+   _git/info=$HOME/.depoxy/ambers/home/.kit/sh/home-fries/_git/info {
     exclude
    }
-   .bashrc-bin=$HOME/.depoxy/ambers/home/.homefries/.bashrc-bin {
+   .bashrc-bin=$HOME/.depoxy/ambers/home/.kit/sh/home-fries/.bashrc-bin {
     bashrx.private.sh
    }
   }
@@ -2370,7 +2370,7 @@ DepoXy/bin=$HOME/.depoxy/ambers/bin filter=".* *" {
 # %%%%%%%
 
 # *** Hfries-bin/
-HOMEFRIES/bin=$HOME/.homefries/bin filter=".* *" {
+HOMEFRIES/bin=$HOME/.kit/sh/home-fries/bin filter=".* *" {
  .bash_history_filter.awk
  bash_function_to_file_splitter.awk
  ctags-groom.sh
@@ -2385,7 +2385,7 @@ HOMEFRIES/bin=$HOME/.homefries/bin filter=".* *" {
  test_colors-24bit
  ziew
  zview
- completions=$HOME/.homefries/bin/completions filter=".* *" {
+ completions=$HOME/.kit/sh/home-fries/bin/completions filter=".* *" {
   docker-compose
   git-completion.bash
   git-extras-bash_completion.sh
@@ -3034,7 +3034,7 @@ TIG_NEWTONS_=$HOME/.kit/git/tig-newtons filter=".* *" {
 # HOMEFRIES_
 Home=$HOME filter="README.rst" {
  README.rst
- Home Fries=$HOME/.homefries filter=".* *" {
+ Home Fries=$HOME/.kit/sh/home-fries filter=".* *" {
   .bashrc
   .gitconfig-README
   .gitignore
@@ -3049,13 +3049,13 @@ Home=$HOME filter="README.rst" {
   LICENSE
   README.rst
  }
- homefries/.bashrc-bin=$HOME/.homefries/.bashrc-bin filter=".* *" exclude="bashrx.private.DXY_HOSTNAME.sh bashrx.private.sh" {
+ homefries/.bashrc-bin=$HOME/.kit/sh/home-fries/.bashrc-bin filter=".* *" exclude="bashrx.private.DXY_HOSTNAME.sh bashrx.private.sh" {
   bashrc.base.sh
   bashrc.core.sh
   bashrx.private.sh.template
   prepare-tmux-or-bust
  }
- homefries/bin=$HOME/.homefries/bin filter=".* *" {
+ homefries/bin=$HOME/.kit/sh/home-fries/bin filter=".* *" {
   .bash_history_filter.awk
   bash_function_to_file_splitter.awk
   ctags-groom.sh
@@ -3070,7 +3070,7 @@ Home=$HOME filter="README.rst" {
   test_colors-24bit
   ziew
   zview
-  completions-hfries=$HOME/.homefries/bin/completions filter=".* *" {
+  completions-hfries=$HOME/.kit/sh/home-fries/bin/completions filter=".* *" {
    docker-compose
    git-completion.bash
    git-extras-bash_completion.sh
@@ -3081,7 +3081,7 @@ Home=$HOME filter="README.rst" {
    tmux
   }
  }
- homefries/lib=$HOME/.homefries/lib filter=".* *" {
+ homefries/lib=$HOME/.kit/sh/home-fries/lib filter=".* *" {
   ask_yes_no_default.sh
   datetime_now_TTT.sh
   dir_util.sh
@@ -3107,11 +3107,11 @@ Home=$HOME filter="README.rst" {
   ssh_util.sh
   time_util.sh
   user_util.sh
-  lib/funcs=$HOME/.homefries/lib/funcs filter=".* *" {
+  lib/funcs=$HOME/.kit/sh/home-fries/lib/funcs filter=".* *" {
    find-duplicates
    please
   }
-  lib/alias=$HOME/.homefries/lib/alias filter=".* *" {
+  lib/alias=$HOME/.kit/sh/home-fries/lib/alias filter=".* *" {
    README.rst
    alias_ag.sh
    alias_bash.sh
@@ -3146,23 +3146,23 @@ Home=$HOME filter="README.rst" {
    claim_alias_or_warn.sh
    whowherewhatami.sh
   }
-  lib/crypt=$HOME/.homefries/lib/crypt filter=".* *" {
+  lib/crypt=$HOME/.kit/sh/home-fries/lib/crypt filter=".* *" {
    add_user_mlocate_db.sh
    daemonize_gpg_agent.sh
    is_mount_type_crypt.sh
    set_environ_gpg_tty.sh
   }
-  lib/date=$HOME/.homefries/lib/date filter=".* *" {
+  lib/date=$HOME/.kit/sh/home-fries/lib/date filter=".* *" {
    date-or-gdate.sh
    uptime-s.sh
   }
-  lib/device=$HOME/.homefries/lib/device filter=".* *" {
+  lib/device=$HOME/.kit/sh/home-fries/lib/device filter=".* *" {
    lsusb.sh
   }
-  lib/distro=$HOME/.homefries/lib/distro filter=".* *" {
+  lib/distro=$HOME/.kit/sh/home-fries/lib/distro filter=".* *" {
    default-browser.sh
   }
-  lib/snips=$HOME/.homefries/lib/snips filter=".* *" {
+  lib/snips=$HOME/.kit/sh/home-fries/lib/snips filter=".* *" {
    # aka show-n-tell/
    array_iterations.sh
    check_dep.sh
@@ -3170,7 +3170,7 @@ Home=$HOME filter="README.rst" {
    sudo_ensure.sh
    sudo_raised.sh
   }
-  lib/term=$HOME/.homefries/lib/term filter=".* *" {
+  lib/term=$HOME/.kit/sh/home-fries/lib/term filter=".* *" {
    disable-ctrl_s-stty-flow-controls.sh
    equip-colorful-and-informative-ls.sh
    macos-please-no-zsh-advertisement.sh
@@ -3183,7 +3183,7 @@ Home=$HOME filter="README.rst" {
    termdo-all
   }
  }
- homefries/var=$HOME/.homefries/var filter=".* *" {
+ homefries/var=$HOME/.kit/sh/home-fries/var filter=".* *" {
   first-names-lengthX.txt
   first-names.txt
  }
@@ -3213,14 +3213,14 @@ Home=$HOME filter="README.rst" {
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 # ░░ BEG: DEPOXY BASHRC ░░░░░░░░
 
-DepoXy-Bashrc=$HOME/.depoxy/ambers/home/.homefries filter=".* *" {
+DepoXy-Bashrc=$HOME/.depoxy/ambers/home/.kit/sh/home-fries filter=".* *" {
  .ignore
  .depoxy-brc-client=$HOME/.depoxy/stints/DXY_DEPOXY_CLIENT_ID/home filter="*.sh" {
   bashrc.DXY_USERNAME.sh
   bashrc.DXY_VENDOR_NAME.sh
   bashrx.private.DXY_HOSTNAME.sh
  }
- .depoxy-brc-entry=$HOME/.depoxy/ambers/home/.homefries/.bashrc-bin {
+ .depoxy-brc-entry=$HOME/.depoxy/ambers/home/.kit/sh/home-fries/.bashrc-bin {
   bashrx.private.sh
  }
  .depoxy-brc-core=$HOME/.depoxy/ambers/core exclude="wire-bash.sh" {

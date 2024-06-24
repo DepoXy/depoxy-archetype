@@ -553,24 +553,24 @@ register_depoxy_project_paths () {
 
   # ***
 
-  # E.g., "/Users/user/.homefries"
+  # E.g., "/Users/user/.kit/sh/home-fries"
   register "DXY_HOMEFRIES_DIR" "${HOMEFRIES_DIR:-${DOPP_KIT:-${HOME}/.kit}/sh/home-fries}"
 
-  # E.g., ".homefries"
+  # E.g., ".kit/sh/home-fries"
   unset -v DXY_HOMEFRIES_DIR_NAME
   register "DXY_HOMEFRIES_DIR_NAME" "$( \
     echo "${DXY_HOMEFRIES_DIR}" \
     | sed "s@^${HOME}/@@"
   )"
 
-  # E.g., "~/.homefries"
+  # E.g., "~/.kit/sh/home-fries"
   unset -v DXY_HOMEFRIES_DIR_TILDE
   register "DXY_HOMEFRIES_DIR_TILDE" "$( \
     echo "${DXY_HOMEFRIES_DIR}" \
     | sed -E "s@^${HOME}(/|$)@~\1@"
   )"
 
-  # E.g., "/.homefries/"
+  # E.g., "/.kit/sh/home-fries/"
   # - Used to generate ~/.gitignore.
   local homefries_home_path="$( \
     format_exclude_rule_home_gitignore "${DXY_HOMEFRIES_DIR}"
@@ -667,7 +667,7 @@ source_deps () {
   . "${HOMEFRIES_LIB:-${HOME}/.kit/sh/home-fries/lib}/distro_util.sh"
 
   # Load user_name_full (requires os_is_macos).
-  # - CXREF: ~/.homefries/lib/user_util.sh
+  # - CXREF: ~/.kit/sh/home-fries/lib/user_util.sh
   . "${HOMEFRIES_LIB:-${HOME}/.kit/sh/home-fries/lib}/user_util.sh"
 }
 
@@ -940,7 +940,7 @@ prompt_continue_or_exit () {
     #   and maybe it makes more sense *not* to use `read -e`...
     #   - CXREF: See Homefries for a more complete sol'n that
     #     temporarily unbinds <Up> during the `read` prompt:
-    #       ~/.homefries/lib/ask_yes_no_default.sh
+    #       ~/.kit/sh/home-fries/lib/ask_yes_no_default.sh
     read -e -n 1 ignored_key
 
     [ -z "${ignored_key}" ] || echo

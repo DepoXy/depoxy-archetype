@@ -23,7 +23,7 @@
 
 # SAVVY: This file is loaded on terminal startup.
 #
-#        - It's symlinked under ~/.homefries/.bashrc-bin
+#        - It's symlinked under ~/.kit/sh/home-fries/.bashrc-bin
 #          so that Homefries loads it.
 #
 #        - CXREF: See the `symlink_overlay_file` infuse task
@@ -66,7 +66,7 @@ bashdx_wire_aliases_pushd_paths_cdw () {
   local client_dir="${VENDOR_HOME:-DXY_VENDOR_HOME__HOME_}"
 
   if [ -d "${client_dir}" ]; then
-    # CXREF: ~/.homefries/lib/path_util.sh
+    # CXREF: ~/.kit/sh/home-fries/lib/path_util.sh
     pushd_alias_or_warn "cdw" "${client_dir}"
   elif ! type "cdw" > /dev/null 2>&1; then
     # YOU: Feel free to remove this else block. Or not.
@@ -115,8 +115,8 @@ bashdx_wire_aliases_open_tracker () {
 #   Homefries uses it; or just set your own PS1 here).
 
 bashdx_customize_depoxy_client_PS1 () {
-  # CXREF: ~/.homefries/lib/term/set-shell-prompt-and-window-title.sh
-  . "${HOMEFRIES_LIB:-${HOME}/.homefries/lib}/term/set-shell-prompt-and-window-title.sh"
+  # CXREF: ~/.kit/sh/home-fries/lib/term/set-shell-prompt-and-window-title.sh
+  . "${HOMEFRIES_LIB:-${HOME}/.kit/sh/home-fries/lib}/term/set-shell-prompt-and-window-title.sh"
 
   HOMEFRIES_TERM_UTIL_PS1_HOST="DXC${DEPOXY_CLIENT_ID}" \
     dubs_set_terminal_prompt

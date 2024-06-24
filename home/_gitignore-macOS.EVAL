@@ -83,8 +83,8 @@ DXY_HOMEFRIES_DIR_EXCLUDE_RULE
 
 # The (generally) empty ~/.README.rst stunt double is useful when calling
 # gvim-open-kindness without specifying a path, so that `--servername {name}`
-# works properly. (The author often opens GVim using the Homefries `fs`
-# command, which calls the ~/.homefries/bin/gvim-open-kindness command.)
+# works properly. (The author often opens GVim using the Homefries `fs` cmd,
+# which calls the ~/.kit/sh/home-fries/bin/gvim-open-kindness command.)
 /README.rst
 
 # Dev Kit: Curation of OMR-fetched software repos

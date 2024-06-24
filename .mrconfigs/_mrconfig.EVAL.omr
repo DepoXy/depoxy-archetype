@@ -848,7 +848,7 @@ infuse =
   if [ -f "${bashrx_host}" ]; then
     symlink_overlay_file \
       "${bashrx_host}" \
-      "${HOMEFRIES_DIR:-${HOME}/.homefries}/.bashrc-bin/bashrx.private.DXY_HOSTNAME.sh"
+      "${HOMEFRIES_DIR:-${DOPP_KIT:-${HOME}/.kit}/sh/home-fries}/.bashrc-bin/bashrx.private.DXY_HOSTNAME.sh"
   else
     info "$(font_emphasize ALERT): No DXC bashrc at" \
       "$(repo_highlight ${bashrx_host})"
@@ -862,7 +862,7 @@ infuse =
   #     if [ -f "${bashrx_full}" ]; then
   #       symlink_overlay_file \
   #         "${bashrx_full}" \
-  #         "${HOMEFRIES_DIR:-${HOME}/.homefries}/.bashrc-bin/${bashrx_user}"
+  #         "${HOMEFRIES_DIR:-${DOPP_KIT:-${HOME}/.kit}/sh/home-fries}/.bashrc-bin/${bashrx_user}"
   #     fi
   #
   # - At an previous client, in the beginning, $(hostname) would report
@@ -874,7 +874,7 @@ infuse =
   #
   #     symlink_overlay_file \
   #       "${MR_REPO}/home/bashrx.private.DXY_HOSTNAME.sh" \
-  #       "${HOMEFRIES_DIR:-${HOME}/.homefries}/.bashrc-bin/bashrx.private.DXY_HOSTNAME..sh"
+  #       "${HOMEFRIES_DIR:-${DOPP_KIT:-${HOME}/.kit}/sh/home-fries}/.bashrc-bin/bashrx.private.DXY_HOSTNAME..sh"
   #
   # *** VIM
   #
