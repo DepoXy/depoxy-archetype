@@ -1028,7 +1028,10 @@ prepare_depoxy_running_symlink () {
       ln_with_trace "${DXY_DEPOXY_CLIENT_FULL}" "${DXY_DEPOXYDIR_RESERVABLE_FULL}"
     fi
   elif [ ! -e "${DXY_DEPOXYDIR_RUNNING_FULL}" ]; then
-    ln_with_trace "${DXY_DEPOXY_CLIENT_FULL}" "${DXY_DEPOXYDIR_RUNNING_FULL}"
+    # Usually ~/.depoxy/stints/<ID> is subdir of ~/.depoxy so use easy
+    # prefix removal to produce relative path.
+    local rel_path="${DXY_DEPOXY_CLIENT_FULL#$(dirname -- "${DXY_DEPOXYDIR_RUNNING_FULL}")/}"
+    ln_with_trace "${rel_path}" "${DXY_DEPOXYDIR_RUNNING_FULL}"
   else
     >&2 blot "$(alert "ERROR: Not a symlink: ${DXY_DEPOXYDIR_RUNNING_FULL}")"
 
