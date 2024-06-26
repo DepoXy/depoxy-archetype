@@ -119,7 +119,7 @@ bashdx_customize_depoxy_client_PS1 () {
   . "${HOMEFRIES_LIB:-${HOME}/.kit/sh/home-fries/lib}/term/set-shell-prompt-and-window-title.sh"
 
   HOMEFRIES_TERM_UTIL_PS1_HOST="DXC${DEPOXY_CLIENT_ID}" \
-    dubs_set_terminal_prompt
+    _hf_set_terminal_prompt
 }
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
