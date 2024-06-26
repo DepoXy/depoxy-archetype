@@ -147,6 +147,11 @@ export MR_GIT_HOST_ORIGIN="https://github.com/"
 # Path to generated mrconfig symlinks, used by `mredit`/`mropen`.
 export MREDIT_CONFIGS="${DEPOXY_PROJLNS:-${HOME}/.projlns}/mymrconfigs"
 
+# Set ~/.projlns link_deep prefix, e.g., might create a link like
+#   ~/.projlns/depoxy-deeplinks/Users/user/.kit/git/myrepos-mredit-command
+# CXREF: ~/.kit/git/myrepos-mredit-command/lib/link_deep.sh
+export LINK_DEEP_SUB_HOME="/Users/user"
+
 # Specify known remotes not configured in OMR (e.g., those
 # managed by 'ffssh', and 'travel' and 'unpack').
 #
