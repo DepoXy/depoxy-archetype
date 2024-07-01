@@ -936,6 +936,11 @@ infuse =
     ( MR_REPO="${HOME}" symlink_mrinfuse_file ".gitconfig.user-personal" )
   fi
   #
+  # Private Git: A 'username@hostname' name for unpublished work.
+  if [ -f "${MR_REPO}/home/.gitconfig.user-private" ]; then
+    ( MR_REPO="${HOME}" symlink_mrinfuse_file ".gitconfig.user-private" )
+  fi
+  #
   # `gh` and `hub` apps enterprise Git token.
   # - FIXME/2022-10-23: I removed ~/.github-token mechanism in favor
   #   of storing token in git remote URL, but I didn't test `hub`
