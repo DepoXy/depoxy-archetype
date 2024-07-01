@@ -14,7 +14,3 @@
   name = DXY_PERSON_GITCONFIG_USER_NAME
   email = DXY_PERSON_GITCONFIG_USER_EMAIL
 
-# Except for:
-[includeIf "gitdir:DXY_DEPOXY_CLIENT_TILDE/DXY_VENDOR_ACMESH_NAME/"]
-  path = .gitconfig.user-business
-
