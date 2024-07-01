@@ -922,6 +922,14 @@ infuse =
       "/ See $(font_highlight “archetype/home/.gitconfig.user.EVAL”)"
   fi
   #
+  # Enterprise Git: Your vendor-specific user.name and user.email.
+  # - Used when committing work to vendor projects.
+  if [ -f "${MR_REPO}/home/.gitconfig.user-business" ]; then
+    symlink_overlay_file \
+      "${MR_REPO}/home/.gitconfig.user-business" \
+      "${HOME}/.gitconfig.user-business"
+  fi
+  #
   # Your Personal Git: Your personal user.name and user.email.
   # - Used when committing work to this project (DXY_DEPOXY_CLIENT_ID)
   #   or any of your other (open source) projects you might have.
@@ -929,14 +937,6 @@ infuse =
     symlink_overlay_file \
       "${MR_REPO}/home/.gitconfig.user-personal" \
       "${HOME}/.gitconfig.user-personal"
-  fi
-  #
-  # Enterprise Git: Your vendor-specific user.name and user.email.
-  # - Used when committing work to vendor projects.
-  if [ -f "${MR_REPO}/home/.gitconfig.user-business" ]; then
-    symlink_overlay_file \
-      "${MR_REPO}/home/.gitconfig.user-business" \
-      "${HOME}/.gitconfig.user-business"
   fi
   #
   # `gh` and `hub` apps enterprise Git token.
