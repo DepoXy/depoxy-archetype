@@ -51,12 +51,11 @@ skip = true
 # ------------------------------------------------------------------------
 
 [${DEPOXYDIR_STINTS_FULL:-DXY_DEPOXYDIR_STINTS__HOME_}/DXY_DEPOXY_CLIENT_ID]
-# NOTE: This repo has no remote (unless you consider the temporary mountpoint),
-#       so stub remote-ish commands to avoid mr fails. See instead: dxup/dxdn.
-lib = [ -z "DXY_DEPOXY_CLIENT_REMOTE" ] ||
-  remote_set entrust "DXY_DEPOXY_CLIENT_REMOTE"
-checkout = [ -z "DXY_DEPOXY_CLIENT_REMOTE" ] ||
-  mr_repo_checkout
+order = 133
+# The client remote has no remote unless you add one for it.
+# - See the private remotes config for where to set the remote:
+#     DXY_DEPOXYDIR_STINTS_TILDE/DXY_DEPOXY_CLIENT_ID/.mrconfigs/_mrconfig-remotes
+checkout = [ -z "${MR_REPO_REMOTES}" ] || mr_repo_checkout
 #
 fetch = true
 pull = true

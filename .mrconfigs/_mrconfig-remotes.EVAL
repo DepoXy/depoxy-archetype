@@ -1,0 +1,69 @@
+# USAGE:
+#   m4_shim \
+#     "+8" ".mrconfigs/_mrconfig-remotes.EVAL" \
+#     ".mrconfigs/_mrconfig-remotes"
+
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
+
+# vim:tw=0:ts=2:sw=2:et:norl:nospell:ft=bash
+# DXY_HEADER_AUTHOR
+# DXY_HEADER_PROJECT
+# DXY_HEADER_LICENSE
+
+# ========================================================================
+# ------------------------------------------------------------------------
+
+# USAGE: Add overriding config herein to setup your own private remotes.
+#
+# - This approach takes advantage of the fact that `mr` loads all matching
+#   project config as separate projects.
+#
+#   - So you'll see each of these projects twice for each `mr` action.
+#     - E.g.,
+#
+#         $ cdpw
+#         $ mr -d . -n wireRemotes
+#         mr wireRemotes: /Users/user/.kit/git/git-put-wise
+#         mr wireRemotes: /Users/user/.kit/git/git-put-wise
+#         (.1 secs.) mr wireRemotes: finished (2 ok)
+#
+#   - The main config, from DepoXy, sets the 'publish' remote.
+#     And then the config below lets you set your own remote,
+#     for those projects you care about.
+#
+# - SAVVY: We duplicate the 'publish' remotes (or whatever the DepoXy
+#   config defines) so that `reportRemotes` doesn't complain about
+#   unregistered remotes when processing these projects.
+#
+# - SAVVY: Be sure to add whatever remote names you use to the
+#   MR_KNOWN_REMOTES environ so that `reportRemotes` doesn't
+#   complain about your remotes as being unregistered.
+
+# ========================================================================
+# ------------------------------------------------------------------------
+
+[${DEPOXYAMBERS_DIR:-${DEPOXYDIR_BASE_FULL:-${MR_HOME:-${HOME}}/.depoxy}/ambers}]
+order = 131
+lib =
+  remote_set publish "https://github.com/DepoXy/depoxy.git" "ambers"
+  # USAGE: Set your own remote if you forked DepoXy:
+  #   remote_set entrust "git@github_user:user/depoxy.git"
+
+[${DEPOXYDIR_BASE_FULL:-${MR_HOME:-${HOME}}/.depoxy}/ambers/archetype]
+order = 132
+lib =
+  remote_set publish "https://github.com/DepoXy/depoxy-archetype.git" "archetype"
+  # USAGE: Set your own remote if you forked the Archetype:
+  #   remote_set entrust "git@github_user:user/depoxy-archetype.git"
+
+[${DEPOXYDIR_STINTS_FULL:-DXY_DEPOXYDIR_STINTS__HOME_}/DXY_DEPOXY_CLIENT_ID]
+order = 133
+# The client remote has no remote unless you add one for it.
+lib = [ -z "DXY_DEPOXY_CLIENT_REMOTE" ] ||
+  remote_set entrust "DXY_DEPOXY_CLIENT_REMOTE"
+
+# ========================================================================
+# ------------------------------------------------------------------------
+
+[DEFAULT]
+
