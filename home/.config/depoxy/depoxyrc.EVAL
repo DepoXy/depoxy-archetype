@@ -13,11 +13,15 @@
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
+# USAGE: Edit this file — then call `infuse`:
+#
+#   cxc && infuse .
+
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
+
 # BWARE: Be sure to edit this file from within your DepoXy Client project.
 #        - Do not edit ~/.config/depoxy/depoxyrc, which is a copy, and
 #          will be overwritten on `mr infuse`.
-
-# USAGE: Edit this file — then call `infuse`.
 
 # SAVVY: This file is essentially used to set
 #
