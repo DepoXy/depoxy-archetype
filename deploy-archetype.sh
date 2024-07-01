@@ -1414,6 +1414,7 @@ init_repo_with_empty_message () {
   local repo_path="$3"
   local branch="$4"
   local empty_msg="$5"
+  local add_all_msg="$6"
 
   ! ${DXY_RUN_LNS_ONLY:-false} || return 0
 
@@ -1439,6 +1440,12 @@ init_repo_with_empty_message () {
   git init -q -b "${branch}" .
 
   eval "git ${conf_opts} commit -q --allow-empty -m \"${empty_msg}\""
+
+  if [ -n "${add_all_msg}" ]; then
+    git add .
+
+    eval "git ${conf_opts} commit -q -m \"${add_all_msg}\""
+  fi
 
   cd - > /dev/null
 }
@@ -1483,10 +1490,13 @@ init_repo_acmesh () {
     empty_msg="${DXY_VENDOR_ACMESH_NAME}: ${DXY_VENDOR_NAME_PROPER} shell juice"
   fi
 
+  local add_all_msg="Insert: Hydrate project"
+
   init_repo_with_empty_message_vendor_user \
     "${DXY_DEPOXY_CLIENT_FULL}/${DXY_VENDOR_ACMESH_NAME}" \
     "release" \
-    "${empty_msg}"
+    "${empty_msg}" \
+    "${add_all_msg}"
 }
 
 # ***
