@@ -548,8 +548,6 @@ autocommit =
   #
   # ***
   #
-  git_auto_commit_one "home/_gitignore-macOS" \
-    -m "${CLEARED_ACI}: DX: Update ~/.gitignore"
   git_auto_commit_one "home/_git/info/exclude" \
     -m "${CLEARED_ACI}: DX: Update ~/.gitignore.local"
   #
@@ -655,22 +653,6 @@ infusePostRebase =
   # Remember that Git doesn't allow symlinked .gitignore .nomore.
   link_hard "${MR_REPO}/home/.depoxy/_gitignore" \
     "${DEPOXYDIR_BASE_FULL:-DXY_DEPOXYDIR_BASE__HOME_}/.gitignore"
-  #
-  # *** GIT
-  #
-  # Note Git ≥2.32.0 disallows symlinked .gitignore, so hard link it.
-  #
-  #    FIXME/2022-10-13: Certain (unsure which) repo changes break symlinks.
-  #    - So often this link_hard will Be Like Nope.
-  #    - I'd say add a --force option, and clobber the target.
-  #      - This is a little risky...
-  #        Another option is to move it to ~/.trash,
-  #          and then just `warn` the user...
-  #
-  link_hard \
-    "${MR_REPO}/home/_gitignore-macOS" \
-    "${HOME}/.gitignore"
-  #
   #
   # *** ~/.kube
   #
