@@ -1,0 +1,29 @@
+# USAGE:
+#   m4_shim \
+#     "+8" "home/.gitconfig.user-private.EVAL" \
+#     "home/.gitconfig.user-private"
+
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
+
+# vim:tw=0:ts=2:sw=2:et:norl:ft=gitconfig
+# DXY_HEADER_AUTHOR
+# DXY_HEADER_PROJECT
+# DXY_HEADER_LICENSE
+
+# CPYST: You can audit all your repos to see how they're wired:
+#
+#   mr -d / run sh -c 'echo "$(git config --get user.email) » ${MR_REPO}"'
+
+[user]
+
+  name = DXY_USERNAME
+  email = DXY_USERNAME@DXY_HOSTNAME
+
+[user]
+
+  signingkey =
+
+[commit]
+
+  gpgSign = false
+
