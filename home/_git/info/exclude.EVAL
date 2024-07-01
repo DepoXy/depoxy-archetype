@@ -9,7 +9,9 @@
 # DXY_HEADER_PROJECT
 # DXY_HEADER_LICENSE
 
-# SYMLINK: ~/.git/info/exclude ↔ ~/.depoxy/ambers/home/_git/info/exclude
+# SAVVY: Private exclude rules file, symlinked from home repo:
+#
+#   ~/.git/info/exclude -> ~/.depoxy/running/home/_git/info/exclude
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
