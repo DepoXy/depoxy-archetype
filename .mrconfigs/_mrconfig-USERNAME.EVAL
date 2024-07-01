@@ -49,3 +49,39 @@ order = 166
 # ========================================================================
 # ------------------------------------------------------------------------
 
+# USAGE: Manage 321open encfs project
+
+# CXREF: /Volumes/vestige/.clench
+
+[${ONEOPEN_KEYS_PADDOCK:-${ONEOPEN_MOUNTPOINT:-/Volumes}/vestige/.clench}]
+order = 180
+lib = remote_set_private
+skip = [ ! -d "${MR_REPO}" ] || mr_exclusive "home" "${LOGNAME}"
+echoInstallHelp = echoInstallHelp 'os_all' 'dxy_all'
+install =
+  # CXREF: Assumes ~/.config/depoxy/321open.cfg sourced
+  #   (which ~/.depoxy/ambers/home/_mrconfig-core does).
+  if [ -z "${ONEOPEN_KEYS_PADDOCK}" ]; then
+    >&2 warn "ERROR: Cannot ensure Key Paddock symlinks: ONEOPEN_KEYS_PADDOCK unset"
+    #
+    return 1
+  fi
+  #
+  # CXREF: ~/.kit/odd/321open/lib/key_paddock.sh
+  . "${DOPP_KIT:-${HOME}/.kit}/odd/321open/lib/key_paddock.sh"
+  #
+  if ! verify_key_paddock_repo_and_home_dir_symlinks; then
+    # MR_REPO/.git missing, or ~/.gunpg, ~/.ssh/config, and/or ~/.password-store not each a symlink (as setup by
+    # `312open`, and `relocate_keys_paddock_dirs`.
+    >&2 warn "ERROR: Missing Key Paddock, or home paths not all symlinks"
+    #
+    return 1
+  fi
+  #
+  # Recreate home symlinks using ${MR_REPO} paths.
+  ONEOPEN_KEYS_PADDOCK="${MR_REPO}" ensure_key_paddock_symlinks
+infuseProjlns = OMR_INFUSE_PROJLNS_FILES=true infuse_projlns_if_personal_project
+
+# ========================================================================
+# ------------------------------------------------------------------------
+
