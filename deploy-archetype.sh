@@ -1408,11 +1408,58 @@ extract_eval_command () {
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 # ================================================================= #
 
-init_repo () {
+init_repo_with_empty_message () {
+  local git_user_name="$1"
+  local git_user_email="$2"
+  local repo_path="$3"
+  local branch="$4"
+  local empty_msg="$5"
+
   ! ${DXY_RUN_LNS_ONLY:-false} || return 0
 
   ! ${DRY_RUN} || return 0
 
+  if [ -z "${empty_msg}" ]; then
+    blot "Skipping git-init without commit message: ${repo_path}"
+
+    return 0
+  fi
+
+  mkdir -p -- "${repo_path}"
+
+  cd "${repo_path}"
+
+  # Note that Git config not guaranteed to be wired, so specify
+  # necessary config, like the user.
+  local conf_opts=" \
+    -c user.name=\"${git_user_name}\" \
+    -c user.email=\"${git_user_email}\" \
+  "
+
+  git init -q -b "${branch}" .
+
+  eval "git ${conf_opts} commit -q --allow-empty -m \"${empty_msg}\""
+
+  cd - > /dev/null
+}
+
+init_repo_with_empty_message_person_user () {
+  init_repo_with_empty_message \
+    "${DXY_PERSON_GITCONFIG_USER_NAME}" \
+    "${DXY_PERSON_GITCONFIG_USER_EMAIL}" \
+    "$@"
+}
+
+init_repo_with_empty_message_vendor_user () {
+  init_repo_with_empty_message \
+    "${DXY_VENDOR_GITCONFIG_USER_NAME}" \
+    "${DXY_VENDOR_GITCONFIG_USER_EMAIL}" \
+    "$@"
+}
+
+# ***
+
+init_repo_client () {
   local empty_msg=""
   if [ -n "${DXY_DEPOXY_INIT_CLIENT_COMMIT+x}" ]; then
     empty_msg="${DXY_DEPOXY_INIT_CLIENT_COMMIT}"
@@ -1420,29 +1467,15 @@ init_repo () {
     empty_msg="Flaming: hotnew: DepoXy Client ${DXY_DEPOXY_CLIENT_ID}"
   fi
 
-  cd "${DXY_DEPOXY_CLIENT_FULL}"
-
-  # Note that Git config not guaranteed to be wired, so specify
-  # necessary config, like the user.
-  local conf_opts=" \
-    -c user.name=\"${DXY_PERSON_GITCONFIG_USER_NAME}\" \
-    -c user.email=\"${DXY_PERSON_GITCONFIG_USER_EMAIL}\" \
-  "
-
-  git init -q -b private .
-
-  eval "git ${conf_opts} commit -q --allow-empty -m \"${empty_msg}\""
-
-  cd - > /dev/null
+  init_repo_with_empty_message_person_user \
+    "${DXY_DEPOXY_CLIENT_FULL}" \
+    "private" \
+    "${empty_msg}"
 }
 
 # ***
 
 init_repo_acmesh () {
-  ! ${DXY_RUN_LNS_ONLY:-false} || return 0
-
-  ! ${DRY_RUN} || return 0
-
   local empty_msg=""
   if [ -n "${DXY_DEPOXY_INIT_ACMESH_COMMIT+x}" ]; then
     empty_msg="${DXY_DEPOXY_INIT_ACMESH_COMMIT}"
@@ -1450,23 +1483,10 @@ init_repo_acmesh () {
     empty_msg="${DXY_VENDOR_ACMESH_NAME}: ${DXY_VENDOR_NAME_PROPER} shell juice"
   fi
 
-  if [ -z "${empty_msg}" ]; then
-
-    return 0
-  fi
-
-  (
-    cd "${DXY_DEPOXY_CLIENT_FULL}/${DXY_VENDOR_ACMESH_NAME}"
-
-    local conf_opts=" \
-      -c user.name=\"${DXY_VENDOR_GITCONFIG_USER_NAME}\" \
-      -c user.email=\"${DXY_VENDOR_GITCONFIG_USER_EMAIL}\" \
-    "
-
-    git init -q -b release .
-
-    eval "git ${conf_opts} commit -q --allow-empty -m \"${empty_msg}\""
-  )
+  init_repo_with_empty_message_vendor_user \
+    "${DXY_DEPOXY_CLIENT_FULL}/${DXY_VENDOR_ACMESH_NAME}" \
+    "release" \
+    "${empty_msg}"
 }
 
 # ***
@@ -1840,7 +1860,7 @@ main () {
   prepare_symlinks_fs
   process_files
 
-  init_repo
+  init_repo_client
   init_repo_acmesh
   omr_acme_checkout
   omr_dxc_infuse
