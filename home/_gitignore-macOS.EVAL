@@ -1,17 +1,9 @@
-# USAGE:
-#   m4_shim \
-#     "+12" "home/_gitignore-macOS.EVAL" \
-#     "home/_gitignore-macOS"
-
-# KEEP FRESH:
-#  meld ~/.depoxy/ambers/archetype/home/_gitignore-macOS.EVAL ~/.depoxy/running/home/_gitignore-macOS
-# 									Aka ~/.gitignore
+# vim:tw=0:ts=2:sw=2:et:norl:ft=gitignore
+# Author: Landon Bouma <https://tallybark.com/>
+# Project: https://github.com/DepoXy/depoxy#🍯
+# License: MIT
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
-
-# DXY_HEADER_AUTHOR
-# DXY_HEADER_PROJECT
-# DXY_HEADER_LICENSE
 
 # *** Init state.
 #
@@ -55,10 +47,19 @@
 # *** DepoXy & Homefries.
 
 # DepoXy: DepoXy (DXY), DepoXy Archetype (DXA), and DepoXy Client (DXC).
-DXY_DEPOXYDIR_BASE_EXCLUDE_RULE
+# - Path depends on how user called deploy-archetype.sh but defaults to:
+#     /.depoxy/.gitignore
+#     /.depoxy/ambers/
+#     /.depoxy/running
+#     /.depoxy/stints/
+# - CXREF: See DXY_DEPOXYDIR_BASE_EXCLUDE_RULE rule:
+#   ~/.depoxy/ambers/archetype/home/_git/info/exclude.EVAL
 
 # Homefries: Bashrc experience.
-DXY_HOMEFRIES_DIR_EXCLUDE_RULE
+# - Path depends on how user called deploy-archetype.sh but defaults to:
+#     /.homefries
+# - CXREF: See DXY_HOMEFRIES_DIR_EXCLUDE_RULE rule:
+#   ~/.depoxy/ambers/archetype/home/_git/info/exclude.EVAL
 
 # DepoXy- and Homefries-infused files.
 /.bashrc
@@ -89,7 +90,10 @@ DXY_HOMEFRIES_DIR_EXCLUDE_RULE
 
 # Dev Kit: Curation of OMR-fetched software repos
 #   (of useful Git, Bash, macOS, and Vim variety).
-DXY_DOPP_KIT_EXCLUDE_RULE
+# - Path depends on how user called deploy-archetype.sh but defaults to:
+#     /.kit/
+# - CXREF: See DXY_DOPP_KIT_EXCLUDE_RULE rule:
+#   ~/.depoxy/ambers/archetype/home/_git/info/exclude.EVAL
 
 # For wget files, like .dmg, .tar.gz, .zip.
 /.downloads/
@@ -102,10 +106,14 @@ DXY_DOPP_KIT_EXCLUDE_RULE
 # - CXREF: DEPOXY_ENABLE_KEEP_ALIVE.
 /.noise/caffeinate_history
 /.noise/pmset_history
+
 # RipGrep search groups. Assemble directories
 # of symlinks to deliberately search across
 # projects spread throughout the filesystem.
-DXY_DEPOXY_PROJLNS_EXCLUDE_RULE
+# - Path depends on how user called deploy-archetype.sh but defaults to:
+#     /.projlns/
+# - CXREF: See DXY_DEPOXY_PROJLNS_EXCLUDE_RULE rule:
+#   ~/.depoxy/ambers/archetype/home/_git/info/exclude.EVAL
 
 # DepoXy sends screen captures to their own special folder,
 # so that the ~/Desktop does not get cluttered with files.
@@ -114,7 +122,10 @@ DXY_DEPOXY_PROJLNS_EXCLUDE_RULE
 #   and wired via `defaults` by:
 #     ~/.depoxy/ambers/bin/onboarder/slather-defaults.sh
 #   - CALSO: DEPOXY_SCREENCAPS_DIR
-DXY_DEPOXY_SCREENCAPS_EXCLUDE_RULE
+# - Path depends on how user called deploy-archetype.sh but defaults to:
+#     /Documents/screencaps/
+# - CXREF: See DXY_DEPOXY_SCREENCAPS_EXCLUDE_RULE rule:
+#   ~/.depoxy/ambers/archetype/home/_git/info/exclude.EVAL
 
 # Created by `mr -d ~/.kit/sh/complete-alias/ install`.
 /.bash_completion

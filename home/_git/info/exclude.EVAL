@@ -14,8 +14,45 @@
 #   ~/.git/info/exclude -> ~/.depoxy/running/home/_git/info/exclude
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
+# ----------------------------------------------------------------- #
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
+#  Rules from Archetype template
+
+# USYNC: The upper half should match the template, save for VARs:
+#
+#  meld ~/.depoxy/ambers/archetype/home/_git/info/exclude.EVAL ~/.depoxy/running/home/_git/info/exclude &
+
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
 /.gitignore.local
+
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
+
+# *** DepoXy & Homefries.
+
+# DepoXy: DepoXy (DXY), DepoXy Archetype (DXA), and DepoXy Client (DXC).
+DXY_DEPOXYDIR_BASE_EXCLUDE_RULE
+
+# Homefries: Bashrc experience.
+DXY_HOMEFRIES_DIR_EXCLUDE_RULE
+
+# Dev Kit: Curation of OMR-fetched software repos
+#   (of useful Git, Bash, macOS, and Vim variety).
+DXY_DOPP_KIT_EXCLUDE_RULE
+
+# RipGrep search groups. Assemble directories
+# of symlinks to deliberately search across
+# projects spread throughout the filesystem.
+DXY_DEPOXY_PROJLNS_EXCLUDE_RULE
+
+# DepoXy sends screen captures to their own special folder,
+# so that the ~/Desktop does not get cluttered with files.
+#
+# - CXREF: This path is created by `screenshots_customize_location`
+#   and wired via `defaults` by:
+#     ~/.depoxy/ambers/bin/onboarder/slather-defaults.sh
+#   - CALSO: DEPOXY_SCREENCAPS_DIR
+DXY_DEPOXY_SCREENCAPS_EXCLUDE_RULE
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
@@ -61,4 +98,13 @@ DXY_VENDOR_HOME_EXCLUDE_RULE[[[]]].mrinfuse
 #  DXY_VENDOR_HOME_EXCLUDE_RULE[[[]]]DXY_VENDOR_ORG02_NAME/DXY_VENDOR_ORG02_PROJ01_NAME/
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
+# ----------------------------------------------------------------- #
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
+#  Client-specific rules
+
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
+
+# *** Your private rules
+
+# (put them here)
 
