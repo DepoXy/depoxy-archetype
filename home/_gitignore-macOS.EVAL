@@ -298,6 +298,14 @@
 # sqlite3
 /.sqlite_history
 
+# DUNNO: Looks like Alacritty assets but unsure what I did to
+# create these.
+# - Subdir is numbered, e.g., ~/.terminfo/61/, but I doubt consistently.
+# ->  /opt/homebrew/Caskroom/alacritty/0.13.2/Alacritty.app/Contents/Resources/61/alacritty*
+/.terminfo/*/alacritty
+# -> /opt/homebrew/Caskroom/alacritty/0.13.2/Alacritty.app/Contents/Resources/61/alacritty-direct*
+/.terminfo/*/alacritty-direct
+
 # Tig Search history.
 /.tig_history
 # HEH?/2021-02-04: Tig config is ~/.config/tig/config, though maybe just on @macOS.
