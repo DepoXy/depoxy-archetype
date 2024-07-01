@@ -913,9 +913,10 @@ infuse =
   # - Depending on project path, Git will load either your personal
   #   user config, or it'll load your business user config.
   if [ -f "${MR_REPO}/home/.gitconfig.user" ]; then
-    symlink_overlay_file \
-      "${MR_REPO}/home/.gitconfig.user" \
-      "${HOME}/.gitconfig.user"
+    # DUNNO: Without ( subshelling ), MR_REPO still changed after
+    # function call (which isn't how it works if you try in shell,
+    # so maybe something mr- or Ruby-related).
+    ( MR_REPO="${HOME}" symlink_mrinfuse_file ".gitconfig.user" )
   else
     # This is a core DepoXy file, so would be unexpected if not found.
     warn "$(font_emphasize "Skipped .gitconfig.user")" \
@@ -925,18 +926,14 @@ infuse =
   # Enterprise Git: Your vendor-specific user.name and user.email.
   # - Used when committing work to vendor projects.
   if [ -f "${MR_REPO}/home/.gitconfig.user-business" ]; then
-    symlink_overlay_file \
-      "${MR_REPO}/home/.gitconfig.user-business" \
-      "${HOME}/.gitconfig.user-business"
+    ( MR_REPO="${HOME}" symlink_mrinfuse_file ".gitconfig.user-business" )
   fi
   #
   # Your Personal Git: Your personal user.name and user.email.
   # - Used when committing work to this project (DXY_DEPOXY_CLIENT_ID)
   #   or any of your other (open source) projects you might have.
   if [ -f "${MR_REPO}/home/.gitconfig.user-personal" ]; then
-    symlink_overlay_file \
-      "${MR_REPO}/home/.gitconfig.user-personal" \
-      "${HOME}/.gitconfig.user-personal"
+    ( MR_REPO="${HOME}" symlink_mrinfuse_file ".gitconfig.user-personal" )
   fi
   #
   # `gh` and `hub` apps enterprise Git token.
