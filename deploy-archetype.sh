@@ -1413,6 +1413,13 @@ init_repo () {
 
   ! ${DRY_RUN} || return 0
 
+  local empty_msg=""
+  if [ -n "${DXY_DEPOXY_INIT_CLIENT_COMMIT+x}" ]; then
+    empty_msg="${DXY_DEPOXY_INIT_CLIENT_COMMIT}"
+  else
+    empty_msg="Flaming: hotnew: DepoXy Client ${DXY_DEPOXY_CLIENT_ID}"
+  fi
+
   cd "${DXY_DEPOXY_CLIENT_FULL}"
 
   # Note that Git config not guaranteed to be wired, so specify
@@ -1424,8 +1431,7 @@ init_repo () {
 
   git init -q -b private .
 
-  eval "git ${conf_opts} commit -q --allow-empty \
-    -m \"Flaming: hotnew: DepoXy Client ${DXY_DEPOXY_CLIENT_ID}\""
+  eval "git ${conf_opts} commit -q --allow-empty -m \"${empty_msg}\""
 
   cd - > /dev/null
 }
