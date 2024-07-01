@@ -32,19 +32,52 @@
 
 [include]
 
+  # CXREF: ~/.depoxy/running/home/.gitconfig.user-personal
   path = .gitconfig.user-personal
 
-[includeIf "gitdir:DXY_VENDOR_HOME_TILDE/"]
+[includeIf "gitdir:~/"]
 
-  path = .gitconfig.user-business
+  # CXREF: ~/.depoxy/running/home/.gitconfig.user-private
+  path = .gitconfig.user-private
 
 # ***
 
-[includeIf "gitdir:DXY_DEPOXY_CLIENT_TILDE/DXY_VENDOR_DOTFILES_NAME/"]
+[includeIf "gitdir:~/.depoxy/ambers/"]
 
+  path = .gitconfig.user-personal
+
+# ***
+
+[includeIf "gitdir:~/.kit/"]
+
+  path = .gitconfig.user-personal
+
+[includeIf "gitdir:~/.kit/.git"]
+
+  path = .gitconfig.user-private
+
+# ***
+
+[includeIf "gitdir:~/.vim/"]
+
+  path = .gitconfig.user-personal
+
+# ***
+
+[includeIf "gitdir:DXY_VENDOR_HOME_TILDE/"]
+
+  # SAVVY: `cd DXY_VENDOR_HOME_TILDE && git whoami` shows private user because
+  #         DXY_VENDOR_HOME_TILDE not its own repo (so `git root` shows user home).
+  #         - But if you enter a git project under DXY_VENDOR_HOME_TILDE, then
+  #           `git whoami` will report the business user.
+  # CXREF: ~/.depoxy/running/home/.gitconfig.user-business
   path = .gitconfig.user-business
 
 [includeIf "gitdir:DXY_DEPOXY_CLIENT_TILDE/DXY_VENDOR_ACMESH_NAME/"]
+
+  path = .gitconfig.user-business
+
+[includeIf "gitdir:DXY_DEPOXY_CLIENT_TILDE/DXY_VENDOR_DOTFILES_NAME/"]
 
   path = .gitconfig.user-business
 
