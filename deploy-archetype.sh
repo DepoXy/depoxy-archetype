@@ -1491,6 +1491,22 @@ init_repo_acmesh () {
 
 # ***
 
+init_repo_flastsh () {
+  local empty_msg=""
+  if [ -n "${DXY_DEPOXY_INIT_FLASTSH_COMMIT+x}" ]; then
+    empty_msg="${DXY_DEPOXY_INIT_FLASTSH_COMMIT}"
+  else
+    empty_msg="${DXY_VENDOR_DOTFILES_NAME}: ${DXY_DEPOXY_HUMAN_NAME}’s dotfiles"
+  fi
+
+  init_repo_with_empty_message_vendor_user \
+    "${DXY_DEPOXY_CLIENT_FULL}/${DXY_VENDOR_DOTFILES_NAME}" \
+    "release" \
+    "${empty_msg}"
+}
+
+# ***
+
 # Create the ~/work project stubs
 omr_acme_checkout () {
   ! ${DRY_RUN} || return 0
@@ -1862,6 +1878,7 @@ main () {
 
   init_repo_client
   init_repo_acmesh
+  init_repo_flastsh
   omr_acme_checkout
   omr_dxc_infuse
   omr_dxc_compile_spells
