@@ -1471,6 +1471,48 @@ init_repo_acmesh () {
 
 # ***
 
+# Create the ~/work project stubs
+omr_acme_checkout () {
+  ! ${DRY_RUN} || return 0
+
+  # Assume not client machine if caller set custom DXY_HOSTNAME.
+  [ "${DXY_HOSTNAME}" = "$(hostname)" ] || return 0
+
+  # CXREF: E.g.,
+  #   ~/work/globex/hammock-district
+  #   ~/work/soylent/soylent-red
+  #   ~/work/soylent/ignore-tests--soylent-red
+  for vendor_proj in \
+    "${DXY_VENDOR_HOME}/${DXY_VENDOR_ORG02_NAME}/${DXY_VENDOR_ORG02_PROJ01_NAME}" \
+    "${DXY_VENDOR_HOME}/${DXY_VENDOR_ORG01_NAME}/${DXY_VENDOR_ORG01_PROJ01_NAME}" \
+    "${DXY_VENDOR_HOME}/${DXY_VENDOR_ORG01_NAME}/ignore-tests--${DXY_VENDOR_ORG01_PROJ01_NAME}" \
+  ; do
+    local base_dir
+    base_dir="$(dirname -- "${vendor_proj}")"
+
+    blot
+    blot mkdir -p -- "${base_dir}"
+    blot cd "${base_dir}"
+    blot mr -d "${vendor_proj}" -n checkout
+    blot
+
+    mkdir -p -- "${base_dir}"
+
+    (
+      cd "${base_dir}"
+
+      # Meh: We could `| tee_or_cat` but then there's no realtime output,
+      # and there's no compelling reason to capture this output anyway.
+
+      SHCOLORS_OFF=false \
+      mr -d "${vendor_proj}" -n checkout \
+        | sed 's/^/  /'
+    )
+  done
+}
+
+# ***
+
 omr_dxc_infuse () {
   ! ${DRY_RUN} || return 0
 
@@ -1800,6 +1842,7 @@ main () {
 
   init_repo
   init_repo_acmesh
+  omr_acme_checkout
   omr_dxc_infuse
   omr_dxc_compile_spells
   omr_dxc_autocommit
