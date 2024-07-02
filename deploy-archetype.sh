@@ -669,6 +669,9 @@ source_deps () {
   # Load user_name_full.
   # - CXREF: ~/.kit/sh/home-fries/lib/user_util.sh
   . "${HOMEFRIES_LIB:-${HOME}/.kit/sh/home-fries/lib}/user_util.sh"
+
+  # Load: remove_symlink_hierarchy_safe
+  . "${GITREPOSPATH:-${HOME}/.kit/git}/myrepos-mredit-command/lib/link_deep.sh"
 }
 
 # ================================================================= #
@@ -1128,13 +1131,12 @@ prepare_symlinks_fs () {
 
   ! ${DRY_RUN} || return 0
 
-  if [ -h "${DXY_MAKE_LNS_FULL}/deploy-archetype.sh" ]; then
-    blot
-    blot "Cleaning up previous symlinks tree"
-    blot
-    blot "  command rm -rf -- \"${DXY_MAKE_LNS_FULL}\""
+  if [ -d "${DXY_MAKE_LNS_FULL}" ]; then
+    if ! remove_symlink_hierarchy_safe "${DXY_MAKE_LNS_FULL}"; then
+      # Something non-symlink thereunder lives. A warning was emitted.
 
-    command rm -rf -- "${DXY_MAKE_LNS_FULL}"
+      exit_1
+    fi
   fi
 
   mkdir_with_trace "${DXY_MAKE_LNS_FULL}"
