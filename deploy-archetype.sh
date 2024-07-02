@@ -1066,7 +1066,10 @@ prepare_client_fs_dest () {
 
   if [ "${dest_dir_abs#${client_dir_abs}}" = "${dest_dir_abs}" ]; then
     # Prefix not stripped, i.e., not a subdir.
-    >&2 blot "$(alert "ERROR: Not a symlink: ${DXY_DEPOXYDIR_RUNNING_FULL}")"
+    # - The two fcns that call this fcn use full client path prefix,
+    #   e.g., dest_path="${DXY_DEPOXY_CLIENT_FULL}/${client_file}"
+    #   so this would be a dev error, aka gaffe.
+    >&2 blot "$(alert "GAFFE: Not a client subdir: ${dest_path}")"
 
     return 1
   fi
