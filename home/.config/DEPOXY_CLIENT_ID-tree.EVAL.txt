@@ -1,5 +1,5 @@
 # USAGE:
-#   ! ${DXY_RUN_LNS_ONLY:-false} || return 0
+#   ! ${DXY_RUN_LNS_ONLY:-false} || exit 0
 #   DEPOXY_TARGET_PATH="home/.config/${DXY_DEPOXY_CLIENT_ID}-tree.txt" &&
 #   DEPOXY_TARGET_FULL="${DXY_DEPOXY_CLIENT_FULL}/${DEPOXY_TARGET_PATH}" &&
 #   mkdir -p -- "$(dirname -- "${DEPOXY_TARGET_FULL}")" &&

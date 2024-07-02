@@ -1312,7 +1312,7 @@ process_file_eval () {
 
   process_eval () {
     set -x
-    eval "${eval_cmd}"
+    ( eval "${eval_cmd}" )
     exit_code=$?
     set +x
 
