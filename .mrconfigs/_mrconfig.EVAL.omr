@@ -199,20 +199,6 @@ autocommit =
   git_auto_commit_one_update \
     "home/.config/karabiner/assets/complex_modifications/9210-privte-docs-launchers-private.json"
   #
-  # MAYBE/2023-01-12: Handle personal mods better:
-  # - 1.) Current sol'n: Update .mrconfigs/_mrconfig after deploy
-  #       and add personal mods (like I've done here w/ 9310).
-  # - 2.) Auto-commit complex_modifications/* (so user does
-  #       not have to do anything).
-  # - 3.) Source a personal .mrconfigs/_mrconfig... that you'd
-  #       add to each DXC after deploy, so similar amount of
-  #       work (though could automate placing separate
-  #       file easier than patching this file)...
-  #       - So either auto-commit w/ glob; or add personal hooks to DXC autocommit and infuse...
-  git_auto_commit_one_update \
-    "home/.config/karabiner/assets/complex_modifications/9310-custom-docs-launchers-private.json"
-  #
-  #
   git_auto_commit_one_update "home/.config/karabiner/karabiner.json"
   #
   git_auto_commit_one_update "home/.config/tig/config"
