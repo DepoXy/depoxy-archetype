@@ -25,7 +25,7 @@ DRY_RUN=${DRY_RUN:-false}
 
 # DEV: If you want to test a specific file, uncomment and change, e.g.,
 #
-#  TEST_FILE="docs/Backlog_Client.EVAL.rst"
+#  DXY_TEST_FILE="docs/Backlog_Client.EVAL.rst"
 
 # ================================================================= #
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
@@ -1250,7 +1250,7 @@ deployed_file_make_link () {
 
   ${DXY_RUN_MAKE_LNS:-false} || return 0
 
-  if [ -n "${TEST_FILE}" ] && [ "${TEST_FILE}" != "${fname}" ]; then
+  if [ -n "${DXY_TEST_FILE}" ] && [ "${DXY_TEST_FILE}" != "${fname}" ]; then
     blot "LINK: SKIP: [${fname}]"
     blot
 
@@ -1286,7 +1286,7 @@ process_file_eval () {
   eval_cmd="$(extract_eval_command "${fname}")"
 
   # See DEV hook atop file. If set, only test specific file.
-  if [ -n "${TEST_FILE}" ] && [ "${TEST_FILE}" != "${fname}" ]; then
+  if [ -n "${DXY_TEST_FILE}" ] && [ "${DXY_TEST_FILE}" != "${fname}" ]; then
     blot "EVAL: SKIP: [${fname}]"
     blot
 
@@ -1353,9 +1353,9 @@ process_file_eval () {
   fi
 
   # See DEV hook atop file. If set, only test specific file.
-  if [ -n "${TEST_FILE}" ]; then
+  if [ -n "${DXY_TEST_FILE}" ]; then
     blot "DEV: Stopping early so you can check result from:"
-    blot "  ${TEST_FILE}"
+    blot "  ${DXY_TEST_FILE}"
 
     exit_1
   fi
