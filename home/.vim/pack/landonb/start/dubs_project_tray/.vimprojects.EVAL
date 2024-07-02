@@ -1023,11 +1023,11 @@ DEPOXY_AMBERS=$HOME/.depoxy/ambers filter=".* *" {
     README--FIXME.rst
     generate_links.sh
    }
-   dubs_project_tray=$HOME/.depoxy/ambers/home/.vim/dubs_project_tray {
-    # dubs_cuts/ ↔ $HOME/.depoxy/ambers/home/.vim/dubs_project_tray/dubs_cuts
+   dubs_project_tray=$HOME/.depoxy/ambers/home/.vim/pack/landonb/start/dubs_project_tray {
+    # dubs_cuts/ ↔ $HOME/.depoxy/ambers/home/.vim/pack/landonb/start/dubs_project_tray/dubs_cuts
     # *** DUBS_VIM DUBS_CUTS Consolidated .vim listing
     # - Rebuilt on `infuse`:
-    #     ~/.depoxy/ambers/home/.vim/dubs_project_tray/generate_links.sh
+    #     ~/.depoxy/ambers/home/.vim/pack/landonb/start/dubs_project_tray/generate_links.sh
     generate_links.sh
    }
    pack=$HOME/.depoxy/ambers/home/.vim/pack {
@@ -1660,7 +1660,7 @@ DUBS_VIM_=$HOME/.vim filter=".* *" exclude=".trustme.log tags" {
     dubs_project_tray.txt
     project.txt
    }
-   # dubs_cuts: $HOME/.depoxy/ambers/home/.vim/dubs_project_tray/dubs_cuts
+   # dubs_cuts: $HOME/.depoxy/ambers/home/.vim/pack/landonb/start/dubs_project_tray/dubs_cuts
    plugin=$HOME/.vim/pack/landonb/start/dubs_project_tray/plugin {
     dubs_project.vim
     dubs_project_tray.vim
@@ -2000,8 +2000,8 @@ DUBS_VIM_=$HOME/.vim filter=".* *" exclude=".trustme.log tags" {
 # DUBS_VIM_
 # *** Consolidated .vim listing
 # Rebuild:
-#   /home/landonb/.waffle/home/.vim/dubs_project_tray/generate_links.sh
-DUBS_CUTS_=$HOME/.depoxy/ambers/home/.vim/dubs_project_tray/dubs_cuts filter=".* *" {
+#   /home/landonb/.waffle/home/.vim/pack/landonb/start/dubs_project_tray/generate_links.sh
+DUBS_CUTS_=$HOME/.depoxy/ambers/home/.vim/pack/landonb/start/dubs_project_tray/dubs_cuts filter=".* *" {
  .ignore
  .vim-autoload-pathogen.vim
  .vim-plugin-dubs_preloads.vim
