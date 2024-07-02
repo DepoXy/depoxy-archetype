@@ -1819,47 +1819,12 @@ _promote_homebrew_bash () {
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-clear_traps () {
-  trap - EXIT INT
-}
-
-set_traps () {
-  trap -- trap_exit EXIT
-  trap -- trap_int INT
-}
-
-exit_0 () {
-  clear_traps
-
-  exit 0
-}
-
-exit_1 () {
-  clear_traps
-
-  exit 1
-}
-
-trap_exit () {
-  clear_traps
-
-  # USAGE: Alert on unexpected error path, so you can add happy path.
-  >&2 echo "ALERT: "$(basename -- "$0")" exited abnormally!"
-  >&2 echo "- Hint: Enable \`set -x\` and run again..."
-
-  exit 2
-}
-
-trap_int () {
-  clear_traps
-
-  exit 3
-}
-
-# ***
-
 main () {
   set -e
+
+  # Load: set_traps, clear_traps, exit_0, exit_1, os_is_macos.
+  # - CXREF: ~/.kit/sh/sh-err-trap/lib/err-trap.sh
+  . "${SHOILERPLATE:-${HOME}/.kit/sh}/sh-err-trap/lib/err-trap.sh"
 
   set_traps
 
