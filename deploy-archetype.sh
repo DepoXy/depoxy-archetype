@@ -1250,6 +1250,13 @@ deployed_file_make_link () {
 
   ${DXY_RUN_MAKE_LNS:-false} || return 0
 
+  if [ -n "${TEST_FILE}" ] && [ "${TEST_FILE}" != "${fname}" ]; then
+    blot "LINK: SKIP: [${fname}]"
+    blot
+
+    return 0
+  fi
+
   if ${DRY_RUN}; then
     blot "LINK:"
     blot "$(\
