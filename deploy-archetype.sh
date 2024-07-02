@@ -1250,13 +1250,6 @@ deployed_file_make_link () {
 
   ${DXY_RUN_MAKE_LNS:-false} || return 0
 
-  local blot_fname=""
-  ${DRY_RUN} || blot_fname=" ${fname}"
-  if ${DXY_RUN_LNS_ONLY:-false}; then
-    blot "LINK:${blot_fname}"
-    blot
-  fi
-
   if ${DRY_RUN}; then
     blot "LINK:"
     blot "$(\
@@ -1268,6 +1261,9 @@ deployed_file_make_link () {
     blot
 
     return 0
+  elif ${DXY_RUN_LNS_ONLY:-false}; then
+    blot "LINK: ${fname}"
+    blot
   fi
 
   # E.g., /Users/user/.depoxy/stints/.syml--XXXX/...
