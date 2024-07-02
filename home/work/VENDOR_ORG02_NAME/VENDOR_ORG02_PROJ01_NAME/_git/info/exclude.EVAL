@@ -11,6 +11,7 @@
 # DXY_HEADER_PROJECT
 # DXY_HEADER_LICENSE
 
+/.editorconfig
 /.gitignore.local
 /.ignore
 
