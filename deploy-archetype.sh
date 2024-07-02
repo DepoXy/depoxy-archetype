@@ -971,6 +971,8 @@ prompt_continue_or_exit () {
   [ -n "${the_choice}" ] || the_choice="y"
 
   [ "${the_choice}" = "y" ] || [ "${the_choice}" = "Y" ] || return 1
+
+  blot
 }
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
@@ -1132,6 +1134,8 @@ prepare_symlinks_fs () {
   ! ${DRY_RUN} || return 0
 
   if [ -d "${DXY_MAKE_LNS_FULL}" ]; then
+    blot "  # Removing old symlinks..."
+
     if ! remove_symlink_hierarchy_safe "${DXY_MAKE_LNS_FULL}"; then
       # Something non-symlink thereunder lives. A warning was emitted.
 
@@ -1178,11 +1182,7 @@ process_file () {
     || [ "${fname}" = "LICENSE" ] \
   ; then
     blot "SKIP: ${fname}"
-    ! ${DXY_OUTPUT_VERBOSE} || blot
-
-    if ${DRY_RUN}; then
-      blot
-    fi
+    blot
   else
     process_file_copy "${fname}"
   fi
