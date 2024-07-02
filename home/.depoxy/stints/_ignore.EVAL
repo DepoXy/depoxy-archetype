@@ -1,0 +1,17 @@
+# USAGE:
+#   m4_shim \
+#     "+10" "home/.depoxy/stints/_ignore.EVAL" \
+#     "home/.depoxy/stints/_ignore"
+
+# vim:tw=0:ts=2:sw=2:et:norl:ft=conf
+
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
+
+# DXY_HEADER_AUTHOR
+# DXY_HEADER_PROJECT
+# DXY_HEADER_LICENSE
+
+# The symlinks in .syml--XXXX/ make it easy to compare the generated and
+# renamed DepoXy Client files under XXXX/ against DepoXy Archetype source.
+/.syml--*
+

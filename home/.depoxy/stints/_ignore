@@ -1,4 +1,0 @@
-# The symlinks in .syml--XXXX/ make it easy to compare the generated and
-# renamed DepoXy Client files under XXXX/ against DepoXy Archetype source.
-/.syml--*
-
