@@ -1291,7 +1291,10 @@ process_file_eval () {
   ! ${DXY_OUTPUT_VERBOSE} || blot
 
   # See DEV hook atop file. If set, only test specific file.
-  [ -z "${TEST_FILE}" ] || [ "${TEST_FILE}" = "${fname}" ] || return 0
+  if [ -n "${TEST_FILE}" ] && [ "${TEST_FILE}" != "${fname}" ]; then
+
+    return 0
+  fi
 
   if ${DXY_OUTPUT_VERBOSE} || ${DRY_RUN}; then
     # The `set -x` before `eval` prints eval_cmd, so only print on DRY_RUN.
