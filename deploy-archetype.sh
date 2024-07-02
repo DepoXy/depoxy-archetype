@@ -858,6 +858,8 @@ gnu_sed () {
 # ================================================================= #
 
 fail_if_target_exists_and_non_empty () {
+  ! ${DXY_RUN_LNS_ONLY:-false} || return 0
+
   [ -d "${DXY_DEPOXY_CLIENT_FULL}" ] || return 0
 
   [ -n "$(ls -A ${DXY_DEPOXY_CLIENT_FULL})" ] || return 0
@@ -1521,6 +1523,8 @@ init_repo_flastsh () {
 omr_acme_checkout () {
   ! ${DRY_RUN} || return 0
 
+  ! ${DXY_RUN_LNS_ONLY:-false} || return 0
+
   # Assume not client machine if caller set custom DXY_HOSTNAME.
   [ "${DXY_HOSTNAME}" = "$(hostname)" ] || return 0
 
@@ -1562,6 +1566,8 @@ omr_acme_checkout () {
 omr_dxc_infuse () {
   ! ${DRY_RUN} || return 0
 
+  ! ${DXY_RUN_LNS_ONLY:-false} || return 0
+
   # Assume not client machine if caller set custom DXY_HOSTNAME.
   [ "${DXY_HOSTNAME}" = "$(hostname)" ] || return 0
 
@@ -1588,6 +1594,8 @@ omr_dxc_infuse () {
 
 omr_dxc_compile_spells () {
   ! ${DRY_RUN} || return 0
+
+  ! ${DXY_RUN_LNS_ONLY:-false} || return 0
 
   (
     local homeish_path="${DXY_DEPOXY_CLIENT_FULL}/home"
@@ -1618,6 +1626,8 @@ omr_dxc_compile_spells () {
 
 omr_dxc_autocommit () {
   ! ${DRY_RUN} || return 0
+
+  ! ${DXY_RUN_LNS_ONLY:-false} || return 0
 
   # Assume not client machine if caller set custom DXY_HOSTNAME.
   [ "${DXY_HOSTNAME}" = "$(hostname)" ] || return 0
@@ -1687,6 +1697,9 @@ omr_dxc_autocommit_demarcate () {
 }
 
 omr_dxc_cleanup () {
+  # Just to be explicit, tho reservable symlink wasn't made in this mode.
+  ! ${DXY_RUN_LNS_ONLY:-false} || return 0
+
   if [ ! -h "${DXY_DEPOXYDIR_RESERVABLE_FULL}" ]; then
     return 0
   fi
