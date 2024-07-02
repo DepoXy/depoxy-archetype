@@ -1365,27 +1365,21 @@ process_file_eval () {
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
-# NOTE: This awk doesn't check that the first line contains "USAGE:".
-#       It just prints output until the first blank line, stripping
-#       leading comment characters; and it ignores any line that starts
-#       with a comment character and a space followed by "USAGE:".
-#       - The convention just happens to be that we start the header
-#         with a "USAGE:" line to remind ourselves that the code
-#         atop such files in this repo are processed through `eval`.
-#       - We could instead remove the "USAGE:" check and just use
-#         `tail -n +2`, and assume that the first line is not
-#         `eval` code.
-#       - Or we could update this `awk` to enforce the "USAGE:"
-#         convention. But that doesn't add much value, other than
-#         double-checking that the code atop the file is really
-#         code that the developer intends to run through `eval`.
-#       - But we're already running code through `eval`, which is
-#         somewhat dangerous (also very powerful). And we only run
-#         `eval` on files from this repo (found via `git ls-files`)
-#         that have "EVAL" in their filename.
-#         - Basically, as as long as we trust our own repo, and our
-#           own work, we should be okay. If something bad happens,
-#           it will have been our own fault.
+# NOTE: This awk isolates a commented eval from atop the given file.
+#       - It ignores lines until it finds one that contains "USAGE:".
+#         - Specifically, it looks for a line that starts with a comment
+#           char(s), followed by a space, followed by "USAGE:".
+#       - Then it prints output until the first blank line.
+#         - It strips leading comment character(s) followed by a space.
+#       - The awk recognizes these comment char(s): # .. " //
+#       - When you open an EVAL file and see the "USAGE:" header, you'll
+#         know the code atop such files is processed through `eval`.
+#       - Note the security implication here — you better trust the files
+#         you're eval'ing! But we only run `eval` on files from this repo
+#         (found via `git ls-files`) that have "EVAL" in their filename.
+#         - Basically, as as long as we trust our own repo, or if this
+#           repo ever has visitors, that you trust us, then we should be
+#           okay. If something bad happens, it'll have been our own fault.
 
 # TRYME: Here's how you can test and verify this function, e.g.,
 #
@@ -1398,10 +1392,12 @@ extract_eval_command () {
 
   awk '
     BEGIN {
+      found_usage = 0;
       found_blank = 0;
     }
 
     /^(#|\.\.|"|\/\/) USAGE:/ {
+      found_usage = 1;
       next;
     }
 
@@ -1410,7 +1406,7 @@ extract_eval_command () {
       next;
     }
 
-    found_blank == 0 {
+    found_usage == 1 && found_blank == 0 {
       gsub(/^(#|\.\.|"|\/\/) /, "");
       print;
     }
