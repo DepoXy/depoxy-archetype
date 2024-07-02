@@ -1285,22 +1285,22 @@ process_file_eval () {
   local eval_cmd
   eval_cmd="$(extract_eval_command "${fname}")"
 
-  local blot_fname=""
-  ${DRY_RUN} || blot_fname=" ${fname}"
-  blot "EVAL:${blot_fname}"
-  ! ${DXY_OUTPUT_VERBOSE} || blot
-
   # See DEV hook atop file. If set, only test specific file.
   if [ -n "${TEST_FILE}" ] && [ "${TEST_FILE}" != "${fname}" ]; then
+    blot "EVAL: SKIP: [${fname}]"
+    blot
 
     return 0
   fi
 
+  blot "EVAL: [${fname}]"
+
   if ${DXY_OUTPUT_VERBOSE} || ${DRY_RUN}; then
     # The `set -x` before `eval` prints eval_cmd, so only print on DRY_RUN.
     blot "${eval_cmd}"
-    blot
   fi
+
+  blot
 
   if ${DRY_RUN}; then
     # Note on DRY_RUN, won't process_eval, so EVAL `LINK:` won't be traced.
