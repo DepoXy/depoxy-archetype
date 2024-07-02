@@ -1207,16 +1207,13 @@ process_file_copy_copy_file () {
   local fname="$1"
   local dest_path="$2"
 
-  ! ${DXY_RUN_LNS_ONLY:-false} || return 0
-
   local exit_code
 
-  local blot_fname=""
-  ${DRY_RUN} || blot_fname=" ${fname}"
-  blot "COPY:${blot_fname}"
-  ! ${DXY_OUTPUT_VERBOSE} || blot
-
-  if ${DRY_RUN}; then
+  if ! ${DRY_RUN}; then
+    blot "COPY: [${fname}]"
+    blot
+  else
+    blot "COPY:"
     blot "$(\
       printf "%s\n%s\n%s" \
         "  command cp -R -P -- \\" \
@@ -1227,6 +1224,8 @@ process_file_copy_copy_file () {
 
     return 0
   fi
+
+  ! ${DXY_RUN_LNS_ONLY:-false} || return 0
 
   prepare_client_fs_dest "${dest_path}" \
     || return 1
@@ -1250,27 +1249,38 @@ deployed_file_make_link () {
 
   ${DXY_RUN_MAKE_LNS:-false} || return 0
 
+  # SAVVY: When called via m4_shim, because process_eval called with
+  # output redirection, print log messages (`blot`) won't work. (It
+  # would when this fcn. called by `process_file_copy`, but then the
+  # output looks like it's missing all the LINK messages (which it
+  # is, for all the EVAL files).)
+  #
+  # - ISOFF: So we won't blot from herein.
+  #   - LATER: Remove the commented code later,
+  #            unless you can make a case for how
+  #            to revive it.
+
   if [ -n "${DXY_TEST_FILE}" ] && [ "${DXY_TEST_FILE}" != "${fname}" ]; then
-    blot "LINK: SKIP: [${fname}]"
-    blot
+    # blot "LINK: SKIP: [${fname}]"
+    # blot
 
     return 0
   fi
 
   if ${DRY_RUN}; then
-    blot "LINK:"
-    blot "$(\
-      printf "%s\n%s\n%s" \
-        "  command ln -s \\" \
-        "    \"${dest_path}\" \\" \
-        "    \"${DXY_MAKE_LNS_FULL}/${fname}\""
-      )"
-    blot
+    # blot "LINK:"
+    # blot "$(\
+    #   printf "%s\n%s\n%s" \
+    #     "  command ln -s \\" \
+    #     "    \"${dest_path}\" \\" \
+    #     "    \"${DXY_MAKE_LNS_FULL}/${fname}\""
+    #   )"
+    # blot
 
     return 0
-  elif ${DXY_RUN_LNS_ONLY:-false}; then
-    blot "LINK: ${fname}"
-    blot
+  # elif ${DXY_RUN_LNS_ONLY:-false}; then
+  #   blot "LINK: ${fname}"
+  #   blot
   fi
 
   # E.g., /Users/user/.depoxy/stints/.syml--XXXX/...
