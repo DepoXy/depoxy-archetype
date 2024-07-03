@@ -806,11 +806,34 @@ infuse =
     copy_depoxy_config () {
       local file="$1"
       #
-      command cp -f -- \
-        "${MR_REPO}/home/${conf_base}/${file}" \
-        "${dxy_conf}/${file}"
+      local conf_source="${MR_REPO}/home/${conf_base}/${file}"
+      local conf_target="${dxy_conf}/${file}"
       #
-      info "$(font_emphasize "Copied ${file}") $(font_highlight ${dxy_conf}/${file})"
+      # Avoid being aggressively clobbery.
+      local conf_sha="${conf_target}.sha"
+      if [ -f "${conf_target}" ] \
+        && [ -f "${conf_sha}" ] \
+        && ! shasum -c "${conf_sha}" > /dev/null 2>&1 \
+      ; then
+        # Note that `\\ \n` works, but not `\\\n`: "Within double quotes,
+        # backslashes that are followed by one of these characters [including
+        # backslash] are removed."
+        >&2 error "ERROR: Did you edit the duplicate copy by mistake?\n" \
+          "meld \\\\\n  ${conf_source} \\\\\n  ${conf_target} &\n" \
+          "rm -- ${conf_target}"
+        return 1
+      fi
+      #
+      command cp -f -- "${conf_source}" "${conf_target}"
+      #
+      shasum "${conf_target}" > "${conf_sha}"
+      #
+      info "$(
+        font_info_updated " Copied "
+      ) $(
+        font_emphasize "conf") replica $(
+        font_highlight ${conf_target}
+      )"
     }
     #
     copy_depoxy_config "depoxyrc"
