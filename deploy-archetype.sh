@@ -1411,7 +1411,7 @@ extract_eval_command () {
       next;
     }
 
-    /^$/ {
+    found_usage == 1 && /^$/ {
       found_blank = 1;
       next;
     }
