@@ -1,7 +1,7 @@
 # USAGE:
 #   m4_shim \
 #     "+8" "home/work/VENDOR_ORG01_NAME/.gitconfig-VENDOR_ORG01_NAME.EVAL" \
-#     "home/${DXY_VENDOR_HOME_NAME}/${DXY_VENDOR_ORG01_NAME}/.gitconfig-${DXY_VENDOR_ORG01_NAME}"
+#     "home/${DXY_DEPOXY_VENDOR_HOME_NAME}/${DXY_VENDOR_ORG01_NAME}/.gitconfig-${DXY_VENDOR_ORG01_NAME}"
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 

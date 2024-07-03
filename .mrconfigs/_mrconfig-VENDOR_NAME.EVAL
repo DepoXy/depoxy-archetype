@@ -27,7 +27,7 @@ infuse =
   # a lot of other home files), but this conf is @biz-specific, and the
   # DXC project config is not PRIVATE-scoped, so we're wiring from here.
   # - Note the rel. source path, which symlink-overlay uses rel. HOME.
-  symlink_overlay_file "DXY_VENDOR_HOME_NAME/.mrinfuse/DXY_VENDOR_ACMESH_CONF" "${HOME}/DXY_VENDOR_ACMESH_CONF"
+  symlink_overlay_file "DXY_DEPOXY_VENDOR_HOME_NAME/.mrinfuse/DXY_VENDOR_ACMESH_CONF" "${HOME}/DXY_VENDOR_ACMESH_CONF"
 
 # ========================================================================
 # ------------------------------------------------------------------------
@@ -75,22 +75,22 @@ autocommit =
   #
   # Here's a slick tar way to copy, because copy isn't idempotent,
   # e.g.,
-  #   command cp -a -- ../home/DXY_VENDOR_HOME_NAME home/
-  # will create home/DXY_VENDOR_HOME_NAME the first time it's run.
+  #   command cp -a -- ../home/DXY_DEPOXY_VENDOR_HOME_NAME home/
+  # will create home/DXY_DEPOXY_VENDOR_HOME_NAME the first time it's run.
   # But the next time you run it, it'll fail and complain about symlinks:
   #   cp: symlink: the/symlink/target: File exists
   # - As an added bonus, tar can exclude files we don't wanna share,
   #   which saves us a `command rm` later.
-  mkdir -p -- "home/DXY_VENDOR_HOME_NAME"
-  tar -C "../home/DXY_VENDOR_HOME_NAME" \
+  mkdir -p -- "home/DXY_DEPOXY_VENDOR_HOME_NAME"
+  tar -C "../home/DXY_DEPOXY_VENDOR_HOME_NAME" \
     --exclude "DXY_VENDOR_ACMESH_NAME/" \
     --exclude "DXY_VENDOR_ACMESH_CONF" \
     -cf - . \
-    | tar -C "home/DXY_VENDOR_HOME_NAME" -xf -
+    | tar -C "home/DXY_DEPOXY_VENDOR_HOME_NAME" -xf -
   # So that I at least have a ref. in my IDE project listing.
   ln -sfn -- \
-    "../../../home/DXY_VENDOR_HOME_NAME/DXY_VENDOR_ACMESH_CONF" \
-    "home/DXY_VENDOR_HOME_NAME/DXY_VENDOR_ACMESH_CONF"
+    "../../../home/DXY_DEPOXY_VENDOR_HOME_NAME/DXY_VENDOR_ACMESH_CONF" \
+    "home/DXY_DEPOXY_VENDOR_HOME_NAME/DXY_VENDOR_ACMESH_CONF"
   # Because directory, use -h option, so you don't follow target symlink
   # and clobber the real DXY_VENDOR_ACMESH_NAME/DXY_VENDOR_ACMESH_NAME file.
   ln -sfn -- "../DXY_VENDOR_ACMESH_NAME" "DXY_VENDOR_ACMESH_NAME"

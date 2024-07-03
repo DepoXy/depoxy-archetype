@@ -51,11 +51,11 @@ lib =
 infuse =
   #
   # Symlink `DXY_VENDOR_HOME_TILDE/DXY_VENDOR_ORG01_NAME/DXY_VENDOR_ORG01_PROJ01_NAME/.git/info/exclude` to the source at
-  # `DXY_DEPOXY_CLIENT_TILDE/home/DXY_VENDOR_HOME_NAME/DXY_VENDOR_ORG01_NAME/DXY_VENDOR_ORG01_PROJ01_NAME/_git/info/exclude`.
+  # `DXY_DEPOXY_CLIENT_TILDE/home/DXY_DEPOXY_VENDOR_HOME_NAME/DXY_VENDOR_ORG01_NAME/DXY_VENDOR_ORG01_PROJ01_NAME/_git/info/exclude`.
   link_private_exclude "$@"
   #
   # Symlink `DXY_VENDOR_HOME_TILDE/DXY_VENDOR_ORG01_NAME/DXY_VENDOR_ORG01_PROJ01_NAME/.ignore` to the source at
-  # `DXY_DEPOXY_CLIENT_TILDE/home/DXY_VENDOR_HOME_NAME/DXY_VENDOR_ORG01_NAME/DXY_VENDOR_ORG01_PROJ01_NAME/_ignore`.
+  # `DXY_DEPOXY_CLIENT_TILDE/home/DXY_DEPOXY_VENDOR_HOME_NAME/DXY_VENDOR_ORG01_NAME/DXY_VENDOR_ORG01_PROJ01_NAME/_ignore`.
   link_private_ignore_ "$@"
   #
   # Install custom ESLint and Jest config. (For whatever reason:
@@ -123,7 +123,7 @@ install =
 
 # Prepare a greppable version of the project that ignores test files.
 # - CXREF: Learn more in the _ignore file:
-#     DXY_DEPOXY_CLIENT_TILDE/home/DXY_VENDOR_HOME_NAME/DXY_VENDOR_ORG01_NAME/ignore-tests--[[[]]]DXY_VENDOR_ORG01_PROJ01_NAME/_ignore
+#     DXY_DEPOXY_CLIENT_TILDE/home/DXY_DEPOXY_VENDOR_HOME_NAME/DXY_VENDOR_ORG01_NAME/ignore-tests--[[[]]]DXY_VENDOR_ORG01_PROJ01_NAME/_ignore
 
 [${VENDOR_HOME:-DXY_VENDOR_HOME__HOME_}/DXY_VENDOR_ORG01_NAME/ignore-tests--[[[]]]DXY_VENDOR_ORG01_PROJ01_NAME]
 checkout = stub_checkout_directory

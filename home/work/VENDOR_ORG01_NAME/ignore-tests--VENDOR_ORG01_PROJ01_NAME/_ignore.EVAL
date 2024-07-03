@@ -1,7 +1,7 @@
 # USAGE:
 #   m4_shim \
 #     "+8" "home/work/VENDOR_ORG01_NAME/ignore-tests--VENDOR_ORG01_PROJ01_NAME/_ignore.EVAL" \
-#     "home/${DXY_VENDOR_HOME_NAME}/${DXY_VENDOR_ORG01_NAME}/ignore-tests--${DXY_VENDOR_ORG01_PROJ01_NAME}/_ignore"
+#     "home/${DXY_DEPOXY_VENDOR_HOME_NAME}/${DXY_VENDOR_ORG01_NAME}/ignore-tests--${DXY_VENDOR_ORG01_PROJ01_NAME}/_ignore"
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
@@ -49,7 +49,7 @@
 # - Remove these comments and rename this file .ignore.example -> .ignore
 #
 # - Update DXY_DEPOXY_CLIENT_TILDE/.mrconfigs/_mrconfig-DXY_DEPOXY_VENDOR_NAME
-#   to make the ~/.projlns/DXY_VENDOR_HOME_NAME symlink on infuse.
+#   to make the ~/.projlns/DXY_DEPOXY_VENDOR_HOME_NAME symlink on infuse.
 #   CXREF: wire_testless_greppable in
 #     DXY_DEPOXY_CLIENT_TILDE/.mrconfigs/_mrconfig-DXY_DEPOXY_VENDOR_NAME
 # - Call `infuse` to create the ~/.projlns symlink.
