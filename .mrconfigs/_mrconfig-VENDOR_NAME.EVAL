@@ -32,7 +32,7 @@ infuse =
 # ========================================================================
 # ------------------------------------------------------------------------
 
-# "Your DXY_VENDOR_NAME_PROPER-specific OMR config and Homefries bashrc"
+# "Your DXY_DEPOXY_VENDOR_NAME_PROPER-specific OMR config and Homefries bashrc"
 [${DEPOXYDIR_STINTS_FULL:-DXY_DEPOXYDIR_STINTS__HOME_}/DXY_DEPOXY_CLIENT_ID/DXY_VENDOR_DOTFILES_NAME]
 lib = remote_set origin git@DXY_VENDOR_GITCONFIG_HUB_HOST:DXY_VENDOR_GITSERVER_USER_NAME/DXY_VENDOR_DOTFILES_NAME.git
 infuseProjlns = OMR_INFUSE_PROJLNS_TOGGLE_OFF=true infuse_projlns_if_personal_project

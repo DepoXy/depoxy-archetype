@@ -18,7 +18,7 @@ If you live in the terminal, this project might appeal to you.
 ## How works
 
 Source the included shell script to codify a lot
-of the DXY_VENDOR_NAME_PROPER shell workflows you'll find in various
+of the DXY_DEPOXY_VENDOR_NAME_PROPER shell workflows you'll find in various
 project *READMEs*, comments, the Corporate wiki, etc.
 
 - Essentially, these are shell commands that the author found
