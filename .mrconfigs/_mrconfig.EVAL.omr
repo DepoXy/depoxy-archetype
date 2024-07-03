@@ -53,7 +53,7 @@ skip = true
 # ------------------------------------------------------------------------
 
 [${DEPOXYDIR_STINTS_FULL:-DXY_DEPOXYDIR_STINTS__HOME_}/DXY_DEPOXY_CLIENT_ID]
-order = 133
+order = 129
 # The client remote has no remote unless you add one for it.
 # - See the private remotes config for where to set the remote:
 #     DXY_DEPOXYDIR_STINTS_TILDE/DXY_DEPOXY_CLIENT_ID/.mrconfigs/_mrconfig-remotes
