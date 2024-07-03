@@ -2,15 +2,8 @@
 
 # USAGE:
 #   m4_shim \
-#     "+17" "home/bashrx.private.HOSTNAME.EVAL.sh" \
+#     "+10" "home/bashrx.private.HOSTNAME.EVAL.sh" \
 #     "home/bashrx.private.${DXY_HOSTNAME}.sh"
-
-# ALTLY: Homefries would autoload file w/ username instead.
-# - E.g., this would also wire into Homefries:
-#
-#   m4_shim \
-#     "+15" "home/bashrx.private.USERNAME.EVAL.sh" \
-#     "home/bashrx.private.${DXY_USERNAME}.sh"
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
