@@ -682,7 +682,7 @@ autocommit =
       return 0
     fi
     #
-    >&2 error "ERROR: Found stray DXC files not registered with autocommit:"
+    >&2 error "ALERT: Found stray DXC files not registered with autocommit:"
     git status -s -- ${ignore_spell_melds} | >&2 sed 's/^.. /  /'
     #
     return 1
