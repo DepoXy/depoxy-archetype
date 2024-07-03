@@ -73,7 +73,7 @@ register_customizable_client_ids () {
 register_customizable_business_values () {
   # What to name some client-specific files, functions, projects,
   # directories, etc.
-  register "DXY_VENDOR_NAME_PROPER" "${VENDOR_NAME_PROPER:-ACME}"
+  register "DXY_DEPOXY_VENDOR_NAME_PROPER" "${VENDOR_NAME_PROPER:-ACME}"
   register "DXY_VENDOR_DOMAIN" "${VENDOR_DOMAIN:-acme.tld}"
   register "DXY_VENDOR_NAME" "${VENDOR_NAME:-${VENDOR_DOMAIN%.tld}}"
 
@@ -1512,7 +1512,7 @@ init_repo_acmesh () {
   if [ -n "${DXY_DEPOXY_INIT_ACMESH_COMMIT+x}" ]; then
     empty_msg="${DXY_DEPOXY_INIT_ACMESH_COMMIT}"
   else
-    empty_msg="${DXY_VENDOR_ACMESH_NAME}: ${DXY_VENDOR_NAME_PROPER} shell juice"
+    empty_msg="${DXY_VENDOR_ACMESH_NAME}: ${DXY_DEPOXY_VENDOR_NAME_PROPER} shell juice"
   fi
 
   local add_all_msg="Insert: Hydrate project"

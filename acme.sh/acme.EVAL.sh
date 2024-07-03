@@ -92,7 +92,7 @@ _acmeco_print_manual () {
 # ========
 #
 # The script defines a number of functions that are useful when
-# working on DXY_VENDOR_NAME_PROPER projects.
+# working on DXY_DEPOXY_VENDOR_NAME_PROPER projects.
 #
 # - This script is designed to help you develop locally, as well
 #   as to connect to and to run various operations against any
@@ -1085,7 +1085,7 @@ _acmeco_print_aliases () {
 
 _acmeco_wire_aliases () {
 
-  # *** Meta tasks (re: this script; not DXY_VENDOR_NAME_PROPER-related)
+  # *** Meta tasks (re: this script; not DXY_DEPOXY_VENDOR_NAME_PROPER-related)
 
   _acmeco_wire_aliases_meta_commands_main
   unset -f _acmeco_wire_aliases_meta_commands_main
