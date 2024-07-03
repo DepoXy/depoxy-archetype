@@ -25,7 +25,7 @@
 __USYNC__ =
   meld \
     DXY_DEPOXYARCHETYPE_DIR_TILDE/.mrconfigs/_mrconfig.EVAL.omr \
-    ~/.depoxy/running/.mrconfigs/_mrconfig &
+    DXY_DEPOXYDIR_RUNNING_TILDE/.mrconfigs/_mrconfig &
 
 # ========================================================================
 # ------------------------------------------------------------------------
@@ -91,12 +91,14 @@ autocommit =
   #
   # ***
   #
+  # Rather than use ${DEPOXY_CLIENT_ID}, suss it, so that autocommit
+  # works on this project regardless if it's the active client or not.
   local depoxy_client_id="$(basename -- "${MR_REPO}")"
   #
   # Prepare args, e.g., `autocommit -y`, or `autocommit -f`.
   git_auto_commit_parse_args "$@"
   #
-  local ambers_path="${DEPOXYAMBERS_DIR:-DXY_DEPOXYAMBERS_DIR__HOME_}"
+  local ambers_path="${DEPOXYAMBERS_DIR:-${HOME}/.depoxy/ambers}"
   #
   # ***
   #
@@ -112,23 +114,23 @@ autocommit =
   # ***
   #
   git_auto_commit_one_omr ".mrconfigs/_mrconfig"
-  git_auto_commit_one_omr ".mrconfigs/_mrconfig-DXY_DEPOXY_USERNAME"
+  git_auto_commit_one_omr ".mrconfigs/_mrconfig-${DEPOXY_USERNAME}"
   #
-  # - Auto-commit just ".mrconfigs/_mrconfig-DXY_VENDOR_NAME":
-  #     git_auto_commit_one_omr ".mrconfigs/_mrconfig-DXY_VENDOR_NAME" "" "${PRIVATE_ACI}"
-  # - Auto-commit ".mrconfigs/_mrconfig-DXY_VENDOR_NAME" and the project-specific configs:
+  # - Auto-commit just ".mrconfigs/_mrconfig-${DEPOXY_VENDOR_NAME:-acme}":
+  #     git_auto_commit_one_omr ".mrconfigs/_mrconfig-${DEPOXY_VENDOR_NAME:-acme}" "" "${PRIVATE_ACI}"
+  # - Auto-commit ".mrconfigs/_mrconfig-${DEPOXY_VENDOR_NAME:-acme}" and the project-specific configs:
   local bizconfs="$(\
     find ".mrconfigs/" \
-      -name "_mrconfig-DXY_VENDOR_NAME" \
-      -o -name "_mrconfig-DXY_VENDOR_NAME--*" \
+      -name "_mrconfig-${DEPOXY_VENDOR_NAME:-acme}" \
+      -o -name "_mrconfig-${DEPOXY_VENDOR_NAME:-acme}--*" \
   )"
   if [ -n "${bizconfs}" ]; then
     git_auto_commit_many ${bizconfs} \
-      -m "${PRIVATE_ACI}: OMR: Update: .mrconfigs/_mrconfig-DXY_VENDOR_NAME[--*]"
+      -m "${PRIVATE_ACI}: OMR: Update: .mrconfigs/_mrconfig-${DEPOXY_VENDOR_NAME:-acme}[--*]"
   fi
   #
-  git_auto_commit_one ".mrconfigs/_mrconfig-DXY_VENDOR_NAME" \
-    -m "${CLEARED_ACI}: DXA: OMR: Update: .mrconfigs/_mrconfig-DXY_VENDOR_NAME"
+  git_auto_commit_one ".mrconfigs/_mrconfig-${DEPOXY_VENDOR_NAME:-acme}" \
+    -m "${CLEARED_ACI}: DXA: OMR: Update: .mrconfigs/_mrconfig-${DEPOXY_VENDOR_NAME:-acme}"
   #
   # ***
   #
@@ -145,11 +147,12 @@ autocommit =
   #
   # Ideally, .whilom/ files would be scoped the same as they'd be at the
   # same path under root DXC/. But this is a rarely-used, niche feature,
-  # so follow this convention: Use .whilom/home/DXY_VENDOR_HOME_NAME/ for PRIVATE files.
+  # so follow this convention:
+  #   Use .whilom/home/${DEPOXY_VENDOR_HOME_NAME:-work}/ for PRIVATE files.
   # Anything else under .whilom/ will be auto-committed unscoped.
-  if [ -d ".whilom/home/DXY_VENDOR_HOME_NAME/" ]; then
-    git_auto_commit_many $(find .whilom/home/DXY_VENDOR_HOME_NAME/ -type f -o -type l) \
-      -m "${PRIVATE_ACI}: Update: .whilom/home/DXY_VENDOR_HOME_NAME/"
+  if [ -d ".whilom/home/${DEPOXY_VENDOR_HOME_NAME:-work}/" ]; then
+    git_auto_commit_many $(find .whilom/home/${DEPOXY_VENDOR_HOME_NAME:-work}/ -type f -o -type l) \
+      -m "${PRIVATE_ACI}: Update: .whilom/home/${DEPOXY_VENDOR_HOME_NAME:-work}/"
   fi
   git_auto_commit_many $(find .whilom/ -type f -o -type l) \
     -m "${CLEARED_ACI}: Update: .whilom/"
@@ -179,7 +182,7 @@ autocommit =
   #
   git_auto_commit_one_update "home/.config/karabiner/README.rst"
   git_auto_commit_one_update \
-    "home/.config/karabiner/assets/complex_modifications/3110-client-DXY_DEPOXY_CLIENT_ID-private.json.example"
+    "home/.config/karabiner/assets/complex_modifications/3110-client-${depoxy_client_id}-private.json.example"
   git_auto_commit_one_update \
     "home/.config/karabiner/assets/complex_modifications/9210-privte-docs-launchers-private.json"
   #
@@ -200,7 +203,7 @@ autocommit =
   git_auto_commit_one_update "home/.depoxy/_gitignore"
   git_auto_commit_one_update "home/.depoxy/stints/_ignore"
   #
-  git_auto_commit_one_update "home/.depoxy/stints/running/DXY_VENDOR_DOTFILES_NAME/README.md"
+  git_auto_commit_one_update "home/.depoxy/stints/running/${DEPOXY_VENDOR_DOTFILES_NAME:-flast.sh}/README.md"
   #
   git_auto_commit_one_update "home/.finicky.js" "~/.finicky.js config."
   #
@@ -404,14 +407,14 @@ autocommit =
     #   but not the ~/.password-store itself.
     #
     # As an example, the following for-loop supposes you have a password,
-    # `DXY_VENDOR_NAME/teams`, which you might need on, e.g., your smartphone
-    # if the Vendor expects you to have access to chat from a personal
-    # device.
+    # "pass ${DEPOXY_VENDOR_NAME:-acme}/teams", which you might need on,
+    # e.g., your smartphone if the Vendor expects you to have access to
+    # chat from a personal device.
     local dxy_target="home/.password-store"
     #
     for pass_path in \
       ".gpg-id" \
-      "DXY_VENDOR_NAME/teams.gpg" \
+      "${DEPOXY_VENDOR_NAME:-acme}/teams.gpg" \
     ; do
       local source="${HOME}/.password-store/${pass_path}"
       local target="${dxy_target}/${pass_path}"
@@ -578,11 +581,11 @@ autocommit =
   #
   # ***
   #
-  git_auto_commit_one_update "home/bashrc.DXY_DEPOXY_USERNAME.sh"
-  git_auto_commit_one_update "home/bashrc.DXY_VENDOR_NAME.sh" "" "${PRIVATE_ACI}"
-  git_auto_commit_one_update "home/bashrx.private.DXY_HOSTNAME.sh"
+  git_auto_commit_one_update "home/bashrc.${DEPOXY_USERNAME}.sh"
+  git_auto_commit_one_update "home/bashrc.${DEPOXY_VENDOR_NAME:-acme}.sh" "" "${PRIVATE_ACI}"
+  git_auto_commit_one_update "home/bashrx.private.${DEPOXY_HOSTNAME}.sh"
   #
-  git_auto_commit_one_update "home/crontab.DXY_DEPOXY_USERNAME" "" "${PRIVATE_ACI}"
+  git_auto_commit_one_update "home/crontab.${DEPOXY_USERNAME}" "" "${PRIVATE_ACI}"
   #
   git_auto_commit_one "home/dubs_projects.vim" \
     -m "${PRIVATE_ACI}: home/dubs_projects.vim (grep-steady mappings)"
@@ -593,16 +596,18 @@ autocommit =
   git_auto_commit_many $(find home/vim-trap/ -type f -o -type l) \
     -m "${CLEARED_ACI}: Update: home/vim-trap/"
   #
-  git_auto_commit_many $(find home/DXY_VENDOR_HOME_NAME/ -type f -o -type l) \
-    -m "${PRIVATE_ACI}: Update: home/DXY_VENDOR_HOME_NAME/"
+  git_auto_commit_many $(find home/${DEPOXY_VENDOR_HOME_NAME:-work}/ -type f -o -type l) \
+    -m "${PRIVATE_ACI}: Update: home/${DEPOXY_VENDOR_HOME_NAME:-work}/"
   #
   # ***
   #
-  if [ -d "home/DXY_VENDOR_HOME_NAME" ]; then
+  if [ -d "home/${DEPOXY_VENDOR_HOME_NAME:-work}" ]; then
     git_auto_commit_many $( \
-      find home/DXY_VENDOR_HOME_NAME/ -path home/DXY_VENDOR_HOME_NAME/DXY_VENDOR_ACMESH_NAME -prune -o -type f -o -type l
+      find home/${DEPOXY_VENDOR_HOME_NAME:-work}/ \
+        -path home/${DEPOXY_VENDOR_HOME_NAME:-work}/${DEPOXY_VENDOR_ACMESH_NAME:-acme.sh} \
+        -prune -o -type f -o -type l
     ) \
-      -m "${PRIVATE_ACI}: Update: home/DXY_VENDOR_HOME_NAME/"
+      -m "${PRIVATE_ACI}: Update: home/${DEPOXY_VENDOR_HOME_NAME:-work}/"
   fi
   #
   # ***
@@ -642,8 +647,8 @@ autocommit =
       return 0
     fi
     #
-    tree -n -a -I .git/ -I "DXY_VENDOR_HOME__HOME_" > "home/.config/${depoxy_client_id}-tree.txt"
-    tree -C -a -I .git/ -I "DXY_VENDOR_HOME__HOME_" > "home/.config/${depoxy_client_id}-tree.col"
+    tree -n -a -I .git/ -I "${DEPOXYDIR_VENDOR_FULL:-${HOME}/work}" > "home/.config/${depoxy_client_id}-tree.txt"
+    tree -C -a -I .git/ -I "${DEPOXYDIR_VENDOR_FULL:-${HOME}/work}" > "home/.config/${depoxy_client_id}-tree.col"
     git_auto_commit_many \
       "home/.config/${depoxy_client_id}-tree.txt" \
       "home/.config/${depoxy_client_id}-tree.col" \
@@ -694,7 +699,7 @@ infusePostRebase =
   #
   # Remember that Git doesn't allow symlinked .gitignore .nomore.
   link_hard "${MR_REPO}/home/.depoxy/_gitignore" \
-    "${DEPOXYDIR_BASE_FULL:-DXY_DEPOXYDIR_BASE__HOME_}/.gitignore"
+    "${DEPOXYDIR_BASE_FULL:-${HOME}/.depoxy}/.gitignore"
   #
   # *** ~/.kube
   #
@@ -714,14 +719,15 @@ infusePostRebase =
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
 infuse =
-  # Get the client name, e.g., 'XXXX' from DXY_DEPOXYDIR_STINTS_TILDE/XXXX.
+  # Rather than use ${DEPOXY_CLIENT_ID}, suss it, so that autocommit
+  # works on this project regardless if it's the active client or not.
   local depoxy_client_id="$(basename -- "${MR_REPO}")"
   #
-  local ambers_path="${DEPOXYAMBERS_DIR:-DXY_DEPOXYAMBERS_DIR__HOME_}"
+  local ambers_path="${DEPOXYAMBERS_DIR:-${HOME}/.depoxy/ambers}"
   #
   # *** `mredit` wiring
   #
-  # CXREF: DXY_DEPOXY_PROJLNS_DIR_TILDE/mymrconfigs/
+  # CXREF: ~/.projlns/mymrconfigs/
   symlink_overlay_file \
     "${MR_REPO}/.mrconfigs/_mrconfig" \
     "${MREDIT_CONFIGS:-${DEPOXY_PROJLNS:-${HOME}/.projlns}/mymrconfigs}/client-${depoxy_client_id}-mrconfig"
@@ -745,7 +751,7 @@ infuse =
   #     ~/.depoxy/running at the client they want to activate,
   #     and then run `mr -d ~/.depoxy/running infuse` to wire it.
   #
-  local depoxydir_running_full="${DEPOXYDIR_RUNNING_FULL:-DXY_DEPOXYDIR_RUNNING__HOME_}"
+  local depoxydir_running_full="${DEPOXYDIR_RUNNING_FULL:-${HOME}/.depoxy/running}"
   local running_now="$(realpath -- "${depoxydir_running_full}")"
   local project_abs="$(realpath -- "${MR_REPO}")"
   if [ "${project_abs}" != "${running_now}" ]; then
@@ -827,9 +833,9 @@ infuse =
   #
   # *** DepoXy filespace
   #
-  # See 'infusePostRebase' task for DXY_DEPOXYDIR_BASE_TILDE/.gitignore hard link.
+  # See 'infusePostRebase' task for ~/.depoxy/.gitignore hard link.
   #
-  # Create the DXY_DEPOXYDIR_RUNNING_TILDE → DXY_DEPOXYDIR_STINTS_TILDE/XXXX symlink.
+  # Create the ~/.depoxy/running → ~/.depoxy/stints/XXXX symlink.
   # - Note that ${DEPOXY_CLIENT_ID} is from user's environ, which depends on
   #   this symlink probably having existed when ${DEPOXY_CLIENT_ID} was set.
   #   - So generally the symlink probably already exists, but if it was
@@ -843,8 +849,8 @@ infuse =
   # *** OMR
   #
   # .mrinfuse/ nesting
-  local dxy_home_work="${MR_REPO}/home/DXY_VENDOR_HOME_NAME"
-  local usr_home_work="DXY_VENDOR_HOME__HOME_"
+  local dxy_home_work="${MR_REPO}/home/${DEPOXY_VENDOR_HOME_NAME:-work}"
+  local usr_home_work="${DEPOXYDIR_VENDOR_FULL:-${HOME}/work}"
   local home_work_hint=""
   # These paths are part the Archetype boilerplate so exist initially,
   # but user may have moved or removed them.
@@ -860,17 +866,17 @@ infuse =
   else
     symlink_overlay_dir \
       "${dxy_home_work}" \
-      "${VENDOR_HOME:-DXY_VENDOR_HOME__HOME_}/.mrinfuse"
+      "${DEPOXYDIR_VENDOR_FULL:-${HOME}/work}/.mrinfuse"
     symlink_overlay_file \
       "${dxy_home_work}/_ignore" \
-      "${VENDOR_HOME:-DXY_VENDOR_HOME__HOME_}/.ignore"
+      "${DEPOXYDIR_VENDOR_FULL:-${HOME}/work}/.ignore"
   fi
   #
   # Alert if missing business client mrconfig (because impossibly unlikely user won't want).
   # - E.g., "/home/user/.depoxy/stints"
-  local stints_dir="${DEPOXYDIR_STINTS_FULL:-DXY_DEPOXYDIR_STINTS__HOME_}"
+  local stints_dir="${DEPOXYDIR_STINTS_FULL:-${HOME}/.depoxy/stints}"
   # - E.g., "/home/user/.depoxy/stints/XXXX/.mrconfigs/_mrconfig-acme"
-  local mr_business="${stints_dir}/DXY_DEPOXY_CLIENT_ID/.mrconfigs/_mrconfig-DXY_VENDOR_NAME"
+  local mr_business="${stints_dir}/${depoxy_client_id}/.mrconfigs/_mrconfig-${DEPOXY_VENDOR_NAME:-acme}"
   if [ ! -f "${mr_business}" ]; then
     info "$(font_emphasize ALERT): No biz config at $(repo_highlight ${mr_business})"
   fi
@@ -879,22 +885,23 @@ infuse =
   #
   symlink_overlay_file \
     "${MR_REPO}/home/.depoxy/stints/_ignore" \
-    "DXY_DEPOXYDIR_STINTS__HOME_/.ignore"
+    "${DEPOXYDIR_STINTS_FULL:-${HOME}/.depoxy/stints}/.ignore"
   #
   # *** BASH
   #
   # DepoXy's generated @biz-specific Bash files.
   # - DEV: Here's where to add your custom @biz-specific Bash:
-  #     bashrx.private.DXY_HOSTNAME.sh.
-  #     bashrx.private.DXY_DEPOXY_USERNAME.sh.
+  #     bashrx.private.${DEPOXY_USERNAME}.sh.
+  #     bashrx.private.${DEPOXY_HOSTNAME}.sh.
   #   And wire more as you like.
   #
-  local bashrx_host="${MR_REPO}/home/bashrx.private.DXY_HOSTNAME.sh"
+  local bashrx_host="${MR_REPO}/home/bashrx.private.${DEPOXY_HOSTNAME}.sh"
   #
   if [ -f "${bashrx_host}" ]; then
+    local hf_dir="${HOMEFRIES_DIR:-${DOPP_KIT:-${HOME}/.kit}/sh/home-fries}"
     symlink_overlay_file \
       "${bashrx_host}" \
-      "${HOMEFRIES_DIR:-${DOPP_KIT:-${HOME}/.kit}/sh/home-fries}/.bashrc-bin/bashrx.private.DXY_HOSTNAME.sh"
+      "${hf_dir}/.bashrc-bin/bashrx.private.${DEPOXY_HOSTNAME}.sh"
   else
     info "$(font_emphasize ALERT): No DXC bashrc at" \
       "$(repo_highlight ${bashrx_host})"
@@ -919,8 +926,8 @@ infuse =
   #   - In any case, I doubt we need this version with two-dots:
   #
   #     symlink_overlay_file \
-  #       "${MR_REPO}/home/bashrx.private.DXY_HOSTNAME.sh" \
-  #       "${HOMEFRIES_DIR:-${DOPP_KIT:-${HOME}/.kit}/sh/home-fries}/.bashrc-bin/bashrx.private.DXY_HOSTNAME..sh"
+  #       "${MR_REPO}/home/bashrx.private.${DEPOXY_HOSTNAME}.sh" \
+  #       "${hf_dir}/.bashrc-bin/bashrx.private.${DEPOXY_HOSTNAME}..sh"
   #
   # *** VIM
   #
@@ -957,7 +964,7 @@ infuse =
   # Reload <\g> search list.
   # - If no such instance:
   #     E247: No registered server named "SAMPI": Send failed.
-  gvim --servername "${GVIM_OPEN_SERVERNAME:-DXY_DEPOXY_GVIM_SERVERNAME}" \
+  gvim --servername "${GVIM_OPEN_SERVERNAME:-🦢}" \
     --remote-send "<ESC>:GrepSteadyReload<CR>" \
     2> /dev/null || true
   # For the convenience.
@@ -995,7 +1002,7 @@ infuse =
   fi
   #
   # Your Personal Git: Your personal user.name and user.email.
-  # - Used when committing work to this project (DXY_DEPOXY_CLIENT_ID)
+  # - Used when committing work to this project (${DEPOXY_CLIENT_ID})
   #   or any of your other (open source) projects you might have.
   if [ -f "${MR_REPO}/home/.gitconfig.user-personal" ]; then
     MR_REPO="${HOME}" symlink_mrinfuse_file ".gitconfig.user-personal"
@@ -1012,7 +1019,7 @@ infuse =
   #   command (which I haven't used much recently).
   #   - So I may need to add `. ~/.github-token` back to private Bashrc.
   # - YOU: Make this manually. Don't need to keep in repo.
-  #        See: DXY_DEPOXY_CLIENT_TILDE/home/bashrx.private.DXY_HOSTNAME.sh
+  #        See: ~/.depoxy/running/home/bashrx.private.${DEPOXY_HOSTNAME}.sh
   #  symlink_overlay_file \
   #    "${MR_REPO}/home/.github-token" \
   #    "${HOME}/.github-token"
@@ -1055,7 +1062,7 @@ infuse =
     (
       cd "${dxy_mrinfuse}/${cmplxmods}"
       local jsonpath
-      # Use -regex to exclude the 3110-client-DXY_DEPOXY_CLIENT_ID-private.json.example file.
+      # Use -regex to exclude the 3110-client-${depoxy_client_id}-private.json.example file.
       for jsonpath in $(find "${cbinfuser}/${cmplxmods}" -maxdepth 1 -type f -regex ".*\.json$"); do
         symlink_overlay_file "${jsonpath}"
       done
@@ -1179,7 +1186,7 @@ infuse =
 # ------------------------------------------------------------------------
 
 # YOU: Add client-specific projects to the another config, e.g.,:
-#        DXY_DEPOXYDIR_RUNNING_TILDE/.mrconfigs/_mrconfig-DXY_VENDOR_NAME
+#        ~/.depoxy/running/.mrconfigs/_mrconfig-${DEPOXY_VENDOR_NAME:-acme}
 #      and reserve this mrconfig for the DepoXy Client project
 #      (so you can more easily keep it synced with the upstream).
 
@@ -1200,8 +1207,8 @@ include =
   #
   # Load lib fcn `hack_patch_opn_to_call_sensible_open`.
   include_js_npm_patch_opn_sensible_open () {
-    local ambers_path="${DEPOXYAMBERS_DIR:-DXY_DEPOXYAMBERS_DIR__HOME_}"
-    # CXREF: DXY_DEPOXYAMBERS_DIR_TILDE/home/.kit/git/ohmyrepos/lib/js-npm-patch-opn-sensible-open
+    local ambers_path="${DEPOXYAMBERS_DIR:-${HOME}/.depoxy/ambers}"
+    # CXREF: ~/.depoxy/ambers/home/.kit/git/ohmyrepos/lib/js-npm-patch-opn-sensible-open
     cat "${ambers_path}/home/.kit/git/ohmyrepos/lib/js-npm-patch-opn-sensible-open"
   }
   include_js_npm_patch_opn_sensible_open
@@ -1212,12 +1219,12 @@ include =
   include_depoxy_client_mr_business () {
     . ${OHMYREPOS_LIB:-${GITREPOSPATH:-${HOME}/.kit/git}/ohmyrepos/lib}/skip-grouping.sh
     #
-    local stints_dir="${DEPOXYDIR_STINTS_FULL:-DXY_DEPOXYDIR_STINTS__HOME_}"
-    # CXREF: DXY_DEPOXYDIR_STINTS_TILDE/DXY_DEPOXY_CLIENT_ID/.mrconfigs/_mrconfig-DXY_VENDOR_NAME
-    #        DXY_DEPOXYARCHETYPE_DIR_TILDE/.mrconfigs/_mrconfig-VENDOR_NAME.EVAL
-    local mr_business="${stints_dir}/DXY_DEPOXY_CLIENT_ID/.mrconfigs/_mrconfig-DXY_VENDOR_NAME"
+    local stints_dir="${DEPOXYDIR_STINTS_FULL:-${HOME}/.depoxy/stints}"
+    # CXREF: ~/.depoxy/running/.mrconfigs/_mrconfig-${DEPOXY_VENDOR_NAME:-acme}
+    #        ~/.depoxy/ambers/archetype/.mrconfigs/_mrconfig-VENDOR_NAME.EVAL
+    local mr_business="${stints_dir}/${DEPOXY_CLIENT_ID}/.mrconfigs/_mrconfig-${DEPOXY_VENDOR_NAME:-acme}"
     if [ -f "${mr_business}" ] && ! (
-        mr_exclusive "business" "vendor" "DXY_VENDOR_HOME_NAME" &&
+        mr_exclusive "business" "vendor" "${DEPOXY_VENDOR_HOME_NAME:-work}" &&
         true
       );
     then
@@ -1232,12 +1239,12 @@ include =
   include_depoxy_client_mr_personal () {
     . ${OHMYREPOS_LIB:-${GITREPOSPATH:-${HOME}/.kit/git}/ohmyrepos/lib}/skip-grouping.sh
     #
-    local stints_dir="${DEPOXYDIR_STINTS_FULL:-DXY_DEPOXYDIR_STINTS__HOME_}"
-    # CXREF: DXY_DEPOXYDIR_STINTS_TILDE/DXY_DEPOXY_CLIENT_ID/.mrconfigs/_mrconfig-DXY_DEPOXY_USERNAME
-    #        DXY_DEPOXYARCHETYPE_DIR_TILDE/.mrconfigs/_mrconfig-USERNAME.EVAL
-    local mr_personal="${stints_dir}/DXY_DEPOXY_CLIENT_ID/.mrconfigs/_mrconfig-DXY_DEPOXY_USERNAME"
+    local stints_dir="${DEPOXYDIR_STINTS_FULL:-${HOME}/.depoxy/stints}"
+    # CXREF: ~/.depoxy/running/.mrconfigs/_mrconfig-${DEPOXY_USERNAME:-${LOGNAME}}
+    #        ~/.depoxy/ambers/archetype/.mrconfigs/_mrconfig-USERNAME.EVAL
+    local mr_personal="${stints_dir}/${DEPOXY_CLIENT_ID}/.mrconfigs/_mrconfig-${DEPOXY_USERNAME}"
     if [ -f "${mr_personal}" ] && ! (
-        mr_exclusive "personal" "user" "DXY_DEPOXY_USERNAME" &&
+        mr_exclusive "personal" "user" "${DEPOXY_USERNAME}" &&
         true
       );
     then
@@ -1254,7 +1261,7 @@ include =
 [DEFAULT]
 include =
   if echo "${MR_ACTION}" | grep -q "Remotes$"; then
-    # CXREF: DXY_DEPOXYDIR_RUNNING_TILDE/.mrconfigs/_mrconfig-remotes
+    # CXREF: ~/.depoxy/running/.mrconfigs/_mrconfig-remotes
     mr_cat "${DEPOXYDIR_RUNNING_FULL:-${HOME}/.depoxy/running}/.mrconfigs/_mrconfig-remotes"
   fi
 

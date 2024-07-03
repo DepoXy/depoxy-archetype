@@ -102,6 +102,30 @@ export DEPOXY_SCREENCAPS_DIR="DXY_DEPOXY_SCREENCAPS_DIR__HOME_"
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
+# *** DepoXy Client OMR config vars
+# E.g., "user"
+export DEPOXY_USERNAME="DXY_DEPOXY_USERNAME"
+
+# E.g., "acme"
+export DEPOXY_VENDOR_NAME="DXY_DEPOXY_VENDOR_NAME"
+
+# E.g., "host"
+export DEPOXY_HOSTNAME="DXY_DEPOXY_HOSTNAME"
+
+# E.g., "work"
+export DEPOXY_VENDOR_HOME_NAME="DXY_DEPOXY_VENDOR_HOME_NAME"
+
+# E.g., "flast.sh"
+export DEPOXY_VENDOR_DOTFILES_NAME="DXY_DEPOXY_VENDOR_DOTFILES_NAME"
+
+# E.g., "acme.sh"
+export DEPOXY_VENDOR_ACMESH_NAME="DXY_DEPOXY_VENDOR_ACMESH_NAME"
+
+# E.g., "${HOME}/work"
+export DEPOXYDIR_VENDOR_FULL="DXY_VENDOR_HOME__HOME_"
+
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
+
 # *** Homefries project config
 #
 #   CXREF: ~/.kit/sh/home-fries
