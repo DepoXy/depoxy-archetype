@@ -13,6 +13,15 @@
 # ========================================================================
 # ------------------------------------------------------------------------
 
+[DEFAULT]
+__USYNC__ =
+  meld \
+    ~/.depoxy/ambers/archetype/.mrconfigs/_mrconfig-remotes.EVAL \
+    ~/.depoxy/running/.mrconfigs/_mrconfig-remotes &
+
+# ========================================================================
+# ------------------------------------------------------------------------
+
 # USAGE: Add overriding config herein to setup your own private remotes.
 #
 # - This approach takes advantage of the fact that `mr` loads all matching
