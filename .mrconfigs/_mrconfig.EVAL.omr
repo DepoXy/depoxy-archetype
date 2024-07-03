@@ -614,6 +614,15 @@ autocommit =
   #
   # ***
   #
+  if [ -d "home/DXY_VENDOR_HOME_NAME" ]; then
+    git_auto_commit_many $( \
+      find home/DXY_VENDOR_HOME_NAME/ -path home/DXY_VENDOR_HOME_NAME/DXY_VENDOR_ACMESH_NAME -prune -o -type f -o -type l
+    ) \
+      -m "${PRIVATE_ACI}: Update: home/DXY_VENDOR_HOME_NAME/"
+  fi
+  #
+  # ***
+  #
   # Personal reSTfold docs.
   #
   git_auto_commit_many $(find private/docs/ -type f -o -type l) \
