@@ -1,7 +1,7 @@
 // USAGE:
 //   m4_shim \
 //     "+8" "home/.depoxy/stints/running/VENDOR_DOTFILES_NAME/README.EVAL.md" \
-//     "home/.depoxy/stints/running/${DXY_VENDOR_DOTFILES_NAME}/README.md"
+//     "home/.depoxy/stints/running/${DXY_DEPOXY_VENDOR_DOTFILES_NAME}/README.md"
 
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
