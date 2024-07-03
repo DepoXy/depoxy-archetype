@@ -18,5 +18,5 @@
 # DepoXy will assume that you're on a client machine.
 # - If not, DepoXy does not load the DepoXy Client.
 
-DXY_HOSTNAME
+DXY_DEPOXY_HOSTNAME
 

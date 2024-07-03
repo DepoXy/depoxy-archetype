@@ -70,7 +70,7 @@ autocommit =
   mkdir -p -- "home"
   command cp -- "../home/bashrc.DXY_DEPOXY_VENDOR_NAME.sh" "home/"
   # MAYBE/2024-05-20 01:39:
-  #  command cp -- "../home/bashrx.private.DXY_HOSTNAME.sh" "home/"
+  #  command cp -- "../home/bashrx.private.DXY_DEPOXY_HOSTNAME.sh" "home/"
   command cp -- "../home/.gitconfig.user-business" "home/"
   #
   # Here's a slick tar way to copy, because copy isn't idempotent,

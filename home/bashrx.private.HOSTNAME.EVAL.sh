@@ -3,7 +3,7 @@
 # USAGE:
 #   m4_shim \
 #     "+10" "home/bashrx.private.HOSTNAME.EVAL.sh" \
-#     "home/bashrx.private.${DXY_HOSTNAME}.sh"
+#     "home/bashrx.private.${DXY_DEPOXY_HOSTNAME}.sh"
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
@@ -117,7 +117,7 @@ bashdx_wire_aliases_open_tracker () {
 # - Defaults to showing the DepoXy Client ID e.g.,
 #     DXY_DEPOXY_USERNAME@DXC[[[]]]DXY_DEPOXY_CLIENT_ID[[[]]]:~ 🍄 $
 # - Disable this to show the machine name in the prompt, e.g.,
-#     DXY_DEPOXY_USERNAME@DXY_HOSTNAME:~ 🍄 $
+#     DXY_DEPOXY_USERNAME@DXY_DEPOXY_HOSTNAME:~ 🍄 $
 # - Or set HOMEFRIES_TERM_UTIL_PS1 to your own PS1 prompt (which
 #   you'd want to do when ${HOME_FRIES_PRELOAD} is true so that
 #   Homefries uses it; or just set your own PS1 here).

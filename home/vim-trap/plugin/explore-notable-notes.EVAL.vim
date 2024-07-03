@@ -78,7 +78,7 @@ endfunction
 
 " This is only enabled when running on the DepoXy Client, so that
 " one can wire their DXC/home/vim-trap plugin on the @leader host.
-if hostname() == 'DXY_HOSTNAME'
+if hostname() == 'DXY_DEPOXY_HOSTNAME'
   call <SID>mappings_explore_docs_setup()
 endif
 
