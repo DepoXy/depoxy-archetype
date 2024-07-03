@@ -184,12 +184,12 @@ register_customizable_git_config () {
   #   you could push to the vendor's Git server (to share with other devs,
   #   or so it's backed up).
   # E.g., "flast.sh", "firstl.sh", "username.sh"
-  register "DXY_VENDOR_DOTFILES_NAME" "${DXY_DEPOXY_USERNAME}.sh"
+  register "DXY_DEPOXY_VENDOR_DOTFILES_NAME" "${DXY_DEPOXY_USERNAME}.sh"
 
   # - And then, if, e.g.,
   #     DXY_VENDOR_GITCONFIG_HUB_HOST="gitlab.acme.com"
   #     DXY_VENDOR_GITSERVER_USER_NAME="First.Last"
-  #     DXY_VENDOR_DOTFILES_NAME="flast.sh"
+  #     DXY_DEPOXY_VENDOR_DOTFILES_NAME="flast.sh"
   #   the complete dotfiles URL is:
   #     https://gitlab.acme.com/First.Last/flast.sh
 
@@ -198,7 +198,7 @@ register_customizable_git_config () {
   # E.g., "https://gitlab.acme.com/User.Name/uname.sh#🥗"
   #  unset -v DXY_VENDOR_DOTFILES_URL
   register "DXY_VENDOR_DOTFILES_URL" \
-    "https://${DXY_VENDOR_GITCONFIG_HUB_HOST}/${DXY_VENDOR_GITSERVER_USER_NAME}/${DXY_VENDOR_DOTFILES_NAME}#🥗"
+    "https://${DXY_VENDOR_GITCONFIG_HUB_HOST}/${DXY_VENDOR_GITSERVER_USER_NAME}/${DXY_DEPOXY_VENDOR_DOTFILES_NAME}#🥗"
   #
   # E.g., "Project: https://gitlab.acme.com/User.Name/uname.sh#🥗"
   unset -v DXY_HEADER_DOTFILES
@@ -1531,11 +1531,11 @@ init_repo_flastsh () {
   if [ -n "${DXY_DEPOXY_INIT_FLASTSH_COMMIT+x}" ]; then
     empty_msg="${DXY_DEPOXY_INIT_FLASTSH_COMMIT}"
   else
-    empty_msg="${DXY_VENDOR_DOTFILES_NAME}: ${DXY_DEPOXY_HUMAN_NAME}’s dotfiles"
+    empty_msg="${DXY_DEPOXY_VENDOR_DOTFILES_NAME}: ${DXY_DEPOXY_HUMAN_NAME}’s dotfiles"
   fi
 
   init_repo_with_empty_message_vendor_user \
-    "${DXY_DEPOXY_CLIENT_FULL}/${DXY_VENDOR_DOTFILES_NAME}" \
+    "${DXY_DEPOXY_CLIENT_FULL}/${DXY_DEPOXY_VENDOR_DOTFILES_NAME}" \
     "release" \
     "${empty_msg}"
 }

@@ -77,7 +77,7 @@
 
   path = .gitconfig.user-business
 
-[includeIf "gitdir:DXY_DEPOXY_CLIENT_TILDE/DXY_VENDOR_DOTFILES_NAME/"]
+[includeIf "gitdir:DXY_DEPOXY_CLIENT_TILDE/DXY_DEPOXY_VENDOR_DOTFILES_NAME/"]
 
   path = .gitconfig.user-business
 

@@ -33,8 +33,8 @@ infuse =
 # ------------------------------------------------------------------------
 
 # "Your DXY_DEPOXY_VENDOR_NAME_PROPER-specific OMR config and Homefries bashrc"
-[${DEPOXYDIR_STINTS_FULL:-DXY_DEPOXYDIR_STINTS__HOME_}/DXY_DEPOXY_CLIENT_ID/DXY_VENDOR_DOTFILES_NAME]
-lib = remote_set origin git@DXY_VENDOR_GITCONFIG_HUB_HOST:DXY_VENDOR_GITSERVER_USER_NAME/DXY_VENDOR_DOTFILES_NAME.git
+[${DEPOXYDIR_STINTS_FULL:-DXY_DEPOXYDIR_STINTS__HOME_}/DXY_DEPOXY_CLIENT_ID/DXY_DEPOXY_VENDOR_DOTFILES_NAME]
+lib = remote_set origin git@DXY_VENDOR_GITCONFIG_HUB_HOST:DXY_VENDOR_GITSERVER_USER_NAME/DXY_DEPOXY_VENDOR_DOTFILES_NAME.git
 infuseProjlns = OMR_INFUSE_PROJLNS_TOGGLE_OFF=true infuse_projlns_if_personal_project
 autocommit =
   # Prepare args, e.g., `autocommit -y`, or `autocommit -f`.
@@ -61,7 +61,7 @@ autocommit =
   #   to ~/.depoxy/stints/XXXX/flast.sh/README.md (so you keep a copy of
   #   the README under DXC; that and other files are copied to flast.sh).
   command cp -- \
-    "../home/.depoxy/stints/running/DXY_VENDOR_DOTFILES_NAME/README.md" \
+    "../home/.depoxy/stints/running/DXY_DEPOXY_VENDOR_DOTFILES_NAME/README.md" \
     "README.md"
   #
   # Incl. vendor project configs.
