@@ -3,7 +3,7 @@
 # USAGE:
 #   m4_shim \
 #     "+24" "acme.sh/acme.EVAL.sh" \
-#     "${DXY_VENDOR_ACMESH_NAME}/${DXY_VENDOR_ACMESH_NAME}" \
+#     "${DXY_DEPOXY_VENDOR_ACMESH_NAME}/${DXY_DEPOXY_VENDOR_ACMESH_NAME}" \
 #     "DXY_VENDOR_ACMESH_ORG01_VAR" \
 #       "ACMESH_ROOT_${DXY_VENDOR_ORG01_NAME^^}" \
 #     "DXY_VENDOR_ACMESH_ORG02_VAR" \
@@ -28,7 +28,7 @@
 # CPYST: How you might re-prefix, e.g., from `ac`/`ac-*` to `xc`/`xc-*`:
 #
 #   command sed 's/\bac\b/xc/g' -i \
-#     "DXY_DEPOXY_CLIENT__HOME_/DXY_VENDOR_ACMESH_NAME/DXY_VENDOR_ACMESH_NAME"
+#     "DXY_DEPOXY_CLIENT__HOME_/DXY_DEPOXY_VENDOR_ACMESH_NAME/DXY_DEPOXY_VENDOR_ACMESH_NAME"
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
@@ -103,7 +103,7 @@ _acmeco_print_manual () {
 #
 # - Source this script to use it:
 #
-#     \$ . path/to/DXY_VENDOR_ACMESH_NAME
+#     \$ . path/to/DXY_DEPOXY_VENDOR_ACMESH_NAME
 #
 #   E.g.,
 #
@@ -115,7 +115,7 @@ _acmeco_print_manual () {
 #     - Feel free to submit patches if you have fixes for other
 #       shells (e.g., Z shell).
 #
-# - If you make changes to the DXY_VENDOR_ACMESH_NAME script, reload it:
+# - If you make changes to the DXY_DEPOXY_VENDOR_ACMESH_NAME script, reload it:
 #
 #     \$ ac-reset
 #
@@ -1258,7 +1258,7 @@ parse_args () {
         shift
         ;;
       *)
-        >&2 echo "Warning: Unrecognized DXY_VENDOR_ACMESH_NAME arg: “$1”"
+        >&2 echo "Warning: Unrecognized DXY_DEPOXY_VENDOR_ACMESH_NAME arg: “$1”"
 
         shift
         ;;

@@ -28,7 +28,7 @@ _ENV_LOCAL_DB_PASSW="XXXX"
 # *** Nexus creds
 
 # YOU: Uncomment and set as necessary.
-# - ALTLY: Set in ~/.netrc (where DXY_VENDOR_ACMESH_NAME looks).
+# - ALTLY: Set in ~/.netrc (where DXY_DEPOXY_VENDOR_ACMESH_NAME looks).
 #
 #   NEXUS_PASSWORD="XXXX"
 

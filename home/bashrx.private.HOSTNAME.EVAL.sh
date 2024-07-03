@@ -152,8 +152,8 @@ bashdxy_source_client_bashrc () {
 
   # Vendor-specific power(ful) shell project.
   # - This path is set by deploy-archetype.sh per [[[DXY_DEPOXY_VENDOR_NAME]]]
-  # CXREF: DXY_DEPOXY_CLIENT_TILDE/DXY_VENDOR_ACMESH_NAME/DXY_VENDOR_ACMESH_NAME
-  local acme_sh="DXY_DEPOXY_CLIENT__HOME_/DXY_VENDOR_ACMESH_NAME/DXY_VENDOR_ACMESH_NAME"
+  # CXREF: DXY_DEPOXY_CLIENT_TILDE/DXY_DEPOXY_VENDOR_ACMESH_NAME/DXY_DEPOXY_VENDOR_ACMESH_NAME
+  local acme_sh="DXY_DEPOXY_CLIENT__HOME_/DXY_DEPOXY_VENDOR_ACMESH_NAME/DXY_DEPOXY_VENDOR_ACMESH_NAME"
   append_bashrc "${acme_sh}"
 
   # Non-vendor-related shell setup (i.e., that you could promote to a public project).

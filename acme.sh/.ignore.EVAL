@@ -1,7 +1,7 @@
 # USAGE:
 #   m4_shim \
 #     "+10" "acme.sh/.ignore.EVAL" \
-#     "${DXY_VENDOR_ACMESH_NAME}/.ignore"
+#     "${DXY_DEPOXY_VENDOR_ACMESH_NAME}/.ignore"
 
 # vim:tw=0:ts=2:sw=2:et:norl:ft=conf
 

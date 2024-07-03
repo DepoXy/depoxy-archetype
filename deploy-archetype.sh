@@ -207,19 +207,19 @@ register_customizable_git_config () {
   # *** acme.sh
 
   # E.g., "acme.sh".
-  register "DXY_VENDOR_ACMESH_NAME" "${DXY_DEPOXY_VENDOR_NAME:-acme}.sh"
+  register "DXY_DEPOXY_VENDOR_ACMESH_NAME" "${DXY_DEPOXY_VENDOR_NAME:-acme}.sh"
   #
   # E.g., "https://gitlab.acme.com/User.Name/acme.sh#🧨"
   #  unset -v DXY_VENDOR_ACMESH_URL
   register "DXY_VENDOR_ACMESH_URL" \
-    "https://${DXY_VENDOR_GITCONFIG_HUB_HOST}/${DXY_VENDOR_GITSERVER_USER_NAME}/${DXY_VENDOR_ACMESH_NAME}#🧨"
+    "https://${DXY_VENDOR_GITCONFIG_HUB_HOST}/${DXY_VENDOR_GITSERVER_USER_NAME}/${DXY_DEPOXY_VENDOR_ACMESH_NAME}#🧨"
   #
   # E.g., "Project: https://gitlab.acme.com/User.Name/acme.sh#🧨"
   unset -v DXY_HEADER_ACMESH
   register "DXY_HEADER_ACMESH" "Project: ${DXY_VENDOR_ACMESH_URL}"
 
   # E.g., "acme".
-  register "DXY_VENDOR_ACMESH_CMD" "${DXY_VENDOR_ACMESH_NAME%.sh}"
+  register "DXY_VENDOR_ACMESH_CMD" "${DXY_DEPOXY_VENDOR_ACMESH_NAME%.sh}"
 
   # E.g., ".acme.conf".
   register "DXY_VENDOR_ACMESH_CONF" ".${DXY_VENDOR_ACMESH_CMD}.conf"
@@ -1512,13 +1512,13 @@ init_repo_acmesh () {
   if [ -n "${DXY_DEPOXY_INIT_ACMESH_COMMIT+x}" ]; then
     empty_msg="${DXY_DEPOXY_INIT_ACMESH_COMMIT}"
   else
-    empty_msg="${DXY_VENDOR_ACMESH_NAME}: ${DXY_DEPOXY_VENDOR_NAME_PROPER} shell juice"
+    empty_msg="${DXY_DEPOXY_VENDOR_ACMESH_NAME}: ${DXY_DEPOXY_VENDOR_NAME_PROPER} shell juice"
   fi
 
   local add_all_msg="Insert: Hydrate project"
 
   init_repo_with_empty_message_vendor_user \
-    "${DXY_DEPOXY_CLIENT_FULL}/${DXY_VENDOR_ACMESH_NAME}" \
+    "${DXY_DEPOXY_CLIENT_FULL}/${DXY_DEPOXY_VENDOR_ACMESH_NAME}" \
     "release" \
     "${empty_msg}" \
     "${add_all_msg}"
