@@ -132,42 +132,86 @@ bashdx_customize_depoxy_client_PS1 () {
 # ----------------------------------------------------------------- #
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
-# Vendor-specific shell setup (part of corp user's dotfiles project).
-bashdxy_source_vendor_dotfiles () {
-  local vendor_wiring="DXY_DEPOXYDIR_RUNNING__HOME_/home/bashrc.DXY_VENDOR_NAME.sh"
+bashdxy_source_client_bashrc () {
+  declare -a bashrcs=()
 
-  if [ -f "${vendor_wiring}" ]; then
-    . "${vendor_wiring}"
-  fi
-}
+  append_bashrc () {
+    local bashrc="$1"
 
-# Vendor-specific power(ful) shell (the more robust acmesh project).
-bashdxy_source_vendor_acmesh () {
-  # CXREF: This path is set by deploy-archetype.sh per [[[DXY_VENDOR_NAME]]]
-  #  local acme_sh="DXY_DEPOXYDIR_RUNNING__HOME_/home/bashrc.private.DXY_VENDOR_NAME.sh"
+    if [ -f "${bashrc}" ]; then
+      bashrcs+=("${bashrc}")
+    fi
+  }
+
+  # ***
+
+  # Vendor-specific shell setup (part of corp user's dotfiles project).
+  # CXREF: DXY_DEPOXY_CLIENT_TILDE/home/bashrc.DXY_VENDOR_NAME.sh
+  local vendor_wiring="DXY_DEPOXY_CLIENT__HOME_/home/bashrc.DXY_VENDOR_NAME.sh"
+  append_bashrc "${vendor_wiring}"
+
+  # Vendor-specific power(ful) shell project.
+  # - This path is set by deploy-archetype.sh per [[[DXY_VENDOR_NAME]]]
+  # CXREF: DXY_DEPOXY_CLIENT_TILDE/DXY_VENDOR_ACMESH_NAME/DXY_VENDOR_ACMESH_NAME
   local acme_sh="DXY_DEPOXY_CLIENT__HOME_/DXY_VENDOR_ACMESH_NAME/DXY_VENDOR_ACMESH_NAME"
+  append_bashrc "${acme_sh}"
 
-  if [ -f "${acme_sh}" ]; then
-    . "${acme_sh}"
-  fi
+  # Non-vendor-related shell setup (i.e., that you could promote to a public project).
+  # CXREF: DXY_DEPOXY_CLIENT_TILDE/home/home/bashrc.DXY_USERNAME.sh
+  local user_sh="DXY_DEPOXY_CLIENT__HOME_/home/bashrc.DXY_USERNAME.sh"
+  append_bashrc "${user_sh}"
+
+  # ***
+
+  local ix
+  local n_files=${#bashrcs[@]}
+  for ((ix = 0; ix < ${n_files}; ix++)); do
+    local file_name="${bashrcs[$ix]}"
+
+    test $((${ix} + 1)) -lt ${n_files} || _DXC_SOURCE_IT_FINIS=true
+
+    _dxc_source "${file_name}"
+  done
 }
 
-# Non-vendor-related shell setup (i.e., that you could promote to a public project).
-bashdxy_source_experimental () {
-  local experimental_sh="DXY_DEPOXYDIR_RUNNING__HOME_/home/bashrc.DXY_USERNAME.sh"
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
-  if [ -f "${experimental_sh}" ]; then
-    . "${experimental_sh}"
-  fi
+# For use with `HOMEFRIES_TRACE=true bash` — See also:
+#   HOMEFRIES_TRACE=true \
+#   HOMEFRIES_PROFILING=true \
+#   HOMEFRIES_PROFILE_THRESHOLD=.01 \
+#     bash
+_DXC_SOURCE_IT_BEGIN=true
+_DXC_SOURCE_IT_FINIS=false
+
+# CXREF: _dxy_source_script:
+#   ~/.depoxy/ambers/home/.kit/sh/home-fries/.bashrc-bin/bashrx.private.sh:10
+_dxc_source () {
+  local full_path="$1"
+
+  _SOURCE_IT_BEGIN=${_DXC_SOURCE_IT_BEGIN} \
+  _SOURCE_IT_FINIS=${_DXC_SOURCE_IT_FINIS} \
+  source_it \
+    "${full_path}" \
+    "${_dxc_source_it_deps_path_none}" \
+    "${_dxc_source_it_log_name_client:-CLIENT}"
+
+  _DXC_SOURCE_IT_BEGIN=false
 }
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 # ----------------------------------------------------------------- #
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
-main () {
-  # Wait for the second pass to run.
-  ${HOME_FRIES_PRELOAD:-false} && return
+_dxc_bashrc_standup () {
+  # Wait for the second pass to run our commands.
+  if ${HOME_FRIES_PRELOAD:-false}; then
+    _SOURCE_IT_BEGIN=true \
+    _SOURCE_IT_FINIS=true \
+    source_it_log_trace "${_dxc_source_it_log_name_client:-CLIENT}" "[no-op]"
+
+    return 0
+  fi
 
   # Set aliases on the second pass.
   # - By setting our aliases later, we'll alert if our aliases conflict
@@ -188,16 +232,36 @@ main () {
 
   # ***
 
-  bashdxy_source_vendor_dotfiles
-  unset -f bashdxy_source_vendor_dotfiles
+  bashdxy_source_client_bashrc
+  unset -f bashdxy_source_client_bashrc
 
-  bashdxy_source_vendor_acmesh
-  unset -f bashdxy_source_vendor_acmesh
+  unset -f _dxc_source
 
-  bashdxy_source_experimental
-  unset -f bashdxy_source_experimental
+  _dxy_unset_functions
+  unset -f _dxy_unset_functions
 }
 
-main "$@"
-unset -f main
+# ***
+
+_dxc_unset_functions_dxc () {
+  _wf_unset_functions_wf
+  unset -f _wf_unset_functions_wf
+
+  # Self-destruct
+  unset -f _dxc_unset_functions_dxc
+}
+
+# USYNC: This overrides same-named function upstream:
+#   ~/.depoxy/ambers/home/.kit/sh/home-fries/.bashrc-bin/bashrx.private.sh:228
+_dxy_unset_functions () {
+  # No-op, so DepoXy doesn't clobber functions before we run.
+  :
+}
+
+# ***
+
+_homefries_private_main_user () {
+  _dxc_bashrc_standup "$@"
+  unset -f _dxc_bashrc_standup
+}
 
