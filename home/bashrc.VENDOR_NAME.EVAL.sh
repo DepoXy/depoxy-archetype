@@ -46,7 +46,7 @@ bashdx_wire_aliases_pushd_paths_vendor_projects () {
   #   DXY_VENDOR_GITSERVER_USER_URL
 
   pushd_alias_or_warn "dddf" "${DEPOXYDIR_STINTS_FULL:-DXY_DEPOXYDIR_STINTS__HOME_}/DXY_DEPOXY_CLIENT_ID/DXY_DEPOXY_VENDOR_DOTFILES_NAME"
-  pushd_alias_or_warn "ddac" "${DEPOXYDIR_STINTS_FULL:-DXY_DEPOXYDIR_STINTS__HOME_}/DXY_DEPOXY_CLIENT_ID/DXY_VENDOR_ACMESH_NAME"
+  pushd_alias_or_warn "ddac" "${DEPOXYDIR_STINTS_FULL:-DXY_DEPOXYDIR_STINTS__HOME_}/DXY_DEPOXY_CLIENT_ID/DXY_DEPOXY_VENDOR_ACMESH_NAME"
 
   # *** Vendor's (example) projects
 
@@ -112,7 +112,7 @@ DXY_VENDOR_ORG02_PROJ02_CD_ALIAS () {
 bashhf_set_start_command () {
   # E.g., if you wanted to start in a specific vendor project directory:
   #   HOMEFRIES_EVAL='cd[[[]]]DXY_VENDOR_ORG02_PROJ01_ABBREV'
-  # Or perhaps the DXY_VENDOR_ACMESH_NAME project directory
+  # Or perhaps the DXY_DEPOXY_VENDOR_ACMESH_NAME project directory
   HOMEFRIES_EVAL='ddac'
 }
 

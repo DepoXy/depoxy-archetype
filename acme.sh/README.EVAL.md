@@ -1,11 +1,11 @@
 // USAGE:
 //   m4_shim \
 //     "+8" "acme.sh/README.EVAL.md" \
-//     "${DXY_VENDOR_ACMESH_NAME}/README.md"
+//     "${DXY_DEPOXY_VENDOR_ACMESH_NAME}/README.md"
 
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-# DXY_VENDOR_ACMESH_NAME 🧨
+# DXY_DEPOXY_VENDOR_ACMESH_NAME 🧨
 
 ## What is
 
@@ -31,7 +31,7 @@ project *READMEs*, comments, the Corporate wiki, etc.
 ## Quick-start
 
 ```
-  $ . path/to/DXY_VENDOR_ACMESH_NAME
+  $ . path/to/DXY_DEPOXY_VENDOR_ACMESH_NAME
 
   $ ac-
   Commands:
