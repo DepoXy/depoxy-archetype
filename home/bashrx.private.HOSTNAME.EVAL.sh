@@ -71,7 +71,7 @@
 
 bashdx_wire_aliases_pushd_paths_cdw () {
   # CXREF: This path is set by deploy-archetype.sh per [[[DXY_VENDOR_HOME]]]
-  local client_dir="${VENDOR_HOME:-DXY_VENDOR_HOME__HOME_}"
+  local client_dir="${DEPOXYDIR_VENDOR_FULL:-DXY_VENDOR_HOME__HOME_}"
 
   if [ -d "${client_dir}" ]; then
     # CXREF: ~/.kit/sh/home-fries/lib/path_util.sh

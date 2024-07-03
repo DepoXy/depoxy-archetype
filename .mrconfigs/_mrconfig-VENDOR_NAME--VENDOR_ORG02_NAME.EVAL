@@ -19,7 +19,7 @@ order = 221
 # ------------------------------------------------------------------------
 
 # Stubbish, for infusing.
-[${VENDOR_HOME:-DXY_VENDOR_HOME__HOME_}/DXY_VENDOR_ORG02_NAME]
+[${DEPOXYDIR_VENDOR_FULL:-DXY_VENDOR_HOME__HOME_}/DXY_VENDOR_ORG02_NAME]
 checkout = true
 infuse =
   link_private_ignore_ "$@"
@@ -35,7 +35,7 @@ infuse =
 #   - For grep ignore, an `.ignore` symlink is created (which assumes
 #     the project doesn't include one already).
 
-[${VENDOR_HOME:-DXY_VENDOR_HOME__HOME_}/DXY_VENDOR_ORG02_NAME/DXY_VENDOR_ORG02_PROJ01_NAME]
+[${DEPOXYDIR_VENDOR_FULL:-DXY_VENDOR_HOME__HOME_}/DXY_VENDOR_ORG02_NAME/DXY_VENDOR_ORG02_PROJ01_NAME]
 # USAGE: Remove 'checkout' line and customize
 checkout = stub_checkout_directory  # Because not a real URL
 

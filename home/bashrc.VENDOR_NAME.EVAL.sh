@@ -50,19 +50,19 @@ bashdx_wire_aliases_pushd_paths_vendor_projects () {
 
   # *** Vendor's (example) projects
 
-  pushd_alias_or_warn "cd[[[]]]DXY_VENDOR_ORG02_PROJ01_ABBREV" "${VENDOR_HOME:-DXY_VENDOR_HOME__HOME_}/DXY_VENDOR_ORG02_NAME/DXY_VENDOR_ORG02_PROJ01_NAME"
+  pushd_alias_or_warn "cd[[[]]]DXY_VENDOR_ORG02_PROJ01_ABBREV" "${DEPOXYDIR_VENDOR_FULL:-DXY_VENDOR_HOME__HOME_}/DXY_VENDOR_ORG02_NAME/DXY_VENDOR_ORG02_PROJ01_NAME"
 
   # - The author will sometimes create a sibling directory with the 'develop'
   #   branch checked out so that `feature-coverage-report` will run coverage
   #   in parallel.
   #   - REFER: https://github.com/DepoXy/feature-coverage-report#🖌️
   # - For example (i.e., this directory may not exist):
-  pushd_alias_or_warn "cd[[[]]]DXY_VENDOR_ORG02_PROJ01_ABBREV[[[]]]d" "${VENDOR_HOME:-DXY_VENDOR_HOME__HOME_}/DXY_VENDOR_ORG02_NAME/DXY_VENDOR_ORG02_PROJ01_NAME--develop"
+  pushd_alias_or_warn "cd[[[]]]DXY_VENDOR_ORG02_PROJ01_ABBREV[[[]]]d" "${DEPOXYDIR_VENDOR_FULL:-DXY_VENDOR_HOME__HOME_}/DXY_VENDOR_ORG02_NAME/DXY_VENDOR_ORG02_PROJ01_NAME--develop"
 
   # YOU: If you have more complicated setup, you could shove that in an
   # alias, or better yet, kick it out to its own function. For example,
   function DXY_VENDOR_ORG01_PROJ01_CD_ALIAS () {
-    pushd "${VENDOR_HOME:-DXY_VENDOR_HOME__HOME_}/DXY_VENDOR_ORG01_NAME/DXY_VENDOR_ORG01_PROJ01_NAME" &> /dev/null;
+    pushd "${DEPOXYDIR_VENDOR_FULL:-DXY_VENDOR_HOME__HOME_}/DXY_VENDOR_ORG01_NAME/DXY_VENDOR_ORG01_PROJ01_NAME" &> /dev/null;
     [ "$(node -v)" = "v10.23.0" ] || nvm use 10
   }
   # You might also want to look into using dotenv or direnv.
@@ -82,7 +82,7 @@ bashdx_wire_aliases_pushd_paths_vendor_projects () {
 # See the _work_env_* defs in ~/.depoxy/ambers/core/cdworkenv.sh
 
 DXY_VENDOR_ORG02_PROJ02_CD_ALIAS () {
-  pushd "${VENDOR_HOME:-DXY_VENDOR_HOME__HOME_}/DXY_VENDOR_ORG02_NAME/DXY_VENDOR_ORG02_PROJ02_NAME" &> /dev/null
+  pushd "${DEPOXYDIR_VENDOR_FULL:-DXY_VENDOR_HOME__HOME_}/DXY_VENDOR_ORG02_NAME/DXY_VENDOR_ORG02_PROJ02_NAME" &> /dev/null
 
   [ "$(node -v)" = "v14.16.0" ] || nvm use 14
 

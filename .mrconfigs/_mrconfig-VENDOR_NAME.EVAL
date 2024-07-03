@@ -19,7 +19,7 @@ order = 220
 # ------------------------------------------------------------------------
 
 # Project stub, for infusing.
-[${VENDOR_HOME:-DXY_VENDOR_HOME__HOME_}]
+[${DEPOXYDIR_VENDOR_FULL:-DXY_VENDOR_HOME__HOME_}]
 checkout = true
 infuse =
   # The DXC project infuse task (~/.depoxy/running/.mrconfigs/_mrconfig)

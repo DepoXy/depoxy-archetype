@@ -89,7 +89,7 @@ register_customizable_business_values () {
   #     come pre-wired.
   #
   # E.g., "/home/user/work"
-  register "DXY_VENDOR_HOME" "${VENDOR_HOME:-${HOME}/work}"
+  register "DXY_VENDOR_HOME" "${DEPOXYDIR_VENDOR_FULL:-${HOME}/work}"
 
   # E.g., "work"
   unset -v DXY_DEPOXY_VENDOR_HOME_NAME
