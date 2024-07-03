@@ -1173,6 +1173,23 @@ infuse =
       command rg "command: aws" ~/.kube/*.yaml
     fi
   fi
+  #
+  # *** dob
+  #
+  infuse_dob_config_if_exists () {
+    (
+      cd "${HOME}"
+      # Install "${XDG_CONFIG_HOME:-${HOME}/.config}/dob"
+      MR_REPO="${HOME}"
+      local sourcep
+      if sourcep="$(path_to_mrinfuse_resolve ".config/dob")" \
+        && [ -d "${sourcep}" ] \
+      ; then
+        symlink_mrinfuse_dir '.config/dob'
+      fi
+    )
+  }
+  infuse_dob_config_if_exists
 
 # ========================================================================
 # ------------------------------------------------------------------------
