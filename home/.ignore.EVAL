@@ -26,6 +26,16 @@
 # Used to backup private ~/.git with other hosts via OMR 'ffssh'.
 /.home/
 
+# -> /Users/user/.depoxy/ambers/home/_mrconfig
+/_mrconfig
+# E.g., .mrinfuse -> ~/.depoxy/ambers/home
+# - Or perhaps .mrinfuse -> ~/.depoxy/stints/XXXX/home
+#   if user is chaining client home/ .mrinfuse paths
+#   (also called mrinfuse-holing).
+/.mrinfuse
+# -> /Users/user/.depoxy/ambers/home/.mrtrust
+/.mrtrust
+
 # Convenience symlinks used for better visibility in Vim project tray.
 #
 # home/dubs_projects.vim -> home/.vim/pack/landonb/start/dubs_grep_steady/dubs_projects.vim
@@ -33,6 +43,9 @@
 #
 # home/.vimprojects -> home/.vim/pack/landonb/start/dubs_project_tray/.vimprojects
 /.vimprojects
+
+# -> ../.mrinfuse/.vim/
+/.vim/.mrinfuse
 
 # Subset of home/.vimprojects that's scoped for put-wise --archive.
 /.vim/pack/landonb/start/dubs_project_tray/.vimprojects--purged
