@@ -34,7 +34,7 @@
 
 # Path to user secrets.
 # - CXREF:
-#   DXY_DEPOXY_CLIENT_TILDE/home/DXY_VENDOR_HOME_NAME/DXY_VENDOR_ACMESH_CONF
+#   DXY_DEPOXY_CLIENT_TILDE/home/DXY_DEPOXY_VENDOR_HOME_NAME/DXY_VENDOR_ACMESH_CONF
 #   DXY_DEPOXYARCHETYPE_DIR_TILDE/home/work/.acme.conf.EVAL
 # E.g., ".acme.conf"
 _ACMECO_CONF_BASE="${ACMESH_CONF_BASE:-DXY_VENDOR_ACMESH_CONF}"
@@ -139,7 +139,7 @@ _acmeco_print_manual () {
 #
 # - Customize environs in the private config:
 #
-#     DXY_DEPOXY_CLIENT_TILDE/home/DXY_VENDOR_HOME_NAME/DXY_VENDOR_ACMESH_CONF
+#     DXY_DEPOXY_CLIENT_TILDE/home/DXY_DEPOXY_VENDOR_HOME_NAME/DXY_VENDOR_ACMESH_CONF
 #
 #   - See inside the file for instructions.
 #

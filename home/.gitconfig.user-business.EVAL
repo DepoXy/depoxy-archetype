@@ -25,7 +25,7 @@
 
 [includeIf "gitdir:DXY_VENDOR_HOME_TILDE/DXY_VENDOR_ORG01_NAME/"]
   # USAGE: Store the config in the DepoXy Client, e.g., this file:
-  path = DXY_DEPOXY_CLIENT_TILDE/home/DXY_VENDOR_HOME_NAME/DXY_VENDOR_ORG01_NAME/.gitconfig-DXY_VENDOR_ORG01_NAME
+  path = DXY_DEPOXY_CLIENT_TILDE/home/DXY_DEPOXY_VENDOR_HOME_NAME/DXY_VENDOR_ORG01_NAME/.gitconfig-DXY_VENDOR_ORG01_NAME
 
 # ***** How to skip pre-commit hooks
 

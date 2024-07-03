@@ -1,7 +1,7 @@
 # USAGE:
 #   m4_shim \
 #     "+10" "home/work/VENDOR_ORG01_NAME/VENDOR_ORG01_PROJ01_NAME/.eslintrc-develop.EVAL" \
-#     "home/${DXY_VENDOR_HOME_NAME}/${DXY_VENDOR_ORG01_NAME}/${DXY_VENDOR_ORG01_PROJ01_NAME}/.eslintrc-develop"
+#     "home/${DXY_DEPOXY_VENDOR_HOME_NAME}/${DXY_VENDOR_ORG01_NAME}/${DXY_VENDOR_ORG01_PROJ01_NAME}/.eslintrc-develop"
 
 # vim:tw=0:ts=2:sw=2:et:norl:ft=conf
 
