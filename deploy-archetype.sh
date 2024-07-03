@@ -1312,8 +1312,18 @@ process_file_eval () {
 
   blot
 
+  stop_if_dxy_test_file () {
+    if [ -n "${DXY_TEST_FILE}" ]; then
+      blot "DEV: Stopping early so you can check result from:"
+      blot "  ${DXY_TEST_FILE}"
+
+      exit_1
+    fi
+  }
+
   if ${DRY_RUN}; then
     # Note on DRY_RUN, won't process_eval, so EVAL `LINK:` won't be traced.
+    stop_if_dxy_test_file
 
     return 0
   fi
@@ -1363,12 +1373,8 @@ process_file_eval () {
   fi
 
   # See DEV hook atop file. If set, only test specific file.
-  if [ -n "${DXY_TEST_FILE}" ]; then
-    blot "DEV: Stopping early so you can check result from:"
-    blot "  ${DXY_TEST_FILE}"
-
-    exit_1
-  fi
+  # - Note if here, we know DXY_TEST_FILE == fname
+  stop_if_dxy_test_file
 
   return ${exit_code}
 }
