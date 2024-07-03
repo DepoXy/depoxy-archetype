@@ -26,7 +26,8 @@ infuse =
   # wires a lot of DXC home files (see also DepoXy's infuser that places
   # a lot of other home files), but this conf is @biz-specific, and the
   # DXC project config is not PRIVATE-scoped, so we're wiring from here.
-  cd && symlink_overlay_file "DXY_VENDOR_HOME_NAME/.mrinfuse/DXY_VENDOR_ACMESH_CONF" && cd -
+  # - Note the rel. source path, which symlink-overlay uses rel. HOME.
+  symlink_overlay_file "DXY_VENDOR_HOME_NAME/.mrinfuse/DXY_VENDOR_ACMESH_CONF" "${HOME}/DXY_VENDOR_ACMESH_CONF"
 
 # ========================================================================
 # ------------------------------------------------------------------------
