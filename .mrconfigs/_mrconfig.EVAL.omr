@@ -61,8 +61,6 @@ fetch = true
 pull = true
 push = true
 update = true
-# Should we include with "vendor", or separate the two?
-#   skip = mr_exclusive "client" && mr_exclusive "vendor"
 skip = mr_exclusive "client"
 infuseProjlns = OMR_INFUSE_PROJLNS_ROOT=true infuse_projlns_if_personal_project
 
@@ -251,10 +249,10 @@ autocommit =
   #
   # *** Key Paddock backups
   #
-  # SAVVY: The "Key Paddock" is a directory on an encrypted file system,
-  # manually mounted by the user, used to persist security-related files.
-  # - The key paddock hosts ~/.gnupg/, ~/.ssh/, and ~/.password-store/.
-  #   - Under $HOME, those three paths each symlink a paddock subpath.
+  # SAVVY: The "Key Paddock" is a specific path on an encrypted file system,
+  # deliberately mounted by the user, used to persist security-related files.
+  # - Specifically, the key paddock hosts ~/.gnupg/, ~/.password-store/, and
+  #   ~/.ssh/ (and those home paths are each a symlink to the paddock path).
   # - CXREF: ~/.kit/odd/321open/lib/biblio.321
   #     # E.g., /Volumes/vestige/.clench
   #     ${ONEOPEN_KEYS_PADDOCK:-${ONEOPEN_MOUNTPOINT:-/Volumes}/${DMG_ENCFS_IMAGE_NAME:-vestige}/.clench}
@@ -353,7 +351,7 @@ autocommit =
   # *** Password Store
   #
   aci_password_store () {
-    # USAGE: Customize this function if you want to backup
+    # USAGE: Uncomment and customize if you want to backup
     #        part of ~/.password-store to the DepoXy Client.
     #
     # Use case: `pass` maintains ~/.password-store as its own Git repo.
@@ -361,14 +359,14 @@ autocommit =
     #   at least on personal machines, where all the passwords are personal.
     # - But on a Vendor machine (the whole point of a DepoXy Client), some
     #   passwords are for Vendor resources, and you shouldn't want (nor
-    #   might legit have a reason) to have a copy of these passwords on
+    #   might legally have a reason) to have a copy of these passwords on
     #   a personal device.
     # - So list the passwords here you want copied to the DepoXy Client, and
     #   then sync the Client between the Vendor machine and personal hosts,
     #   but not the ~/.password-store itself.
     #
     # As an example, the following for-loop supposes you have a password,
-    # `DXY_VENDOR_NAME/teams`, which you might need on, e.g., your smartphone,
+    # `DXY_VENDOR_NAME/teams`, which you might need on, e.g., your smartphone
     # if the Vendor expects you to have access to chat from a personal
     # device.
     local dxy_target="home/.password-store"
@@ -584,8 +582,10 @@ autocommit =
   #
   # *** Tree dumps. (Put this toward end, b/c some steps above create files.)
   #
-  # 2021-08-22: I added these tree dumps 2021-01-31 but they've been of
-  #             no utility to me. So not quite sure why I'm preserving.
+  # Preserving DXC file listings might be of no utility to you, but it's
+  # also nice to have an audit trail sometimes. So long as these commits
+  # are not too noisy. (INERT: Should they be, add a timeout period.)
+  #
   depoxy_client_autocommit_tree_dumps () {
     tree -n -a -I .git/ -I "DXY_VENDOR_HOME__HOME_" > "home/.config/${depoxy_client_id}-tree.txt"
     tree -C -a -I .git/ -I "DXY_VENDOR_HOME__HOME_" > "home/.config/${depoxy_client_id}-tree.col"
@@ -830,7 +830,7 @@ infuse =
   #     if [ -f "${bashrx_full}" ]; then
   #       symlink_overlay_file \
   #         "${bashrx_full}" \
-  #         "${HOMEFRIES_DIR:-${DOPP_KIT:-${HOME}/.kit}/sh/home-fries}/.bashrc-bin/${bashrx_user}"
+  #         "${HOMEFRIES_DIR:-${HOME}/.kit/sh/home-fries}/.bashrc-bin/${bashrx_user}"
   #     fi
   #
   # - At an previous client, in the beginning, $(hostname) would report
@@ -1084,7 +1084,7 @@ infuse =
 # ------------------------------------------------------------------------
 
 # YOU: Add client-specific projects to the another config, e.g.,:
-#        DXY_DEPOXY_CLIENT_TILDE/.mrconfigs/_mrconfig-DXY_VENDOR_NAME
+#        DXY_DEPOXYDIR_RUNNING_TILDE/.mrconfigs/_mrconfig-DXY_VENDOR_NAME
 #      and reserve this mrconfig for the DepoXy Client project
 #      (so you can more easily keep it synced with the upstream).
 

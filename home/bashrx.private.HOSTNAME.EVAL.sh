@@ -21,6 +21,19 @@
 
 # @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ #
 
+# USAGE: This file is prepopulated by DepoXy Archetype for general usage.
+#
+# - SAVVY: While you *could* customize this file with your own additions,
+#   there's also the username Bashrc which is 100% meant to be customized.
+#
+#   - CXREF: Consider customizing the other file instead:
+#
+#       ~/.depoxy/stints/2417/home/bashrx.private.puck.sh
+#
+#   - That way, consider keeping all your private customizations in the
+#     complementary username Bashrc, and leaving this file more in sync
+#     with the Archetype (so it's easier to update if the Archetype changes).
+
 # SAVVY: This file is loaded on terminal startup.
 #
 #        - It's symlinked under ~/.kit/sh/home-fries/.bashrc-bin
