@@ -1265,3 +1265,15 @@ include =
 # ========================================================================
 # ------------------------------------------------------------------------
 
+# SAVVY: Include this last so that its projects override previous config.
+
+[DEFAULT]
+include =
+  if echo "${MR_ACTION}" | grep -q "Remotes$"; then
+    # CXREF: DXY_DEPOXYDIR_RUNNING_TILDE/.mrconfigs/_mrconfig-remotes
+    mr_cat "${DEPOXYDIR_RUNNING_FULL:-${HOME}/.depoxy/running}/.mrconfigs/_mrconfig-remotes"
+  fi
+
+# ========================================================================
+# ------------------------------------------------------------------------
+
