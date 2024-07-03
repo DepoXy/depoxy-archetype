@@ -137,11 +137,11 @@ include =
   #
   # CXREF:
   #   DXY_DEPOXYDIR_STINTS_TILDE/DXY_DEPOXY_CLIENT_ID/.mrconfigs/_mrconfig-DXY_VENDOR_NAME--DXY_VENDOR_ORG01_NAME
-  cat "${dxc_root}/.mrconfigs/_mrconfig-DXY_VENDOR_NAME--DXY_VENDOR_ORG01_NAME"
+  mr_cat "${dxc_root}/.mrconfigs/_mrconfig-DXY_VENDOR_NAME--DXY_VENDOR_ORG01_NAME"
   #
   # CXREF:
   #   DXY_DEPOXYDIR_STINTS_TILDE/DXY_DEPOXY_CLIENT_ID/.mrconfigs/_mrconfig-DXY_VENDOR_NAME--DXY_VENDOR_ORG02_NAME
-  cat "${dxc_root}/.mrconfigs/_mrconfig-DXY_VENDOR_NAME--DXY_VENDOR_ORG02_NAME"
+  mr_cat "${dxc_root}/.mrconfigs/_mrconfig-DXY_VENDOR_NAME--DXY_VENDOR_ORG02_NAME"
 
 # ========================================================================
 # ------------------------------------------------------------------------

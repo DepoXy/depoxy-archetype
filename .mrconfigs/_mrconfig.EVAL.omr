@@ -1126,7 +1126,7 @@ include =
         true
       );
     then
-      cat "${mr_business}"
+      mr_cat "${mr_business}"
     fi
   }
   include_depoxy_client_mr_business
@@ -1146,7 +1146,7 @@ include =
         true
       );
     then
-      cat "${mr_personal}"
+      mr_cat "${mr_personal}"
     fi
   }
   include_depoxy_client_mr_personal
