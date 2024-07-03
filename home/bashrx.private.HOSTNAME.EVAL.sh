@@ -1,6 +1,8 @@
+# vim:tw=0:ts=2:sw=2:et:norl:ft=bash
+
 # USAGE:
 #   m4_shim \
-#     "+15" "home/bashrx.private.HOSTNAME.EVAL.sh" \
+#     "+17" "home/bashrx.private.HOSTNAME.EVAL.sh" \
 #     "home/bashrx.private.${DXY_HOSTNAME}.sh"
 
 # ALTLY: Homefries would autoload file w/ username instead.
