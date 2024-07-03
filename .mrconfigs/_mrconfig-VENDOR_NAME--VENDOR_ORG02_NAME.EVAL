@@ -1,7 +1,7 @@
 # USAGE:
 #   m4_shim \
 #     "+8" ".mrconfigs/_mrconfig-VENDOR_NAME--VENDOR_ORG02_NAME.EVAL" \
-#     ".mrconfigs/_mrconfig-${DXY_VENDOR_NAME}--${DXY_VENDOR_ORG02_NAME}"
+#     ".mrconfigs/_mrconfig-${DXY_DEPOXY_VENDOR_NAME}--${DXY_VENDOR_ORG02_NAME}"
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
@@ -39,7 +39,7 @@ infuse =
 # USAGE: Remove 'checkout' line and customize
 checkout = stub_checkout_directory  # Because not a real URL
 
-lib = remote_set origin git@github.DXY_VENDOR_NAME.com:DXY_VENDOR_ORG02_NAME/DXY_VENDOR_ORG02_PROJ01_NAME.git
+lib = remote_set origin git@github.DXY_DEPOXY_VENDOR_NAME.com:DXY_VENDOR_ORG02_NAME/DXY_VENDOR_ORG02_PROJ01_NAME.git
 
 infuse =
   link_private_exclude "$@"

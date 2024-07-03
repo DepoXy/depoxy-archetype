@@ -48,10 +48,10 @@
 #   - Restart Vim, or :GrepSteadyReload.
 # - Remove these comments and rename this file .ignore.example -> .ignore
 #
-# - Update DXY_DEPOXY_CLIENT_TILDE/.mrconfigs/_mrconfig-DXY_VENDOR_NAME
+# - Update DXY_DEPOXY_CLIENT_TILDE/.mrconfigs/_mrconfig-DXY_DEPOXY_VENDOR_NAME
 #   to make the ~/.projlns/DXY_VENDOR_HOME_NAME symlink on infuse.
 #   CXREF: wire_testless_greppable in
-#     DXY_DEPOXY_CLIENT_TILDE/.mrconfigs/_mrconfig-DXY_VENDOR_NAME
+#     DXY_DEPOXY_CLIENT_TILDE/.mrconfigs/_mrconfig-DXY_DEPOXY_VENDOR_NAME
 # - Call `infuse` to create the ~/.projlns symlink.
 
 # E.g., you might find it easier to get to know a new JavaScript that

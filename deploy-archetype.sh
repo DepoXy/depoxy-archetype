@@ -75,7 +75,7 @@ register_customizable_business_values () {
   # directories, etc.
   register "DXY_DEPOXY_VENDOR_NAME_PROPER" "${VENDOR_NAME_PROPER:-ACME}"
   register "DXY_VENDOR_DOMAIN" "${VENDOR_DOMAIN:-acme.tld}"
-  register "DXY_VENDOR_NAME" "${VENDOR_NAME:-${VENDOR_DOMAIN%.tld}}"
+  register "DXY_DEPOXY_VENDOR_NAME" "${VENDOR_NAME:-${VENDOR_DOMAIN%.tld}}"
 
   # Customize where you'd like to keep business code, e.g., ~/work
   # - You might want to use a name or abbreviation for your current
@@ -207,7 +207,7 @@ register_customizable_git_config () {
   # *** acme.sh
 
   # E.g., "acme.sh".
-  register "DXY_VENDOR_ACMESH_NAME" "${DXY_VENDOR_NAME:-acme}.sh"
+  register "DXY_VENDOR_ACMESH_NAME" "${DXY_DEPOXY_VENDOR_NAME:-acme}.sh"
   #
   # E.g., "https://gitlab.acme.com/User.Name/acme.sh#🧨"
   #  unset -v DXY_VENDOR_ACMESH_URL

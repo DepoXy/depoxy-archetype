@@ -11,7 +11,7 @@
 #     "DXY_NEXUS_REPOSITORY_URL" \
 #       "${DXY_NEXUS_REPOSITORY_URL:-nexus.${DXY_VENDOR_DOMAIN}}" \
 #     "DXY_ACMECO_CLUSTER_DB_LOCAL_URL" \
-#       "db.${DXY_VENDOR_NAME}.cluster.local" \
+#       "db.${DXY_DEPOXY_VENDOR_NAME}.cluster.local" \
 #     "DXY_VENDOR_ACMESH_NAMESPACE" \
 #       "acme-namespace" \
 #     "DXY_ACMECO_FCN_POP_ENVIRONS_EDITABLE_VENDOR_ORG01_NAME" \
@@ -150,7 +150,7 @@ EOF
 
 # The only function "help" is to print the aliases defined below.
 # - And if that's not enough help, please read the function code.
-DXY_VENDOR_NAME () {
+DXY_DEPOXY_VENDOR_NAME () {
   [ -z "$1" ] && echo "USAGE: ac-<TAB>" && return 0
 
   case $1 in
@@ -259,7 +259,7 @@ _acmeco_populate_environs_static_env_environs_local () {
     unset -v ACMECO_DB_URL
   fi
 
-  _ENV_LOCAL_BASE_URL="http://dev.DXY_VENDOR_NAME.local"
+  _ENV_LOCAL_BASE_URL="http://dev.DXY_DEPOXY_VENDOR_NAME.local"
   _acmeco_set_environ_value "_ENV_TOKEN_LOCAL"
 
   # FIXME/2022-01-01: This work for local?:
@@ -275,7 +275,7 @@ _acmeco_populate_environs_static_env_environs_dev () {
 
   local username="$(id -un)"
   _acmeco_set_environ_value_path "_ENV_DEV_KUBECONFIG" \
-    "${HOME}/.kube/DXY_VENDOR_NAME-dev-${username}.yaml"
+    "${HOME}/.kube/DXY_DEPOXY_VENDOR_NAME-dev-${username}.yaml"
 
   # SAVVY: You might not have access to list namespaces:
   #   $ kubectl --kubeconfig "${_ACMECO_KUBECONFIG}" get namespace
@@ -633,7 +633,7 @@ _acmeco_application_run_server () {
 # CAVEAT: Local auth currently only works with Client ID/Client Secret,
 #         and not with global auth (session cookie).
 # MAYBE/2023-01-05: Can you port-forword to cluster Keyclock oauth2 endpoint?:
-#   http://dev.DXY_VENDOR_NAME.local/oauth2/auth
+#   http://dev.DXY_DEPOXY_VENDOR_NAME.local/oauth2/auth
 # and then resolving bearer token from session cookie should work.
 _acmeco_application_run_server_local () {
   _acmeco_environment_populate_environs__local
