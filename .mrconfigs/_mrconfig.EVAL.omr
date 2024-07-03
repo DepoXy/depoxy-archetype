@@ -484,7 +484,6 @@ autocommit =
   SHCOLORS_OFF=false \
   SPF_PRINT_SPELLS=false mr -d . -n -mM spells "$@" 2>&1 \
     | sed 's/^/  /'
-  printf "\n"
   #
   # ***
   #
@@ -580,7 +579,7 @@ autocommit =
       dob --no-color export \
         -o "home/Library/Application Support/dob/dob.sqlite.export"
     else
-      notice "OHYOU: Install \`dob\`"
+      notice "ONBRD: 🔳 Install \`dob\`"
     fi
     #
     git_auto_commit_one "home/Library/Application Support/dob/dob.sqlite.export" \
