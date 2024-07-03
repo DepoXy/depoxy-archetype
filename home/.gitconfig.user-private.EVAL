@@ -16,8 +16,8 @@
 
 [user]
 
-  name = DXY_USERNAME
-  email = DXY_USERNAME@DXY_HOSTNAME
+  name = DXY_DEPOXY_USERNAME
+  email = DXY_DEPOXY_USERNAME@DXY_HOSTNAME
 
 [user]
 

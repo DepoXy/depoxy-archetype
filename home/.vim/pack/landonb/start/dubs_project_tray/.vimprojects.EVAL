@@ -75,7 +75,7 @@ DEPOXY_STINTS=DXY_DEPOXYDIR_BASE_HOME filter=".* *" exclude=".DS_Store" {
    _mrconfig-DXY_VENDOR_NAME
    _mrconfig-DXY_VENDOR_NAME--DXY_VENDOR_ORG01_NAME
    _mrconfig-DXY_VENDOR_NAME--DXY_VENDOR_ORG02_NAME
-   _mrconfig-DXY_USERNAME
+   _mrconfig-DXY_DEPOXY_USERNAME
   }
   docs=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/docs {
    .ignore
@@ -105,10 +105,10 @@ DEPOXY_STINTS=DXY_DEPOXYDIR_BASE_HOME filter=".* *" exclude=".DS_Store" {
    .vimprojects
    _mrconfig
    _gitignore-macOS
-   bashrc.DXY_USERNAME.sh
+   bashrc.DXY_DEPOXY_USERNAME.sh
    bashrc.DXY_VENDOR_NAME.sh
    bashrx.private.DXY_HOSTNAME.sh
-   crontab.DXY_USERNAME
+   crontab.DXY_DEPOXY_USERNAME
    dubs_projects.vim
    vim-trap=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/vim-trap {
     README.rst
@@ -2791,7 +2791,7 @@ MRCONFIGS_=/ filter="*mrconfig* *mrtrust*" {
    _mrconfig-DXY_VENDOR_NAME
    _mrconfig-DXY_VENDOR_NAME--DXY_VENDOR_ORG01_NAME
    _mrconfig-DXY_VENDOR_NAME--DXY_VENDOR_ORG02_NAME
-   _mrconfig-DXY_USERNAME
+   _mrconfig-DXY_DEPOXY_USERNAME
   }
  }
  #
@@ -3348,7 +3348,7 @@ Home=$HOME filter="README.rst" {
 DepoXy-Bashrc=$HOME/.depoxy/ambers/home/.kit/sh/home-fries filter=".* *" {
  .ignore
  .depoxy-brc-client=$HOME/.depoxy/stints/DXY_DEPOXY_CLIENT_ID/home filter="*.sh" {
-  bashrc.DXY_USERNAME.sh
+  bashrc.DXY_DEPOXY_USERNAME.sh
   bashrc.DXY_VENDOR_NAME.sh
   bashrx.private.DXY_HOSTNAME.sh
  }

@@ -1,7 +1,7 @@
 # USAGE:
 #   m4_shim \
 #     "+8" "home/bashrc.USERNAME.EVAL.sh" \
-#     "home/bashrc.${DXY_USERNAME}.sh"
+#     "home/bashrc.${DXY_DEPOXY_USERNAME}.sh"
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
