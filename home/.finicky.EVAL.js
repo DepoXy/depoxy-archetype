@@ -38,6 +38,35 @@ module.exports = {
         args: ["--new-window", urlString],
       }),
     },
+
+    // FEATR: Open terminal `open`'s in a new window.
+    // - SAVVY: `open https://addy` from Alacritty produces:
+    //     opener = { pid = 1234, bundleId = null, path = null, name = null }
+    //   where the 'pid' is for the `open`, I'd guess, because it's gone
+    //   if you look for it after the `open` runs and you copy the pid
+    //   from the Finicky console log.
+    {
+      // SAVVY: If you want to inspect variables, log 'em, e.g.,:
+      //   match: ({opener}) => {
+      //     finicky.log("opener: " + opener.pid + " / " + opener.bundleId
+      //                    + " / " + opener.path + " / " + opener.name);
+      //     // SAVVY: notify() doesn't work for me (tho doesn't error, either):
+      //     finicky.notify("opener.bundleId: " + opener.bundleId);
+      //     return true;
+      //   },
+
+      // MAYBE: We could just do this for all apps, e.g.,:
+      //   match: ({opener}) => true,
+      // But out of curiosity we'll try to limit this to the `open`
+      // command from the terminal (assuming all other apps will set
+      // bundleId non-null), so that we can learn what other apps to
+      // which we might want to extend this functionality.
+      match: ({opener}) => opener.bundleId === null,
+      browser: ({urlString}) => ({
+        name: "Google Chrome",
+        args: ["--new-window", urlString],
+      }),
+    },
   ],
 }
 
