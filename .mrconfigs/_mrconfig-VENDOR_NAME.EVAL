@@ -97,7 +97,8 @@ autocommit =
   # ***
   #
   if [ -z "$(git status --porcelain)" ]; then
-    info "No-op: ${MR_REPO} unchanged"
+    debug "$(fg_mintgreen)$(attr_emphasis)nuttin changed$(attr_reset)" \
+      "$(fg_lightorange)${MR_REPO}$(attr_reset)"
   else
     git add .
     git commit -m "Update: Auto-commit changes."
