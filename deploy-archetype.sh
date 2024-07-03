@@ -232,7 +232,7 @@ register_customizable_personal_values () {
   # - User can change this user later via .gitconfig.user-personal:
   #     ~/.depoxy/ambers/archetype/home/.gitconfig.user-personal.EVAL
   register "DXY_PERSON_GITCONFIG_USER_NAME" "PLEASE_SET_ME"
-  register "DXY_PERSON_GITCONFIG_USER_EMAIL" "PLEASE_SET_ME@${DXY_HOSTNAME}"
+  register "DXY_PERSON_GITCONFIG_USER_EMAIL" "PLEASE_SET_ME@${DXY_DEPOXY_HOSTNAME}"
 
   # Optional: Set the Vim package name the `cvs` alias uses to
   #           `pushd ~/.vim/pack/<PUBLISHER>/start`.
@@ -275,7 +275,7 @@ register_generated () {
   # The ~/.depoxy/running/.hostname file informs DepoXy if certain
   # commands are being run on your @home machine or @work machine.
   # - ALTLY: macOS alternative to `hostname`: `scutil --get LocalHostName`.
-  register "DXY_HOSTNAME" "$(hostname)"
+  register "DXY_DEPOXY_HOSTNAME" "$(hostname)"
 
   register "DXY_USER_HOME" "${HOME}"
 
@@ -1548,8 +1548,8 @@ omr_acme_checkout () {
 
   ! ${DXY_RUN_LNS_ONLY:-false} || return 0
 
-  # Assume not client machine if caller set custom DXY_HOSTNAME.
-  [ "${DXY_HOSTNAME}" = "$(hostname)" ] || return 0
+  # Assume not client machine if caller set custom DXY_DEPOXY_HOSTNAME.
+  [ "${DXY_DEPOXY_HOSTNAME}" = "$(hostname)" ] || return 0
 
   # CXREF: E.g.,
   #   ~/work/globex/hammock-district
@@ -1591,8 +1591,8 @@ omr_dxc_infuse () {
 
   ! ${DXY_RUN_LNS_ONLY:-false} || return 0
 
-  # Assume not client machine if caller set custom DXY_HOSTNAME.
-  [ "${DXY_HOSTNAME}" = "$(hostname)" ] || return 0
+  # Assume not client machine if caller set custom DXY_DEPOXY_HOSTNAME.
+  [ "${DXY_DEPOXY_HOSTNAME}" = "$(hostname)" ] || return 0
 
   blot
   blot mr -d "${DXY_DEPOXY_CLIENT_FULL}" -n infuse
@@ -1652,8 +1652,8 @@ omr_dxc_autocommit () {
 
   ! ${DXY_RUN_LNS_ONLY:-false} || return 0
 
-  # Assume not client machine if caller set custom DXY_HOSTNAME.
-  [ "${DXY_HOSTNAME}" = "$(hostname)" ] || return 0
+  # Assume not client machine if caller set custom DXY_DEPOXY_HOSTNAME.
+  [ "${DXY_DEPOXY_HOSTNAME}" = "$(hostname)" ] || return 0
 
   blot
   blot mr -d "${DXY_DEPOXY_CLIENT_FULL}" -n autocommit -y
