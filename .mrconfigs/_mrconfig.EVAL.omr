@@ -1013,7 +1013,7 @@ infuse =
   # ~/.gitignore.local wiring
   symlink_overlay_dir \
     "${MR_REPO}/home/_git" \
-    "${HOME}/.mrinfuse/_git"
+    "${DEPOXYAMBERS_DIR:-${HOME}/.depoxy/ambers}/home/_git"
   #
   # See 'infusePostRebase' task for ~/.gitignore hard link.
   #
@@ -1093,7 +1093,7 @@ infuse =
     # First wire the mrinfuse path.
     symlink_overlay_dir \
       "${MR_REPO}/home/.kit/_git" \
-      "${HOME}/.mrinfuse/.kit/_git"
+      "${DEPOXYAMBERS_DIR:-${HOME}/.depoxy/ambers}/home/.kit/_git"
     #
     # Next, call the internal that link_private_exclude calls, but skip
     # link_private_exclude, because we need to kludge around ${MR_REPO}.
