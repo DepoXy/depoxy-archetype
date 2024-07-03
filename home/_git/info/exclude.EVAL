@@ -60,6 +60,10 @@ DXY_DEPOXY_SCREENCAPS_EXCLUDE_RULE
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
+# *** ACME acme.sh config
+
+/DXY_VENDOR_ACMESH_CONF
+
 # *** Ignore all vendor projects
 
 # YOU: Decide if you want to ignore everything else under
