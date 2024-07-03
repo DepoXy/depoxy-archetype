@@ -132,14 +132,6 @@ bashdx_customize_depoxy_client_PS1 () {
 # ----------------------------------------------------------------- #
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
-bashdx_alias_bye () {
-  claim_alias_or_warn "bye" "say 'see e yuh wunt wanna be e yuh'"
-}
-
-# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
-# ----------------------------------------------------------------- #
-# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
-
 # Vendor-specific shell setup (part of corp user's dotfiles project).
 bashdxy_source_vendor_dotfiles () {
   local vendor_wiring="DXY_DEPOXYDIR_RUNNING__HOME_/home/bashrc.DXY_VENDOR_NAME.sh"
