@@ -25,22 +25,18 @@
 /DXY_DEPOXYAMBERS_NAME/
 
 # The git-put-wise patches repo, for secure push/pull using encrypted patches.
-# E.g., /patchr/
 /DXY_PW_PATCHES_NAME/
 
-# Symlink to active DepoXy Client, e.g.,
-# E.g., running → stints/2324
-#   DXY_DEPOXYDIR_RUNNING_NAME → DXY_DEPOXYDIR_STINTS_NAME/DXY_DEPOXY_CLIENT_ID
+# Symlink to active DepoXy Client.
+#  running -> DXY_DEPOXYDIR_STINTS_NAME/DXY_DEPOXY_CLIENT_ID
 /DXY_DEPOXYDIR_RUNNING_NAME
 
 /DXY_DEPOXYDIR_STINTS_NAME/.ignore
 
 # The @biz-specific DepoXy Client.
-# E.g., /stints/2241/
 /DXY_DEPOXYDIR_STINTS_NAME/DXY_DEPOXY_CLIENT_ID/
 
 # DXC symlinks named like DepoXy Archetype templates, for diffing.
-# E.g., /stints/.syml--*
 /DXY_DEPOXYDIR_STINTS_NAME/.syml--*
 
 # ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #

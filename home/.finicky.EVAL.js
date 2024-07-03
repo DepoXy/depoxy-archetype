@@ -17,24 +17,24 @@
 module.exports = {
   defaultBrowser: "Google Chrome",
   handlers: [
-    // E.g.,
-    //
+    // REFER: How you might send specific URLs to specific browsers, e.g.,
     //   {
     //     match: /^https?:\/\/google\.com\/.*$/,
     //     browser: "Safari"
     //   },
 
-    // Opens Slack links in a new window.
+    // FEATR: Open Slack links in a new window.
     {
+      // ALTLY: Match multiple apps, e.g.,
+      //    match: ({opener}) => ["org.bar", "org.foo"].includes(opener.bundleId),
       match: ({opener}) => opener.bundleId === "com.tinyspeck.slackmacgap",
+
       browser: ({urlString}) => ({
         name: "Google Chrome",
         // appType: "appName" // Force name type. "appName", "bundleId" or "appPath",
         // openInBackground: true, // or false, force opening the browser in the background
         // openInBackground: urlString.includes("farcebook"), // e.g.
         // profile: "Default",
-        // Undocumented, but I see in source:
-        // - Ugh, *of course* this would do that: Opens new window alright, but sans location.
         args: ["--new-window", urlString],
       }),
     },

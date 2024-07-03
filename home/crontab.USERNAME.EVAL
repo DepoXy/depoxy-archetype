@@ -24,6 +24,11 @@
 #
 #     crontab -r
 
+# CALSO: On macOS, see also launchd (and its StartInterval option)
+#        to schedule jobs.
+#
+# - Nonetheless, this job still works on @macOS.
+
 # Some ideas:
 #
 # - You might add a daily backup job herein, or a monthly omr-report

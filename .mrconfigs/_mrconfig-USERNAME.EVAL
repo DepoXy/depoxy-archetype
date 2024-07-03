@@ -71,8 +71,9 @@ install =
   . "${DOPP_KIT:-${HOME}/.kit}/odd/321open/lib/key_paddock.sh"
   #
   if ! verify_key_paddock_repo_and_home_dir_symlinks; then
-    # MR_REPO/.git missing, or ~/.gunpg, ~/.ssh/config, and/or ~/.password-store not each a symlink (as setup by
-    # `312open`, and `relocate_keys_paddock_dirs`.
+    # MR_REPO/.git missing, or ~/.gunpg, ~/.ssh/config, and/or
+    # ~/.password-store not each a symlink (as setup by `312open`,
+    # and `relocate_keys_paddock_dirs`.
     >&2 warn "ERROR: Missing Key Paddock, or home paths not all symlinks"
     #
     return 1
