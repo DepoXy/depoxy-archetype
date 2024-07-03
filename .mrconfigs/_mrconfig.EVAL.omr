@@ -1,6 +1,8 @@
+# vim:tw=0:ts=2:sw=2:et:norl:nospell:ft=bash
+
 # USAGE:
 #   m4_shim \
-#     "+13" ".mrconfigs/_mrconfig.EVAL.omr" \
+#     "+15" ".mrconfigs/_mrconfig.EVAL.omr" \
 #     ".mrconfigs/_mrconfig"
 
 # KEEP FRESH:
