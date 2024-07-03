@@ -56,7 +56,7 @@ order = 166
 [${ONEOPEN_KEYS_PADDOCK:-${ONEOPEN_MOUNTPOINT:-/Volumes}/vestige/.clench}]
 order = 180
 lib = remote_set_private
-skip = [ ! -d "${MR_REPO}" ] || mr_exclusive "home" "${LOGNAME}"
+skip = [ ! -d "${MR_REPO}" ] || mr_exclusive "${LOGNAME}"
 echoInstallHelp = echoInstallHelp 'os_all' 'dxy_all'
 install =
   # CXREF: Assumes ~/.config/depoxy/321open.cfg sourced
