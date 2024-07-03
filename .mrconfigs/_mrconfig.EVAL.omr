@@ -643,6 +643,12 @@ autocommit =
   # are not too noisy. (INERT: Should they be, add a timeout period.)
   #
   depoxy_client_autocommit_tree_dumps () {
+    # Don't generate tree while spell changes outstanding,
+    # because meld files come and go.
+    if test -n "$(git status --porcelain -- home/.vim/spell)"; then
+      return 0
+    fi
+    #
     tree -n -a -I .git/ -I "DXY_VENDOR_HOME__HOME_" > "home/.config/${depoxy_client_id}-tree.txt"
     tree -C -a -I .git/ -I "DXY_VENDOR_HOME__HOME_" > "home/.config/${depoxy_client_id}-tree.col"
     git_auto_commit_many \
