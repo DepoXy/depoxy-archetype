@@ -1,7 +1,7 @@
 # USAGE:
 #   m4_shim \
 #     "+8" ".mrconfigs/_mrconfig-USERNAME.EVAL" \
-#     ".mrconfigs/_mrconfig-${DXY_USERNAME}"
+#     ".mrconfigs/_mrconfig-${DXY_DEPOXY_USERNAME}"
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
@@ -39,12 +39,12 @@ order = 166
 #     dxc_root="${DEPOXYDIR_RUNNING_FULL:-${HOME}/.depoxy/running}"
 #     #
 #     # CXREF:
-#     #   DXY_DEPOXYDIR_STINTS_TILDE/DXY_DEPOXY_CLIENT_ID/.mrconfigs/_mrconfig-DXY_USERNAME--foo
-#     cat "${dxc_root}/.mrconfigs/_mrconfig-DXY_USERNAME--foo"
+#     #   DXY_DEPOXYDIR_STINTS_TILDE/DXY_DEPOXY_CLIENT_ID/.mrconfigs/_mrconfig-DXY_DEPOXY_USERNAME--foo
+#     cat "${dxc_root}/.mrconfigs/_mrconfig-DXY_DEPOXY_USERNAME--foo"
 #     #
 #     # CXREF:
-#     #   DXY_DEPOXYDIR_STINTS_TILDE/DXY_DEPOXY_CLIENT_ID/.mrconfigs/_mrconfig-DXY_USERNAME--bar
-#     cat "${dxc_root}/.mrconfigs/_mrconfig-DXY_USERNAME--bar"
+#     #   DXY_DEPOXYDIR_STINTS_TILDE/DXY_DEPOXY_CLIENT_ID/.mrconfigs/_mrconfig-DXY_DEPOXY_USERNAME--bar
+#     cat "${dxc_root}/.mrconfigs/_mrconfig-DXY_DEPOXY_USERNAME--bar"
 
 # ========================================================================
 # ------------------------------------------------------------------------

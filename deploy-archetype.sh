@@ -184,7 +184,7 @@ register_customizable_git_config () {
   #   you could push to the vendor's Git server (to share with other devs,
   #   or so it's backed up).
   # E.g., "flast.sh", "firstl.sh", "username.sh"
-  register "DXY_VENDOR_DOTFILES_NAME" "${DXY_USERNAME}.sh"
+  register "DXY_VENDOR_DOTFILES_NAME" "${DXY_DEPOXY_USERNAME}.sh"
 
   # - And then, if, e.g.,
   #     DXY_VENDOR_GITCONFIG_HUB_HOST="gitlab.acme.com"
@@ -270,7 +270,7 @@ register_placeholder_project_config_values () {
 
 # Generated variables you don't need to set, but could.
 register_generated () {
-  register "DXY_USERNAME" "$(id -un)"
+  register "DXY_DEPOXY_USERNAME" "$(id -un)"
 
   # The ~/.depoxy/running/.hostname file informs DepoXy if certain
   # commands are being run on your @home machine or @work machine.

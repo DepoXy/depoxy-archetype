@@ -115,9 +115,9 @@ bashdx_wire_aliases_open_tracker () {
 
 # USAGE: Customize this to (help) configure PS1.
 # - Defaults to showing the DepoXy Client ID e.g.,
-#     DXY_USERNAME@DXC[[[]]]DXY_DEPOXY_CLIENT_ID[[[]]]:~ 🍄 $
+#     DXY_DEPOXY_USERNAME@DXC[[[]]]DXY_DEPOXY_CLIENT_ID[[[]]]:~ 🍄 $
 # - Disable this to show the machine name in the prompt, e.g.,
-#     DXY_USERNAME@DXY_HOSTNAME:~ 🍄 $
+#     DXY_DEPOXY_USERNAME@DXY_HOSTNAME:~ 🍄 $
 # - Or set HOMEFRIES_TERM_UTIL_PS1 to your own PS1 prompt (which
 #   you'd want to do when ${HOME_FRIES_PRELOAD} is true so that
 #   Homefries uses it; or just set your own PS1 here).
@@ -157,8 +157,8 @@ bashdxy_source_client_bashrc () {
   append_bashrc "${acme_sh}"
 
   # Non-vendor-related shell setup (i.e., that you could promote to a public project).
-  # CXREF: DXY_DEPOXY_CLIENT_TILDE/home/home/bashrc.DXY_USERNAME.sh
-  local user_sh="DXY_DEPOXY_CLIENT__HOME_/home/bashrc.DXY_USERNAME.sh"
+  # CXREF: DXY_DEPOXY_CLIENT_TILDE/home/home/bashrc.DXY_DEPOXY_USERNAME.sh
+  local user_sh="DXY_DEPOXY_CLIENT__HOME_/home/bashrc.DXY_DEPOXY_USERNAME.sh"
   append_bashrc "${user_sh}"
 
   # ***

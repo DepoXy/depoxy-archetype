@@ -112,7 +112,7 @@ autocommit =
   # ***
   #
   git_auto_commit_one_omr ".mrconfigs/_mrconfig"
-  git_auto_commit_one_omr ".mrconfigs/_mrconfig-DXY_USERNAME"
+  git_auto_commit_one_omr ".mrconfigs/_mrconfig-DXY_DEPOXY_USERNAME"
   #
   # - Auto-commit just ".mrconfigs/_mrconfig-DXY_VENDOR_NAME":
   #     git_auto_commit_one_omr ".mrconfigs/_mrconfig-DXY_VENDOR_NAME" "" "${PRIVATE_ACI}"
@@ -578,11 +578,11 @@ autocommit =
   #
   # ***
   #
-  git_auto_commit_one_update "home/bashrc.DXY_USERNAME.sh"
+  git_auto_commit_one_update "home/bashrc.DXY_DEPOXY_USERNAME.sh"
   git_auto_commit_one_update "home/bashrc.DXY_VENDOR_NAME.sh" "" "${PRIVATE_ACI}"
   git_auto_commit_one_update "home/bashrx.private.DXY_HOSTNAME.sh"
   #
-  git_auto_commit_one_update "home/crontab.DXY_USERNAME" "" "${PRIVATE_ACI}"
+  git_auto_commit_one_update "home/crontab.DXY_DEPOXY_USERNAME" "" "${PRIVATE_ACI}"
   #
   git_auto_commit_one "home/dubs_projects.vim" \
     -m "${PRIVATE_ACI}: home/dubs_projects.vim (grep-steady mappings)"
@@ -885,8 +885,8 @@ infuse =
   #
   # DepoXy's generated @biz-specific Bash files.
   # - DEV: Here's where to add your custom @biz-specific Bash:
-  #     bashrx.private.DXY_USERNAME.sh.
   #     bashrx.private.DXY_HOSTNAME.sh.
+  #     bashrx.private.DXY_DEPOXY_USERNAME.sh.
   #   And wire more as you like.
   #
   local bashrx_host="${MR_REPO}/home/bashrx.private.DXY_HOSTNAME.sh"
@@ -1233,11 +1233,11 @@ include =
     . ${OHMYREPOS_LIB:-${GITREPOSPATH:-${HOME}/.kit/git}/ohmyrepos/lib}/skip-grouping.sh
     #
     local stints_dir="${DEPOXYDIR_STINTS_FULL:-DXY_DEPOXYDIR_STINTS__HOME_}"
-    # CXREF: DXY_DEPOXYDIR_STINTS_TILDE/DXY_DEPOXY_CLIENT_ID/.mrconfigs/_mrconfig-DXY_USERNAME
+    # CXREF: DXY_DEPOXYDIR_STINTS_TILDE/DXY_DEPOXY_CLIENT_ID/.mrconfigs/_mrconfig-DXY_DEPOXY_USERNAME
     #        DXY_DEPOXYARCHETYPE_DIR_TILDE/.mrconfigs/_mrconfig-USERNAME.EVAL
-    local mr_personal="${stints_dir}/DXY_DEPOXY_CLIENT_ID/.mrconfigs/_mrconfig-DXY_USERNAME"
+    local mr_personal="${stints_dir}/DXY_DEPOXY_CLIENT_ID/.mrconfigs/_mrconfig-DXY_DEPOXY_USERNAME"
     if [ -f "${mr_personal}" ] && ! (
-        mr_exclusive "personal" "user" "DXY_USERNAME" &&
+        mr_exclusive "personal" "user" "DXY_DEPOXY_USERNAME" &&
         true
       );
     then
