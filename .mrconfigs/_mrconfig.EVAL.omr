@@ -64,6 +64,7 @@ update = true
 # Should we include with "vendor", or separate the two?
 #   skip = mr_exclusive "client" && mr_exclusive "vendor"
 skip = mr_exclusive "client"
+infuseProjlns = OMR_INFUSE_PROJLNS_ROOT=true infuse_projlns_if_personal_project
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
