@@ -19,7 +19,7 @@ order = 221
 # ------------------------------------------------------------------------
 
 # Stubbish, for infusing.
-[${VENDOR_HOME:-DXY_VENDOR_HOME__HOME_}/DXY_VENDOR_ORG01_NAME]
+[${DEPOXYDIR_VENDOR_FULL:-DXY_VENDOR_HOME__HOME_}/DXY_VENDOR_ORG01_NAME]
 checkout = true
 infuse =
   link_private_ignore_ "$@"
@@ -32,7 +32,7 @@ infuse =
 # - Assume this is a JavaScript project, hosted on an enterprise
 #   GitHub server, and that uses npm, ESLint, Jest, and husky.
 
-[${VENDOR_HOME:-DXY_VENDOR_HOME__HOME_}/DXY_VENDOR_ORG01_NAME/DXY_VENDOR_ORG01_PROJ01_NAME]
+[${DEPOXYDIR_VENDOR_FULL:-DXY_VENDOR_HOME__HOME_}/DXY_VENDOR_ORG01_NAME/DXY_VENDOR_ORG01_PROJ01_NAME]
 # USAGE: Remove 'checkout' line and customize
 checkout = stub_checkout_directory  # Because not a real URL
 
@@ -125,7 +125,7 @@ install =
 # - CXREF: Learn more in the _ignore file:
 #     DXY_DEPOXY_CLIENT_TILDE/home/DXY_DEPOXY_VENDOR_HOME_NAME/DXY_VENDOR_ORG01_NAME/ignore-tests--[[[]]]DXY_VENDOR_ORG01_PROJ01_NAME/_ignore
 
-[${VENDOR_HOME:-DXY_VENDOR_HOME__HOME_}/DXY_VENDOR_ORG01_NAME/ignore-tests--[[[]]]DXY_VENDOR_ORG01_PROJ01_NAME]
+[${DEPOXYDIR_VENDOR_FULL:-DXY_VENDOR_HOME__HOME_}/DXY_VENDOR_ORG01_NAME/ignore-tests--[[[]]]DXY_VENDOR_ORG01_PROJ01_NAME]
 checkout = stub_checkout_directory
 
 infuse =
@@ -133,7 +133,7 @@ infuse =
   #
   wire_testless_greppable () {
     symlink_overlay_dir \
-      "${VENDOR_HOME:-DXY_VENDOR_HOME__HOME_}/DXY_VENDOR_ORG01_NAME/DXY_VENDOR_ORG01_PROJ01_NAME" \
+      "${DEPOXYDIR_VENDOR_FULL:-DXY_VENDOR_HOME__HOME_}/DXY_VENDOR_ORG01_NAME/DXY_VENDOR_ORG01_PROJ01_NAME" \
       "DXY_VENDOR_ORG01_PROJ01_NAME"
   }
   wire_testless_greppable
