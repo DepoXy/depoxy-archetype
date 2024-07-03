@@ -31,7 +31,11 @@
 # *** DepoXy & Homefries.
 
 # DepoXy: DepoXy (DXY), DepoXy Archetype (DXA), and DepoXy Client (DXC).
-DXY_DEPOXYDIR_BASE_EXCLUDE_RULE
+#  DXY_DEPOXYDIR_BASE_EXCLUDE_RULE
+DXY_DEPOXYDIR_BASE_EXCLUDE_RULE[[[]]].gitignore
+DXY_DEPOXYDIR_BASE_EXCLUDE_RULE[[[]]]ambers/
+DXY_DEPOXYDIR_BASE_EXCLUDE_RULE[[[]]]running
+DXY_DEPOXYDIR_BASE_EXCLUDE_RULE[[[]]]stints/
 
 # Homefries: Bashrc experience.
 DXY_HOMEFRIES_DIR_EXCLUDE_RULE
