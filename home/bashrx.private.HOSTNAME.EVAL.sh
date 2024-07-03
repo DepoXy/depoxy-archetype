@@ -146,12 +146,12 @@ bashdxy_source_client_bashrc () {
   # ***
 
   # Vendor-specific shell setup (part of corp user's dotfiles project).
-  # CXREF: DXY_DEPOXY_CLIENT_TILDE/home/bashrc.DXY_VENDOR_NAME.sh
-  local vendor_wiring="DXY_DEPOXY_CLIENT__HOME_/home/bashrc.DXY_VENDOR_NAME.sh"
+  # CXREF: DXY_DEPOXY_CLIENT_TILDE/home/bashrc.DXY_DEPOXY_VENDOR_NAME.sh
+  local vendor_wiring="DXY_DEPOXY_CLIENT__HOME_/home/bashrc.DXY_DEPOXY_VENDOR_NAME.sh"
   append_bashrc "${vendor_wiring}"
 
   # Vendor-specific power(ful) shell project.
-  # - This path is set by deploy-archetype.sh per [[[DXY_VENDOR_NAME]]]
+  # - This path is set by deploy-archetype.sh per [[[DXY_DEPOXY_VENDOR_NAME]]]
   # CXREF: DXY_DEPOXY_CLIENT_TILDE/DXY_VENDOR_ACMESH_NAME/DXY_VENDOR_ACMESH_NAME
   local acme_sh="DXY_DEPOXY_CLIENT__HOME_/DXY_VENDOR_ACMESH_NAME/DXY_VENDOR_ACMESH_NAME"
   append_bashrc "${acme_sh}"

@@ -1,7 +1,7 @@
 # USAGE:
 #   m4_shim \
 #     "+8" ".mrconfigs/_mrconfig-VENDOR_NAME.EVAL" \
-#     ".mrconfigs/_mrconfig-${DXY_VENDOR_NAME}"
+#     ".mrconfigs/_mrconfig-${DXY_DEPOXY_VENDOR_NAME}"
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
@@ -65,10 +65,10 @@ autocommit =
     "README.md"
   #
   # Incl. vendor project configs.
-  command cp -- "../.mrconfigs/_mrconfig-DXY_VENDOR_NAME"* "."
+  command cp -- "../.mrconfigs/_mrconfig-DXY_DEPOXY_VENDOR_NAME"* "."
   #
   mkdir -p -- "home"
-  command cp -- "../home/bashrc.DXY_VENDOR_NAME.sh" "home/"
+  command cp -- "../home/bashrc.DXY_DEPOXY_VENDOR_NAME.sh" "home/"
   # MAYBE/2024-05-20 01:39:
   #  command cp -- "../home/bashrx.private.DXY_HOSTNAME.sh" "home/"
   command cp -- "../home/.gitconfig.user-business" "home/"
@@ -137,12 +137,12 @@ include =
   dxc_root="${DEPOXYDIR_RUNNING_FULL:-${HOME}/.depoxy/running}"
   #
   # CXREF:
-  #   DXY_DEPOXYDIR_STINTS_TILDE/DXY_DEPOXY_CLIENT_ID/.mrconfigs/_mrconfig-DXY_VENDOR_NAME--DXY_VENDOR_ORG01_NAME
-  mr_cat "${dxc_root}/.mrconfigs/_mrconfig-DXY_VENDOR_NAME--DXY_VENDOR_ORG01_NAME"
+  #   DXY_DEPOXYDIR_STINTS_TILDE/DXY_DEPOXY_CLIENT_ID/.mrconfigs/_mrconfig-DXY_DEPOXY_VENDOR_NAME--DXY_VENDOR_ORG01_NAME
+  mr_cat "${dxc_root}/.mrconfigs/_mrconfig-DXY_DEPOXY_VENDOR_NAME--DXY_VENDOR_ORG01_NAME"
   #
   # CXREF:
-  #   DXY_DEPOXYDIR_STINTS_TILDE/DXY_DEPOXY_CLIENT_ID/.mrconfigs/_mrconfig-DXY_VENDOR_NAME--DXY_VENDOR_ORG02_NAME
-  mr_cat "${dxc_root}/.mrconfigs/_mrconfig-DXY_VENDOR_NAME--DXY_VENDOR_ORG02_NAME"
+  #   DXY_DEPOXYDIR_STINTS_TILDE/DXY_DEPOXY_CLIENT_ID/.mrconfigs/_mrconfig-DXY_DEPOXY_VENDOR_NAME--DXY_VENDOR_ORG02_NAME
+  mr_cat "${dxc_root}/.mrconfigs/_mrconfig-DXY_DEPOXY_VENDOR_NAME--DXY_VENDOR_ORG02_NAME"
 
 # ========================================================================
 # ------------------------------------------------------------------------

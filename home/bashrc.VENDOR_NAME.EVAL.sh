@@ -3,7 +3,7 @@
 # USAGE:
 #   m4_shim \
 #     "+16" "home/bashrc.VENDOR_NAME.EVAL.sh" \
-#     "home/bashrc.${DXY_VENDOR_NAME}.sh" \
+#     "home/bashrc.${DXY_DEPOXY_VENDOR_NAME}.sh" \
 #     "DXY_VENDOR_GITSERVER_USER_URL" \
 #       "https://${DXY_VENDOR_GITCONFIG_HUB_HOST}/${DXY_VENDOR_GITSERVER_USER_NAME}" \
 #     "DXY_VENDOR_ORG01_PROJ01_CD_ALIAS" \

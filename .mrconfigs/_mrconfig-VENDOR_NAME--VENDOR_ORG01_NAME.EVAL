@@ -1,7 +1,7 @@
 # USAGE:
 #   m4_shim \
 #     "+8" ".mrconfigs/_mrconfig-VENDOR_NAME--VENDOR_ORG01_NAME.EVAL" \
-#     ".mrconfigs/_mrconfig-${DXY_VENDOR_NAME}--${DXY_VENDOR_ORG01_NAME}"
+#     ".mrconfigs/_mrconfig-${DXY_DEPOXY_VENDOR_NAME}--${DXY_VENDOR_ORG01_NAME}"
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
@@ -43,8 +43,8 @@ checkout = stub_checkout_directory  # Because not a real URL
 #   - But for `gh` to work (and for git-begin-review to work), we must
 #     use one of the conventional names that `gh` expects. Or use both.
 lib =
-  remote_set publish git@github.DXY_VENDOR_NAME.com:DXY_VENDOR_ORG01_NAME/DXY_VENDOR_ORG01_PROJ01_NAME.git
-  remote_set github git@github.DXY_VENDOR_NAME.com:DXY_VENDOR_ORG01_NAME/DXY_VENDOR_ORG01_PROJ01_NAME.git
+  remote_set publish git@github.DXY_DEPOXY_VENDOR_NAME.com:DXY_VENDOR_ORG01_NAME/DXY_VENDOR_ORG01_PROJ01_NAME.git
+  remote_set github git@github.DXY_DEPOXY_VENDOR_NAME.com:DXY_VENDOR_ORG01_NAME/DXY_VENDOR_ORG01_PROJ01_NAME.git
 
 # This infuse task demonstrates many tricks I've used on work projects.
 # - Tailor as necessary.

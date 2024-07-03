@@ -78,7 +78,7 @@ DXY_DEPOXY_SCREENCAPS_EXCLUDE_RULE
 #       DXY_VENDOR_HOME_EXCLUDE_RULE[[[]]]DXY_VENDOR_ORG02_NAME/DXY_VENDOR_ORG02_PROJ01_NAME/
 #
 #     But it might also be a reminder to add a new project to the
-#       DXY_DEPOXY_CLIENT_TILDE/.mrconfigs/_mrconfig-DXY_VENDOR_NAME
+#       DXY_DEPOXY_CLIENT_TILDE/.mrconfigs/_mrconfig-DXY_DEPOXY_VENDOR_NAME
 #     config (or one of the configs that it loads), if you happened
 #     to clone a work project directly and forgot to add it to your
 #     myrepos config.
