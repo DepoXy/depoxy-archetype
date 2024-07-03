@@ -280,43 +280,94 @@ autocommit =
     #
     local dxy_target="home/.gnupg"
     #
-    mkdir -p -- "${dxy_target}"
+    local bkup_public="${dxy_target}/public.gpg"
+    local bkup_private="${dxy_target}/private.gpg"
+    local bkup_trust="${dxy_target}/trust.gpg"
+    #
+    local mru_private_key="${HOME}/.gnupg/$( \
+      command ls -1t "${HOME}/.gnupg/private-keys-v1.d/" | head -n 1
+    )"
+    #
+    if true \
+      && [ "${bkup_public}" -nt "${HOME}/.gnupg/pubring.gpg" ] \
+      && [ "${bkup_private}" -nt "${mru_private_key}" ] \
+      && [ "${bkup_trust}" -nt "${HOME}/.gnupg/trustdb.gpg" ] \
+    ; then
+      debug "$(fg_mintgreen)$(attr_emphasis)bkups uptodate$(attr_reset)" \
+        "$(fg_lavender)$(pwd -L)/${dxy_target}/*.gpg$(attr_reset)"
+      #
+      return 0
+    fi
+    #
+    # ***
+    #
+    # Assume if GPG dir or parent has .git/ that user doesn't need
+    # GPG exports.
+    if [ -f "${HOME}/.gnupg/.git/HEAD" ] \
+      || [ -f "$(realpath -- "${HOME}/.gnupg")/../.git/HEAD" ] \
+    ; then
+      debug "$(fg_mintgreen)$(attr_emphasis)already repoed$(attr_reset)" \
+        "$(fg_lavender)${HOME}/.gnupg$(attr_reset)"
+      #
+      return 0
+    fi
+    #
+    # ***
     #
     # USAGE: List GPG key emails you want backed up, e.g.,
     #   key_emails="foo@bar baz@bat etc@and.so.forth"
     local key_emails="${ONEOPEN_PASSWORD_STORE_EMAIL}"
     #
     if [ -z "${key_emails}" ]; then
-      debug "SKIPD: Configure \`aci_gnupg\` to back up ~/.gnupg"
+      debug "SKIPD: Configure ONEOPEN_PASSWORD_STORE_EMAIL to back up ~/.gnupg"
     else
-      if [ -f "${dxy_target}/private.gpg" ]; then
-        debug "SKIPD: Already backed up: ${dxy_target}/private.gpg"
-      else
-        # Avoid prompting for passphrase during auto-commit.
-        if ! probe_if_gpg_passphrase_cached; then
-          # All the ways to cache a GPG key (for whatever the timeout is):
-          #   pass ${ONEOPEN_PASSWORD_STORE_ADMIN}
-          #   gpg -d ~/.password-store/${ONEOPEN_PASSWORD_STORE_ADMIN}.gpg
-          # - Note that `gpg --export-secret-keys <email>` does *not* cache
-          #   the key, and will always prompt for the passphrase.
-          info "ALERT: Seed the key cache to backup GPG keys"
-          if [ -n "${ONEOPEN_PASSWORD_STORE_EMAIL}" ]; then
-            info "- E.g.,\n    echo foo | gpg -e -r ${ONEOPEN_PASSWORD_STORE_EMAIL} | gpg -d"
-          fi
-        else
-          # REFER: Nice, consise backup-restore overview:
-          #   https://www.howtogeek.com/816878/how-to-back-up-and-restore-gpg-keys-on-linux/
-          gpg --export --export-options backup --output "${dxy_target}/public.gpg" \
-            ${key_emails}
-          # Tho secret key export requires passphrase, passphrase also required to restore this file.
-          gpg --export-secret-keys --export-options backup --output "${dxy_target}/private.gpg" \
-            ${key_emails}
-          gpg --export-ownertrust > "${dxy_target}/trust.gpg"
-          # How to restore:
-          #   gpg --import public.gpg
-          #   gpg --import private.gpg
-          #   gpg --import-ownertrust trust.gpg
+      # Load: probe_if_gpg_passphrase_cached
+      . "${DOPP_KIT:-${HOME}/.kit}/odd/321open/lib/biblio-gpg"
+      #
+      # Avoid prompting for passphrase during auto-commit.
+      # - CPYST: Reload the agent to forget the cached password:
+      #     gpg-connect-agent reloadagent /bye
+      # - OWELL: `gpg --export-secret-keys` always prompts (or
+      #   at least doesn't use the cached credentials).
+      #   - So having this check doesn't help as intended, user will
+      #     still be prompted by --export-secret-keys.
+      #     - But at least they'll sorta know it's coming, because
+      #       this see the ALERT, then cache their creds, then run
+      #       infuse again, and be prompted again.
+      if ! probe_if_gpg_passphrase_cached; then
+        # All (some of?) the ways to cache a GPG key (for whatever the timeout is):
+        #   pass ${ONEOPEN_PASSWORD_STORE_ADMIN}
+        #   gpg -d ~/.password-store/${ONEOPEN_PASSWORD_STORE_ADMIN}.gpg
+        # - Note that `gpg --export-secret-keys <email>` does *not* cache
+        #   the key, and will always prompt for the passphrase.
+        info "ALERT: Seed the key cache to backup GPG keys"
+        info "- Note this tells the next '${MR_ACTION}' to backup keys,"
+        info "  but gpg will still want it, so you'll be prompted again"
+        if [ -n "${ONEOPEN_PASSWORD_STORE_EMAIL}" ]; then
+          info "- E.g.,\n    echo foo | gpg -e -r ${ONEOPEN_PASSWORD_STORE_EMAIL} | gpg -d"
         fi
+      else
+        mkdir -p -- "${dxy_target}"
+        #
+        # REFER: Nice, consise backup-restore overview:
+        #   https://www.howtogeek.com/816878/how-to-back-up-and-restore-gpg-keys-on-linux/
+        command rm -f -- "${bkup_public}"
+        gpg --export --export-options backup --output "${bkup_public}" \
+          ${key_emails}
+        # Tho secret key export requires passphrase, passphrase also required to restore this file.
+        debug "Passphrase prompt for \`gpg --export-secret-keys\`..."
+        command rm -f -- "${bkup_private}"
+        gpg --export-secret-keys --export-options backup --output "${bkup_private}" \
+          ${key_emails}
+        command rm -f -- "${bkup_trust}"
+        gpg --export-ownertrust > "${bkup_trust}"
+        # How to restore:
+        #   gpg --import public.gpg
+        #   gpg --import private.gpg
+        #   gpg --import-ownertrust trust.gpg
+        #
+        git_auto_commit_many $(find "${dxy_target}/" -type f 2> /dev/null) \
+          -m "${CLEARED_ACI}: GPG backups"
       fi
     fi
   }
@@ -325,30 +376,31 @@ autocommit =
   # *** SSH
   #
   aci_ssh () {
-    local dxy_target="home/.gnupg"
-    #
-    mkdir -p -- "${dxy_target}"
+    local dxy_target="home/.ssh"
     #
     for ssh_path in \
-      "config" \
-      "id_ed25519" \
-      "id_ed25519.pub" \
+      "${HOME}/.ssh/config" \
+      "${HOME}/.ssh/id_"* \
     ; do
-      local source="${HOME}/.ssh/${pass_path}"
-      local target="${dxy_target}/${pass_path}"
+      local source="${ssh_path}"
+      local target="${dxy_target}/$(basename -- "${ssh_path}")"
       #
-      if [ -f "${source}" ] && [ ! -h "${source}" ]; then
-        command cp -- "${source}" "${target}"
+      # If source is a symlink, means user setup a seperate secrets repo,
+      # so no need for us to backup the file.
+      if [ ! -f "${source}" ] || [ -h "${source}" ]; then
+        #
+        continue
       fi
+      #
+      mkdir -p -- "${dxy_target}"
+      #
+      command cp -- "${source}" "${target}"
     done
     #
-    git_auto_commit_many $(find "${dxy_target}/" -type f) \
+    git_auto_commit_many $(find "${dxy_target}/" -type f 2> /dev/null) \
       -m "${CLEARED_ACI}: SSH updates"
   }
-  # ISOFF: The `aci_ssh` SSH backup function is an example.
-  # - Enable and tailor as needed.
-  #
-  #  aci_ssh
+  aci_ssh
   #
   # *** Password Store
   #
@@ -373,8 +425,6 @@ autocommit =
     # device.
     local dxy_target="home/.password-store"
     #
-    mkdir -p -- "${dxy_target}"
-    #
     for pass_path in \
       ".gpg-id" \
       "DXY_VENDOR_NAME/teams.gpg" \
@@ -382,9 +432,14 @@ autocommit =
       local source="${HOME}/.password-store/${pass_path}"
       local target="${dxy_target}/${pass_path}"
       #
-      if [ -f "${source}" ] && [ ! -h "${source}" ]; then
-        command cp -- "${source}" "${target}"
+      if [ ! -f "${source}" ] || [ -h "${source}" ]; then
+        #
+        continue
       fi
+      #
+      mkdir -p -- "${dxy_target}"
+      #
+      command cp -- "${source}" "${target}"
     done
     #
     git_auto_commit_many $(find "${dxy_target}/" -type f) \
