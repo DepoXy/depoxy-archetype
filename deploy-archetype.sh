@@ -500,6 +500,14 @@ register_depoxy_project_paths () {
     | sed -E "s@^${HOME}(/|$)@~\1@"
   )"
 
+  # E.g., "${HOME}/.depoxy/archetype"
+  # - Note the extra \\$ delimiter, because m4 command is eval'ed.
+  unset -v DXY_DEPOXYARCHETYPE_DIR__HOME_
+  register "DXY_DEPOXYARCHETYPE_DIR__HOME_" "$( \
+    echo "${DXY_DEPOXYARCHETYPE_DIR}" \
+    | sed -E "s@^${HOME}(/|$)@\\\\\${HOME}\1@"
+  )"
+
   # ***
 
   # E.g., "/Users/user/.projlns", ripgreppable symlinks collector.

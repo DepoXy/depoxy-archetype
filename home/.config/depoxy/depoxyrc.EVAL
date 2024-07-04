@@ -71,10 +71,10 @@ export DEPOXY_CLIENT_ID="DXY_DEPOXY_CLIENT_ID"
 # ***
 
 # E.g., "${HOME}/.depoxy/ambers"
-export DEPOXYAMBERS_DIR="DXY_DEPOXYAMBERS_DIR"
+export DEPOXYAMBERS_DIR="DXY_DEPOXYAMBERS_DIR__HOME_"
 
 # E.g., "${HOME}/.depoxy/ambers/archetype"
-export DEPOXYARCHETYPE_DIR="DXY_DEPOXYARCHETYPE_DIR"
+export DEPOXYARCHETYPE_DIR="DXY_DEPOXYARCHETYPE_DIR__HOME_"
 
 # ***
 
@@ -91,7 +91,7 @@ export DEPOXYARCHETYPE_DIR="DXY_DEPOXYARCHETYPE_DIR"
 # because you might need to change existing paths on the filesystem).
 
 # E.g., "${HOME}/.depoxy"
-export DEPOXYDIR_BASE_FULL="DXY_DEPOXYDIR_BASE_FULL"
+export DEPOXYDIR_BASE_FULL="DXY_DEPOXYDIR_BASE__HOME_"
 
 # E.g., "stints" (relative to ~/.depoxy)
 export DEPOXYDIR_STINTS_NAME="DXY_DEPOXYDIR_STINTS_NAME"
