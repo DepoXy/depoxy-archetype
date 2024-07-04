@@ -1192,7 +1192,7 @@ include =
   # ***
   #
   include_git_hooks_rewire () {
-    cat "${OHMYREPOS_LIB:-${HOME}/.ohmyrepos/lib}/git-hooks-rewire"
+    cat "${OHMYREPOS_LIB:-${HOME}/.kit/git/ohmyrepos/lib}/git-hooks-rewire"
   }
   include_git_hooks_rewire
   #
