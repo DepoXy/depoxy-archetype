@@ -205,7 +205,7 @@ export LINK_DEEP_SUB_HOME="/Users/user"
 #   CXREF: ~/.kit/git/git-put-wise
 
 # E.g., ${HOME}/.depoxy/patchr
-export PW_PATCHES_REPO="DXY_PW_PATCHES_REPO"
+export PW_PATCHES_REPO="DXY_PW_PATCHES_REPO__HOME_"
 
 # Password Store entry containing GPG passphrase to use.
 # - Without this, when git-put-wise calls GPG, you'll be

@@ -657,6 +657,13 @@ register_git_put_wise_paths () {
     | sed "s@^${HOME}/@@"
   )"
 
+  # E.g., "${HOME}/.projlns"
+  unset -v DXY_PW_PATCHES_REPO__HOME_
+  register "DXY_PW_PATCHES_REPO__HOME_" "$( \
+    echo "${DXY_PW_PATCHES_REPO}" \
+    | sed -E "s@^${HOME}(/|$)@\\\\\${HOME}\1@"
+  )"
+
   # E.g., "path/to/password/store/key/for/GPW/patches"
   register "DXY_PW_OPTION_PASS_NAME" ""
 }
