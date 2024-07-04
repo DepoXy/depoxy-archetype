@@ -88,16 +88,29 @@ infuse =
   # CXREF: ~/.depoxy/ambers/mrassets/client-infuse
   . "${DEPOXYAMBERS_DIR:-DXY_DEPOXYAMBERS_DIR__HOME_}/mrassets/client-infuse"
   _dxc_client_infuse
+  #
+  # *** DXC convenience link
+  #
+  # USAGE: If you'd like to add a convenience link from home,
+  # pick a name for your client and enable this overlay. E.g.,
+  #   # ~/.moniker -> DXY_DEPOXYDIR_STINTS_RELATIVE/DXY_DEPOXY_CLIENT_ID
+  #   symlink_overlay_dir_rel "${MR_REPO}" "${MONIKER_HOME:-${HOME}/.moniker}"
 
 # ========================================================================
 # ------------------------------------------------------------------------
 
-# YOU: Add client-specific projects to the another config:
-#        ~/.depoxy/running/.mrconfigs/_mrconfig-DXY_DEPOXY_VENDOR_NAME
+# YOU: Add vendor projects to the another config:
+#        DXY_DEPOXYDIR_STINTS_TILDE/DXY_DEPOXY_CLIENT_ID/.mrconfigs/_mrconfig-DXY_DEPOXY_VENDOR_NAME
 #      and add personal project to this config:
-#        ~/.depoxy/running/.mrconfigs/_mrconfig-DXY_DEPOXY_USERNAME
-#      Then this config serves mostly as infrastructure, and it'll
-#      diff more simply against the Archetype template.
+#        DXY_DEPOXYDIR_STINTS_TILDE/DXY_DEPOXY_CLIENT_ID/.mrconfigs/_mrconfig-DXY_DEPOXY_USERNAME
+#      Such that this main client config serves mostly as infrastructure,
+#      and it'll diff more simply against the Archetype template.
+
+# CXREF: Loads:
+#
+#   DXY_DEPOXYDIR_STINTS_TILDE/DXY_DEPOXY_CLIENT_ID/.mrconfigs/_mrconfig-DXY_DEPOXY_VENDOR_NAME
+#   DXY_DEPOXYDIR_STINTS_TILDE/DXY_DEPOXY_CLIENT_ID/.mrconfigs/_mrconfig-DXY_DEPOXY_USERNAME
+#   DXY_DEPOXYDIR_STINTS_TILDE/DXY_DEPOXY_CLIENT_ID/.mrconfigs/_mrconfig-remotes  # Tho iff '*Remotes' action
 
 [DEFAULT]
 order = 220
