@@ -224,6 +224,13 @@ export TN_OPTION_EDITOR_VIM=true
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
+# *** git-smart, git-my-merge-status, and related git-* ENVIRONables
+#
+#   CXREF: ~/.kit/git/git-smart
+#   CXREF: ~/.kit/git/git-my-merge-status/bin/git-my-merge-status
+
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
+
 # Add post rebase `exec` to repair hard links broken on Git rebase.
 # - The author uses hard links to keep deps/ dependencies synced
 #   across disparate Git repos.
@@ -298,6 +305,7 @@ export DEPOXY_ENABLE_KEEP_ALIVE_PMSET=false
 
 # 2021-08-22: Tell DepoXy Ambers how to define `cvs`. E.g.,
 #   pushd_alias_or_warn "cvs" "${HOME}/.vim/pack/<username>/start"
+# - CXREF: ~/.depoxy/ambers/core/aliastown.sh
 export DEPOXY_CVS_ALIAS_VIM_PLUG_ORG='DXY_DEPOXY_CVS_ALIAS_VIM_PLUG_ORG'
 
 # *** GVim opener project config
