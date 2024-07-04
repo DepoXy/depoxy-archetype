@@ -1206,10 +1206,12 @@ infuse =
 # ========================================================================
 # ------------------------------------------------------------------------
 
-# YOU: Add client-specific projects to the another config, e.g.,:
-#        ~/.depoxy/running/.mrconfigs/_mrconfig-${DEPOXY_VENDOR_NAME:-acme}
-#      and reserve this mrconfig for the DepoXy Client project
-#      (so you can more easily keep it synced with the upstream).
+# YOU: Add client-specific projects to the another config:
+#        ~/.depoxy/running/.mrconfigs/_mrconfig-DXY_DEPOXY_VENDOR_NAME
+#      and add personal project to this config:
+#        ~/.depoxy/running/.mrconfigs/_mrconfig-DXY_DEPOXY_USERNAME
+#      Then this config serves mostly as infrastructure, and it'll
+#      diff more simply against the Archetype template.
 
 [DEFAULT]
 order = 220
