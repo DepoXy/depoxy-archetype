@@ -1214,6 +1214,10 @@ infuse =
 [DEFAULT]
 order = 220
 include =
+  local ambers_path="${DEPOXYAMBERS_DIR:-${HOME}/.depoxy/ambers}"
+  local stints_dir="${DEPOXYDIR_STINTS_FULL:-${HOME}/.depoxy/stints}"
+  local client_dir="${stints_dir}/${DEPOXY_CLIENT_ID}"
+  #
   # Load task helpers (that higher-level OMR config doesn't load, because
   # neither DepoXy Ambers nor Oh My Repos! uses this functionality).
   #
@@ -1228,7 +1232,6 @@ include =
   #
   # Load lib fcn `hack_patch_opn_to_call_sensible_open`.
   include_js_npm_patch_opn_sensible_open () {
-    local ambers_path="${DEPOXYAMBERS_DIR:-${HOME}/.depoxy/ambers}"
     # CXREF: ~/.depoxy/ambers/home/.kit/git/ohmyrepos/lib/js-npm-patch-opn-sensible-open
     cat "${ambers_path}/home/.kit/git/ohmyrepos/lib/js-npm-patch-opn-sensible-open"
   }
@@ -1240,10 +1243,9 @@ include =
   include_depoxy_client_mr_business () {
     . ${OHMYREPOS_LIB:-${GITREPOSPATH:-${HOME}/.kit/git}/ohmyrepos/lib}/skip-grouping.sh
     #
-    local stints_dir="${DEPOXYDIR_STINTS_FULL:-${HOME}/.depoxy/stints}"
     # CXREF: ~/.depoxy/running/.mrconfigs/_mrconfig-${DEPOXY_VENDOR_NAME:-acme}
     #        ~/.depoxy/ambers/archetype/.mrconfigs/_mrconfig-VENDOR_NAME.EVAL
-    local mr_business="${stints_dir}/${DEPOXY_CLIENT_ID}/.mrconfigs/_mrconfig-${DEPOXY_VENDOR_NAME:-acme}"
+    local mr_business="${client_dir}/.mrconfigs/_mrconfig-${DEPOXY_VENDOR_NAME:-acme}"
     if [ -f "${mr_business}" ] && ! (
         mr_exclusive "business" "vendor" "${DEPOXY_VENDOR_HOME_NAME:-work}" &&
         true
@@ -1260,10 +1262,9 @@ include =
   include_depoxy_client_mr_personal () {
     . ${OHMYREPOS_LIB:-${GITREPOSPATH:-${HOME}/.kit/git}/ohmyrepos/lib}/skip-grouping.sh
     #
-    local stints_dir="${DEPOXYDIR_STINTS_FULL:-${HOME}/.depoxy/stints}"
     # CXREF: ~/.depoxy/running/.mrconfigs/_mrconfig-${DEPOXY_USERNAME:-${LOGNAME}}
     #        ~/.depoxy/ambers/archetype/.mrconfigs/_mrconfig-USERNAME.EVAL
-    local mr_personal="${stints_dir}/${DEPOXY_CLIENT_ID}/.mrconfigs/_mrconfig-${DEPOXY_USERNAME}"
+    local mr_personal="${client_dir}/.mrconfigs/_mrconfig-${DEPOXY_USERNAME}"
     if [ -f "${mr_personal}" ] && ! (
         mr_exclusive "personal" "user" "${DEPOXY_USERNAME}" &&
         true
@@ -1273,17 +1274,13 @@ include =
     fi
   }
   include_depoxy_client_mr_personal
-
-# ========================================================================
-# ------------------------------------------------------------------------
-
-# SAVVY: Include this last so that its projects override previous config.
-
-[DEFAULT]
-include =
+  #
+  # ***
+  #
+  # SAVVY: Include this last so that its projects override previous config.
   if echo "${MR_ACTION}" | grep -q "Remotes$"; then
     # CXREF: ~/.depoxy/running/.mrconfigs/_mrconfig-remotes
-    mr_cat "${DEPOXYDIR_RUNNING_FULL:-${HOME}/.depoxy/running}/.mrconfigs/_mrconfig-remotes"
+    mr_cat "${client_dir}/.mrconfigs/_mrconfig-remotes"
   fi
 
 # ========================================================================
