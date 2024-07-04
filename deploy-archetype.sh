@@ -340,6 +340,13 @@ register_depoxydir_paths () {
   register "DXY_DEPOXYDIR_STINTS_FULL" \
     "$(eval "echo ${DXY_DEPOXYDIR_BASE_FULL}/${DXY_DEPOXYDIR_STINTS_NAME}")"
 
+  # E.g., ".depoxy/stints"
+  unset -v DXY_DEPOXYDIR_STINTS_RELATIVE
+  register "DXY_DEPOXYDIR_STINTS_RELATIVE" "$( \
+    echo "${DXY_DEPOXYDIR_STINTS_FULL}" \
+    | sed "s@^${HOME}/@@"
+  )"
+
   # E.g., "~/.depoxy/stints"
   unset -v DXY_DEPOXYDIR_STINTS_TILDE
   register "DXY_DEPOXYDIR_STINTS_TILDE" "$( \
