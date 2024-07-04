@@ -79,6 +79,7 @@ lib =
   #       -m "${CLEARED_ACI}: Docs: Personal notes"
 
 autocommit =
+  local ambers_path="${DEPOXYAMBERS_DIR:-${HOME}/.depoxy/ambers}"
   # For completeness `git ls-files`, we ensure that all repo files are under
   # autocommit (or documented why not). And for comparability for `ls-files`,
   # we list files in the same order.
@@ -91,14 +92,18 @@ autocommit =
   #
   # ***
   #
-  # Rather than use ${DEPOXY_CLIENT_ID}, suss it, so that autocommit
-  # works on this project regardless if it's the active client or not.
-  local depoxy_client_id="$(basename -- "${MR_REPO}")"
+  # Ensure proper DEPOXY_CLIENT_ID, and other DEPOXY* environs, pertain to
+  # this project, regardless if it's the active client or not.
+  # - This lets the user still use autocommit on "previous" clients.
+  # CXREF: ~/.depoxy/ambers/core/depoxy_fs.sh
+  #   ~/.depoxy/running/home/.config/depoxy
+  # ALTLY:
+  #   DEPOXY_CONFIG="${MR_REPO}/home/.config/depoxy" _vendorfs_define_environs
+  DEPOXY_CONFIG="${MR_REPO}/home/.config/depoxy/depoxyrc" . "${ambers_path}/core/depoxy_fs.sh"
   #
   # Prepare args, e.g., `autocommit -y`, or `autocommit -f`.
   git_auto_commit_parse_args "$@"
   #
-  local ambers_path="${DEPOXYAMBERS_DIR:-${HOME}/.depoxy/ambers}"
   #
   # ***
   #
@@ -164,10 +169,10 @@ autocommit =
   git_auto_commit_one_update "docs/.ignore" "" "${PRIVATE_ACI}"
   #
   # git_auto_commit_many \
-  #   "docs/Backlog_Client_${depoxy_client_id}.rst" \
-  #   "docs/Donelog_Client_${depoxy_client_id}.rst" \
-  #   "docs/Woodlot_Client_${depoxy_client_id}.rst" \
-  #   "docs/Worklog_Client_${depoxy_client_id}.rst" \
+  #   "docs/Backlog_Client_${DEPOXY_CLIENT_ID}.rst" \
+  #   "docs/Donelog_Client_${DEPOXY_CLIENT_ID}.rst" \
+  #   "docs/Woodlot_Client_${DEPOXY_CLIENT_ID}.rst" \
+  #   "docs/Worklog_Client_${DEPOXY_CLIENT_ID}.rst" \
   #   -m "PRIVATE: autoci: Docs: Work notes."
   #  #-m "PRIVATE: autoci: Update: Docs."
   #
@@ -182,7 +187,7 @@ autocommit =
   #
   git_auto_commit_one_update "home/.config/karabiner/README.rst"
   git_auto_commit_one_update \
-    "home/.config/karabiner/assets/complex_modifications/3110-client-${depoxy_client_id}-private.json.example"
+    "home/.config/karabiner/assets/complex_modifications/3110-client-${DEPOXY_CLIENT_ID}-private.json.example"
   git_auto_commit_one_update \
     "home/.config/karabiner/assets/complex_modifications/9210-privte-docs-launchers-private.json"
   #
@@ -647,12 +652,12 @@ autocommit =
       return 0
     fi
     #
-    tree -n -a -I .git/ -I "${DEPOXYDIR_VENDOR_FULL:-${HOME}/work}" > "home/.config/${depoxy_client_id}-tree.txt"
-    tree -C -a -I .git/ -I "${DEPOXYDIR_VENDOR_FULL:-${HOME}/work}" > "home/.config/${depoxy_client_id}-tree.col"
+    tree -n -a -I .git/ -I "${DEPOXYDIR_VENDOR_FULL:-${HOME}/work}" > "home/.config/${DEPOXY_CLIENT_ID}-tree.txt"
+    tree -C -a -I .git/ -I "${DEPOXYDIR_VENDOR_FULL:-${HOME}/work}" > "home/.config/${DEPOXY_CLIENT_ID}-tree.col"
     git_auto_commit_many \
-      "home/.config/${depoxy_client_id}-tree.txt" \
-      "home/.config/${depoxy_client_id}-tree.col" \
-      -m "${CLEARED_ACI}: Client ${depoxy_client_id} project \\\`tree\\\`"
+      "home/.config/${DEPOXY_CLIENT_ID}-tree.txt" \
+      "home/.config/${DEPOXY_CLIENT_ID}-tree.col" \
+      -m "${CLEARED_ACI}: Client ${DEPOXY_CLIENT_ID} project \\\`tree\\\`"
   }
   depoxy_client_autocommit_tree_dumps
   #
