@@ -123,74 +123,17 @@ infuse =
 [DEFAULT]
 order = 220
 include =
-  local ambers_path="${DEPOXYAMBERS_DIR:-${HOME}/.depoxy/ambers}"
-  local stints_dir="${DEPOXYDIR_STINTS_FULL:-${HOME}/.depoxy/stints}"
-  local client_dir="${stints_dir}/${DEPOXY_CLIENT_ID}"
-  #
-  # Load task helpers (that higher-level OMR config doesn't load, because
-  # neither DepoXy Ambers nor Oh My Repos! uses this functionality).
-  #
-  # ***
-  #
-  include_git_hooks_rewire () {
-    cat "${OHMYREPOS_LIB:-${HOME}/.kit/git/ohmyrepos/lib}/git-hooks-rewire"
+  # Remember that `include` is eval'd, so need function to use `local`.
+  include_additional_client_config () {
+    local ambers_path="${DEPOXYAMBERS_DIR:-DXY_DEPOXYAMBERS_DIR__HOME_}"
+    local client_dir="${DEPOXYDIR_STINTS_FULL:-DXY_DEPOXYDIR_STINTS__HOME_}/DXY_DEPOXY_CLIENT_ID"
+    DEPOXY_CONFIG="${client_dir}/home/.config/depoxy/depoxyrc" . "${ambers_path}/core/depoxy_fs.sh"
+    # `mr_cat` the additional client mrconfig's
+    # - CXREF: ~/.depoxy/ambers/mrassets/client-include
+    . "${ambers_path}/mrassets/client-include"
+    _dxc_client_include
   }
-  include_git_hooks_rewire
-  #
-  # ***
-  #
-  # Load lib fcn `hack_patch_opn_to_call_sensible_open`.
-  include_js_npm_patch_opn_sensible_open () {
-    # CXREF: ~/.depoxy/ambers/home/.kit/git/ohmyrepos/lib/js-npm-patch-opn-sensible-open
-    cat "${ambers_path}/home/.kit/git/ohmyrepos/lib/js-npm-patch-opn-sensible-open"
-  }
-  include_js_npm_patch_opn_sensible_open
-  #
-  # ***
-  #
-  # Load vendor-specific OMR project config.
-  include_depoxy_client_mr_business () {
-    . ${OHMYREPOS_LIB:-${GITREPOSPATH:-${HOME}/.kit/git}/ohmyrepos/lib}/skip-grouping.sh
-    #
-    # CXREF: ~/.depoxy/running/.mrconfigs/_mrconfig-${DEPOXY_VENDOR_NAME:-acme}
-    #        ~/.depoxy/ambers/archetype/.mrconfigs/_mrconfig-VENDOR_NAME.EVAL
-    local mr_business="${client_dir}/.mrconfigs/_mrconfig-${DEPOXY_VENDOR_NAME:-acme}"
-    if [ -f "${mr_business}" ] && ! (
-        mr_exclusive "business" "vendor" "${DEPOXY_VENDOR_HOME_NAME:-work}" &&
-        true
-      );
-    then
-      mr_cat "${mr_business}"
-    fi
-  }
-  include_depoxy_client_mr_business
-  #
-  # ***
-  #
-  # Load user-specific OMR project config.
-  include_depoxy_client_mr_personal () {
-    . ${OHMYREPOS_LIB:-${GITREPOSPATH:-${HOME}/.kit/git}/ohmyrepos/lib}/skip-grouping.sh
-    #
-    # CXREF: ~/.depoxy/running/.mrconfigs/_mrconfig-${DEPOXY_USERNAME:-${LOGNAME}}
-    #        ~/.depoxy/ambers/archetype/.mrconfigs/_mrconfig-USERNAME.EVAL
-    local mr_personal="${client_dir}/.mrconfigs/_mrconfig-${DEPOXY_USERNAME}"
-    if [ -f "${mr_personal}" ] && ! (
-        mr_exclusive "personal" "user" "${DEPOXY_USERNAME}" &&
-        true
-      );
-    then
-      mr_cat "${mr_personal}"
-    fi
-  }
-  include_depoxy_client_mr_personal
-  #
-  # ***
-  #
-  # SAVVY: Include this last so that its projects override previous config.
-  if echo "${MR_ACTION}" | grep -q "Remotes$"; then
-    # CXREF: ~/.depoxy/running/.mrconfigs/_mrconfig-remotes
-    mr_cat "${client_dir}/.mrconfigs/_mrconfig-remotes"
-  fi
+  include_additional_client_config
 
 # ========================================================================
 # ------------------------------------------------------------------------
