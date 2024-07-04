@@ -794,17 +794,19 @@ infuse =
   #
   # *** DepoXy config
   #
-  # Place the ~/.config/depoxy/depoxyrc config.
-  # - Identifies the depoxy_client_id, even when the client is unmounted.
-  #   Mostly necessary so DepoXy Ambers knows which `321open` to run.
-  # - This file also sets custom paths, but I've never used that feature.
-  # - Note this is the only file *copied* somewhere, and not symlinked,
-  #   because it needs to be available when this project is not mounted.
-  # Note this is not a symlink because repo might be offline.
-  # FIXME: TRYME/2022-10-23: Could this be a hard link?
-  #        - Or would the link get broken on unmount?
-  # FIXME: You might want to diff this file and alert if user changed
-  #        ~/.config copy, before clobber-overwriting.
+  # "Install" the ~/.config/depoxy/depoxyrc config.
+  # - This lets 321open know which DEPOXY_CLIENT_ID to use, even if the
+  #   client is unmounted (if you chose to put the client on an encfs,
+  #   for instance).
+  # - The depoxyrc also defines all the paths to DepoXy resources,
+  #   which lets the user use different paths than the defaults.
+  #   (Note that it's easiest to set these paths when you run
+  #   deploy-archetype.sh, and that changing them afterwards
+  #   will require some busywork. Note also the author has not
+  #   tried using custom paths, but they *should* work, though
+  #   be prepared for unexpected results.)
+  # - SAVVY: This is not a symlink because repo might be offline.
+  #   - This is also the only file *copied* somewhere, and not symlinked.
   update_depoxy_configs () {
     # E.g., /Users/user/.config/depoxy
     local dxy_conf="${XDG_CONFIG_HOME:-${HOME}/.config}/depoxy"
