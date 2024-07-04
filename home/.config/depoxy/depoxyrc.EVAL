@@ -80,7 +80,15 @@ export DEPOXYARCHETYPE_DIR="DXY_DEPOXYARCHETYPE_DIR"
 
 # ***** DepoXy filespace
 #
-#   CXREF: ~/.depoxy/ambers/core/depoxy_fs.sh
+# These override defaults that DepoXy sets in
+#
+#   _vendorfs_define_environs
+#
+#     ~/.depoxy/ambers/core/depoxy_fs.sh
+#
+# with whatever values you picked when you ran deploy-archetype.sh to
+# generate the client project (so be careful if you change these,
+# because you might need to change existing paths on the filesystem).
 
 # E.g., "${HOME}/.depoxy"
 export DEPOXYDIR_BASE_FULL="DXY_DEPOXYDIR_BASE_FULL"
