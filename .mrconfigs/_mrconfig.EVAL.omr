@@ -725,13 +725,6 @@ infuse =
   #
   local ambers_path="${DEPOXYAMBERS_DIR:-${HOME}/.depoxy/ambers}"
   #
-  # *** `mredit` wiring
-  #
-  # CXREF: ~/.projlns/mymrconfigs/
-  symlink_overlay_file \
-    "${MR_REPO}/.mrconfigs/_mrconfig" \
-    "${MREDIT_CONFIGS:-${DEPOXY_PROJLNS:-${HOME}/.projlns}/mymrconfigs}/client-${depoxy_client_id}-mrconfig"
-  #
   # *** Guard clause
   #
   # Stop now if *not* the active DepoXy Client
