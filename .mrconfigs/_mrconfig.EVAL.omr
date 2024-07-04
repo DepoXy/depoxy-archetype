@@ -724,11 +724,8 @@ infusePostRebase =
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
 infuse =
-  # Rather than use ${DEPOXY_CLIENT_ID}, suss it, so that autocommit
-  # works on this project regardless if it's the active client or not.
-  local depoxy_client_id="$(basename -- "${MR_REPO}")"
-  #
   local ambers_path="${DEPOXYAMBERS_DIR:-${HOME}/.depoxy/ambers}"
+  local stints_dir="${DEPOXYDIR_STINTS_FULL:-${HOME}/.depoxy/stints}"
   #
   # *** Guard clause
   #
@@ -753,15 +750,40 @@ infuse =
   local running_now="$(realpath -- "${depoxydir_running_full}")"
   local project_abs="$(realpath -- "${MR_REPO}")"
   if [ "${project_abs}" != "${running_now}" ]; then
-    warn "BWARE: This is not the active client"
+    warn "ERROR: This is not the active client"
     warn "- That honor goes to"
     warn "    ${running_now}"
     warn "- To make this project the active client, try"
-    warn "    command rm \"${depoxydir_running_full}\""
-    warn "    command ln -s \\"
+    warn "    command ln -sfn \\"
     warn "      \"${MR_REPO}\" \\"
     warn "      \"${depoxydir_running_full}\""
     warn "    mr -d \"${MR_REPO}\" -n infuse"
+    #
+    return 1
+  fi
+  #
+  local project_client_id="$(basename -- "${MR_REPO}")"
+  if [ "${project_client_id}" != "${DEPOXY_CLIENT_ID}" ]; then
+    warn "ERROR: This project is incorrectly wired"
+    warn "- It *is* the project wired on via the “running” symlink:"
+    warn "    ${depoxydir_running_full}"
+    warn "- But it's name is *not* the active DEPOXY_CLIENT_ID"
+    warn "  - This project's name: ${project_client_id}"
+    warn "  - Vs DEPOXY_CLIENT_ID: ${DEPOXY_CLIENT_ID}"
+    warn "- The DEPOXY_CLIENT_ID likely read from the depoxyrc:"
+    warn "    ${DEPOXY_CONFIG:-${XDG_CONFIG_HOME:-${HOME}/.config}/depoxy/depoxyrc}"
+    warn "- How you want to fix this is up to you"
+    warn "  - You can either fix the “running” symlink"
+    warn "    to point to the other project:"
+    warn "      command ln -sfn \\"
+    warn "        \"${stints_dir}/${DEPOXY_CLIENT_ID}\" \\"
+    warn "        \"${depoxydir_running_full}\""
+    warn "  - Or maybe the wrong depoxyrc is installed,"
+    warn "    so you could try this:"
+    warn "      command cp \\"
+    warn "        \"${MR_REPO}/home/.config/depoxy/depoxyrc\" \\"
+    warn "        \"${XDG_CONFIG_HOME:-${HOME}/.config}/depoxy/depoxyrc\""
+    warn "Good luck!"
     #
     return 1
   fi
@@ -872,9 +894,8 @@ infuse =
   #
   # Alert if missing business client mrconfig (because impossibly unlikely user won't want).
   # - E.g., "/home/user/.depoxy/stints"
-  local stints_dir="${DEPOXYDIR_STINTS_FULL:-${HOME}/.depoxy/stints}"
   # - E.g., "/home/user/.depoxy/stints/XXXX/.mrconfigs/_mrconfig-acme"
-  local mr_business="${stints_dir}/${depoxy_client_id}/.mrconfigs/_mrconfig-${DEPOXY_VENDOR_NAME:-acme}"
+  local mr_business="${stints_dir}/${DEPOXY_CLIENT_ID}/.mrconfigs/_mrconfig-${DEPOXY_VENDOR_NAME:-acme}"
   if [ ! -f "${mr_business}" ]; then
     info "$(font_emphasize ALERT): No biz config at $(repo_highlight ${mr_business})"
   fi
@@ -1060,7 +1081,7 @@ infuse =
     (
       cd "${dxy_mrinfuse}/${cmplxmods}"
       local jsonpath
-      # Use -regex to exclude the 3110-client-${depoxy_client_id}-private.json.example file.
+      # Use -regex to exclude the 3110-client-${DEPOXY_CLIENT_ID}-private.json.example file.
       for jsonpath in $(find "${cbinfuser}/${cmplxmods}" -maxdepth 1 -type f -regex ".*\.json$"); do
         symlink_overlay_file "${jsonpath}"
       done
