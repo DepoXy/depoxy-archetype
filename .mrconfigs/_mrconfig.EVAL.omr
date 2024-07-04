@@ -77,31 +77,10 @@ spells =
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
-# CXREF: See GIT_POST_REBASE_EXEC usage.
-# - Used post-rebase to remake hard links.
-# SAVYY: Call link_hard from infusePostRebase, not infuse.
 infusePostRebase =
-  #
-  # *** DepoXy filespace
-  #
-  # Remember that Git doesn't allow symlinked .gitignore .nomore.
-  link_hard "${MR_REPO}/home/.depoxy/_gitignore" \
-    "${DEPOXYDIR_BASE_FULL:-${HOME}/.depoxy}/.gitignore"
-  #
-  # *** ~/.kube
-  #
-  # NOTE: If you create a new kubeconfig, copy to DXC manually, then infuse,
-  #       then aci, it'll get picked up.
-  for kubeconfig in "${MR_REPO}/home/.kube/"*.yaml; do
-    # If nothing globbed, ${kubeconfig} is the glob string.
-    if [ -f "${kubeconfig}" ]; then
-      mkdir -p "${HOME}/.kube"
-      #
-      link_hard \
-        "${kubeconfig}" \
-        "${HOME}/.kube/$(basename -- "${kubeconfig}")"
-    fi
-  done
+  # CXREF: ~/.depoxy/ambers/mrassets/client-infusePostRebase
+  . "${DEPOXYAMBERS_DIR:-DXY_DEPOXYAMBERS_DIR__HOME_}/mrassets/client-infusePostRebase"
+  _dxc_client_infusePostRebase
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
