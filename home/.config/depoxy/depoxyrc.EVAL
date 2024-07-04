@@ -111,6 +111,10 @@ export DEPOXY_SCREENCAPS_DIR="DXY_DEPOXY_SCREENCAPS_DIR__HOME_"
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
 # *** DepoXy Client OMR config vars
+#
+# CXREF: For OMR 'infuse' and 'autocommit':
+#   ~/.depoxy/ambers/mrassets/client-autocommit
+
 # E.g., "user"
 export DEPOXY_USERNAME="DXY_DEPOXY_USERNAME"
 
