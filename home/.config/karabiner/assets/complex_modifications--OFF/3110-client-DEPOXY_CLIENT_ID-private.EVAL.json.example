@@ -1,9 +1,18 @@
+# vim:tw=0:ts=2:sw=2:et:norl:ft=conf
+#
 # USAGE:
-#   m4_shim \
-#     "+8" "home/.config/karabiner/assets/complex_modifications/3110-client-DEPOXY_CLIENT_ID-private.EVAL.json.example" \
-#     "home/.config/karabiner/assets/complex_modifications/3110-client-${DXY_DEPOXY_CLIENT_ID}-private.json.example"
+#   true
 
-# ***
+# USAGE: true, as in, don't copy this file.
+#
+# - Previously:
+#
+#   USAGE:
+#     m4_shim \
+#       "+8" "home/.config/karabiner/assets/complex_modifications/3110-client-DEPOXY_CLIENT_ID-private.EVAL.json.example" \
+#       "home/.config/karabiner/assets/complex_modifications/3110-client-${DXY_DEPOXY_CLIENT_ID}-private.json.example"
+
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
 {
   "title": "#3110 — Work Client DXY_DEPOXY_CLIENT_ID Rules",
