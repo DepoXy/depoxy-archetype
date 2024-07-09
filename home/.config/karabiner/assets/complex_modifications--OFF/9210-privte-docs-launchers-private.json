@@ -1,3 +1,12 @@
+# vim:tw=0:ts=2:sw=2:et:norl:ft=conf
+#
+# USAGE:
+#   true
+
+# USAGE: true, as in, don't copy this file.
+
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
+
 {
   "title": "#9210 — Non-standard (Private) DepoXy Client Docs Launchers",
   "rules": [
@@ -17,7 +26,7 @@
           },
           "to": [
             {
-              "shell_command": "${DEPOXYAMBERS_DIR:-${DEPOXYDIR_BASE_FULL:-${HOME}/.depoxy}/ambers}/bin/macOS/launchers/gvim-open-DepoXy-Client-docs.sh private/Backlog_Personal_"
+              "shell_command": "${DEPOXYAMBERS_DIR:-${DEPOXYDIR_BASE_FULL:-${HOME}/.depoxy}/ambers}/home/.config/karabiner/assets/complex_modifications--OFF/lib/gvim-open-DepoXy-Client-docs.sh private/Backlog_Personal_"
             }
           ],
           "type": "basic"
@@ -40,7 +49,7 @@
           },
           "to": [
             {
-              "shell_command": "${DEPOXYAMBERS_DIR:-${DEPOXYDIR_BASE_FULL:-${HOME}/.depoxy}/ambers}/bin/macOS/launchers/gvim-open-DepoXy-Client-docs.sh private/Woodlot_Personal_"
+              "shell_command": "${DEPOXYAMBERS_DIR:-${DEPOXYDIR_BASE_FULL:-${HOME}/.depoxy}/ambers}/home/.config/karabiner/assets/complex_modifications--OFF/lib/gvim-open-DepoXy-Client-docs.sh private/Woodlot_Personal_"
             }
           ],
           "type": "basic"
