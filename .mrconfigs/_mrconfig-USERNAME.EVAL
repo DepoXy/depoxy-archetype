@@ -40,11 +40,11 @@ order = 166
 #     #
 #     # CXREF:
 #     #   DXY_DEPOXYDIR_STINTS_TILDE/DXY_DEPOXY_CLIENT_ID/.mrconfigs/_mrconfig-DXY_DEPOXY_USERNAME--foo
-#     cat "${dxc_root}/.mrconfigs/_mrconfig-DXY_DEPOXY_USERNAME--foo"
+#     mr_cat "${dxc_root}/.mrconfigs/_mrconfig-DXY_DEPOXY_USERNAME--foo"
 #     #
 #     # CXREF:
 #     #   DXY_DEPOXYDIR_STINTS_TILDE/DXY_DEPOXY_CLIENT_ID/.mrconfigs/_mrconfig-DXY_DEPOXY_USERNAME--bar
-#     cat "${dxc_root}/.mrconfigs/_mrconfig-DXY_DEPOXY_USERNAME--bar"
+#     mr_cat "${dxc_root}/.mrconfigs/_mrconfig-DXY_DEPOXY_USERNAME--bar"
 
 # ========================================================================
 # ------------------------------------------------------------------------
