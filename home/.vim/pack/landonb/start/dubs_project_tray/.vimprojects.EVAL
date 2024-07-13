@@ -243,13 +243,13 @@ DEPOXY_STINTS=DXY_DEPOXYDIR_BASE_HOME filter=".* *" exclude=".DS_Store" {
    README.rst
   }
   docs/notable-notes--vibrant=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/docs/notable-notes--vibrant {
-   00-DXY_DEPOXY_CLIENT_ID-🥾-Backlog-Client-DXY_DEPOXY_CLIENT_ID👈☞☞☞☞☞☞.rst
+   00-DXY_DEPOXY_CLIENT_ID-🥾-Backlog-Client-DXY_DEPOXY_CLIENT_ID👈⠂⠂⠂⠂⠂⠂.rst
    01
-   02-DXY_DEPOXY_CLIENT_ID-🔔-Donelog-Client-DXY_DEPOXY_CLIENT_ID☞☞☞☞👈☞☞.rst
-   03-DXY_DEPOXY_CLIENT_ID-🎷-Worklog-Client-DXY_DEPOXY_CLIENT_ID☞☞☞☞☞☞👈.rst
+   02-DXY_DEPOXY_CLIENT_ID-🔔-Donelog-Client-DXY_DEPOXY_CLIENT_ID⠂⠂⠂⠂👈⠂⠂.rst
+   03-DXY_DEPOXY_CLIENT_ID-🎷-Worklog-Client-DXY_DEPOXY_CLIENT_ID⠂⠂⠂⠂⠂⠂👈.rst
   }
   docs/notable-notes--woodlot=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/docs/notable-notes--woodlot {
-   00-DXY_DEPOXY_CLIENT_ID-🔥-Woodlot-Unfiled-Notes.rst☞☞☞☞☞☞☞.rst
+   00-DXY_DEPOXY_CLIENT_ID-🔥-Woodlot-Unfiled-Notes.rst⠂⠂⠂⠂⠂⠂⠂.rst
    01
   }
   private=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/private {

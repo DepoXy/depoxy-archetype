@@ -8,7 +8,7 @@
 ..     cd "${DXY_DEPOXY_CLIENT_FULL}/docs/notable-notes--vibrant" &&
 ..     ln -s \
 ..       "../${DEPOXY_TARGET_FILE}" \
-..       "00-${DXY_DEPOXY_CLIENT_ID}-🥾-Backlog-Client-${DXY_DEPOXY_CLIENT_ID}👈☞☞☞☞☞☞.rst" \
+..       "00-${DXY_DEPOXY_CLIENT_ID}-🥾-Backlog-Client-${DXY_DEPOXY_CLIENT_ID}👈⠂⠂⠂⠂⠂⠂.rst" \
 ..   )
 
 #########################################################################################
