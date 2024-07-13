@@ -72,6 +72,7 @@ order = 133
 # The client remote has no remote unless you add one for it.
 lib =
   MR_REPO_REMOTES=""
+  remote_set_private
   if [ -n "DXY_DEPOXY_CLIENT_REMOTE" ]; then
     remote_set entrust "DXY_DEPOXY_CLIENT_REMOTE"
   fi
