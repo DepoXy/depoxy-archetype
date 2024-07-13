@@ -54,6 +54,7 @@ __USYNC__ =
 [${DEPOXYAMBERS_DIR:-DXY_DEPOXYAMBERS_DIR__HOME_}]
 order = 131
 lib =
+  MR_REPO_REMOTES=""
   remote_set publish "https://github.com/DepoXy/depoxy.git" "ambers"
   # USAGE: Set your own remote if you forked DepoXy:
   #   remote_set entrust "git@github_user:user/depoxy.git"
@@ -61,6 +62,7 @@ lib =
 [${DEPOXYARCHETYPE_DIR:-DXY_DEPOXYARCHETYPE_DIR__HOME_}]
 order = 132
 lib =
+  MR_REPO_REMOTES=""
   remote_set publish "https://github.com/DepoXy/depoxy-archetype.git" "archetype"
   # USAGE: Set your own remote if you forked the Archetype:
   #   remote_set entrust "git@github_user:user/depoxy-archetype.git"
@@ -68,8 +70,11 @@ lib =
 [${DEPOXYDIR_STINTS_FULL:-DXY_DEPOXYDIR_STINTS__HOME_}/DXY_DEPOXY_CLIENT_ID]
 order = 133
 # The client remote has no remote unless you add one for it.
-lib = [ -z "DXY_DEPOXY_CLIENT_REMOTE" ] ||
-  remote_set entrust "DXY_DEPOXY_CLIENT_REMOTE"
+lib =
+  MR_REPO_REMOTES=""
+  if [ -n "DXY_DEPOXY_CLIENT_REMOTE" ]; then
+    remote_set entrust "DXY_DEPOXY_CLIENT_REMOTE"
+  fi
 
 # ========================================================================
 # ------------------------------------------------------------------------
