@@ -16,8 +16,8 @@
 [DEFAULT]
 __USYNC__ =
   meld \
-    ~/.depoxy/ambers/archetype/.mrconfigs/_mrconfig-remotes.EVAL \
-    ~/.depoxy/running/.mrconfigs/_mrconfig-remotes &
+    DXY_DEPOXYARCHETYPE_DIR_TILDE/.mrconfigs/_mrconfig-remotes.EVAL \
+    DXY_DEPOXY_CLIENT_TILDE/.mrconfigs/_mrconfig-remotes &
 
 # ========================================================================
 # ------------------------------------------------------------------------
@@ -51,14 +51,14 @@ __USYNC__ =
 # ========================================================================
 # ------------------------------------------------------------------------
 
-[${DEPOXYAMBERS_DIR:-${DEPOXYDIR_BASE_FULL:-${MR_HOME:-${HOME}}/.depoxy}/ambers}]
+[${DEPOXYAMBERS_DIR:-DXY_DEPOXYAMBERS_DIR__HOME_}]
 order = 131
 lib =
   remote_set publish "https://github.com/DepoXy/depoxy.git" "ambers"
   # USAGE: Set your own remote if you forked DepoXy:
   #   remote_set entrust "git@github_user:user/depoxy.git"
 
-[${DEPOXYDIR_BASE_FULL:-${MR_HOME:-${HOME}}/.depoxy}/ambers/archetype]
+[${DEPOXYARCHETYPE_DIR:-DXY_DEPOXYARCHETYPE_DIR__HOME_}]
 order = 132
 lib =
   remote_set publish "https://github.com/DepoXy/depoxy-archetype.git" "archetype"
