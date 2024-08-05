@@ -1669,6 +1669,18 @@ omr_dxc_compile_spells () {
 
 # ***
 
+omr_dxc_generate_notable_notes_placeholders () {
+  ! ${DRY_RUN} || return 0
+
+  ! ${DXY_RUN_LNS_ONLY:-false} || return 0
+
+  local docs_path="${DXY_DEPOXY_CLIENT_FULL}/docs"
+
+  "${DXY_DEPOXYAMBERS_DIR}/bin/notable-notes--prepare.sh" "${docs_path}"
+}
+
+# ***
+
 omr_dxc_autocommit () {
   ! ${DRY_RUN} || return 0
 
@@ -1915,6 +1927,7 @@ main () {
   omr_acme_checkout
   omr_dxc_infuse
   omr_dxc_compile_spells
+  omr_dxc_generate_notable_notes_placeholders
   omr_dxc_autocommit
   omr_dxc_cleanup
   finish_capture_file
