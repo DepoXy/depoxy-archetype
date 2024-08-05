@@ -91,7 +91,7 @@ autocommit =
   ln -sfn -- \
     "../../../home/DXY_DEPOXY_VENDOR_HOME_NAME/DXY_VENDOR_ACMESH_CONF" \
     "home/DXY_DEPOXY_VENDOR_HOME_NAME/DXY_VENDOR_ACMESH_CONF"
-  # Because directory, use -h option, so you don't follow target symlink
+  # Because directory, use -n option, so you don't follow target symlink
   # and clobber the real DXY_DEPOXY_VENDOR_ACMESH_NAME/DXY_DEPOXY_VENDOR_ACMESH_NAME file.
   ln -sfn -- "../DXY_DEPOXY_VENDOR_ACMESH_NAME" "DXY_DEPOXY_VENDOR_ACMESH_NAME"
   #
