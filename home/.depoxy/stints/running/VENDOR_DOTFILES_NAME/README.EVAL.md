@@ -7,5 +7,6 @@
 
 # DXY_DEPOXY_HUMAN_NAME.sh
 
-My DXY_DEPOXY_VENDOR_NAME_PROPER-specific [Oh, My Repos!](https://github.com/landonb/ohmyrepos)
-config and [Home Fries](https://github.com/landonb/home-fries) Bashrc
+My DXY_DEPOXY_VENDOR_NAME_PROPER-specific [Oh, My Repos!](https://github.com/landonb/ohmyrepos#😤)
+config and [Home Fries](https://github.com/landonb/home-fries#🍟) Bashrc,
+as orchestrated by [DepoXy](https://github.com/DepoXy/depoxy#🍯)
