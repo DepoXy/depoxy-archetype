@@ -645,7 +645,7 @@ format_exclude_rule_home_gitignore () {
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
 register_git_put_wise_paths () {
-  # E.g., "/home/user/.depoxy/patchr"
+  # E.g., "/(Users|home)/<user>/.depoxy/patchr"
   register "DXY_PW_PATCHES_REPO" \
     "${PW_PATCHES_REPO:-${DXY_DEPOXYDIR_BASE_FULL}/${PW_PATCHES_NAME:-patchr}}"
 
