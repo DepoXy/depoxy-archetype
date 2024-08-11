@@ -368,6 +368,14 @@ register_depoxydir_paths () {
     | sed -E "s@^${HOME}(/|$)@\\\\\${HOME}\1@"
   )"
 
+  # E.g., "/.depoxy/stints/"
+  # - Used to generate ~/.gitignore.
+  local depoxydir_stints_home_path="$( \
+    format_exclude_rule_home_gitignore "${DXY_DEPOXYDIR_STINTS_FULL}"
+  )"
+  unset -v DXY_DEPOXYDIR_STINTS_EXCLUDE_RULE
+  register "DXY_DEPOXYDIR_STINTS_EXCLUDE_RULE" "${depoxydir_stints_home_path}"
+
   # ***
 
   # E.g., "/home/user/.depoxy/running"
@@ -401,6 +409,14 @@ register_depoxydir_paths () {
     echo "${DXY_DEPOXYDIR_RUNNING_FULL}" \
     | sed -E "s@^${HOME}(/|$)@\\\\\${HOME}\1@"
   )"
+
+  # E.g., "/.depoxy/running/"
+  # - Used to generate ~/.gitignore.
+  local depoxydir_running_home_path="$( \
+    format_exclude_rule_home_gitignore "${DXY_DEPOXYDIR_RUNNING_FULL}"
+  )"
+  unset -v DXY_DEPOXYDIR_RUNNING_EXCLUDE_RULE
+  register "DXY_DEPOXYDIR_RUNNING_EXCLUDE_RULE" "${depoxydir_running_home_path}"
 
   # ***
 
@@ -493,6 +509,14 @@ register_depoxy_project_paths () {
     echo "${DXY_DEPOXYAMBERS_DIR}" \
     | sed -E "s@^${HOME}(/|$)@\\\\\${HOME}\1@"
   )"
+
+  # E.g., "/.depoxy/ambers/"
+  # - Used to generate ~/.gitignore.
+  local depoxyambers_home_path="$( \
+    format_exclude_rule_home_gitignore "${DXY_DEPOXYAMBERS_DIR}"
+  )"
+  unset -v DXY_DEPOXYAMBERS_DIR_EXCLUDE_RULE
+  register "DXY_DEPOXYAMBERS_DIR_EXCLUDE_RULE" "${depoxyambers_home_path}"
 
   # ***
 
