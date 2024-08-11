@@ -688,6 +688,14 @@ register_git_put_wise_paths () {
     | sed -E "s@^${HOME}(/|$)@\\\\\${HOME}\1@"
   )"
 
+  # E.g., "/.depoxy/patchr/"
+  # - Used to generate ~/.gitignore.
+  local pw_patches_home_path="$( \
+    format_exclude_rule_home_gitignore "${DXY_PW_PATCHES_REPO}"
+  )"
+  unset -v DXY_PW_PATCHES_EXCLUDE_RULE
+  register "DXY_PW_PATCHES_EXCLUDE_RULE" "${pw_patches_home_path}"
+
   # E.g., "path/to/password/store/key/for/GPW/patches"
   register "DXY_PW_OPTION_PASS_NAME" ""
 }
