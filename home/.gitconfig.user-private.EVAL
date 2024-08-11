@@ -27,3 +27,7 @@
 
   gpgSign = false
 
+[put-wise]
+
+  sign-before-push =
+
