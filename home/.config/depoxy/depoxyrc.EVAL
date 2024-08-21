@@ -285,6 +285,12 @@ export DEPOXY_PYENV_PYVERS="3.12.1"
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
+# For `pass gen <path>`
+#
+# export PASS_GEN_DEFAULT_EMAIL="user@tld"
+
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
+
 # Opt-in Darwin Keep Alive.
 #
 # - Runs `caffeinate` and/or `pmset` to keep your machine from sleeping
