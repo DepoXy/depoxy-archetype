@@ -320,6 +320,27 @@ export DEPOXY_ENABLE_KEEP_ALIVE_PMSET=false
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
+# Set @macOS /var/select/sh -> /bin/dash to avoid Bash v3 issues
+# (see inline comments for an example).
+# CXREF: ~/.depoxy/ambers/home/infuse-platform-macOS
+export DEPOXY_DEFAULT_SELECT_SH="/bin/dash"
+
+# Set to the default user shell you want when you open a new terminal
+# window. Infuse will verify or set via `chsh -s <path>`.
+# CXREF: ~/.depoxy/ambers/home/infuse-platform-macOS
+export DEPOXY_DEFAULT_LOGIN_SHELL="/opt/homebrew/bin/bash"
+
+# Set true to customize SSHd on `infuse`: disable password authentication,
+# and accept ITERM_SESSION_ID environ for window titling.
+# - Note that macOS resets sshd_config on OS update, otherwise this
+#   would be a one-time install action, and not an infuse task.
+# CXREF: ~/.depoxy/ambers/home/infuse-platform-macOS
+#   /private/etc/ssh/sshd_config
+#
+# export DEPOXY_ENABLE_HARDEN_SSHD_CONFIG=false
+
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
+
 # 2021-08-22: Tell DepoXy Ambers how to define `cvs`. E.g.,
 #   pushd_alias_or_warn "cvs" "${HOME}/.vim/pack/<username>/start"
 # - CXREF: ~/.depoxy/ambers/core/aliastown.sh
