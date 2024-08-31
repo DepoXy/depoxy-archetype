@@ -228,6 +228,27 @@ export PW_OPTION_PASS_NAME="DXY_PW_OPTION_PASS_NAME"
 # So `pw push` doesn't over-prompt (and `pw apply` can be illustrative).
 export PW_OPTION_QUICK_TIG=true
 
+# If you commit with different usernames, stop the rebase boundary check
+# from failing if it encounters commits from different authors in the
+# rebase range. (The rebase boundary check is used on push and archive,
+# by the sort-and-scope command when magic ref requested, and by the
+# external git-bump command to ensure sorted & signed before versioning.)
+# - You might use multiple Git authors if, for example, you commit to
+#   private repos as "${LOGNAME}@$(hostname)", so you can track the host
+#   from which you made changes.
+# - You don't need to worry about this if you always commit as the same
+#   author. The boundary check only cares when it sees multiple authors
+#   used in the rebase range.
+# - To use, set PW_OPTION_AUTHOR_PATTERN to a git-log --author sub-pattern,
+#   e.g., for two authors:
+#     export PW_OPTION_AUTHOR_PATTERN=".*<a_user@a_host>|.*<user_z@host_z>"
+#   and just pipe-append more authors as necessary.
+# - The pattern is used to print the latest matching commit, e.g.:
+#     git log -n 1 --format="%H" --perl-regexp \
+#       --author="^(?!(${PW_OPTION_AUTHOR_PATTERN})).*\$"
+#
+#  export PW_OPTION_AUTHOR_PATTERN=".*<a_user@a_host>|.*<user_z@host_z>|..."
+
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
 # Prefer tig-newton's editor-vim-0-0-insert-minimal.
