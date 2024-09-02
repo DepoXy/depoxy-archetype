@@ -278,7 +278,17 @@ export TN_OPTION_EDITOR_VIM=true
 #     ~/.kit/git/tig-newtons/tig/bind-rebase
 #     ~/.kit/git/tig-newtons/bin/range-command-apply-rebase
 
-export GIT_POST_REBASE_EXEC="(mr -q -d . -n infusePostRebase 2> /dev/null && echo 'Effectually reinfused hard links.' || true)"
+# We could wait on the mrconfig action and print when finished, e.g.,
+#
+#   export GIT_POST_REBASE_EXEC="( \
+#     mr -q -d . -n infusePostRebase 2> /dev/null && echo 'Effectually reinfused hard links.' || true \
+#   )"
+#
+# but if you rebase often, even this split-second delay can be irritating.
+#
+# So background the task, and be wary of output, so it doesn't scramble
+# whatever's in your terminal now while this runs.
+export GIT_POST_REBASE_EXEC="(mr -q -d . -n infusePostRebase 2> /dev/null || true) &"
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
