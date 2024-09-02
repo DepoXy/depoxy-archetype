@@ -249,6 +249,10 @@ export PW_OPTION_QUICK_TIG=true
 #
 #  export PW_OPTION_AUTHOR_PATTERN=".*<a_user@a_host>|.*<user_z@host_z>|..."
 
+# How infrequently to git-fetch when using put-wise push or archive
+# and put-wise needs to sort & sign.
+export PW_OPTIONS_FETCH_BACKOFF="-8 hours"
+
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
 # Prefer tig-newton's editor-vim-0-0-insert-minimal.
