@@ -26,6 +26,9 @@
 # Vim spell file generated on 'infuse'.
 /home/.vim/spell/en.utf-8.add--compiled
 
+# Apple Finder annoyance [unwinnable]
+.DS_Store
+
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
 # My dotfiles.
