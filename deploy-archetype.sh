@@ -1661,6 +1661,8 @@ omr_dxc_infuse () {
   # Meh: We could `| tee_or_cat` but then there's no realtime output,
   # and there's no compelling reason to capture this output anyway.
 
+  # BWARE: The pipe inhibits errexit on the `mr` call...
+
   SHCOLORS_OFF=false \
   mr -d "${DXY_DEPOXY_CLIENT_FULL}" -n infuse 2>&1 \
     | sed 's/^/  /'
