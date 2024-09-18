@@ -1772,6 +1772,8 @@ omr_dxc_autocommit_verify () {
     # DXC _mrconfig prints similar:
     #   git_status_without_spell_melds | sed 's/^/  /'
     #   blot
+
+    return 1
   )
 }
 
