@@ -1141,12 +1141,18 @@ prepare_client_fs_dest () {
 ln_with_trace () {
   local source="$1"
   local target="$2"
+  local use_hardlink="${3:-false}"
 
-  if ${DXY_OUTPUT_VERBOSE}; then
-    blot "  command ln -s \"${source}\" \"${target}\""
+  local symarg="-s"
+  if ${use_hardlink:-false}; then
+    symarg=""
   fi
 
-  command ln -s "${source}" "${target}"
+  if ${DXY_OUTPUT_VERBOSE}; then
+    blot "  command ln ${symarg:--s} \"${source}\" \"${target}\""
+  fi
+
+  command ln ${symarg:--s} "${source}" "${target}"
 }
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
@@ -1339,8 +1345,12 @@ deployed_file_make_link () {
   #   blot
   fi
 
-  # E.g., /Users/user/.depoxy/stints/.syml--XXXX/...
-  ln_with_trace "${dest_path}" "${DXY_MAKE_LNS_FULL}/${fname}"
+  # Create diffable link using archetype path, e.g.,
+  #   /Users/user/.depoxy/stints/.syml--XXXX/path/to/some.EVAL.file
+  # SAVVY: Set DXY_MAKE_LNS_HARD=true to use hardlinks, b/c some diff
+  #        apps use canonical filenames only (e.g., BBEdit).
+  ln_with_trace "${dest_path}" "${DXY_MAKE_LNS_FULL}/${fname}" \
+    "${DXY_MAKE_LNS_HARD:-false}"
 
   ! ${DXY_OUTPUT_VERBOSE} || blot
 }
