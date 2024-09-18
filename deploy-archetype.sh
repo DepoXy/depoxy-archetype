@@ -1979,6 +1979,7 @@ main () {
   omr_acme_checkout
   omr_dxc_infuse
   omr_dxc_compile_spells
+  omr_dxc_autocommit
   omr_dxc_generate_notable_notes_placeholders
   omr_dxc_autocommit
   omr_dxc_cleanup
