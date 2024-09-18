@@ -1722,6 +1722,7 @@ omr_dxc_generate_notable_notes_placeholders () {
   blot "  \"${DXY_DEPOXYAMBERS_DIR}/bin/notable-notes--prepare.sh\" \"${docs_path}\""
   blot
 
+  # CXREF: ~/.depoxy/ambers/bin/notable-notes--prepare.sh
   "${DXY_DEPOXYAMBERS_DIR}/bin/notable-notes--prepare.sh" "${docs_path}"
 }
 
