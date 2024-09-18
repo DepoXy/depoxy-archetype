@@ -1076,13 +1076,15 @@ prepare_depoxy_running_symlink () {
     else
       >&2 blot
       >&2 blot "$(alert "BWARE: A different client is currently “running”:")"
-      >&2 blot "$(alert "  ${running_now}")"
+      >&2 blot "$(alert "    ${running_now}")"
       # Use alternative path in ~/.mrtrust plumbed for this script.
       # - Necessary for running new DXC's 'infuse' and 'autocommit'.
       # - See also: `mr -t/--trust-all`, but ~/.mrconfig still needs
       #   to deliberately load the config, so we need this path anyway.
+      >&2 blot
       >&2 blot "- Using temporarily “reservable” project slot:"
-      >&2 blot "  ${DXY_DEPOXYDIR_RESERVABLE_FULL}"
+      >&2 blot "    ${DXY_DEPOXYDIR_RESERVABLE_FULL}"
+      >&2 blot "  $(alert "/BWARE")"
       if [ -h "${DXY_DEPOXYDIR_RESERVABLE_FULL}" ]; then
         command rm -- "${DXY_DEPOXYDIR_RESERVABLE_FULL}"
       fi
@@ -1605,6 +1607,8 @@ omr_acme_checkout () {
   # Assume not client machine if caller set custom DXY_DEPOXY_HOSTNAME.
   [ "${DXY_DEPOXY_HOSTNAME}" = "$(hostname)" ] || return 0
 
+  blot "Checking out “vendor” projects..."
+
   # CXREF: E.g.,
   #   ~/work/globex/hammock-district
   #   ~/work/soylent/soylent-red
@@ -1618,9 +1622,9 @@ omr_acme_checkout () {
     base_dir="$(dirname -- "${vendor_proj}")"
 
     blot
-    blot mkdir -p -- "${base_dir}"
-    blot cd "${base_dir}"
-    blot mr -d "${vendor_proj}" -n checkout
+    blot "  mkdir -p -- \"${base_dir}\""
+    blot "  cd \"${base_dir}\""
+    blot "  mr -d \"${vendor_proj}\" -n checkout"
     blot
 
     mkdir -p -- "${base_dir}"
@@ -1649,7 +1653,9 @@ omr_dxc_infuse () {
   [ "${DXY_DEPOXY_HOSTNAME}" = "$(hostname)" ] || return 0
 
   blot
-  blot mr -d "${DXY_DEPOXY_CLIENT_FULL}" -n infuse
+  blot "Infusing new Client..."
+  blot
+  blot "  mr -d \"${DXY_DEPOXY_CLIENT_FULL}\" -n infuse"
   blot
 
   # Meh: We could `| tee_or_cat` but then there's no realtime output,
@@ -1692,7 +1698,9 @@ omr_dxc_compile_spells () {
     init_spellssh
 
     blot
-    blot command mv -- "${compiled_spells}" "${compiled_spells%${SPELLS_COMPILED_SUFFIX}}"
+    blot "Placing Client spells..."
+    blot
+    blot "  command mv -- \"${compiled_spells}\" \"${compiled_spells%${SPELLS_COMPILED_SUFFIX}}\""
     blot
 
     command mv -- "${compiled_spells}" "${compiled_spells%${SPELLS_COMPILED_SUFFIX}}"
@@ -1708,6 +1716,12 @@ omr_dxc_generate_notable_notes_placeholders () {
 
   local docs_path="${DXY_DEPOXY_CLIENT_FULL}/docs"
 
+  blot
+  blot "Preparing Vim notable-notes netrw listing..."
+  blot
+  blot "  \"${DXY_DEPOXYAMBERS_DIR}/bin/notable-notes--prepare.sh\" \"${docs_path}\""
+  blot
+
   "${DXY_DEPOXYAMBERS_DIR}/bin/notable-notes--prepare.sh" "${docs_path}"
 }
 
@@ -1721,8 +1735,9 @@ omr_dxc_autocommit () {
   # Assume not client machine if caller set custom DXY_DEPOXY_HOSTNAME.
   [ "${DXY_DEPOXY_HOSTNAME}" = "$(hostname)" ] || return 0
 
+  blot "Auto-committing changes..."
   blot
-  blot mr -d "${DXY_DEPOXY_CLIENT_FULL}" -n autocommit -y
+  blot "  mr -d \"${DXY_DEPOXY_CLIENT_FULL}\" -n autocommit -y"
   blot
 
   SHCOLORS_OFF=false \
