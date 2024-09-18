@@ -1662,7 +1662,7 @@ omr_dxc_infuse () {
   # and there's no compelling reason to capture this output anyway.
 
   SHCOLORS_OFF=false \
-  mr -d "${DXY_DEPOXY_CLIENT_FULL}" -n infuse \
+  mr -d "${DXY_DEPOXY_CLIENT_FULL}" -n infuse 2>&1 \
     | sed 's/^/  /'
 }
 
@@ -1741,7 +1741,7 @@ omr_dxc_autocommit () {
   blot
 
   SHCOLORS_OFF=false \
-  mr -d "${DXY_DEPOXY_CLIENT_FULL}" -n autocommit -y \
+  mr -d "${DXY_DEPOXY_CLIENT_FULL}" -n autocommit -y 2>&1 \
     | sed 's/^/  /'
   blot
 
