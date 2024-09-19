@@ -23,6 +23,11 @@
 /Library/Application Support/Google/Chrome/Default/Bookmarks
 /Library/Application Support/Google/Chrome/Default/bookmarks.html
 
+# Convenience symlink -> "Application Support" so we can use
+# Vim `gf` command on paths thereunder, e.g.,
+#   ~/.depoxy/running/home/Library/Application_Support/dob/dob.conf
+/Library/Application_Support
+
 # Used to backup private ~/.git with other hosts via OMR 'ffssh'.
 /.home/
 
