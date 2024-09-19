@@ -1911,7 +1911,7 @@ announce_completed () {
 export DXY_RUN_MAKE_LNS=false
 export DXY_RUN_LNS_ONLY=false
 
-export DXY_OUTPUT_VERBOSE=false
+export DXY_OUTPUT_VERBOSE=${DXY_OUTPUT_VERBOSE:-false}
 
 parse_args () {
   while [ "$1" != '' ]; do
