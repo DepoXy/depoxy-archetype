@@ -1493,7 +1493,7 @@ extract_eval_command () {
       found_blank = 0;
     }
 
-    /^(#|\.\.|"|\/\/) USAGE:/ {
+    /^(#|\.\.|"|\/\/|\-\-) USAGE:/ {
       found_usage = 1;
       next;
     }
@@ -1504,7 +1504,7 @@ extract_eval_command () {
     }
 
     found_usage == 1 && found_blank == 0 {
-      gsub(/^(#|\.\.|"|\/\/) /, "");
+      gsub(/^(#|\.\.|"|\/\/|\-\-) /, "");
       print;
     }
   ' "${m4_file}"
