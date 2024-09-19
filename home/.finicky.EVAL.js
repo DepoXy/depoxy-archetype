@@ -8,6 +8,9 @@
 // DXY_HEADER_AUTHOR
 // DXY_HEADER_DOTFILES
 
+// USAGE: Reload Finicky after editing this file:
+//   Menu bar 👇 > Config > Reload
+
 // CXREF:
 //   https://github.com/johnste/finicky/wiki/Configuration
 // See also:
