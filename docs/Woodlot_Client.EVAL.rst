@@ -8,7 +8,7 @@
 ..     cd "${DXY_DEPOXY_CLIENT_FULL}/docs/notable-notes--woodlot" &&
 ..     ln -s \
 ..       "../${DEPOXY_TARGET_FILE}" \
-..       "00-${DXY_DEPOXY_CLIENT_ID}-🔥-Woodlot-Unfiled-Notes.rst⠂⠂⠂⠂⠂⠂⠂.rst" \
+..       "00-${DXY_DEPOXY_CLIENT_ID}-🔥-Woodlot-Client-${DXY_DEPOXY_CLIENT_ID}⠂⠂⠂⠂⠂⠂👈.rst" \
 ..   )
 
 #########################################################################################
