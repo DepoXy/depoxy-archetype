@@ -52,13 +52,13 @@ function! s:mappings_explore_docs_setup()
   " NOTE/2020-07-13: (lb): If there's a '$' in the filename, :Explore appears to
   " substitute 'hBc'. The netrw docs says it uses shellescape() and fnameescape(),
   " but I nonetheless have issues with the character. The netrw docs also say this:
-  " “Still, my advice is, if the "filename" looks like a vim command that you aren't
+  " “Still, my advice is, if the 'filename' looks like a vim command that you aren't
   "  comfortable with having executed, don't open it.” Albeit that's under a section
   " on Network-Oriented File Transfer (netrw-xfer), i.e., ftp. But I think the comment
   " 'still' applies to all commands.
 
   " Note that netrw whines on Enter when used from insert mode:
-  "   "E21: Cannot make changes, 'modifiable' is off."
+  "   'E21: Cannot make changes, 'modifiable' is off.'
   " So we have to use <ESC> in the inoremap below, not <C-O>.
   " - E.g., this causes an issue:
   "     inoremap <silent> <Leader>p
