@@ -1087,21 +1087,19 @@ prepare_depoxy_running_symlink () {
     if [ "${DXY_DEPOXY_CLIENT_FULL}" = "${running_now}" ]; then
       blot "Client already wired at “${DXY_DEPOXYDIR_RUNNING_FULL}”"
     else
-      >&2 blot
-      >&2 blot "$(alert "BWARE: A different client is currently “running”:")"
-      >&2 blot "$(alert "    ${running_now}")"
       # Use alternative path in ~/.mrtrust plumbed for this script.
       # - Necessary for running new DXC's 'infuse' and 'autocommit'.
       # - See also: `mr -t/--trust-all`, but ~/.mrconfig still needs
       #   to deliberately load the config, so we need this path anyway.
-      >&2 blot
-      >&2 blot "- Using temporarily “reservable” project slot:"
-      >&2 blot "    ${DXY_DEPOXYDIR_RESERVABLE_FULL}"
-      >&2 blot "  $(alert "/BWARE")"
       if [ -h "${DXY_DEPOXYDIR_RESERVABLE_FULL}" ]; then
         command rm -- "${DXY_DEPOXYDIR_RESERVABLE_FULL}"
       fi
       ln_with_trace "${DXY_DEPOXY_CLIENT_FULL}" "${DXY_DEPOXYDIR_RESERVABLE_FULL}"
+      >&2 blot "  $(alert "BWARE: A different client is currently “running”")"
+      >&2 blot "  - Existing, active client (via “${DXY_DEPOXYDIR_RUNNING_FULL}”):"
+      >&2 blot "      ${running_now}"
+      >&2 blot "  - This new client will use the temporarily “reservable” project path:"
+      >&2 blot "      ${DXY_DEPOXYDIR_RESERVABLE_FULL}"
     fi
   elif [ ! -e "${DXY_DEPOXYDIR_RUNNING_FULL}" ]; then
     # Usually ~/.depoxy/stints/<ID> is subdir of ~/.depoxy so use easy
@@ -1205,6 +1203,10 @@ prepare_symlinks_fs () {
   register "DXY_MAKE_LNS_FULL" "${DXY_DEPOXYDIR_STINTS_FULL}/${DXY_MAKE_LNS_NAME}"
 
   ${DXY_RUN_MAKE_LNS:-false} || return 0
+
+  blot
+  blot "Preparing mergeable symlinks"
+  blot
 
   ! ${DRY_RUN} || return 0
 
