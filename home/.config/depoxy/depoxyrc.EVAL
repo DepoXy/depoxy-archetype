@@ -108,6 +108,9 @@ export DEPOXY_PROJLNS="DXY_DEPOXY_PROJLNS_DIR__HOME_"
 # E.g., "${HOME}/Documents/screencaps"
 export DEPOXY_SCREENCAPS_DIR="DXY_DEPOXY_SCREENCAPS_DIR__HOME_"
 
+# E.g., "{HOME}/.kit"
+export DOPP_KIT="DXY_DOPP_KIT__HOME_"
+
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
 # *** DepoXy Client OMR config vars

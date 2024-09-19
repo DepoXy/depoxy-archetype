@@ -639,6 +639,13 @@ register_depoxy_project_paths () {
     | sed -E "s@^${HOME}(/|$)@~\1@"
   )"
 
+  # E.g., "${HOME}/.kit"
+  unset -v DXY_DOPP_KIT__HOME_
+  register "DXY_DOPP_KIT__HOME_" "$( \
+    echo "${DXY_DOPP_KIT}" \
+    | sed -E "s@^${HOME}(/|$)@\\\\\${HOME}\1@"
+  )"
+
   # E.g., "/.kit/"
   # - Used to generate ~/.gitignore.
   local dopp_kit_home_path="$( \
