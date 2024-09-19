@@ -70,7 +70,11 @@ module.exports = {
       match: ({opener}) => opener.bundleId === null,
       browser: ({urlString}) => ({
         name: "Google Chrome",
-        args: ["--new-window", urlString],
+        args: [
+          "--new-window",
+          "--profile-directory=Default",
+          urlString,
+        ],
       }),
     },
   ],
