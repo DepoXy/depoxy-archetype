@@ -1159,7 +1159,7 @@ ln_with_trace () {
     symarg=""
   fi
 
-  if ${DXY_OUTPUT_VERBOSE}; then
+  if ${DXY_OUTPUT_VERBOSE:-false}; then
     blot "  command ln ${symarg:--s} \"${source}\" \"${target}\""
   fi
 
@@ -1367,7 +1367,7 @@ deployed_file_make_link () {
   ln_with_trace "${dest_path}" "${DXY_MAKE_LNS_FULL}/${fname}" \
     "${DXY_MAKE_LNS_HARD:-false}"
 
-  ! ${DXY_OUTPUT_VERBOSE} || blot
+  ! ${DXY_OUTPUT_VERBOSE:-false} || blot
 }
 
 process_file_eval () {
@@ -1386,7 +1386,7 @@ process_file_eval () {
 
   blot "EVAL: [${fname}]"
 
-  if ${DXY_OUTPUT_VERBOSE} || ${DRY_RUN}; then
+  if ${DXY_OUTPUT_VERBOSE:-false} || ${DRY_RUN}; then
     # The `set -x` before `eval` prints eval_cmd, so only print on DRY_RUN.
     blot "${eval_cmd}"
   fi
@@ -1421,7 +1421,7 @@ process_file_eval () {
   }
 
   if [ ! -f "${DXY_CAPTURE_FILE_PATH}" ]; then
-    if ${DXY_OUTPUT_VERBOSE}; then
+    if ${DXY_OUTPUT_VERBOSE:-false}; then
       process_eval
 
       blot
@@ -1429,7 +1429,7 @@ process_file_eval () {
       process_eval 2> /dev/null
     fi
   else
-    if ${DXY_OUTPUT_VERBOSE}; then
+    if ${DXY_OUTPUT_VERBOSE:-false}; then
       process_eval | tee_or_cat
       exit_code=${PIPESTATUS[0]}
 
