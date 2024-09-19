@@ -244,6 +244,8 @@ _dxc_bashrc_standup () {
 # ***
 
 _dxc_unset_functions_dxc () {
+  # CALLS: _dxy_unset_functions_dxy
+  #   ~/.depoxy/ambers/home/.homefries/.bashrc-bin/bashrx.private.sh:176
   _wf_unset_functions_wf
   unset -f _wf_unset_functions_wf
 
@@ -263,5 +265,9 @@ _dxy_unset_functions () {
 _homefries_private_main_user () {
   _dxc_bashrc_standup "$@"
   unset -f _dxc_bashrc_standup
+
+  if ! ${HOME_FRIES_PRELOAD:-false}; then
+    _dxc_unset_functions_dxc
+  fi
 }
 
