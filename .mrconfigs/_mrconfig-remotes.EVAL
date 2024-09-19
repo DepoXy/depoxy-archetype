@@ -22,6 +22,16 @@ __USYNC__ =
 # ========================================================================
 # ------------------------------------------------------------------------
 
+# Opt-out `mropen` prompt, unless user opts this file back in.
+# - So cd'ing to any project below and running `mropen` won't
+#   prompt user to pick between canon file, and this file.
+# CXREF: ~/.kit/git/myrepos-mredit-command/bin/mredit
+[DEFAULT]
+lib = MREDIT_AUTO_MATCH=false
+
+# ========================================================================
+# ------------------------------------------------------------------------
+
 # USAGE: Add overriding config herein to setup your own private remotes.
 #
 # - This approach takes advantage of the fact that `mr` loads all matching
