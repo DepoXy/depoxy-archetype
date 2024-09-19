@@ -61,6 +61,14 @@ autocommit =
   #   git_auto_commit_one_update
   # CXREF: ~/.depoxy/ambers/mrassets/client-autocommit
   . "${DEPOXYAMBERS_DIR:-DXY_DEPOXYAMBERS_DIR__HOME_}/mrassets/client-autocommit"
+  #
+  # USAGE: Define _dxc_client_autocommit_user to run your own auto-commits
+  # before _dxc_client_autocommit insists that everything is committed.
+  # - E.g.,
+  #    _dxc_client_autocommit_user () {
+  #      git_auto_commit_one_update "path/to/my/file"
+  #    }
+  #
   _dxc_client_autocommit "$@"
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
