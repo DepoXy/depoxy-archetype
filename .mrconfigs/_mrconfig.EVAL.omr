@@ -48,6 +48,7 @@ pull = true
 push = true
 update = true
 skip = mr_exclusive "client"
+# See related infuseProjlns for embedded repos: flash.st, and acme.sh.
 infuseProjlns = OMR_INFUSE_PROJLNS_ROOT=true infuse_projlns_if_personal_project
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
