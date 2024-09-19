@@ -38,7 +38,10 @@ module.exports = {
         // openInBackground: true, // or false, force opening the browser in the background
         // openInBackground: urlString.includes("farcebook"), // e.g.
         // profile: "Default",
-        args: ["--new-window", urlString],
+        args: [
+          "--new-window",
+          urlString,
+        ],
       }),
     },
 
