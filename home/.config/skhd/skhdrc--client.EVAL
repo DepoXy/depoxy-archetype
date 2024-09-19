@@ -39,33 +39,12 @@
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
-# *** Personal docs GVim openers.
+# EMPTY: The author uses Hammerspoon for almost all their bindings.
+#
+# - SAVVY: Note that Hammerspoon won't bind <Cmd-Tab>, but it works
+#   from here, e.g.,
 
-# Open @Your Backlog in MacVim (Shift-Cmd-w)
-shift + cmd - w:
-  GVIM_OPEN_SERVERNAME="DXY_DEPOXY_GVIM_SERVERNAME" \
-  DXY_DOPP_KIT_TILDE/sh/gvim-open-kindness/bin/gvim-open-kindness \
-    DXY_DEPOXY_CLIENT_TILDE/private/docs/Backlog_Personal_[[[]]]DXY_DEPOXY_CLIENT_ID.rst
-
-# Open @Your Woodlot in MacVim (Ctrl-Cmd-w)"
-ctrl + cmd - w:
-  GVIM_OPEN_SERVERNAME="DXY_DEPOXY_GVIM_SERVERNAME" \
-  DXY_DOPP_KIT_TILDE/sh/gvim-open-kindness/bin/gvim-open-kindness \
-    DXY_DEPOXY_CLIENT_TILDE/private/docs/Woodlot_Personal_[[[]]]DXY_DEPOXY_CLIENT_ID.rst
-
-# *** Work notes GVim openers.
-
-# Open @Work Backlog in MacVim (Cmd-e)
-cmd - e:
-  GVIM_OPEN_SERVERNAME="DXY_DEPOXY_GVIM_SERVERNAME" \
-  DXY_DOPP_KIT_TILDE/sh/gvim-open-kindness/bin/gvim-open-kindness \
-    DXY_DEPOXY_CLIENT_TILDE/docs/Backlog_Client_[[[]]]DXY_DEPOXY_CLIENT_ID.rst
-
-# Open @Work Woodlot in MacVim (Ctrl-Cmd-e)
-shift + cmd - e:
-  GVIM_OPEN_SERVERNAME="DXY_DEPOXY_GVIM_SERVERNAME" \
-  DXY_DOPP_KIT_TILDE/sh/gvim-open-kindness/bin/gvim-open-kindness \
-    DXY_DEPOXY_CLIENT_TILDE/docs/Woodlot_Client_[[[]]]DXY_DEPOXY_CLIENT_ID.rst
+cmd - tab: say "Try Alt-Tab instead, user please" -v Daniel
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
