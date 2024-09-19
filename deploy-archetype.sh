@@ -941,11 +941,6 @@ DXY_CAPTURE_FILE_PATH=""
 
 prepare_capture_file () {
   DXY_CAPTURE_FILE_PATH="$(mktemp -t ${DXY_CAPTURE_FILE_PREFIX}XXXX)"
-
-  blot "Let's deploy!"
-  blot "- Capturing to:"
-  blot "  ${DXY_CAPTURE_FILE_PATH}"
-  blot
 }
 
 finish_capture_file () {
@@ -956,10 +951,13 @@ finish_capture_file () {
 
 # ***
 
+bg_green () { printf "\033[42m"; }
 bg_red () { printf "\033[41m"; }
+fg_black () { printf "\033[30m"; }
 fg_white () { printf "\033[97m"; }
 attr_reset () { printf "\033[0m"; }
 alert () { printf "%s" "$(bg_red)$(fg_white)$1$(attr_reset)"; }
+exalt () { printf "%s" "$(bg_green)$(fg_black)$1$(attr_reset)"; }
 
 blot () {
   echo "$@" | tee_or_cat
@@ -977,13 +975,21 @@ tee_or_cat () {
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
-prompt_continue_or_exit () {
-  blot "Looks good!"
-  blot "- All required variables have values"
-  blot "- Destination path empty or uncreated"
+print_introduction () {
   blot
+  exalt "           Let's deploy!            "
+  blot
+  blot "- All required variables have values"
+  blot "- Destination dir is empty or absent"
+  blot "- Deploy output will be captured to:"
+  blot "  ${DXY_CAPTURE_FILE_PATH}"
+  blot
+}
 
+prompt_continue_or_exit () {
   local ignored_key
+
+  print_introduction
 
   # REFER: <ESC+7> Save cursor posit (DEC) / <ESC+8> Restore posit (DEC)
   #   https://gist.github.com/ConnerWill/d4b6c776b509add763e17f9f113fd25b
