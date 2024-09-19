@@ -1743,14 +1743,17 @@ omr_dxc_generate_notable_notes_placeholders () {
 
   local docs_path="${DXY_DEPOXY_CLIENT_FULL}/docs"
 
-  blot
   blot "Preparing Vim notable-notes netrw listing..."
   blot
   blot "  \"${DXY_DEPOXYAMBERS_DIR}/bin/notable-notes--prepare.sh\" \"${docs_path}\""
   blot
 
   # CXREF: ~/.depoxy/ambers/bin/notable-notes--prepare.sh
-  "${DXY_DEPOXYAMBERS_DIR}/bin/notable-notes--prepare.sh" "${docs_path}"
+  SHCOLORS_OFF=false \
+  "${DXY_DEPOXYAMBERS_DIR}/bin/notable-notes--prepare.sh" "${docs_path}" 2>&1 \
+    | sed 's/^/  /'
+
+  blot
 }
 
 # ***
