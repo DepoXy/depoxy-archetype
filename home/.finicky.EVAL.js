@@ -45,12 +45,12 @@ module.exports = {
       }),
     },
 
-    // FEATR: Open terminal `open`'s in a new window.
+    // FEATR: Open terminal `open` commands in a new window.
     // - SAVVY: `open https://addy` from Alacritty produces:
     //     opener = { pid = 1234, bundleId = null, path = null, name = null }
-    //   where the 'pid' is for the `open`, I'd guess, because it's gone
-    //   if you look for it after the `open` runs and you copy the pid
-    //   from the Finicky console log.
+    //   where the 'pid' is for the `open` (or I assume the PID is for `open`,
+    //   because it's gone if you look for it after the `open` runs, or if
+    //   you try the pid from the Finicky console log).
     {
       // SAVVY: If you want to inspect variables, log 'em, e.g.,:
       //   match: ({opener}) => {
