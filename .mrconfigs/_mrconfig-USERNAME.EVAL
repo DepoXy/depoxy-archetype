@@ -95,9 +95,39 @@ infuseProjlns = OMR_INFUSE_PROJLNS_FILES=true infuse_projlns_if_personal_project
 #
 #  lib = remote_set entrust "git@github_user_key:user/patchr.git"
 
-# This repo is managed by git-put-wise, not by OMR, but we'll include
-# it for completeness, and so `omr-report` doesn't complain.
-skip = true
+# This repo is mostly managed by git-put-wise, except OMR helps with setup.
+skip = no_travel
+ffssh = OMR_TRAVEL_BLOCKLISTED=true git_merge_ffonly_ssh_mirror "$@"
+fetch = true
+update = true
+pull = true
+
+lib =
+  is_patchr_configured () {
+    [ -n "${MR_REPO_REMOTES}" ] && git_remote_exists "entrust"
+  }
+  #
+  insist_patchr_remote_configured () {
+    local stream="${1:-echo}"
+    if ! is_patchr_configured; then
+      ${stream} "Please setup the private GPW patchr repo remote, e.g.::"
+      ${stream} "  cd \"${MR_REPO}\" && mropen"
+      ${stream} "Pick the running DXC config when prompted:"
+      ${stream} "  ${MR_SECTION_CONFIG}"
+      ${stream} "Then add something like::"
+      ${stream} "  lib = remote_set entrust \"git@github_user_key:user/patchr.git\""
+      ${stream} "Add apply it::"
+      ${stream} "  mr -d \"${MR_REPO}\" -n wireRemotes"
+      #
+      return 1
+    fi
+  }
+echoInstallHelp =
+  echo "$(echoInstallHelpWidget 'os_all' 'dxy_all') DepoXy: Setup GPW *patchr* repo remote"
+  insist_patchr_remote_configured "echo" | sed 's/^/  /'
+infuse = insist_patchr_remote_configured "warn"
+isInstalled = is_patchr_configured
+install = insist_patchr_remote_configured "warn"
 
 # ========================================================================
 # ------------------------------------------------------------------------
