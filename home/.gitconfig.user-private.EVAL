@@ -16,7 +16,11 @@
 
 [user]
 
-  name = DXY_DEPOXY_USERNAME
+  # Some one-line log views (e.g., `tig`) show author name, not email,
+  # so include host so you can tell what host you were on for various
+  # commits.
+
+  name = DXY_DEPOXY_USERNAME@DXY_DEPOXY_HOSTNAME
   email = DXY_DEPOXY_USERNAME@DXY_DEPOXY_HOSTNAME
 
 [user]
