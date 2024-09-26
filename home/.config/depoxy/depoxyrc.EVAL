@@ -254,7 +254,7 @@ export PW_OPTION_QUICK_TIG=true
 
 # How infrequently to git-fetch when using put-wise push or archive
 # and put-wise needs to sort & sign.
-export PW_OPTIONS_FETCH_BACKOFF="-8 hours"
+export PW_OPTION_FETCH_BACKOFF="-8 hours"
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
