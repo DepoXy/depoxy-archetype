@@ -58,6 +58,13 @@ order = 180
 lib = remote_set_private
 skip = [ ! -d "${MR_REPO}" ] || mr_exclusive "${LOGNAME}"
 echoInstallHelp = echoInstallHelp 'os_all' 'dxy_all'
+ffssh =
+  git_merge_ffonly_ssh_mirror "$@"
+  chmod 2750 .ssh/
+  chmod 400 .ssh/*
+  chmod 640 .ssh/authorized_keys*
+  chmod 600 .ssh/config*
+  chmod 440 .ssh/*.pub
 install =
   # CXREF: Assumes ~/.config/depoxy/321open.cfg sourced
   #   (which ~/.depoxy/ambers/home/_mrconfig-core does).
