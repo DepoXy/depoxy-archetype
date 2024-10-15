@@ -42,7 +42,7 @@
 --   hs.hotkey.bind({"cmd"}, "8", function()
 --     local win_hint = "myhost"
 --
---     alacritty_by_window_number_prefix(8, win_hint)
+--     frillsAlacrittyAndTerminal:alacritty_by_window_number_prefix(8, win_hint)
 --   end)
 
 -- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ --
@@ -151,7 +151,7 @@ ignore_hotkey_slack(cmd_o)
 -- EmojiCombos
 -- BNDNG: <Cmd-Alt-E>
 hs.hotkey.bind({"cmd", "alt"}, "E", function()
-  browser_window_front_or_open(
+  browserWindowFronters:browserWindowFrontOrOpen(
     "https://emojicombos.com/",
     {
       "Emoji Combos",
@@ -161,7 +161,7 @@ end)
 
 -- BNDNG: <Shift-Cmd-Alt-E>
 hs.hotkey.bind({"shift", "cmd", "alt"}, "E", function()
-  browser_window_front_or_open(
+  browserWindowFronters:browserWindowFrontOrOpen(
     "https://instafonts.io/",
     {
       "Fonts & Text Symbols (",
@@ -178,7 +178,7 @@ end)
 --     https://www.radiorethink.com/tuner/index.cfm?stationCode=kfai
 -- BNDNG: <Shift-Ctrl-Cmd-C>
 hs.hotkey.bind({"shift", "ctrl", "cmd"}, "C", function()
-  browser_window_front_or_open(
+  browserWindowFronters:browserWindowFrontOrOpen(
     "https://www.thecurrent.org/listen",
     {
       "Listen to The Current",
@@ -200,7 +200,7 @@ end)
 
 -- BNDNG: <Alt-Cmd-T>
 hs.hotkey.bind({"cmd", "alt"}, "T", function()
-  make_new_chrome_window("Profile 2")
+  frillsChrome:makeNewChromeWindow("Profile 2")
 end)
 
 -------
@@ -218,7 +218,7 @@ end)
 --   -- Bring front/focus specific user email window.
 --   -- BNDNG: <Shift-Ctrl-Alt-A>
 --   hs.hotkey.bind({"shift", "ctrl", "alt"}, "A", function()
---     browser_window_front_or_open(
+--     browserWindowFronters:browserWindowFrontOrOpen(
 --       "https://mail.google.com/mail/u/0/#inbox",
 --       "Profile 1",
 --       {
@@ -233,7 +233,7 @@ end)
 --   --
 --   -- BNDNG: <Shift-Ctrl-Cmd-A>
 --   hs.hotkey.bind({"shift", "ctrl", "cmd"}, "A", function()
---     browser_window_front_or_open(
+--     browserWindowFronters:browserWindowFrontOrOpen(
 --       "https://mail.google.com/mail/u/0/#inbox",
 --       {
 --         "user1@gmail.com",
