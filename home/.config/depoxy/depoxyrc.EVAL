@@ -263,10 +263,22 @@ export TN_OPTION_EDITOR_VIM=true
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
-# *** git-smart, git-my-merge-status, and related git-* ENVIRONables
+# *** Git Smart project, git-my-merge-status, and related git-* ENVIRONables
 #
 #   CXREF: ~/.kit/git/git-smart
+#     https://github.com/landonb/git-smart#💡
+#
 #   CXREF: ~/.kit/git/git-my-merge-status/bin/git-my-merge-status
+#     https://github.com/landonb/git-my-merge-status#🌵
+
+# Set the sort order and blocklist for the `git open` fzf prompt.
+# - CXREF: ~/.kit/git/git-smart/bin/git-remote-picker
+
+export GITSMART_GIT_OPEN_REMOTE_HIERARCHY="publish entrust starter upstream github origin"
+
+# REFER: See also above: MR_KNOWN_REMOTES
+#
+#  export GITSMART_GIT_OPEN_REMOTE_BLOCKLIST="host1 host2 host3"
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
