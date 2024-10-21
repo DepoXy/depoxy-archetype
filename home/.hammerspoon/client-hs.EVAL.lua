@@ -178,13 +178,16 @@ end)
 --     https://www.radiorethink.com/tuner/index.cfm?stationCode=kfai
 -- BNDNG: <Shift-Ctrl-Cmd-C>
 hs.hotkey.bind({"shift", "ctrl", "cmd"}, "C", function()
+  local toggle = true
+
   browserWindowFronters:browserWindowFrontOrOpen(
     "https://www.thecurrent.org/listen",
     {
       "Listen to The Current",
       "Radio K",
       "KFAI | Minneapolis & Saint Paul",
-    }
+    },
+    toggle
   )
 end)
 
@@ -218,12 +221,15 @@ end)
 --   -- Bring front/focus specific user email window.
 --   -- BNDNG: <Shift-Ctrl-Alt-A>
 --   hs.hotkey.bind({"shift", "ctrl", "alt"}, "A", function()
+--    local toggle = true
+--
 --     browserWindowFronters:browserWindowFrontOrOpen(
 --       "https://mail.google.com/mail/u/0/#inbox",
 --       "Profile 1",
 --       {
 --         "user2@gmail.com",
---       }
+--       },
+--       toggle
 --     )
 --   end)
 --
@@ -233,6 +239,8 @@ end)
 --   --
 --   -- BNDNG: <Shift-Ctrl-Cmd-A>
 --   hs.hotkey.bind({"shift", "ctrl", "cmd"}, "A", function()
+--    local toggle = true
+--
 --     browserWindowFronters:browserWindowFrontOrOpen(
 --       "https://mail.google.com/mail/u/0/#inbox",
 --       {
@@ -242,7 +250,8 @@ end)
 --         "Mail - ",
 --         "Sign in to Outlook",
 --         "Sign out",
---       }
+--       },
+--       toggle
 --     )
 --   end)
 
