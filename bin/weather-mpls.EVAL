@@ -1,0 +1,32 @@
+# USAGE:
+#   m4_shim \
+#     "+8" "bin/weather-mpls.EVAL" \
+#     "bin/weather-mpls"
+
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
+
+#!/usr/bin/env bash
+# vim:tw=0:ts=2:sw=2:et:norl:nospell:ft=bash
+# DXY_HEADER_AUTHOR
+# DXY_HEADER_PROJECT
+# DXY_HEADER_LICENSE
+
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
+
+# USAGE: Update below with your OpenWeather API key and call this
+# script from a GeekTool geeklet.
+#
+# Oh, and if you live somewhere else, change the location, too.
+#
+# - REFER: ~/.depoxy/ambers/home/.kit/mOS/GeekTool/README.rst
+
+# SAVVY: You can update the Geeklet immediately, even if you have
+# a Refresh timeout set, by switching to the GeekTool window.
+
+# CXREF:
+# ~/.depoxy/ambers/bin/weather.sh
+
+WX_OPENWEATHER_KEY="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" \
+  ~/.depoxy/ambers/bin/weather.sh "Minneapolis" "$@" \
+  | sed -e 's/Minneapolis, US/𝑴𝑷𝑳𝑺/'
+
