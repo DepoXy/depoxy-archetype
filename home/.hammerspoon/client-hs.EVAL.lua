@@ -65,6 +65,8 @@ local cmd_e = hs.hotkey.bind({"cmd"}, "E", function()
   gvim_open_kindness("DXY_DEPOXY_CLIENT_TILDE/docs/Backlog_Client_[[[]]]DXY_DEPOXY_CLIENT_ID.rst")
 end)
 
+ignore_hotkey_gnucash(cmd_e)
+
 -- Open @Work Woodlot in MacVim
 -- BNDNG: <Ctrl-Cmd-E>
 hs.hotkey.bind({"ctrl", "cmd"}, "E", function()
@@ -97,6 +99,8 @@ end)
 -- so that, e.g., typically Open is remapped to <Ctrl-O>, and
 -- <Cmd-O> is free for us to use.
 -- - But for some apps we want the actual <Cmd> event to be generated.
+ignore_hotkey_acrobat_reader(cmd_o)
+ignore_hotkey_gimp(cmd_o)
 ignore_hotkey_gnucash(cmd_o)
 ignore_hotkey_slack(cmd_o)
 
