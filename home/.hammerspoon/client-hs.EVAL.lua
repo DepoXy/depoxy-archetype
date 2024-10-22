@@ -21,6 +21,14 @@
 -- SAVVY: This module can access functions defined by either file,
 -- macOS-Hammyspoony's init.lua, as well as from depoxy-hs.lua.
 
+-- USYNC/2024-10-22: Merge useful changes back to the template:
+--
+local __USYNC__ = [[
+  meld \
+    ~/.depoxy/ambers/archetype/home/.hammerspoon/client-hs.EVAL.lua \
+    ~/.depoxy/stints/DXY_DEPOXY_CLIENT_ID/home/.hammerspoon/client-hs.lua &
+]]
+
 -- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ --
 
 -- CPYST: Use hs.alert.show to trace code.
