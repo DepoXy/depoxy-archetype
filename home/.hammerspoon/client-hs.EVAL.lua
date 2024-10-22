@@ -31,11 +31,12 @@ local __USYNC__ = [[
 
 -- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ --
 
--- CPYST: Use hs.alert.show to trace code.
+-- CPYST: Use hs.alert.show to trace code, e.g.:
 --
 --   hs.alert.show("CLIENT Reporting!")
---
--- Or uncomment to verify this file gets loaded.
+
+-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ --
+-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ --
 
 -- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ --
 -- +++ Alacritty fronters
@@ -154,7 +155,7 @@ ignore_hotkey_slack(cmd_o)
 --   ignore_hotkey_slack(shift_cmd_e)
 
 -- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ --
--- +++ Browser window openers
+-- +++ Browser frontoropeners
 
 -- EmojiCombos
 -- BNDNG: <Cmd-Alt-E>
@@ -199,16 +200,33 @@ hs.hotkey.bind({"shift", "ctrl", "cmd"}, "C", function()
   )
 end)
 
--------
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
--- CPYST: Identify profile account, e.g.,
+-- USAGE: If you use different Chrome profiles, you can have different
+-- bindings for different Gmail inboxes.
+--
+-- CPYST: You'll need to identify which email goes with which Profile.
+--
+-- - E.g.:
+--
+--   $ jq -sr '.[0].account_info[0].email' \
+--     "${HOME}/Library/Application Support/Google/Chrome/Profile 1/Preferences"
+--   foo@gmail.com
+--
 --   $ jq -sr '.[0].account_info[0].email' \
 --     "${HOME}/Library/Application Support/Google/Chrome/Profile 2/Preferences"
---   foo@gmail.com
+--   bar@gmail.com
+--
 --   $ jq -sr '.[0].account_info[0].email' \
 --     "${HOME}/Library/Application Support/Google/Chrome/Profile 3/Preferences"
---   bar@gmail.com
+--   baz@gmail.com
 
+-------
+
+-- Here we complement the <Cmd-T> New Chrome Window binding from Hammyspoony
+-- with a <Cmd-Alt-T> binding that opens "Profile 2".
+-- - REFER: frillsChrome:bindHotkeys({newChromeWindow={{"cmd"}, "T"}})
+--
 -- BNDNG: <Alt-Cmd-T>
 hs.hotkey.bind({"cmd", "alt"}, "T", function()
   frillsChrome:makeNewChromeWindow("Profile 2")
@@ -216,10 +234,9 @@ end)
 
 -------
 
--- USAGE: If you use different Chrome profiles, you could have different
--- bindings for different Gmail inboxes.
---
--- - E.g.,
+-- Here we complement the <Shift-Ctrl-Cmd-A> binding that opens your main
+-- Profile Gmail window with <Shift-Ctrl-Alt-A> to open Profile 1's Gmail.
+-- - REFER: browserWindowFronters:bindHotkeys({frontEmail={{"shift", "ctrl", "cmd"}, "A"}})
 --
 --   -- CPYST: Identify profile account, e.g.,
 --   --   $ jq -sr '.[0].account_info[0].email' \
@@ -240,6 +257,10 @@ end)
 --       toggle
 --     )
 --   end)
+
+-- To avoid clashing with the default <Shift-Ctrl-Cmd-A> binding that opens your main
+-- Profile Gmail window, redefine it with a specific email address.
+-- - REFER: browserWindowFronters:bindHotkeys({frontEmail={{"shift", "ctrl", "cmd"}, "A"}})
 --
 --   -- Override Hammyspoony binding: Change "@gmail.com" -> "user1@gmail.com"
 --   -- so that user2@gmail.com window not fronted on this binding (nor any
