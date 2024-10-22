@@ -57,6 +57,20 @@ local __USYNC__ = [[
 -- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ --
 -- +++ GVim openers
 
+-- # *** Work notes GVim openers.
+
+-- Open @Work Backlog in MacVim
+-- BNDNG: <Cmd-E>
+local cmd_e = hs.hotkey.bind({"cmd"}, "E", function()
+  gvim_open_kindness("DXY_DEPOXY_CLIENT_TILDE/docs/Backlog_Client_[[[]]]DXY_DEPOXY_CLIENT_ID.rst")
+end)
+
+-- Open @Work Woodlot in MacVim
+-- BNDNG: <Ctrl-Cmd-E>
+hs.hotkey.bind({"ctrl", "cmd"}, "E", function()
+  gvim_open_kindness("DXY_DEPOXY_CLIENT_TILDE/docs/Woodlot_Client_[[[]]]DXY_DEPOXY_CLIENT_ID.rst")
+end)
+
 -- # *** Personal docs GVim openers.
 
 -- Open @Your Backlog in MacVim
@@ -69,20 +83,6 @@ end)
 -- BNDNG: <Ctrl-Cmd-W>
 hs.hotkey.bind({"ctrl", "cmd"}, "W", function()
   gvim_open_kindness("DXY_DEPOXY_CLIENT_TILDE/private/docs/Woodlot_Personal_[[[]]]DXY_DEPOXY_CLIENT_ID.rst")
-end)
-
--- # *** Work notes GVim openers.
-
--- Open @Work Backlog in MacVim
--- BNDNG: <Cmd-E>
-hs.hotkey.bind({"cmd"}, "E", function()
-  gvim_open_kindness("DXY_DEPOXY_CLIENT_TILDE/docs/Backlog_Client_[[[]]]DXY_DEPOXY_CLIENT_ID.rst")
-end)
-
--- Open @Work Woodlot in MacVim
--- BNDNG: <Ctrl-Cmd-E>
-hs.hotkey.bind({"ctrl", "cmd"}, "E", function()
-  gvim_open_kindness("DXY_DEPOXY_CLIENT_TILDE/docs/Woodlot_Client_[[[]]]DXY_DEPOXY_CLIENT_ID.rst")
 end)
 
 -------
