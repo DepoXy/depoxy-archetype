@@ -182,6 +182,20 @@ hs.hotkey.bind({"shift", "cmd", "alt"}, "E", function()
   )
 end)
 
+-- RemovePaywall
+-- - SAVVY: They call 'em hard paywalls vs. soft paywalls, i.e.,
+--   you can scrape the article text from the page content with
+--   a soft paywall.
+-- BNDNG: <Cmd-Alt-R>
+hs.hotkey.bind({"cmd", "alt"}, "R", function()
+  browserWindowFronters:browserWindowFrontOrOpen(
+    "https://www.removepaywall.com/",
+    {
+      "RemovePaywall",
+    }
+  )
+end)
+
 -------
 
 -- The Current foregrounder/๏קєภer
