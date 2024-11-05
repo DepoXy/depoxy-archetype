@@ -10,11 +10,14 @@
 # DXY_HEADER_PROJECT
 # DXY_HEADER_LICENSE
 
-# USAGE: Your typical crontab.
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
+
+# USAGE: You'll generally only need to show or load this crontab:
 #
 # - Show user's crontab:
 #
 #     crontab -l
+#     crontab -l [-u user]
 #
 # - Install this crontab:
 #
@@ -22,36 +25,122 @@
 #
 # - Clear user's crontab:
 #
-#     crontab -r
+#     crontab -r [-u user]
+#
+# - You could also edit the crontab directly:
+#
+#     crontab -e [-u user]
+#
+#   But you'll likely want to edit and install this file.
+#
+# REFER: See below for a syntax cheat sheet.
+
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
+
+# USYNC: Migrate changes herein to the DepoXy Archetype template:
+#
+#   meld ~/.depoxy/ambers/archetype/home/crontab.USERNAME.EVAL \
+#     DXY_DEPOXY_CLIENT_TILDE/home/crontab.puck &
+
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
 # CALSO: On macOS, see also launchd (and its StartInterval option)
 #        to schedule jobs.
 #
-# - Nonetheless, this job still works on @macOS.
+# BWARE: Apple says, "Although it is still supported, cron is not a
+# recommended solution. It has been deprecated in favor of launchd."
+#
+# - REFER: https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/BPSystemStartup/Chapters/ScheduledJobs.html
+#
+# - THOTS: This author would be very surprised if Apple *truly*
+#   deprecated cron, i.e., removed support. But I wouldn't put
+#   it past them. But I'd be very, very surprised if they did.
+#
+#   - Cron is a core Linux facility, so maybe you won't see
+#     updates/changes to it, but Apple is unlikely to remove
+#     it. (And if they did, I'm sure you'd see something on
+#     Brew soon after.)
+#
+# - Also, while Launch Agents might be the preferred solution
+#   nowadays, Launch Agents are much more tedious to setup.
+#
+#   So for simple tasks, e.g., all the `notify` reminders below,
+#   you'll likely find cron is the more convenient approach.
+
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
 # Some ideas:
 #
 # - You might add a daily backup job herein, or a monthly omr-report
 #   audit email, or a daily GnuCash report script.
 #
-# - But on vendor machines the mostly likely use case for the author
-#   is meetings notifications, especially when working from home and
-#   either the corporate email doesn't have a good calendar app, or
-#   maybe you need additional heads-up before a meeting, or perhaps
-#   like me sometimes you're on a bio break or grabbing tea, and you
-#   need an audio alert to ensure you receive it.
+# - On vendor machines, at least for the author, the most common use
+#   case is for meetings notifications, especially when working from
+#   home and either the corporate email doesn't have a good calendar
+#   app, or maybe you need additional heads-up before a meeting. Or
+#   perhaps, like me, sometimes you're on a bio break or grabbing tea,
+#   and you need an audio alert to ensure you receive the reminder.
 #
-# The following examples are notification reminders, and there are
+# All the examples below are notification reminders, and there are
 # more than just one or two so that you can demo the various voices,
 # at least on @macOS.
 #
 # - CXREF: See list of macOS voices: `random_voice_macos`:
+#
 #     DXY_DEPOXYAMBERS_DIR_TILDE/bin/notify
-#   - The examples below uses voices picked for how well they deliver
-#     the accompanying text, at least in the author's opinion.
-#     - I liked a few other voices that are not used below, e.g.:
-#         NOTIFY_VOICES="Moira Reed Rishi Rocko Sandy"
-#       and obviously tastes change over time (as do the voice names).
+#
+# - The examples below uses voices picked for how well they deliver
+#   the accompanying text, at least in the author's opinion.
+#
+#   - I liked a few other voices that are not used below, e.g.:
+#       NOTIFY_VOICES="Moira Reed Rishi Rocko Sandy"
+#     and obviously tastes change over time (as do the voice names).
+
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
+
+# Crontab cheat sheet
+# ===================
+# THANX:
+#   https://devhints.io/cron
+#   https://www.codementor.io/@akul08/the-ultimate-crontab-cheatsheet-5op0f7o4r
+#
+# Format
+# ------
+#
+#   Min  Hour Day  Mon  Weekday
+#   *    *    *    *    *   {Command}
+#   ┬    ┬    ┬    ┬    ┬   ┬
+#   │    │    │    │    │   └─  Command to execute
+#   │    │    │    │    └─────  Weekday  (0=Sun .. 6=Sat, or Sun, Mon, ... Sat)
+#   │    │    │    └──────────  Month    (1..12)
+#   │    │    └───────────────  Day      (1..31)
+#   │    └────────────────────  Hour     (0..23)
+#   └─────────────────────────  Minute   (0..59)
+#
+# Operators
+# ---------
+#
+#   Op. Description                   Examples
+#   +++ ++++++++++++++++++++++++++    +++++++++++++++++++++++++++++++++++++
+#   *	  all values                    Hourly, on the h: 0 * * * *
+#                                     Sundays at midn.: 0 0 * * 0
+#   ,	  separate individual values    Sat & Sun @210a:  10 2 * * 6,7
+#   -	  a range of values             Mon-Sat @6p:      0 18 * * 0-6
+#   /	  divide a value into steps     @15m:             */15 * * * *
+#                                     @2h:              0 */2 * * *
+#
+# Special strings
+# ---------------
+#
+#   @reboot	    every rebot
+#   @hourly	    once every hour     — same as 0 * * * *
+#   @daily	    once every day      — same as 0 0 * * *
+#   @midnight	  once every midnight — same as @daily
+#   @weekly	    once every week     — same as 0 0 * * 0
+#   @monthly	  once every month    — same as 0 0 1 * *
+#   @yearly	    once every year     — same as 0 0 1 1 *
+
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
 # Here's a silent, toast-only notifcation example
 # for 5 mintes before a 130p Tue/Thurs meeting:
