@@ -142,6 +142,37 @@
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
+# SAVVY: The following are spoken Desktop Notification reminder examples.
+
+# ***
+
+# REFER: You can test voices via:
+#   System Settings... > Accessibility > Spoken Content > System voice > (i)
+#
+# REFER: Run `say -v ?` to print a list of voices.
+
+# ***
+
+# DUNNO/2024-11-06: Using some voice(s) manually works as expected,
+# but via cron, `say` uses a different voice.
+#
+# - E.g., this works from the terminal:
+#     NOTIFY_VOICES="Sandy" DXY_DEPOXYAMBERS_DIR/bin/notify "Testing 1 2 3"
+# - But via cron, `say` uses a male voice (which sounds like Daniel).
+# - Specifying the language changes to a female voice, but it doesn't sound like "Sandy":
+#     07 10 * * Mon-Fri NOTIFY_VOICES="Sandy (English (US))" DXY_DEPOXYAMBERS_DIR/bin/notify "Testing 1 2 3"
+# - Specifying the LANG doesn't help either:
+#     07 10 * * Mon-Fri LANG=en_US NOTIFY_VOICES="Sandy" DXY_DEPOXYAMBERS_DIR/bin/notify "Testing 1 2 3"
+# - I can only surmise that it has something to do with the shell environ vs. the cron environ.
+#   - Or maybe Sandy is not available from cron, and it falls back to another voice?
+#   - However, if you specify a nonexistant voice (e.g.,
+#     NOTIFY_VOICES="NotARealVoice"), it defaults a different voice
+#     entirely (which is also not the voice I have selected in System
+#     Settings).
+#   - Whatever, at least the other voices seem to work...
+
+# ***
+
 # Here's a silent, toast-only notifcation example
 # for 5 mintes before a 130p Tue/Thurs meeting:
 55 14 * * Tue,Thu NOTIFY_SILENT=true DXY_DEPOXYAMBERS_DIR/bin/notify "Some Calendar Event B/c Calendar App Notifs Not Working"
