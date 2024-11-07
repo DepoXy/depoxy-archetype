@@ -318,7 +318,7 @@ export GITNUBS_DEV=true
 # Tell slather-defaults (macOS-onboarder) if personal or professional machine.
 # - On personal machine, reminders include all OMR install tasks.
 # - On professional machine, reminders omit projects you won't need
-#   (like GnuCash).
+#   (like GnuCash) — Though echoInstallHelp arg used is 'dxy_limit'.
 
 export OMR_ECHO_INSTALL_DXY_SCOPE="dxy_pro"
 
