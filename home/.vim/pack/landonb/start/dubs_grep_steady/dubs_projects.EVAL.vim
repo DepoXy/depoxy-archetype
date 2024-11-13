@@ -13,7 +13,7 @@
 " DXY_HEADER_PROJECT
 " DXY_HEADER_LICENSE
 " Summary: This is a user-customizable file loaded by Dubs Grep Steady
-" Helpful: :GrepSteadyReload / \dp / :h dubs-grep-steady / More hints below
+" Helpful: :GrepSteadyReload / \dp / :h dubs-grep-steady / See USAGE below
 
 let g:ds_simple_grep_locat_lookup = [
   \ "Search in:",
@@ -61,48 +61,63 @@ let g:ds_simple_grep_locat_lookup = [
   \ "─────────────────────────────────────────────────────────────"
   \]
 
-" ====================================================================
-" USAGE: Modify the list above to customize the grep project paths prompt.
-"      - The DXY_VENDOR_HOME_TILDE paths above are examples.
-"      - The other default paths above are wired to real paths.
-"      - The lines above are +10 offset from how they're numbered by
-"        the `inputlist` command (:h inputlist).
-" USAGE: Run :GrepSteadyReload (or \dp, or restart Vim) after editing above.
-" ====================================================================
-
 " *********************************************************************** "
 
-" SOME HINTS BELOW
+" USAGE: Modify the list above to customize the grep project paths prompt.
 "
-" Above is the list of directories you'll see when performing a search
-" using the <Leader>g or <F4> commands.
+"        REFER: https://github.com/landonb/dubs_grep_steady#🧐
 "
-"   See :h dubs-grep-steady
-
-" TO CUSTOMIZE THE LIST:
+"      - The ~/work paths above are examples.
 "
-" Add your own paths and reorder the list however you'd like.
+"      - The other default paths above are wired to real paths.
 "
-" Note: The file line numbers of the list above are 10 more than the
+"      - The lines above are +10 offset from how they're numbered by
+"        the `inputlist` command (:h inputlist) so you can easily
+"        align which path with which numberic input.
+"
+" NTHEN: After editing the list, you can either run
+"
+"          :GrepSteadyReload (or \dp)
+"
+"        or restart Vim.
+"
+" USAGE: Use <Leader>g and various <F4> commands to search your files.
+"
+"      - See :h dubs-grep-steady
+"
+" HINTS: Add your own paths and reorder the list however you'd like.
+"
+"  Note: The file line numbers of the list above are 10 more than the
 " number that you'd type to choose that entry (path) when you search.
 " (E.g., the 'press 1 to cancel' hint is on line 11 of this file.)
 "
-" Note: If the list is too tall for your Vim window, you'll have to hit
-" Space to scroll it. So you'll probably want to limit the number of
-" projects to around ~40, so you can avoid scrolling if your Gvim window
-" is reasonably sized (i.e., not too short).
+"  Note: If the list is too tall for your Vim window, you may have to
+" hit on Space to scroll it. So you may want to limit the list length
+" to ~40 projects (depending on your screen), to keep it from paging.
 "
-" Hint: You can specify multiple paths in one entry by separating paths
+"  Hint: To specify multiple paths in one entry, separate each path
 " with a space, e.g.,
 "
-"   \ ""
-"   \   . $HOME . "/DXY_DEPOXYDIR_BASE_NAME "
-"   \   . $HOME . "/DXY_HOMEFRIES_DIR_NAME "
-"   \   . $HOME . "/.vim/pack/DXY_DEPOXY_CVS_ALIAS_VIM_PLUG_ORG ",
+"     \ ""
+"     \   . $HOME . "/DXY_DEPOXYDIR_BASE_NAME "
+"     \   . $HOME . "/DXY_HOMEFRIES_DIR_NAME "
+"     \   . $HOME . "/.vim/pack/DXY_DEPOXY_CVS_ALIAS_VIM_PLUG_ORG ",
 "
-" Hint: You can run embedded commands to help build the list, e.g.,
+"  Hint: You can run embedded commands to help build the list, e.g.,
 "
-"   \ "`echo " . $HOME . "/DXY_HOMEFRIES_DIR_NAME/.bashrc-bin/bash*`",
+"     \ "`echo " . $HOME . "/DXY_HOMEFRIES_DIR_NAME/.bashrc-bin/bash*`",
+
+" *********************************************************************** "
+
+" CXREF: DEPOXY_PROJLNS="${DEPOXY_PROJLNS:-${HOME}/.projlns}"
+"   ~/.depoxy/ambers/home/.projlns/infuse-projlns-*.sh
+"     ~/.depoxy/ambers/home/.projlns/infuse-projlns-core.sh
+"     etc.
+"
+" USYNC:
+"   meld \
+"     ~/.depoxy/ambers/archetype/home/.vim/pack/landonb/start/dubs_grep_steady/dubs_projects.EVAL.vim \
+"     ~/.depoxy/running/home/.vim/pack/landonb/start/dubs_grep_steady/dubs_projects.vim &
 
 " *********************************************************************** "
 
