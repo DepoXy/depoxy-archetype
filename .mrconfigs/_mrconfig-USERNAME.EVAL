@@ -61,10 +61,10 @@ echoInstallHelp = echoInstallHelp 'os_all' 'dxy_all'
 ffssh =
   git_merge_ffonly_ssh_mirror "$@"
   chmod 2750 .ssh/
-  chmod 400 .ssh/*
   chmod 640 .ssh/authorized_keys*
   chmod 600 .ssh/config*
-  chmod 440 .ssh/*.pub
+  chmod 400 .ssh/id_*
+  chmod 440 .ssh/id_*.pub
 install =
   # CXREF: Assumes ~/.config/depoxy/321open.cfg sourced
   #   (which ~/.depoxy/ambers/home/_mrconfig-core does).
