@@ -176,12 +176,14 @@ export DEPOXYDIR_VENDOR_FULL="DXY_VENDOR_HOME__HOME_"
 #   - Via `mr_repo_checkout` via 'checkout'.
 #   - Via 'wireRemotes' and 'reportRemotes'.
 # - On @leader machine where personal Git SSH is setup, you might use:
-#     export MR_GIT_HOST_ORIGIN="git@github.com:"
+#     export MR_GITHUB_HOST_ORIGIN="git@github.com:"
 # - On @client, you might just use HTTPS for pull access only:
-#     export MR_GIT_HOST_ORIGIN="https://github.com/"
+#     export MR_GITHUB_HOST_ORIGIN="https://github.com/"
 #
-#  export MR_GIT_HOST_ORIGIN="git@github.com:"
-export MR_GIT_HOST_ORIGIN="https://github.com/"
+#  export MR_GITHUB_HOST_ORIGIN="git@github.com:"
+export MR_GITHUB_HOST_ORIGIN="https://github.com/"
+#  export MR_GITLAB_HOST_ORIGIN="git@gitlab.com:"
+export MR_GITLAB_HOST_ORIGIN="https://gitlab.com/"
 
 # *** Unless the 🧜 is the famous `mredit`
 #
