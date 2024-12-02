@@ -488,7 +488,6 @@ KARABINER_ELEPHANTS=$HOME/.kit/mOS/Karabiner-Elephants filter=".* *" {
   0310-applcn-chrome.json
   0370-applcn-meld.json
   0390-applcn-gimp.json
-  0410-applcn-slack.json
   0550-applcn-libreoffice.json
  }
  complex_modifications--DXY=$HOME/.depoxy/ambers/home/.config/karabiner/assets/complex_modifications--DXY {
@@ -557,7 +556,6 @@ KARABINER_ELEPHANTS=$HOME/.kit/mOS/Karabiner-Elephants filter=".* *" {
   0310-applcn-chrome.json
   0370-applcn-meld.json
   0390-applcn-gimp.json
-  0410-applcn-slack.json
   0510-depoxy-webex-teams-zoom.json
   0550-applcn-libreoffice.json
   README.md
@@ -579,10 +577,7 @@ KARABINER_ELEPHANTS=$HOME/.kit/mOS/Karabiner-Elephants filter=".* *" {
 MACOS_HAMMYSPOONY=$HOME/.kit/mOS/macOS-Hammyspoony filter=".* *" {
  LICENSE
  README.md
- lib=$HOME/.kit/mOS/macOS-Hammyspoony/lib {
-  hide-all-windows.osa
- }
- .config/skhd=$HOME/.kit/mOS/macOS-Hammyspoony/.hammerspoon {
+ HMY/.hammerspoon=$HOME/.kit/mOS/macOS-Hammyspoony/.hammerspoon {
   init.lua
  }
  DXY/.hammerspoon=$HOME/.depoxy/ambers/home/.hammerspoon exclude="init.lua" {
@@ -593,6 +588,10 @@ MACOS_HAMMYSPOONY=$HOME/.kit/mOS/macOS-Hammyspoony filter=".* *" {
  }
  DXA/.hammerspoon=$HOME/.depoxy/ambers/archetype/home/.hammerspoon {
   client-hs.EVAL.lua
+ }
+ HMY/lib=$HOME/.kit/mOS/macOS-Hammyspoony/lib {
+  alacritty-front-window-number.osa
+  hide-all-windows.osa
  }
 }
 
@@ -621,8 +620,7 @@ MACOS_SKHIBIDIRC=$HOME/.kit/mOS/macOS-skhibidirc filter=".* *" {
   skhdrc
   skhdrc.EXAMPLE
  }
- DXY/.config/skhd=$HOME/.depoxy/ambers/home/.config/skhd {
-  skhdrc
+ DXY/.config/skhd=$HOME/.depoxy/ambers/home/.config/skhd exclude="skhdrc" {
   skhdrc--depoxy
  }
  DXC/.config/skhd=$HOME/.depoxy/running/home/.config/skhd {
@@ -826,11 +824,15 @@ DEPOXY_AMBERS=$HOME/.depoxy/ambers filter=".* *" exclude="archetype" {
   daily-updatedb
   fussy
   ln-relink-using-private-user-path
+  marco-toggle-slack
+  marco-toggle-spotify
+  marco-toggle-window
   notable-notes--prepare.sh
   notify
   spells.sh
   test-as-cron
   vimprojects-filter
+  weather.sh
   weekly-omr-report
   macOS=$HOME/.depoxy/ambers/bin/macOS {
    launchers=$HOME/.depoxy/ambers/bin/macOS/launchers {
@@ -853,7 +855,6 @@ DEPOXY_AMBERS=$HOME/.depoxy/ambers filter=".* *" exclude="archetype" {
   brewskies.sh
   cdworkenv.sh
   cli-comma.sh
-  completes.sh
   depoxy_fs.sh
   dob-brief.sh
   fzf-setup.sh
@@ -1264,6 +1265,7 @@ DEPOXY_AMBERS=$HOME/.depoxy/ambers filter=".* *" {
         vim-beautifold-config.vim
         vim-fugitive-gb-blame-gc-cleanup.vim
         vim-sensible-open-avoid-buftyped.vim
+        vim-shift-ctrl-bindings.vim
         vim_depoxy.vim
        }
       }
@@ -1504,6 +1506,7 @@ _DEPOXY_ARCHETYPE=$HOME/.depoxy/ambers/archetype filter=".* *" {
        dubs_projects.EVAL.vim
       }
       dubs_project_tray=$HOME/.depoxy/ambers/archetype/home/.vim/pack/landonb/start/dubs_project_tray {
+       .vimprojects--dob
        .vimprojects.EVAL
       }
      }
@@ -1609,6 +1612,7 @@ DUBS_VIM_=$HOME/.vim filter=".* *" exclude=".trustme.log tags" {
     vim-depoxy-coc-defaults.txt
    }
    plugin=$HOME/.vim/pack/DepoXy/start/vim-depoxy-coc-defaults/plugin {
+    # lsp/CoC
     language-client.vim
    }
   }
@@ -2613,12 +2617,19 @@ SHOILERPLATE_=$HOME/.kit/sh filter=".* *" {
 
 # *** DepoXy-bin/
 DepoXy/bin=$HOME/.depoxy/ambers/bin filter=".* *" {
+ daily-check-sshd_config
+ daily-updatedb
  fussy
  ln-relink-using-private-user-path
+ marco-toggle-slack
+ marco-toggle-spotify
+ marco-toggle-window
+ notable-notes--prepare.sh
  notify
  spells.sh
  test-as-cron
  vimprojects-filter
+ weather.sh
  weekly-omr-report
 }
 
@@ -2628,12 +2639,11 @@ DepoXy/bin=$HOME/.depoxy/ambers/bin filter=".* *" {
 HOMEFRIES/bin=$HOME/.kit/sh/home-fries/bin filter=".* *" {
  .bash_history_filter.awk
  bash_function_to_file_splitter.awk
+ clear
  ctags-groom.sh
  echo-elapsed
  editor-vim-0-0-insert
  happy4j.sh
- keybinding-focus-spotify
- reset
  resize-images
  test_colors-24bit
  ziew
@@ -2721,7 +2731,6 @@ MYREPOS_BRANCHABLE=$HOME/.kit/git/myrepos filter=".* *" {
 # ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
 # ┃ 🙀 🙀 OH MY REPOS 🙀 🙀 OMR ┃
 # ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
-# *** .ohmyrepos Working dir
 
 Oh_My_Repos_=$HOME/.kit/git/ohmyrepos filter=".* *" {
  .gitignore.local
@@ -3068,6 +3077,8 @@ GIT_SMART_=$HOME/.kit/git/git-smart filter=".* *" {
  }
  bin=$HOME/.kit/git/git-smart/bin {
   diffconflicts
+  editor-vim-0-0-insert-minimal
+  editor-vim-0-0-insert-minimal.vimrc
   git-abort
   git-begin-review
   git-brs
@@ -3091,6 +3102,7 @@ GIT_SMART_=$HOME/.kit/git/git-smart filter=".* *" {
   git-re
   git-rebase-bubble-commit
   git-rebase-bubble-oldest
+  git-remote-picker
   git-report-large-blobs
   git-reword
   git-ria!
@@ -3386,12 +3398,11 @@ Home=$HOME filter="README.rst" {
  home-fries/bin=$HOME/.kit/sh/home-fries/bin filter=".* *" {
   .bash_history_filter.awk
   bash_function_to_file_splitter.awk
+  clear
   ctags-groom.sh
   echo-elapsed
   editor-vim-0-0-insert
   happy4j.sh
-  keybinding-focus-spotify
-  reset
   resize-images
   test_colors-24bit
   ziew
@@ -3558,7 +3569,6 @@ DepoXy-Bashrc=$HOME/.depoxy/ambers/home/.kit/sh/home-fries filter=".* *" {
   brewskies.sh
   cdworkenv.sh
   cli-comma.sh
-  completes.sh
   depoxy_fs.sh
   dob-brief.sh
   fzf-setup.sh
