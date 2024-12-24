@@ -9,11 +9,18 @@
 " DXY_HEADER_PROJECT
 " DXY_HEADER_LICENSE
 
-" DEV: Uncomment and <F9> to source/reload.
-"  silent! unlet g:plugin_vim_trap_pdbr_drop_set_trace
-if exists("g:plugin_vim_trap_pdbr_drop_set_trace") || &cp
+" GUARD: Press <F9> to reload this plugin (or :source it).
+" - Via: https://github.com/embrace-vim/vim-source-reloader#↩️
+
+if expand('%:p') ==# expand('<sfile>:p')
+  unlet! g:plugin_vim_trap_pdbr_drop_set_trace
+endif
+
+if exists('g:plugin_vim_trap_pdbr_drop_set_trace') || &cp
+
   finish
 endif
+
 let g:plugin_vim_trap_pdbr_drop_set_trace = 1
 
 " +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #

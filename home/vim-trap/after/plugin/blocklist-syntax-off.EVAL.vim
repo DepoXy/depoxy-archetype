@@ -9,11 +9,18 @@
 " DXY_HEADER_PROJECT
 " DXY_HEADER_LICENSE
 
-" DEV: Uncomment and <F9> to source/reload.
-"  silent! unlet g:plugin_vim_trap_blocklist_syntax_off
-if exists("g:plugin_vim_trap_blocklist_syntax_off") || &cp
+" GUARD: Press <F9> to reload this plugin (or :source it).
+" - Via: https://github.com/embrace-vim/vim-source-reloader#↩️
+
+if expand('%:p') ==# expand('<sfile>:p')
+  unlet! g:plugin_vim_trap_blocklist_syntax_off
+endif
+
+if exists('g:plugin_vim_trap_blocklist_syntax_off') || &cp
+
   finish
 endif
+
 let g:plugin_vim_trap_blocklist_syntax_off = 1
 
 " +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #

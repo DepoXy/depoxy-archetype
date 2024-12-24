@@ -22,7 +22,7 @@
 " - Via: https://github.com/embrace-vim/vim-source-reloader#↩️
 
 if expand('%:p') ==# expand('<sfile>:p')
-  unlet g:loaded_vim_trap_explore_notable_notes
+  unlet! g:loaded_vim_trap_explore_notable_notes
 endif
 
 if exists('g:loaded_vim_trap_explore_notable_notes') || &cp || v:version < 700
