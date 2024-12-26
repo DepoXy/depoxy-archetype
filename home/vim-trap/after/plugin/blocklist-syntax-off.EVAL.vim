@@ -9,6 +9,8 @@
 " DXY_HEADER_PROJECT
 " DXY_HEADER_LICENSE
 
+" -------------------------------------------------------------------
+
 " GUARD: Press <F9> to reload this plugin (or :source it).
 " - Via: https://github.com/embrace-vim/vim-source-reloader#↩️
 
@@ -23,7 +25,7 @@ endif
 
 let g:plugin_vim_trap_blocklist_syntax_off = 1
 
-" +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
+" -------------------------------------------------------------------
 
 " USAGE: If you want to ignore syntax for specific files, try something like this:
 "
@@ -36,6 +38,4 @@ let g:plugin_vim_trap_blocklist_syntax_off = 1
 "
 " REFER: https://stackoverflow.com/questions/27440400
 "         /disable-syntax-highlighting-for-certain-filenames
-
-" +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 

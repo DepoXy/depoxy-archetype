@@ -9,6 +9,8 @@
 " DXY_HEADER_PROJECT
 " DXY_HEADER_LICENSE
 
+" -------------------------------------------------------------------
+
 " GUARD: Press <F9> to reload this plugin (or :source it).
 " - Via: https://github.com/embrace-vim/vim-source-reloader#↩️
 
@@ -23,7 +25,7 @@ endif
 
 let g:plugin_vim_trap_blocklist_nospell = 1
 
-" +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
+" -------------------------------------------------------------------
 
 " Disable spell checking Python comments.
 "
@@ -32,6 +34,4 @@ let g:plugin_vim_trap_blocklist_nospell = 1
 "   ~/.vim/pack/landonb/start/dubs_ftype_mess/after/syntax/python.vim
 " DEFAULT: au FileType python syn match pythonComment "#.*$" contains=pythonTodo,@Spell
 au FileType python syn match pythonComment "#.*$" contains=pythonTodo
-
-" +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 

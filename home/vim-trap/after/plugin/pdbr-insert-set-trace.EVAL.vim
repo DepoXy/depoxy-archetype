@@ -9,6 +9,8 @@
 " DXY_HEADER_PROJECT
 " DXY_HEADER_LICENSE
 
+" -------------------------------------------------------------------
+
 " GUARD: Press <F9> to reload this plugin (or :source it).
 " - Via: https://github.com/embrace-vim/vim-source-reloader#↩️
 
@@ -23,7 +25,7 @@ endif
 
 let g:plugin_vim_trap_pdbr_drop_set_trace = 1
 
-" +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
+" -------------------------------------------------------------------
 
 function! s:Python_Abbrev_PDB_Set_Trace_Right_Hand_Middle_Pointy_Middle_Pointy()
   " Note the `# fmt: skip`, so `black` does not split line into three (import, blank, set_trace).
@@ -39,6 +41,4 @@ function! s:Python_Main()
 endfunction
 
 call <SID>Python_Main()
-
-" +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
