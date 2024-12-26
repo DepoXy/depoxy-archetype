@@ -1026,6 +1026,12 @@ _claim_alias_or_warn () {
   local the_command="$2"
   local force=${3:-false}
 
+  if [ $# -lt 1 ] || [ $# -gt 3 ]; then
+    >&2 echo "USAGE: claim_alias_or_warn <alias> <command> [force?]"
+
+    return 1
+  fi
+
   ! ${force_aliases:-false} || force=true
 
   if ${force} || ! type "${the_alias}" > /dev/null 2>&1; then
