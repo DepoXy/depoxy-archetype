@@ -123,9 +123,9 @@ bashdx_wire_aliases_open_tracker () {
 #   Homefries uses it; or just set your own PS1 here).
 
 bashdx_customize_depoxy_client_PS1 () {
-  # CXREF: ~/.kit/sh/home-fries/lib/term/set-shell-prompt-and-window-title.sh
+  # CXREF: ~/.kit/sh/sh-humble-prompt/lib/set-shell-prompt-and-window-title.sh
   HOMEFRIES_TERM_UTIL_PS1_HOST="DXC${DEPOXY_CLIENT_ID}" \
-    _hf_set_terminal_prompt
+    _hf_prompt_configure
 }
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
