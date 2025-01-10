@@ -99,7 +99,7 @@ autocommit =
   # ***
   #
   if [ -z "$(git status --porcelain)" ]; then
-    debug "$(fg_mintgreen)$(attr_emphasis)nuttin changed$(attr_reset)" \
+    debug "$(fg_mintgreen)$(attr_emphasis)nuthin’ edited$(attr_reset)" \
       "$(fg_lightorange)${MR_REPO}$(attr_reset)"
   else
     git add .
