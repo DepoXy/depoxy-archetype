@@ -735,6 +735,18 @@ source_deps () {
   . "${GITREPOSPATH:-${HOME}/.kit/git}/myrepos-mredit-command/lib/link_deep.sh"
 }
 
+check_dep_m4 () {
+  if m4_kludge > /dev/null; then
+
+    return 0
+  fi
+
+  >&2 echo "ERROR: Missing dependency: m4 (or gm4)"
+  >&2 echo "- Try, e.g., \`apt install m4\`"
+
+  return 1
+}
+
 # ================================================================= #
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 # ================================================================= #
@@ -848,6 +860,9 @@ m4_shim_make_file () {
   done
 
   # Finally, generate the client file from the template.
+
+  check_dep_m4 \
+    || return 1
 
   # SAVVY: Inject "changequote(`[[[', `]]]')" at the start of the m4 doc,
   #        otherwise m4 fails if it finds any `single`- or ``double``-
