@@ -326,7 +326,7 @@ export OMR_ECHO_INSTALL_DXY_SCOPE="dxy_pro"
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
-export DEPOXY_PYENV_PYVERS="3.12.1"
+export DEPOXY_PYENV_PYVERS="3.12.8"
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
