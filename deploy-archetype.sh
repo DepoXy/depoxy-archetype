@@ -736,7 +736,7 @@ source_deps () {
 }
 
 check_dep_m4 () {
-  if m4_kludge > /dev/null; then
+  if gnu_m4 > /dev/null; then
 
     return 0
   fi
@@ -886,7 +886,7 @@ m4_shim_make_file () {
   #
   # DUNNO: I'm not sure if the hassle of using m4 makes it easier to use then
   # running a bunch of `sed` commands on each template. Probably a toss-up.
-  eval $(m4_kludge) \
+  eval $(gnu_m4) \
     --prefix-builtins \
     "${DEPOXY_m4_DEFINES}" \
     "${custom_m4_defines}" \
@@ -920,16 +920,25 @@ m4_define_value_must_be_specified () {
 
 # KLUGE: macOS Sonoma 14.4.1 `m4` always raises install-Xcode dialog,
 # i.e., it's a buggy little scamp.
-m4_kludge () {
-  command -v gm4 || command -v m4
+gnu_m4 () {
+  for cmd in "gm4" "m4"; do
+    ( unset -f ${cmd}; unalias ${cmd}; command -v ${cmd} ) 2> /dev/null \
+      && break
+  done
 }
 
 gnu_readlink () {
-  command -v greadlink || command -v readlink
+  for cmd in "greadlink" "readlink"; do
+    ( unset -f ${cmd}; unalias ${cmd}; command -v ${cmd} ) 2> /dev/null \
+      && break
+  done
 }
 
 gnu_sed () {
-  command -v gsed || command -v sed
+  for cmd in "gsed" "sed"; do
+    ( unset -f ${cmd}; unalias ${cmd}; command -v ${cmd} ) 2> /dev/null \
+      && break
+  done
 }
 
 # ================================================================= #
