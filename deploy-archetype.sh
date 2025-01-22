@@ -115,7 +115,7 @@ register_customizable_business_values () {
 
   # E.g., "$HOME/work"
   # - CXREF: Vimprojects template:
-  #   ~/.depoxy/ambers/archetype/home/.vim/pack/landonb/start/dubs_project_tray/.vimprojects.EVAL
+  #   ~/.depoxy/ambers/archetype/home/.vim/plugs/landonb/start/dubs_project_tray/.vimprojects.EVAL
   unset -v DXY_VENDOR_HOME_HOME
   register "DXY_VENDOR_HOME_HOME" "$( \
     echo "${DXY_VENDOR_HOME}" \
@@ -235,7 +235,7 @@ register_customizable_personal_values () {
   register "DXY_PERSON_GITCONFIG_USER_EMAIL" "PLEASE_SET_ME@${DXY_DEPOXY_HOSTNAME}"
 
   # Optional: Set the Vim package name the `cvs` alias uses to
-  #           `pushd ~/.vim/pack/<PUBLISHER>/start`.
+  #           `pushd ~/.vim/plugs/<PUBLISHER>/start`.
   register "DXY_DEPOXY_CVS_ALIAS_VIM_PLUG_ORG" ""
 
   # Optional: Specify a GVim --servername so that gvim shortcuts always
@@ -495,7 +495,7 @@ register_depoxy_project_paths () {
 
   # E.g., "$HOME/.depoxy/ambers"
   # - CXREF: Vimprojects template:
-  #   ~/.depoxy/ambers/archetype/home/.vim/pack/landonb/start/dubs_project_tray/.vimprojects.EVAL
+  #   ~/.depoxy/ambers/archetype/home/.vim/plugs/landonb/start/dubs_project_tray/.vimprojects.EVAL
   unset -v DXY_DEPOXYAMBERS_DIR_HOME
   register "DXY_DEPOXYAMBERS_DIR_HOME" "$( \
     echo "${DXY_DEPOXYAMBERS_DIR}" \

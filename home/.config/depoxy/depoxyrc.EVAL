@@ -394,7 +394,7 @@ export DEPOXY_DEFAULT_LOGIN_SHELL="/opt/homebrew/bin/bash"
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
 # 2021-08-22: Tell DepoXy Ambers how to define `cvs`. E.g.,
-#   pushd_alias_or_warn "cvs" "${HOME}/.vim/pack/<username>/start"
+#   pushd_alias_or_warn "cvs" "${HOME}/.vim/plugs/<username>/start"
 # - CXREF: ~/.depoxy/ambers/core/aliastown.sh
 export DEPOXY_CVS_ALIAS_VIM_PLUG_ORG='DXY_DEPOXY_CVS_ALIAS_VIM_PLUG_ORG'
 

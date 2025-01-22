@@ -1,7 +1,7 @@
 " USAGE:
 "   m4_shim \
-"     "+11" "home/.vim/pack/landonb/start/dubs_grep_steady/dubs_projects.EVAL.vim" \
-"     "home/.vim/pack/landonb/start/dubs_grep_steady/dubs_projects.vim"
+"     "+11" "home/.vim/plugs/landonb/start/dubs_grep_steady/dubs_projects.EVAL.vim" \
+"     "home/.vim/plugs/landonb/start/dubs_grep_steady/dubs_projects.vim"
 
 " (Filler so line numbers align with lookup indices.)
 "
@@ -36,7 +36,7 @@ let g:ds_simple_grep_locat_lookup = [
   \ " ",
   \ "DXY_DEPOXYAMBERS_DIR_TILDE ",
   \ "DXY_HOMEFRIES_DIR_TILDE ",
-  \ "~/.vim/pack/DXY_DEPOXY_CVS_ALIAS_VIM_PLUG_ORG ",
+  \ "~/.vim/plugs/DXY_DEPOXY_CVS_ALIAS_VIM_PLUG_ORG ",
   \ "",
   \ "DXY_VENDOR_HOME_TILDE ",
   \ "DXY_VENDOR_HOME_TILDE/DXY_VENDOR_ORG01_NAME ",
@@ -101,7 +101,7 @@ let g:ds_simple_grep_locat_lookup = [
 "     \ ""
 "     \   . $HOME . "/DXY_DEPOXYDIR_BASE_NAME "
 "     \   . $HOME . "/DXY_HOMEFRIES_DIR_NAME "
-"     \   . $HOME . "/.vim/pack/DXY_DEPOXY_CVS_ALIAS_VIM_PLUG_ORG ",
+"     \   . $HOME . "/.vim/plugs/DXY_DEPOXY_CVS_ALIAS_VIM_PLUG_ORG ",
 "
 "  Hint: You can run embedded commands to help build the list, e.g.,
 "
@@ -116,8 +116,8 @@ let g:ds_simple_grep_locat_lookup = [
 "
 " USYNC:
 "   meld \
-"     ~/.depoxy/ambers/archetype/home/.vim/pack/landonb/start/dubs_grep_steady/dubs_projects.EVAL.vim \
-"     ~/.depoxy/running/home/.vim/pack/landonb/start/dubs_grep_steady/dubs_projects.vim &
+"     ~/.depoxy/ambers/archetype/home/.vim/plugs/landonb/start/dubs_grep_steady/dubs_projects.EVAL.vim \
+"     ~/.depoxy/running/home/.vim/plugs/landonb/start/dubs_grep_steady/dubs_projects.vim &
 
 " *********************************************************************** "
 
