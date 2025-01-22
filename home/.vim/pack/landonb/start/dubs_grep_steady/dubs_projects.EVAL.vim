@@ -3,10 +3,10 @@
 "     "+11" "home/.vim/pack/landonb/start/dubs_grep_steady/dubs_projects.EVAL.vim" \
 "     "home/.vim/pack/landonb/start/dubs_grep_steady/dubs_projects.vim"
 
-# (Filler so line numbers align with lookup indices.)
-#
+" (Filler so line numbers align with lookup indices.)
+"
 
-# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
+" +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
 " vim:tw=0:ts=2:sw=2:et:norl
 " DXY_HEADER_AUTHOR
