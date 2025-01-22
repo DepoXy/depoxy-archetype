@@ -416,7 +416,7 @@ export GVIM_OPEN_SERVERNAME="DXY_DEPOXY_GVIM_SERVERNAME"
 # Set this to override gVim/MacVim initial geometry
 # if gvim-open-kindness opens new instance, e.g.,
 #
-#   export GVIM_OPEN_GEOMETRY="1,414,66,1859,1220"
+# export GVIM_OPEN_GEOMETRY="1,414,66,1859,1220"
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
