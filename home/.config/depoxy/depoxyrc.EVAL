@@ -261,6 +261,7 @@ export PW_OPTION_FETCH_BACKOFF="-8 hours"
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
 # Prefer tig-newton's editor-vim-0-0-insert-minimal.
+# - SAVVY: TGN runs nvim if EDITOR_PREFER_NVIM=true | GVIM_OPEN_PREFER_NVIM=true
 export TN_OPTION_EDITOR_VIM=true
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
@@ -414,6 +415,28 @@ export GVIM_OPEN_SERVERNAME="DXY_DEPOXY_GVIM_SERVERNAME"
 # a separate servername you can customize here.
 #
 #  export DEPOXY_GVIM_ALTERNATE=ALPHA
+
+# Less important: The Neovim server socket path prefix, e.g.,
+#   /tmp/nvim.socket-NVIM
+#
+#  export NVIM_OPEN_SOCKETNAME="NVIM"
+export NVIM_OPEN_SOCKETNAME="DXY_DEPOXY_GVIM_SERVERNAME"
+
+# Tell `gvim-open-kindness` to always Neovim.
+# - ALTLY: Substitute `nvim-open-kindness` for `gvim-open-kindness`
+#          in sources.
+#   - Obvi this var. less disruptive to change.
+#
+#  export GVIM_OPEN_PREFER_GVIM=true
+#  export GVIM_OPEN_PREFER_NVIM=true
+export GVIM_OPEN_PREFER_NVIM=true
+
+# Tell `tig-newtons` to also use Neovim (for minimal.vim).
+# - CXREF:
+#   ~/.kit/git/tig-newtons/bin/editor-vim-0-0-insert-minimal
+# 
+#  export EDITOR_PREFER_NVIM=true
+export EDITOR_PREFER_NVIM=true
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
