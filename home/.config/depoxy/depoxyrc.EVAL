@@ -406,12 +406,14 @@ export DEPOXY_CVS_ALIAS_VIM_PLUG_ORG='DXY_DEPOXY_CVS_ALIAS_VIM_PLUG_ORG'
 # The Vim server name used to open files in the same instance. E.g.,
 #   gvim --servername SAMPI --remote-silent <file file...>
 # - Used by `fs` command, among other mechanisms.
+#
+#  export GVIM_OPEN_SERVERNAME="GVIM"
 export GVIM_OPEN_SERVERNAME="DXY_DEPOXY_GVIM_SERVERNAME"
 
-# The complementary `fa` command (for running 2 gvim, e.g.,) uses
-# a separate servername you could customize here.
+# The complementary `fa` command (for running 2nd gvim, e.g.,) uses
+# a separate servername you can customize here.
 #
-# export DEPOXY_GVIM_ALTERNATE=ALPHA
+#  export DEPOXY_GVIM_ALTERNATE=ALPHA
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
