@@ -34,7 +34,7 @@
 #
 #           ~/.depoxy/ambers/archetype/home/bashrx.private.HOSTNAME.sh
 #
-#        But note that this file is meant to be persistently accessible,
+#        But note that depoxyrc is meant to be persistently accessible,
 #        whereas a `23skidoo` will unmount your DepoXy Client project,
 #        including `home/bashrx.private.HOSTNAME.sh`.
 
