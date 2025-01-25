@@ -13,6 +13,23 @@
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
+__USYNC__="
+  meld \
+    DXY_DEPOXYARCHETYPE_DIR_TILDE/home/.config/depoxy/depoxyrc.EVAL \
+    DXY_DEPOXY_CLIENT_TILDE/home/.config/depoxy/depoxyrc &
+
+  check_health () {
+    diff -q \
+        ~/.config/depoxy/depoxyrc \
+        DXY_DEPOXY_CLIENT_TILDE/home/.config/depoxy/depoxyrc >/dev/null \
+      && echo 'GOODY: Installed!' \
+      || echo -e 'ALERT: Out of sync: Try:\n  mr -d ~/.depoxy/running infuse'
+  }; check_health
+"
+unset -v __USYNC__
+
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
+
 # USAGE: Edit this file — then call `infuse`:
 #
 #   cxc && infuse .
