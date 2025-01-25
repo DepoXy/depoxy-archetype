@@ -32,11 +32,11 @@
 # CXREF: See also the private Bashrc that's sourced on Bash init, which
 #        is a better place to customize most aspects of the environment:
 #
-#           ~/.depoxy/ambers/archetype/home/bashrx.private.HOSTNAME.sh
+#           DXY_DEPOXYARCHETYPE_DIR_TILDE/home/bashrx.private.HOSTNAME.EVAL.sh
 #
 #        But note that depoxyrc is meant to be persistently accessible,
 #        whereas a `23skidoo` will unmount your DepoXy Client project,
-#        including `home/bashrx.private.HOSTNAME.sh`.
+#        including `home/bashrx.private.DXY_HOSTNAME.sh`.
 
 # BWARE: While DepoXy *tries* to support personalized (non-standard) paths,
 #        e.g., perhaps `DEPOXYDIR_BASE_FULL="${HOME}/your/preferred/path"`,
