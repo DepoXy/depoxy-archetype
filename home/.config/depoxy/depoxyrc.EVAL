@@ -448,6 +448,12 @@ export NVIM_OPEN_SOCKETNAME="DXY_DEPOXY_GVIM_SERVERNAME"
 #  export GVIM_OPEN_PREFER_NVIM=true
 export GVIM_OPEN_PREFER_NVIM=true
 
+# Pick the GUI app or nvim TUI for `gvim-open-kindness`.
+#
+#   export NVIM_OPEN_APPNAME="neovide"
+#   export NVIM_OPEN_APPNAME="nvim"
+export NVIM_OPEN_APPNAME="nvim"
+
 # Tell `tig-newtons` to also use Neovim (for minimal.vim).
 # - CXREF:
 #   ~/.kit/git/tig-newtons/bin/editor-vim-0-0-insert-minimal
