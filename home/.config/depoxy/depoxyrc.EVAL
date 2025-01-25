@@ -413,11 +413,6 @@ export GVIM_OPEN_SERVERNAME="DXY_DEPOXY_GVIM_SERVERNAME"
 #
 # export DEPOXY_GVIM_ALTERNATE=ALPHA
 
-# Set this to override gVim/MacVim initial geometry
-# if gvim-open-kindness opens new instance, e.g.,
-#
-# export GVIM_OPEN_GEOMETRY="1,414,66,1859,1220"
-
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
 export ACMESH_CONF_USER="DXY_DEPOXY_CLIENT__HOME_/home/DXY_DEPOXY_VENDOR_HOME_NAME/DXY_VENDOR_ACMESH_CONF"
