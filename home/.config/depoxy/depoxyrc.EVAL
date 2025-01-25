@@ -332,14 +332,14 @@ export DEPOXY_PYENV_PYVERS="3.12.8"
 
 # For `grip-pass`
 #
-# export GRIP_PASS_ADDY="localhost:6419"
-# export GRIP_PASS_PATH="pass/path/to/github/token"
+#  export GRIP_PASS_ADDY="localhost:6419"
+#  export GRIP_PASS_PATH="pass/path/to/github/token"
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
 # For `pass gen <path>`
 #
-# export PASS_GEN_DEFAULT_EMAIL="user@tld"
+#  export PASS_GEN_DEFAULT_EMAIL="user@tld"
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
@@ -389,7 +389,7 @@ export DEPOXY_DEFAULT_LOGIN_SHELL="/opt/homebrew/bin/bash"
 # CXREF: ~/.depoxy/ambers/home/infuse-platform-macOS
 #   /private/etc/ssh/sshd_config
 #
-# export DEPOXY_ENABLE_HARDEN_SSHD_CONFIG=false
+#  export DEPOXY_ENABLE_HARDEN_SSHD_CONFIG=false
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
@@ -423,7 +423,7 @@ export ACMESH_CONF_USER="DXY_DEPOXY_CLIENT__HOME_/home/DXY_DEPOXY_VENDOR_HOME_NA
 # `updatedb --prunepaths` args. E.g., runs
 #    updatedb ... --prunepaths "... ${LOCATEDB_PRUNEPATHS}"
 #
-# export LOCATEDB_PRUNEPATHS="/exclude/this/directory"
+#  export LOCATEDB_PRUNEPATHS="/exclude/this/directory"
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
