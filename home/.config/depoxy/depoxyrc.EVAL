@@ -452,7 +452,7 @@ export GVIM_OPEN_PREFER_NVIM=true
 #
 #   export NVIM_OPEN_APPNAME="neovide"
 #   export NVIM_OPEN_APPNAME="nvim"
-export NVIM_OPEN_APPNAME="nvim"
+export NVIM_OPEN_APPNAME="neovide"
 
 # Tell `tig-newtons` to also use Neovim (for minimal.vim).
 # - CXREF:
