@@ -277,9 +277,11 @@ export PW_OPTION_FETCH_BACKOFF="-8 hours"
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
-# Prefer tig-newton's editor-vim-0-0-insert-minimal.
+# Prefer tig-newton's editor-vim-0-0-insert-minimal (includes Neovim).
 # - SAVVY: TGN runs nvim if EDITOR_PREFER_NVIM=true | GVIM_OPEN_PREFER_NVIM=true
 export TN_OPTION_EDITOR_VIM=true
+
+export TIGNEWTONS_VIM_PLUGS="${NEOVIM_REPOS:-${DOPP_KIT:-${HOME}/.kit}/nvim}"
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
