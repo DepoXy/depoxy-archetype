@@ -115,7 +115,7 @@ register_customizable_business_values () {
 
   # E.g., "$HOME/work"
   # - CXREF: Vimprojects template:
-  #   ~/.depoxy/ambers/archetype/home/.vim/plugs/landonb/start/dubs_project_tray/.vimprojects.EVAL
+  #   ~/.depoxy/ambers/archetype/home/.kit/nvim/landonb/start/dubs_project_tray/.vimprojects.EVAL
   unset -v DXY_VENDOR_HOME_HOME
   register "DXY_VENDOR_HOME_HOME" "$( \
     echo "${DXY_VENDOR_HOME}" \
@@ -235,7 +235,7 @@ register_customizable_personal_values () {
   register "DXY_PERSON_GITCONFIG_USER_EMAIL" "PLEASE_SET_ME@${DXY_DEPOXY_HOSTNAME}"
 
   # Optional: Set the Vim package name the `cvs` alias uses to
-  #           `pushd ~/.vim/plugs/<PUBLISHER>/start`.
+  #           `pushd ~/.kit/nvim/<PUBLISHER>/start`.
   register "DXY_DEPOXY_CVS_ALIAS_VIM_PLUG_ORG" ""
 
   # Optional: Specify a GVim --servername so that gvim shortcuts always
@@ -495,7 +495,7 @@ register_depoxy_project_paths () {
 
   # E.g., "$HOME/.depoxy/ambers"
   # - CXREF: Vimprojects template:
-  #   ~/.depoxy/ambers/archetype/home/.vim/plugs/landonb/start/dubs_project_tray/.vimprojects.EVAL
+  #   ~/.depoxy/ambers/archetype/home/.kit/nvim/landonb/start/dubs_project_tray/.vimprojects.EVAL
   unset -v DXY_DEPOXYAMBERS_DIR_HOME
   register "DXY_DEPOXYAMBERS_DIR_HOME" "$( \
     echo "${DXY_DEPOXYAMBERS_DIR}" \
@@ -1719,12 +1719,15 @@ omr_dxc_infuse () {
 
 # ***
 
-# Avoid spells.sh creating <DXC>/home/.vim/spell/en.utf-8.add--compiled
-# and telling you to merge into <DXC>/home/.vim/spell/en.utf-8.add (which
-# is symlinked from ~/.vim/spell/en.utf-8.add), because when --compiled
-# differs from canon, it sometimes indicates non-obvious issue occurred.
-# - But in this case, indicates that canon not synced with spells yet,
-#   which we'll automate here.
+# Inhibit spells.sh from creating
+#   <DXC>/home/.kit/nvim/spell/en.utf-8.add--compiled
+# and telling you to merge into
+#   <DXC>/home/.kit/nvim/spell/en.utf-8.add
+# (which is is symlinked from ~/.config/nvim/spell/en.utf-8.add),
+# because when --compiled differs from canon, it sometimes
+# indicates non-obvious issue occurred.
+# - But in this case, indicates that canon not synced with
+#   spells yet, which we'll automate here.
 
 omr_dxc_compile_spells () {
   ! ${DRY_RUN} || return 0
@@ -1732,7 +1735,10 @@ omr_dxc_compile_spells () {
   ! ${DXY_RUN_LNS_ONLY:-false} || return 0
 
   (
-    local homeish_path="${DXY_DEPOXY_CLIENT_FULL}/home"
+    # HSTRY: spells.sh used to find check .vim/spells/ under home/:
+    #   local homeish_path="${DXY_DEPOXY_CLIENT_FULL}/home"
+    # But now it finds nvim/spells under home/.kit/:
+    local homeish_path="${DXY_DEPOXY_CLIENT_FULL}/home/.kit"
 
     local compiled_spells
     compiled_spells="$(spells.sh compile-spells "${homeish_path}" 2> /dev/null)"
@@ -1808,7 +1814,7 @@ omr_dxc_autocommit () {
 omr_dxc_autocommit_verify () {
   git_status_without_spell_melds () {
     local ignore_spell_melds="$(echo \
-      ":!home/.vim/spell/sync-spells--*-new.sh" \
+      ":!home/.kit/nvim/spell/sync-spells--*-new.sh" \
     )"
 
     git status --porcelain -- ${ignore_spell_melds}

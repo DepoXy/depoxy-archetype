@@ -48,7 +48,7 @@ if hostname() == 'DXY_DEPOXY_HOSTNAME'
 endif
 
 " CXREF:
-" ~/.vim/plugs/embrace-vim/start/vim-netrw-explore-map/autoload/embrace/explore.vim
+" ~/.kit/nvim/embrace-vim/start/vim-netrw-explore-map/autoload/embrace/explore.vim
 
 if !empty(s:notable_notes_mappings)
   call g:embrace#explore#CreateMapsAndSetupNetrw(s:notable_notes_mappings)
