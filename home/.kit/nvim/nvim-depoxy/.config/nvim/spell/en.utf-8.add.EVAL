@@ -1,0 +1,23 @@
+# vim:tw=0:ts=2:sw=2:et:norl:ft=conf
+#
+# USAGE:
+#   # This is a little wonky because we want to infuse
+#   #   ~/.config/nvim/spell/en.utf-8.add
+#   # but we cannot add
+#   #   ~/.depoxy/running/home/.config/nvim/spell/en.utf-8.add
+#   # because that'll clobber ~/.config/nvim symlink that
+#   #   points to ~/.kit/nvim/nvim-depoxy/.config/nvim
+#   # So the sol'n is to create mrinfuse assets under latter
+#   # path, e.g.,
+#   #   ~/.depoxy/running/home/.kit/nvim/nvim-depoxy/.config/nvim/spell/en.utf-8.add
+#   mkdir -p "${DXY_DEPOXY_CLIENT_FULL}/home/.kit/nvim/nvim-depoxy/.config/nvim/spell"
+#   command ln -sn \
+#     ../../../../spell/en.utf-8.add \
+#     "${DXY_DEPOXY_CLIENT_FULL}/home/.kit/nvim/nvim-depoxy/.config/nvim/spell/en.utf-8.add"
+#   # ALTLY:
+#   #   command ln -sn \
+#   #     "${DXY_DEPOXY_CLIENT_FULL}/home/.kit/nvim/spell/en.utf-8.add" \
+#   #     "${DXY_DEPOXY_CLIENT_FULL}/home/.kit/nvim/nvim-depoxy/.config/nvim/spell/en.utf-8.add"
+
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
+
