@@ -20,7 +20,7 @@
 #
 #   cdtn && ./customize.sh > tig/config
 #
-# - Only change: I uncommented the --minimal-editor configs.
+# - Though unchanged from the original.
 
 # ***
 
@@ -38,10 +38,6 @@ source DXY_TIG_NEWTONS_PATH/bind-rebase
 source DXY_TIG_NEWTONS_PATH/bind-rebase-range--diff
 source DXY_TIG_NEWTONS_PATH/bind-rebase-range--main
 source DXY_TIG_NEWTONS_PATH/bind-shell-out
-
-# USAGE: Uncomment if you'd like to use a miminal Vim EDITOR:
-source DXY_TIG_NEWTONS_PATH/bind-commit--minimal-editor
-source DXY_TIG_NEWTONS_PATH/bind-rebase--minimal-editor
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
