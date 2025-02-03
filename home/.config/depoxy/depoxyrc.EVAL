@@ -279,7 +279,8 @@ export PW_OPTION_FETCH_BACKOFF="-8 hours"
 
 # Wire tig-newtons to run Neovim with minimal plugin profile..
 # - CXREF: ~/.kit/nvim/nvim-depoxy/bin/editor-vim-0-0-insert-minimal
-# - SAVVY: Runs nvim if EDITOR_PREFER_NVIM=true | GVIM_OPEN_PREFER_NVIM=true
+# - SAVVY: See gvim-open-kindness config below:
+#   - Runs nvim if EDITOR_PREFER_NVIM=true | GVIM_OPEN_PREFER_NVIM=true
 export TNEWTONS_EDITOR="editor-vim-0-0-insert-minimal"
 
 export NVIMDEPOXY_PLUG_PATH="${NEOVIM_REPOS:-${DOPP_KIT:-${HOME}/.kit}/nvim}"
@@ -457,9 +458,10 @@ export GVIM_OPEN_PREFER_NVIM=true
 #   export NVIM_OPEN_APPNAME="nvim"
 export NVIM_OPEN_APPNAME="neovide"
 
-# Tell `tig-newtons` to also use Neovim (for minimal.vim).
+# Tell both home-fries and nvim-depoxy to use Neovim for minimal.vim.
 # - CXREF:
-#   ~/.kit/git/tig-newtons/bin/editor-vim-0-0-insert-minimal
+#   ~/.kit/sh/home-fries/bin/editor-vim-0-0-insert
+#   ~/.kit/nvim/nvim-depoxy/bin/editor-vim-0-0-insert-minimal
 # 
 #  export EDITOR_PREFER_NVIM=true
 export EDITOR_PREFER_NVIM=true
