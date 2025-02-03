@@ -282,7 +282,7 @@ export PW_OPTION_FETCH_BACKOFF="-8 hours"
 # - SAVVY: Runs nvim if EDITOR_PREFER_NVIM=true | GVIM_OPEN_PREFER_NVIM=true
 export TNEWTONS_EDITOR="editor-vim-0-0-insert-minimal"
 
-export TIGNEWTONS_VIM_PLUGS="${NEOVIM_REPOS:-${DOPP_KIT:-${HOME}/.kit}/nvim}"
+export NVIMDEPOXY_PLUG_PATH="${NEOVIM_REPOS:-${DOPP_KIT:-${HOME}/.kit}/nvim}"
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
