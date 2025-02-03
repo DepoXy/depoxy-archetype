@@ -31,7 +31,7 @@
 
 [includeIf "gitdir:DXY_VENDOR_HOME_TILDE/DXY_VENDOR_ORG01_NAME/DXY_VENDOR_ORG01_PROJ01_NAME/"]
   # Skip the pre-commit hook (e.g., tests are slow, and you rebase often).
-  path = DXY_DOPP_KIT_TILDE/git/git-smart/gitconfigs/commit-no-verify.gitconfig
+  path = DXY_DEPOXYAMBERS_DIR_TILDE/home/.kit/git/gitconfigs/commit-no-verify.gitconfig
 
 # ***** How to skip GitLab checks
 
