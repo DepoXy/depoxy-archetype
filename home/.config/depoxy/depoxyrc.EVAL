@@ -466,6 +466,14 @@ export NVIM_OPEN_APPNAME="neovide"
 #  export EDITOR_PREFER_NVIM=true
 export EDITOR_PREFER_NVIM=true
 
+# On bare gvim-open-kindness when editor is not running,
+# start with a scratch buffer.
+# - ALTLY: Do nothing special:
+#     unset -v NVIM_OPEN_FILE_ON_SPAWN
+# - ALTLY: Open a specific file, e.g.,
+#     export NVIM_OPEN_FILE_ON_SPAWN="${HOME}/README.rst"
+export NVIM_OPEN_FILE_ON_SPAWN="[Scratch]"
+
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
 export ACMESH_CONF_USER="DXY_DEPOXY_CLIENT__HOME_/home/DXY_DEPOXY_VENDOR_HOME_NAME/DXY_VENDOR_ACMESH_CONF"
