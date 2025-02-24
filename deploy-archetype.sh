@@ -115,7 +115,7 @@ register_customizable_business_values () {
 
   # E.g., "$HOME/work"
   # - CXREF: Vimprojects template:
-  #   ~/.depoxy/ambers/archetype/home/.kit/nvim/landonb/start/dubs_project_tray/.vimprojects.EVAL
+  #   ~/.depoxy/ambers/archetype/home/.kit/nvim/landonb/dubs_project_tray/.vimprojects.EVAL
   unset -v DXY_VENDOR_HOME_HOME
   register "DXY_VENDOR_HOME_HOME" "$( \
     echo "${DXY_VENDOR_HOME}" \
@@ -495,7 +495,7 @@ register_depoxy_project_paths () {
 
   # E.g., "$HOME/.depoxy/ambers"
   # - CXREF: Vimprojects template:
-  #   ~/.depoxy/ambers/archetype/home/.kit/nvim/landonb/start/dubs_project_tray/.vimprojects.EVAL
+  #   ~/.depoxy/ambers/archetype/home/.kit/nvim/landonb/dubs_project_tray/.vimprojects.EVAL
   unset -v DXY_DEPOXYAMBERS_DIR_HOME
   register "DXY_DEPOXYAMBERS_DIR_HOME" "$( \
     echo "${DXY_DEPOXYAMBERS_DIR}" \

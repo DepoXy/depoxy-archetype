@@ -1,7 +1,7 @@
 " USAGE:
 "   m4_shim \
-"     "+11" "home/.kit/nvim/landonb/start/dubs_grep_steady/dubs_projects.EVAL.vim" \
-"     "home/.kit/nvim/landonb/start/dubs_grep_steady/dubs_projects.vim"
+"     "+11" "home/.kit/nvim/landonb/dubs_grep_steady/dubs_projects.EVAL.vim" \
+"     "home/.kit/nvim/landonb/dubs_grep_steady/dubs_projects.vim"
 
 " (Filler so line numbers align with lookup indices.)
 "
@@ -116,8 +116,8 @@ let g:ds_simple_grep_locat_lookup = [
 "
 " USYNC:
 "   meld \
-"     ~/.depoxy/ambers/archetype/home/.kit/nvim/landonb/start/dubs_grep_steady/dubs_projects.EVAL.vim \
-"     ~/.depoxy/running/home/.kit/nvim/landonb/start/dubs_grep_steady/dubs_projects.vim &
+"     ~/.depoxy/ambers/archetype/home/.kit/nvim/landonb/dubs_grep_steady/dubs_projects.EVAL.vim \
+"     ~/.depoxy/running/home/.kit/nvim/landonb/dubs_grep_steady/dubs_projects.vim &
 
 " *********************************************************************** "
 

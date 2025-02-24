@@ -1,12 +1,12 @@
 # USAGE:
 #   m4_shim \
-#     "+25" "home/.kit/nvim/landonb/start/dubs_project_tray/.vimprojects.EVAL" \
-#     "home/.kit/nvim/landonb/start/dubs_project_tray/.vimprojects"
+#     "+25" "home/.kit/nvim/landonb/dubs_project_tray/.vimprojects.EVAL" \
+#     "home/.kit/nvim/landonb/dubs_project_tray/.vimprojects"
 #   # Note that we symlink the --purged Vimprojects file to
 #   # avoid client project noise (though maybe you want to
 #   # `diff DXC/home/.vimprojects DXC/.home/.vimprojects--purged`
 #   # to ensure the script that creates --purged copy is working).
-#   PROJECT_PLUG_PATH="home/.kit/nvim/landonb/start/dubs_project_tray" &&
+#   PROJECT_PLUG_PATH="home/.kit/nvim/landonb/dubs_project_tray" &&
 #   ! ${DXY_RUN_MAKE_LNS:-false} || \
 #     ln -sf \
 #       "${DXY_DEPOXY_CLIENT_FULL}/${PROJECT_PLUG_PATH}/.vimprojects--purged" \
@@ -229,13 +229,11 @@ DEPOXY_STINTS=DXY_DEPOXYDIR_BASE_HOME filter=".* *" exclude=".DS_Store" {
    .vim=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/.vim {
     pack=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/.kit/nvim {
      landonb=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/.kit/nvim/landonb {
-      start=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/.kit/nvim/landonb/start {
-       dubs_grep_steady=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/.kit/nvim/landonb/start/dubs_grep_steady {
-        dubs_projects.vim
-       }
-       dubs_project_tray=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/.kit/nvim/landonb/start/dubs_project_tray {
-        .vimprojects
-       }
+      dubs_grep_steady=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/.kit/nvim/landonb/dubs_grep_steady {
+       dubs_projects.vim
+      }
+      dubs_project_tray=DXY_DEPOXYDIR_STINTS_HOME/DXY_DEPOXY_CLIENT_ID/home/.kit/nvim/landonb/dubs_project_tray {
+       .vimprojects
       }
      }
     }
@@ -1226,11 +1224,11 @@ DEPOXY_AMBERS=$HOME/.depoxy/ambers filter=".* *" {
    cmdt_paths=$HOME/.depoxy/ambers/home/.vim/cmdt_paths {
     # symlinks/
    }
-   dubs_project_tray=$HOME/.depoxy/ambers/home/.kit/nvim/landonb/start/dubs_project_tray {
-    # dubs_cuts/ ↔ $HOME/.depoxy/ambers/home/.kit/nvim/landonb/start/dubs_project_tray/dubs_cuts
+   dubs_project_tray=$HOME/.depoxy/ambers/home/.kit/nvim/landonb/dubs_project_tray {
+    # dubs_cuts/ ↔ $HOME/.depoxy/ambers/home/.kit/nvim/landonb/dubs_project_tray/dubs_cuts
     # *** DUBS_VIM DUBS_CUTS Consolidated .vim listing
     # - Rebuilt on `infuse`:
-    #     ~/.depoxy/ambers/home/.kit/nvim/landonb/start/dubs_project_tray/generate_links.sh
+    #     ~/.depoxy/ambers/home/.kit/nvim/landonb/dubs_project_tray/generate_links.sh
     generate_links.sh
    }
    pack=$HOME/.depoxy/ambers/home/.kit/nvim {
@@ -1501,14 +1499,12 @@ _DEPOXY_ARCHETYPE=$HOME/.depoxy/ambers/archetype filter=".* *" {
   .vim=$HOME/.depoxy/ambers/archetype/home/.vim {
    pack=$HOME/.depoxy/ambers/archetype/home/.kit/nvim {
     landonb=$HOME/.depoxy/ambers/archetype/home/.kit/nvim/landonb {
-     start=$HOME/.depoxy/ambers/archetype/home/.kit/nvim/landonb/start {
-      dubs_grep_steady=$HOME/.depoxy/ambers/archetype/home/.kit/nvim/landonb/start/dubs_grep_steady {
-       dubs_projects.EVAL.vim
-      }
-      dubs_project_tray=$HOME/.depoxy/ambers/archetype/home/.kit/nvim/landonb/start/dubs_project_tray {
-       .vimprojects--dob
-       .vimprojects.EVAL
-      }
+     dubs_grep_steady=$HOME/.depoxy/ambers/archetype/home/.kit/nvim/landonb/dubs_grep_steady {
+      dubs_projects.EVAL.vim
+     }
+     dubs_project_tray=$HOME/.depoxy/ambers/archetype/home/.kit/nvim/landonb/dubs_project_tray {
+      .vimprojects--dob
+      .vimprojects.EVAL
      }
     }
    }
@@ -1646,35 +1642,35 @@ DUBS_VIM_=$HOME/.vim filter=".* *" exclude=".trustme.log tags" {
  # *** pack/landonb
  pack/landonb=$HOME/.kit/nvim/landonb {
   .ignore
-  dubs_after_dark=$HOME/.kit/nvim/landonb/start/dubs_after_dark {
+  dubs_after_dark=$HOME/.kit/nvim/landonb/dubs_after_dark {
    .gitignore
    LICENSE
    README.rst
-   colors=$HOME/.kit/nvim/landonb/start/dubs_after_dark/colors {
+   colors=$HOME/.kit/nvim/landonb/dubs_after_dark/colors {
     after-dark.vim
    }
-   doc=$HOME/.kit/nvim/landonb/start/dubs_after_dark/doc {
+   doc=$HOME/.kit/nvim/landonb/dubs_after_dark/doc {
     color-scheme-test-ruby-and-javascript.png
     dubs_after_dark.txt
    }
   }
-  dubs_appearance=$HOME/.kit/nvim/landonb/start/dubs_appearance {
+  dubs_appearance=$HOME/.kit/nvim/landonb/dubs_appearance {
    .gitignore
    LICENSE
    README.rst
-   after=$HOME/.kit/nvim/landonb/start/dubs_appearance/after {
-    plugin=$HOME/.kit/nvim/landonb/start/dubs_appearance/after/plugin {
+   after=$HOME/.kit/nvim/landonb/dubs_appearance/after {
+    plugin=$HOME/.kit/nvim/landonb/dubs_appearance/after/plugin {
      die_blinkënmatchen.vim
      dubs_color_scheme.vim
     }
    }
-   colors=$HOME/.kit/nvim/landonb/start/dubs_appearance/colors {
+   colors=$HOME/.kit/nvim/landonb/dubs_appearance/colors {
     after-ice.vim
    }
-   doc=$HOME/.kit/nvim/landonb/start/dubs_appearance/doc {
+   doc=$HOME/.kit/nvim/landonb/dubs_appearance/doc {
     dubs_appearance.txt
    }
-   plugin=$HOME/.kit/nvim/landonb/start/dubs_appearance/plugin {
+   plugin=$HOME/.kit/nvim/landonb/dubs_appearance/plugin {
     backupno_disabled.vim
     command_line_opts.vim
     guifont_configure.vim
@@ -1698,19 +1694,19 @@ DUBS_VIM_=$HOME/.vim filter=".* *" exclude=".trustme.log tags" {
     unneeded_tmux_col.vim
    }
   }
-  dubs_buffer_fun=$HOME/.kit/nvim/landonb/start/dubs_buffer_fun {
+  dubs_buffer_fun=$HOME/.kit/nvim/landonb/dubs_buffer_fun {
    .gitignore
    LICENSE
    README.rst
-   after=$HOME/.kit/nvim/landonb/start/dubs_buffer_fun/after {
-    plugin=$HOME/.kit/nvim/landonb/start/dubs_buffer_fun/after/plugin {
+   after=$HOME/.kit/nvim/landonb/dubs_buffer_fun/after {
+    plugin=$HOME/.kit/nvim/landonb/dubs_buffer_fun/after/plugin {
      dubs_buffer_fun.vim
     }
    }
-   doc=$HOME/.kit/nvim/landonb/start/dubs_buffer_fun/doc {
+   doc=$HOME/.kit/nvim/landonb/dubs_buffer_fun/doc {
     dubs_buffer_fun.txt
    }
-   plugin=$HOME/.kit/nvim/landonb/start/dubs_buffer_fun/plugin {
+   plugin=$HOME/.kit/nvim/landonb/dubs_buffer_fun/plugin {
     BufOnly.vim
     buffer-delete-but-keep-window.vim
     create-window-navigation-mappings.vim
@@ -1721,21 +1717,21 @@ DUBS_VIM_=$HOME/.vim filter=".* *" exclude=".trustme.log tags" {
     vertical-split-mapping.vim
    }
   }
-  dubs_edit_juice=$HOME/.kit/nvim/landonb/start/dubs_edit_juice {
+  dubs_edit_juice=$HOME/.kit/nvim/landonb/dubs_edit_juice {
    .gitignore
    .ignore
    LICENSE
    README.rst
-   after/plugin=$HOME/.kit/nvim/landonb/start/dubs_edit_juice/after/plugin {
+   after/plugin=$HOME/.kit/nvim/landonb/dubs_edit_juice/after/plugin {
     dubs_after_juice.vim
    }
-   autoload=$HOME/.kit/nvim/landonb/start/dubs_edit_juice/autoload {
+   autoload=$HOME/.kit/nvim/landonb/dubs_edit_juice/autoload {
     paste.vim
    }
-   doc=$HOME/.kit/nvim/landonb/start/dubs_edit_juice/doc {
+   doc=$HOME/.kit/nvim/landonb/dubs_edit_juice/doc {
     dubs_edit_juice.txt
    }
-   plugin=$HOME/.kit/nvim/landonb/start/dubs_edit_juice/plugin {
+   plugin=$HOME/.kit/nvim/landonb/dubs_edit_juice/plugin {
     chartab.vim
     cr-bs-del-space-tab.vim
     ctab.vim
@@ -1744,7 +1740,7 @@ DUBS_VIM_=$HOME/.vim filter=".* *" exclude=".trustme.log tags" {
     dubs_edit_juice.vim
    }
   }
-  dubs_file_finder=$HOME/.kit/nvim/landonb/start/dubs_file_finder {
+  dubs_file_finder=$HOME/.kit/nvim/landonb/dubs_file_finder {
    # Aka Command-T / CtrlP
    # USAGE: <Leader>t
    .gitignore
@@ -1752,24 +1748,24 @@ DUBS_VIM_=$HOME/.vim filter=".* *" exclude=".trustme.log tags" {
    .ignore
    LICENSE
    README.rst
-   cmdt_paths.template=$HOME/.kit/nvim/landonb/start/dubs_file_finder/cmdt_paths.template {
+   cmdt_paths.template=$HOME/.kit/nvim/landonb/dubs_file_finder/cmdt_paths.template {
     README.rst
     generate_links.sh
    }
-   doc=$HOME/.kit/nvim/landonb/start/dubs_file_finder/doc {
+   doc=$HOME/.kit/nvim/landonb/dubs_file_finder/doc {
     dubs_file_finder.txt
    }
-   plugin=$HOME/.kit/nvim/landonb/start/dubs_file_finder/plugin {
+   plugin=$HOME/.kit/nvim/landonb/dubs_file_finder/plugin {
     dubs_file_finder.vim
    }
   }
-  dubs_ftype_mess=$HOME/.kit/nvim/landonb/start/dubs_ftype_mess {
+  dubs_ftype_mess=$HOME/.kit/nvim/landonb/dubs_ftype_mess {
    .gitignore
    .gitignore.local
    LICENSE
    README.rst
-   after=$HOME/.kit/nvim/landonb/start/dubs_ftype_mess/after {
-    ftplugin=$HOME/.kit/nvim/landonb/start/dubs_ftype_mess/after/ftplugin {
+   after=$HOME/.kit/nvim/landonb/dubs_ftype_mess/after {
+    ftplugin=$HOME/.kit/nvim/landonb/dubs_ftype_mess/after/ftplugin {
      debugging.example
      example_debugging.vim
      python_dubsvim.vim
@@ -1778,10 +1774,10 @@ DUBS_VIM_=$HOME/.vim filter=".* *" exclude=".trustme.log tags" {
      sh_synsible.vim
      text_set_spell.vim
     }
-    indent=$HOME/.kit/nvim/landonb/start/dubs_ftype_mess/after/indent {
+    indent=$HOME/.kit/nvim/landonb/dubs_ftype_mess/after/indent {
      mxml.vim
     }
-    syntax=$HOME/.kit/nvim/landonb/start/dubs_ftype_mess/after/syntax {
+    syntax=$HOME/.kit/nvim/landonb/dubs_ftype_mess/after/syntax {
      README-installing-syntax-files.rst
      actionscript.vim
      dtd.vim
@@ -1799,8 +1795,8 @@ DUBS_VIM_=$HOME/.vim filter=".* *" exclude=".trustme.log tags" {
      wp.vim
     }
    }
-   autoload=$HOME/.kit/nvim/landonb/start/dubs_ftype_mess/autoload {
-    xml=$HOME/.kit/nvim/landonb/start/dubs_ftype_mess/autoload/xml {
+   autoload=$HOME/.kit/nvim/landonb/dubs_ftype_mess/autoload {
+    xml=$HOME/.kit/nvim/landonb/dubs_ftype_mess/autoload/xml {
      .ignore
      mxml32.vim
      mxml32.xml
@@ -1820,12 +1816,12 @@ DUBS_VIM_=$HOME/.vim filter=".* *" exclude=".trustme.log tags" {
      mxml_xml.vim
     }
    }
-   doc=$HOME/.kit/nvim/landonb/start/dubs_ftype_mess/doc {
+   doc=$HOME/.kit/nvim/landonb/dubs_ftype_mess/doc {
     dubs_ftype_mess.txt
     flex.txt
     textile.txt
    }
-   syntax=$HOME/.kit/nvim/landonb/start/dubs_ftype_mess/syntax {
+   syntax=$HOME/.kit/nvim/landonb/dubs_ftype_mess/syntax {
     applescript.vim
     ruby.vim
     sh-Version_131.vim
@@ -1837,397 +1833,397 @@ DUBS_VIM_=$HOME/.vim filter=".* *" exclude=".trustme.log tags" {
     sh-Version_203.vim
     sh.vim
    }
-   plugin=$HOME/.kit/nvim/landonb/start/dubs_ftype_mess/plugin {
+   plugin=$HOME/.kit/nvim/landonb/dubs_ftype_mess/plugin {
     dubs_ftype_mess.vim
     dubs_preloads.vim
     spellcapcheck-off.vim
    }
   }
-  dubs_grep_steady=$HOME/.kit/nvim/landonb/start/dubs_grep_steady {
+  dubs_grep_steady=$HOME/.kit/nvim/landonb/dubs_grep_steady {
    .gitignore
    LICENSE
    README.rst
    dubs_projects.vim
    dubs_projects.vim.template
    grep-exclude
-   bin=$HOME/.kit/nvim/landonb/start/dubs_grep_steady/bin {
+   bin=$HOME/.kit/nvim/landonb/dubs_grep_steady/bin {
     vim-grepprg-rg-sort
    }
-   doc=$HOME/.kit/nvim/landonb/start/dubs_grep_steady/doc {
+   doc=$HOME/.kit/nvim/landonb/dubs_grep_steady/doc {
     dubs_grep_steady.txt
    }
-   plugin=$HOME/.kit/nvim/landonb/start/dubs_grep_steady/plugin {
+   plugin=$HOME/.kit/nvim/landonb/dubs_grep_steady/plugin {
     dubs_grep_steady.vim
    }
   }
-  dubs_html_entities=$HOME/.kit/nvim/landonb/start/dubs_html_entities {
+  dubs_html_entities=$HOME/.kit/nvim/landonb/dubs_html_entities {
    .gitignore
    LICENSE
    README.rst
-   doc=$HOME/.kit/nvim/landonb/start/dubs_html_entities/doc {
+   doc=$HOME/.kit/nvim/landonb/dubs_html_entities/doc {
     dubs_html_entities.txt
    }
-   plugin=$HOME/.kit/nvim/landonb/start/dubs_html_entities/plugin {
+   plugin=$HOME/.kit/nvim/landonb/dubs_html_entities/plugin {
     dubs_html_entities.vim
    }
   }
-  dubs_mescaline=$HOME/.kit/nvim/landonb/start/dubs_mescaline {
+  dubs_mescaline=$HOME/.kit/nvim/landonb/dubs_mescaline {
    .gitignore
    LICENSE
    README.rst
-   doc=$HOME/.kit/nvim/landonb/start/dubs_mescaline/doc {
+   doc=$HOME/.kit/nvim/landonb/dubs_mescaline/doc {
     dubs_mescaline.txt
     status-line-test-ruby-and-javascript.png
    }
-   plugin=$HOME/.kit/nvim/landonb/start/dubs_mescaline/plugin {
+   plugin=$HOME/.kit/nvim/landonb/dubs_mescaline/plugin {
     dubs_mescaline.vim
    }
   }
-  dubs_project_tray=$HOME/.kit/nvim/landonb/start/dubs_project_tray {
+  dubs_project_tray=$HOME/.kit/nvim/landonb/dubs_project_tray {
    .gitignore
    .vimprojects
    .vimprojects.template
    LICENSE
    README.rst
-   doc=$HOME/.kit/nvim/landonb/start/dubs_project_tray/doc {
+   doc=$HOME/.kit/nvim/landonb/dubs_project_tray/doc {
     dubs_project_tray.txt
     project.txt
    }
-   # dubs_cuts: $HOME/.depoxy/ambers/home/.kit/nvim/landonb/start/dubs_project_tray/dubs_cuts
-   plugin=$HOME/.kit/nvim/landonb/start/dubs_project_tray/plugin {
+   # dubs_cuts: $HOME/.depoxy/ambers/home/.kit/nvim/landonb/dubs_project_tray/dubs_cuts
+   plugin=$HOME/.kit/nvim/landonb/dubs_project_tray/plugin {
     dubs_project.vim
     dubs_project_tray.vim
     set_isfname.vim
    }
   }
-  dubs_quickfix_wrap=$HOME/.kit/nvim/landonb/start/dubs_quickfix_wrap {
+  dubs_quickfix_wrap=$HOME/.kit/nvim/landonb/dubs_quickfix_wrap {
    .gitignore
    LICENSE
    README.rst
-   doc=$HOME/.kit/nvim/landonb/start/dubs_quickfix_wrap/doc {
+   doc=$HOME/.kit/nvim/landonb/dubs_quickfix_wrap/doc {
     dubs_quickfix_wrap.txt
    }
-   plugin=$HOME/.kit/nvim/landonb/start/dubs_quickfix_wrap/plugin {
+   plugin=$HOME/.kit/nvim/landonb/dubs_quickfix_wrap/plugin {
     dubs_quickfix_wrap.vim
    }
   }
-  dubs_style_guard=$HOME/.kit/nvim/landonb/start/dubs_style_guard {
+  dubs_style_guard=$HOME/.kit/nvim/landonb/dubs_style_guard {
    .dubs_style.vim
    .gitignore
    LICENSE
    README.rst
-   doc=$HOME/.kit/nvim/landonb/start/dubs_style_guard/doc {
+   doc=$HOME/.kit/nvim/landonb/dubs_style_guard/doc {
     dubs_style_guard.txt
    }
-   plugin=$HOME/.kit/nvim/landonb/start/dubs_style_guard/plugin {
+   plugin=$HOME/.kit/nvim/landonb/dubs_style_guard/plugin {
     dubs_style_guard.vim
    }
   }
-  dubs_syntastic_wrap=$HOME/.kit/nvim/landonb/start/dubs_syntastic_wrap {
+  dubs_syntastic_wrap=$HOME/.kit/nvim/landonb/dubs_syntastic_wrap {
    .gitignore
    LICENSE
    README.rst
-   doc=$HOME/.kit/nvim/landonb/start/dubs_syntastic_wrap/doc {
+   doc=$HOME/.kit/nvim/landonb/dubs_syntastic_wrap/doc {
     dubs_syntastic_wrap.txt
    }
-   plugin=$HOME/.kit/nvim/landonb/start/dubs_syntastic_wrap/plugin {
+   plugin=$HOME/.kit/nvim/landonb/dubs_syntastic_wrap/plugin {
     dubs_syntastic_wrap.vim
    }
   }
-  dubs_toggle_textwrap=$HOME/.kit/nvim/landonb/start/dubs_toggle_textwrap {
+  dubs_toggle_textwrap=$HOME/.kit/nvim/landonb/dubs_toggle_textwrap {
    .gitignore
    LICENSE
    README.rst
-   doc=$HOME/.kit/nvim/landonb/start/dubs_toggle_textwrap/doc {
+   doc=$HOME/.kit/nvim/landonb/dubs_toggle_textwrap/doc {
     dubs_toggle_textwrap.txt
    }
-   plugin=$HOME/.kit/nvim/landonb/start/dubs_toggle_textwrap/plugin {
+   plugin=$HOME/.kit/nvim/landonb/dubs_toggle_textwrap/plugin {
     dubs_toggle_textwrap.vim
    }
   }
-  dubs_web_hatch=$HOME/.kit/nvim/landonb/start/dubs_web_hatch {
+  dubs_web_hatch=$HOME/.kit/nvim/landonb/dubs_web_hatch {
    .gitignore
    LICENSE
    README.rst
-   bin=$HOME/.kit/nvim/landonb/start/dubs_web_hatch/bin {
+   bin=$HOME/.kit/nvim/landonb/dubs_web_hatch/bin {
     macOS-which-browser
    }
-   doc=$HOME/.kit/nvim/landonb/start/dubs_web_hatch/doc {
+   doc=$HOME/.kit/nvim/landonb/dubs_web_hatch/doc {
     dubs_web_hatch.txt
    }
-   plugin=$HOME/.kit/nvim/landonb/start/dubs_web_hatch/plugin {
+   plugin=$HOME/.kit/nvim/landonb/dubs_web_hatch/plugin {
     dubs_web_hatch.vim
    }
   }
-  vim-buffer-ring=$HOME/.kit/nvim/landonb/start/vim-buffer-ring filter=".* *" {
+  vim-buffer-ring=$HOME/.kit/nvim/landonb/vim-buffer-ring filter=".* *" {
    .gitignore
    LICENSE
    README.md
-   doc=$HOME/.kit/nvim/landonb/start/vim-buffer-ring/doc {
+   doc=$HOME/.kit/nvim/landonb/vim-buffer-ring/doc {
     buffer-ring.txt
    }
-   plugin=$HOME/.kit/nvim/landonb/start/vim-buffer-ring/plugin {
+   plugin=$HOME/.kit/nvim/landonb/vim-buffer-ring/plugin {
     buffer_ring.vim
    }
   }
-  vim-classic-taglist=$HOME/.kit/nvim/landonb/start/vim-classic-taglist filter=".* *" {
+  vim-classic-taglist=$HOME/.kit/nvim/landonb/vim-classic-taglist filter=".* *" {
    .gitignore
    LICENSE
    README.rst
-   doc=$HOME/.kit/nvim/landonb/start/vim-classic-taglist/doc {
+   doc=$HOME/.kit/nvim/landonb/vim-classic-taglist/doc {
     taglist.txt
    }
-   plugin=$HOME/.kit/nvim/landonb/start/vim-classic-taglist/plugin {
+   plugin=$HOME/.kit/nvim/landonb/vim-classic-taglist/plugin {
     taglist.vim
    }
   }
-  vim-command-line-clock=$HOME/.kit/nvim/landonb/start/vim-command-line-clock filter=".* *" {
+  vim-command-line-clock=$HOME/.kit/nvim/landonb/vim-command-line-clock filter=".* *" {
    .gitignore
    LICENSE
    README.md
-   doc=$HOME/.kit/nvim/landonb/start/vim-command-line-clock/doc {
+   doc=$HOME/.kit/nvim/landonb/vim-command-line-clock/doc {
     vim-command-line-clock.txt
    }
-   plugin=$HOME/.kit/nvim/landonb/start/vim-command-line-clock/plugin {
+   plugin=$HOME/.kit/nvim/landonb/vim-command-line-clock/plugin {
     command_line_clock.vim
    }
   }
-  vim-fullscreen-toggle=$HOME/.kit/nvim/landonb/start/vim-fullscreen-toggle {
+  vim-fullscreen-toggle=$HOME/.kit/nvim/landonb/vim-fullscreen-toggle {
    .gitignore
    LICENSE
    README.rst
-   after/plugin=$HOME/.kit/nvim/landonb/start/vim-fullscreen-toggle/after/plugin {
+   after/plugin=$HOME/.kit/nvim/landonb/vim-fullscreen-toggle/after/plugin {
     on-startup-init-gui-win-size.vim
     window-resize-fullscreen-toggle.vim
    }
-   autoload=$HOME/.kit/nvim/landonb/start/vim-fullscreen-toggle/autoload {
+   autoload=$HOME/.kit/nvim/landonb/vim-fullscreen-toggle/autoload {
     resize.vim
    }
-   doc=$HOME/.kit/nvim/landonb/start/vim-fullscreen-toggle/doc {
+   doc=$HOME/.kit/nvim/landonb/vim-fullscreen-toggle/doc {
     vim-fullscreen-toggle.txt
    }
   }
-  vim-lcd-project-root=$HOME/.kit/nvim/landonb/start/vim-lcd-project-root filter=".* *" {
+  vim-lcd-project-root=$HOME/.kit/nvim/landonb/vim-lcd-project-root filter=".* *" {
    .gitignore
    README.md
-   doc=$HOME/.kit/nvim/landonb/start/vim-lcd-project-root/doc {
+   doc=$HOME/.kit/nvim/landonb/vim-lcd-project-root/doc {
     lcd-project-root.txt
    }
-   plugin=$HOME/.kit/nvim/landonb/start/vim-lcd-project-root/plugin {
+   plugin=$HOME/.kit/nvim/landonb/vim-lcd-project-root/plugin {
     lcd_project_root.vim
    }
   }
-  # vim-markdown → $HOME/.kit/nvim/landonb/start/vim-markdown
-  vim-mkspell-when-stale=$HOME/.kit/nvim/landonb/start/vim-mkspell-when-stale {
+  # vim-markdown → $HOME/.kit/nvim/landonb/vim-markdown
+  vim-mkspell-when-stale=$HOME/.kit/nvim/landonb/vim-mkspell-when-stale {
    .gitignore
    LICENSE
    README.rst
-   autoload=$HOME/.kit/nvim/landonb/start/vim-mkspell-when-stale/autoload {
+   autoload=$HOME/.kit/nvim/landonb/vim-mkspell-when-stale/autoload {
     mkspell_when_stale.vim
    }
-   doc=$HOME/.kit/nvim/landonb/start/vim-mkspell-when-stale/doc {
+   doc=$HOME/.kit/nvim/landonb/vim-mkspell-when-stale/doc {
     mkspell-when-stale.txt
    }
-   plugin=$HOME/.kit/nvim/landonb/start/vim-mkspell-when-stale/plugin {
+   plugin=$HOME/.kit/nvim/landonb/vim-mkspell-when-stale/plugin {
     mkspell-when-stale.vim
    }
   }
-  vim-netrw-cfg-split-explorer=$HOME/.kit/nvim/landonb/start/vim-netrw-cfg-split-explorer {
+  vim-netrw-cfg-split-explorer=$HOME/.kit/nvim/landonb/vim-netrw-cfg-split-explorer {
    .gitignore
    LICENSE
    README.md
-   doc=$HOME/.kit/nvim/landonb/start/vim-netrw-cfg-split-explorer/doc {
+   doc=$HOME/.kit/nvim/landonb/vim-netrw-cfg-split-explorer/doc {
     netrw-cfg-split-explorer.txt
    }
-   plugin=$HOME/.kit/nvim/landonb/start/vim-netrw-cfg-split-explorer/plugin {
+   plugin=$HOME/.kit/nvim/landonb/vim-netrw-cfg-split-explorer/plugin {
     netrw_cfg_split_explorer.vim
    }
   }
-  vim-netrw-link-resolve=$HOME/.kit/nvim/landonb/start/vim-netrw-link-resolve {
+  vim-netrw-link-resolve=$HOME/.kit/nvim/landonb/vim-netrw-link-resolve {
    .gitignore
    LICENSE
    README.md
-   doc=$HOME/.kit/nvim/landonb/start/vim-netrw-link-resolve/doc {
+   doc=$HOME/.kit/nvim/landonb/vim-netrw-link-resolve/doc {
     netrw-link-resolve.txt
    }
-   plugin=$HOME/.kit/nvim/landonb/start/vim-netrw-link-resolve/plugin {
+   plugin=$HOME/.kit/nvim/landonb/vim-netrw-link-resolve/plugin {
     netrw_link_resolve.vim
    }
   }
-  vim-nicer-file-changed-prompt=$HOME/.kit/nvim/landonb/start/vim-nicer-file-changed-prompt {
+  vim-nicer-file-changed-prompt=$HOME/.kit/nvim/landonb/vim-nicer-file-changed-prompt {
    .gitignore
    LICENSE
    README.rst
-   doc=$HOME/.kit/nvim/landonb/start/vim-nicer-file-changed-prompt/doc {
+   doc=$HOME/.kit/nvim/landonb/vim-nicer-file-changed-prompt/doc {
     vim_nicer_file_changed_prompt.txt
    }
-   plugin=$HOME/.kit/nvim/landonb/start/vim-nicer-file-changed-prompt/plugin {
+   plugin=$HOME/.kit/nvim/landonb/vim-nicer-file-changed-prompt/plugin {
     vim_nicer_file_changed_prompt.vim
    }
   }
-  vim-ovm-easyescape-kj-jk=$HOME/.kit/nvim/landonb/start/vim-ovm-easyescape-kj-jk {
+  vim-ovm-easyescape-kj-jk=$HOME/.kit/nvim/landonb/vim-ovm-easyescape-kj-jk {
    .gitignore
    LICENSE
    README.rst
-   doc=$HOME/.kit/nvim/landonb/start/vim-ovm-easyescape-kj-jk/doc {
+   doc=$HOME/.kit/nvim/landonb/vim-ovm-easyescape-kj-jk/doc {
     vim_ovm_easyescape_kj_jk.txt
    }
-   plugin=$HOME/.kit/nvim/landonb/start/vim-ovm-easyescape-kj-jk/plugin {
+   plugin=$HOME/.kit/nvim/landonb/vim-ovm-easyescape-kj-jk/plugin {
     vim_ovm_easyescape_kj_jk.vim
    }
   }
-  vim-ovm-seven-of-spines=$HOME/.kit/nvim/landonb/start/vim-ovm-seven-of-spines {
+  vim-ovm-seven-of-spines=$HOME/.kit/nvim/landonb/vim-ovm-seven-of-spines {
    .gitignore
    LICENSE
    README.rst
-   doc=$HOME/.kit/nvim/landonb/start/vim-ovm-seven-of-spines/doc {
+   doc=$HOME/.kit/nvim/landonb/vim-ovm-seven-of-spines/doc {
     vim_opv_restfold_seven_of_spines.txt
    }
-   plugin=$HOME/.kit/nvim/landonb/start/vim-ovm-seven-of-spines/plugin {
+   plugin=$HOME/.kit/nvim/landonb/vim-ovm-seven-of-spines/plugin {
     vim_ovm_seven_of_spines.vim
     vim_ovm_twenty_one_sevenwich.vim
    }
   }
   #
   # *** BEG: reSTfold
-  vim-reSTfold=$HOME/.kit/nvim/landonb/start/vim-reSTfold {
+  vim-reSTfold=$HOME/.kit/nvim/landonb/vim-reSTfold {
    .gitignore
    LICENSE
    README.rst
-   after/ftplugin=$HOME/.kit/nvim/landonb/start/vim-reSTfold/after/ftplugin {
+   after/ftplugin=$HOME/.kit/nvim/landonb/vim-reSTfold/after/ftplugin {
     rst.vim
    }
-   after/syntax=$HOME/.kit/nvim/landonb/start/vim-reSTfold/after/syntax {
+   after/syntax=$HOME/.kit/nvim/landonb/vim-reSTfold/after/syntax {
     rst.vim
    }
-   bin=$HOME/.kit/nvim/landonb/start/vim-reSTfold/bin {
+   bin=$HOME/.kit/nvim/landonb/vim-reSTfold/bin {
     restfold-report.awk
    }
-   doc=$HOME/.kit/nvim/landonb/start/vim-reSTfold/doc {
+   doc=$HOME/.kit/nvim/landonb/vim-reSTfold/doc {
     vim-reSTfold.txt
    }
-   plugin=$HOME/.kit/nvim/landonb/start/vim-reSTfold/plugin {
+   plugin=$HOME/.kit/nvim/landonb/vim-reSTfold/plugin {
     reSecTions.vim
     syntax_enable_set.vim
    }
   }
-  vim-reST-highdefs=$HOME/.kit/nvim/landonb/start/vim-reST-highdefs {
+  vim-reST-highdefs=$HOME/.kit/nvim/landonb/vim-reST-highdefs {
    .gitignore
    LICENSE
    README.rst
-   after/syntax=$HOME/.kit/nvim/landonb/start/vim-reST-highdefs/after/syntax {
+   after/syntax=$HOME/.kit/nvim/landonb/vim-reST-highdefs/after/syntax {
     rst.vim
    }
-   doc=$HOME/.kit/nvim/landonb/start/vim-reST-highdefs/doc {
+   doc=$HOME/.kit/nvim/landonb/vim-reST-highdefs/doc {
     vim-reST-highdefs.txt
    }
-   plugin=$HOME/.kit/nvim/landonb/start/vim-reST-highdefs/plugin {
+   plugin=$HOME/.kit/nvim/landonb/vim-reST-highdefs/plugin {
     syntax_enable_set.vim
    }
-   syntax=$HOME/.kit/nvim/landonb/start/vim-reST-highdefs/syntax {
+   syntax=$HOME/.kit/nvim/landonb/vim-reST-highdefs/syntax {
     rst.vim
    }
   }
-  vim-reST-highfive=$HOME/.kit/nvim/landonb/start/vim-reST-highfive {
+  vim-reST-highfive=$HOME/.kit/nvim/landonb/vim-reST-highfive {
    .gitignore
    FIVERs.vim
    LICENSE
    README.rst
-   after/syntax=$HOME/.kit/nvim/landonb/start/vim-reST-highfive/after/syntax {
+   after/syntax=$HOME/.kit/nvim/landonb/vim-reST-highfive/after/syntax {
     rst.vim
    }
-   doc=$HOME/.kit/nvim/landonb/start/vim-reST-highfive/doc {
+   doc=$HOME/.kit/nvim/landonb/vim-reST-highfive/doc {
     vim-reST-highfive.txt
    }
-   plugin=$HOME/.kit/nvim/landonb/start/vim-reST-highfive/plugin {
+   plugin=$HOME/.kit/nvim/landonb/vim-reST-highfive/plugin {
     syntax_enable_set.vim
    }
   }
-  vim-reST-highline=$HOME/.kit/nvim/landonb/start/vim-reST-highline {
+  vim-reST-highline=$HOME/.kit/nvim/landonb/vim-reST-highline {
    .gitignore
    LICENSE
    README.rst
-   after/syntax=$HOME/.kit/nvim/landonb/start/vim-reST-highline/after/syntax {
+   after/syntax=$HOME/.kit/nvim/landonb/vim-reST-highline/after/syntax {
     rst.vim
    }
-   doc=$HOME/.kit/nvim/landonb/start/vim-reST-highline/doc {
+   doc=$HOME/.kit/nvim/landonb/vim-reST-highline/doc {
     vim-reST-highline.txt
    }
-   plugin=$HOME/.kit/nvim/landonb/start/vim-reST-highline/plugin {
+   plugin=$HOME/.kit/nvim/landonb/vim-reST-highline/plugin {
     syntax_enable_set.vim
    }
   }
   # *** EOF: reSTfold
   #
-  vim-select-mode-stopped-down=$HOME/.kit/nvim/landonb/start/vim-select-mode-stopped-down filter=".* *" {
+  vim-select-mode-stopped-down=$HOME/.kit/nvim/landonb/vim-select-mode-stopped-down filter=".* *" {
    .gitignore
    LICENSE
    README.rst
-   autoload=$HOME/.kit/nvim/landonb/start/vim-select-mode-stopped-down/autoload {
+   autoload=$HOME/.kit/nvim/landonb/vim-select-mode-stopped-down/autoload {
     trace.vim
    }
-   doc=$HOME/.kit/nvim/landonb/start/vim-select-mode-stopped-down/doc {
+   doc=$HOME/.kit/nvim/landonb/vim-select-mode-stopped-down/doc {
     vim-select-mode-stopped-down.txt
    }
-   plugin=$HOME/.kit/nvim/landonb/start/vim-select-mode-stopped-down/plugin {
+   plugin=$HOME/.kit/nvim/landonb/vim-select-mode-stopped-down/plugin {
     vim-ctrl-left-right-word-motions.vim
     vim-ctrl-shift-left-right-select-motions.vim
    }
   }
-  vim-source-reloader=$HOME/.kit/nvim/landonb/start/vim-source-reloader filter=".* *" {
+  vim-source-reloader=$HOME/.kit/nvim/landonb/vim-source-reloader filter=".* *" {
    .gitignore
    README.md
-   after-ftplugin=$HOME/.kit/nvim/landonb/start/vim-source-reloader/after/ftplugin {
+   after-ftplugin=$HOME/.kit/nvim/landonb/vim-source-reloader/after/ftplugin {
     vim.vim
    }
-   doc=$HOME/.kit/nvim/landonb/start/vim-source-reloader/doc {
+   doc=$HOME/.kit/nvim/landonb/vim-source-reloader/doc {
     source-reloader.txt
    }
   }
-  vim-surround=$HOME/.kit/nvim/landonb/start/vim-surround {
+  vim-surround=$HOME/.kit/nvim/landonb/vim-surround {
    .gitignore
    README.markdown
-   doc=$HOME/.kit/nvim/landonb/start/vim-surround/doc {
+   doc=$HOME/.kit/nvim/landonb/vim-surround/doc {
     surround.txt
    }
-   plugin=$HOME/.kit/nvim/landonb/start/vim-surround/plugin {
+   plugin=$HOME/.kit/nvim/landonb/vim-surround/plugin {
     surround.vim
    }
   }
-  vim-title-bar-time-of-day=$HOME/.kit/nvim/landonb/start/vim-title-bar-time-of-day {
+  vim-title-bar-time-of-day=$HOME/.kit/nvim/landonb/vim-title-bar-time-of-day {
    .gitignore
    LICENSE
    README.md
-   doc=$HOME/.kit/nvim/landonb/start/vim-title-bar-time-of-day/doc {
+   doc=$HOME/.kit/nvim/landonb/vim-title-bar-time-of-day/doc {
     vim-title-bar-time-of-day.txt
    }
-   plugin=$HOME/.kit/nvim/landonb/start/vim-title-bar-time-of-day/plugin {
+   plugin=$HOME/.kit/nvim/landonb/vim-title-bar-time-of-day/plugin {
     title_bar_time_of_day.vim
    }
   }
-  vim-tmux-navigator=$HOME/.kit/nvim/landonb/start/vim-tmux-navigator filter=".* *" {
+  vim-tmux-navigator=$HOME/.kit/nvim/landonb/vim-tmux-navigator filter=".* *" {
    .gitignore
    License.md
    README.md
    pattern-check
    vim-tmux-navigator.tmux
-   doc=$HOME/.kit/nvim/landonb/start/vim-tmux-navigator/doc {
+   doc=$HOME/.kit/nvim/landonb/vim-tmux-navigator/doc {
     tmux-navigator.txt
    }
-   plugin=$HOME/.kit/nvim/landonb/start/vim-tmux-navigator/plugin {
+   plugin=$HOME/.kit/nvim/landonb/vim-tmux-navigator/plugin {
     tmux_navigator.vim
    }
   }
-  vim-unimpaired=$HOME/.kit/nvim/landonb/start/vim-unimpaired filter=".* *" {
+  vim-unimpaired=$HOME/.kit/nvim/landonb/vim-unimpaired filter=".* *" {
    .gitignore
    README.markdown
-   doc=$HOME/.kit/nvim/landonb/start/vim-unimpaired/doc {
+   doc=$HOME/.kit/nvim/landonb/vim-unimpaired/doc {
     unimpaired.txt
    }
-   plugin=$HOME/.kit/nvim/landonb/start/vim-unimpaired/plugin {
+   plugin=$HOME/.kit/nvim/landonb/vim-unimpaired/plugin {
     unimpaired.vim
    }
-   .github=$HOME/.kit/nvim/landonb/start/vim-unimpaired/.github {
+   .github=$HOME/.kit/nvim/landonb/vim-unimpaired/.github {
     FUNDING.yml
    }
   }
@@ -2247,8 +2243,8 @@ DUBS_VIM_=$HOME/.vim filter=".* *" exclude=".trustme.log tags" {
 # DUBS_VIM_
 # *** Consolidated .vim listing
 # CPYST: Rebuild:
-#   ~/.depoxy/ambers/home/.kit/nvim/landonb/start/dubs_project_tray/generate_links.sh
-DUBS_CUTS_=$HOME/.depoxy/ambers/home/.kit/nvim/landonb/start/dubs_project_tray/dubs_cuts filter=".* *" {
+#   ~/.depoxy/ambers/home/.kit/nvim/landonb/dubs_project_tray/generate_links.sh
+DUBS_CUTS_=$HOME/.depoxy/ambers/home/.kit/nvim/landonb/dubs_project_tray/dubs_cuts filter=".* *" {
  .ignore
  .vim-autoload-pathogen.vim
  .vim-plugin-dubs_preloads.vim
