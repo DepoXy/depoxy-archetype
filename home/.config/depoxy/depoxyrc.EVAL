@@ -425,23 +425,23 @@ export DEPOXY_CD_ALIAS_NVIM_PLUG_ORG='DXY_DEPOXY_CD_ALIAS_NVIM_PLUG_ORG'
 #   CXREF: ~/.kit/sh/gvim-open-kindness/bin/gvim-open-kindness
 #     https://github.com/landonb/gvim-open-kindness#🐬
 
-# The Vim server name used to open files in the same instance. E.g.,
+# Part of the Neovim socket path used to identify a particular instance, e.g.,
+#   /tmp/nvim.socket-$NVIM_OPEN_SOCKETNAME
+# - Or, for Vim, the server name used to open files in the same instance. E.g.,
 #   gvim --servername SAMPI --remote-silent <file file...>
 # - Used by `fs` command, among other mechanisms.
-#
-#  export GVIM_OPEN_SERVERNAME="GVIM"
-export GVIM_OPEN_SERVERNAME="DXY_DEPOXY_GVIM_SERVERNAME"
-
-# The complementary `fa` command (for running 2nd gvim, e.g.,) uses
-# a separate servername you can customize here.
-#
-#  export DEPOXY_GVIM_ALTERNATE=ALPHA
-
-# Less important: The Neovim server socket path prefix, e.g.,
-#   /tmp/nvim.socket-NVIM
+# - The initial socket is created gvim-open-kindness.
+# - A (Neo)vim plugin adds the socketname emoji or text to the titlebar.
+#   https://github.com/landonb/vim-title-bar-time-of-day#🕰️
 #
 #  export NVIM_OPEN_SOCKETNAME="NVIM"
-export NVIM_OPEN_SOCKETNAME="DXY_DEPOXY_GVIM_SERVERNAME"
+export NVIM_OPEN_SOCKETNAME="DXY_NVIM_OPEN_SOCKETNAME"
+
+# The complementary `fa` command (for running 2nd nvim, e.g.,)
+# uses a separate socket or server name you can customize here.
+#
+#  export DEPOXY_NVIM_ALTERNATE=NVIM2
+export DEPOXY_NVIM_ALTERNATE="DXY_DEPOXY_NVIM_ALTERNATE"
 
 # Tell `gvim-open-kindness` to always Neovim.
 # - ALTLY: Substitute `nvim-open-kindness` for `gvim-open-kindness`
