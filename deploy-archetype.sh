@@ -236,7 +236,7 @@ register_customizable_personal_values () {
 
   # Optional: Set the Vim package name the `cvs` alias uses to
   #           `pushd ~/.kit/nvim/<PUBLISHER>/start`.
-  register "DXY_DEPOXY_CVS_ALIAS_VIM_PLUG_ORG" ""
+  register "DXY_DEPOXY_CD_ALIAS_NVIM_PLUG_ORG" ""
 
   # Optional: Specify a GVim --servername so that gvim shortcuts always
   #           send files to the same instance.
