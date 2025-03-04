@@ -462,7 +462,7 @@ export NVIM_OPEN_APPNAME="neovide"
 # - CXREF:
 #   ~/.kit/sh/home-fries/bin/editor-vim-0-0-insert
 #   ~/.kit/nvim/nvim-depoxy/bin/editor-vim-0-0-insert-minimal
-# 
+#
 #  export EDITOR_PREFER_NVIM=true
 export EDITOR_PREFER_NVIM=true
 

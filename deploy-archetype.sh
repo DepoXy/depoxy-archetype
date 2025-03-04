@@ -62,7 +62,7 @@ register_customizable_client_ids () {
 
   # (Optional) Set this value to your private DepoXy Client repo URL, e.g.,
   #   https://github.com/<user>/<depoxy-client-id>.git
-  # 
+  #
   # Note that the second arg is an empty string, so `register` will see this
   # value is optional (and the script that uses the value will tell you that
   # it cannot run without a remote URL, but at least it'll run to say that).
@@ -1155,7 +1155,7 @@ prepare_client_fs_dest () {
   dest_dir_abs="$($(gnu_readlink) -m -- "${dest_dir}")"
 
   local client_dir_abs
-  client_dir_abs="$($(gnu_readlink) -m -- "${DXY_DEPOXY_CLIENT_FULL}")" 
+  client_dir_abs="$($(gnu_readlink) -m -- "${DXY_DEPOXY_CLIENT_FULL}")"
 
   if [ "${dest_dir_abs#${client_dir_abs}}" = "${dest_dir_abs}" ]; then
     # Prefix not stripped, i.e., not a subdir.
@@ -2040,7 +2040,7 @@ main () {
   omr_dxc_cleanup
   finish_capture_file
   announce_completed
-  
+
   clear_traps
 }
 
