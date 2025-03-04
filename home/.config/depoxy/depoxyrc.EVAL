@@ -442,6 +442,7 @@ export NVIM_OPEN_SOCKETNAME="DXY_NVIM_OPEN_SOCKETNAME"
 #
 #  export DEPOXY_NVIM_ALTERNATE=NVIM2
 export DEPOXY_NVIM_ALTERNATE="DXY_DEPOXY_NVIM_ALTERNATE"
+export DEPOXY_NVIM_TRICHOTOMY="DXY_DEPOXY_NVIM_TRICHOTOMY"
 
 # Tell `gvim-open-kindness` to always Neovim.
 # - ALTLY: Substitute `nvim-open-kindness` for `gvim-open-kindness`

@@ -242,7 +242,7 @@ register_customizable_personal_values () {
   #           you can send files to or front a specific editor instance.
   register "DXY_NVIM_OPEN_SOCKETNAME" "🧸"
   register "DXY_DEPOXY_NVIM_ALTERNATE" "🦢"
-  
+  register "DXY_DEPOXY_NVIM_TRICHOTOMY" "🐝"
 }
 
 register_placeholder_project_config_values () {
