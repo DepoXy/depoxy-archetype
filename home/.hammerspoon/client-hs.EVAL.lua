@@ -203,8 +203,8 @@ end)
 --   https://radiok.org/
 --   https://kfai.org/
 --     https://www.radiorethink.com/tuner/index.cfm?stationCode=kfai
--- BNDNG: <Shift-Ctrl-Cmd-C>
-hs.hotkey.bind({"shift", "ctrl", "cmd"}, "C", function()
+-- BNDNG: <Shift-Ctrl-Alt-C>
+hs.hotkey.bind({"shift", "ctrl", "alt"}, "C", function()
   local toggle = true
 
   browserWindowFronters:browserWindowFrontOrOpen(
