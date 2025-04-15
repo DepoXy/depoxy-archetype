@@ -123,8 +123,8 @@ autocommit =
   # User should commit "DXY_DEPOXY_VENDOR_ACMESH_NAME" changes with useful messages,
   # or if you don't care, add its auto-commit here.
   #   git_auto_commit_one "DXY_DEPOXY_VENDOR_ACMESH_NAME" -m "Update: DXY_DEPOXY_VENDOR_ACMESH_NAME"
-  git_auto_commit_one ".ignore" -m "Update: .ignore"
-  git_auto_commit_one "README.md" -m "Update: README.md"
+  git_auto_commit_one ".ignore" -m "aci(dx): update .ignore"
+  git_auto_commit_one "README.md" -m "aci(docs): update README.md"
 
 # ========================================================================
 # ------------------------------------------------------------------------
