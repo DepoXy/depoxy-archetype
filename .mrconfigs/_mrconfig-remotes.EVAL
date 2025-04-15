@@ -78,6 +78,8 @@ lib =
   #   remote_set entrust "git@github_user:user/depoxy-archetype.git"
 
 [${DEPOXYDIR_STINTS_FULL:-DXY_DEPOXYDIR_STINTS__HOME_}/DXY_DEPOXY_CLIENT_ID]
+# ORDER: Ensure DXC ordered *after* DXY, so that DXC infuse assets replace
+# DXY assets when appropriate (e.g., ${HOME}/.config/tig/config).
 order = 133
 # The client remote has no remote unless you add one for it.
 lib =
