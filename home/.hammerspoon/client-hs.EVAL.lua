@@ -61,37 +61,45 @@ local __USYNC__ = [[
 
 -- Open @Work Backlog in MacVim
 -- BNDNG: <Cmd-E>
-local cmd_e = hs.hotkey.bind({"cmd"}, "E", function()
-  gvim_open_kindness("DXY_DEPOXY_CLIENT_TILDE/docs/Backlog_Client_[[[]]]DXY_DEPOXY_CLIENT_ID.rst")
+local cmd_e = hs.hotkey.bind({ "cmd" }, "E", function()
+  gvim_open_kindness(
+    "DXY_DEPOXY_CLIENT_TILDE/docs/Backlog_Client_[[[]]]DXY_DEPOXY_CLIENT_ID.rst"
+  )
 end)
 
 ignore_hotkey_gnucash(cmd_e)
 
 -- Open @Work Woodlot in MacVim
 -- BNDNG: <Ctrl-Cmd-E>
-hs.hotkey.bind({"ctrl", "cmd"}, "E", function()
-  gvim_open_kindness("DXY_DEPOXY_CLIENT_TILDE/docs/Woodlot_Client_[[[]]]DXY_DEPOXY_CLIENT_ID.rst")
+hs.hotkey.bind({ "ctrl", "cmd" }, "E", function()
+  gvim_open_kindness(
+    "DXY_DEPOXY_CLIENT_TILDE/docs/Woodlot_Client_[[[]]]DXY_DEPOXY_CLIENT_ID.rst"
+  )
 end)
 
 -- # *** Personal docs GVim openers.
 
 -- Open @Your Backlog in MacVim
 -- BNDNG: <Shift-Cmd-W>
-hs.hotkey.bind({"shift", "cmd"}, "W", function()
-  gvim_open_kindness("DXY_DEPOXY_CLIENT_TILDE/private/docs/Backlog_Personal_[[[]]]DXY_DEPOXY_CLIENT_ID.rst")
+hs.hotkey.bind({ "shift", "cmd" }, "W", function()
+  gvim_open_kindness(
+    "DXY_DEPOXY_CLIENT_TILDE/private/docs/Backlog_Personal_[[[]]]DXY_DEPOXY_CLIENT_ID.rst"
+  )
 end)
 
 -- Open @Your Woodlot in MacVim
 -- BNDNG: <Ctrl-Cmd-W>
-hs.hotkey.bind({"ctrl", "cmd"}, "W", function()
-  gvim_open_kindness("DXY_DEPOXY_CLIENT_TILDE/private/docs/Woodlot_Personal_[[[]]]DXY_DEPOXY_CLIENT_ID.rst")
+hs.hotkey.bind({ "ctrl", "cmd" }, "W", function()
+  gvim_open_kindness(
+    "DXY_DEPOXY_CLIENT_TILDE/private/docs/Woodlot_Personal_[[[]]]DXY_DEPOXY_CLIENT_ID.rst"
+  )
 end)
 
 -------
 
 -- Open macOS Onboarding document in MacVim
 -- BNDNG: <Cmd-O>
-local cmd_o = hs.hotkey.bind({"cmd"}, "O", function()
+local cmd_o = hs.hotkey.bind({ "cmd" }, "O", function()
   gvim_open_kindness("~/.depoxy/ambers/docs/README-macOS-onboarding.rst")
 end)
 
@@ -163,23 +171,17 @@ ignore_hotkey_slack(cmd_o)
 
 -- EmojiCombos
 -- BNDNG: <Cmd-Alt-E>
-hs.hotkey.bind({"cmd", "alt"}, "E", function()
-  browserWindowFronters:browserWindowFrontOrOpen(
-    "https://emojicombos.com/",
-    {
-      "Emoji Combos",
-    }
-  )
+hs.hotkey.bind({ "cmd", "alt" }, "E", function()
+  browserWindowFronters:browserWindowFrontOrOpen("https://emojicombos.com/", {
+    "Emoji Combos",
+  })
 end)
 
 -- BNDNG: <Shift-Cmd-Alt-E>
-hs.hotkey.bind({"shift", "cmd", "alt"}, "E", function()
-  browserWindowFronters:browserWindowFrontOrOpen(
-    "https://instafonts.io/",
-    {
-      "Fonts & Text Symbols (",
-    }
-  )
+hs.hotkey.bind({ "shift", "cmd", "alt" }, "E", function()
+  browserWindowFronters:browserWindowFrontOrOpen("https://instafonts.io/", {
+    "Fonts & Text Symbols (",
+  })
 end)
 
 -- RemovePaywall
@@ -187,13 +189,10 @@ end)
 --   you can scrape the article text from the page content with
 --   a soft paywall.
 -- BNDNG: <Cmd-Alt-R>
-hs.hotkey.bind({"cmd", "alt"}, "R", function()
-  browserWindowFronters:browserWindowFrontOrOpen(
-    "https://www.removepaywall.com/",
-    {
-      "RemovePaywall",
-    }
-  )
+hs.hotkey.bind({ "cmd", "alt" }, "R", function()
+  browserWindowFronters:browserWindowFrontOrOpen("https://www.removepaywall.com/", {
+    "RemovePaywall",
+  })
 end)
 
 -------
@@ -204,18 +203,14 @@ end)
 --   https://kfai.org/
 --     https://www.radiorethink.com/tuner/index.cfm?stationCode=kfai
 -- BNDNG: <Shift-Ctrl-Alt-C>
-hs.hotkey.bind({"shift", "ctrl", "alt"}, "C", function()
+hs.hotkey.bind({ "shift", "ctrl", "alt" }, "C", function()
   local toggle = true
 
-  browserWindowFronters:browserWindowFrontOrOpen(
-    "https://www.thecurrent.org/listen",
-    {
-      "Listen to The Current",
-      "Radio K",
-      "KFAI | Minneapolis & Saint Paul",
-    },
-    toggle
-  )
+  browserWindowFronters:browserWindowFrontOrOpen("https://www.thecurrent.org/listen", {
+    "Listen to The Current",
+    "Radio K",
+    "KFAI | Minneapolis & Saint Paul",
+  }, toggle)
 end)
 
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
@@ -243,11 +238,11 @@ end)
 
 -- Here we complement the <Cmd-T> New Chrome Window binding from Hammyspoony
 -- with a <Cmd-Alt-T> binding that opens "Profile 2".
--- - REFER: frillsChrome:bindHotkeys({newChromeWindow={{"cmd"}, "T"}})
+-- - REFER: FrillsChrome:bindHotkeys({newChromeWindow={{"cmd"}, "T"}})
 --
 -- BNDNG: <Alt-Cmd-T>
-hs.hotkey.bind({"cmd", "alt"}, "T", function()
-  frillsChrome:makeNewChromeWindow("Profile 2")
+hs.hotkey.bind({ "cmd", "alt" }, "T", function()
+  FrillsChrome:makeNewChromeWindow("Profile 2")
 end)
 
 -------
@@ -303,4 +298,3 @@ end)
 --   end)
 
 -- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ --
-
