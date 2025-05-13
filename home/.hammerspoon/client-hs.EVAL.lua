@@ -51,7 +51,7 @@ local __USYNC__ = [[
 --   hs.hotkey.bind({"cmd"}, "8", function()
 --     local win_hint = "myhost"
 --
---     frillsAlacrittyAndTerminal:alacritty_by_window_number_prefix(8, win_hint)
+--     FrillsAlacrittyAndTerminal:alacritty_by_window_number_prefix(8, win_hint)
 --   end)
 
 -- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ --
