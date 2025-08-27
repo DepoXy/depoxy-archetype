@@ -231,6 +231,10 @@ export MREDIT_CONFIGS="${DEPOXY_PROJLNS:-${HOME}/.projlns}/mymrconfigs"
 #
 #  export MR_KNOWN_REMOTES="host1 host2 host3"
 
+# So that `symlink_overlay_file`, `symlink_mrinfuse_file`, etc., (which
+# call `symlink_overlay_file`) use the generic (universal) user home path.
+export MRT_SYMLINK_NORMALIZE_HOME="/private/user"
+
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
 # *** git-put-wise patch sharing
