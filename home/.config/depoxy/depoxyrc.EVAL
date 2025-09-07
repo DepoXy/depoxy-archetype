@@ -485,11 +485,3 @@ export ACMESH_CONF_USER="DXY_DEPOXY_CLIENT__HOME_/home/DXY_DEPOXY_VENDOR_HOME_NA
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
-# USAGE: Exclude paths from locate.db using additional
-# `updatedb --prunepaths` args. E.g., runs
-#    updatedb ... --prunepaths "... ${LOCATEDB_PRUNEPATHS}"
-#
-#  export LOCATEDB_PRUNEPATHS="/exclude/this/directory"
-
-# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
-
