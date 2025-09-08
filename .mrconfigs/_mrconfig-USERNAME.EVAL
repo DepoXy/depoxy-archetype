@@ -57,7 +57,6 @@ order = 166
 order = 180
 lib = remote_set_private
 skip = [ ! -d "${MR_REPO}" ] || mr_exclusive "${LOGNAME}"
-echoInstallHelp = echoInstallHelp 'os_all' 'dxy_all'
 ffssh =
   git_merge_ffonly_ssh_mirror "$@"
   chmod 2750 .ssh/
@@ -76,6 +75,33 @@ infuseProjlns = OMR_INFUSE_PROJLNS_FILES=true infuse_projlns_if_personal_project
 #         ".gnupg/gpg-agent.conf" \
 #         ".ssh/config" \
 #         ".ssh/config--$(hostname)"
+
+echoInstallHelp =
+  local for_what="~/.gnupg, ~/.password-store, ~/.ssh/config"
+  # If MR_REPO absent, user needs to create/setup using `321open`.
+  # - Though note `mr` normally fails if MR_REPO absent, unless
+  #   user allows it via --no-cd, e.g.:
+  #     mr --no-cd -d ${MR_REPO} -n echoInstallHelp
+  #   - I.e., user won't see our message if they ran
+  #     `mr -d ${MR_REPO} echoInstallHelp` or
+  #     `mr -d / echoInstallHelp`.
+  local install_cmd="321open"
+  local description="Create key paddock (for ${for_what})"
+  if [ -d "${MR_REPO}" ]; then
+    # If MR_REPO present, user can then run the 'install' task
+    # (though the project is kinda-technically "installed" at
+    #  that point, but 'install' can be used to fix symlinks
+    #  and ~/.ssh permissions — though so can running `321open`,
+    #  so not really sure there's any benefit to 'install', in
+    #  fact it might just represent duplicate technical debt).
+    install_cmd="mr -d \"${MR_REPO}\" -n install"
+    description="Repair key paddock symlinks (${for_what})"
+  fi
+  #
+  echo "$(echoInstallHelpWidget 'os_all' 'dxy_all'
+  ) ${description}::
+    ${install_cmd}
+  "
 
 install =
   # CXREF: Assumes ~/.config/depoxy/321open.cfg sourced
