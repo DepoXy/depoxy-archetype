@@ -67,6 +67,15 @@ ffssh =
   chmod 440 .ssh/id_*.pub
 
 infuseProjlns = OMR_INFUSE_PROJLNS_FILES=true infuse_projlns_if_personal_project
+# ALTLY: Be more selective about the ~/.projlns index, e.g.:
+#   infuseProjlns =
+#     OMR_INFUSE_PROJLNS_FILES=true \
+#       infuse_projlns_if_personal_project \
+#         ".gitignore" \
+#         "README.rst" \
+#         ".gnupg/gpg-agent.conf" \
+#         ".ssh/config" \
+#         ".ssh/config--$(hostname)"
 
 install =
   # CXREF: Assumes ~/.config/depoxy/321open.cfg sourced
