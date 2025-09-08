@@ -65,6 +65,9 @@ ffssh =
   chmod 600 .ssh/config*
   chmod 400 .ssh/id_*
   chmod 440 .ssh/id_*.pub
+
+infuseProjlns = OMR_INFUSE_PROJLNS_FILES=true infuse_projlns_if_personal_project
+
 install =
   # CXREF: Assumes ~/.config/depoxy/321open.cfg sourced
   #   (which ~/.depoxy/ambers/home/_mrconfig-core does).
@@ -88,7 +91,6 @@ install =
   #
   # Recreate home symlinks using ${MR_REPO} paths.
   ONEOPEN_KEYS_PADDOCK="${MR_REPO}" ensure_key_paddock_symlinks
-infuseProjlns = OMR_INFUSE_PROJLNS_FILES=true infuse_projlns_if_personal_project
 
 # ========================================================================
 # ------------------------------------------------------------------------
