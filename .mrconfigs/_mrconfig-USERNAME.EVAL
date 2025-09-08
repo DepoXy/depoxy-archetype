@@ -111,21 +111,55 @@ install =
     #
     return 1
   fi
-  #
-  # CXREF: ~/.kit/odd/321open/lib/key_paddock.sh
-  . "${DOPP_KIT:-${HOME}/.kit}/odd/321open/lib/key_paddock.sh"
-  #
-  if ! verify_key_paddock_repo_and_home_dir_symlinks; then
-    # MR_REPO/.git missing, or ~/.gunpg, ~/.ssh/config, and/or
-    # ~/.password-store not each a symlink (as setup by `321open`,
-    # and `relocate_keys_paddock_dirs`.
-    >&2 warn "ERROR: Missing Key Paddock, or home paths not all symlinks"
+  # SAVVY: Our 'install' task will only recreate/update the 3
+  # symlinks — ~/.gnupg, ~/.ssh/config, ~/.password-store —
+  # and does not create or setup the gut-plain/ encfs itself.
+  # - To setup gut-plain/, user should call 321open themselves.
+  #   - It calls ensure_key_paddock_exists which'll automatically
+  #     move ~/.gnupg, etc., to the gut-plain/ repo, if necessary,
+  #     and create the symlinks.
+  # - This 'install' task is really not all that useful.
+  #   - Perhaps if something removes a symlink, or, e.g., creates a new
+  #     ~/.gnupg or ~/.ssh, or maybe user changes ONEOPEN_KEYS_PADDOCK.
+  #   - But otherwise the symlinks should never be removed.
+  #     - And they're only ever broken when user first boots,
+  #       before they run 321open to mount the encfs(es).
+  bash -s <<'[DEFAULT]'
+    cd -- "${DOPP_KIT:-${HOME}/.kit}/odd/321open/lib"
+    . "${DOPP_KIT:-${HOME}/.kit}/odd/321open/lib/key_paddock.sh"
     #
-    return 1
-  fi
-  #
-  # Recreate home symlinks using ${MR_REPO} paths.
-  ONEOPEN_KEYS_PADDOCK="${MR_REPO}" ensure_key_paddock_symlinks
+    # Tell user to manually setup their 321open environment
+    # if paddock environ unset, or paddock not a Git repo,
+    # or if any of the source paths exist but are not symlinks
+    # (e.g., ~/.gnupg is still a directory and has not been
+    #  relocated to the paddock yet).
+    #
+    # COPYD: Similar to 321open's
+    #   verify_key_paddock_repo_and_home_dir_symlinks
+    # but allow broken symlinks (so not [ -d ]-checks)
+    # or ignore if what should be symlink is absent.
+    if [ -z "${ONEOPEN_KEYS_PADDOCK}" ] \
+      || [ ! -d "${ONEOPEN_KEYS_PADDOCK}/.git" ] \
+      || ( [ ! -h "${HOME}/.gnupg" ] && [ -e "${HOME}/.gnupg" ] ) \
+      || ( [ ! -h "${HOME}/.ssh/config" ] && [ -e "${HOME}/.ssh/config" ] ) \
+      || ( [ ! -h "${HOME}/.password-store" ] && [ -e "${HOME}/.password-store" ] ) \
+    ; then
+      # Means $ONEOPEN_KEYS_PADDOCK/.git missing (e.g., /Volumes/vestige/.clench/.git);
+      # or ~/.gunpg, ~/.ssh/config, and/or ~/.password-store not each a symlink (as
+      # setup by `321open`, and `relocate_keys_paddock_dirs`) and not just absent.
+      >&2 warn "ERROR: Missing Key Paddock, or home paths not all symlinks"
+      >&2 warn "- You'll need to run \`321open\` or manually fix the issue(s)"
+      #
+      return 1
+    fi
+    #
+    # Recreate the 3 symlinks (using ${MR_REPO} paths).
+    ONEOPEN_KEYS_PADDOCK="${ONEOPEN_KEYS_PADDOCK}" \
+      ensure_key_paddock_symlinks
+ [DEFAULT]
+#↓↓↓ So ft=bash stops highlighting the Heredoc.
+[DEFAULT]
+#↑↑↑ So ft=bash stops highlighting the Heredoc.
 
 # ========================================================================
 # ------------------------------------------------------------------------
