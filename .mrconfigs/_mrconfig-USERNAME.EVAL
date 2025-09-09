@@ -82,9 +82,9 @@ echoInstallHelp =
   # - Though note `mr` normally fails if MR_REPO absent, unless
   #   user allows it via --no-cd, e.g.:
   #     mr --no-cd -d ${MR_REPO} -n echoInstallHelp
-  #   - I.e., user won't see our message if they ran
-  #     `mr -d ${MR_REPO} echoInstallHelp` or
-  #     `mr -d / echoInstallHelp`.
+  #   - I.e., user won't see our message re: 321open
+  #     if they ran:
+  #       mr -d {path} echoInstallHelp
   local install_cmd="321open"
   local description="Create key paddock (for ${for_what})"
   if [ -d "${MR_REPO}" ]; then
