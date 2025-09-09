@@ -103,6 +103,32 @@ echoInstallHelp =
     ${install_cmd}
   "
 
+# This check is not the most robust, but it's Good Enough.
+# - This checks that the 3 symlinks exist and that they
+#   target dirs; but it doesn't verify the target paths,
+#   nor does it check ~/.ssh permissions.
+#   - For the most part, user should separately notice if
+#     the 321open environment is misconfigured, and any
+#     (savvy) user will know to run the 'install' task
+#     or `321open` itself to fix things.
+# - Note we verify here that the paddock path environ is set.
+#   - If unset, the verify_* fcn. returns truthily immediately,
+#     because it assumes user has disabled the paddock (or not
+#     enabled it, I suppose, as it's an opt-in feature).
+#   - But this check assumes user assumes paddock is enabled.
+isInstalled =
+  bash -s <<'[DEFAULT]'
+    cd -- "${DOPP_KIT:-${HOME}/.kit}/odd/321open/lib"
+    . "${DOPP_KIT:-${HOME}/.kit}/odd/321open/lib/key_paddock.sh"
+    # See comment above: verify_* returns true if environ unset.
+    test -n "${ONEOPEN_KEYS_PADDOCK}"
+    verify_key_paddock_repo_and_home_dir_symlinks
+ [DEFAULT]
+#↓↓↓ So ft=bash stops highlighting the Heredoc.
+[DEFAULT]
+#↑↑↑ So ft=bash stops highlighting the Heredoc.
+
+[${ONEOPEN_KEYS_PADDOCK:-${ONEOPEN_MOUNTPOINT:-/Volumes}/vestige/.clench}]
 install =
   # CXREF: Assumes ~/.config/depoxy/321open.cfg sourced
   #   (which ~/.depoxy/ambers/home/_mrconfig-core does).
