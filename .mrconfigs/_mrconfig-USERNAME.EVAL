@@ -156,6 +156,9 @@ install =
     # Recreate the 3 symlinks (using ${MR_REPO} paths).
     ONEOPEN_KEYS_PADDOCK="${ONEOPEN_KEYS_PADDOCK}" \
       ensure_key_paddock_symlinks
+    #
+    # Ensure ~/.ssh permissioned expectedly.
+    ensure_key_paddock_ssh_permissions
  [DEFAULT]
 #↓↓↓ So ft=bash stops highlighting the Heredoc.
 [DEFAULT]
