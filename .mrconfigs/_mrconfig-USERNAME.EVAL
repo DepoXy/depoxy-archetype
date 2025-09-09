@@ -87,6 +87,7 @@ echoInstallHelp =
   #       mr -d {path} echoInstallHelp
   local install_cmd="321open"
   local description="Create key paddock (for ${for_what})"
+  local is_installed=false
   if [ -d "${MR_REPO}" ]; then
     # If MR_REPO present, user can then run the 'install' task
     # (though the project is kinda-technically "installed" at
@@ -96,9 +97,14 @@ echoInstallHelp =
     #  fact it might just represent duplicate technical debt).
     install_cmd="mr -d \"${MR_REPO}\" -n install"
     description="Repair key paddock symlinks (${for_what})"
+    is_installed=$(
+      mr -d "${MR_REPO}" -n isInstalled >/dev/null 2>&1 &&
+        echo "true" || echo "false"
+    )
   fi
   #
-  echo "$(echoInstallHelpWidget 'os_all' 'dxy_all'
+  echo "$(
+    echoInstallHelpWidget "os_all" "dxy_all" "${is_installed}"
   ) ${description}::
     ${install_cmd}
   "
