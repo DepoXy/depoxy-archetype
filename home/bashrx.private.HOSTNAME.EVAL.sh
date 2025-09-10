@@ -69,7 +69,7 @@
 #     customizes it to be @biz-specific, e.g.,
 #     '~/acme', or '~/fbi/'.
 
-bashdx_wire_aliases_pushd_paths_cdw () {
+bashdx_wire_aliases_pushd_paths_cdw() {
   # CXREF: This path is set by deploy-archetype.sh per [[[DXY_VENDOR_HOME]]]
   local client_dir="${DEPOXYDIR_VENDOR_FULL:-DXY_VENDOR_HOME__HOME_}"
 
@@ -98,7 +98,7 @@ bashdx_wire_aliases_pushd_paths_cdw () {
 # MAYBE/2021-08-23: I feel like `issues` makes more sense as the
 # command name, but `bugs` seems quicker to type, and livelier.
 
-bashdx_wire_aliases_open_tracker () {
+bashdx_wire_aliases_open_tracker() {
   local bugs_alias="bugs"
 
   if ! type "${bugs_alias}" > /dev/null 2>&1; then
@@ -122,7 +122,7 @@ bashdx_wire_aliases_open_tracker () {
 #   you'd want to do when ${HOME_FRIES_PRELOAD} is true so that
 #   Homefries uses it; or just set your own PS1 here).
 
-bashdx_customize_depoxy_client_PS1 () {
+bashdx_customize_depoxy_client_PS1() {
   # CXREF: ~/.kit/sh/sh-humble-prompt/lib/set-shell-prompt-and-window-title.sh
   HOMEFRIES_TERM_UTIL_PS1_HOST="DXC${DEPOXY_CLIENT_ID}" \
     _hf_prompt_configure
@@ -132,10 +132,10 @@ bashdx_customize_depoxy_client_PS1 () {
 # ----------------------------------------------------------------- #
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
-bashdxy_source_client_bashrc () {
+bashdxy_source_client_bashrc() {
   declare -a bashrcs=()
 
-  append_bashrc () {
+  append_bashrc() {
     local bashrc="$1"
 
     if [ -f "${bashrc}" ]; then
@@ -186,12 +186,12 @@ _DXC_SOURCE_IT_FINIS=false
 
 # CXREF: _dxy_source_script:
 #   ~/.depoxy/ambers/home/.kit/sh/home-fries/.bashrc-bin/bashrx.private.sh:10
-_dxc_source () {
+_dxc_source() {
   local full_path="$1"
 
   _SOURCE_IT_BEGIN=${_DXC_SOURCE_IT_BEGIN} \
-  _SOURCE_IT_FINIS=${_DXC_SOURCE_IT_FINIS} \
-  source_it \
+    _SOURCE_IT_FINIS=${_DXC_SOURCE_IT_FINIS} \
+    source_it \
     "${full_path}" \
     "${_dxc_source_it_deps_path_none}" \
     "${_dxc_source_it_log_name_client:-CLIENT}"
@@ -203,12 +203,12 @@ _dxc_source () {
 # ----------------------------------------------------------------- #
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
-_dxc_bashrc_standup () {
+_dxc_bashrc_standup() {
   # Wait for the second pass to run our commands.
   if ${HOME_FRIES_PRELOAD:-false}; then
     _SOURCE_IT_BEGIN=true \
-    _SOURCE_IT_FINIS=true \
-    source_it_log_trace "${_dxc_source_it_log_name_client:-CLIENT}" "[no-op]"
+      _SOURCE_IT_FINIS=true \
+      source_it_log_trace "${_dxc_source_it_log_name_client:-CLIENT}" "[no-op]"
 
     return 0
   fi
@@ -243,7 +243,7 @@ _dxc_bashrc_standup () {
 
 # ***
 
-_dxc_unset_functions_dxc () {
+_dxc_unset_functions_dxc() {
   # CALLS: _dxy_unset_functions_dxy
   #   ~/.depoxy/ambers/home/.homefries/.bashrc-bin/bashrx.private.sh:176
   _wf_unset_functions_wf
@@ -255,14 +255,14 @@ _dxc_unset_functions_dxc () {
 
 # USYNC: This overrides same-named function upstream:
 #   ~/.depoxy/ambers/home/.kit/sh/home-fries/.bashrc-bin/bashrx.private.sh:228
-_dxy_unset_functions () {
+_dxy_unset_functions() {
   # No-op, so DepoXy doesn't clobber functions before we run.
   :
 }
 
 # ***
 
-_homefries_private_main_user () {
+_homefries_private_main_user() {
   _dxc_bashrc_standup "$@"
   unset -f _dxc_bashrc_standup
 
@@ -270,4 +270,3 @@ _homefries_private_main_user () {
     _dxc_unset_functions_dxc
   fi
 }
-
