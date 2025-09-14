@@ -32,7 +32,7 @@ DRY_RUN=${DRY_RUN:-false}
 # ================================================================= #
 
 # Feel free to set your own headers.
-register_customizable_headers () {
+register_customizable_headers() {
   register "DXY_DEPOXY_HUMAN_NAME" "$(user_name_full)"
 
   # "Author: ..." defaults to what your machine says is your full name.
@@ -47,7 +47,7 @@ register_customizable_headers () {
 }
 
 # You can set the client ID, and specify a remote Git URL.
-register_customizable_client_ids () {
+register_customizable_client_ids() {
   # The author uses the two-digit year and the week number of their
   # contract start date for the client name, e.g., 2243, but you can
   # use what you want, with the caveat that if code has to suss out
@@ -70,7 +70,7 @@ register_customizable_client_ids () {
 }
 
 # You can set names, paths, and URLS for business-specific stuff.
-register_customizable_business_values () {
+register_customizable_business_values() {
   # What to name some client-specific files, functions, projects,
   # directories, etc.
   register "DXY_DEPOXY_VENDOR_NAME_PROPER" "${VENDOR_NAME_PROPER:-ACME}"
@@ -93,14 +93,14 @@ register_customizable_business_values () {
 
   # E.g., "work"
   unset -v DXY_DEPOXY_VENDOR_HOME_NAME
-  register "DXY_DEPOXY_VENDOR_HOME_NAME" "$( \
+  register "DXY_DEPOXY_VENDOR_HOME_NAME" "$(
     echo "${DXY_VENDOR_HOME}" \
-    | sed -E "s@^${HOME}/@@"
+      | sed -E "s@^${HOME}/@@"
   )"
 
   # E.g., "/work/"
   # - Used to generate ~/.git/info/exclude
-  local vendor_home_home_path="$( \
+  local vendor_home_home_path="$(
     format_exclude_rule_home_gitignore "${DXY_VENDOR_HOME}"
   )"
   unset -v DXY_VENDOR_HOME_EXCLUDE_RULE
@@ -108,25 +108,25 @@ register_customizable_business_values () {
 
   # E.g., "~/work"
   unset -v DXY_VENDOR_HOME_TILDE
-  register "DXY_VENDOR_HOME_TILDE" "$( \
+  register "DXY_VENDOR_HOME_TILDE" "$(
     echo "${DXY_VENDOR_HOME}" \
-    | sed -E "s@^${HOME}(/|$)@~\1@"
+      | sed -E "s@^${HOME}(/|$)@~\1@"
   )"
 
   # E.g., "$HOME/work"
   # - CXREF: Vimprojects template:
   #   ~/.depoxy/ambers/archetype/home/.kit/nvim/landonb/dubs_project_tray/.vimprojects.EVAL
   unset -v DXY_VENDOR_HOME_HOME
-  register "DXY_VENDOR_HOME_HOME" "$( \
+  register "DXY_VENDOR_HOME_HOME" "$(
     echo "${DXY_VENDOR_HOME}" \
-    | sed -E "s@^${HOME}(/|$)@\\\\\$HOME\1@"
+      | sed -E "s@^${HOME}(/|$)@\\\\\$HOME\1@"
   )"
 
   # E.g., "${HOME}/work"
   unset -v DXY_VENDOR_HOME__HOME_
-  register "DXY_VENDOR_HOME__HOME_" "$( \
+  register "DXY_VENDOR_HOME__HOME_" "$(
     echo "${DXY_VENDOR_HOME}" \
-    | sed -E "s@^${HOME}(/|$)@\\\\\${HOME}\1@"
+      | sed -E "s@^${HOME}(/|$)@\\\\\${HOME}\1@"
   )"
 
   # If your client uses an npm registry, you can specify its URL to generate
@@ -152,7 +152,7 @@ register_customizable_business_values () {
 }
 
 # You can set Git user names and emails for business and personal projects.
-register_customizable_git_config () {
+register_customizable_git_config() {
   # DepoXy wires two sets of Git user.name and user.email:
   # your business user, and your personal user.
 
@@ -226,7 +226,7 @@ register_customizable_git_config () {
 }
 
 # You can set values for non-business things.
-register_customizable_personal_values () {
+register_customizable_personal_values() {
   # Personal user:
   # - Anything not under ~/work will use your personal user.
   # - User can change this user later via .gitconfig.user-personal:
@@ -245,7 +245,7 @@ register_customizable_personal_values () {
   register "DXY_DEPOXY_NVIM_TRICHOTOMY" "🐝"
 }
 
-register_placeholder_project_config_values () {
+register_placeholder_project_config_values() {
   register "DXY_VENDOR_ORG01_NAME" "soylent"
   #
   register "DXY_VENDOR_ORG01_PROJ01_NAME" "soylent-red"
@@ -266,7 +266,7 @@ register_placeholder_project_config_values () {
 # ================================================================= #
 
 # Generated variables you don't need to set, but could.
-register_generated () {
+register_generated() {
   register "DXY_DEPOXY_USERNAME" "$(id -un)"
 
   # The ~/.depoxy/running/.hostname file informs DepoXy if certain
@@ -276,9 +276,10 @@ register_generated () {
 
   register "DXY_USER_HOME" "${HOME}"
 
-  register "DXY_USER_CONFIG_FULL" "$( \
-    os_is_macos && echo "${HOME}/Library/Application Support" || echo "${HOME}/.config")"
-  }
+  register "DXY_USER_CONFIG_FULL" "$(
+    os_is_macos && echo "${HOME}/Library/Application Support" || echo "${HOME}/.config"
+  )"
+}
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
@@ -287,41 +288,41 @@ register_generated () {
 # values (and we want to avoid providing unnecessary conflict-conflicting).
 
 # depoxy_fs.sh variables.
-register_depoxydir_paths () {
+register_depoxydir_paths() {
   # E.g., "/(Users|home)/<user>/.depoxy"
   register "DXY_DEPOXYDIR_BASE_FULL" "${DEPOXYDIR_BASE_FULL:-${HOME}/.depoxy}"
 
   # E.g., ".depoxy"
   unset -v DXY_DEPOXYDIR_BASE_NAME
-  register "DXY_DEPOXYDIR_BASE_NAME" "$( \
+  register "DXY_DEPOXYDIR_BASE_NAME" "$(
     echo "${DXY_DEPOXYDIR_BASE_FULL}" \
-    | sed "s@^${HOME}/@@"
+      | sed "s@^${HOME}/@@"
   )"
 
   # E.g., "~/.depoxy"
   unset -v DXY_DEPOXYDIR_BASE_TILDE
-  register "DXY_DEPOXYDIR_BASE_TILDE" "$( \
+  register "DXY_DEPOXYDIR_BASE_TILDE" "$(
     echo "${DXY_DEPOXYDIR_BASE_FULL}" \
-    | sed -E "s@^${HOME}(/|$)@~\1@"
+      | sed -E "s@^${HOME}(/|$)@~\1@"
   )"
 
   # E.g., "$HOME/.depoxy"
   unset -v DXY_DEPOXYDIR_BASE_HOME
-  register "DXY_DEPOXYDIR_BASE_HOME" "$( \
+  register "DXY_DEPOXYDIR_BASE_HOME" "$(
     echo "${DXY_DEPOXYDIR_BASE_FULL}" \
-    | sed -E "s@^${HOME}(/|$)@\\\\\$HOME\1@"
+      | sed -E "s@^${HOME}(/|$)@\\\\\$HOME\1@"
   )"
 
   # E.g., "${HOME}/.depoxy"
   unset -v DXY_DEPOXYDIR_BASE__HOME_
-  register "DXY_DEPOXYDIR_BASE__HOME_" "$( \
+  register "DXY_DEPOXYDIR_BASE__HOME_" "$(
     echo "${DXY_DEPOXYDIR_BASE_FULL}" \
-    | sed -E "s@^${HOME}(/|$)@\\\\\${HOME}\1@"
+      | sed -E "s@^${HOME}(/|$)@\\\\\${HOME}\1@"
   )"
 
   # E.g., "/.depoxy/"
   # - Used to generate ~/.gitignore.
-  local depoxy_home_path="$( \
+  local depoxy_home_path="$(
     format_exclude_rule_home_gitignore "${DXY_DEPOXYDIR_BASE_FULL}"
   )"
   unset -v DXY_DEPOXYDIR_BASE_EXCLUDE_RULE
@@ -339,35 +340,35 @@ register_depoxydir_paths () {
 
   # E.g., ".depoxy/stints"
   unset -v DXY_DEPOXYDIR_STINTS_RELATIVE
-  register "DXY_DEPOXYDIR_STINTS_RELATIVE" "$( \
+  register "DXY_DEPOXYDIR_STINTS_RELATIVE" "$(
     echo "${DXY_DEPOXYDIR_STINTS_FULL}" \
-    | sed "s@^${HOME}/@@"
+      | sed "s@^${HOME}/@@"
   )"
 
   # E.g., "~/.depoxy/stints"
   unset -v DXY_DEPOXYDIR_STINTS_TILDE
-  register "DXY_DEPOXYDIR_STINTS_TILDE" "$( \
+  register "DXY_DEPOXYDIR_STINTS_TILDE" "$(
     echo "${DXY_DEPOXYDIR_STINTS_FULL}" \
-    | sed -E "s@^${HOME}(/|$)@~\1@"
+      | sed -E "s@^${HOME}(/|$)@~\1@"
   )"
 
   # E.g., "$HOME/.depoxy/stints"
   unset -v DXY_DEPOXYDIR_STINTS_HOME
-  register "DXY_DEPOXYDIR_STINTS_HOME" "$( \
+  register "DXY_DEPOXYDIR_STINTS_HOME" "$(
     echo "${DXY_DEPOXYDIR_STINTS_FULL}" \
-    | sed -E "s@^${HOME}(/|$)@\\\\\$HOME\1@"
+      | sed -E "s@^${HOME}(/|$)@\\\\\$HOME\1@"
   )"
 
   # E.g., "${HOME}/.depoxy/stints"
   unset -v DXY_DEPOXYDIR_STINTS__HOME_
-  register "DXY_DEPOXYDIR_STINTS__HOME_" "$( \
+  register "DXY_DEPOXYDIR_STINTS__HOME_" "$(
     echo "${DXY_DEPOXYDIR_STINTS_FULL}" \
-    | sed -E "s@^${HOME}(/|$)@\\\\\${HOME}\1@"
+      | sed -E "s@^${HOME}(/|$)@\\\\\${HOME}\1@"
   )"
 
   # E.g., "/.depoxy/stints/"
   # - Used to generate ~/.gitignore.
-  local depoxydir_stints_home_path="$( \
+  local depoxydir_stints_home_path="$(
     format_exclude_rule_home_gitignore "${DXY_DEPOXYDIR_STINTS_FULL}"
   )"
   unset -v DXY_DEPOXYDIR_STINTS_EXCLUDE_RULE
@@ -388,28 +389,28 @@ register_depoxydir_paths () {
 
   # E.g., "~/.depoxy/running"
   unset -v DXY_DEPOXYDIR_RUNNING_TILDE
-  register "DXY_DEPOXYDIR_RUNNING_TILDE" "$( \
+  register "DXY_DEPOXYDIR_RUNNING_TILDE" "$(
     echo "${DXY_DEPOXYDIR_RUNNING_FULL}" \
-    | sed -E "s@^${HOME}(/|$)@~\1@"
+      | sed -E "s@^${HOME}(/|$)@~\1@"
   )"
 
   # E.g., "$HOME/.depoxy/running"
   unset -v DXY_DEPOXYDIR_RUNNING_HOME
-  register "DXY_DEPOXYDIR_RUNNING_HOME" "$( \
+  register "DXY_DEPOXYDIR_RUNNING_HOME" "$(
     echo "${DXY_DEPOXYDIR_RUNNING_FULL}" \
-    | sed -E "s@^${HOME}(/|$)@\\\\\$HOME\1@"
+      | sed -E "s@^${HOME}(/|$)@\\\\\$HOME\1@"
   )"
 
   # E.g., "${HOME}/.depoxy/running"
   unset -v DXY_DEPOXYDIR_RUNNING__HOME_
-  register "DXY_DEPOXYDIR_RUNNING__HOME_" "$( \
+  register "DXY_DEPOXYDIR_RUNNING__HOME_" "$(
     echo "${DXY_DEPOXYDIR_RUNNING_FULL}" \
-    | sed -E "s@^${HOME}(/|$)@\\\\\${HOME}\1@"
+      | sed -E "s@^${HOME}(/|$)@\\\\\${HOME}\1@"
   )"
 
   # E.g., "/.depoxy/running/"
   # - Used to generate ~/.gitignore.
-  local depoxydir_running_home_path="$( \
+  local depoxydir_running_home_path="$(
     format_exclude_rule_home_gitignore "${DXY_DEPOXYDIR_RUNNING_FULL}"
   )"
   unset -v DXY_DEPOXYDIR_RUNNING_EXCLUDE_RULE
@@ -442,7 +443,7 @@ register_depoxydir_paths () {
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
-register_depoxy_client_paths () {
+register_depoxy_client_paths() {
   # Setup template variables with the new client path, represented all the ways.
 
   # - Client tilde path, e.g., "~/.depoxy/stints/XXXX"
@@ -455,15 +456,15 @@ register_depoxy_client_paths () {
 
   # - Client ${HOME} path, e.g., "${HOME}/.depoxy/stints/XXXX"
   unset -v DXY_DEPOXY_CLIENT__HOME_
-  register "DXY_DEPOXY_CLIENT__HOME_" "$( \
+  register "DXY_DEPOXY_CLIENT__HOME_" "$(
     echo "${DXY_DEPOXY_CLIENT_FULL}" \
-    | sed -E "s@^${HOME}(/|$)@\\\\\${HOME}\1@"
+      | sed -E "s@^${HOME}(/|$)@\\\\\${HOME}\1@"
   )"
 }
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
-register_depoxy_project_paths () {
+register_depoxy_project_paths() {
   # Note that, because Bash, even DepoXy's Bashrc, when it's sourced on
   # terminal startup, doesn't know where it is. So it checks environs
   # and falls-back on the default path, ~/.depoxy/ambers.
@@ -478,38 +479,38 @@ register_depoxy_project_paths () {
 
   # E.g., "ambers".
   unset -v DXY_DEPOXYAMBERS_NAME
-  register "DXY_DEPOXYAMBERS_NAME" "$( \
+  register "DXY_DEPOXYAMBERS_NAME" "$(
     echo "${DXY_DEPOXYAMBERS_DIR}" \
-    | sed "s@^${DXY_DEPOXYDIR_BASE_FULL}/@@"
+      | sed "s@^${DXY_DEPOXYDIR_BASE_FULL}/@@"
   )"
 
   # E.g., "~/.depoxy/ambers"
   unset -v DXY_DEPOXYAMBERS_DIR_TILDE
-  register "DXY_DEPOXYAMBERS_DIR_TILDE" "$( \
+  register "DXY_DEPOXYAMBERS_DIR_TILDE" "$(
     echo "${DXY_DEPOXYAMBERS_DIR}" \
-    | sed -E "s@^${HOME}(/|$)@~\1@"
+      | sed -E "s@^${HOME}(/|$)@~\1@"
   )"
 
   # E.g., "$HOME/.depoxy/ambers"
   # - CXREF: Vimprojects template:
   #   ~/.depoxy/ambers/archetype/home/.kit/nvim/landonb/dubs_project_tray/.vimprojects.EVAL
   unset -v DXY_DEPOXYAMBERS_DIR_HOME
-  register "DXY_DEPOXYAMBERS_DIR_HOME" "$( \
+  register "DXY_DEPOXYAMBERS_DIR_HOME" "$(
     echo "${DXY_DEPOXYAMBERS_DIR}" \
-    | sed -E "s@^${HOME}(/|$)@\\\\\$HOME\1@"
+      | sed -E "s@^${HOME}(/|$)@\\\\\$HOME\1@"
   )"
 
   # E.g., "${HOME}/.depoxy/ambers"
   # - Note the extra \\$ delimiter, because m4 command is eval'ed.
   unset -v DXY_DEPOXYAMBERS_DIR__HOME_
-  register "DXY_DEPOXYAMBERS_DIR__HOME_" "$( \
+  register "DXY_DEPOXYAMBERS_DIR__HOME_" "$(
     echo "${DXY_DEPOXYAMBERS_DIR}" \
-    | sed -E "s@^${HOME}(/|$)@\\\\\${HOME}\1@"
+      | sed -E "s@^${HOME}(/|$)@\\\\\${HOME}\1@"
   )"
 
   # E.g., "/.depoxy/ambers/"
   # - Used to generate ~/.gitignore.
-  local depoxyambers_home_path="$( \
+  local depoxyambers_home_path="$(
     format_exclude_rule_home_gitignore "${DXY_DEPOXYAMBERS_DIR}"
   )"
   unset -v DXY_DEPOXYAMBERS_DIR_EXCLUDE_RULE
@@ -523,17 +524,17 @@ register_depoxy_project_paths () {
 
   # E.g., "~/.depoxy/ambers/archetype"
   unset -v DXY_DEPOXYARCHETYPE_DIR_TILDE
-  register "DXY_DEPOXYARCHETYPE_DIR_TILDE" "$( \
+  register "DXY_DEPOXYARCHETYPE_DIR_TILDE" "$(
     echo "${DXY_DEPOXYARCHETYPE_DIR}" \
-    | sed -E "s@^${HOME}(/|$)@~\1@"
+      | sed -E "s@^${HOME}(/|$)@~\1@"
   )"
 
   # E.g., "${HOME}/.depoxy/ambers/archetype"
   # - Note the extra \\$ delimiter, because m4 command is eval'ed.
   unset -v DXY_DEPOXYARCHETYPE_DIR__HOME_
-  register "DXY_DEPOXYARCHETYPE_DIR__HOME_" "$( \
+  register "DXY_DEPOXYARCHETYPE_DIR__HOME_" "$(
     echo "${DXY_DEPOXYARCHETYPE_DIR}" \
-    | sed -E "s@^${HOME}(/|$)@\\\\\${HOME}\1@"
+      | sed -E "s@^${HOME}(/|$)@\\\\\${HOME}\1@"
   )"
 
   # ***
@@ -543,7 +544,7 @@ register_depoxy_project_paths () {
 
   # E.g., "/.projlns/"
   # - Used to generate ~/.gitignore.
-  local projlns_home_path="$( \
+  local projlns_home_path="$(
     format_exclude_rule_home_gitignore "${DXY_DEPOXY_PROJLNS}"
   )"
   unset -v DXY_DEPOXY_PROJLNS_EXCLUDE_RULE
@@ -551,16 +552,16 @@ register_depoxy_project_paths () {
 
   # E.g., "~/.projlns"
   unset -v DXY_DEPOXY_PROJLNS_DIR_TILDE
-  register "DXY_DEPOXY_PROJLNS_DIR_TILDE" "$( \
+  register "DXY_DEPOXY_PROJLNS_DIR_TILDE" "$(
     echo "${DXY_DEPOXY_PROJLNS}" \
-    | sed -E "s@^${HOME}(/|$)@~\1@"
+      | sed -E "s@^${HOME}(/|$)@~\1@"
   )"
 
   # E.g., "${HOME}/.projlns"
   unset -v DXY_DEPOXY_PROJLNS_DIR__HOME_
-  register "DXY_DEPOXY_PROJLNS_DIR__HOME_" "$( \
+  register "DXY_DEPOXY_PROJLNS_DIR__HOME_" "$(
     echo "${DXY_DEPOXY_PROJLNS}" \
-    | sed -E "s@^${HOME}(/|$)@\\\\\${HOME}\1@"
+      | sed -E "s@^${HOME}(/|$)@\\\\\${HOME}\1@"
   )"
 
   # ***
@@ -572,16 +573,16 @@ register_depoxy_project_paths () {
 
   # E.g., "${HOME}/Documents/screencaps"
   unset -v DXY_DEPOXY_SCREENCAPS_DIR__HOME_
-  register "DXY_DEPOXY_SCREENCAPS_DIR__HOME_" "$( \
+  register "DXY_DEPOXY_SCREENCAPS_DIR__HOME_" "$(
     echo "${DXY_DEPOXY_SCREENCAPS_DIR}" \
-    | sed -E "s@^${HOME}(/|$)@\\\\\${HOME}\1@"
+      | sed -E "s@^${HOME}(/|$)@\\\\\${HOME}\1@"
   )"
 
   # E.g., "/Documents/screencaps/"
   # - Used to generate ~/.gitignore (though when under Documents/,
   #   that directory already excluded, so this rule unnecessary;
   #   but included to support alternative screecaps/ paths).
-  local screencaps_home_path="$( \
+  local screencaps_home_path="$(
     format_exclude_rule_home_gitignore "${DXY_DEPOXY_SCREENCAPS_DIR}"
   )"
   unset -v DXY_DEPOXY_SCREENCAPS_EXCLUDE_RULE
@@ -594,21 +595,21 @@ register_depoxy_project_paths () {
 
   # E.g., ".kit/sh/home-fries"
   unset -v DXY_HOMEFRIES_DIR_NAME
-  register "DXY_HOMEFRIES_DIR_NAME" "$( \
+  register "DXY_HOMEFRIES_DIR_NAME" "$(
     echo "${DXY_HOMEFRIES_DIR}" \
-    | sed "s@^${HOME}/@@"
+      | sed "s@^${HOME}/@@"
   )"
 
   # E.g., "~/.kit/sh/home-fries"
   unset -v DXY_HOMEFRIES_DIR_TILDE
-  register "DXY_HOMEFRIES_DIR_TILDE" "$( \
+  register "DXY_HOMEFRIES_DIR_TILDE" "$(
     echo "${DXY_HOMEFRIES_DIR}" \
-    | sed -E "s@^${HOME}(/|$)@~\1@"
+      | sed -E "s@^${HOME}(/|$)@~\1@"
   )"
 
   # E.g., "/.kit/sh/home-fries/"
   # - Used to generate ~/.gitignore.
-  local homefries_home_path="$( \
+  local homefries_home_path="$(
     format_exclude_rule_home_gitignore "${DXY_HOMEFRIES_DIR}"
   )"
   unset -v DXY_HOMEFRIES_DIR_EXCLUDE_RULE
@@ -624,28 +625,28 @@ register_depoxy_project_paths () {
 
   # E.g., ".kit"
   unset -v DXY_DOPP_KIT_NAME
-  register "DXY_DOPP_KIT_NAME" "$( \
+  register "DXY_DOPP_KIT_NAME" "$(
     echo "${DXY_DOPP_KIT}" \
-    | sed "s@^${HOME}/@@"
+      | sed "s@^${HOME}/@@"
   )"
 
   # E.g., "~/.kit"
   unset -v DXY_DOPP_KIT_TILDE
-  register "DXY_DOPP_KIT_TILDE" "$( \
+  register "DXY_DOPP_KIT_TILDE" "$(
     echo "${DXY_DOPP_KIT}" \
-    | sed -E "s@^${HOME}(/|$)@~\1@"
+      | sed -E "s@^${HOME}(/|$)@~\1@"
   )"
 
   # E.g., "${HOME}/.kit"
   unset -v DXY_DOPP_KIT__HOME_
-  register "DXY_DOPP_KIT__HOME_" "$( \
+  register "DXY_DOPP_KIT__HOME_" "$(
     echo "${DXY_DOPP_KIT}" \
-    | sed -E "s@^${HOME}(/|$)@\\\\\${HOME}\1@"
+      | sed -E "s@^${HOME}(/|$)@\\\\\${HOME}\1@"
   )"
 
   # E.g., "/.kit/"
   # - Used to generate ~/.gitignore.
-  local dopp_kit_home_path="$( \
+  local dopp_kit_home_path="$(
     format_exclude_rule_home_gitignore "${DXY_DOPP_KIT}"
   )"
   unset -v DXY_DOPP_KIT_EXCLUDE_RULE
@@ -654,7 +655,7 @@ register_depoxy_project_paths () {
 
 # ***
 
-format_exclude_rule_home_gitignore () {
+format_exclude_rule_home_gitignore() {
   local full_path="$1"
 
   local home_path
@@ -672,7 +673,7 @@ format_exclude_rule_home_gitignore () {
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
-register_git_put_wise_paths () {
+register_git_put_wise_paths() {
   # E.g., "/(Users|home)/<user>/.depoxy/patchr"
   register "DXY_PW_PATCHES_REPO" \
     "${PW_PATCHES_REPO:-${DXY_DEPOXYDIR_BASE_FULL}/${PW_PATCHES_NAME:-patchr}}"
@@ -680,21 +681,21 @@ register_git_put_wise_paths () {
   # E.g., "patchr"
   # - Used to generate a Git exclude rule
   unset -v DXY_PW_PATCHES_NAME
-  register "DXY_PW_PATCHES_NAME" "$( \
+  register "DXY_PW_PATCHES_NAME" "$(
     echo "${DXY_PW_PATCHES_REPO}" \
-    | sed "s@^${HOME}/@@"
+      | sed "s@^${HOME}/@@"
   )"
 
   # E.g., "${HOME}/.projlns"
   unset -v DXY_PW_PATCHES_REPO__HOME_
-  register "DXY_PW_PATCHES_REPO__HOME_" "$( \
+  register "DXY_PW_PATCHES_REPO__HOME_" "$(
     echo "${DXY_PW_PATCHES_REPO}" \
-    | sed -E "s@^${HOME}(/|$)@\\\\\${HOME}\1@"
+      | sed -E "s@^${HOME}(/|$)@\\\\\${HOME}\1@"
   )"
 
   # E.g., "/.depoxy/patchr/"
   # - Used to generate ~/.gitignore.
-  local pw_patches_home_path="$( \
+  local pw_patches_home_path="$(
     format_exclude_rule_home_gitignore "${DXY_PW_PATCHES_REPO}"
   )"
   unset -v DXY_PW_PATCHES_EXCLUDE_RULE
@@ -713,7 +714,7 @@ register_git_put_wise_paths () {
 # is so tightly coupled to other components of the DepoXy stack
 # that we can skip the overhead of a more robust deps setup.
 
-source_deps () {
+source_deps() {
   # Load: DEPOXY_* path and settings environs.
   local ambers_path="${DEPOXYDIR_BASE_FULL:-${HOME}/.depoxy}/ambers"
   local ambers_root="${DEPOXYAMBERS_DIR:-${ambers_path}}"
@@ -732,7 +733,7 @@ source_deps () {
   . "${GITREPOSPATH:-${HOME}/.kit/git}/myrepos-mredit-command/lib/link_deep.sh"
 }
 
-check_dep_m4 () {
+check_dep_m4() {
   if gnu_m4 > /dev/null; then
 
     return 0
@@ -751,7 +752,7 @@ check_dep_m4 () {
 declare -a MISSING_VARS=()
 declare -a TEMPLATE_VARS=()
 
-register () {
+register() {
   local vname="$1"
   local value="$2"
 
@@ -773,7 +774,7 @@ register () {
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
-fail_if_missing_vars () {
+fail_if_missing_vars() {
   [ ${#MISSING_VARS[@]} -ne 0 ] || return 0
 
   >&2 echo "ERROR: Please define these missing variables:"
@@ -789,7 +790,7 @@ fail_if_missing_vars () {
 
 DEPOXY_m4_DEFINES=""
 
-prepare_m4_defines () {
+prepare_m4_defines() {
   for template_var in "${TEMPLATE_VARS[@]}"; do
     DEPOXY_m4_DEFINES="${DEPOXY_m4_DEFINES} --define=${template_var}=\"${!template_var}\""
   done
@@ -810,7 +811,7 @@ prepare_m4_defines () {
 #   not trip errexit. So that we can catch the error, and report it, we have
 #   the caller pass in the tail parameters, and then we check the file path.
 #   - Another reason to prefer this shim versus the EVAL files doing it.
-m4_shim () {
+m4_shim() {
   local tail_lns="$1"
   local tail_path="$2"
   local client_file="$3"
@@ -825,10 +826,10 @@ m4_shim () {
   deployed_file_make_link "${tail_path}" "${dest_path}"
 }
 
-m4_shim_make_file () {
+m4_shim_make_file() {
   local tail_lns="$1"
   local tail_path="$2"
-  local client_file="$3"  # Unused
+  local client_file="$3" # Unused
   local dest_path="$4"
   # Additional params specify additional m4 definitions
   shift 4
@@ -887,10 +888,10 @@ m4_shim_make_file () {
     --prefix-builtins \
     "${DEPOXY_m4_DEFINES}" \
     "${custom_m4_defines}" \
-    <( \
-        printf "m4_changecom()"; \
-        printf "m4_changequote(\`[[[', \`]]]')"; \
-        tail -n "${tail_lns}" "${tail_path}"; \
+    <(
+      printf "m4_changecom()"
+      printf "m4_changequote(\`[[[', \`]]]')"
+      tail -n "${tail_lns}" "${tail_path}"
     ) \
     > "${dest_path}"
 
@@ -905,7 +906,7 @@ m4_shim_make_file () {
   fi
 }
 
-m4_define_value_must_be_specified () {
+m4_define_value_must_be_specified() {
   local definition="$1"
 
   [ ${#@} -lt 2 ] || return 0
@@ -917,23 +918,35 @@ m4_define_value_must_be_specified () {
 
 # KLUGE: macOS Sonoma 14.4.1 `m4` always raises install-Xcode dialog,
 # i.e., it's a buggy little scamp.
-gnu_m4 () {
+gnu_m4() {
   for cmd in "gm4" "m4"; do
-    ( unset -f ${cmd}; unalias ${cmd}; command -v ${cmd} ) 2> /dev/null \
+    (
+      unset -f ${cmd}
+      unalias ${cmd}
+      command -v ${cmd}
+    ) 2> /dev/null \
       && break
   done
 }
 
-gnu_readlink () {
+gnu_readlink() {
   for cmd in "greadlink" "readlink"; do
-    ( unset -f ${cmd}; unalias ${cmd}; command -v ${cmd} ) 2> /dev/null \
+    (
+      unset -f ${cmd}
+      unalias ${cmd}
+      command -v ${cmd}
+    ) 2> /dev/null \
       && break
   done
 }
 
-gnu_sed () {
+gnu_sed() {
   for cmd in "gsed" "sed"; do
-    ( unset -f ${cmd}; unalias ${cmd}; command -v ${cmd} ) 2> /dev/null \
+    (
+      unset -f ${cmd}
+      unalias ${cmd}
+      command -v ${cmd}
+    ) 2> /dev/null \
       && break
   done
 }
@@ -942,7 +955,7 @@ gnu_sed () {
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 # ================================================================= #
 
-fail_if_target_exists_and_non_empty () {
+fail_if_target_exists_and_non_empty() {
   ! ${DXY_RUN_LNS_ONLY:-false} || return 0
 
   [ -d "${DXY_DEPOXY_CLIENT_FULL}" ] || return 0
@@ -960,11 +973,11 @@ fail_if_target_exists_and_non_empty () {
 DXY_CAPTURE_FILE_PREFIX="deploy-archetype-sh-"
 DXY_CAPTURE_FILE_PATH=""
 
-prepare_capture_file () {
+prepare_capture_file() {
   DXY_CAPTURE_FILE_PATH="$(mktemp -t ${DXY_CAPTURE_FILE_PREFIX}XXXX)"
 }
 
-finish_capture_file () {
+finish_capture_file() {
   # Strip color sequences only
   # - REFER: https://superuser.com/a/380778
   $(gnu_sed) -e 's/\x1b\[[0-9;]*m//g' -i "${DXY_CAPTURE_FILE_PATH}"
@@ -972,19 +985,19 @@ finish_capture_file () {
 
 # ***
 
-bg_green () { printf "\033[42m"; }
-bg_red () { printf "\033[41m"; }
-fg_black () { printf "\033[30m"; }
-fg_white () { printf "\033[97m"; }
-attr_reset () { printf "\033[0m"; }
-alert () { printf "%s" "$(bg_red)$(fg_white)$1$(attr_reset)"; }
-exalt () { printf "%s" "$(bg_green)$(fg_black)$1$(attr_reset)"; }
+bg_green() { printf "\033[42m"; }
+bg_red() { printf "\033[41m"; }
+fg_black() { printf "\033[30m"; }
+fg_white() { printf "\033[97m"; }
+attr_reset() { printf "\033[0m"; }
+alert() { printf "%s" "$(bg_red)$(fg_white)$1$(attr_reset)"; }
+exalt() { printf "%s" "$(bg_green)$(fg_black)$1$(attr_reset)"; }
 
-blot () {
+blot() {
   echo "$@" | tee_or_cat
 }
 
-tee_or_cat () {
+tee_or_cat() {
   if [ ! -f "${DXY_CAPTURE_FILE_PATH}" ]; then
     cat
 
@@ -996,7 +1009,7 @@ tee_or_cat () {
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
-print_introduction () {
+print_introduction() {
   blot
   exalt "           Let's deploy!            "
   blot
@@ -1007,7 +1020,7 @@ print_introduction () {
   blot
 }
 
-prompt_continue_or_exit () {
+prompt_continue_or_exit() {
   local ignored_key
 
   print_introduction
@@ -1065,7 +1078,7 @@ prompt_continue_or_exit () {
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
-print_template_vars () {
+print_template_vars() {
   blot
 
   for template_var in "${TEMPLATE_VARS[@]}"; do
@@ -1077,7 +1090,7 @@ print_template_vars () {
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 # ================================================================= #
 
-prepare_depoxy_fs () {
+prepare_depoxy_fs() {
   ! ${DRY_RUN} || return 0
 
   blot
@@ -1098,7 +1111,7 @@ prepare_depoxy_fs () {
   prepare_depoxy_running_symlink
 }
 
-prepare_depoxy_running_symlink () {
+prepare_depoxy_running_symlink() {
   # E.g., "/home/user/.depoxy/running"
   # - This is necessary for infuse and aci.
   if [ -h "${DXY_DEPOXYDIR_RUNNING_FULL}" ]; then
@@ -1136,7 +1149,7 @@ prepare_depoxy_running_symlink () {
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
-mkdir_with_trace () {
+mkdir_with_trace() {
   local path="$1"
 
   blot "  mkdir -p -- \"${path}\""
@@ -1145,7 +1158,7 @@ mkdir_with_trace () {
 }
 
 # Insists target directory is subdirectory.
-prepare_client_fs_dest () {
+prepare_client_fs_dest() {
   local dest_path="$1"
 
   local dest_dir
@@ -1170,7 +1183,7 @@ prepare_client_fs_dest () {
   mkdir -p -- "${dest_dir}"
 }
 
-ln_with_trace () {
+ln_with_trace() {
   local source="$1"
   local target="$2"
   local use_hardlink="${3:-false}"
@@ -1203,7 +1216,7 @@ ln_with_trace () {
 #   - Note this means m4_shim will call `mkdir -p` as necessary, and that
 #     EVAL files are aware they must create destination paths as appropriate.
 
-prepare_client_fs () {
+prepare_client_fs() {
   local client_path="$1"
 
   ${DXY_RUN_MAKE_LNS:-false} || return 0
@@ -1219,7 +1232,7 @@ prepare_client_fs () {
   find . -mindepth 1 -path ./.git -prune -o -type d -exec mkdir "${client_path}/{}" \;
 }
 
-prepare_symlinks_fs () {
+prepare_symlinks_fs() {
   # E.g., /home/user/.depoxy/stints/.syml--XXXX
   register "DXY_MAKE_LNS_FULL" "${DXY_DEPOXYDIR_STINTS_FULL}/${DXY_MAKE_LNS_NAME}"
 
@@ -1252,7 +1265,7 @@ prepare_symlinks_fs () {
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
-process_files () {
+process_files() {
   local fname
 
   blot
@@ -1268,7 +1281,7 @@ process_files () {
   done < <(git ls-files -z)
 }
 
-process_file () {
+process_file() {
   local fname="$1"
 
   local exit_code
@@ -1278,7 +1291,8 @@ process_file () {
   elif false \
     || [ "${fname}" = "${deploysh_name}" ] \
     || [ "${fname}" = "LICENSE" ] \
-  ; then
+    ; then
+
     blot "SKIP: ${fname}"
     blot
   else
@@ -1286,7 +1300,7 @@ process_file () {
   fi
 }
 
-process_file_copy () {
+process_file_copy() {
   local fname="$1"
 
   local dest_path="${DXY_DEPOXY_CLIENT_FULL}/${fname}"
@@ -1301,7 +1315,7 @@ process_file_copy () {
   return ${exit_code}
 }
 
-process_file_copy_copy_file () {
+process_file_copy_copy_file() {
   local fname="$1"
   local dest_path="$2"
 
@@ -1312,12 +1326,12 @@ process_file_copy_copy_file () {
     blot
   else
     blot "COPY:"
-    blot "$(\
+    blot "$(
       printf "%s\n%s\n%s" \
         "  command cp -R -P -- \\" \
         "    \"${fname}\" \\" \
         "    \"${dest_path}\""
-      )"
+    )"
     blot
 
     return 0
@@ -1341,7 +1355,7 @@ process_file_copy_copy_file () {
   return ${exit_code}
 }
 
-deployed_file_make_link () {
+deployed_file_make_link() {
   local fname="$1"
   local dest_path="$2"
 
@@ -1391,7 +1405,7 @@ deployed_file_make_link () {
   ! ${DXY_OUTPUT_VERBOSE:-false} || blot
 }
 
-process_file_eval () {
+process_file_eval() {
   local fname="$1"
 
   local eval_cmd
@@ -1414,7 +1428,7 @@ process_file_eval () {
 
   blot
 
-  stop_if_dxy_test_file () {
+  stop_if_dxy_test_file() {
     if [ -n "${DXY_TEST_FILE}" ]; then
       blot "DEV: Stopping early so you can check result from:"
       blot "  ${DXY_TEST_FILE}"
@@ -1432,9 +1446,9 @@ process_file_eval () {
 
   local exit_code
 
-  process_eval () {
+  process_eval() {
     set -x
-    ( eval "${eval_cmd}" )
+    (eval "${eval_cmd}")
     exit_code=$?
     set +x
 
@@ -1505,7 +1519,7 @@ process_file_eval () {
 #   echo "${TRY_ME}"
 #   eval "${TRY_ME}"
 
-extract_eval_command () {
+extract_eval_command() {
   local m4_file="$1"
 
   awk '
@@ -1535,7 +1549,7 @@ extract_eval_command () {
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 # ================================================================= #
 
-init_repo_with_empty_message () {
+init_repo_with_empty_message() {
   local git_user_name="$1"
   local git_user_email="$2"
   local repo_path="$3"
@@ -1577,14 +1591,14 @@ init_repo_with_empty_message () {
   cd - > /dev/null
 }
 
-init_repo_with_empty_message_person_user () {
+init_repo_with_empty_message_person_user() {
   init_repo_with_empty_message \
     "${DXY_PERSON_GITCONFIG_USER_NAME}" \
     "${DXY_PERSON_GITCONFIG_USER_EMAIL}" \
     "$@"
 }
 
-init_repo_with_empty_message_vendor_user () {
+init_repo_with_empty_message_vendor_user() {
   init_repo_with_empty_message \
     "${DXY_VENDOR_GITCONFIG_USER_NAME}" \
     "${DXY_VENDOR_GITCONFIG_USER_EMAIL}" \
@@ -1593,7 +1607,7 @@ init_repo_with_empty_message_vendor_user () {
 
 # ***
 
-init_repo_client () {
+init_repo_client() {
   local empty_msg=""
   if [ -n "${DXY_DEPOXY_INIT_CLIENT_COMMIT+x}" ]; then
     empty_msg="${DXY_DEPOXY_INIT_CLIENT_COMMIT}"
@@ -1609,7 +1623,7 @@ init_repo_client () {
 
 # ***
 
-init_repo_acmesh () {
+init_repo_acmesh() {
   local empty_msg=""
   if [ -n "${DXY_DEPOXY_INIT_ACMESH_COMMIT+x}" ]; then
     empty_msg="${DXY_DEPOXY_INIT_ACMESH_COMMIT}"
@@ -1628,7 +1642,7 @@ init_repo_acmesh () {
 
 # ***
 
-init_repo_flastsh () {
+init_repo_flastsh() {
   local empty_msg=""
   if [ -n "${DXY_DEPOXY_INIT_FLASTSH_COMMIT+x}" ]; then
     empty_msg="${DXY_DEPOXY_INIT_FLASTSH_COMMIT}"
@@ -1645,7 +1659,7 @@ init_repo_flastsh () {
 # ***
 
 # Create the ~/work project stubs
-omr_acme_checkout () {
+omr_acme_checkout() {
   ! ${DRY_RUN} || return 0
 
   ! ${DXY_RUN_LNS_ONLY:-false} || return 0
@@ -1662,8 +1676,8 @@ omr_acme_checkout () {
   for vendor_proj in \
     "${DXY_VENDOR_HOME}/${DXY_VENDOR_ORG02_NAME}/${DXY_VENDOR_ORG02_PROJ01_NAME}" \
     "${DXY_VENDOR_HOME}/${DXY_VENDOR_ORG01_NAME}/${DXY_VENDOR_ORG01_PROJ01_NAME}" \
-    "${DXY_VENDOR_HOME}/${DXY_VENDOR_ORG01_NAME}/ignore-tests--${DXY_VENDOR_ORG01_PROJ01_NAME}" \
-  ; do
+    "${DXY_VENDOR_HOME}/${DXY_VENDOR_ORG01_NAME}/ignore-tests--${DXY_VENDOR_ORG01_PROJ01_NAME}"; do
+
     local base_dir
     base_dir="$(dirname -- "${vendor_proj}")"
 
@@ -1682,7 +1696,7 @@ omr_acme_checkout () {
       # and there's no compelling reason to capture this output anyway.
 
       SHCOLORS_OFF=false \
-      mr -d "${vendor_proj}" -n checkout \
+        mr -d "${vendor_proj}" -n checkout \
         | sed 's/^/  /'
     )
   done
@@ -1690,7 +1704,7 @@ omr_acme_checkout () {
 
 # ***
 
-omr_dxc_infuse () {
+omr_dxc_infuse() {
   ! ${DRY_RUN} || return 0
 
   ! ${DXY_RUN_LNS_ONLY:-false} || return 0
@@ -1710,7 +1724,7 @@ omr_dxc_infuse () {
   # BWARE: The pipe inhibits errexit on the `mr` call...
 
   SHCOLORS_OFF=false \
-  mr -d "${DXY_DEPOXY_CLIENT_FULL}" -n infuse 2>&1 \
+    mr -d "${DXY_DEPOXY_CLIENT_FULL}" -n infuse 2>&1 \
     | sed 's/^/  /'
 }
 
@@ -1726,7 +1740,7 @@ omr_dxc_infuse () {
 # - But in this case, indicates that canon not synced with
 #   spells yet, which we'll automate here.
 
-omr_dxc_compile_spells () {
+omr_dxc_compile_spells() {
   ! ${DRY_RUN} || return 0
 
   ! ${DXY_RUN_LNS_ONLY:-false} || return 0
@@ -1763,7 +1777,7 @@ omr_dxc_compile_spells () {
 
 # ***
 
-omr_dxc_generate_notable_notes_placeholders () {
+omr_dxc_generate_notable_notes_placeholders() {
   ! ${DRY_RUN} || return 0
 
   ! ${DXY_RUN_LNS_ONLY:-false} || return 0
@@ -1777,7 +1791,7 @@ omr_dxc_generate_notable_notes_placeholders () {
 
   # CXREF: ~/.depoxy/ambers/bin/notable-notes--prepare.sh
   SHCOLORS_OFF=false \
-  "${DXY_DEPOXYAMBERS_DIR}/bin/notable-notes--prepare.sh" "${docs_path}" 2>&1 \
+    "${DXY_DEPOXYAMBERS_DIR}/bin/notable-notes--prepare.sh" "${docs_path}" 2>&1 \
     | sed 's/^/  /'
 
   blot
@@ -1785,7 +1799,7 @@ omr_dxc_generate_notable_notes_placeholders () {
 
 # ***
 
-omr_dxc_autocommit () {
+omr_dxc_autocommit() {
   ! ${DRY_RUN} || return 0
 
   ! ${DXY_RUN_LNS_ONLY:-false} || return 0
@@ -1799,7 +1813,7 @@ omr_dxc_autocommit () {
   blot
 
   SHCOLORS_OFF=false \
-  mr -d "${DXY_DEPOXY_CLIENT_FULL}" -n autocommit -y 2>&1 \
+    mr -d "${DXY_DEPOXY_CLIENT_FULL}" -n autocommit -y 2>&1 \
     | sed 's/^/  /'
   blot
 
@@ -1808,10 +1822,11 @@ omr_dxc_autocommit () {
   omr_dxc_autocommit_demarcate
 }
 
-omr_dxc_autocommit_verify () {
-  git_status_without_spell_melds () {
-    local ignore_spell_melds="$(echo \
-      ":!home/.kit/nvim/spell/sync-spells--*-new.sh" \
+omr_dxc_autocommit_verify() {
+  git_status_without_spell_melds() {
+    local ignore_spell_melds="$(
+      echo \
+        ":!home/.kit/nvim/spell/sync-spells--*-new.sh"
     )"
 
     git status --porcelain -- ${ignore_spell_melds}
@@ -1835,7 +1850,7 @@ omr_dxc_autocommit_verify () {
   )
 }
 
-omr_dxc_autocommit_demarcate () {
+omr_dxc_autocommit_demarcate() {
   local empty_msg=""
   if [ -n "${DXY_DEPOXY_INIT_AUTOCOMMIT_HRULE+x}" ]; then
     empty_msg="${DXY_DEPOXY_INIT_AUTOCOMMIT_HRULE}"
@@ -1860,7 +1875,7 @@ omr_dxc_autocommit_demarcate () {
   )
 }
 
-omr_dxc_cleanup () {
+omr_dxc_cleanup() {
   # Just to be explicit, tho reservable symlink wasn't made in this mode.
   ! ${DXY_RUN_LNS_ONLY:-false} || return 0
 
@@ -1878,7 +1893,7 @@ omr_dxc_cleanup () {
   fi
 }
 
-omr_dxc_cleanup_now () {
+omr_dxc_cleanup_now() {
   >&2 blot "- Removing temporarily “reservable” project slot:"
   >&2 blot "  ${DXY_DEPOXYDIR_RESERVABLE_FULL}"
   >&2 blot
@@ -1886,7 +1901,7 @@ omr_dxc_cleanup_now () {
   command rm -- "${DXY_DEPOXYDIR_RESERVABLE_FULL}"
 }
 
-omr_dxc_cleanup_reminder () {
+omr_dxc_cleanup_reminder() {
   >&2 blot "$(alert "CHORE"): Remove the temporary wiring when you’re done:"
   >&2 blot
   >&2 blot "         command rm -- \"${DXY_DEPOXYDIR_RESERVABLE_FULL}\""
@@ -1899,7 +1914,7 @@ omr_dxc_cleanup_reminder () {
 
 DEPOXY_DUCK_DUCK_DUCK_DUCK_DUCK_DUCK="     🦆 🦆 🪿  🦆 🦆 🪿  🦆 🦆 🪿  🐤"
 
-announce_completed_symlinks () {
+announce_completed_symlinks() {
   ${DXY_RUN_MAKE_LNS:-false} || return 0
 
   # Final COPY or EVAL ended with blank line.
@@ -1911,7 +1926,7 @@ announce_completed_symlinks () {
   blot "  ${DXY_MAKE_LNS_FULL}"
 }
 
-announce_completed_client_repo () {
+announce_completed_client_repo() {
   blot
   blot "Your new DepoXy Client repo is ready at:"
   blot
@@ -1929,7 +1944,7 @@ announce_completed_client_repo () {
   fi
 }
 
-announce_completed () {
+announce_completed() {
   announce_completed_symlinks
   announce_completed_client_repo
 }
@@ -1943,7 +1958,7 @@ export DXY_RUN_LNS_ONLY=false
 
 export DXY_OUTPUT_VERBOSE=${DXY_OUTPUT_VERBOSE:-false}
 
-parse_args () {
+parse_args() {
   while [ "$1" != '' ]; do
     case $1 in
       -h | --make-lns)
@@ -1973,7 +1988,7 @@ parse_args () {
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-_promote_homebrew_bash () {
+_promote_homebrew_bash() {
   # CUPLD/2024-05-15: As mentioned atop source_deps, don't worry about
   # dependency error checking, or localizing 'deps/'.
   . "${MOSREPOSPATH:-${DOPP_KIT:-${HOME}/.kit}/mOS}/macOS-onboarder/lib/promote-homebrew-bash.sh"
@@ -1983,7 +1998,7 @@ _promote_homebrew_bash () {
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-main () {
+main() {
   set -e
 
   # Load: set_traps, clear_traps, exit_0, exit_1, os_is_macos.
@@ -2057,4 +2072,3 @@ fi
 unset -f main
 unset -f parse_args
 unset -f source_deps
-
