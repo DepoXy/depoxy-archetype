@@ -92,8 +92,7 @@ register_customizable_business_values() {
   register "DXY_VENDOR_HOME" "${DEPOXYDIR_VENDOR_FULL:-${HOME}/work}"
 
   # E.g., "work"
-  unset -v DXY_DEPOXY_VENDOR_HOME_NAME
-  register "DXY_DEPOXY_VENDOR_HOME_NAME" "$(
+  register_static "DXY_DEPOXY_VENDOR_HOME_NAME" "$(
     echo "${DXY_VENDOR_HOME}" \
       | sed -E "s@^${HOME}/@@"
   )"
@@ -103,12 +102,10 @@ register_customizable_business_values() {
   local vendor_home_home_path="$(
     format_exclude_rule_home_gitignore "${DXY_VENDOR_HOME}"
   )"
-  unset -v DXY_VENDOR_HOME_EXCLUDE_RULE
-  register "DXY_VENDOR_HOME_EXCLUDE_RULE" "${vendor_home_home_path}"
+  register_static "DXY_VENDOR_HOME_EXCLUDE_RULE" "${vendor_home_home_path}"
 
   # E.g., "~/work"
-  unset -v DXY_VENDOR_HOME_TILDE
-  register "DXY_VENDOR_HOME_TILDE" "$(
+  register_static "DXY_VENDOR_HOME_TILDE" "$(
     echo "${DXY_VENDOR_HOME}" \
       | sed -E "s@^${HOME}(/|$)@~\1@"
   )"
@@ -116,15 +113,13 @@ register_customizable_business_values() {
   # E.g., "$HOME/work"
   # - CXREF: Vimprojects template:
   #   ~/.depoxy/ambers/archetype/home/.kit/nvim/landonb/dubs_project_tray/.vimprojects.EVAL
-  unset -v DXY_VENDOR_HOME_HOME
-  register "DXY_VENDOR_HOME_HOME" "$(
+  register_static "DXY_VENDOR_HOME_HOME" "$(
     echo "${DXY_VENDOR_HOME}" \
       | sed -E "s@^${HOME}(/|$)@\\\\\$HOME\1@"
   )"
 
   # E.g., "${HOME}/work"
-  unset -v DXY_VENDOR_HOME__HOME_
-  register "DXY_VENDOR_HOME__HOME_" "$(
+  register_static "DXY_VENDOR_HOME__HOME_" "$(
     echo "${DXY_VENDOR_HOME}" \
       | sed -E "s@^${HOME}(/|$)@\\\\\${HOME}\1@"
   )"
@@ -196,13 +191,12 @@ register_customizable_git_config() {
   # A subset of DXC files are backed up to @biz GitHuLaB and are given
   # a one-line URL-only header (i.e., not Author/Project/License lines).
   # E.g., "https://gitlab.acme.com/User.Name/uname.sh#🥗"
-  #  unset -v DXY_VENDOR_DOTFILES_URL
+  #  register_static DXY_VENDOR_DOTFILES_URL ...
   register "DXY_VENDOR_DOTFILES_URL" \
     "https://${DXY_VENDOR_GITCONFIG_HUB_HOST}/${DXY_VENDOR_GITSERVER_USER_NAME}/${DXY_DEPOXY_VENDOR_DOTFILES_NAME}#🥗"
   #
   # E.g., "Project: https://gitlab.acme.com/User.Name/uname.sh#🥗"
-  unset -v DXY_HEADER_DOTFILES
-  register "DXY_HEADER_DOTFILES" "Project: ${DXY_VENDOR_DOTFILES_URL}"
+  register_static "DXY_HEADER_DOTFILES" "Project: ${DXY_VENDOR_DOTFILES_URL}"
 
   # *** acme.sh
 
@@ -210,13 +204,12 @@ register_customizable_git_config() {
   register "DXY_DEPOXY_VENDOR_ACMESH_NAME" "${DXY_DEPOXY_VENDOR_NAME:-acme}.sh"
   #
   # E.g., "https://gitlab.acme.com/User.Name/acme.sh#🧨"
-  #  unset -v DXY_VENDOR_ACMESH_URL
+  #  register_static DXY_VENDOR_ACMESH_URL ...
   register "DXY_VENDOR_ACMESH_URL" \
     "https://${DXY_VENDOR_GITCONFIG_HUB_HOST}/${DXY_VENDOR_GITSERVER_USER_NAME}/${DXY_DEPOXY_VENDOR_ACMESH_NAME}#🧨"
   #
   # E.g., "Project: https://gitlab.acme.com/User.Name/acme.sh#🧨"
-  unset -v DXY_HEADER_ACMESH
-  register "DXY_HEADER_ACMESH" "Project: ${DXY_VENDOR_ACMESH_URL}"
+  register_static "DXY_HEADER_ACMESH" "Project: ${DXY_VENDOR_ACMESH_URL}"
 
   # E.g., "acme".
   register "DXY_VENDOR_ACMESH_CMD" "${DXY_DEPOXY_VENDOR_ACMESH_NAME%.sh}"
@@ -293,29 +286,25 @@ register_depoxydir_paths() {
   register "DXY_DEPOXYDIR_BASE_FULL" "${DEPOXYDIR_BASE_FULL:-${HOME}/.depoxy}"
 
   # E.g., ".depoxy"
-  unset -v DXY_DEPOXYDIR_BASE_NAME
-  register "DXY_DEPOXYDIR_BASE_NAME" "$(
+  register_static "DXY_DEPOXYDIR_BASE_NAME" "$(
     echo "${DXY_DEPOXYDIR_BASE_FULL}" \
       | sed "s@^${HOME}/@@"
   )"
 
   # E.g., "~/.depoxy"
-  unset -v DXY_DEPOXYDIR_BASE_TILDE
-  register "DXY_DEPOXYDIR_BASE_TILDE" "$(
+  register_static "DXY_DEPOXYDIR_BASE_TILDE" "$(
     echo "${DXY_DEPOXYDIR_BASE_FULL}" \
       | sed -E "s@^${HOME}(/|$)@~\1@"
   )"
 
   # E.g., "$HOME/.depoxy"
-  unset -v DXY_DEPOXYDIR_BASE_HOME
-  register "DXY_DEPOXYDIR_BASE_HOME" "$(
+  register_static "DXY_DEPOXYDIR_BASE_HOME" "$(
     echo "${DXY_DEPOXYDIR_BASE_FULL}" \
       | sed -E "s@^${HOME}(/|$)@\\\\\$HOME\1@"
   )"
 
   # E.g., "${HOME}/.depoxy"
-  unset -v DXY_DEPOXYDIR_BASE__HOME_
-  register "DXY_DEPOXYDIR_BASE__HOME_" "$(
+  register_static "DXY_DEPOXYDIR_BASE__HOME_" "$(
     echo "${DXY_DEPOXYDIR_BASE_FULL}" \
       | sed -E "s@^${HOME}(/|$)@\\\\\${HOME}\1@"
   )"
@@ -325,8 +314,7 @@ register_depoxydir_paths() {
   local depoxy_home_path="$(
     format_exclude_rule_home_gitignore "${DXY_DEPOXYDIR_BASE_FULL}"
   )"
-  unset -v DXY_DEPOXYDIR_BASE_EXCLUDE_RULE
-  register "DXY_DEPOXYDIR_BASE_EXCLUDE_RULE" "${depoxy_home_path}"
+  register_static "DXY_DEPOXYDIR_BASE_EXCLUDE_RULE" "${depoxy_home_path}"
 
   # ***
 
@@ -334,34 +322,29 @@ register_depoxydir_paths() {
   register "DXY_DEPOXYDIR_STINTS_NAME" "${DEPOXYDIR_STINTS_NAME:-stints}"
 
   # E.g., "/(Users|home)/<user>/.depoxy/stints"
-  unset -v DXY_DEPOXYDIR_STINTS_FULL
-  register "DXY_DEPOXYDIR_STINTS_FULL" \
+  register_static "DXY_DEPOXYDIR_STINTS_FULL" \
     "$(eval "echo ${DXY_DEPOXYDIR_BASE_FULL}/${DXY_DEPOXYDIR_STINTS_NAME}")"
 
   # E.g., ".depoxy/stints"
-  unset -v DXY_DEPOXYDIR_STINTS_RELATIVE
-  register "DXY_DEPOXYDIR_STINTS_RELATIVE" "$(
+  register_static "DXY_DEPOXYDIR_STINTS_RELATIVE" "$(
     echo "${DXY_DEPOXYDIR_STINTS_FULL}" \
       | sed "s@^${HOME}/@@"
   )"
 
   # E.g., "~/.depoxy/stints"
-  unset -v DXY_DEPOXYDIR_STINTS_TILDE
-  register "DXY_DEPOXYDIR_STINTS_TILDE" "$(
+  register_static "DXY_DEPOXYDIR_STINTS_TILDE" "$(
     echo "${DXY_DEPOXYDIR_STINTS_FULL}" \
       | sed -E "s@^${HOME}(/|$)@~\1@"
   )"
 
   # E.g., "$HOME/.depoxy/stints"
-  unset -v DXY_DEPOXYDIR_STINTS_HOME
-  register "DXY_DEPOXYDIR_STINTS_HOME" "$(
+  register_static "DXY_DEPOXYDIR_STINTS_HOME" "$(
     echo "${DXY_DEPOXYDIR_STINTS_FULL}" \
       | sed -E "s@^${HOME}(/|$)@\\\\\$HOME\1@"
   )"
 
   # E.g., "${HOME}/.depoxy/stints"
-  unset -v DXY_DEPOXYDIR_STINTS__HOME_
-  register "DXY_DEPOXYDIR_STINTS__HOME_" "$(
+  register_static "DXY_DEPOXYDIR_STINTS__HOME_" "$(
     echo "${DXY_DEPOXYDIR_STINTS_FULL}" \
       | sed -E "s@^${HOME}(/|$)@\\\\\${HOME}\1@"
   )"
@@ -371,8 +354,7 @@ register_depoxydir_paths() {
   local depoxydir_stints_home_path="$(
     format_exclude_rule_home_gitignore "${DXY_DEPOXYDIR_STINTS_FULL}"
   )"
-  unset -v DXY_DEPOXYDIR_STINTS_EXCLUDE_RULE
-  register "DXY_DEPOXYDIR_STINTS_EXCLUDE_RULE" "${depoxydir_stints_home_path}"
+  register_static "DXY_DEPOXYDIR_STINTS_EXCLUDE_RULE" "${depoxydir_stints_home_path}"
 
   # ***
 
@@ -383,27 +365,23 @@ register_depoxydir_paths() {
   # E.g., "running"
   # CXREF: Symlink created by this script;
   #   also reaffirmed by DXC _mrconfig, see: DEPOXYDIR_RUNNING_FULL.
-  unset -v DXY_DEPOXYDIR_RUNNING_NAME
-  register "DXY_DEPOXYDIR_RUNNING_NAME" \
+  register_static "DXY_DEPOXYDIR_RUNNING_NAME" \
     "$(basename -- "${DXY_DEPOXYDIR_RUNNING_FULL}")"
 
   # E.g., "~/.depoxy/running"
-  unset -v DXY_DEPOXYDIR_RUNNING_TILDE
-  register "DXY_DEPOXYDIR_RUNNING_TILDE" "$(
+  register_static "DXY_DEPOXYDIR_RUNNING_TILDE" "$(
     echo "${DXY_DEPOXYDIR_RUNNING_FULL}" \
       | sed -E "s@^${HOME}(/|$)@~\1@"
   )"
 
   # E.g., "$HOME/.depoxy/running"
-  unset -v DXY_DEPOXYDIR_RUNNING_HOME
-  register "DXY_DEPOXYDIR_RUNNING_HOME" "$(
+  register_static "DXY_DEPOXYDIR_RUNNING_HOME" "$(
     echo "${DXY_DEPOXYDIR_RUNNING_FULL}" \
       | sed -E "s@^${HOME}(/|$)@\\\\\$HOME\1@"
   )"
 
   # E.g., "${HOME}/.depoxy/running"
-  unset -v DXY_DEPOXYDIR_RUNNING__HOME_
-  register "DXY_DEPOXYDIR_RUNNING__HOME_" "$(
+  register_static "DXY_DEPOXYDIR_RUNNING__HOME_" "$(
     echo "${DXY_DEPOXYDIR_RUNNING_FULL}" \
       | sed -E "s@^${HOME}(/|$)@\\\\\${HOME}\1@"
   )"
@@ -413,8 +391,7 @@ register_depoxydir_paths() {
   local depoxydir_running_home_path="$(
     format_exclude_rule_home_gitignore "${DXY_DEPOXYDIR_RUNNING_FULL}"
   )"
-  unset -v DXY_DEPOXYDIR_RUNNING_EXCLUDE_RULE
-  register "DXY_DEPOXYDIR_RUNNING_EXCLUDE_RULE" "${depoxydir_running_home_path}"
+  register_static "DXY_DEPOXYDIR_RUNNING_EXCLUDE_RULE" "${depoxydir_running_home_path}"
 
   # ***
 
@@ -447,16 +424,13 @@ register_depoxy_client_paths() {
   # Setup template variables with the new client path, represented all the ways.
 
   # - Client tilde path, e.g., "~/.depoxy/stints/XXXX"
-  unset -v DXY_DEPOXY_CLIENT_TILDE
-  register "DXY_DEPOXY_CLIENT_TILDE" "${DXY_DEPOXYDIR_STINTS_TILDE}/${DXY_DEPOXY_CLIENT_ID}"
+  register_static "DXY_DEPOXY_CLIENT_TILDE" "${DXY_DEPOXYDIR_STINTS_TILDE}/${DXY_DEPOXY_CLIENT_ID}"
 
   # - Client full path, e.g., "/(Users|home)/<user>/.depoxy/stints/XXXX"
-  unset -v DXY_DEPOXY_CLIENT_FULL
-  register "DXY_DEPOXY_CLIENT_FULL" "${DXY_DEPOXYDIR_STINTS_FULL}/${DXY_DEPOXY_CLIENT_ID}"
+  register_static "DXY_DEPOXY_CLIENT_FULL" "${DXY_DEPOXYDIR_STINTS_FULL}/${DXY_DEPOXY_CLIENT_ID}"
 
   # - Client ${HOME} path, e.g., "${HOME}/.depoxy/stints/XXXX"
-  unset -v DXY_DEPOXY_CLIENT__HOME_
-  register "DXY_DEPOXY_CLIENT__HOME_" "$(
+  register_static "DXY_DEPOXY_CLIENT__HOME_" "$(
     echo "${DXY_DEPOXY_CLIENT_FULL}" \
       | sed -E "s@^${HOME}(/|$)@\\\\\${HOME}\1@"
   )"
@@ -478,15 +452,13 @@ register_depoxy_project_paths() {
   register "DXY_DEPOXYAMBERS_DIR" "${ambers_path}"
 
   # E.g., "ambers".
-  unset -v DXY_DEPOXYAMBERS_NAME
-  register "DXY_DEPOXYAMBERS_NAME" "$(
+  register_static "DXY_DEPOXYAMBERS_NAME" "$(
     echo "${DXY_DEPOXYAMBERS_DIR}" \
       | sed "s@^${DXY_DEPOXYDIR_BASE_FULL}/@@"
   )"
 
   # E.g., "~/.depoxy/ambers"
-  unset -v DXY_DEPOXYAMBERS_DIR_TILDE
-  register "DXY_DEPOXYAMBERS_DIR_TILDE" "$(
+  register_static "DXY_DEPOXYAMBERS_DIR_TILDE" "$(
     echo "${DXY_DEPOXYAMBERS_DIR}" \
       | sed -E "s@^${HOME}(/|$)@~\1@"
   )"
@@ -494,16 +466,14 @@ register_depoxy_project_paths() {
   # E.g., "$HOME/.depoxy/ambers"
   # - CXREF: Vimprojects template:
   #   ~/.depoxy/ambers/archetype/home/.kit/nvim/landonb/dubs_project_tray/.vimprojects.EVAL
-  unset -v DXY_DEPOXYAMBERS_DIR_HOME
-  register "DXY_DEPOXYAMBERS_DIR_HOME" "$(
+  register_static "DXY_DEPOXYAMBERS_DIR_HOME" "$(
     echo "${DXY_DEPOXYAMBERS_DIR}" \
       | sed -E "s@^${HOME}(/|$)@\\\\\$HOME\1@"
   )"
 
   # E.g., "${HOME}/.depoxy/ambers"
   # - Note the extra \\$ delimiter, because m4 command is eval'ed.
-  unset -v DXY_DEPOXYAMBERS_DIR__HOME_
-  register "DXY_DEPOXYAMBERS_DIR__HOME_" "$(
+  register_static "DXY_DEPOXYAMBERS_DIR__HOME_" "$(
     echo "${DXY_DEPOXYAMBERS_DIR}" \
       | sed -E "s@^${HOME}(/|$)@\\\\\${HOME}\1@"
   )"
@@ -513,8 +483,7 @@ register_depoxy_project_paths() {
   local depoxyambers_home_path="$(
     format_exclude_rule_home_gitignore "${DXY_DEPOXYAMBERS_DIR}"
   )"
-  unset -v DXY_DEPOXYAMBERS_DIR_EXCLUDE_RULE
-  register "DXY_DEPOXYAMBERS_DIR_EXCLUDE_RULE" "${depoxyambers_home_path}"
+  register_static "DXY_DEPOXYAMBERS_DIR_EXCLUDE_RULE" "${depoxyambers_home_path}"
 
   # ***
 
@@ -523,16 +492,14 @@ register_depoxy_project_paths() {
   register "DXY_DEPOXYARCHETYPE_DIR" "${archetype_root}"
 
   # E.g., "~/.depoxy/ambers/archetype"
-  unset -v DXY_DEPOXYARCHETYPE_DIR_TILDE
-  register "DXY_DEPOXYARCHETYPE_DIR_TILDE" "$(
+  register_static "DXY_DEPOXYARCHETYPE_DIR_TILDE" "$(
     echo "${DXY_DEPOXYARCHETYPE_DIR}" \
       | sed -E "s@^${HOME}(/|$)@~\1@"
   )"
 
   # E.g., "${HOME}/.depoxy/ambers/archetype"
   # - Note the extra \\$ delimiter, because m4 command is eval'ed.
-  unset -v DXY_DEPOXYARCHETYPE_DIR__HOME_
-  register "DXY_DEPOXYARCHETYPE_DIR__HOME_" "$(
+  register_static "DXY_DEPOXYARCHETYPE_DIR__HOME_" "$(
     echo "${DXY_DEPOXYARCHETYPE_DIR}" \
       | sed -E "s@^${HOME}(/|$)@\\\\\${HOME}\1@"
   )"
@@ -547,19 +514,16 @@ register_depoxy_project_paths() {
   local projlns_home_path="$(
     format_exclude_rule_home_gitignore "${DXY_DEPOXY_PROJLNS}"
   )"
-  unset -v DXY_DEPOXY_PROJLNS_EXCLUDE_RULE
-  register "DXY_DEPOXY_PROJLNS_EXCLUDE_RULE" "${projlns_home_path}"
+  register_static "DXY_DEPOXY_PROJLNS_EXCLUDE_RULE" "${projlns_home_path}"
 
   # E.g., "~/.projlns"
-  unset -v DXY_DEPOXY_PROJLNS_DIR_TILDE
-  register "DXY_DEPOXY_PROJLNS_DIR_TILDE" "$(
+  register_static "DXY_DEPOXY_PROJLNS_DIR_TILDE" "$(
     echo "${DXY_DEPOXY_PROJLNS}" \
       | sed -E "s@^${HOME}(/|$)@~\1@"
   )"
 
   # E.g., "${HOME}/.projlns"
-  unset -v DXY_DEPOXY_PROJLNS_DIR__HOME_
-  register "DXY_DEPOXY_PROJLNS_DIR__HOME_" "$(
+  register_static "DXY_DEPOXY_PROJLNS_DIR__HOME_" "$(
     echo "${DXY_DEPOXY_PROJLNS}" \
       | sed -E "s@^${HOME}(/|$)@\\\\\${HOME}\1@"
   )"
@@ -572,8 +536,7 @@ register_depoxy_project_paths() {
     "${DEPOXY_SCREENCAPS_DIR:-${HOME}/Documents/screencaps}"
 
   # E.g., "${HOME}/Documents/screencaps"
-  unset -v DXY_DEPOXY_SCREENCAPS_DIR__HOME_
-  register "DXY_DEPOXY_SCREENCAPS_DIR__HOME_" "$(
+  register_static "DXY_DEPOXY_SCREENCAPS_DIR__HOME_" "$(
     echo "${DXY_DEPOXY_SCREENCAPS_DIR}" \
       | sed -E "s@^${HOME}(/|$)@\\\\\${HOME}\1@"
   )"
@@ -585,8 +548,7 @@ register_depoxy_project_paths() {
   local screencaps_home_path="$(
     format_exclude_rule_home_gitignore "${DXY_DEPOXY_SCREENCAPS_DIR}"
   )"
-  unset -v DXY_DEPOXY_SCREENCAPS_EXCLUDE_RULE
-  register "DXY_DEPOXY_SCREENCAPS_EXCLUDE_RULE" "${screencaps_home_path}"
+  register_static "DXY_DEPOXY_SCREENCAPS_EXCLUDE_RULE" "${screencaps_home_path}"
 
   # ***
 
@@ -594,15 +556,13 @@ register_depoxy_project_paths() {
   register "DXY_HOMEFRIES_DIR" "${HOMEFRIES_DIR:-${DOPP_KIT:-${HOME}/.kit}/sh/home-fries}"
 
   # E.g., ".kit/sh/home-fries"
-  unset -v DXY_HOMEFRIES_DIR_NAME
-  register "DXY_HOMEFRIES_DIR_NAME" "$(
+  register_static "DXY_HOMEFRIES_DIR_NAME" "$(
     echo "${DXY_HOMEFRIES_DIR}" \
       | sed "s@^${HOME}/@@"
   )"
 
   # E.g., "~/.kit/sh/home-fries"
-  unset -v DXY_HOMEFRIES_DIR_TILDE
-  register "DXY_HOMEFRIES_DIR_TILDE" "$(
+  register_static "DXY_HOMEFRIES_DIR_TILDE" "$(
     echo "${DXY_HOMEFRIES_DIR}" \
       | sed -E "s@^${HOME}(/|$)@~\1@"
   )"
@@ -612,8 +572,7 @@ register_depoxy_project_paths() {
   local homefries_home_path="$(
     format_exclude_rule_home_gitignore "${DXY_HOMEFRIES_DIR}"
   )"
-  unset -v DXY_HOMEFRIES_DIR_EXCLUDE_RULE
-  register "DXY_HOMEFRIES_DIR_EXCLUDE_RULE" "${homefries_home_path}"
+  register_static "DXY_HOMEFRIES_DIR_EXCLUDE_RULE" "${homefries_home_path}"
 
   # ***
 
@@ -624,22 +583,19 @@ register_depoxy_project_paths() {
   register "DXY_DOPP_KIT" "${DOPP_KIT:-${HOME}/.kit}"
 
   # E.g., ".kit"
-  unset -v DXY_DOPP_KIT_NAME
-  register "DXY_DOPP_KIT_NAME" "$(
+  register_static "DXY_DOPP_KIT_NAME" "$(
     echo "${DXY_DOPP_KIT}" \
       | sed "s@^${HOME}/@@"
   )"
 
   # E.g., "~/.kit"
-  unset -v DXY_DOPP_KIT_TILDE
-  register "DXY_DOPP_KIT_TILDE" "$(
+  register_static "DXY_DOPP_KIT_TILDE" "$(
     echo "${DXY_DOPP_KIT}" \
       | sed -E "s@^${HOME}(/|$)@~\1@"
   )"
 
   # E.g., "${HOME}/.kit"
-  unset -v DXY_DOPP_KIT__HOME_
-  register "DXY_DOPP_KIT__HOME_" "$(
+  register_static "DXY_DOPP_KIT__HOME_" "$(
     echo "${DXY_DOPP_KIT}" \
       | sed -E "s@^${HOME}(/|$)@\\\\\${HOME}\1@"
   )"
@@ -649,8 +605,7 @@ register_depoxy_project_paths() {
   local dopp_kit_home_path="$(
     format_exclude_rule_home_gitignore "${DXY_DOPP_KIT}"
   )"
-  unset -v DXY_DOPP_KIT_EXCLUDE_RULE
-  register "DXY_DOPP_KIT_EXCLUDE_RULE" "${dopp_kit_home_path}"
+  register_static "DXY_DOPP_KIT_EXCLUDE_RULE" "${dopp_kit_home_path}"
 }
 
 # ***
@@ -680,15 +635,13 @@ register_git_put_wise_paths() {
 
   # E.g., "patchr"
   # - Used to generate a Git exclude rule
-  unset -v DXY_PW_PATCHES_NAME
-  register "DXY_PW_PATCHES_NAME" "$(
+  register_static "DXY_PW_PATCHES_NAME" "$(
     echo "${DXY_PW_PATCHES_REPO}" \
       | sed "s@^${HOME}/@@"
   )"
 
   # E.g., "${HOME}/.projlns"
-  unset -v DXY_PW_PATCHES_REPO__HOME_
-  register "DXY_PW_PATCHES_REPO__HOME_" "$(
+  register_static "DXY_PW_PATCHES_REPO__HOME_" "$(
     echo "${DXY_PW_PATCHES_REPO}" \
       | sed -E "s@^${HOME}(/|$)@\\\\\${HOME}\1@"
   )"
@@ -698,8 +651,7 @@ register_git_put_wise_paths() {
   local pw_patches_home_path="$(
     format_exclude_rule_home_gitignore "${DXY_PW_PATCHES_REPO}"
   )"
-  unset -v DXY_PW_PATCHES_EXCLUDE_RULE
-  register "DXY_PW_PATCHES_EXCLUDE_RULE" "${pw_patches_home_path}"
+  register_static "DXY_PW_PATCHES_EXCLUDE_RULE" "${pw_patches_home_path}"
 
   # E.g., "path/to/password/store/key/for/GPW/patches"
   register "DXY_PW_OPTION_PASS_NAME" ""
@@ -749,8 +701,21 @@ check_dep_m4() {
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 # ================================================================= #
 
+declare -A STATIC_VARS=()
 declare -a MISSING_VARS=()
 declare -a TEMPLATE_VARS=()
+
+# Most vars. are not user-settable, but are generated from
+# the user-settable vars and from the other generated vars.
+register_static() {
+  local vname="$1"
+
+  STATIC_VARS+=([${vname}]=true)
+
+  unset -v "${vname}"
+
+  register "$@"
+}
 
 register() {
   local vname="$1"
