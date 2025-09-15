@@ -1915,13 +1915,13 @@ omr_dxc_cleanup_reminder() {
 
 # ***
 
-DEPOXY_DUCK_DUCK_DUCK_DUCK_DUCK_DUCK="     🦆 🦆 🪿  🦆 🦆 🪿  🦆 🦆 🪿  🐤"
+DEPOXY_DUCK_DUCK_DUCK_DUCK_DUCK_DUCK_CHICK="     🦆 🦆 🪿  🦆 🦆 🪿  🦆 🦆 🪿  🐤"
 
 announce_completed_symlinks() {
   ${DXY_RUN_MAKE_LNS:-false} || return 0
 
   # Final COPY or EVAL ended with blank line.
-  blot "${DEPOXY_DUCK_DUCK_DUCK_DUCK_DUCK_DUCK}"
+  blot "${DEPOXY_DUCK_DUCK_DUCK_DUCK_DUCK_DUCK_CHICK}"
 
   blot
   blot "Your DepoXy Client symlinks are ready at:"
