@@ -1047,6 +1047,23 @@ print_template_vars() {
   blot
 
   for template_var in "${TEMPLATE_VARS[@]}"; do
+    if [ "${STATIC_VARS[${template_var}]}" = "true" ]; then
+
+      continue
+    fi
+
+    blot "${template_var}=\"${!template_var}\""
+  done
+
+  blot
+  blot "# The remaining values are generated from the previous values"
+
+  for template_var in "${TEMPLATE_VARS[@]}"; do
+    if ! [ "${STATIC_VARS[${template_var}]}" = "true" ]; then
+
+      continue
+    fi
+
     blot "${template_var}=\"${!template_var}\""
   done
 }
