@@ -815,7 +815,7 @@ m4_shim() {
   local tail_lns="$1"
   local tail_path="$2"
   local client_file="$3"
-  # Additional params specify additional m4 definitions
+  # Additional params (param pairs) specify additional m4 definitions.
   shift 3
 
   local dest_path="${DXY_DEPOXY_CLIENT_FULL}/${client_file}"
@@ -1126,6 +1126,7 @@ prepare_depoxy_running_symlink() {
       # - See also: `mr -t/--trust-all`, but ~/.mrconfig still needs
       #   to deliberately load the config, so we need this path anyway.
       if [ -h "${DXY_DEPOXYDIR_RESERVABLE_FULL}" ]; then
+        # E.g., "rm ~/.depoxy/.adscititious"
         command rm -- "${DXY_DEPOXYDIR_RESERVABLE_FULL}"
       fi
       ln_with_trace "${DXY_DEPOXY_CLIENT_FULL}" "${DXY_DEPOXYDIR_RESERVABLE_FULL}"
@@ -1446,6 +1447,7 @@ process_file_eval() {
 
   local exit_code
 
+  # CRUMB: The eval_cmd often calls `m4_shim`.
   process_eval() {
     set -x
     (eval "${eval_cmd}")
