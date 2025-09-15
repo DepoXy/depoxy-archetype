@@ -1882,6 +1882,7 @@ omr_dxc_cleanup() {
   ! ${DXY_RUN_LNS_ONLY:-false} || return 0
 
   if [ ! -h "${DXY_DEPOXYDIR_RESERVABLE_FULL}" ]; then
+
     return 0
   fi
 
