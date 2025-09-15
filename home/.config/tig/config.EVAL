@@ -18,7 +18,7 @@
 
 # BWARE: **This file is GENERATED**
 #
-#   cdtn && ./customize.sh > tig/config
+#   cdtn && ./generate-config.sh > tig/config
 #
 # - Though unchanged from the original.
 
