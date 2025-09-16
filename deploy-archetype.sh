@@ -763,6 +763,28 @@ prepare_m4_defines() {
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
+load_and_register_and_prepare_envs() {
+  load_user_envs || true
+
+  register_customizable_client_ids
+  register_generated
+  register_depoxydir_paths
+  register_depoxy_client_paths
+  register_depoxy_project_paths
+  register_git_put_wise_paths
+  register_customizable_headers
+  register_customizable_business_values
+  register_customizable_personal_values
+  register_customizable_git_config
+  register_placeholder_project_config_values
+
+  fail_if_missing_vars
+
+  prepare_m4_defines
+}
+
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
+
 # m4_shim is called by the EVAL headers, to avoid quoting issues with eval.
 # - Alternatively, EVAL headers could themselves call `eval m4 ...`
 #   just the same. It really only changes the EVAL headers from this:
@@ -2002,21 +2024,7 @@ main() {
 
   parse_args "$@"
 
-  register_customizable_client_ids
-  register_generated
-  register_depoxydir_paths
-  register_depoxy_client_paths
-  register_depoxy_project_paths
-  register_git_put_wise_paths
-  register_customizable_headers
-  register_customizable_business_values
-  register_customizable_personal_values
-  register_customizable_git_config
-  register_placeholder_project_config_values
-
-  fail_if_missing_vars
-
-  prepare_m4_defines
+  load_and_register_and_prepare_envs
 
   fail_if_target_exists_and_non_empty
 
