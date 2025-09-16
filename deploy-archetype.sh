@@ -739,6 +739,133 @@ register() {
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
+DXA_USER_ENVS="user-settable.envs"
+
+print_user_envs_path() {
+  # So that user can source this script and run this fcn. as
+  # a one-off, don't assume that archetype_root is set.
+  local archetype_path="${archetype_root}"
+  if [ "${archetype_path}" = "" ]; then
+    local ambers_root="${DEPOXYAMBERS_DIR:-${DEPOXYDIR_BASE_FULL:-${HOME}/.depoxy}/ambers}"
+    archetype_path="${DEPOXYARCHETYPE_DIR:-${ambers_root}/archetype}"
+  fi
+
+  local deploy_envs="${archetype_path}/${DXA_USER_ENVS}"
+
+  if ! [ -s "${deploy_envs}" ]; then
+
+    return 1
+  fi
+
+  printf "%s" "${deploy_envs}"
+}
+
+filter_export_lines() {
+  local deploy_envs="$1"
+
+  cat "${deploy_envs}" \
+    | grep -e "^export DXY_[_A-Z0-9]\+=.*" \
+    | sed 's/^export \(DXY_[_A-Z0-9]\+\)=\(.*\)/\1 \2/'
+}
+
+# USAGE: Set DXY_RUN_BYPASS_EVAL_CHECK=true to skip the eval check.
+# - UCASE: If you want to allow embedded $() subprocess calls in
+#   the "user-settable.envs" file.
+
+# USAGE: Set DXY_RUN_OVERWRITE_ENVS=true to always use values from
+# the "user-settable.envs" file.
+# - UCASE: Normally, the deploy script won't change existing DXY_*
+#   environs. This lets the user easily override values from the
+#   envs file by setting them in the shell environment before
+#   invoking this deploy script.
+#   - But if you'd rather use the envs file environs and not
+#     what's defined in the environment, enable this flag.
+#   - See also `reset_user_envs` for unset'ting DXY_* vars.
+
+load_user_envs() {
+  local deploy_envs
+  if ! deploy_envs="$(print_user_envs_path)"; then
+
+    return 1
+  fi
+
+  # Filter out blank and comment lines:
+  #   cat "${deploy_envs}" | grep -v "^$" | grep -v "^\#"
+  # Better yet, filter to *just* export lines:
+  #   cat "${deploy_envs}" | grep -e "^export DXY_"
+  #
+  # BWARE: We won't ignorantly `eval` the input (though
+  # I know there's plenty of DepoXy wiring that exuberantly
+  # sources client sources, but, I dunno, for some reason
+  # I decided to protect against adversarial attacks here).
+  # - E.g., user could try to run arbitrary code using
+  #   the env. value:
+  #       export DXY_HACKME=foo_$(>&2 echo HACKED)_bar
+  #   - Which would run if we just eval'd the user envs,
+  #     even if we filtered for just export lines:
+  #       eval "$(
+  #         cat "${deploy_envs}" \
+  #         | grep -e "^export DXY_[_A-Z0-9]\+=.*" \
+  #         | sed 's/^export \(DXY_[_A-Z0-9]\+\)=\(.*\)/export \1=\2/'
+  #       )"
+  # - It's also silly because the EVAL file processor
+  #   runs EVAL without running any checks.
+  #   - I suppose we sorta assume that files committed
+  #     to the repo are safe, but this env file is an
+  #     untracked file. I.e., EVAL files are not user
+  #     input, but this file is.
+
+  while read -r line; do
+    local var val
+    var="$(echo "${line}" | cut -d " " -f1)"
+    val="$(echo "${line}" | cut -d " " -f2-)"
+
+    if ! ${DXY_RUN_OVERWRITE_ENVS:-false} && test -n "${!var+x}"; then
+      >&2 echo "Ignoring envs val for defined var: ${var}"
+
+      continue
+    fi
+
+    # OPSEC: At least I tried. Though I think this
+    # is all we need — remove double-escapes (\\)
+    # and then if you see any $( that's not \$(
+    # then don't eval!
+    if [ "${DXY_RUN_BYPASS_EVAL_CHECK:-false}" = "true" ] \
+      || ! echo "${val}" | sed 's#\\##g' | grep -q -e "[^\\]\$(" \
+      ; then
+
+      # >&2 echo "eval \"${var}=${val}\""
+      eval "${var}=${val}"
+    else
+      >&2 echo "ALERT: Ignoring env. injection!"
+      >&2 echo "- The value for ‘${var}’ includes a subshell:"
+      >&2 echo "  ${val}"
+      >&2 echo "- Set DXY_RUN_BYPASS_EVAL_CHECK=true to bypass this check"
+    fi
+  done < <(filter_export_lines "${deploy_envs}")
+}
+
+# USAGE:
+# . ~/.depoxy/ambers/archetype/deploy-archetype.sh && reset_user_envs
+reset_user_envs() {
+  local deploy_envs
+  if ! deploy_envs="$(print_user_envs_path)"; then
+
+    return 1
+  fi
+
+  while read -r line; do
+    local var val
+    var="$(echo "${line}" | cut -d " " -f1)"
+    val="$(echo "${line}" | cut -d " " -f2-)"
+
+    # >&2 echo "unset -v ${var}"
+    eval "unset -v ${var}"
+  done < <(filter_export_lines "${deploy_envs}")
+}
+
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
+
 fail_if_missing_vars() {
   [ ${#MISSING_VARS[@]} -ne 0 ] || return 0
 
