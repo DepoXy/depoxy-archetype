@@ -834,8 +834,14 @@ load_user_envs() {
       || ! echo "${val}" | sed 's#\\##g' | grep -q -e "[^\\]\$(" \
       ; then
 
-      # >&2 echo "eval \"${var}=${val}\""
-      eval "${var}=${val}"
+      # SAVVY: The simple approach doesn't preserve double-quotes:
+      #   # >&2 echo "eval \"${var}=${val}\""
+      #   eval "${var}=${val}"
+      # Here's the complicated, double-quote-preserving `eval`:
+      #  >&2 echo "eval \"${var}=\\\"\$(echo \"$(
+      #    echo "${val}" | sed 's/\"/\\\"/g'
+      #  )\" | sed 's/\\\"/\\\\\\\"/g')\\\"\""
+      eval "${var}=\"$(echo "${val}" | sed 's/\"/\\\"/g')\""
     else
       >&2 echo "ALERT: Ignoring env. injection!"
       >&2 echo "- The value for ‘${var}’ includes a subshell:"
