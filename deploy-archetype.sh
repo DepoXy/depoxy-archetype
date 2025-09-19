@@ -826,29 +826,43 @@ load_user_envs() {
       continue
     fi
 
-    # OPSEC: At least I tried. Though I think this
-    # is all we need — remove double-escapes (\\)
-    # and then if you see any $( that's not \$(
-    # then don't eval!
-    if [ "${DXY_RUN_BYPASS_EVAL_CHECK:-false}" = "true" ] \
-      || ! echo "${val}" | sed 's#\\##g' | grep -q -e "[^\\]\$(" \
-      ; then
-
-      # SAVVY: The simple approach doesn't preserve double-quotes:
-      #   # >&2 echo "eval \"${var}=${val}\""
-      #   eval "${var}=${val}"
-      # Here's the complicated, double-quote-preserving `eval`:
-      #  >&2 echo "eval \"${var}=\\\"\$(echo \"$(
-      #    echo "${val}" | sed 's/\"/\\\"/g'
-      #  )\" | sed 's/\\\"/\\\\\\\"/g')\\\"\""
-      eval "${var}=\"$(echo "${val}" | sed 's/\"/\\\"/g')\""
-    else
-      >&2 echo "ALERT: Ignoring env. injection!"
-      >&2 echo "- The value for ‘${var}’ includes a subshell:"
-      >&2 echo "  ${val}"
-      >&2 echo "- Set DXY_RUN_BYPASS_EVAL_CHECK=true to bypass this check"
-    fi
+    set_var_val_quoted "${var}" "${val}"
   done < <(filter_export_lines "${deploy_envs}")
+}
+
+set_var_val_quoted() {
+  local var="$1"
+  local val="$2"
+
+  # OPSEC: At least I tried. Though I think this
+  # is all we need — remove double-escapes (\\)
+  # and then if you see any $( that's not \$(
+  # then don't eval!
+  if [ "${DXY_RUN_BYPASS_EVAL_CHECK:-false}" = "true" ] \
+    || ! echo "${val}" | sed 's#\\##g' | grep -q -e "[^\\]\$(" \
+    ; then
+
+    set_var_val_quoted_safe "${var}" "${val}"
+  else
+    >&2 echo "ALERT: Ignoring env. injection!"
+    >&2 echo "- The value for ‘${var}’ includes a subshell:"
+    >&2 echo "  ${val}"
+    >&2 echo "- Set DXY_RUN_BYPASS_EVAL_CHECK=true to bypass this check"
+  fi
+}
+
+set_var_val_quoted_safe() {
+  local var="$1"
+  local valq="$2"
+
+  # SAVVY: The simple approach doesn't preserve double-quotes:
+  #   # >&2 echo "eval \"${var}=${val}\""
+  #   eval "${var}=${val}"
+  # Here's the complicated, double-quote-preserving `eval`:
+  #  >&2 echo "eval \"${var}=\\\"\$(echo \"$(
+  #    echo "${val}" | sed 's/\"/\\\"/g'
+  #  )\" | sed 's/\\\"/\\\\\\\"/g')\\\"\""
+  eval "${var}=\"$(echo "${val}" | sed 's/\"/\\\"/g')\""
 }
 
 # USAGE:
