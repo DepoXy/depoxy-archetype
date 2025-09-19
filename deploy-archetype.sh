@@ -855,14 +855,66 @@ set_var_val_quoted_safe() {
   local var="$1"
   local valq="$2"
 
-  # SAVVY: The simple approach doesn't preserve double-quotes:
-  #   # >&2 echo "eval \"${var}=${val}\""
-  #   eval "${var}=${val}"
-  # Here's the complicated, double-quote-preserving `eval`:
-  #  >&2 echo "eval \"${var}=\\\"\$(echo \"$(
-  #    echo "${val}" | sed 's/\"/\\\"/g'
-  #  )\" | sed 's/\\\"/\\\\\\\"/g')\\\"\""
-  eval "${var}=\"$(echo "${val}" | sed 's/\"/\\\"/g')\""
+  # Phooey, we really shouldn't be parsing this ourselves,
+  # this is probably beyond our pay grade, as they say. It's
+  # just tricky business dealing with escaping is what it is.
+  # But we do our best: Check for single-, double-, or no
+  # quotes are the raw value we read from the config file,
+  # and then do what the shell would do: if single-quotes,
+  # use the value given; if double-, perform expansion; and
+  # if neither, use just the first WORD.
+  # - BWARE: This parser is very much not perfect.
+  #   - For one, it doesn't support multi-line strings; and
+  #     if an environ value is not quoted properly, e.g., a
+  #     starting quote but not an ending quote or an ending
+  #     quote before additional characters on the line then
+  #     we won't notice. So just don't do that.
+
+  local val
+  # Try to strip single quotes.
+  # - Use Perl regex negative lookbehind.
+  # - TRYME:
+  #   valq="'foo bar baz \"quux\" qiix'"
+  #   gnu_grep() { printf "grep"; }
+  #   echo "${valq}" | ...
+  val="$(
+    echo "${valq}" | $(gnu_grep) -P -o "^'.*(?<!\\\\)'" | head -c -2 | tail -c +2
+  )"
+  if [ -n "${val}" ]; then
+    # Escape the string, so that eval doesn't resolve anything.
+    eval "${var}=\"$(printf "%q" "${val}" | sed 's/\"/\\\"/g')\""
+  else
+    # Try to strip double quotes.
+    # - TRYME:
+    #   valq='"foo bar '"'"'baz \" quux" qiix '
+    val="$(
+      echo "${valq}" | $(gnu_grep) -P -o '^".*(?<!\\)"' | head -c -2 | tail -c +2
+    )"
+    if [ -z "${val}" ]; then
+      # Neither single- nor double-quoted.
+      # - Is technically only the first WORD:
+      #     $ export FOO=bar baz
+      #     $ echo $FOO
+      #     bar
+      #   Vs.
+      #     $ FOO=bar baz
+      #     bash: baz: command not found
+      # - Remember that assignment doesn't need quotes:
+      #     $ FOO="bar baz" ; FOO=$FOO ; echo $FOO
+      #     bar baz
+      #     $ FOO="bar baz" ; FOO=$(echo $FOO) ; echo $FOO
+      #     bar baz
+      val="$(echo ${valq} | awk '{print $1}')"
+    fi
+    # SAVVY: The simple approach doesn't preserve double-quotes:
+    #   # >&2 echo "eval \"${var}=${val}\""
+    #   eval "${var}=${val}"
+    # Here's the complicated, double-quote-preserving `eval`:
+    #  >&2 echo "eval \"${var}=\\\"\$(echo \"$(
+    #    echo "${val}" | sed 's/\"/\\\"/g'
+    #  )\" | sed 's/\\\"/\\\\\\\"/g')\\\"\""
+    eval "${var}=\"$(printf "%s" "${val}" | sed 's/\"/\\\"/g')\""
+  fi
 }
 
 # USAGE:
@@ -1076,6 +1128,17 @@ gnu_readlink() {
 
 gnu_sed() {
   for cmd in "gsed" "sed"; do
+    (
+      unset -f ${cmd}
+      unalias ${cmd}
+      command -v ${cmd}
+    ) 2> /dev/null \
+      && break
+  done
+}
+
+gnu_grep() {
+  for cmd in "ggrep" "grep"; do
     (
       unset -f ${cmd}
       unalias ${cmd}
