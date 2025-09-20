@@ -1,0 +1,27 @@
+# vim:tw=0:ts=2:sw=2:et:norl:ft=conf
+#
+# USYNC:
+# ~/.depoxy/ambers/archetype/home/.kit/nvim/nvim-depoxy/.config/nvim/spell/en.utf-8.add.EVAL
+#
+# USAGE:
+#   # UTEST/2025-09-20: Updated to nvim v0.12.0-dev
+#   # *but untested!*
+#   # - Note the EVAL this was duplicated from wants to infuse ~/.config:
+#   #     ~/.config/nvim/spell/en.utf-8.add
+#   #   But the nvim v0.12 changes move the spell file under the data dir:
+#   #     ~/.local/share/nvim/site/spell/en.utf-8.add
+#   #   With a big difference being that
+#   #     ~/.config/nvim*
+#   #   are symlinks, but
+#   #     ~/.local/share/nvim*
+#   #   are normal directories.
+#   # - So I wonder if this logic in unnecessary to manage
+#   #   ~/.local/share/nvim* spells.
+#   #
+#   mkdir -p "${DXY_DEPOXY_CLIENT_FULL}/home/.kit/nvim/nvim-depoxy/.local/share/nvim/site/spell"
+#   command ln -sn \
+#     "../../../../../../site/spell/en.utf-8.add" \
+#     "${DXY_DEPOXY_CLIENT_FULL}/home/.kit/nvim/nvim-depoxy/.local/share/nvim/site/spell/en.utf-8.add"
+
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
+

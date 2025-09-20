@@ -1947,12 +1947,13 @@ omr_dxc_infuse() {
 # ***
 
 # Inhibit spells.sh from creating
-#   <DXC>/home/.kit/nvim/spell/en.utf-8.add--compiled
+#   <DXC>/home/.kit/nvim/site/spell/en.utf-8.add--compiled
 # and telling you to merge into
-#   <DXC>/home/.kit/nvim/spell/en.utf-8.add
-# (which is is symlinked from ~/.config/nvim/spell/en.utf-8.add),
-# because when --compiled differs from canon, it sometimes
-# indicates non-obvious issue occurred.
+#   <DXC>/home/.kit/nvim/site/spell/en.utf-8.add
+# (which is is symlinked from
+#  ~/.local/share/${NVIM_APPNAME}/site/spell/en.utf-8.add
+# ), because when --compiled differs from canon, it
+# sometimes indicates an non-obvious issue occurred.
 # - But in this case, indicates that canon not synced with
 #   spells yet, which we'll automate here.
 
@@ -1964,11 +1965,16 @@ omr_dxc_compile_spells() {
   (
     # HSTRY: spells.sh used to look for .vim/spells/ under home/:
     #   local homeish_path="${DXY_DEPOXY_CLIENT_FULL}/home"
-    # But now it finds nvim/spells under home/.kit/:
+    # But now it finds nvim/site/spells under home/.kit/:
     local homeish_path="${DXY_DEPOXY_CLIENT_FULL}/home/.kit"
 
     local compiled_spells
-    compiled_spells="$(spells.sh compile-spells "${homeish_path}" 2> /dev/null)"
+    for nvim_appname in "nvim" "nvim_depoxy" "nvim_lazyb"; do
+      compiled_spells="$(
+        NVIM_APPNAME="${nvim_appname}" \
+          spells.sh compile-spells "${homeish_path}" 2> /dev/null
+      )"
+    done
 
     # Loads: SPF_SPELLS
     # CXREF: ~/.depoxy/ambers/bin/spells.sh
@@ -2042,7 +2048,7 @@ omr_dxc_autocommit_verify() {
   git_status_without_spell_melds() {
     local ignore_spell_melds="$(
       echo \
-        ":!home/.kit/nvim/spell/sync-spells--*-new.sh"
+        ":!home/.kit/nvim/site/spell/sync-spells--*-new.sh"
     )"
 
     git status --porcelain -- ${ignore_spell_melds}

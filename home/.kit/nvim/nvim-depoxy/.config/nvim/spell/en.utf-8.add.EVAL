@@ -1,6 +1,13 @@
 # vim:tw=0:ts=2:sw=2:et:norl:ft=conf
 #
+# USYNC:
+# ~/.depoxy/ambers/archetype/home/.kit/nvim/nvim-depoxy/.local/share/nvim/site/spell/en.utf-8.add.EVAL
+#
 # USAGE:
+#   # HSTRY/2025-09-21: This is old nvim-v0.11-and-before path.
+#   # - For nvim-v0.12.0-dev onwards, it's under user data dir:
+#   #     ~/.local/share/${NVIM_APPNAME}/site/spell/en.utf-8.add
+#   #
 #   # This is a little wonky because we want to infuse
 #   #   ~/.config/nvim/spell/en.utf-8.add
 #   # but we cannot add
@@ -10,10 +17,14 @@
 #   # So the sol'n is to create mrinfuse assets under latter
 #   # path, e.g.,
 #   #   ~/.depoxy/running/home/.kit/nvim/nvim-depoxy/.config/nvim/spell/en.utf-8.add
+#   # HSTRY/2025-09-21: For nvim-v0.12.0-dev onwards, compare to:
+#   #   ~/.depoxy/running/home/.kit/nvim/nvim-depoxy/.local/share/nvim/site/spell/
+#   #
 #   mkdir -p "${DXY_DEPOXY_CLIENT_FULL}/home/.kit/nvim/nvim-depoxy/.config/nvim/spell"
 #   command ln -sn \
-#     ../../../../spell/en.utf-8.add \
+#     "../../../../spell/en.utf-8.add" \
 #     "${DXY_DEPOXY_CLIENT_FULL}/home/.kit/nvim/nvim-depoxy/.config/nvim/spell/en.utf-8.add"
+#   #
 #   # ALTLY:
 #   #   command ln -sn \
 #   #     "${DXY_DEPOXY_CLIENT_FULL}/home/.kit/nvim/spell/en.utf-8.add" \
