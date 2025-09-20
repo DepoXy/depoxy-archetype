@@ -1962,7 +1962,7 @@ omr_dxc_compile_spells() {
   ! ${DXY_RUN_LNS_ONLY:-false} || return 0
 
   (
-    # HSTRY: spells.sh used to find check .vim/spells/ under home/:
+    # HSTRY: spells.sh used to look for .vim/spells/ under home/:
     #   local homeish_path="${DXY_DEPOXY_CLIENT_FULL}/home"
     # But now it finds nvim/spells under home/.kit/:
     local homeish_path="${DXY_DEPOXY_CLIENT_FULL}/home/.kit"
