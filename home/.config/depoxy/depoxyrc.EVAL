@@ -343,6 +343,12 @@ export GITNUBS_DEV=true
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
+# https://github.com/thegittinsgood/git-update-faithful#⛲
+
+export UPDEPS_GENERIC_COMMIT_SUBJECT="deps: update faithfuls"
+
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
+
 # Tell slather-defaults (macOS-onboarder) if personal or professional machine.
 # - On personal machine, reminders include all OMR install tasks.
 # - On professional machine, reminders omit projects you won't need
