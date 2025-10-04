@@ -80,8 +80,8 @@ end)
 -- # *** Personal docs GVim openers.
 
 -- Open @Your Backlog in your editor
--- BNDNG: <Shift-Cmd-W>
-hs.hotkey.bind({ "shift", "cmd" }, "W", function()
+-- BNDNG: <Cmd-Alt-W>
+hs.hotkey.bind({ "cmd", "alt" }, "W", function()
   gvim_open_kindness(
     "DXY_DEPOXY_CLIENT_TILDE/private/docs/Backlog_Personal_[[[]]]DXY_DEPOXY_CLIENT_ID.rst"
   )
