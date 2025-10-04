@@ -59,7 +59,7 @@ local __USYNC__ = [[
 
 -- # *** Work notes GVim openers.
 
--- Open @Work Backlog in MacVim
+-- Open @Work Backlog in your editor.
 -- BNDNG: <Cmd-E>
 local cmd_e = hs.hotkey.bind({ "cmd" }, "E", function()
   gvim_open_kindness(
@@ -69,7 +69,7 @@ end)
 
 ignore_hotkey_gnucash(cmd_e)
 
--- Open @Work Woodlot in MacVim
+-- Open @Work Woodlot in your editor
 -- BNDNG: <Ctrl-Cmd-E>
 hs.hotkey.bind({ "ctrl", "cmd" }, "E", function()
   gvim_open_kindness(
@@ -79,7 +79,7 @@ end)
 
 -- # *** Personal docs GVim openers.
 
--- Open @Your Backlog in MacVim
+-- Open @Your Backlog in your editor
 -- BNDNG: <Shift-Cmd-W>
 hs.hotkey.bind({ "shift", "cmd" }, "W", function()
   gvim_open_kindness(
@@ -87,7 +87,7 @@ hs.hotkey.bind({ "shift", "cmd" }, "W", function()
   )
 end)
 
--- Open @Your Woodlot in MacVim
+-- Open @Your Woodlot in your editor
 -- BNDNG: <Ctrl-Cmd-W>
 hs.hotkey.bind({ "ctrl", "cmd" }, "W", function()
   gvim_open_kindness(
@@ -97,7 +97,7 @@ end)
 
 -------
 
--- Open macOS Onboarding document in MacVim
+-- Open macOS Onboarding document in your editor
 -- BNDNG: <Cmd-O>
 local cmd_o = hs.hotkey.bind({ "cmd" }, "O", function()
   gvim_open_kindness("~/.depoxy/ambers/docs/README-macOS-onboarding.rst")
