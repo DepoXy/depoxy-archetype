@@ -10,7 +10,6 @@
 {
   "title": "#9210 — Non-standard (Private) DepoXy Client Docs Launchers",
   "rules": [
-
     {
       "description": "#9211 — MacVim — Systemwide — Open @Your Backlog (Shift-Cmd-w)",
       "manipulators": [
@@ -33,7 +32,6 @@
         }
       ]
     },
-
     {
       "description": "#9212 — MacVim — Systemwide — Open @Your Woodlot (Ctrl-Cmd-w)",
       "manipulators": [
@@ -56,6 +54,5 @@
         }
       ]
     }
-
   ]
 }
