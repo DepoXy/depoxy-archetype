@@ -327,8 +327,12 @@ export GITSMART_GIT_OPEN_REMOTE_HIERARCHY="publish entrust starter upstream gith
 # but if you rebase often, even this split-second delay can be irritating.
 #
 # So background the task, and be wary of output, so it doesn't scramble
-# whatever's in your terminal now while this runs.
-export GIT_POST_REBASE_EXEC="(mr -q -d . -n infusePostRebase 2> /dev/null || true) &"
+# whatever's in your terminal (or the tig status line) now while this runs.
+# - SAVVY: On error, `mr -qMm` (unexpectedly) prints `mr $MR_ACTION: $MR_REPO`
+#   to stdout. So ignore all output and use our own.
+#   - (COPYD: Author has backlog item to correct this behavior.)
+#   - DUNNO: tig clips the first echo character (so using leading space).
+export GIT_POST_REBASE_EXEC="(mr -q -d . -n infusePostRebase > /dev/null 2>&1 || >&2 echo ' ERROR: infusePostRebase failed') &"
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
