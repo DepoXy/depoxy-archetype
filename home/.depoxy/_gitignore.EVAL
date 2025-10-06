@@ -26,7 +26,10 @@
 # E.g., /ambers/
 /DXY_DEPOXYAMBERS_NAME/
 
-# The git-put-wise patches repo, for secure push/pull using encrypted patches.
+# Sometimes symlink to latest deploy-archetype.sh Client
+# if another Client was active when it was created.
+/.adscititious
+
 # The git-put-wise patches repo, for secure push/pull using encrypted patches,
 # aka git-put-wise transport repo.
 /DXY_PW_PATCHES_NAME/
