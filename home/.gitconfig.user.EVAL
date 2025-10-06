@@ -66,10 +66,20 @@
 
 [includeIf "gitdir:DXY_VENDOR_HOME_TILDE/"]
 
-  # SAVVY: `cd DXY_VENDOR_HOME_TILDE && git whoami` shows private user because
-  #         DXY_VENDOR_HOME_TILDE not its own repo (so `git root` shows user home).
-  #         - But if you enter a git project under DXY_VENDOR_HOME_TILDE, then
-  #           `git whoami` will report the business user.
+  # SAVVY: Note that either the top-level includeIf directory
+  # or each of the first-order subdirectories *must* be a Git
+  # repo, or the following path is not included.
+  # - E.g., if neither of these exist:
+  #     ~/DXY_VENDOR_HOME_TILDE/.git
+  #     ~/DXY_VENDOR_HOME_TILDE/DXY_VENDOR_ORG01_NAME/.git
+  #   but this exists:
+  #     ~/DXY_VENDOR_HOME_TILDE/DXY_VENDOR_ORG01_NAME/DXY_VENDOR_ORG01_PROJ01_NAME/.git
+  #   the following config will not be loaded.
+  # - See the OMR config for ~/work, which creates the
+  #   intermediate repo.
+  #   - Then run, e.g., `cd ~/DXY_VENDOR_HOME_TILDE && git whoami`
+  #     to confirm that it uses your work email.
+  #
   # CXREF: ~/.depoxy/running/home/.gitconfig.user-business
   path = .gitconfig.user-business
 

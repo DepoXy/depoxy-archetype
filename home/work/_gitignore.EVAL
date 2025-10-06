@@ -1,0 +1,31 @@
+# USAGE:
+#   m4_shim \
+#     "+8" "home/work/_gitignore.EVAL" \
+#     "home/work/_gitignore"
+
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
+
+# vim:tw=0:ts=2:sw=2:et:norl:ft=gitignore
+# DXY_HEADER_AUTHOR
+# DXY_HEADER_PROJECT
+# DXY_HEADER_LICENSE
+
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
+
+# USYNC:
+#   meld \
+#     ~/.depoxy/ambers/archetype/home/work/_gitignore.EVAL \
+#     ~/.depoxy/running/home/work/_gitignore &
+
+/.gitignore
+/.ignore
+/.mrinfuse
+
+/VENDOR_ORG01_NAME/.ignore
+/VENDOR_ORG01_NAME/ignore-tests--VENDOR_ORG01_PROJ01_NAME/
+/VENDOR_ORG01_NAME/VENDOR_ORG01_PROJ01_NAME/
+
+/VENDOR_ORG02_NAME/.ignore
+/VENDOR_ORG02_NAME/VENDOR_ORG02_PROJ01_NAME/
+
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
