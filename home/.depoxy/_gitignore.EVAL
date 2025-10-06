@@ -21,7 +21,6 @@
 # This file, hard link btw. ~/.depoxy/.gitignore
 #  <-> ~/.depoxy/running/home/.depoxy/_gitignore:
 /.gitignore
-/.ignore
 
 # Main DepoXy repo, aka DepoXy Ambers.
 # E.g., /ambers/
