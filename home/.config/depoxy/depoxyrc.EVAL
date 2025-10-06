@@ -213,7 +213,7 @@ export MREDIT_CONFIGS="${DEPOXY_PROJLNS:-${HOME}/.projlns}/mymrconfigs"
 # Set ~/.projlns link_deep prefix.
 # - E.g., using this prefix:
 #     export LINK_DEEP_SUB_HOME="/Users/user"
-#   might create a link like this:
+#   will create a link like this:
 #     ~/.projlns/depoxy-deeplinks/Users/user/.kit/git/myrepos-mredit-command
 # CXREF: ~/.kit/git/myrepos-mredit-command/lib/link_deep.sh
 # - UCASE: The author uses a /private/user -> /Users/<user> symlink on macOS
