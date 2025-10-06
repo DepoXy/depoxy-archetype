@@ -15,8 +15,11 @@
 #     ~/.depoxy/ambers/archetype/home/.depoxy/_gitignore.EVAL \
 #     ~/.depoxy/running/home/.depoxy/_gitignore &
 
-# *** DepoXy articles (DepoXy dev environment orchestrator).
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
+# *** DepoXy artifacts (DepoXy Dev. Environment Composer-Orchestrator | DDECO).
 
+# This file, hard link btw. ~/.depoxy/.gitignore
+#  <-> ~/.depoxy/running/home/.depoxy/_gitignore:
 /.gitignore
 /.ignore
 
@@ -25,11 +28,16 @@
 /DXY_DEPOXYAMBERS_NAME/
 
 # The git-put-wise patches repo, for secure push/pull using encrypted patches.
+# The git-put-wise patches repo, for secure push/pull using encrypted patches,
+# aka git-put-wise transport repo.
 /DXY_PW_PATCHES_NAME/
 
 # Symlink to active DepoXy Client.
 #  running -> DXY_DEPOXYDIR_STINTS_NAME/DXY_DEPOXY_CLIENT_ID
 /DXY_DEPOXYDIR_RUNNING_NAME
+
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
+# *** DepoXy Client artifacts.
 
 /DXY_DEPOXYDIR_STINTS_NAME/.ignore
 
