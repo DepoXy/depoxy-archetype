@@ -1,0 +1,19 @@
+# USAGE:
+#   # E.g., /Users/user
+#   sub_home="DXY_LINK_DEEP_SUB_HOME"
+#   sub_dir="home/.projlns/depoxy-deeplinks/${subdir}"
+#   mkdir -p -- "${sub_dir}"
+#   m4_shim \
+#     "+14" "home/.projlns/depoxy-deeplinks/Users/user/.ignore.EVAL" \
+#     "${sub_dir}/_ignore"
+
+# vim:tw=0:ts=2:sw=2:et:norl:ft=conf
+
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
+
+# DXY_HEADER_AUTHOR
+# DXY_HEADER_PROJECT
+# DXY_HEADER_LICENSE
+
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
+

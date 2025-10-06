@@ -221,10 +221,7 @@ export MREDIT_CONFIGS="${DEPOXY_PROJLNS:-${HOME}/.projlns}/mymrconfigs"
 #   a similar symlink, /private/user -> /home/<user>.)
 #   - Using a similar home-agnostic LINK_DEEP_SUB_HOME lets them copy-paste
 #     paths to notes and to expect the paths to work on any of their hosts.
-#
-# Defaults to user home:
-#
-#  export LINK_DEEP_SUB_HOME="${HOME}"
+export LINK_DEEP_SUB_HOME="DXY_LINK_DEEP_SUB_HOME"
 
 # Specify known remotes not configured in OMR (e.g., those
 # managed by 'ffssh', and 'travel' and 'unpack').

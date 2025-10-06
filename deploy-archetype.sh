@@ -528,6 +528,12 @@ register_depoxy_project_paths() {
       | sed -E "s@^${HOME}(/|$)@\\\\\${HOME}\1@"
   )"
 
+  # ****
+
+  # E.g., "/Users/user", used to populate ~/.projlns (and then,
+  # e.g., project symlinks are created under ~/.projlns/Users/user).
+  register "DXY_LINK_DEEP_SUB_HOME" "${LINK_DEEP_SUB_HOME:-/Users/user}"
+
   # ***
 
   # Not quite a "project" path, but a customizable path nonetheless.
