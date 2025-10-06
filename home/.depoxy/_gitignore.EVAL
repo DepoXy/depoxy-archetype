@@ -15,6 +15,11 @@
 # DXY_HEADER_PROJECT
 # DXY_HEADER_LICENSE
 
+# USYNC:
+#   meld \
+#     ~/.depoxy/ambers/archetype/home/.depoxy/_gitignore.EVAL \
+#     ~/.depoxy/running/home/.depoxy/_gitignore &
+
 # *** DepoXy articles (DepoXy dev environment orchestrator).
 
 /.gitignore
