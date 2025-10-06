@@ -1,12 +1,7 @@
 # USAGE:
 #   m4_shim \
-#     "+13" "home/.depoxy/_gitignore.EVAL" \
+#     "+8" "home/.depoxy/_gitignore.EVAL" \
 #     "home/.depoxy/_gitignore"
-
-# KEEP FRESH:
-#   meld ~/.depoxy/ambers/archetype/home/.depoxy/_gitignore.EVAL ~/.depoxy/running/home/.depoxy/_gitignore &
-# Or swap directions:
-#   meld ~/.depoxy/running/home/.depoxy/_gitignore ~/.depoxy/ambers/archetype/home/.depoxy/_gitignore.EVAL &
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
