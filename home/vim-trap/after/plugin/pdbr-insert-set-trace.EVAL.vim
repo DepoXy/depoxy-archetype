@@ -27,11 +27,25 @@ let g:plugin_vim_trap_pdbr_drop_set_trace = 1
 
 " -------------------------------------------------------------------
 
+" Note the `# fmt: skip`, so `black` does not split line into three (import, blank, set_trace).
+" - Note also I tried to combine with `noqa: E702` but failed, so `flake8` will still complain.
 function! s:Python_Abbrev_PDB_Set_Trace_Right_Hand_Middle_Pointy_Middle_Pointy()
-  " Note the `# fmt: skip`, so `black` does not split line into three (import, blank, set_trace).
-  " - Note also I tried to combine with `noqa: E702` but failed, so `flake8` will still complain.
-  "   - Issue is sorta fixed, but requires `black --preview`, which you don't want to use.
+  " HSTRY/2023-01-27: Would previously move cursor to
+  " start of inserted text, i.e., before the "import":
+  "   autocmd BufEnter,BufRead *.py iabbrev <buffer> ';';
+  "     \ import pdbr; pdbr.set_trace()  # fmt: skip<C-o>41<Left><C-R>
+  " - But I often type 'pass' below a set_trace (so if comes as
+  "   the last line of a function, you don't end up stopped on
+  "   the return call).
+  "   - I usually follow ';'; with Alt-right<CR>pass
+  " SAVVY/2023-12-20: Note `black` ignores `# fmt: skip` unless it's
+  " the sole comment.
+  " - So cannot add `noqa: E702` to tell flake8 to not gripe, e.g.,
+  "     E702 multiple statements on one line (semicolon)
+  " - Issue is sorta fixed, but requires `black --preview`, which you
+  "   don't want to use.
   "     https://github.com/psf/black/pull/3959
+  "   - SPIKE/2025-10-06: Test if the black issue fixed.
   autocmd BufEnter,BufRead *.py iabbrev <buffer> ';';
     \ import pdbr; pdbr.set_trace()  # fmt: skip<CR>pass<C-R>
 endfunction

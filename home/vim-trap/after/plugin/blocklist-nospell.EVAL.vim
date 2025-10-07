@@ -32,6 +32,6 @@ let g:plugin_vim_trap_blocklist_nospell = 1
 " CXREF:
 "   /Applications/MacVim.app/Contents/Resources/vim/runtime/syntax/python.vim
 "   ~/.kit/nvim/landonb/dubs_ftype_mess/after/syntax/python.vim
-" DEFAULT: au FileType python syn match pythonComment "#.*$" contains=pythonTodo,@Spell
+" - REFER: Default value has different contains:  contains=pythonTodo,@Spell
 au FileType python syn match pythonComment "#.*$" contains=pythonTodo
 
