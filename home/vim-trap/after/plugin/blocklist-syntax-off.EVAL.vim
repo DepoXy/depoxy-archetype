@@ -11,6 +11,12 @@
 
 " -------------------------------------------------------------------
 
+" USYNC:
+"   meld ~/.depoxy/ambers/archetype/home/vim-trap/after/plugin/blocklist-syntax-off.EVAL.vim \
+"     ~/.depoxy/stints/DXY_DEPOXY_CLIENT_ID/home/vim-trap/after/plugin/blocklist-syntax-off.vim &
+
+" -------------------------------------------------------------------
+
 " GUARD: Press <F9> to reload this plugin (or :source it).
 " - Via: https://github.com/embrace-vim/vim-source-reloader#↩️
 

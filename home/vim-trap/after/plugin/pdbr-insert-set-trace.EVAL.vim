@@ -3,6 +3,12 @@
 "     "+8" "home/vim-trap/after/plugin/pdbr-insert-set-trace.EVAL.vim" \
 "     "home/vim-trap/after/plugin/pdbr-insert-set-trace.vim"
 
+" -------------------------------------------------------------------
+
+" USYNC:
+"   meld ~/.depoxy/ambers/archetype/home/vim-trap/after/plugin/pdbr-insert-set-trace.EVAL.vim \
+"     ~/.depoxy/stints/DXY_DEPOXY_CLIENT_ID/home/vim-trap/after/plugin/pdbr-insert-set-trace.vim &
+
 " +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
 " DXY_HEADER_AUTHOR
