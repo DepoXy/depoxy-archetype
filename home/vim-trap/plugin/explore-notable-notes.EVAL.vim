@@ -22,15 +22,15 @@
 " - Via: https://github.com/embrace-vim/vim-source-reloader#↩️
 
 if expand('%:p') ==# expand('<sfile>:p')
-  unlet! g:loaded_vim_trap_explore_notable_notes
+  unlet! g:loaded_vim_trap_explore_notable_notes_DXY_DEPOXY_CLIENT_ID
 endif
 
-if exists('g:loaded_vim_trap_explore_notable_notes') || &cp || v:version < 700
+if exists('g:loaded_vim_trap_explore_notable_notes_DXY_DEPOXY_CLIENT_ID') || &cp
 
   finish
 endif
 
-let g:loaded_vim_trap_explore_notable_notes = 1
+let g:loaded_vim_trap_explore_notable_notes_DXY_DEPOXY_CLIENT_ID = 1
 
 " -------------------------------------------------------------------
 
