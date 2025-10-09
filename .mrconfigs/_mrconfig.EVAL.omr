@@ -124,7 +124,9 @@ include =
   include_additional_client_config () {
     local ambers_path="${DEPOXYAMBERS_DIR:-DXY_DEPOXYAMBERS_DIR__HOME_}"
     local client_dir="${DEPOXYDIR_STINTS_FULL:-DXY_DEPOXYDIR_STINTS__HOME_}/DXY_DEPOXY_CLIENT_ID"
-    DEPOXY_CONFIG="${client_dir}/home/.config/depoxy/depoxyrc" . "${ambers_path}/core/depoxy_fs.sh"
+    # Source depoxyrc, 321open.cfg, and set DEPOXY* et al environs.
+    # - CXREF: ~/.depoxy/ambers/core/depoxy_fs.sh
+    DEPOXY_CONFIG_HOME="${client_dir}/home/.config/depoxy" . "${ambers_path}/core/depoxy_fs.sh"
     # `mr_cat` the additional client mrconfig's
     # - CXREF: ~/.depoxy/ambers/mrassets/client-include
     . "${ambers_path}/mrassets/client-include"
