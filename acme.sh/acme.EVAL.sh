@@ -69,7 +69,7 @@ NEXUS_USERNAME="${NEXUS_USERNAME:-PLEASE_SET_ME}"
 
 _ACMECO_SOURCE_PATH="${BASH_SOURCE[0]}"
 
-_acmeco_print_manual () {
+_acmeco_print_manual() {
   # Because (author's) Vim heredoc highlight issue, use and `cut` comment leaders.
   # SIMLY: cat << EOF | tail +2 | sed 's/^# \?//'
   cat << EOF | tail +2 | cut -c3-
@@ -150,7 +150,7 @@ EOF
 
 # The only function "help" is to print the aliases defined below.
 # - And if that's not enough help, please read the function code.
-DXY_DEPOXY_VENDOR_NAME () {
+DXY_DEPOXY_VENDOR_NAME() {
   [ -z "$1" ] && echo "USAGE: ac-<TAB>" && return 0
 
   case $1 in
@@ -173,7 +173,7 @@ DXY_DEPOXY_VENDOR_NAME () {
 # ================================================================= #
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
-DXY_ACMECO_FCN_POP_ENVIRONS_EDITABLE_VENDOR_ORG01_NAME () {
+DXY_ACMECO_FCN_POP_ENVIRONS_EDITABLE_VENDOR_ORG01_NAME() {
   # E.g., ${HOME}/work/soylent
   local base_path="${DXY_VENDOR_ACMESH_ORG01_VAR}"
 
@@ -185,7 +185,7 @@ DXY_ACMECO_FCN_POP_ENVIRONS_EDITABLE_VENDOR_ORG01_NAME () {
 
 # ***
 
-_acmeco_populate_environs_secret () {
+_acmeco_populate_environs_secret() {
   _acmeco_conf_find || return 0
 
   _acmeco_conf_get "_ENV_LOCAL_DB_PASSW"
@@ -204,7 +204,7 @@ _acmeco_populate_environs_secret () {
   _acmeco_conf_get "MAPBOX_TOKEN"
 }
 
-_acmeco_conf_find () {
+_acmeco_conf_find() {
   if [ -f "${_ACMECO_CONF_BASE}" ]; then
     # Found in current directory.
     _ACMECO_CONF_PATH="${_ACMECO_CONF_BASE}"
@@ -221,7 +221,7 @@ _acmeco_conf_find () {
 }
 
 # CAVEAT: User cannot use comments on VAR=VAL lines (from = to $ is considered VAL).
-_acmeco_conf_get () {
+_acmeco_conf_get() {
   test $# -ge 1 \
     || return
 
@@ -236,20 +236,20 @@ _acmeco_conf_get () {
 
 # ***
 
-_acmeco_populate_environs_static () {
+_acmeco_populate_environs_static() {
   _acmeco_populate_environs_static_env_environs
   _acmeco_populate_environs_static_env_nexus
   _acmeco_populate_environs_static_env_application
 }
 
-_acmeco_populate_environs_static_env_environs () {
+_acmeco_populate_environs_static_env_environs() {
   _acmeco_populate_environs_static_env_environs_local
   _acmeco_populate_environs_static_env_environs_dev
   _acmeco_populate_environs_static_env_environs_stage
 }
 
 # local environment
-_acmeco_populate_environs_static_env_environs_local () {
+_acmeco_populate_environs_static_env_environs_local() {
   _acmeco_set_environ_value "_ENV_LOCAL_DB_PASSW"
   if [ -n "${_ENV_LOCAL_DB_PASSW}" ]; then
     ACMECO_DB_URL="${ACMECO_DB_URL:-postgresql://postgres:${_ENV_LOCAL_DB_PASSW}@127.0.0.1:${_docker_pg_port_5432:-30432}}"
@@ -268,7 +268,7 @@ _acmeco_populate_environs_static_env_environs_local () {
 }
 
 # 'dev' environment
-_acmeco_populate_environs_static_env_environs_dev () {
+_acmeco_populate_environs_static_env_environs_dev() {
   _ENV_DEV_BASE_URL="https://dev.DXY_VENDOR_DOMAIN"
 
   _acmeco_set_environ_value "_ENV_TOKEN_DEV"
@@ -290,7 +290,7 @@ _acmeco_populate_environs_static_env_environs_dev () {
 }
 
 # 'stage' environment
-_acmeco_populate_environs_static_env_environs_stage () {
+_acmeco_populate_environs_static_env_environs_stage() {
   _ENV_STAGE_BASE_URL="https://stage.DXY_VENDOR_DOMAIN"
 
   _acmeco_set_environ_value "_ENV_TOKEN_STAGE"
@@ -305,7 +305,7 @@ _acmeco_populate_environs_static_env_environs_stage () {
 #
 # - Assumes you've created a ~/.netrc file and populated it with Nexus
 #   read-only creds (which are oftentimes shared between devs).
-_acmeco_populate_environs_static_env_nexus () {
+_acmeco_populate_environs_static_env_nexus() {
   if [ -f "${HOME}/.netrc" ]; then
     # CXREF: NEXUS_REPOSITORY_URL, NEXUS_USERNAME
     _acmeco_set_environ_value "NEXUS_PASSWORD" \
@@ -313,7 +313,7 @@ _acmeco_populate_environs_static_env_nexus () {
   fi
 }
 
-_acmeco_populate_environs_static_env_application () {
+_acmeco_populate_environs_static_env_application() {
   # Virtual environment names
   _ACMECO_APPLICATION_PYENV="application-venv"
 
@@ -330,30 +330,30 @@ declare -a _ACMECO_ENVIRONS_VALUES
 _ACMECO_ENVIRONS_PATHS=()
 _ACMECO_ENVIRONS_VALUES=()
 
-_acmeco_set_environ_path_unless_set () {
+_acmeco_set_environ_path_unless_set() {
   # echo eval "$1=\"\${$1:-$2}\""
   eval "$1=\"\${$1:-$2}\""
   _ACMECO_ENVIRONS_PATHS+=("$1")
 }
 
-_acmeco_set_environ_value () {
+_acmeco_set_environ_value() {
   # echo eval "$1=\"\${$1:-$2}\""
   eval "$1=\"\${$1:-$2}\""
   _ACMECO_ENVIRONS_VALUES+=("$1")
 }
 
-_acmeco_set_environ_value_path () {
+_acmeco_set_environ_value_path() {
   # echo eval "$1=\"\${$1:-$2}\""
   eval "$1=\"\${$1:-$2}\""
   _ACMECO_ENVIRONS_PATHS+=("$1")
 }
 
-_acmeco_populate_environs_verify () {
+_acmeco_populate_environs_verify() {
   warn_if_incorrect_environ_paths
   warn_if_missing_environ_values
 }
 
-warn_if_incorrect_environ_paths () {
+warn_if_incorrect_environ_paths() {
   # In case this script sourced on shell startup, don't complain
   # about absent paths unless being reloaded (i.e., only warn if
   # user explicitly loading this script).
@@ -366,7 +366,7 @@ warn_if_incorrect_environ_paths () {
   done
 }
 
-warn_if_missing_environ_values () {
+warn_if_missing_environ_values() {
   for value_env in "${_ACMECO_ENVIRONS_VALUES[@]}"; do
     if [ -z "${!value_env}" ]; then
       >&2 echo "Warning: Value for environment not assigned: ${value_env}"
@@ -378,7 +378,7 @@ warn_if_missing_environ_values () {
 # ================================================================= #
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
-_acmeco_namespace_database_create () {
+_acmeco_namespace_database_create() {
   local previous_venv="${VIRTUAL_ENV}"
 
   # YOU: Plumb create
@@ -386,7 +386,7 @@ _acmeco_namespace_database_create () {
   echo "./foo create"
 }
 
-_acmeco_namespace_database_migrate () {
+_acmeco_namespace_database_migrate() {
   local previous_venv="${VIRTUAL_ENV}"
 
   # YOU: Plumb migrate
@@ -396,13 +396,13 @@ _acmeco_namespace_database_migrate () {
 
 # ***
 
-_acmeco_namespace_database_connect () {
+_acmeco_namespace_database_connect() {
   echo "psql \"${ACMECO_DB_URL}\""
 
   psql "${ACMECO_DB_URL}" "$@"
 }
 
-_acmeco_namespace_database_connect_env () {
+_acmeco_namespace_database_connect_env() {
   if [ -z "${_ACMECO_KUBECONFIG}" ]; then
     >&2 echo "ERROR: Please setup the env first, e.g., call \`ac-env-(local|dev|stage)\`."
 
@@ -418,7 +418,7 @@ _acmeco_namespace_database_connect_env () {
 # *** Commands made from client's <setup>.sh output.
 
 # Cluster psql superuser password
-_acmeco_cluster_database_psql_password_su () {
+_acmeco_cluster_database_psql_password_su() {
   must_selected_kubeconfig || return $?
 
   local namespace="DXY_VENDOR_ACMESH_NAMESPACE"
@@ -427,13 +427,13 @@ _acmeco_cluster_database_psql_password_su () {
 
   kubectl --kubeconfig "${_ACMECO_KUBECONFIG}" \
     get secret --namespace "${namespace}" \
-      ${resource_name} \
-      -o jsonpath="{.data.PSQL_SUPERUSER_PASSWORD}" \
-      | base64 --decode
+    ${resource_name} \
+    -o jsonpath="{.data.PSQL_SUPERUSER_PASSWORD}" \
+    | base64 --decode
 }
 
 # Cluster psql admin password
-_acmeco_cluster_database_psql_password_admin () {
+_acmeco_cluster_database_psql_password_admin() {
   must_selected_kubeconfig || return $?
 
   local namespace="DXY_VENDOR_ACMESH_NAMESPACE"
@@ -442,16 +442,16 @@ _acmeco_cluster_database_psql_password_admin () {
 
   kubectl --kubeconfig "${_ACMECO_KUBECONFIG}" \
     get secret --namespace "${namespace}" \
-      ${resource_name} \
-      -o jsonpath="{.data.PSQL_ADMIN_PASSWORD}" \
-      | base64 --decode
+    ${resource_name} \
+    -o jsonpath="{.data.PSQL_ADMIN_PASSWORD}" \
+    | base64 --decode
 }
 
 # There are two methods for connecting to the database: directly
 # to the primary pod, or passively using a hopper pod.
 
 # 1. Run a postgres pod and connect using the psql cli.
-_acmeco_cluster_database_psql_session_hopper_pod_su () {
+_acmeco_cluster_database_psql_session_hopper_pod_su() {
   must_selected_kubeconfig || return $?
 
   local PGPASSWORD_POSTGRES="$(_acmeco_cluster_database_psql_password_su)"
@@ -460,12 +460,12 @@ _acmeco_cluster_database_psql_session_hopper_pod_su () {
 
   kubectl --kubeconfig "${_ACMECO_KUBECONFIG}" \
     run -i --tty --rm psql --image=postgres \
-      --env "PGPASSWORD=${PGPASSWORD_POSTGRES}" \
-      --command -- psql -U postgres \
-      -h "${psql_host}" postgres
+    --env "PGPASSWORD=${PGPASSWORD_POSTGRES}" \
+    --command -- psql -U postgres \
+    -h "${psql_host}" postgres
 }
 
-_acmeco_cluster_database_psql_session_hopper_pod_admin () {
+_acmeco_cluster_database_psql_session_hopper_pod_admin() {
   must_selected_kubeconfig || return $?
 
   local PGPASSWORD_ADMIN="$(_acmeco_cluster_database_psql_password_admin)"
@@ -474,13 +474,13 @@ _acmeco_cluster_database_psql_session_hopper_pod_admin () {
 
   kubectl --kubeconfig "${_ACMECO_KUBECONFIG}" \
     run -i --tty --rm psql --image=postgres \
-      --env "PGPASSWORD=${PGPASSWORD_ADMIN}" \
-      --command -- psql -U admin \
-      -h "${psql_host}" postgres
+    --env "PGPASSWORD=${PGPASSWORD_ADMIN}" \
+    --command -- psql -U admin \
+    -h "${psql_host}" postgres
 }
 
 # 2. Directly execute a psql session on the primary pod.
-_acmeco_cluster_database_psql_session_primary_pod_raw () {
+_acmeco_cluster_database_psql_session_primary_pod_raw() {
   local tty_option="$1"
   shift
 
@@ -488,10 +488,10 @@ _acmeco_cluster_database_psql_session_primary_pod_raw () {
 
   local selector_label_query_filter="release=prod-db,role=production"
 
-  local primary_pod="$( \
+  local primary_pod="$(
     kubectl --kubeconfig "${_ACMECO_KUBECONFIG}" \
       get pod -o name --namespace DXY_VENDOR_ACMESH_NAMESPACE \
-      -l ${selector_label_query_filter} \
+      -l ${selector_label_query_filter}
   )"
   echo "Primary pod: ${primary_pod}"
 
@@ -504,11 +504,11 @@ _acmeco_cluster_database_psql_session_primary_pod_raw () {
     ${primary_pod} -- psql -U postgres "$@"
 }
 
-_acmeco_cluster_database_psql_session_primary_pod () {
+_acmeco_cluster_database_psql_session_primary_pod() {
   _acmeco_cluster_database_psql_session_primary_pod_raw "--tty" "$@"
 }
 
-_acmeco_cluster_database_psql_session_primary_pod_no_tty () {
+_acmeco_cluster_database_psql_session_primary_pod_no_tty() {
   _acmeco_cluster_database_psql_session_primary_pod_raw "" "$@"
 }
 
@@ -518,7 +518,7 @@ _acmeco_cluster_database_psql_session_primary_pod_no_tty () {
 # by `man psql`).
 # - This command is not wired, but you could call directly
 #   and pass it a file.
-_acmeco_cluster_database_psql_session_primary_pod_file () {
+_acmeco_cluster_database_psql_session_primary_pod_file() {
   local cmds_file="$1"
   shift
 
@@ -531,23 +531,23 @@ _acmeco_cluster_database_psql_session_primary_pod_file () {
   # Call kubectl without --tty, else you'll see (though still works):
   #   Unable to use a TTY - input is not a terminal or the right kind of file
 
-  _acmeco_cluster_database_psql_session_primary_pod_no_tty "$@" <<EOF
+  _acmeco_cluster_database_psql_session_primary_pod_no_tty "$@" << EOF
 $(cat "${cmds_file}")
 EOF
 }
 
 # 3. Tunnel to the psql db in a namespace kubernetes cluster.
-_acmeco_cluster_database_psql_session_port_forwarding__example () {
+_acmeco_cluster_database_psql_session_port_forwarding__example() {
   >&2 echo "ERROR: Not implemented" && return 1
 
   # Forward postgresql to localhost:5432
   kubectl port-forward -n DXY_VENDOR_ACMESH_NAMESPACE statefulset/acme-db-timescaledb 5432:postgresql
 
   # Get cluster postgres admin password
-  local db_password=$( \
+  local db_password=$(
     kubectl get secret -n DXY_VENDOR_ACMESH_NAMESPACE acme-credentials-psql \
       -o jsonpath="{.data.PSQL_SUPERUSER_PASSWORD}" \
-      | base64 --decode \
+      | base64 --decode
   )
 
   # Connect on port-forwarded connection as admin
@@ -558,7 +558,7 @@ _acmeco_cluster_database_psql_session_port_forwarding__example () {
   # - The following is not a continuation of this function.
 
   # Check if read-only transaction (meaning replica, not leader)
-  show transaction_read_only;
+  show transaction_read_only
 
   # To write data, connect to the leader — try different -0/-1/-2/-etc. postfixes:
   kubectl -n DXY_VENDOR_ACMESH_NAMESPACE port-forward pod/acme-db-timescaledb-2 5432:postgresql
@@ -573,7 +573,7 @@ _acmeco_cluster_database_psql_session_port_forwarding__example () {
 #     _acmeco_cluster_database_psql_session_hopper_pod_su
 unset -f _acmeco_cluster_database_psql_session_port_forwarding__example
 
-_acmeco_cluster_open_shell_bash () {
+_acmeco_cluster_open_shell_bash() {
   local namespace="${1:-DXY_VENDOR_ACMESH_NAMESPACE}"
   local pod="${2:-acme-pod/acme-deployed}"
   local container="$3"
@@ -597,7 +597,7 @@ _acmeco_cluster_open_shell_bash () {
 # from an OpenLens terminal (so that you're not using an AltTab or Dock
 # slot for something you won't interact with).
 # - SAVVY: 50051 is default gRPC port.
-_acmeco_application_port_forward () {
+_acmeco_application_port_forward() {
   echo "kubectl port-forward service/acme-application 50051:50051 -n DXY_VENDOR_ACMESH_NAMESPACE"
 
   kubectl port-forward service/acme-application 50051:50051 -n DXY_VENDOR_ACMESH_NAMESPACE
@@ -607,7 +607,7 @@ _acmeco_application_port_forward () {
 
 # *** Acmeco Application
 
-_acmeco_application_virtualenv_activate () {
+_acmeco_application_virtualenv_activate() {
   _acmeco_virtualenv_deactivate
 
   echo "cd \"${DXY_ACMECO_VAR_VENDOR_ORG01_PROJ01_NAME}\""
@@ -621,7 +621,7 @@ _acmeco_application_virtualenv_activate () {
 
 # ***
 
-_acmeco_application_run_server () {
+_acmeco_application_run_server() {
   _acmeco_application_virtualenv_activate
 
   echo "PYTHONPATH=. python src/widget/app.py"
@@ -635,12 +635,12 @@ _acmeco_application_run_server () {
 # MAYBE/2023-01-05: Can you port-forword to cluster Keyclock oauth2 endpoint?:
 #   http://dev.DXY_DEPOXY_VENDOR_NAME.local/oauth2/auth
 # and then resolving bearer token from session cookie should work.
-_acmeco_application_run_server_local () {
+_acmeco_application_run_server_local() {
   _acmeco_environment_populate_environs__local
   _acmeco_application_run_server
 }
 
-_acmeco_environment_populate_environs__local () {
+_acmeco_environment_populate_environs__local() {
   _acmeco_auth_populate_environs_for_environment \
     "${_ENV_LOCAL_BASE_URL}" \
     "${_ENV_TOKEN_LOCAL}" \
@@ -650,45 +650,45 @@ _acmeco_environment_populate_environs__local () {
 
 # ***
 
-_acmeco_application_run_server__dev () {
+_acmeco_application_run_server__dev() {
   _acmeco_environment_populate_environs__dev
   _acmeco_application_run_server
 }
 
-_acmeco_environment_populate_environs__dev () {
+_acmeco_environment_populate_environs__dev() {
   _acmeco_auth_populate_environs_for_environment \
     "${_ENV_DEV_BASE_URL}" \
     "${_ENV_TOKEN_DEV}" \
     "${_ENV_DEV_KUBECONFIG}"
 }
 
-_acmeco_cluster_database_psql_session_primary_pod_raw__dev () {
+_acmeco_cluster_database_psql_session_primary_pod_raw__dev() {
   _acmeco_environment_populate_environs__dev
   _acmeco_cluster_database_psql_session_primary_pod_raw
 }
 
 # ***
 
-_acmeco_application_run_server__stage () {
+_acmeco_application_run_server__stage() {
   _acmeco_environment_populate_environs__stage
   _acmeco_application_run_server
 }
 
-_acmeco_environment_populate_environs__stage () {
+_acmeco_environment_populate_environs__stage() {
   _acmeco_auth_populate_environs_for_environment \
     "${_ENV_STAGE_BASE_URL}" \
     "${_ENV_TOKEN_STAGE}" \
     "${_ENV_STAGE_KUBECONFIG}"
 }
 
-_acmeco_cluster_database_psql_session_primary_pod_raw__stage () {
+_acmeco_cluster_database_psql_session_primary_pod_raw__stage() {
   _acmeco_environment_populate_environs__stage
   _acmeco_cluster_database_psql_session_primary_pod_raw
 }
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
-_acmeco_auth_populate_environs_for_environment () {
+_acmeco_auth_populate_environs_for_environment() {
   local env_url="$1"
   local client_token="$2"
   local cluster_kubeconfig="$3"
@@ -727,15 +727,15 @@ _acmeco_auth_populate_environs_for_environment () {
   echo "export CLIENT_ID=\"${CLIENT_ID}\""
   export CLIENT_ID
 
-  BEARER_TOKEN="$( \
+  BEARER_TOKEN="$(
     curl -s --location --request POST \
       "${TOKEN_URL}" \
-        --header "Content-Type: application/x-www-form-urlencoded" \
-        --data-urlencode "client_id=${CLIENT_ID}" \
-        --data-urlencode "client_token=${CLIENT_TOKEN}" \
-        --data-urlencode "scope=profile" \
-        --data-urlencode "grant_type=client_credentials" \
-          | jq -r .access_token
+      --header "Content-Type: application/x-www-form-urlencoded" \
+      --data-urlencode "client_id=${CLIENT_ID}" \
+      --data-urlencode "client_token=${CLIENT_TOKEN}" \
+      --data-urlencode "scope=profile" \
+      --data-urlencode "grant_type=client_credentials" \
+      | jq -r .access_token
   )"
   echo "export BEARER_TOKEN=\"${BEARER_TOKEN}\""
   export BEARER_TOKEN
@@ -758,7 +758,7 @@ _acmeco_auth_populate_environs_for_environment () {
   unset LOG_LEVEL
 }
 
-must_selected_kubeconfig () {
+must_selected_kubeconfig() {
   if [ -z "${_ACMECO_KUBECONFIG}" ]; then
     >&2 echo "ERROR: Seed an env first."
 
@@ -773,7 +773,7 @@ must_selected_kubeconfig () {
 # Create cluster environment kubeconfig, e.g.,:
 #   ~/.kube/acme-dev.yaml
 #   ~/.kube/acme-stage.yaml
-_acmeco_kubeconfig_create_env () {
+_acmeco_kubeconfig_create_env() {
   local cluster_name="$1"
 
   [ -z "${cluster_name}" ] && >&2 echo "ERROR: Not callable" && return 1 || true
@@ -789,7 +789,7 @@ _acmeco_kubeconfig_create_env () {
   [ -f "${target}" ] && echo "Prepared kubeconfig: ${target}"
 }
 
-_acmeco_kubeconfig_create_env_stage () {
+_acmeco_kubeconfig_create_env_stage() {
   _acmeco_kubeconfig_create_env "${_ENV_STAGE_AWS_CLIENT}"
 }
 
@@ -797,7 +797,7 @@ _acmeco_kubeconfig_create_env_stage () {
 # ================================================================= #
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
-_acmeco_virtualenv_recreate () {
+_acmeco_virtualenv_recreate() {
   local pyenv_env="$1"
   local proj_path="$2"
   local use_latest_poetry=${3:-false}
@@ -862,7 +862,7 @@ _acmeco_virtualenv_recreate () {
 
 # ***
 
-_acmeco_virtualenv_activate () {
+_acmeco_virtualenv_activate() {
   local pyenv_env="$1"
   local proj_path="$2"
 
@@ -882,7 +882,7 @@ _acmeco_virtualenv_activate () {
   _acmeco_cdproject_wire
 }
 
-_acmeco_pathadd () {
+_acmeco_pathadd() {
   [ -d "$1" ] || return 1
 
   [[ ":$PATH:" != *":$1:"* ]] || return 0
@@ -891,10 +891,10 @@ _acmeco_pathadd () {
   export PATH
 }
 
-_acmeco_pathdel () {
+_acmeco_pathdel() {
   [ -d "$1" ] || return 1
 
-  PATH="$( \
+  PATH="$(
     echo "$PATH" \
       | sed -e "s@\(^\|:\)$1\(:\|\$\)@:@" \
       | sed -e 's/^://' \
@@ -910,7 +910,7 @@ _acmeco_pathdel () {
 #   PYENV_VIRTUAL_ENV (same path as VIRTUAL_ENV)
 #   PYENV_VIRTUALENV_INIT=1 (static; means pyenv ready, i.e., your
 #                            shell eval'd `pyenv virtualenv-init -`)
-_acmeco_virtualenv_deactivate () {
+_acmeco_virtualenv_deactivate() {
   local previous_venv="$1"
 
   if [ -n "${VIRTUAL_ENV}" ]; then
@@ -920,7 +920,7 @@ _acmeco_virtualenv_deactivate () {
   fi
 
   local venv_root
-  venv_root="$( \
+  venv_root="$(
     _acmeco_cdproject
 
     poetry env info -p 2> /dev/null
@@ -940,15 +940,15 @@ _acmeco_virtualenv_deactivate () {
 
 # ***
 
-_acmeco_cdproject_wipe () {
+_acmeco_cdproject_wipe() {
   unset _ACMECO_CDPROJECT_PATH
 }
 
-_acmeco_cdproject_wire () {
+_acmeco_cdproject_wire() {
   _ACMECO_CDPROJECT_PATH="$(pwd)"
 }
 
-_acmeco_cdproject () {
+_acmeco_cdproject() {
   [ -n "${_ACMECO_CDPROJECT_PATH}" ] || return 0
 
   # echo "cd \"${_ACMECO_CDPROJECT_PATH}\""
@@ -961,7 +961,7 @@ _ACMECO_OPTION_RESET_VARS="--reset"
 _ACMECO_OPTION_AUDIT_VARS="--audit"
 
 # Makes this script reentrant.
-_acmeco_reset_environment () {
+_acmeco_reset_environment() {
   _acmeco_reset_unalias_all
 
   local reset=""
@@ -984,7 +984,7 @@ _acmeco_reset_environment () {
 # - MEH: We could DRY this using flattened array, like we do for
 #        _ACMECO_ALIASES_SCALAR_ARRAY. For now, it's simpler to just
 #        list the variables below and to manually update as needed.
-_acmeco_reset_environment_unset_vars () {
+_acmeco_reset_environment_unset_vars() {
   # USYNC: Update this list: Uncomment echoes in _acmeco_set_environ_* fcns above.
 
   unset -v DXY_ACMECO_VAR_VENDOR_ORG01_PROJ01_NAME
@@ -1021,7 +1021,7 @@ _acmeco_reset_environment_unset_vars () {
 
 declare -a _ACMECO_ALIASES
 
-_claim_alias_or_warn () {
+_claim_alias_or_warn() {
   local the_alias="$1"
   local the_command="$2"
   local force=${3:-false}
@@ -1049,7 +1049,7 @@ _claim_alias_or_warn () {
   _ACMECO_ALIASES_SCALAR_ARRAY=$(declare -p _ACMECO_ALIASES)
 }
 
-_acmeco_reset_unalias_all () {
+_acmeco_reset_unalias_all() {
   eval ${_ACMECO_ALIASES_SCALAR_ARRAY}
 
   local claimed_alias
@@ -1057,19 +1057,19 @@ _acmeco_reset_unalias_all () {
   # We could just go through aliases as listed:
   #   for claimed_alias in "${_ACMECO_ALIASES[@]}"; do
   # Or we could sort 'em.
-  for claimed_alias in $( \
-    echo "${_ACMECO_ALIASES[@]}" |
-      xargs printf "%s\0" |
-      sort -z |
-      xargs -0 printf "%s\n" \
-    ); do
+  for claimed_alias in $(
+    echo "${_ACMECO_ALIASES[@]}" \
+      | xargs printf "%s\0" \
+      | sort -z \
+      | xargs -0 printf "%s\n"
+  ); do
     echo "unalias \"${claimed_alias}\""
 
     unalias "${claimed_alias}"
   done
 }
 
-_acmeco_print_aliases () {
+_acmeco_print_aliases() {
   eval ${_ACMECO_ALIASES_SCALAR_ARRAY}
 
   local claimed_alias
@@ -1089,7 +1089,7 @@ _acmeco_print_aliases () {
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
-_acmeco_wire_aliases () {
+_acmeco_wire_aliases() {
 
   # *** Meta tasks (re: this script; not DXY_DEPOXY_VENDOR_NAME_PROPER-related)
 
@@ -1122,7 +1122,7 @@ _acmeco_wire_aliases () {
   unset -f _acmeco_wire_aliases_dispatcher_application
 }
 
-_acmeco_wire_aliases_dispatcher_application () {
+_acmeco_wire_aliases_dispatcher_application() {
   _acmeco_wire_aliases_dispatcher_application_envs
   unset -f _acmeco_wire_aliases_dispatcher_application_envs
 
@@ -1136,7 +1136,7 @@ _acmeco_wire_aliases_dispatcher_application () {
 # ***
 
 # *** Meta commands (this script)
-_acmeco_wire_aliases_meta_commands_main () {
+_acmeco_wire_aliases_meta_commands_main() {
   local force_alias=false
 
   # USAGE: If your abbreviation conflicts with an existing command,
@@ -1146,14 +1146,14 @@ _acmeco_wire_aliases_meta_commands_main () {
   #   something you'll probably never use.
   if command -v "ac" > /dev/null \
     && [ "$(command -v "ac")" = "/usr/sbin/ac" ] \
-  ; then
+    ; then
     force_alias=true
   fi
 
   _claim_alias_or_warn "ac" "DXY_VENDOR_ACMESH_CMD" ${force_alias}
 }
 
-_acmeco_wire_aliases_meta_commands () {
+_acmeco_wire_aliases_meta_commands() {
   _claim_alias_or_warn "ac-" "_acmeco_print_aliases"
 
   _claim_alias_or_warn "ac-help" "DXY_VENDOR_ACMESH_CMD --help"
@@ -1168,7 +1168,7 @@ _acmeco_wire_aliases_meta_commands () {
 }
 
 # *** Postgres
-_acmeco_wire_aliases_postgres () {
+_acmeco_wire_aliases_postgres() {
   _claim_alias_or_warn "ac-psql-db-create" "_acmeco_namespace_database_create"
   _claim_alias_or_warn "ac-psql-db-migrate" "_acmeco_namespace_database_migrate"
 
@@ -1183,7 +1183,7 @@ _acmeco_wire_aliases_postgres () {
 }
 
 # *** Virtualenv
-_acmeco_wire_aliases_virtualenv () {
+_acmeco_wire_aliases_virtualenv() {
   # Because when you call `deactivate`, it'll tell you to source it.
   _claim_alias_or_warn "ac-deactivate" "_acmeco_virtualenv_deactivate"
 
@@ -1193,7 +1193,7 @@ _acmeco_wire_aliases_virtualenv () {
 
 # ***
 
-_acmeco_wire_aliases_dispatcher_application_envs () {
+_acmeco_wire_aliases_dispatcher_application_envs() {
   # These were `ac-seed-environment-(local|dev|stage)` but trying ac-env- prefix.
   #  _claim_alias_or_warn "ac-env-local" "_acmeco_environment_populate_environs__local"
   _claim_alias_or_warn "ac-env-dev" "_acmeco_environment_populate_environs__dev"
@@ -1205,11 +1205,11 @@ _acmeco_wire_aliases_dispatcher_application_envs () {
 
 }
 
-_acmeco_wire_aliases_dispatcher_application_wiring () {
+_acmeco_wire_aliases_dispatcher_application_wiring() {
   _claim_alias_or_warn "ac-forward-port-application-50051" "_acmeco_application_port_forward"
 }
 
-_acmeco_wire_aliases_dispatcher_application_runners () {
+_acmeco_wire_aliases_dispatcher_application_runners() {
   # One-time stand-up.
   _claim_alias_or_warn "ac-standup-application" "_acmeco_virtualenv_recreate"
 
@@ -1223,7 +1223,7 @@ _acmeco_wire_aliases_dispatcher_application_runners () {
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
-inject_environs () {
+inject_environs() {
   local force_aliases=false
   local audit_environs=false
 
@@ -1245,7 +1245,7 @@ inject_environs () {
   unset -f _acmeco_wire_aliases
 }
 
-parse_args () {
+parse_args() {
   while [ $# -gt 0 ]; do
     case $1 in
       ${_ACMECO_OPTION_RESET_VARS})
@@ -1274,7 +1274,7 @@ parse_args () {
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
-insist_sourced_in_bash () {
+insist_sourced_in_bash() {
   local prog_name="$(basename -- "$0")"
 
   # Alert if not being sourced in Bash, or if being executed.
@@ -1287,7 +1287,7 @@ insist_sourced_in_bash () {
 
 # ***
 
-main () {
+main() {
   inject_environs "$@"
 }
 
@@ -1298,4 +1298,3 @@ if insist_sourced_in_bash; then
 else
   false
 fi
-
