@@ -223,7 +223,7 @@ _acmeco_conf_find() {
 # CAVEAT: User cannot use comments on VAR=VAL lines (from = to $ is considered VAL).
 _acmeco_conf_get() {
   test $# -ge 1 \
-    || return
+    || return 0
 
   local ename="$1"
 
