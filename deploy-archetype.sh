@@ -2220,7 +2220,7 @@ parse_args() {
 _promote_homebrew_bash() {
   # CUPLD/2024-05-15: As mentioned atop source_deps, don't worry about
   # dependency error checking, or localizing 'deps/'.
-  . "${MOSREPOSPATH:-${DOPP_KIT:-${HOME}/.kit}/mOS}/macOS-onboarder/lib/promote-homebrew-bash.sh"
+  . "${MOSREPOSPATH:-${DOPP_KIT:-${HOME}/.kit}/mOS}/macOS-GNOME-onboarder/lib/promote-homebrew-bash.sh"
 
   promote_homebrew_bash "$@"
 }

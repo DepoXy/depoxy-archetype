@@ -350,7 +350,8 @@ export UPDEPS_GENERIC_COMMIT_SUBJECT="deps: update faithfuls"
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
-# Tell slather-defaults (macOS-onboarder) if personal or professional machine.
+# Tell slather-defaults (macOS-GNOME-onboarder) environment scope:
+# whether intended for personal or professional use.
 # - On personal machine, reminders include all OMR install tasks.
 # - On professional machine, reminders omit projects you won't need
 #   (like GnuCash) — Though echoInstallHelp arg used is 'dxy_limit'.
