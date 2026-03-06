@@ -121,24 +121,24 @@
 # ---------
 #
 #   Op. Description                   Examples
-#   +++ ++++++++++++++++++++++++++    +++++++++++++++++++++++++++++++++++++
-#   *	  all values                    Hourly, on the h: 0 * * * *
-#                                     Sundays at midn.: 0 0 * * 0
-#   ,	  separate individual values    Sat & Sun @210a:  10 2 * * 6,7
-#   -	  a range of values             Mon-Sat @6p:      0 18 * * 0-6
-#   /	  divide a value into steps     @15m:             */15 * * * *
-#                                     @2h:              0 */2 * * *
+#   +++ ++++++++++++++++++++++++++    ++++++++++++++++++++++++++++++++++++++++
+#   *   all values                    Hourly, on the h:    0   *   *   *   *
+#                                     Sundays at midn.:    0   0   *   *   0
+#   ,   separate individual values    Sat & Sun @210a:    10   2   *   *   6,7
+#   -   a range of values             Mon-Sat @6p:         0  18   *   *   0-6
+#   /   divide a value into steps     @15m:             */15   *   *   *   *
+#                                     @2h:                 0 */2   *   *   *
 #
 # Special strings
 # ---------------
 #
-#   @reboot	    every rebot
-#   @hourly	    once every hour     — same as 0 * * * *
-#   @daily	    once every day      — same as 0 0 * * *
-#   @midnight	  once every midnight — same as @daily
-#   @weekly	    once every week     — same as 0 0 * * 0
-#   @monthly	  once every month    — same as 0 0 1 * *
-#   @yearly	    once every year     — same as 0 0 1 1 *
+#   @reboot     every rebot
+#   @hourly     once every hour     — same as 0 * * * *
+#   @daily      once every day      — same as 0 0 * * *
+#   @midnight   once every midnight — same as @daily
+#   @weekly     once every week     — same as 0 0 * * 0
+#   @monthly    once every month    — same as 0 0 1 * *
+#   @yearly     once every year     — same as 0 0 1 1 *
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
