@@ -111,8 +111,8 @@
 #   *    *    *    *    *   {Command}
 #   ┬    ┬    ┬    ┬    ┬   ┬
 #   │    │    │    │    │   └─  Command to execute
-#   │    │    │    │    └─────  Weekday  (0=Sun .. 6=Sat, or Sun, Mon, ... Sat)
-#   │    │    │    └──────────  Month    (1..12)
+#   │    │    │    │    └─────  Weekday  (0=Sun, ... 6=Sat, 7=Sun; OR Sun, Mon, ... Sat)
+#   │    │    │    └──────────  Month    (1..12;                   OR Jan, Feb, ... Sec)
 #   │    │    └───────────────  Day      (1..31)
 #   │    └────────────────────  Hour     (0..23)
 #   └─────────────────────────  Minute   (0..59)
