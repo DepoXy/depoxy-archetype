@@ -98,7 +98,7 @@ install =
   # when run, the app opens in a new browser window, and not in a new tab
   # of an existing window. (NOTE: This might not be an issue; I saw this in
   # older webpack-dev-server v3.x, which uses older npm `opn`, not `open`.)
-  # - DEP: https://github.com/landonb/sh-sensible-open#☔
+  # - DEP: https://github.com/landonb/sh-sensible-open#🪂
   hack_patch_opn_to_call_sensible_open
   #
   # If you have some dependencies checked out locally, and you work on
