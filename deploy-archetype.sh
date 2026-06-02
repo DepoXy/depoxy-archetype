@@ -689,6 +689,9 @@ source_deps() {
 
   # Load: remove_symlink_hierarchy_safe
   . "${GITREPOSPATH:-${HOME}/.kit/git}/myrepos-mredit-command/lib/link_deep.sh"
+
+  # Ensure gnu_sed.
+  . "${SHOILERPLATE:-${DOPP_KIT:-${HOME}/.kit}/sh}/sh-logger/bin/logger.sh"
 }
 
 check_dep_m4() {
@@ -1123,17 +1126,6 @@ gnu_m4() {
 
 gnu_readlink() {
   for cmd in "greadlink" "readlink"; do
-    (
-      unset -f ${cmd}
-      unalias ${cmd}
-      command -v ${cmd}
-    ) 2> /dev/null \
-      && break
-  done
-}
-
-gnu_sed() {
-  for cmd in "gsed" "sed"; do
     (
       unset -f ${cmd}
       unalias ${cmd}
