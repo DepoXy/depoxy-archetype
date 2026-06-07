@@ -487,6 +487,10 @@ export EDITOR_PREFER_NVIM=true
 #     export NVIM_OPEN_FILE_ON_SPAWN="${HOME}/README.rst"
 export NVIM_OPEN_FILE_ON_SPAWN="[Scratch]"
 
+# CXREF: https://github.com/landonb/todo.rst#🦤
+#   ~/.kit/txt/todo.rst/bin/todoreST
+export TODOREST_DEFAULT_RST_FILE="DXY_DEPOXY_CLIENT__HOME_/docs/Backlog_Client_[[[]]]DXY_DEPOXY_CLIENT_ID.rst"
+
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
 export ACMESH_CONF_USER="DXY_DEPOXY_CLIENT__HOME_/home/DXY_DEPOXY_VENDOR_HOME_NAME/DXY_VENDOR_ACMESH_CONF"
