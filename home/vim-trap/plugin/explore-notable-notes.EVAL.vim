@@ -42,8 +42,8 @@ let s:notable_notes_mappings = []
 
 if hostname() == 'DXY_DEPOXY_HOSTNAME'
   let s:notable_notes_mappings = [
-    \   ["<Leader>p", "DXY_DEPOXY_CLIENT_TILDE/docs/notable-notes--vibrant"],
-    \   ["<Leader>P", "DXY_DEPOXY_CLIENT_TILDE/docs/notable-notes--woodlot"],
+    \   ["<LocalLeader>p", "DXY_DEPOXY_CLIENT_TILDE/docs/notable-notes--vibrant"],
+    \   ["<LocalLeader>P", "DXY_DEPOXY_CLIENT_TILDE/docs/notable-notes--woodlot"],
     \ ]
 endif
 

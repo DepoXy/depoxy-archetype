@@ -81,7 +81,7 @@ let g:ds_simple_grep_locat_lookup = [
 "
 "        or restart Vim.
 "
-" USAGE: Use <Leader>g and various <F4> commands to search your files.
+" USAGE: Use <LocalLeader>g and various <F4> commands to search your files.
 "
 "      - See :h dubs-grep-steady
 "
