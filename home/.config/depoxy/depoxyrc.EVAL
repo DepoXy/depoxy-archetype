@@ -75,6 +75,12 @@ export DEPOXY_IS_CLIENT=true
 # E.g., "2324" [*YRWK* format]
 export DEPOXY_CLIENT_ID="DXY_DEPOXY_CLIENT_ID"
 
+# Set the DepoXy Client environment "scope", either "dxy_pro" or "dxy_all".
+# - "dxy_pro" is meant for vendor hosts, for professional work,
+#   and installs and wires a subset of a complete environment.
+# - "dxy_all" is meant for personal hosts, where you want it all.
+export DEPOXY_CLIENT_SCOPE="dxy_pro"
+
 # ***
 
 # E.g., "${HOME}/.depoxy/ambers"
@@ -336,13 +342,20 @@ export UPDEPS_GENERIC_COMMIT_SUBJECT="deps: update faithfuls"
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
-# Tell slather-defaults (macOS-GNOME-onboarder) environment scope:
-# whether intended for personal or professional use.
-# - On personal machine, reminders include all OMR install tasks.
-# - On professional machine, reminders omit projects you won't need
-#   (like GnuCash) — Though echoInstallHelp arg used is 'dxy_limit'.
+# HSTRY/2026-07-24: The original scope var., but used solely for
+# OMR echoInstallHelp reminders.
+# - Now there's also DEPOXY_CLIENT_SCOPE, a generic version of same.
+#
+# This var. drives OMR 'install' reminder output. Possible values:
+# - "dxy_all":   On personal machine, reminders include all OMR install tasks.
+# - "dxy_pro":   On professional machine, 'install' reminders omit projects
+#                you shouldn't need (like GnuCash).
+# - "dxy_limit": Ha, tmf/too-much-feature, for projects you *might* want to
+#                install, an alternative for when DEPOXY_CLIENT_SCOPE="dxy_pro".
+#
+# Defaults to whatever the client scope is.
 
-export OMR_ECHO_INSTALL_DXY_SCOPE="dxy_pro"
+export OMR_ECHO_INSTALL_DXY_SCOPE="${DEPOXY_CLIENT_SCOPE}"
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
