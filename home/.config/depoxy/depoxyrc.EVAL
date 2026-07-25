@@ -69,6 +69,7 @@ unset -v __USYNC__
 
 # ***
 
+# USAGE: Used by `pw` (git-put-wise).
 export DEPOXY_IS_CLIENT=true
 
 # E.g., "2324" [*YRWK* format]
@@ -87,14 +88,13 @@ export DEPOXYARCHETYPE_DIR="DXY_DEPOXYARCHETYPE_DIR__HOME_"
 # ***** DepoXy filespace
 #
 # These override defaults that DepoXy sets in
-#
 #   _vendorfs_define_environs
-#
 #     ~/.depoxy/ambers/core/depoxy_fs.sh
-#
 # with whatever values you picked when you ran deploy-archetype.sh to
 # generate the client project (so be careful if you change these,
-# because you might need to change existing paths on the filesystem).
+# because you might need to change existing paths on the file system).
+# - CALSO:
+#   ~/.depoxy/ambers/core/path_vars.sh
 
 # E.g., "${HOME}/.depoxy"
 export DEPOXYDIR_BASE_FULL="DXY_DEPOXYDIR_BASE__HOME_"
@@ -482,4 +482,3 @@ export TODOREST_DEFAULT_RST_FILE="DXY_DEPOXY_CLIENT__HOME_/docs/Backlog_Client_[
 export ACMESH_CONF_USER="DXY_DEPOXY_CLIENT__HOME_/home/DXY_DEPOXY_VENDOR_HOME_NAME/DXY_VENDOR_ACMESH_CONF"
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
-
