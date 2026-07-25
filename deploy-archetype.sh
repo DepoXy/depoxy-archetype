@@ -406,11 +406,6 @@ register_depoxydir_paths() {
 
   # ***
 
-  # E.g., ".hostnames"
-  register "DXY_DEPOXY_HOSTNAMES_NAME" "${DEPOXY_HOSTNAMES_NAME:-.hostnames}"
-
-  # ***
-
   # If ${DXY_RUN_MAKE_LNS}, the directory name for the symlinks directory
   # (which will be created in the same directory as the new DXC).
   # USYNC: DXY_MAKE_LNS_NAME and infuse_create_symlinks_docs use same '.syml--' prefix.
