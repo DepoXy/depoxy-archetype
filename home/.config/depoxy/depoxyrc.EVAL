@@ -439,19 +439,53 @@ export DEPOXY_CD_ALIAS_NVIM_PLUG_ORG="DXY_DEPOXY_CD_ALIAS_NVIM_PLUG_ORG"
 # Part of the Neovim socket path used to identify a particular instance, e.g.,
 #   /tmp/nvim.socket-$NVIM_OPEN_SOCKETNAME
 # - Or, for Vim, the server name used to open files in the same instance. E.g.,
-#   gvim --servername SAMPI --remote-silent <file file...>
+#   gvim --servername $GVIM_OPEN_SERVERNAME --remote-silent <file file...>
 # - Used by `fs` command, among other mechanisms.
-# - The initial socket is created gvim-open-kindness.
-# - A (Neo)vim plugin adds the socketname emoji or text to the titlebar.
-#   https://github.com/landonb/vim-title-bar-time-of-day#🕰️
+# - Passed to neovide/nvim by 'gvim-open-kindness' using '--listen'.
+# - A (Neo)vim plugin adds the socketname to the window title, so that
+#   OS accelerators can identify the editor window by the socket name:
+#     https://github.com/landonb/vim-title-bar-time-of-day#🕰️
 #
-#  export NVIM_OPEN_SOCKETNAME="NVIM"
+# OPTNS:
+# - Bland socket name:
+#     export NVIM_OPEN_SOCKETNAME="NVIM"
+# - Emoji socket name:
+#     export NVIM_OPEN_SOCKETNAME="🧸"
+# - Font Awesome socket name:
+#     export NVIM_OPEN_SOCKETNAME=""
+# - BWARE: ◊ Emoji not supported by Neovide in GNOME Shell Wayland
+#            (or at least fallback font doesn't work for author).
+# - REFER: You can identify the titlebar font that GNOME uses:
+#     gsettings get org.gnome.desktop.wm.preferences titlebar-font
+#   then run 'font-manager', find the titlebar font, and click
+#   "Characters" to see a grid of characters you can use (I mean,
+#   you can use emoji with Neovide on GNOME, but they'll appear
+#   as the box symbol placeholder used for missing glyphs).
+#   - SAVVY: As a work-around to the Neovide titlebar issue, you can
+#     customize GNOME Shell to use a Nerd Font for the titlebar, e.g.,
+#       gsettings get org.gnome.desktop.wm.preferences titlebar-font \
+#         'Ubuntu Nerd Font Regular 11'
+#     and then you can use Font Awesome, Material Design, Powerline,
+#     Devicons, etc., glyph(s) in the socket name.
+# - Or, if you're using something like Adwaita, you'll typically find
+#   a (limited) set of letterlike symbols you might find appealing.
+#   (Or just use plain 7-bit ASCII! But that seems so boring.)
+#   - E.g., this is a letterlike "LZ" from Adwaita Sans, i.e., "lz"
+#     for "nvim-lazyb":
+#       export NVIM_OPEN_SOCKETNAME=""
 export NVIM_OPEN_SOCKETNAME="DXY_NVIM_OPEN_SOCKETNAME"
 
 # The complementary `fa` command (for running 2nd nvim, e.g.,)
 # uses a separate socket or server name you can customize here.
 #
+#  # Boring ASCII, e.g.:
 #  export DEPOXY_NVIM_ALTERNATE=NVIM2
+#  # macOS/Emoji titlebar support, e.g.:
+#  export DEPOXY_NVIM_ALTERNATE="🦢"
+#  export DEPOXY_NVIM_TRICHOTOMY="🐝"
+#  # GNOME/Font Awesome titlebar support, e.g.:
+#  export DEPOXY_NVIM_ALTERNATE=""
+#  export DEPOXY_NVIM_TRICHOTOMY=""
 export DEPOXY_NVIM_ALTERNATE="DXY_DEPOXY_NVIM_ALTERNATE"
 export DEPOXY_NVIM_TRICHOTOMY="DXY_DEPOXY_NVIM_TRICHOTOMY"
 

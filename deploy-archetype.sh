@@ -233,9 +233,22 @@ register_customizable_personal_values() {
 
   # Optional: Specify the Neovim socket postfix or GVim --servername so
   #           you can send files to or front a specific editor instance.
-  register "DXY_NVIM_OPEN_SOCKETNAME" "🧸"
-  register "DXY_DEPOXY_NVIM_ALTERNATE" "🦢"
-  register "DXY_DEPOXY_NVIM_TRICHOTOMY" "🐝"
+  if os_is_macos; then
+    register "DXY_NVIM_OPEN_SOCKETNAME" "🧸"
+    register "DXY_DEPOXY_NVIM_ALTERNATE" "🦢"
+    register "DXY_DEPOXY_NVIM_TRICHOTOMY" "🐝"
+  else
+    # GNOME Shell Neovide window title fallback emoji font doesn't
+    # work (but shows box-looking [] placeholder glyphs for emoji
+    # instead), so use Nerd Font glyphs (Font Awesome, etc.).
+    # - REFER: Search for glyphs at NerdFonts.com (not FontAwesome.com):
+    #     https://www.nerdfonts.com/cheat-sheet
+    #   - E.g.:
+    #                   󰟪    󰪯  󰪰  󱡊  󱏰          󰠪  󰻽    󰶞  󰶟
+    register "DXY_NVIM_OPEN_SOCKETNAME" ""
+    register "DXY_DEPOXY_NVIM_ALTERNATE" ""
+    register "DXY_DEPOXY_NVIM_TRICHOTOMY" ""
+  fi
 }
 
 register_placeholder_project_config_values() {
