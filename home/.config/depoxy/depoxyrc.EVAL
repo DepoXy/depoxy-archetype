@@ -450,8 +450,10 @@ export DEPOXY_CD_ALIAS_NVIM_PLUG_ORG="DXY_DEPOXY_CD_ALIAS_NVIM_PLUG_ORG"
 # - Bland socket name:
 #     export NVIM_OPEN_SOCKETNAME="NVIM"
 # - Emoji socket name:
+#     # USYNC: DepoXy default NVIM_OPEN_SOCKETNAME=🧸 [macOS]
 #     export NVIM_OPEN_SOCKETNAME="🧸"
 # - Font Awesome socket name:
+#     # USYNC: DepoXy default NVIM_OPEN_SOCKETNAME= [GNOME]
 #     export NVIM_OPEN_SOCKETNAME=""
 # - BWARE: ◊ Emoji not supported by Neovide in GNOME Shell Wayland
 #            (or at least fallback font doesn't work for author).

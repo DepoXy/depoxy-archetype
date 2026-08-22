@@ -234,6 +234,7 @@ register_customizable_personal_values() {
   # Optional: Specify the Neovim socket postfix or GVim --servername so
   #           you can send files to or front a specific editor instance.
   if os_is_macos; then
+    # USYNC: DepoXy default NVIM_OPEN_SOCKETNAME=🧸 [macOS]
     register "DXY_NVIM_OPEN_SOCKETNAME" "🧸"
     register "DXY_DEPOXY_NVIM_ALTERNATE" "🦢"
     register "DXY_DEPOXY_NVIM_TRICHOTOMY" "🐝"
@@ -245,6 +246,7 @@ register_customizable_personal_values() {
     #     https://www.nerdfonts.com/cheat-sheet
     #   - E.g.:
     #                   󰟪    󰪯  󰪰  󱡊  󱏰          󰠪  󰻽    󰶞  󰶟
+    # USYNC: DepoXy default NVIM_OPEN_SOCKETNAME= [GNOME]
     register "DXY_NVIM_OPEN_SOCKETNAME" ""
     register "DXY_DEPOXY_NVIM_ALTERNATE" ""
     register "DXY_DEPOXY_NVIM_TRICHOTOMY" ""
