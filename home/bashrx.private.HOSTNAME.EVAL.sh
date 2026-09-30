@@ -229,6 +229,7 @@ _dxc_bashrc_standup() {
 
   bashdx_customize_depoxy_client_PS1
   unset -f bashdx_customize_depoxy_client_PS1
+  # Called by DepoXy to unset funcs: _humb_prompt_unset_functions
 
   # ***
 
