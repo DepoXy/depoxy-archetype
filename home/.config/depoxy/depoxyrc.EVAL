@@ -502,9 +502,10 @@ export GVIM_OPEN_PREFER_NVIM=true
 
 # Pick the GUI app or nvim TUI for `gvim-open-kindness`.
 #
+#   export NVIM_OPEN_APPNAME="kitty"
 #   export NVIM_OPEN_APPNAME="neovide"
 #   export NVIM_OPEN_APPNAME="nvim"
-export NVIM_OPEN_APPNAME="neovide"
+export NVIM_OPEN_APPNAME="kitty"
 
 # Tell both home-fries and nvim-depoxy to use Neovim for minimal.vim.
 # - CXREF:
