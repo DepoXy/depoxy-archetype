@@ -51,7 +51,7 @@ unset -v __USYNC__
 #
 #           DXY_DEPOXYARCHETYPE_DIR_TILDE/home/bashrx.private.HOSTNAME.EVAL.sh
 #
-#        But note that depoxyrc is meant to be persistently accessible,
+#        But note that this file is meant to be persistently accessible,
 #        whereas a `23skidoo` will unmount your DepoXy Client project,
 #        including `home/bashrx.private.DXY_HOSTNAME.sh`.
 
@@ -230,7 +230,7 @@ export MRT_SYMLINK_NORMALIZE_HOME="/private/user"
 #
 #   CXREF: ~/.kit/git/git-put-wise
 
-# E.g., ${HOME}/.depoxy/patchr
+# E.g., /home/user/.depoxy/patchr
 export PW_PATCHES_REPO="DXY_PW_PATCHES_REPO__HOME_"
 
 # Password Store entry containing GPG passphrase to use.
@@ -276,6 +276,8 @@ export PW_OPTION_FETCH_BACKOFF="-8 hours"
 #   - Runs nvim if EDITOR_PREFER_NVIM=true | GVIM_OPEN_PREFER_NVIM=true
 export TNEWTONS_EDITOR="editor-vim-0-0-insert-minimal"
 
+# CXREF: Legacy Vim wiring: For vim.plug() setup, before :call plug#begin()
+#   nvim-depoxy/bin/editor-vim-0-0-insert-minimal.vimrc @ 243
 export NVIMDEPOXY_PLUG_PATH="${NEOVIM_REPOS:-${DOPP_KIT:-${HOME}/.kit}/nvim}"
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
@@ -426,9 +428,12 @@ export DEPOXY_DEFAULT_LOGIN_SHELL="/opt/homebrew/bin/bash"
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
-# 2021-08-22: Tell DepoXy Ambers how to define `cvs`. E.g.,
+# 2021-08-22: Tell DepoXy Ambers how to define 'cd' aliases to
+# the plugins directory (more of a Vim construct, but author
+# keeps all their Neovim projects within the same directory), e.g.,
 #   pushd_alias_or_warn "cvs" "${HOME}/.kit/nvim/<username>/start"
-# - CXREF: ~/.depoxy/ambers/core/neovimgui.sh
+# - CXREF: depoxy/core/neovimgui.sh
+# - USAGE/MNEMO: Wired to 'cdnu', 'cnu', & 'cvp' (nu: Neovim User, vp: Vim Plug).
 export DEPOXY_CD_ALIAS_NVIM_PLUG_ORG="DXY_DEPOXY_CD_ALIAS_NVIM_PLUG_ORG"
 
 # *** GVim opener project config
@@ -524,7 +529,7 @@ export EDITOR_PREFER_NVIM=true
 export NVIM_OPEN_FILE_ON_SPAWN="[Scratch]"
 
 # CXREF: https://github.com/landonb/todo.rst#🦤
-#   ~/.kit/txt/todo.rst/bin/todoreST
+#   todo.rst/bin/todoreST
 export TODOREST_DEFAULT_RST_FILE="DXY_DEPOXY_CLIENT__HOME_/docs/Backlog_Client_[[[]]]DXY_DEPOXY_CLIENT_ID.rst"
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
