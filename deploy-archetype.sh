@@ -1984,16 +1984,20 @@ omr_dxc_compile_spells() {
       )"
     done
 
-    # Loads: SPF_SPELLS
-    # CXREF: ~/.depoxy/ambers/bin/spells.sh
-    . "spells.sh"
-    init_spellssh
-    # Loads: SPELLS_COMPILED_SUFFIX
-    # CXREF: ~/.kit/txt/spellfile.txt/bin/spells.sh
-    # - ALTLY:
-    #   . "${SPELLFILE_DIR:-${DOPP_KIT:-${HOME}/.kit}/txt/spellfile.txt}/bin/spells.sh"
-    . "${SPF_SPELLS}"
-    init_spellssh
+    # USYNC/NODRY: _dxy_source_layered_spells
+    _dxy_source_layered_spells() {
+      # Loads: SPF_SPELLS
+      # CXREF: ~/.depoxy/ambers/bin/spells.sh
+      . "spells.sh"
+      init_spellssh
+      # Loads: SPELLS_COMPILED_SUFFIX
+      # CXREF: ~/.kit/txt/spellfile.txt/bin/spells.sh
+      # - ALTLY:
+      #   . "${SPELLFILE_DIR:-${DOPP_KIT:-${HOME}/.kit}/txt/spellfile.txt}/bin/spells.sh"
+      . "${SPF_SPELLS}"
+      init_spellssh
+    }
+    _dxy_source_layered_spells
 
     blot
     blot "Placing Client spells..."
