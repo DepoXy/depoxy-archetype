@@ -57,34 +57,12 @@
 # ----------------------------------------------------------------- #
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
-# Changes Directories to your Work directory [cdw].
-# ↑       ↑                   ↑
-#
-# - I.e., where you keep @biz-specific projects.
-#
-# - Obviously, this location is highly subjective.
-#   - You can set this when generating a DepoXy Client
-#     using the [[[DXY_VENDOR_HOME]]] environ.
-#   - It defaults to '~/work', but author sometimes
-#     customizes it to be @biz-specific, e.g.,
-#     '~/acme', or '~/fbi/'.
+# Placeholder func. for pushd definitions.
 
-bashdx_wire_aliases_pushd_paths_cdw() {
-  # CXREF: This path is set by deploy-archetype.sh per [[[DXY_VENDOR_HOME]]]
-  local client_dir="${DEPOXYDIR_VENDOR_FULL:-DXY_VENDOR_HOME__HOME_}"
-
-  if [ -d "${client_dir}" ]; then
-    # CXREF: ~/.kit/sh/home-fries/lib/path_util.sh
-    pushd_alias_or_warn "cdw" "${client_dir}"
-  elif ! type "cdw" > /dev/null 2>&1; then
-    # YOU: Feel free to remove this else block. Or not.
-    eval "function cdw {
-      error 'The \`cdw\` command is not configured. Please customize it.'
-      error \"- Edit the function “${FUNCNAME[0]}” from the file:\"
-      error
-      error \"    \$(realpath -- \"\${BASH_SOURCE[0]}\")\"
-    }"
-  fi
+bashdx_wire_aliases_pushd_paths() {
+  :
+  # E.g.,
+  # pushd_alias_or_warn "cdabc" "${HOME}/always/be/closing"
 }
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
@@ -219,8 +197,8 @@ _dxc_bashrc_standup() {
   #   reverse (i.e., us setting aliases first, and then DepoXy griping
   #   if we blocked any of theirs).
 
-  bashdx_wire_aliases_pushd_paths_cdw
-  unset -f bashdx_wire_aliases_pushd_paths_cdw
+  bashdx_wire_aliases_pushd_paths
+  unset -f bashdx_wire_aliases_pushd_paths
 
   bashdx_wire_aliases_open_tracker
   unset -f bashdx_wire_aliases_open_tracker
